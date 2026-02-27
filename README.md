@@ -10,11 +10,17 @@ npm install @nixopus/api-client @hey-api/client-fetch
 yarn add @nixopus/api-client @hey-api/client-fetch
 ```
 
+For Zod schema validation install `zod` as well:
+
+```bash
+npm install @nixopus/api-client @hey-api/client-fetch zod
+```
+
 ## Usage
 
 ```typescript
 import { createClient } from '@hey-api/client-fetch';
-import { getApplications, getDeployments } from '@nixopus/api-client';
+import { getApiV1DeployApplications, getApiV1DeployApplicationDeployments } from '@nixopus/api-client';
 
 const client = createClient({
   baseUrl: 'https://api.nixopus.com',
@@ -27,25 +33,23 @@ const client = createClient({
 });
 
 // Use the generated SDK functions
-const applications = await getApplications({ client });
-const deployments = await getDeployments({ client });
+const applications = await getApiV1DeployApplications({ client });
+const deployments = await getApiV1DeployApplicationDeployments({ client });
+```
+
+### Zod schemas
+
+The package exports generated Zod schemas for request/response validation. 
+
+```typescript
+import { z } from 'zod';
+import { zPostApiV1DeployApplicationData, zPostApiV1DeployApplicationRestartData } from '@nixopus/api-client';
+
+// Request schemas include .shape.body, .shape.query, .shape.path for body/query/path params
+const deployBodySchema = zPostApiV1DeployApplicationData.shape.body ?? z.object({});
+const restartBodySchema = zPostApiV1DeployApplicationRestartData.shape.body ?? z.object({});
 ```
 
 ## Sync
 
 This package is automatically regenerated and published when the OpenAPI spec changes in the [nixopus](https://github.com/raghavyuva/nixopus) repository.
-
-## Setup 
-
-1. Create a new repo `nixopus/api-client` on GitHub (or use existing)
-2. Push this folder:
-   ```bash
-   cd nixopus-api-client
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git remote add origin https://github.com/nixopus/api-client.git
-   git push -u origin master
-   ```
-3. Add secrets to the **nixopus** repo: `API_CLIENT_REPO_TOKEN` (GitHub PAT with `repo` scope)
-4. Add secrets to the **api-client** repo: `NPM_TOKEN` (from npmjs.com)

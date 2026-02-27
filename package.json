@@ -16,20 +16,25 @@
     "dist"
   ],
   "scripts": {
-    "generate": "openapi-ts -i openapi.json -o src",
+    "generate": "openapi-ts",
     "build": "tsup src/index.ts --format cjs,esm --dts --clean",
     "prepublishOnly": "npm run generate && npm run build"
   },
   "devDependencies": {
     "@hey-api/openapi-ts": "0.93.0",
+    "zod": "^3.23.0",
     "tsup": "^8.0.0",
     "typescript": "^5.0.0"
   },
   "peerDependencies": {
-    "@hey-api/client-fetch": "^0.4.0"
+    "@hey-api/client-fetch": "^0.4.0",
+    "zod": "^3.23.0 || ^4.0.0"
   },
   "peerDependenciesMeta": {
     "@hey-api/client-fetch": {
+      "optional": true
+    },
+    "zod": {
       "optional": true
     }
   },
