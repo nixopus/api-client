@@ -1,6 +1,6 @@
 {
   "name": "@nixopus/api-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "TypeScript API client for Nixopus, generated from OpenAPI spec",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
