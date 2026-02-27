@@ -11,5 +11,13 @@ export default {
       includeInEntry: true,
       compatibilityVersion: 3,
     },
+    {
+      name: '@tanstack/react-query',
+      queryOptions: true,
+      mutationOptions: true,
+      queryKeys: true,
+      infiniteQueryOptions: true,
+      includeInEntry: true,
+    },
   ],
 } satisfies UserConfig;
