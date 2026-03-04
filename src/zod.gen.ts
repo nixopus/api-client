@@ -6,7 +6,9 @@ import { z } from 'zod';
  * AddApplicationDomainRequest schema
  */
 export const zAddApplicationDomainRequest = z.object({
-    domain: z.string().optional()
+    domain: z.string().optional(),
+    port: z.number().int().optional(),
+    service_name: z.string().optional()
 });
 
 /**
@@ -20,7 +22,7 @@ export const zAddApplicationToFamilyRequest = z.object({
     domains: z.array(z.string()).optional(),
     environment: z.string().optional(),
     environment_variables: z.record(z.string()).optional(),
-    family_id: z.unknown().optional(),
+    family_id: z.string().uuid().optional(),
     name: z.string().optional(),
     path: z.string().optional(),
     port: z.number().int().optional(),
@@ -143,6 +145,11 @@ export const zCreateDeploymentRequest = z.object({
     branch: z.string().optional(),
     build_pack: z.string().optional(),
     build_variables: z.record(z.string()).optional(),
+    compose_domains: z.array(z.object({
+        domain: z.string().optional(),
+        port: z.number().int().optional(),
+        service_name: z.string().optional()
+    })).optional(),
     dockerfile_path: z.string().optional(),
     domains: z.array(z.string()).optional(),
     environment: z.string().optional(),
@@ -166,7 +173,7 @@ export const zCreateDirectoryRequest = z.object({
  */
 export const zCreateDomainRequest = z.object({
     name: z.string().optional(),
-    organization_id: z.unknown().optional()
+    organization_id: z.string().uuid().optional()
 });
 
 /**
@@ -217,6 +224,15 @@ export const zCreateProjectRequest = z.object({
     branch: z.string().optional(),
     build_pack: z.string().optional(),
     build_variables: z.record(z.string()).optional(),
+    compose_domains: z.array(z.object({
+        domain: z.string().optional(),
+        port: z.number().int().optional(),
+        service_name: z.string().optional()
+    })).optional(),
+    compose_services: z.array(z.object({
+        port: z.number().int().optional(),
+        service_name: z.string().optional()
+    })).optional(),
     dockerfile_path: z.string().optional(),
     domains: z.array(z.string()).optional(),
     environment: z.string().optional(),
@@ -235,7 +251,7 @@ export const zCreateSmtpConfigRequest = z.object({
     from_email: z.string().optional(),
     from_name: z.string().optional(),
     host: z.string().optional(),
-    organization_id: z.unknown().optional(),
+    organization_id: z.string().uuid().optional(),
     password: z.string().optional(),
     port: z.number().int().optional(),
     username: z.string().optional()
@@ -253,7 +269,7 @@ export const zCreateWebhookConfigRequest = z.object({
  * DeleteDeploymentRequest schema
  */
 export const zDeleteDeploymentRequest = z.object({
-    id: z.unknown().optional()
+    id: z.string().uuid().optional()
 });
 
 /**
@@ -281,7 +297,7 @@ export const zDeleteGithubConnectorRequest = z.object({
  * DeleteSMTPConfigRequest schema
  */
 export const zDeleteSmtpConfigRequest = z.object({
-    id: z.unknown().optional()
+    id: z.string().uuid().optional()
 });
 
 /**
@@ -295,7 +311,7 @@ export const zDeleteWebhookConfigRequest = z.object({
  * DeployProjectRequest schema
  */
 export const zDeployProjectRequest = z.object({
-    id: z.unknown().optional()
+    id: z.string().uuid().optional()
 });
 
 /**
@@ -305,11 +321,11 @@ export const zDomainResponse = z.object({
     data: z.object({
         created_at: z.string().datetime().optional(),
         deleted_at: z.string().datetime().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         name: z.string().optional(),
-        organization_id: z.unknown().optional(),
+        organization_id: z.string().uuid().optional(),
         updated_at: z.string().datetime().optional(),
-        user_id: z.unknown().optional()
+        user_id: z.string().uuid().optional()
     }).optional(),
     message: z.string().optional(),
     status: z.string().optional()
@@ -322,7 +338,7 @@ export const zDuplicateProjectRequest = z.object({
     branch: z.string().optional(),
     domains: z.array(z.string()).optional(),
     environment: z.string().optional(),
-    source_project_id: z.unknown().optional()
+    source_project_id: z.string().uuid().optional()
 });
 
 /**
@@ -347,21 +363,21 @@ export const zExtension: z.AnyZodObject = z.object({
     extension_type: z.string().optional(),
     featured: z.boolean().optional(),
     icon: z.string().optional(),
-    id: z.unknown().optional(),
+    id: z.string().uuid().optional(),
     is_verified: z.boolean().optional(),
     name: z.string().optional(),
-    parent_extension_id: z.unknown().optional(),
+    parent_extension_id: z.string().uuid().optional(),
     parsed_content: z.string().optional(),
     updated_at: z.string().datetime().optional(),
     validation_errors: z.string().optional(),
     validation_status: z.string().optional(),
     variables: z.array(z.object({
         created_at: z.string().datetime().optional(),
-        default_value: z.unknown().optional(),
+        default_value: z.string().optional(),
         description: z.string().optional(),
         extension: z.lazy(() => zExtension).optional(),
-        extension_id: z.unknown().optional(),
-        id: z.unknown().optional(),
+        extension_id: z.string().uuid().optional(),
+        id: z.string().uuid().optional(),
         is_required: z.boolean().optional(),
         validation_pattern: z.string().optional(),
         variable_name: z.string().optional(),
@@ -388,21 +404,21 @@ export const zExtensionExecution: z.AnyZodObject = z.object({
         extension_type: z.string().optional(),
         featured: z.boolean().optional(),
         icon: z.string().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         is_verified: z.boolean().optional(),
         name: z.string().optional(),
-        parent_extension_id: z.unknown().optional(),
+        parent_extension_id: z.string().uuid().optional(),
         parsed_content: z.string().optional(),
         updated_at: z.string().datetime().optional(),
         validation_errors: z.string().optional(),
         validation_status: z.string().optional(),
         variables: z.array(z.object({
             created_at: z.string().datetime().optional(),
-            default_value: z.unknown().optional(),
+            default_value: z.string().optional(),
             description: z.string().optional(),
             extension: zExtension.optional(),
-            extension_id: z.unknown().optional(),
-            id: z.unknown().optional(),
+            extension_id: z.string().uuid().optional(),
+            id: z.string().uuid().optional(),
             is_required: z.boolean().optional(),
             validation_pattern: z.string().optional(),
             variable_name: z.string().optional(),
@@ -411,8 +427,8 @@ export const zExtensionExecution: z.AnyZodObject = z.object({
         version: z.string().optional(),
         yaml_content: z.string().optional()
     }).optional(),
-    extension_id: z.unknown().optional(),
-    id: z.unknown().optional(),
+    extension_id: z.string().uuid().optional(),
+    id: z.string().uuid().optional(),
     log_seq: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
     server_hostname: z.string().optional(),
     started_at: z.string().datetime().optional(),
@@ -421,9 +437,9 @@ export const zExtensionExecution: z.AnyZodObject = z.object({
         completed_at: z.string().datetime().optional(),
         created_at: z.string().datetime().optional(),
         execution: z.lazy(() => zExtensionExecution).optional(),
-        execution_id: z.unknown().optional(),
+        execution_id: z.string().uuid().optional(),
         exit_code: z.number().int().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         output: z.string().optional(),
         phase: z.string().optional(),
         started_at: z.string().datetime().optional(),
@@ -455,21 +471,21 @@ export const zExecutionResponse = z.object({
             extension_type: z.string().optional(),
             featured: z.boolean().optional(),
             icon: z.string().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             is_verified: z.boolean().optional(),
             name: z.string().optional(),
-            parent_extension_id: z.unknown().optional(),
+            parent_extension_id: z.string().uuid().optional(),
             parsed_content: z.string().optional(),
             updated_at: z.string().datetime().optional(),
             validation_errors: z.string().optional(),
             validation_status: z.string().optional(),
             variables: z.array(z.object({
                 created_at: z.string().datetime().optional(),
-                default_value: z.unknown().optional(),
+                default_value: z.string().optional(),
                 description: z.string().optional(),
                 extension: zExtension.optional(),
-                extension_id: z.unknown().optional(),
-                id: z.unknown().optional(),
+                extension_id: z.string().uuid().optional(),
+                id: z.string().uuid().optional(),
                 is_required: z.boolean().optional(),
                 validation_pattern: z.string().optional(),
                 variable_name: z.string().optional(),
@@ -478,8 +494,8 @@ export const zExecutionResponse = z.object({
             version: z.string().optional(),
             yaml_content: z.string().optional()
         }).optional(),
-        extension_id: z.unknown().optional(),
-        id: z.unknown().optional(),
+        extension_id: z.string().uuid().optional(),
+        id: z.string().uuid().optional(),
         log_seq: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
         server_hostname: z.string().optional(),
         started_at: z.string().datetime().optional(),
@@ -488,9 +504,9 @@ export const zExecutionResponse = z.object({
             completed_at: z.string().datetime().optional(),
             created_at: z.string().datetime().optional(),
             execution: zExtensionExecution.optional(),
-            execution_id: z.unknown().optional(),
+            execution_id: z.string().uuid().optional(),
             exit_code: z.number().int().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             output: z.string().optional(),
             phase: z.string().optional(),
             started_at: z.string().datetime().optional(),
@@ -519,21 +535,21 @@ export const zExtensionResponse = z.object({
         extension_type: z.string().optional(),
         featured: z.boolean().optional(),
         icon: z.string().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         is_verified: z.boolean().optional(),
         name: z.string().optional(),
-        parent_extension_id: z.unknown().optional(),
+        parent_extension_id: z.string().uuid().optional(),
         parsed_content: z.string().optional(),
         updated_at: z.string().datetime().optional(),
         validation_errors: z.string().optional(),
         validation_status: z.string().optional(),
         variables: z.array(z.object({
             created_at: z.string().datetime().optional(),
-            default_value: z.unknown().optional(),
+            default_value: z.string().optional(),
             description: z.string().optional(),
             extension: zExtension.optional(),
-            extension_id: z.unknown().optional(),
-            id: z.unknown().optional(),
+            extension_id: z.string().uuid().optional(),
+            id: z.string().uuid().optional(),
             is_required: z.boolean().optional(),
             validation_pattern: z.string().optional(),
             variable_name: z.string().optional(),
@@ -564,7 +580,7 @@ export const zGetActivitiesResponse = z.object({
             actor: z.string().optional(),
             id: z.string().optional(),
             message: z.string().optional(),
-            metadata: z.record(z.unknown()).optional(),
+            metadata: z.record(z.string()).optional(),
             resource: z.string().optional(),
             resource_id: z.string().optional(),
             timestamp: z.string().optional()
@@ -655,7 +671,7 @@ export const zGetGithubRepositoryBranchesRequest = z.object({
 export const zHttpError = z.object({
     detail: z.string().optional(),
     errors: z.array(z.object({
-        more: z.record(z.unknown()).optional(),
+        more: z.record(z.string()).optional(),
         name: z.string().optional(),
         reason: z.string().optional()
     })).optional(),
@@ -669,6 +685,15 @@ export const zHttpError = z.object({
  * HealthCheckResponse schema
  */
 export const zHealthCheckResponse = z.object({
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
+ * IndexCodebaseResponse schema
+ */
+export const zIndexCodebaseResponse = z.object({
+    data: z.unknown().optional(),
     message: z.string().optional(),
     status: z.string().optional()
 });
@@ -730,12 +755,12 @@ export const zListConnectorsResponse = z.object({
         client_secret: z.string().optional(),
         created_at: z.string().datetime().optional(),
         deleted_at: z.string().datetime().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         installation_id: z.string().optional(),
         pem: z.string().optional(),
         slug: z.string().optional(),
         updated_at: z.string().datetime().optional(),
-        user_id: z.unknown().optional(),
+        user_id: z.string().uuid().optional(),
         webhook_secret: z.string().optional()
     })).optional(),
     message: z.string().optional(),
@@ -875,11 +900,11 @@ export const zListDomainsResponse = z.object({
     data: z.array(z.object({
         created_at: z.string().datetime().optional(),
         deleted_at: z.string().datetime().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         name: z.string().optional(),
-        organization_id: z.unknown().optional(),
+        organization_id: z.string().uuid().optional(),
         updated_at: z.string().datetime().optional(),
-        user_id: z.unknown().optional()
+        user_id: z.string().uuid().optional()
     })).optional(),
     message: z.string().optional(),
     status: z.string().optional()
@@ -906,21 +931,21 @@ export const zListExecutionsResponse = z.object({
             extension_type: z.string().optional(),
             featured: z.boolean().optional(),
             icon: z.string().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             is_verified: z.boolean().optional(),
             name: z.string().optional(),
-            parent_extension_id: z.unknown().optional(),
+            parent_extension_id: z.string().uuid().optional(),
             parsed_content: z.string().optional(),
             updated_at: z.string().datetime().optional(),
             validation_errors: z.string().optional(),
             validation_status: z.string().optional(),
             variables: z.array(z.object({
                 created_at: z.string().datetime().optional(),
-                default_value: z.unknown().optional(),
+                default_value: z.string().optional(),
                 description: z.string().optional(),
                 extension: zExtension.optional(),
-                extension_id: z.unknown().optional(),
-                id: z.unknown().optional(),
+                extension_id: z.string().uuid().optional(),
+                id: z.string().uuid().optional(),
                 is_required: z.boolean().optional(),
                 validation_pattern: z.string().optional(),
                 variable_name: z.string().optional(),
@@ -929,8 +954,8 @@ export const zListExecutionsResponse = z.object({
             version: z.string().optional(),
             yaml_content: z.string().optional()
         }).optional(),
-        extension_id: z.unknown().optional(),
-        id: z.unknown().optional(),
+        extension_id: z.string().uuid().optional(),
+        id: z.string().uuid().optional(),
         log_seq: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
         server_hostname: z.string().optional(),
         started_at: z.string().datetime().optional(),
@@ -939,9 +964,9 @@ export const zListExecutionsResponse = z.object({
             completed_at: z.string().datetime().optional(),
             created_at: z.string().datetime().optional(),
             execution: zExtensionExecution.optional(),
-            execution_id: z.unknown().optional(),
+            execution_id: z.string().uuid().optional(),
             exit_code: z.number().int().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             output: z.string().optional(),
             phase: z.string().optional(),
             started_at: z.string().datetime().optional(),
@@ -971,21 +996,21 @@ export const zListExtensionsResponse = z.object({
             extension_type: z.string().optional(),
             featured: z.boolean().optional(),
             icon: z.string().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             is_verified: z.boolean().optional(),
             name: z.string().optional(),
-            parent_extension_id: z.unknown().optional(),
+            parent_extension_id: z.string().uuid().optional(),
             parsed_content: z.string().optional(),
             updated_at: z.string().datetime().optional(),
             validation_errors: z.string().optional(),
             validation_status: z.string().optional(),
             variables: z.array(z.object({
                 created_at: z.string().datetime().optional(),
-                default_value: z.unknown().optional(),
+                default_value: z.string().optional(),
                 description: z.string().optional(),
                 extension: zExtension.optional(),
-                extension_id: z.unknown().optional(),
-                id: z.unknown().optional(),
+                extension_id: z.string().uuid().optional(),
+                id: z.string().uuid().optional(),
                 is_required: z.boolean().optional(),
                 validation_pattern: z.string().optional(),
                 variable_name: z.string().optional(),
@@ -1011,17 +1036,17 @@ export const zListFeatureFlagsResponse = z.object({
         created_at: z.string().datetime().optional(),
         deleted_at: z.string().datetime().optional(),
         feature_name: z.string().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         is_enabled: z.boolean().optional(),
         organization: z.object({
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             logo: z.string().optional(),
             metadata: z.string().optional(),
             name: z.string().optional(),
             slug: z.string().optional()
         }).optional(),
-        organization_id: z.unknown().optional(),
+        organization_id: z.string().uuid().optional(),
         updated_at: z.string().datetime().optional()
     })).optional(),
     message: z.string().optional(),
@@ -1091,13 +1116,13 @@ export const zListLogsResponse = z.object({
         execution_status: z.string().optional(),
         logs: z.array(z.object({
             created_at: z.string().datetime().optional(),
-            data: z.unknown().optional(),
-            execution_id: z.unknown().optional(),
-            id: z.unknown().optional(),
+            data: z.string().optional(),
+            execution_id: z.string().uuid().optional(),
+            id: z.string().uuid().optional(),
             level: z.string().optional(),
             message: z.string().optional(),
             sequence: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-            step_id: z.unknown().optional()
+            step_id: z.string().uuid().optional()
         })).optional(),
         next_after: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional()
     }).optional(),
@@ -1269,26 +1294,46 @@ export const zPauseRequest = z.object({
 export const zPreferencesResponse = z.object({
     data: z.object({
         activity: z.array(z.object({
-            description: z.string().optional(),
+            description: z.string(),
             enabled: z.boolean().optional(),
-            id: z.string().optional(),
-            label: z.string().optional()
+            id: z.string(),
+            label: z.string()
         })).optional(),
         security: z.array(z.object({
-            description: z.string().optional(),
+            description: z.string(),
             enabled: z.boolean().optional(),
-            id: z.string().optional(),
-            label: z.string().optional()
+            id: z.string(),
+            label: z.string()
         })).optional(),
         update: z.array(z.object({
-            description: z.string().optional(),
+            description: z.string(),
             enabled: z.boolean().optional(),
-            id: z.string().optional(),
-            label: z.string().optional()
+            id: z.string(),
+            label: z.string()
         })).optional()
     }).optional(),
     message: z.string().optional(),
     status: z.string().optional()
+});
+
+/**
+ * PreviewComposeRequest schema
+ */
+export const zPreviewComposeRequest = z.object({
+    base_path: z.string().optional(),
+    branch: z.string().optional(),
+    dockerfile_path: z.string().optional(),
+    repository: z.string().optional()
+});
+
+/**
+ * PreviewComposeResponse schema
+ */
+export const zPreviewComposeResponse = z.object({
+    services: z.array(z.object({
+        port: z.number().int().optional(),
+        service_name: z.string().optional()
+    })).optional()
 });
 
 /**
@@ -1348,14 +1393,14 @@ export const zRandomSubdomainResponseWrapper = z.object({
 export const zReDeployApplicationRequest = z.object({
     force: z.boolean().optional(),
     force_without_cache: z.boolean().optional(),
-    id: z.unknown().optional()
+    id: z.string().uuid().optional()
 });
 
 /**
  * RecoverRequest schema
  */
 export const zRecoverRequest = z.object({
-    application_id: z.unknown().optional()
+    application_id: z.string().uuid().optional()
 });
 
 /**
@@ -1364,17 +1409,17 @@ export const zRecoverRequest = z.object({
 export const zRecoverResponse = z.object({
     data: z.object({
         failed: z.array(z.object({
-            application_id: z.unknown().optional(),
+            application_id: z.string().uuid().optional(),
             application_name: z.string().optional(),
             reason: z.string().optional()
         })).optional(),
         recovered: z.array(z.object({
-            application_id: z.unknown().optional(),
+            application_id: z.string().uuid().optional(),
             application_name: z.string().optional(),
             reason: z.string().optional()
         })).optional(),
         skipped: z.array(z.object({
-            application_id: z.unknown().optional(),
+            application_id: z.string().uuid().optional(),
             application_name: z.string().optional(),
             reason: z.string().optional()
         })).optional()
@@ -1404,21 +1449,21 @@ export const zResponse = z.object({
  * RestartDeploymentRequest schema
  */
 export const zRestartDeploymentRequest = z.object({
-    id: z.unknown().optional()
+    id: z.string().uuid().optional()
 });
 
 /**
  * RollbackDeploymentRequest schema
  */
 export const zRollbackDeploymentRequest = z.object({
-    id: z.unknown().optional()
+    id: z.string().uuid().optional()
 });
 
 /**
  * RunExtensionRequest schema
  */
 export const zRunExtensionRequest = z.object({
-    variables: z.record(z.unknown()).optional()
+    variables: z.record(z.string()).optional()
 });
 
 /**
@@ -1430,13 +1475,13 @@ export const zSmtpConfigResponse = z.object({
         from_email: z.string().optional(),
         from_name: z.string().optional(),
         host: z.string().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         is_active: z.boolean().optional(),
-        organization_id: z.unknown().optional(),
+        organization_id: z.string().uuid().optional(),
         port: z.number().int().optional(),
         security: z.string().optional(),
         updated_at: z.string().datetime().optional(),
-        user_id: z.unknown().optional(),
+        user_id: z.string().uuid().optional(),
         username: z.string().optional()
     }).optional(),
     message: z.string().optional(),
@@ -1516,11 +1561,17 @@ export const zUpdateContainerResourcesResponse = z.object({
 export const zUpdateDeploymentRequest = z.object({
     base_path: z.string().optional(),
     build_variables: z.record(z.string()).optional(),
+    compose_domains: z.array(z.object({
+        domain: z.string().optional(),
+        port: z.number().int().optional(),
+        service_name: z.string().optional()
+    })).optional(),
     dockerfile_path: z.string().optional(),
+    domains: z.array(z.string()).optional(),
     environment: z.string().optional(),
     environment_variables: z.record(z.string()).optional(),
     force: z.boolean().optional(),
-    id: z.unknown().optional(),
+    id: z.string().uuid().optional(),
     name: z.string().optional(),
     port: z.number().int().optional(),
     post_run_command: z.string().optional(),
@@ -1621,8 +1672,8 @@ export const zUpdateSmtpConfigRequest = z.object({
     from_email: z.string().optional(),
     from_name: z.string().optional(),
     host: z.string().optional(),
-    id: z.unknown().optional(),
-    organization_id: z.unknown().optional(),
+    id: z.string().uuid().optional(),
+    organization_id: z.string().uuid().optional(),
     password: z.string().optional(),
     port: z.number().int().optional(),
     username: z.string().optional()
@@ -1667,7 +1718,7 @@ export const zUser: z.AnyZodObject = z.object({
     created_at: z.string().datetime().optional(),
     email: z.string().optional(),
     email_verified: z.boolean().optional(),
-    id: z.unknown().optional(),
+    id: z.string().uuid().optional(),
     image: z.string().optional(),
     is_onboarded: z.boolean().optional(),
     is_verified: z.boolean().optional(),
@@ -1675,23 +1726,23 @@ export const zUser: z.AnyZodObject = z.object({
     organization_users: z.array(z.object({
         created_at: z.string().datetime().optional(),
         deleted_at: z.string().datetime().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         organization: z.object({
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             logo: z.string().optional(),
             metadata: z.string().optional(),
             name: z.string().optional(),
             slug: z.string().optional()
         }).optional(),
-        organization_id: z.unknown().optional(),
+        organization_id: z.string().uuid().optional(),
         updated_at: z.string().datetime().optional(),
         user: z.lazy(() => zUser).optional(),
-        user_id: z.unknown().optional()
+        user_id: z.string().uuid().optional()
     })).optional(),
     organizations: z.array(z.object({
         created_at: z.string().datetime().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         logo: z.string().optional(),
         metadata: z.string().optional(),
         name: z.string().optional(),
@@ -1719,7 +1770,7 @@ export const zListServersResponse = z.object({
             description: z.string().optional(),
             fingerprint: z.string().optional(),
             host: z.string().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             is_active: z.boolean().optional(),
             key_size: z.number().int().optional(),
             key_type: z.string().optional(),
@@ -1727,29 +1778,29 @@ export const zListServersResponse = z.object({
             name: z.string().optional(),
             organization: z.object({
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 logo: z.string().optional(),
                 metadata: z.string().optional(),
                 name: z.string().optional(),
                 slug: z.string().optional()
             }).optional(),
-            organization_id: z.unknown().optional(),
+            organization_id: z.string().uuid().optional(),
             port: z.number().int().optional(),
             provision: z.object({
                 created_at: z.string().datetime().optional(),
                 domain: z.string().optional(),
                 error: z.string().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 lxd_container_name: z.string().optional(),
                 organization: z.object({
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     logo: z.string().optional(),
                     metadata: z.string().optional(),
                     name: z.string().optional(),
                     slug: z.string().optional()
                 }).optional(),
-                organization_id: z.unknown().optional(),
+                organization_id: z.string().uuid().optional(),
                 ssh_key: z.object({
                     auth_method: z.string().optional(),
                     created_at: z.string().datetime().optional(),
@@ -1757,7 +1808,7 @@ export const zListServersResponse = z.object({
                     description: z.string().optional(),
                     fingerprint: z.string().optional(),
                     host: z.string().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     is_active: z.boolean().optional(),
                     key_size: z.number().int().optional(),
                     key_type: z.string().optional(),
@@ -1765,19 +1816,19 @@ export const zListServersResponse = z.object({
                     name: z.string().optional(),
                     organization: z.object({
                         created_at: z.string().datetime().optional(),
-                        id: z.unknown().optional(),
+                        id: z.string().uuid().optional(),
                         logo: z.string().optional(),
                         metadata: z.string().optional(),
                         name: z.string().optional(),
                         slug: z.string().optional()
                     }).optional(),
-                    organization_id: z.unknown().optional(),
+                    organization_id: z.string().uuid().optional(),
                     port: z.number().int().optional(),
                     public_key: z.string().optional(),
                     updated_at: z.string().datetime().optional(),
                     user: z.string().optional()
                 }).optional(),
-                ssh_key_id: z.unknown().optional(),
+                ssh_key_id: z.string().uuid().optional(),
                 step: z.string().optional(),
                 subdomain: z.string().optional(),
                 updated_at: z.string().datetime().optional(),
@@ -1786,7 +1837,7 @@ export const zListServersResponse = z.object({
                     created_at: z.string().datetime().optional(),
                     email: z.string().optional(),
                     email_verified: z.boolean().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     image: z.string().optional(),
                     is_onboarded: z.boolean().optional(),
                     is_verified: z.boolean().optional(),
@@ -1794,23 +1845,23 @@ export const zListServersResponse = z.object({
                     organization_users: z.array(z.object({
                         created_at: z.string().datetime().optional(),
                         deleted_at: z.string().datetime().optional(),
-                        id: z.unknown().optional(),
+                        id: z.string().uuid().optional(),
                         organization: z.object({
                             created_at: z.string().datetime().optional(),
-                            id: z.unknown().optional(),
+                            id: z.string().uuid().optional(),
                             logo: z.string().optional(),
                             metadata: z.string().optional(),
                             name: z.string().optional(),
                             slug: z.string().optional()
                         }).optional(),
-                        organization_id: z.unknown().optional(),
+                        organization_id: z.string().uuid().optional(),
                         updated_at: z.string().datetime().optional(),
                         user: zUser.optional(),
-                        user_id: z.unknown().optional()
+                        user_id: z.string().uuid().optional()
                     })).optional(),
                     organizations: z.array(z.object({
                         created_at: z.string().datetime().optional(),
-                        id: z.unknown().optional(),
+                        id: z.string().uuid().optional(),
                         logo: z.string().optional(),
                         metadata: z.string().optional(),
                         name: z.string().optional(),
@@ -1821,7 +1872,7 @@ export const zListServersResponse = z.object({
                     updated_at: z.string().datetime().optional(),
                     username: z.string().optional()
                 }).optional(),
-                user_id: z.unknown().optional()
+                user_id: z.string().uuid().optional()
             }).optional(),
             public_key: z.string().optional(),
             updated_at: z.string().datetime().optional(),
@@ -1860,7 +1911,7 @@ export const zUserPreferencesData = z.object({
 export const zUserPreferencesResponse = z.object({
     data: z.object({
         created_at: z.string().datetime().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         preferences: z.object({
             debug_mode: z.boolean().optional(),
             show_api_error_details: z.boolean().optional(),
@@ -1881,7 +1932,7 @@ export const zUserPreferencesResponse = z.object({
             created_at: z.string().datetime().optional(),
             email: z.string().optional(),
             email_verified: z.boolean().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             image: z.string().optional(),
             is_onboarded: z.boolean().optional(),
             is_verified: z.boolean().optional(),
@@ -1889,23 +1940,23 @@ export const zUserPreferencesResponse = z.object({
             organization_users: z.array(z.object({
                 created_at: z.string().datetime().optional(),
                 deleted_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 organization: z.object({
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     logo: z.string().optional(),
                     metadata: z.string().optional(),
                     name: z.string().optional(),
                     slug: z.string().optional()
                 }).optional(),
-                organization_id: z.unknown().optional(),
+                organization_id: z.string().uuid().optional(),
                 updated_at: z.string().datetime().optional(),
                 user: zUser.optional(),
-                user_id: z.unknown().optional()
+                user_id: z.string().uuid().optional()
             })).optional(),
             organizations: z.array(z.object({
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 logo: z.string().optional(),
                 metadata: z.string().optional(),
                 name: z.string().optional(),
@@ -1916,7 +1967,7 @@ export const zUserPreferencesResponse = z.object({
             updated_at: z.string().datetime().optional(),
             username: z.string().optional()
         }).optional(),
-        user_id: z.unknown().optional()
+        user_id: z.string().uuid().optional()
     }).optional(),
     message: z.string().optional(),
     status: z.string().optional()
@@ -1931,7 +1982,7 @@ export const zUserResponse = z.object({
         created_at: z.string().datetime().optional(),
         email: z.string().optional(),
         email_verified: z.boolean().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         image: z.string().optional(),
         is_onboarded: z.boolean().optional(),
         is_verified: z.boolean().optional(),
@@ -1939,23 +1990,23 @@ export const zUserResponse = z.object({
         organization_users: z.array(z.object({
             created_at: z.string().datetime().optional(),
             deleted_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             organization: z.object({
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 logo: z.string().optional(),
                 metadata: z.string().optional(),
                 name: z.string().optional(),
                 slug: z.string().optional()
             }).optional(),
-            organization_id: z.unknown().optional(),
+            organization_id: z.string().uuid().optional(),
             updated_at: z.string().datetime().optional(),
             user: zUser.optional(),
-            user_id: z.unknown().optional()
+            user_id: z.string().uuid().optional()
         })).optional(),
         organizations: z.array(z.object({
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             logo: z.string().optional(),
             metadata: z.string().optional(),
             name: z.string().optional(),
@@ -1980,7 +2031,7 @@ export const zUserSettingsResponse = z.object({
         deleted_at: z.string().datetime().optional(),
         font_family: z.string().optional(),
         font_size: z.number().int().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         language: z.string().optional(),
         theme: z.string().optional(),
         updated_at: z.string().datetime().optional(),
@@ -1989,7 +2040,7 @@ export const zUserSettingsResponse = z.object({
             created_at: z.string().datetime().optional(),
             email: z.string().optional(),
             email_verified: z.boolean().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             image: z.string().optional(),
             is_onboarded: z.boolean().optional(),
             is_verified: z.boolean().optional(),
@@ -1997,23 +2048,23 @@ export const zUserSettingsResponse = z.object({
             organization_users: z.array(z.object({
                 created_at: z.string().datetime().optional(),
                 deleted_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 organization: z.object({
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     logo: z.string().optional(),
                     metadata: z.string().optional(),
                     name: z.string().optional(),
                     slug: z.string().optional()
                 }).optional(),
-                organization_id: z.unknown().optional(),
+                organization_id: z.string().uuid().optional(),
                 updated_at: z.string().datetime().optional(),
                 user: zUser.optional(),
-                user_id: z.unknown().optional()
+                user_id: z.string().uuid().optional()
             })).optional(),
             organizations: z.array(z.object({
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 logo: z.string().optional(),
                 metadata: z.string().optional(),
                 name: z.string().optional(),
@@ -2024,7 +2075,7 @@ export const zUserSettingsResponse = z.object({
             updated_at: z.string().datetime().optional(),
             username: z.string().optional()
         }).optional(),
-        user_id: z.unknown().optional()
+        user_id: z.string().uuid().optional()
     }).optional(),
     message: z.string().optional(),
     status: z.string().optional()
@@ -2036,12 +2087,12 @@ export const zUserSettingsResponse = z.object({
 export const zWebhookConfigResponse = z.object({
     data: z.object({
         created_at: z.string().datetime().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         is_active: z.boolean().optional(),
-        organization_id: z.unknown().optional(),
+        organization_id: z.string().uuid().optional(),
         type: z.string().optional(),
         updated_at: z.string().datetime().optional(),
-        user_id: z.unknown().optional(),
+        user_id: z.string().uuid().optional(),
         webhook_url: z.string().optional()
     }).optional(),
     message: z.string().optional(),
@@ -2058,73 +2109,73 @@ export const zApplication: z.AnyZodObject = z.object({
     branch: z.string().optional(),
     build_pack: z.string().optional(),
     build_variables: z.string().optional(),
-    created_at: z.string().datetime().optional(),
-    deployments: z.array(z.object({
+    compose_services: z.array(z.object({
         application: z.lazy(() => zApplication).optional(),
-        application_id: z.unknown().optional(),
-        commit_hash: z.string().optional(),
-        container_id: z.string().optional(),
-        container_image: z.string().optional(),
-        container_name: z.string().optional(),
-        container_status: z.string().optional(),
+        application_id: z.string().uuid().optional(),
         created_at: z.string().datetime().optional(),
-        id: z.unknown().optional(),
-        image_s3_key: z.string().optional(),
-        image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-        logs: z.array(z.object({
+        domains: z.array(z.object({
             application: z.lazy(() => zApplication).optional(),
-            application_deployment: z.lazy(() => zApplicationDeployment).optional(),
-            application_deployment_id: z.unknown().optional(),
-            application_id: z.unknown().optional(),
+            application_id: z.string().uuid().optional(),
+            compose_service: z.lazy(() => zComposeService).optional(),
+            compose_service_id: z.string().uuid().optional(),
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
-            log: z.string().optional(),
-            updated_at: z.string().datetime().optional()
+            domain: z.string().optional(),
+            id: z.string().uuid().optional(),
+            port: z.number().int().optional()
         })).optional(),
-        status: z.object({
-            application_deployment: z.lazy(() => zApplicationDeployment).optional(),
-            application_deployment_id: z.unknown().optional(),
-            created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
-            status: z.string().optional(),
-            updated_at: z.string().datetime().optional()
-        }).optional(),
+        id: z.string().uuid().optional(),
+        port: z.number().int().optional(),
+        service_name: z.string().optional(),
         updated_at: z.string().datetime().optional()
     })).optional(),
+    created_at: z.string().datetime().optional(),
+    deployments: z.array(z.lazy(() => zApplicationDeployment)).optional(),
     dockerfile_path: z.string().optional(),
     domains: z.array(z.object({
         application: z.lazy(() => zApplication).optional(),
-        application_id: z.unknown().optional(),
+        application_id: z.string().uuid().optional(),
+        compose_service: z.object({
+            application: z.lazy(() => zApplication).optional(),
+            application_id: z.string().uuid().optional(),
+            created_at: z.string().datetime().optional(),
+            domains: z.array(z.lazy(() => zApplicationDomain)).optional(),
+            id: z.string().uuid().optional(),
+            port: z.number().int().optional(),
+            service_name: z.string().optional(),
+            updated_at: z.string().datetime().optional()
+        }).optional(),
+        compose_service_id: z.string().uuid().optional(),
         created_at: z.string().datetime().optional(),
         domain: z.string().optional(),
-        id: z.unknown().optional()
+        id: z.string().uuid().optional(),
+        port: z.number().int().optional()
     })).optional(),
     environment: z.string().optional(),
     environment_variables: z.string().optional(),
-    family_id: z.unknown().optional(),
-    id: z.unknown().optional(),
+    family_id: z.string().uuid().optional(),
+    id: z.string().uuid().optional(),
     is_live_deployment: z.boolean().optional(),
     labels: z.array(z.string()).optional(),
     logs: z.array(z.object({
         application: z.lazy(() => zApplication).optional(),
         application_deployment: z.lazy(() => zApplicationDeployment).optional(),
-        application_deployment_id: z.unknown().optional(),
-        application_id: z.unknown().optional(),
+        application_deployment_id: z.string().uuid().optional(),
+        application_id: z.string().uuid().optional(),
         created_at: z.string().datetime().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         log: z.string().optional(),
         updated_at: z.string().datetime().optional()
     })).optional(),
     name: z.string().optional(),
     organization: z.object({
         created_at: z.string().datetime().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         logo: z.string().optional(),
         metadata: z.string().optional(),
         name: z.string().optional(),
         slug: z.string().optional()
     }).optional(),
-    organization_id: z.unknown().optional(),
+    organization_id: z.string().uuid().optional(),
     port: z.number().int().optional(),
     post_run_command: z.string().optional(),
     pre_run_command: z.string().optional(),
@@ -2132,9 +2183,9 @@ export const zApplication: z.AnyZodObject = z.object({
     repository: z.string().optional(),
     status: z.object({
         application: z.lazy(() => zApplication).optional(),
-        application_id: z.unknown().optional(),
+        application_id: z.string().uuid().optional(),
         created_at: z.string().datetime().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         status: z.string().optional(),
         updated_at: z.string().datetime().optional()
     }).optional(),
@@ -2144,7 +2195,7 @@ export const zApplication: z.AnyZodObject = z.object({
         created_at: z.string().datetime().optional(),
         email: z.string().optional(),
         email_verified: z.boolean().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         image: z.string().optional(),
         is_onboarded: z.boolean().optional(),
         is_verified: z.boolean().optional(),
@@ -2152,23 +2203,23 @@ export const zApplication: z.AnyZodObject = z.object({
         organization_users: z.array(z.object({
             created_at: z.string().datetime().optional(),
             deleted_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             organization: z.object({
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 logo: z.string().optional(),
                 metadata: z.string().optional(),
                 name: z.string().optional(),
                 slug: z.string().optional()
             }).optional(),
-            organization_id: z.unknown().optional(),
+            organization_id: z.string().uuid().optional(),
             updated_at: z.string().datetime().optional(),
             user: zUser.optional(),
-            user_id: z.unknown().optional()
+            user_id: z.string().uuid().optional()
         })).optional(),
         organizations: z.array(z.object({
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             logo: z.string().optional(),
             metadata: z.string().optional(),
             name: z.string().optional(),
@@ -2179,7 +2230,7 @@ export const zApplication: z.AnyZodObject = z.object({
         updated_at: z.string().datetime().optional(),
         username: z.string().optional()
     }).optional(),
-    user_id: z.unknown().optional()
+    user_id: z.string().uuid().optional()
 });
 
 export const zApplicationDeployment: z.AnyZodObject = z.object({
@@ -2188,73 +2239,73 @@ export const zApplicationDeployment: z.AnyZodObject = z.object({
         branch: z.string().optional(),
         build_pack: z.string().optional(),
         build_variables: z.string().optional(),
-        created_at: z.string().datetime().optional(),
-        deployments: z.array(z.object({
+        compose_services: z.array(z.object({
             application: zApplication.optional(),
-            application_id: z.unknown().optional(),
-            commit_hash: z.string().optional(),
-            container_id: z.string().optional(),
-            container_image: z.string().optional(),
-            container_name: z.string().optional(),
-            container_status: z.string().optional(),
+            application_id: z.string().uuid().optional(),
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
-            image_s3_key: z.string().optional(),
-            image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-            logs: z.array(z.object({
+            domains: z.array(z.object({
                 application: zApplication.optional(),
-                application_deployment: z.lazy(() => zApplicationDeployment).optional(),
-                application_deployment_id: z.unknown().optional(),
-                application_id: z.unknown().optional(),
+                application_id: z.string().uuid().optional(),
+                compose_service: z.lazy(() => zComposeService).optional(),
+                compose_service_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
-                log: z.string().optional(),
-                updated_at: z.string().datetime().optional()
+                domain: z.string().optional(),
+                id: z.string().uuid().optional(),
+                port: z.number().int().optional()
             })).optional(),
-            status: z.object({
-                application_deployment: z.lazy(() => zApplicationDeployment).optional(),
-                application_deployment_id: z.unknown().optional(),
-                created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
-                status: z.string().optional(),
-                updated_at: z.string().datetime().optional()
-            }).optional(),
+            id: z.string().uuid().optional(),
+            port: z.number().int().optional(),
+            service_name: z.string().optional(),
             updated_at: z.string().datetime().optional()
         })).optional(),
+        created_at: z.string().datetime().optional(),
+        deployments: z.array(z.lazy(() => zApplicationDeployment)).optional(),
         dockerfile_path: z.string().optional(),
         domains: z.array(z.object({
             application: zApplication.optional(),
-            application_id: z.unknown().optional(),
+            application_id: z.string().uuid().optional(),
+            compose_service: z.object({
+                application: zApplication.optional(),
+                application_id: z.string().uuid().optional(),
+                created_at: z.string().datetime().optional(),
+                domains: z.array(z.lazy(() => zApplicationDomain)).optional(),
+                id: z.string().uuid().optional(),
+                port: z.number().int().optional(),
+                service_name: z.string().optional(),
+                updated_at: z.string().datetime().optional()
+            }).optional(),
+            compose_service_id: z.string().uuid().optional(),
             created_at: z.string().datetime().optional(),
             domain: z.string().optional(),
-            id: z.unknown().optional()
+            id: z.string().uuid().optional(),
+            port: z.number().int().optional()
         })).optional(),
         environment: z.string().optional(),
         environment_variables: z.string().optional(),
-        family_id: z.unknown().optional(),
-        id: z.unknown().optional(),
+        family_id: z.string().uuid().optional(),
+        id: z.string().uuid().optional(),
         is_live_deployment: z.boolean().optional(),
         labels: z.array(z.string()).optional(),
         logs: z.array(z.object({
             application: zApplication.optional(),
             application_deployment: z.lazy(() => zApplicationDeployment).optional(),
-            application_deployment_id: z.unknown().optional(),
-            application_id: z.unknown().optional(),
+            application_deployment_id: z.string().uuid().optional(),
+            application_id: z.string().uuid().optional(),
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             log: z.string().optional(),
             updated_at: z.string().datetime().optional()
         })).optional(),
         name: z.string().optional(),
         organization: z.object({
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             logo: z.string().optional(),
             metadata: z.string().optional(),
             name: z.string().optional(),
             slug: z.string().optional()
         }).optional(),
-        organization_id: z.unknown().optional(),
+        organization_id: z.string().uuid().optional(),
         port: z.number().int().optional(),
         post_run_command: z.string().optional(),
         pre_run_command: z.string().optional(),
@@ -2262,9 +2313,9 @@ export const zApplicationDeployment: z.AnyZodObject = z.object({
         repository: z.string().optional(),
         status: z.object({
             application: zApplication.optional(),
-            application_id: z.unknown().optional(),
+            application_id: z.string().uuid().optional(),
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             status: z.string().optional(),
             updated_at: z.string().datetime().optional()
         }).optional(),
@@ -2274,7 +2325,7 @@ export const zApplicationDeployment: z.AnyZodObject = z.object({
             created_at: z.string().datetime().optional(),
             email: z.string().optional(),
             email_verified: z.boolean().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             image: z.string().optional(),
             is_onboarded: z.boolean().optional(),
             is_verified: z.boolean().optional(),
@@ -2282,23 +2333,23 @@ export const zApplicationDeployment: z.AnyZodObject = z.object({
             organization_users: z.array(z.object({
                 created_at: z.string().datetime().optional(),
                 deleted_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 organization: z.object({
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     logo: z.string().optional(),
                     metadata: z.string().optional(),
                     name: z.string().optional(),
                     slug: z.string().optional()
                 }).optional(),
-                organization_id: z.unknown().optional(),
+                organization_id: z.string().uuid().optional(),
                 updated_at: z.string().datetime().optional(),
                 user: zUser.optional(),
-                user_id: z.unknown().optional()
+                user_id: z.string().uuid().optional()
             })).optional(),
             organizations: z.array(z.object({
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 logo: z.string().optional(),
                 metadata: z.string().optional(),
                 name: z.string().optional(),
@@ -2309,76 +2360,235 @@ export const zApplicationDeployment: z.AnyZodObject = z.object({
             updated_at: z.string().datetime().optional(),
             username: z.string().optional()
         }).optional(),
-        user_id: z.unknown().optional()
+        user_id: z.string().uuid().optional()
     }).optional(),
-    application_id: z.unknown().optional(),
+    application_id: z.string().uuid().optional(),
     commit_hash: z.string().optional(),
     container_id: z.string().optional(),
     container_image: z.string().optional(),
     container_name: z.string().optional(),
     container_status: z.string().optional(),
     created_at: z.string().datetime().optional(),
-    id: z.unknown().optional(),
+    id: z.string().uuid().optional(),
     image_s3_key: z.string().optional(),
     image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
     logs: z.array(z.object({
-        application: zApplication.optional(),
+        application: z.object({
+            base_path: z.string().optional(),
+            branch: z.string().optional(),
+            build_pack: z.string().optional(),
+            build_variables: z.string().optional(),
+            compose_services: z.array(z.object({
+                application: zApplication.optional(),
+                application_id: z.string().uuid().optional(),
+                created_at: z.string().datetime().optional(),
+                domains: z.array(z.object({
+                    application: zApplication.optional(),
+                    application_id: z.string().uuid().optional(),
+                    compose_service: z.lazy(() => zComposeService).optional(),
+                    compose_service_id: z.string().uuid().optional(),
+                    created_at: z.string().datetime().optional(),
+                    domain: z.string().optional(),
+                    id: z.string().uuid().optional(),
+                    port: z.number().int().optional()
+                })).optional(),
+                id: z.string().uuid().optional(),
+                port: z.number().int().optional(),
+                service_name: z.string().optional(),
+                updated_at: z.string().datetime().optional()
+            })).optional(),
+            created_at: z.string().datetime().optional(),
+            deployments: z.array(z.lazy(() => zApplicationDeployment)).optional(),
+            dockerfile_path: z.string().optional(),
+            domains: z.array(z.object({
+                application: zApplication.optional(),
+                application_id: z.string().uuid().optional(),
+                compose_service: z.object({
+                    application: zApplication.optional(),
+                    application_id: z.string().uuid().optional(),
+                    created_at: z.string().datetime().optional(),
+                    domains: z.array(z.lazy(() => zApplicationDomain)).optional(),
+                    id: z.string().uuid().optional(),
+                    port: z.number().int().optional(),
+                    service_name: z.string().optional(),
+                    updated_at: z.string().datetime().optional()
+                }).optional(),
+                compose_service_id: z.string().uuid().optional(),
+                created_at: z.string().datetime().optional(),
+                domain: z.string().optional(),
+                id: z.string().uuid().optional(),
+                port: z.number().int().optional()
+            })).optional(),
+            environment: z.string().optional(),
+            environment_variables: z.string().optional(),
+            family_id: z.string().uuid().optional(),
+            id: z.string().uuid().optional(),
+            is_live_deployment: z.boolean().optional(),
+            labels: z.array(z.string()).optional(),
+            logs: z.array(z.lazy(() => zApplicationLogs)).optional(),
+            name: z.string().optional(),
+            organization: z.object({
+                created_at: z.string().datetime().optional(),
+                id: z.string().uuid().optional(),
+                logo: z.string().optional(),
+                metadata: z.string().optional(),
+                name: z.string().optional(),
+                slug: z.string().optional()
+            }).optional(),
+            organization_id: z.string().uuid().optional(),
+            port: z.number().int().optional(),
+            post_run_command: z.string().optional(),
+            pre_run_command: z.string().optional(),
+            proxy_server: z.string().optional(),
+            repository: z.string().optional(),
+            status: z.object({
+                application: zApplication.optional(),
+                application_id: z.string().uuid().optional(),
+                created_at: z.string().datetime().optional(),
+                id: z.string().uuid().optional(),
+                status: z.string().optional(),
+                updated_at: z.string().datetime().optional()
+            }).optional(),
+            updated_at: z.string().datetime().optional(),
+            user: z.object({
+                avatar: z.string().optional(),
+                created_at: z.string().datetime().optional(),
+                email: z.string().optional(),
+                email_verified: z.boolean().optional(),
+                id: z.string().uuid().optional(),
+                image: z.string().optional(),
+                is_onboarded: z.boolean().optional(),
+                is_verified: z.boolean().optional(),
+                name: z.string().optional(),
+                organization_users: z.array(z.object({
+                    created_at: z.string().datetime().optional(),
+                    deleted_at: z.string().datetime().optional(),
+                    id: z.string().uuid().optional(),
+                    organization: z.object({
+                        created_at: z.string().datetime().optional(),
+                        id: z.string().uuid().optional(),
+                        logo: z.string().optional(),
+                        metadata: z.string().optional(),
+                        name: z.string().optional(),
+                        slug: z.string().optional()
+                    }).optional(),
+                    organization_id: z.string().uuid().optional(),
+                    updated_at: z.string().datetime().optional(),
+                    user: zUser.optional(),
+                    user_id: z.string().uuid().optional()
+                })).optional(),
+                organizations: z.array(z.object({
+                    created_at: z.string().datetime().optional(),
+                    id: z.string().uuid().optional(),
+                    logo: z.string().optional(),
+                    metadata: z.string().optional(),
+                    name: z.string().optional(),
+                    slug: z.string().optional()
+                })).optional(),
+                provision_status: z.string().optional(),
+                supertokens_user_id: z.string().optional(),
+                updated_at: z.string().datetime().optional(),
+                username: z.string().optional()
+            }).optional(),
+            user_id: z.string().uuid().optional()
+        }).optional(),
         application_deployment: z.lazy(() => zApplicationDeployment).optional(),
-        application_deployment_id: z.unknown().optional(),
-        application_id: z.unknown().optional(),
+        application_deployment_id: z.string().uuid().optional(),
+        application_id: z.string().uuid().optional(),
         created_at: z.string().datetime().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         log: z.string().optional(),
         updated_at: z.string().datetime().optional()
     })).optional(),
     status: z.object({
         application_deployment: z.lazy(() => zApplicationDeployment).optional(),
-        application_deployment_id: z.unknown().optional(),
+        application_deployment_id: z.string().uuid().optional(),
         created_at: z.string().datetime().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         status: z.string().optional(),
         updated_at: z.string().datetime().optional()
     }).optional(),
     updated_at: z.string().datetime().optional()
 });
 
+export const zApplicationDomain: z.AnyZodObject = z.object({
+    application: zApplication.optional(),
+    application_id: z.string().uuid().optional(),
+    compose_service: z.lazy(() => zComposeService).optional(),
+    compose_service_id: z.string().uuid().optional(),
+    created_at: z.string().datetime().optional(),
+    domain: z.string().optional(),
+    id: z.string().uuid().optional(),
+    port: z.number().int().optional()
+});
+
+export const zApplicationLogs = z.object({
+    application: zApplication.optional(),
+    application_deployment: zApplicationDeployment.optional(),
+    application_deployment_id: z.string().uuid().optional(),
+    application_id: z.string().uuid().optional(),
+    created_at: z.string().datetime().optional(),
+    id: z.string().uuid().optional(),
+    log: z.string().optional(),
+    updated_at: z.string().datetime().optional()
+});
+
 /**
  * ApplicationResponse schema
  */
-export const zApplicationResponse = z.object({
+export const zApplicationResponse: z.AnyZodObject = z.object({
     data: z.object({
         base_path: z.string().optional(),
         branch: z.string().optional(),
         build_pack: z.string().optional(),
         build_variables: z.string().optional(),
+        compose_services: z.array(z.object({
+            application: zApplication.optional(),
+            application_id: z.string().uuid().optional(),
+            created_at: z.string().datetime().optional(),
+            domains: z.array(z.object({
+                application: zApplication.optional(),
+                application_id: z.string().uuid().optional(),
+                compose_service: z.lazy(() => zComposeService).optional(),
+                compose_service_id: z.string().uuid().optional(),
+                created_at: z.string().datetime().optional(),
+                domain: z.string().optional(),
+                id: z.string().uuid().optional(),
+                port: z.number().int().optional()
+            })).optional(),
+            id: z.string().uuid().optional(),
+            port: z.number().int().optional(),
+            service_name: z.string().optional(),
+            updated_at: z.string().datetime().optional()
+        })).optional(),
         created_at: z.string().datetime().optional(),
         deployments: z.array(z.object({
             application: zApplication.optional(),
-            application_id: z.unknown().optional(),
+            application_id: z.string().uuid().optional(),
             commit_hash: z.string().optional(),
             container_id: z.string().optional(),
             container_image: z.string().optional(),
             container_name: z.string().optional(),
             container_status: z.string().optional(),
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             image_s3_key: z.string().optional(),
             image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
             logs: z.array(z.object({
                 application: zApplication.optional(),
                 application_deployment: zApplicationDeployment.optional(),
-                application_deployment_id: z.unknown().optional(),
-                application_id: z.unknown().optional(),
+                application_deployment_id: z.string().uuid().optional(),
+                application_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 log: z.string().optional(),
                 updated_at: z.string().datetime().optional()
             })).optional(),
             status: z.object({
                 application_deployment: zApplicationDeployment.optional(),
-                application_deployment_id: z.unknown().optional(),
+                application_deployment_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 status: z.string().optional(),
                 updated_at: z.string().datetime().optional()
             }).optional(),
@@ -2387,37 +2597,71 @@ export const zApplicationResponse = z.object({
         dockerfile_path: z.string().optional(),
         domains: z.array(z.object({
             application: zApplication.optional(),
-            application_id: z.unknown().optional(),
+            application_id: z.string().uuid().optional(),
+            compose_service: z.object({
+                application: zApplication.optional(),
+                application_id: z.string().uuid().optional(),
+                created_at: z.string().datetime().optional(),
+                domains: z.array(zApplicationDomain).optional(),
+                id: z.string().uuid().optional(),
+                port: z.number().int().optional(),
+                service_name: z.string().optional(),
+                updated_at: z.string().datetime().optional()
+            }).optional(),
+            compose_service_id: z.string().uuid().optional(),
             created_at: z.string().datetime().optional(),
             domain: z.string().optional(),
-            id: z.unknown().optional()
+            id: z.string().uuid().optional(),
+            port: z.number().int().optional()
         })).optional(),
         environment: z.string().optional(),
         environment_variables: z.string().optional(),
-        family_id: z.unknown().optional(),
-        id: z.unknown().optional(),
+        family_id: z.string().uuid().optional(),
+        id: z.string().uuid().optional(),
         is_live_deployment: z.boolean().optional(),
         labels: z.array(z.string()).optional(),
         logs: z.array(z.object({
             application: zApplication.optional(),
-            application_deployment: zApplicationDeployment.optional(),
-            application_deployment_id: z.unknown().optional(),
-            application_id: z.unknown().optional(),
+            application_deployment: z.object({
+                application: zApplication.optional(),
+                application_id: z.string().uuid().optional(),
+                commit_hash: z.string().optional(),
+                container_id: z.string().optional(),
+                container_image: z.string().optional(),
+                container_name: z.string().optional(),
+                container_status: z.string().optional(),
+                created_at: z.string().datetime().optional(),
+                id: z.string().uuid().optional(),
+                image_s3_key: z.string().optional(),
+                image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+                logs: z.array(zApplicationLogs).optional(),
+                status: z.object({
+                    application_deployment: zApplicationDeployment.optional(),
+                    application_deployment_id: z.string().uuid().optional(),
+                    created_at: z.string().datetime().optional(),
+                    id: z.string().uuid().optional(),
+                    status: z.string().optional(),
+                    updated_at: z.string().datetime().optional()
+                }).optional(),
+                updated_at: z.string().datetime().optional()
+            }).optional(),
+            application_deployment_id: z.string().uuid().optional(),
+            application_id: z.string().uuid().optional(),
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             log: z.string().optional(),
             updated_at: z.string().datetime().optional()
         })).optional(),
         name: z.string().optional(),
         organization: z.object({
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             logo: z.string().optional(),
             metadata: z.string().optional(),
             name: z.string().optional(),
             slug: z.string().optional()
         }).optional(),
-        organization_id: z.unknown().optional(),
+        organization_id: z.string().uuid().optional(),
         port: z.number().int().optional(),
         post_run_command: z.string().optional(),
         pre_run_command: z.string().optional(),
@@ -2425,9 +2669,9 @@ export const zApplicationResponse = z.object({
         repository: z.string().optional(),
         status: z.object({
             application: zApplication.optional(),
-            application_id: z.unknown().optional(),
+            application_id: z.string().uuid().optional(),
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             status: z.string().optional(),
             updated_at: z.string().datetime().optional()
         }).optional(),
@@ -2437,7 +2681,7 @@ export const zApplicationResponse = z.object({
             created_at: z.string().datetime().optional(),
             email: z.string().optional(),
             email_verified: z.boolean().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             image: z.string().optional(),
             is_onboarded: z.boolean().optional(),
             is_verified: z.boolean().optional(),
@@ -2445,23 +2689,23 @@ export const zApplicationResponse = z.object({
             organization_users: z.array(z.object({
                 created_at: z.string().datetime().optional(),
                 deleted_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 organization: z.object({
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     logo: z.string().optional(),
                     metadata: z.string().optional(),
                     name: z.string().optional(),
                     slug: z.string().optional()
                 }).optional(),
-                organization_id: z.unknown().optional(),
+                organization_id: z.string().uuid().optional(),
                 updated_at: z.string().datetime().optional(),
                 user: zUser.optional(),
-                user_id: z.unknown().optional()
+                user_id: z.string().uuid().optional()
             })).optional(),
             organizations: z.array(z.object({
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 logo: z.string().optional(),
                 metadata: z.string().optional(),
                 name: z.string().optional(),
@@ -2472,10 +2716,21 @@ export const zApplicationResponse = z.object({
             updated_at: z.string().datetime().optional(),
             username: z.string().optional()
         }).optional(),
-        user_id: z.unknown().optional()
+        user_id: z.string().uuid().optional()
     }).optional(),
     message: z.string().optional(),
     status: z.string().optional()
+});
+
+export const zComposeService = z.object({
+    application: zApplication.optional(),
+    application_id: z.string().uuid().optional(),
+    created_at: z.string().datetime().optional(),
+    domains: z.array(zApplicationDomain).optional(),
+    id: z.string().uuid().optional(),
+    port: z.number().int().optional(),
+    service_name: z.string().optional(),
+    updated_at: z.string().datetime().optional()
 });
 
 /**
@@ -2488,73 +2743,73 @@ export const zDeploymentResponse = z.object({
             branch: z.string().optional(),
             build_pack: z.string().optional(),
             build_variables: z.string().optional(),
-            created_at: z.string().datetime().optional(),
-            deployments: z.array(z.object({
+            compose_services: z.array(z.object({
                 application: zApplication.optional(),
-                application_id: z.unknown().optional(),
-                commit_hash: z.string().optional(),
-                container_id: z.string().optional(),
-                container_image: z.string().optional(),
-                container_name: z.string().optional(),
-                container_status: z.string().optional(),
+                application_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
-                image_s3_key: z.string().optional(),
-                image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-                logs: z.array(z.object({
+                domains: z.array(z.object({
                     application: zApplication.optional(),
-                    application_deployment: zApplicationDeployment.optional(),
-                    application_deployment_id: z.unknown().optional(),
-                    application_id: z.unknown().optional(),
+                    application_id: z.string().uuid().optional(),
+                    compose_service: zComposeService.optional(),
+                    compose_service_id: z.string().uuid().optional(),
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
-                    log: z.string().optional(),
-                    updated_at: z.string().datetime().optional()
+                    domain: z.string().optional(),
+                    id: z.string().uuid().optional(),
+                    port: z.number().int().optional()
                 })).optional(),
-                status: z.object({
-                    application_deployment: zApplicationDeployment.optional(),
-                    application_deployment_id: z.unknown().optional(),
-                    created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
-                    status: z.string().optional(),
-                    updated_at: z.string().datetime().optional()
-                }).optional(),
+                id: z.string().uuid().optional(),
+                port: z.number().int().optional(),
+                service_name: z.string().optional(),
                 updated_at: z.string().datetime().optional()
             })).optional(),
+            created_at: z.string().datetime().optional(),
+            deployments: z.array(zApplicationDeployment).optional(),
             dockerfile_path: z.string().optional(),
             domains: z.array(z.object({
                 application: zApplication.optional(),
-                application_id: z.unknown().optional(),
+                application_id: z.string().uuid().optional(),
+                compose_service: z.object({
+                    application: zApplication.optional(),
+                    application_id: z.string().uuid().optional(),
+                    created_at: z.string().datetime().optional(),
+                    domains: z.array(zApplicationDomain).optional(),
+                    id: z.string().uuid().optional(),
+                    port: z.number().int().optional(),
+                    service_name: z.string().optional(),
+                    updated_at: z.string().datetime().optional()
+                }).optional(),
+                compose_service_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
                 domain: z.string().optional(),
-                id: z.unknown().optional()
+                id: z.string().uuid().optional(),
+                port: z.number().int().optional()
             })).optional(),
             environment: z.string().optional(),
             environment_variables: z.string().optional(),
-            family_id: z.unknown().optional(),
-            id: z.unknown().optional(),
+            family_id: z.string().uuid().optional(),
+            id: z.string().uuid().optional(),
             is_live_deployment: z.boolean().optional(),
             labels: z.array(z.string()).optional(),
             logs: z.array(z.object({
                 application: zApplication.optional(),
                 application_deployment: zApplicationDeployment.optional(),
-                application_deployment_id: z.unknown().optional(),
-                application_id: z.unknown().optional(),
+                application_deployment_id: z.string().uuid().optional(),
+                application_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 log: z.string().optional(),
                 updated_at: z.string().datetime().optional()
             })).optional(),
             name: z.string().optional(),
             organization: z.object({
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 logo: z.string().optional(),
                 metadata: z.string().optional(),
                 name: z.string().optional(),
                 slug: z.string().optional()
             }).optional(),
-            organization_id: z.unknown().optional(),
+            organization_id: z.string().uuid().optional(),
             port: z.number().int().optional(),
             post_run_command: z.string().optional(),
             pre_run_command: z.string().optional(),
@@ -2562,9 +2817,9 @@ export const zDeploymentResponse = z.object({
             repository: z.string().optional(),
             status: z.object({
                 application: zApplication.optional(),
-                application_id: z.unknown().optional(),
+                application_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 status: z.string().optional(),
                 updated_at: z.string().datetime().optional()
             }).optional(),
@@ -2574,7 +2829,7 @@ export const zDeploymentResponse = z.object({
                 created_at: z.string().datetime().optional(),
                 email: z.string().optional(),
                 email_verified: z.boolean().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 image: z.string().optional(),
                 is_onboarded: z.boolean().optional(),
                 is_verified: z.boolean().optional(),
@@ -2582,23 +2837,23 @@ export const zDeploymentResponse = z.object({
                 organization_users: z.array(z.object({
                     created_at: z.string().datetime().optional(),
                     deleted_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     organization: z.object({
                         created_at: z.string().datetime().optional(),
-                        id: z.unknown().optional(),
+                        id: z.string().uuid().optional(),
                         logo: z.string().optional(),
                         metadata: z.string().optional(),
                         name: z.string().optional(),
                         slug: z.string().optional()
                     }).optional(),
-                    organization_id: z.unknown().optional(),
+                    organization_id: z.string().uuid().optional(),
                     updated_at: z.string().datetime().optional(),
                     user: zUser.optional(),
-                    user_id: z.unknown().optional()
+                    user_id: z.string().uuid().optional()
                 })).optional(),
                 organizations: z.array(z.object({
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     logo: z.string().optional(),
                     metadata: z.string().optional(),
                     name: z.string().optional(),
@@ -2609,33 +2864,151 @@ export const zDeploymentResponse = z.object({
                 updated_at: z.string().datetime().optional(),
                 username: z.string().optional()
             }).optional(),
-            user_id: z.unknown().optional()
+            user_id: z.string().uuid().optional()
         }).optional(),
-        application_id: z.unknown().optional(),
+        application_id: z.string().uuid().optional(),
         commit_hash: z.string().optional(),
         container_id: z.string().optional(),
         container_image: z.string().optional(),
         container_name: z.string().optional(),
         container_status: z.string().optional(),
         created_at: z.string().datetime().optional(),
-        id: z.unknown().optional(),
+        id: z.string().uuid().optional(),
         image_s3_key: z.string().optional(),
         image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
         logs: z.array(z.object({
-            application: zApplication.optional(),
+            application: z.object({
+                base_path: z.string().optional(),
+                branch: z.string().optional(),
+                build_pack: z.string().optional(),
+                build_variables: z.string().optional(),
+                compose_services: z.array(z.object({
+                    application: zApplication.optional(),
+                    application_id: z.string().uuid().optional(),
+                    created_at: z.string().datetime().optional(),
+                    domains: z.array(z.object({
+                        application: zApplication.optional(),
+                        application_id: z.string().uuid().optional(),
+                        compose_service: zComposeService.optional(),
+                        compose_service_id: z.string().uuid().optional(),
+                        created_at: z.string().datetime().optional(),
+                        domain: z.string().optional(),
+                        id: z.string().uuid().optional(),
+                        port: z.number().int().optional()
+                    })).optional(),
+                    id: z.string().uuid().optional(),
+                    port: z.number().int().optional(),
+                    service_name: z.string().optional(),
+                    updated_at: z.string().datetime().optional()
+                })).optional(),
+                created_at: z.string().datetime().optional(),
+                deployments: z.array(zApplicationDeployment).optional(),
+                dockerfile_path: z.string().optional(),
+                domains: z.array(z.object({
+                    application: zApplication.optional(),
+                    application_id: z.string().uuid().optional(),
+                    compose_service: z.object({
+                        application: zApplication.optional(),
+                        application_id: z.string().uuid().optional(),
+                        created_at: z.string().datetime().optional(),
+                        domains: z.array(zApplicationDomain).optional(),
+                        id: z.string().uuid().optional(),
+                        port: z.number().int().optional(),
+                        service_name: z.string().optional(),
+                        updated_at: z.string().datetime().optional()
+                    }).optional(),
+                    compose_service_id: z.string().uuid().optional(),
+                    created_at: z.string().datetime().optional(),
+                    domain: z.string().optional(),
+                    id: z.string().uuid().optional(),
+                    port: z.number().int().optional()
+                })).optional(),
+                environment: z.string().optional(),
+                environment_variables: z.string().optional(),
+                family_id: z.string().uuid().optional(),
+                id: z.string().uuid().optional(),
+                is_live_deployment: z.boolean().optional(),
+                labels: z.array(z.string()).optional(),
+                logs: z.array(zApplicationLogs).optional(),
+                name: z.string().optional(),
+                organization: z.object({
+                    created_at: z.string().datetime().optional(),
+                    id: z.string().uuid().optional(),
+                    logo: z.string().optional(),
+                    metadata: z.string().optional(),
+                    name: z.string().optional(),
+                    slug: z.string().optional()
+                }).optional(),
+                organization_id: z.string().uuid().optional(),
+                port: z.number().int().optional(),
+                post_run_command: z.string().optional(),
+                pre_run_command: z.string().optional(),
+                proxy_server: z.string().optional(),
+                repository: z.string().optional(),
+                status: z.object({
+                    application: zApplication.optional(),
+                    application_id: z.string().uuid().optional(),
+                    created_at: z.string().datetime().optional(),
+                    id: z.string().uuid().optional(),
+                    status: z.string().optional(),
+                    updated_at: z.string().datetime().optional()
+                }).optional(),
+                updated_at: z.string().datetime().optional(),
+                user: z.object({
+                    avatar: z.string().optional(),
+                    created_at: z.string().datetime().optional(),
+                    email: z.string().optional(),
+                    email_verified: z.boolean().optional(),
+                    id: z.string().uuid().optional(),
+                    image: z.string().optional(),
+                    is_onboarded: z.boolean().optional(),
+                    is_verified: z.boolean().optional(),
+                    name: z.string().optional(),
+                    organization_users: z.array(z.object({
+                        created_at: z.string().datetime().optional(),
+                        deleted_at: z.string().datetime().optional(),
+                        id: z.string().uuid().optional(),
+                        organization: z.object({
+                            created_at: z.string().datetime().optional(),
+                            id: z.string().uuid().optional(),
+                            logo: z.string().optional(),
+                            metadata: z.string().optional(),
+                            name: z.string().optional(),
+                            slug: z.string().optional()
+                        }).optional(),
+                        organization_id: z.string().uuid().optional(),
+                        updated_at: z.string().datetime().optional(),
+                        user: zUser.optional(),
+                        user_id: z.string().uuid().optional()
+                    })).optional(),
+                    organizations: z.array(z.object({
+                        created_at: z.string().datetime().optional(),
+                        id: z.string().uuid().optional(),
+                        logo: z.string().optional(),
+                        metadata: z.string().optional(),
+                        name: z.string().optional(),
+                        slug: z.string().optional()
+                    })).optional(),
+                    provision_status: z.string().optional(),
+                    supertokens_user_id: z.string().optional(),
+                    updated_at: z.string().datetime().optional(),
+                    username: z.string().optional()
+                }).optional(),
+                user_id: z.string().uuid().optional()
+            }).optional(),
             application_deployment: zApplicationDeployment.optional(),
-            application_deployment_id: z.unknown().optional(),
-            application_id: z.unknown().optional(),
+            application_deployment_id: z.string().uuid().optional(),
+            application_id: z.string().uuid().optional(),
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             log: z.string().optional(),
             updated_at: z.string().datetime().optional()
         })).optional(),
         status: z.object({
             application_deployment: zApplicationDeployment.optional(),
-            application_deployment_id: z.unknown().optional(),
+            application_deployment_id: z.string().uuid().optional(),
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             status: z.string().optional(),
             updated_at: z.string().datetime().optional()
         }).optional(),
@@ -2655,34 +3028,53 @@ export const zListApplicationsResponse = z.object({
             branch: z.string().optional(),
             build_pack: z.string().optional(),
             build_variables: z.string().optional(),
+            compose_services: z.array(z.object({
+                application: zApplication.optional(),
+                application_id: z.string().uuid().optional(),
+                created_at: z.string().datetime().optional(),
+                domains: z.array(z.object({
+                    application: zApplication.optional(),
+                    application_id: z.string().uuid().optional(),
+                    compose_service: zComposeService.optional(),
+                    compose_service_id: z.string().uuid().optional(),
+                    created_at: z.string().datetime().optional(),
+                    domain: z.string().optional(),
+                    id: z.string().uuid().optional(),
+                    port: z.number().int().optional()
+                })).optional(),
+                id: z.string().uuid().optional(),
+                port: z.number().int().optional(),
+                service_name: z.string().optional(),
+                updated_at: z.string().datetime().optional()
+            })).optional(),
             created_at: z.string().datetime().optional(),
             deployments: z.array(z.object({
                 application: zApplication.optional(),
-                application_id: z.unknown().optional(),
+                application_id: z.string().uuid().optional(),
                 commit_hash: z.string().optional(),
                 container_id: z.string().optional(),
                 container_image: z.string().optional(),
                 container_name: z.string().optional(),
                 container_status: z.string().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 image_s3_key: z.string().optional(),
                 image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
                 logs: z.array(z.object({
                     application: zApplication.optional(),
                     application_deployment: zApplicationDeployment.optional(),
-                    application_deployment_id: z.unknown().optional(),
-                    application_id: z.unknown().optional(),
+                    application_deployment_id: z.string().uuid().optional(),
+                    application_id: z.string().uuid().optional(),
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     log: z.string().optional(),
                     updated_at: z.string().datetime().optional()
                 })).optional(),
                 status: z.object({
                     application_deployment: zApplicationDeployment.optional(),
-                    application_deployment_id: z.unknown().optional(),
+                    application_deployment_id: z.string().uuid().optional(),
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     status: z.string().optional(),
                     updated_at: z.string().datetime().optional()
                 }).optional(),
@@ -2691,37 +3083,71 @@ export const zListApplicationsResponse = z.object({
             dockerfile_path: z.string().optional(),
             domains: z.array(z.object({
                 application: zApplication.optional(),
-                application_id: z.unknown().optional(),
+                application_id: z.string().uuid().optional(),
+                compose_service: z.object({
+                    application: zApplication.optional(),
+                    application_id: z.string().uuid().optional(),
+                    created_at: z.string().datetime().optional(),
+                    domains: z.array(zApplicationDomain).optional(),
+                    id: z.string().uuid().optional(),
+                    port: z.number().int().optional(),
+                    service_name: z.string().optional(),
+                    updated_at: z.string().datetime().optional()
+                }).optional(),
+                compose_service_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
                 domain: z.string().optional(),
-                id: z.unknown().optional()
+                id: z.string().uuid().optional(),
+                port: z.number().int().optional()
             })).optional(),
             environment: z.string().optional(),
             environment_variables: z.string().optional(),
-            family_id: z.unknown().optional(),
-            id: z.unknown().optional(),
+            family_id: z.string().uuid().optional(),
+            id: z.string().uuid().optional(),
             is_live_deployment: z.boolean().optional(),
             labels: z.array(z.string()).optional(),
             logs: z.array(z.object({
                 application: zApplication.optional(),
-                application_deployment: zApplicationDeployment.optional(),
-                application_deployment_id: z.unknown().optional(),
-                application_id: z.unknown().optional(),
+                application_deployment: z.object({
+                    application: zApplication.optional(),
+                    application_id: z.string().uuid().optional(),
+                    commit_hash: z.string().optional(),
+                    container_id: z.string().optional(),
+                    container_image: z.string().optional(),
+                    container_name: z.string().optional(),
+                    container_status: z.string().optional(),
+                    created_at: z.string().datetime().optional(),
+                    id: z.string().uuid().optional(),
+                    image_s3_key: z.string().optional(),
+                    image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+                    logs: z.array(zApplicationLogs).optional(),
+                    status: z.object({
+                        application_deployment: zApplicationDeployment.optional(),
+                        application_deployment_id: z.string().uuid().optional(),
+                        created_at: z.string().datetime().optional(),
+                        id: z.string().uuid().optional(),
+                        status: z.string().optional(),
+                        updated_at: z.string().datetime().optional()
+                    }).optional(),
+                    updated_at: z.string().datetime().optional()
+                }).optional(),
+                application_deployment_id: z.string().uuid().optional(),
+                application_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 log: z.string().optional(),
                 updated_at: z.string().datetime().optional()
             })).optional(),
             name: z.string().optional(),
             organization: z.object({
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 logo: z.string().optional(),
                 metadata: z.string().optional(),
                 name: z.string().optional(),
                 slug: z.string().optional()
             }).optional(),
-            organization_id: z.unknown().optional(),
+            organization_id: z.string().uuid().optional(),
             port: z.number().int().optional(),
             post_run_command: z.string().optional(),
             pre_run_command: z.string().optional(),
@@ -2729,9 +3155,9 @@ export const zListApplicationsResponse = z.object({
             repository: z.string().optional(),
             status: z.object({
                 application: zApplication.optional(),
-                application_id: z.unknown().optional(),
+                application_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 status: z.string().optional(),
                 updated_at: z.string().datetime().optional()
             }).optional(),
@@ -2741,7 +3167,7 @@ export const zListApplicationsResponse = z.object({
                 created_at: z.string().datetime().optional(),
                 email: z.string().optional(),
                 email_verified: z.boolean().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 image: z.string().optional(),
                 is_onboarded: z.boolean().optional(),
                 is_verified: z.boolean().optional(),
@@ -2749,23 +3175,23 @@ export const zListApplicationsResponse = z.object({
                 organization_users: z.array(z.object({
                     created_at: z.string().datetime().optional(),
                     deleted_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     organization: z.object({
                         created_at: z.string().datetime().optional(),
-                        id: z.unknown().optional(),
+                        id: z.string().uuid().optional(),
                         logo: z.string().optional(),
                         metadata: z.string().optional(),
                         name: z.string().optional(),
                         slug: z.string().optional()
                     }).optional(),
-                    organization_id: z.unknown().optional(),
+                    organization_id: z.string().uuid().optional(),
                     updated_at: z.string().datetime().optional(),
                     user: zUser.optional(),
-                    user_id: z.unknown().optional()
+                    user_id: z.string().uuid().optional()
                 })).optional(),
                 organizations: z.array(z.object({
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     logo: z.string().optional(),
                     metadata: z.string().optional(),
                     name: z.string().optional(),
@@ -2776,7 +3202,7 @@ export const zListApplicationsResponse = z.object({
                 updated_at: z.string().datetime().optional(),
                 username: z.string().optional()
             }).optional(),
-            user_id: z.unknown().optional()
+            user_id: z.string().uuid().optional()
         })).optional(),
         page: z.string().optional(),
         page_size: z.string().optional(),
@@ -2797,73 +3223,73 @@ export const zListDeploymentsResponse = z.object({
                 branch: z.string().optional(),
                 build_pack: z.string().optional(),
                 build_variables: z.string().optional(),
-                created_at: z.string().datetime().optional(),
-                deployments: z.array(z.object({
+                compose_services: z.array(z.object({
                     application: zApplication.optional(),
-                    application_id: z.unknown().optional(),
-                    commit_hash: z.string().optional(),
-                    container_id: z.string().optional(),
-                    container_image: z.string().optional(),
-                    container_name: z.string().optional(),
-                    container_status: z.string().optional(),
+                    application_id: z.string().uuid().optional(),
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
-                    image_s3_key: z.string().optional(),
-                    image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-                    logs: z.array(z.object({
+                    domains: z.array(z.object({
                         application: zApplication.optional(),
-                        application_deployment: zApplicationDeployment.optional(),
-                        application_deployment_id: z.unknown().optional(),
-                        application_id: z.unknown().optional(),
+                        application_id: z.string().uuid().optional(),
+                        compose_service: zComposeService.optional(),
+                        compose_service_id: z.string().uuid().optional(),
                         created_at: z.string().datetime().optional(),
-                        id: z.unknown().optional(),
-                        log: z.string().optional(),
-                        updated_at: z.string().datetime().optional()
+                        domain: z.string().optional(),
+                        id: z.string().uuid().optional(),
+                        port: z.number().int().optional()
                     })).optional(),
-                    status: z.object({
-                        application_deployment: zApplicationDeployment.optional(),
-                        application_deployment_id: z.unknown().optional(),
-                        created_at: z.string().datetime().optional(),
-                        id: z.unknown().optional(),
-                        status: z.string().optional(),
-                        updated_at: z.string().datetime().optional()
-                    }).optional(),
+                    id: z.string().uuid().optional(),
+                    port: z.number().int().optional(),
+                    service_name: z.string().optional(),
                     updated_at: z.string().datetime().optional()
                 })).optional(),
+                created_at: z.string().datetime().optional(),
+                deployments: z.array(zApplicationDeployment).optional(),
                 dockerfile_path: z.string().optional(),
                 domains: z.array(z.object({
                     application: zApplication.optional(),
-                    application_id: z.unknown().optional(),
+                    application_id: z.string().uuid().optional(),
+                    compose_service: z.object({
+                        application: zApplication.optional(),
+                        application_id: z.string().uuid().optional(),
+                        created_at: z.string().datetime().optional(),
+                        domains: z.array(zApplicationDomain).optional(),
+                        id: z.string().uuid().optional(),
+                        port: z.number().int().optional(),
+                        service_name: z.string().optional(),
+                        updated_at: z.string().datetime().optional()
+                    }).optional(),
+                    compose_service_id: z.string().uuid().optional(),
                     created_at: z.string().datetime().optional(),
                     domain: z.string().optional(),
-                    id: z.unknown().optional()
+                    id: z.string().uuid().optional(),
+                    port: z.number().int().optional()
                 })).optional(),
                 environment: z.string().optional(),
                 environment_variables: z.string().optional(),
-                family_id: z.unknown().optional(),
-                id: z.unknown().optional(),
+                family_id: z.string().uuid().optional(),
+                id: z.string().uuid().optional(),
                 is_live_deployment: z.boolean().optional(),
                 labels: z.array(z.string()).optional(),
                 logs: z.array(z.object({
                     application: zApplication.optional(),
                     application_deployment: zApplicationDeployment.optional(),
-                    application_deployment_id: z.unknown().optional(),
-                    application_id: z.unknown().optional(),
+                    application_deployment_id: z.string().uuid().optional(),
+                    application_id: z.string().uuid().optional(),
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     log: z.string().optional(),
                     updated_at: z.string().datetime().optional()
                 })).optional(),
                 name: z.string().optional(),
                 organization: z.object({
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     logo: z.string().optional(),
                     metadata: z.string().optional(),
                     name: z.string().optional(),
                     slug: z.string().optional()
                 }).optional(),
-                organization_id: z.unknown().optional(),
+                organization_id: z.string().uuid().optional(),
                 port: z.number().int().optional(),
                 post_run_command: z.string().optional(),
                 pre_run_command: z.string().optional(),
@@ -2871,9 +3297,9 @@ export const zListDeploymentsResponse = z.object({
                 repository: z.string().optional(),
                 status: z.object({
                     application: zApplication.optional(),
-                    application_id: z.unknown().optional(),
+                    application_id: z.string().uuid().optional(),
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     status: z.string().optional(),
                     updated_at: z.string().datetime().optional()
                 }).optional(),
@@ -2883,7 +3309,7 @@ export const zListDeploymentsResponse = z.object({
                     created_at: z.string().datetime().optional(),
                     email: z.string().optional(),
                     email_verified: z.boolean().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     image: z.string().optional(),
                     is_onboarded: z.boolean().optional(),
                     is_verified: z.boolean().optional(),
@@ -2891,23 +3317,23 @@ export const zListDeploymentsResponse = z.object({
                     organization_users: z.array(z.object({
                         created_at: z.string().datetime().optional(),
                         deleted_at: z.string().datetime().optional(),
-                        id: z.unknown().optional(),
+                        id: z.string().uuid().optional(),
                         organization: z.object({
                             created_at: z.string().datetime().optional(),
-                            id: z.unknown().optional(),
+                            id: z.string().uuid().optional(),
                             logo: z.string().optional(),
                             metadata: z.string().optional(),
                             name: z.string().optional(),
                             slug: z.string().optional()
                         }).optional(),
-                        organization_id: z.unknown().optional(),
+                        organization_id: z.string().uuid().optional(),
                         updated_at: z.string().datetime().optional(),
                         user: zUser.optional(),
-                        user_id: z.unknown().optional()
+                        user_id: z.string().uuid().optional()
                     })).optional(),
                     organizations: z.array(z.object({
                         created_at: z.string().datetime().optional(),
-                        id: z.unknown().optional(),
+                        id: z.string().uuid().optional(),
                         logo: z.string().optional(),
                         metadata: z.string().optional(),
                         name: z.string().optional(),
@@ -2918,33 +3344,151 @@ export const zListDeploymentsResponse = z.object({
                     updated_at: z.string().datetime().optional(),
                     username: z.string().optional()
                 }).optional(),
-                user_id: z.unknown().optional()
+                user_id: z.string().uuid().optional()
             }).optional(),
-            application_id: z.unknown().optional(),
+            application_id: z.string().uuid().optional(),
             commit_hash: z.string().optional(),
             container_id: z.string().optional(),
             container_image: z.string().optional(),
             container_name: z.string().optional(),
             container_status: z.string().optional(),
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             image_s3_key: z.string().optional(),
             image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
             logs: z.array(z.object({
-                application: zApplication.optional(),
+                application: z.object({
+                    base_path: z.string().optional(),
+                    branch: z.string().optional(),
+                    build_pack: z.string().optional(),
+                    build_variables: z.string().optional(),
+                    compose_services: z.array(z.object({
+                        application: zApplication.optional(),
+                        application_id: z.string().uuid().optional(),
+                        created_at: z.string().datetime().optional(),
+                        domains: z.array(z.object({
+                            application: zApplication.optional(),
+                            application_id: z.string().uuid().optional(),
+                            compose_service: zComposeService.optional(),
+                            compose_service_id: z.string().uuid().optional(),
+                            created_at: z.string().datetime().optional(),
+                            domain: z.string().optional(),
+                            id: z.string().uuid().optional(),
+                            port: z.number().int().optional()
+                        })).optional(),
+                        id: z.string().uuid().optional(),
+                        port: z.number().int().optional(),
+                        service_name: z.string().optional(),
+                        updated_at: z.string().datetime().optional()
+                    })).optional(),
+                    created_at: z.string().datetime().optional(),
+                    deployments: z.array(zApplicationDeployment).optional(),
+                    dockerfile_path: z.string().optional(),
+                    domains: z.array(z.object({
+                        application: zApplication.optional(),
+                        application_id: z.string().uuid().optional(),
+                        compose_service: z.object({
+                            application: zApplication.optional(),
+                            application_id: z.string().uuid().optional(),
+                            created_at: z.string().datetime().optional(),
+                            domains: z.array(zApplicationDomain).optional(),
+                            id: z.string().uuid().optional(),
+                            port: z.number().int().optional(),
+                            service_name: z.string().optional(),
+                            updated_at: z.string().datetime().optional()
+                        }).optional(),
+                        compose_service_id: z.string().uuid().optional(),
+                        created_at: z.string().datetime().optional(),
+                        domain: z.string().optional(),
+                        id: z.string().uuid().optional(),
+                        port: z.number().int().optional()
+                    })).optional(),
+                    environment: z.string().optional(),
+                    environment_variables: z.string().optional(),
+                    family_id: z.string().uuid().optional(),
+                    id: z.string().uuid().optional(),
+                    is_live_deployment: z.boolean().optional(),
+                    labels: z.array(z.string()).optional(),
+                    logs: z.array(zApplicationLogs).optional(),
+                    name: z.string().optional(),
+                    organization: z.object({
+                        created_at: z.string().datetime().optional(),
+                        id: z.string().uuid().optional(),
+                        logo: z.string().optional(),
+                        metadata: z.string().optional(),
+                        name: z.string().optional(),
+                        slug: z.string().optional()
+                    }).optional(),
+                    organization_id: z.string().uuid().optional(),
+                    port: z.number().int().optional(),
+                    post_run_command: z.string().optional(),
+                    pre_run_command: z.string().optional(),
+                    proxy_server: z.string().optional(),
+                    repository: z.string().optional(),
+                    status: z.object({
+                        application: zApplication.optional(),
+                        application_id: z.string().uuid().optional(),
+                        created_at: z.string().datetime().optional(),
+                        id: z.string().uuid().optional(),
+                        status: z.string().optional(),
+                        updated_at: z.string().datetime().optional()
+                    }).optional(),
+                    updated_at: z.string().datetime().optional(),
+                    user: z.object({
+                        avatar: z.string().optional(),
+                        created_at: z.string().datetime().optional(),
+                        email: z.string().optional(),
+                        email_verified: z.boolean().optional(),
+                        id: z.string().uuid().optional(),
+                        image: z.string().optional(),
+                        is_onboarded: z.boolean().optional(),
+                        is_verified: z.boolean().optional(),
+                        name: z.string().optional(),
+                        organization_users: z.array(z.object({
+                            created_at: z.string().datetime().optional(),
+                            deleted_at: z.string().datetime().optional(),
+                            id: z.string().uuid().optional(),
+                            organization: z.object({
+                                created_at: z.string().datetime().optional(),
+                                id: z.string().uuid().optional(),
+                                logo: z.string().optional(),
+                                metadata: z.string().optional(),
+                                name: z.string().optional(),
+                                slug: z.string().optional()
+                            }).optional(),
+                            organization_id: z.string().uuid().optional(),
+                            updated_at: z.string().datetime().optional(),
+                            user: zUser.optional(),
+                            user_id: z.string().uuid().optional()
+                        })).optional(),
+                        organizations: z.array(z.object({
+                            created_at: z.string().datetime().optional(),
+                            id: z.string().uuid().optional(),
+                            logo: z.string().optional(),
+                            metadata: z.string().optional(),
+                            name: z.string().optional(),
+                            slug: z.string().optional()
+                        })).optional(),
+                        provision_status: z.string().optional(),
+                        supertokens_user_id: z.string().optional(),
+                        updated_at: z.string().datetime().optional(),
+                        username: z.string().optional()
+                    }).optional(),
+                    user_id: z.string().uuid().optional()
+                }).optional(),
                 application_deployment: zApplicationDeployment.optional(),
-                application_deployment_id: z.unknown().optional(),
-                application_id: z.unknown().optional(),
+                application_deployment_id: z.string().uuid().optional(),
+                application_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 log: z.string().optional(),
                 updated_at: z.string().datetime().optional()
             })).optional(),
             status: z.object({
                 application_deployment: zApplicationDeployment.optional(),
-                application_deployment_id: z.unknown().optional(),
+                application_deployment_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 status: z.string().optional(),
                 updated_at: z.string().datetime().optional()
             }).optional(),
@@ -2969,34 +3513,44 @@ export const zLogsResponse = z.object({
                 branch: z.string().optional(),
                 build_pack: z.string().optional(),
                 build_variables: z.string().optional(),
+                compose_services: z.array(z.object({
+                    application: zApplication.optional(),
+                    application_id: z.string().uuid().optional(),
+                    created_at: z.string().datetime().optional(),
+                    domains: z.array(z.object({
+                        application: zApplication.optional(),
+                        application_id: z.string().uuid().optional(),
+                        compose_service: zComposeService.optional(),
+                        compose_service_id: z.string().uuid().optional(),
+                        created_at: z.string().datetime().optional(),
+                        domain: z.string().optional(),
+                        id: z.string().uuid().optional(),
+                        port: z.number().int().optional()
+                    })).optional(),
+                    id: z.string().uuid().optional(),
+                    port: z.number().int().optional(),
+                    service_name: z.string().optional(),
+                    updated_at: z.string().datetime().optional()
+                })).optional(),
                 created_at: z.string().datetime().optional(),
                 deployments: z.array(z.object({
                     application: zApplication.optional(),
-                    application_id: z.unknown().optional(),
+                    application_id: z.string().uuid().optional(),
                     commit_hash: z.string().optional(),
                     container_id: z.string().optional(),
                     container_image: z.string().optional(),
                     container_name: z.string().optional(),
                     container_status: z.string().optional(),
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     image_s3_key: z.string().optional(),
                     image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-                    logs: z.array(z.object({
-                        application: zApplication.optional(),
-                        application_deployment: zApplicationDeployment.optional(),
-                        application_deployment_id: z.unknown().optional(),
-                        application_id: z.unknown().optional(),
-                        created_at: z.string().datetime().optional(),
-                        id: z.unknown().optional(),
-                        log: z.string().optional(),
-                        updated_at: z.string().datetime().optional()
-                    })).optional(),
+                    logs: z.array(zApplicationLogs).optional(),
                     status: z.object({
                         application_deployment: zApplicationDeployment.optional(),
-                        application_deployment_id: z.unknown().optional(),
+                        application_deployment_id: z.string().uuid().optional(),
                         created_at: z.string().datetime().optional(),
-                        id: z.unknown().optional(),
+                        id: z.string().uuid().optional(),
                         status: z.string().optional(),
                         updated_at: z.string().datetime().optional()
                     }).optional(),
@@ -3005,37 +3559,40 @@ export const zLogsResponse = z.object({
                 dockerfile_path: z.string().optional(),
                 domains: z.array(z.object({
                     application: zApplication.optional(),
-                    application_id: z.unknown().optional(),
+                    application_id: z.string().uuid().optional(),
+                    compose_service: z.object({
+                        application: zApplication.optional(),
+                        application_id: z.string().uuid().optional(),
+                        created_at: z.string().datetime().optional(),
+                        domains: z.array(zApplicationDomain).optional(),
+                        id: z.string().uuid().optional(),
+                        port: z.number().int().optional(),
+                        service_name: z.string().optional(),
+                        updated_at: z.string().datetime().optional()
+                    }).optional(),
+                    compose_service_id: z.string().uuid().optional(),
                     created_at: z.string().datetime().optional(),
                     domain: z.string().optional(),
-                    id: z.unknown().optional()
+                    id: z.string().uuid().optional(),
+                    port: z.number().int().optional()
                 })).optional(),
                 environment: z.string().optional(),
                 environment_variables: z.string().optional(),
-                family_id: z.unknown().optional(),
-                id: z.unknown().optional(),
+                family_id: z.string().uuid().optional(),
+                id: z.string().uuid().optional(),
                 is_live_deployment: z.boolean().optional(),
                 labels: z.array(z.string()).optional(),
-                logs: z.array(z.object({
-                    application: zApplication.optional(),
-                    application_deployment: zApplicationDeployment.optional(),
-                    application_deployment_id: z.unknown().optional(),
-                    application_id: z.unknown().optional(),
-                    created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
-                    log: z.string().optional(),
-                    updated_at: z.string().datetime().optional()
-                })).optional(),
+                logs: z.array(zApplicationLogs).optional(),
                 name: z.string().optional(),
                 organization: z.object({
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     logo: z.string().optional(),
                     metadata: z.string().optional(),
                     name: z.string().optional(),
                     slug: z.string().optional()
                 }).optional(),
-                organization_id: z.unknown().optional(),
+                organization_id: z.string().uuid().optional(),
                 port: z.number().int().optional(),
                 post_run_command: z.string().optional(),
                 pre_run_command: z.string().optional(),
@@ -3043,9 +3600,9 @@ export const zLogsResponse = z.object({
                 repository: z.string().optional(),
                 status: z.object({
                     application: zApplication.optional(),
-                    application_id: z.unknown().optional(),
+                    application_id: z.string().uuid().optional(),
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     status: z.string().optional(),
                     updated_at: z.string().datetime().optional()
                 }).optional(),
@@ -3055,7 +3612,7 @@ export const zLogsResponse = z.object({
                     created_at: z.string().datetime().optional(),
                     email: z.string().optional(),
                     email_verified: z.boolean().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     image: z.string().optional(),
                     is_onboarded: z.boolean().optional(),
                     is_verified: z.boolean().optional(),
@@ -3063,23 +3620,23 @@ export const zLogsResponse = z.object({
                     organization_users: z.array(z.object({
                         created_at: z.string().datetime().optional(),
                         deleted_at: z.string().datetime().optional(),
-                        id: z.unknown().optional(),
+                        id: z.string().uuid().optional(),
                         organization: z.object({
                             created_at: z.string().datetime().optional(),
-                            id: z.unknown().optional(),
+                            id: z.string().uuid().optional(),
                             logo: z.string().optional(),
                             metadata: z.string().optional(),
                             name: z.string().optional(),
                             slug: z.string().optional()
                         }).optional(),
-                        organization_id: z.unknown().optional(),
+                        organization_id: z.string().uuid().optional(),
                         updated_at: z.string().datetime().optional(),
                         user: zUser.optional(),
-                        user_id: z.unknown().optional()
+                        user_id: z.string().uuid().optional()
                     })).optional(),
                     organizations: z.array(z.object({
                         created_at: z.string().datetime().optional(),
-                        id: z.unknown().optional(),
+                        id: z.string().uuid().optional(),
                         logo: z.string().optional(),
                         metadata: z.string().optional(),
                         name: z.string().optional(),
@@ -3090,44 +3647,153 @@ export const zLogsResponse = z.object({
                     updated_at: z.string().datetime().optional(),
                     username: z.string().optional()
                 }).optional(),
-                user_id: z.unknown().optional()
+                user_id: z.string().uuid().optional()
             }).optional(),
             application_deployment: z.object({
-                application: zApplication.optional(),
-                application_id: z.unknown().optional(),
+                application: z.object({
+                    base_path: z.string().optional(),
+                    branch: z.string().optional(),
+                    build_pack: z.string().optional(),
+                    build_variables: z.string().optional(),
+                    compose_services: z.array(z.object({
+                        application: zApplication.optional(),
+                        application_id: z.string().uuid().optional(),
+                        created_at: z.string().datetime().optional(),
+                        domains: z.array(z.object({
+                            application: zApplication.optional(),
+                            application_id: z.string().uuid().optional(),
+                            compose_service: zComposeService.optional(),
+                            compose_service_id: z.string().uuid().optional(),
+                            created_at: z.string().datetime().optional(),
+                            domain: z.string().optional(),
+                            id: z.string().uuid().optional(),
+                            port: z.number().int().optional()
+                        })).optional(),
+                        id: z.string().uuid().optional(),
+                        port: z.number().int().optional(),
+                        service_name: z.string().optional(),
+                        updated_at: z.string().datetime().optional()
+                    })).optional(),
+                    created_at: z.string().datetime().optional(),
+                    deployments: z.array(zApplicationDeployment).optional(),
+                    dockerfile_path: z.string().optional(),
+                    domains: z.array(z.object({
+                        application: zApplication.optional(),
+                        application_id: z.string().uuid().optional(),
+                        compose_service: z.object({
+                            application: zApplication.optional(),
+                            application_id: z.string().uuid().optional(),
+                            created_at: z.string().datetime().optional(),
+                            domains: z.array(zApplicationDomain).optional(),
+                            id: z.string().uuid().optional(),
+                            port: z.number().int().optional(),
+                            service_name: z.string().optional(),
+                            updated_at: z.string().datetime().optional()
+                        }).optional(),
+                        compose_service_id: z.string().uuid().optional(),
+                        created_at: z.string().datetime().optional(),
+                        domain: z.string().optional(),
+                        id: z.string().uuid().optional(),
+                        port: z.number().int().optional()
+                    })).optional(),
+                    environment: z.string().optional(),
+                    environment_variables: z.string().optional(),
+                    family_id: z.string().uuid().optional(),
+                    id: z.string().uuid().optional(),
+                    is_live_deployment: z.boolean().optional(),
+                    labels: z.array(z.string()).optional(),
+                    logs: z.array(zApplicationLogs).optional(),
+                    name: z.string().optional(),
+                    organization: z.object({
+                        created_at: z.string().datetime().optional(),
+                        id: z.string().uuid().optional(),
+                        logo: z.string().optional(),
+                        metadata: z.string().optional(),
+                        name: z.string().optional(),
+                        slug: z.string().optional()
+                    }).optional(),
+                    organization_id: z.string().uuid().optional(),
+                    port: z.number().int().optional(),
+                    post_run_command: z.string().optional(),
+                    pre_run_command: z.string().optional(),
+                    proxy_server: z.string().optional(),
+                    repository: z.string().optional(),
+                    status: z.object({
+                        application: zApplication.optional(),
+                        application_id: z.string().uuid().optional(),
+                        created_at: z.string().datetime().optional(),
+                        id: z.string().uuid().optional(),
+                        status: z.string().optional(),
+                        updated_at: z.string().datetime().optional()
+                    }).optional(),
+                    updated_at: z.string().datetime().optional(),
+                    user: z.object({
+                        avatar: z.string().optional(),
+                        created_at: z.string().datetime().optional(),
+                        email: z.string().optional(),
+                        email_verified: z.boolean().optional(),
+                        id: z.string().uuid().optional(),
+                        image: z.string().optional(),
+                        is_onboarded: z.boolean().optional(),
+                        is_verified: z.boolean().optional(),
+                        name: z.string().optional(),
+                        organization_users: z.array(z.object({
+                            created_at: z.string().datetime().optional(),
+                            deleted_at: z.string().datetime().optional(),
+                            id: z.string().uuid().optional(),
+                            organization: z.object({
+                                created_at: z.string().datetime().optional(),
+                                id: z.string().uuid().optional(),
+                                logo: z.string().optional(),
+                                metadata: z.string().optional(),
+                                name: z.string().optional(),
+                                slug: z.string().optional()
+                            }).optional(),
+                            organization_id: z.string().uuid().optional(),
+                            updated_at: z.string().datetime().optional(),
+                            user: zUser.optional(),
+                            user_id: z.string().uuid().optional()
+                        })).optional(),
+                        organizations: z.array(z.object({
+                            created_at: z.string().datetime().optional(),
+                            id: z.string().uuid().optional(),
+                            logo: z.string().optional(),
+                            metadata: z.string().optional(),
+                            name: z.string().optional(),
+                            slug: z.string().optional()
+                        })).optional(),
+                        provision_status: z.string().optional(),
+                        supertokens_user_id: z.string().optional(),
+                        updated_at: z.string().datetime().optional(),
+                        username: z.string().optional()
+                    }).optional(),
+                    user_id: z.string().uuid().optional()
+                }).optional(),
+                application_id: z.string().uuid().optional(),
                 commit_hash: z.string().optional(),
                 container_id: z.string().optional(),
                 container_image: z.string().optional(),
                 container_name: z.string().optional(),
                 container_status: z.string().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 image_s3_key: z.string().optional(),
                 image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-                logs: z.array(z.object({
-                    application: zApplication.optional(),
-                    application_deployment: zApplicationDeployment.optional(),
-                    application_deployment_id: z.unknown().optional(),
-                    application_id: z.unknown().optional(),
-                    created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
-                    log: z.string().optional(),
-                    updated_at: z.string().datetime().optional()
-                })).optional(),
+                logs: z.array(zApplicationLogs).optional(),
                 status: z.object({
                     application_deployment: zApplicationDeployment.optional(),
-                    application_deployment_id: z.unknown().optional(),
+                    application_deployment_id: z.string().uuid().optional(),
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     status: z.string().optional(),
                     updated_at: z.string().datetime().optional()
                 }).optional(),
                 updated_at: z.string().datetime().optional()
             }).optional(),
-            application_deployment_id: z.unknown().optional(),
-            application_id: z.unknown().optional(),
+            application_deployment_id: z.string().uuid().optional(),
+            application_id: z.string().uuid().optional(),
             created_at: z.string().datetime().optional(),
-            id: z.unknown().optional(),
+            id: z.string().uuid().optional(),
             log: z.string().optional(),
             updated_at: z.string().datetime().optional()
         })).optional(),
@@ -3149,34 +3815,53 @@ export const zProjectFamilyResponse = z.object({
             branch: z.string().optional(),
             build_pack: z.string().optional(),
             build_variables: z.string().optional(),
+            compose_services: z.array(z.object({
+                application: zApplication.optional(),
+                application_id: z.string().uuid().optional(),
+                created_at: z.string().datetime().optional(),
+                domains: z.array(z.object({
+                    application: zApplication.optional(),
+                    application_id: z.string().uuid().optional(),
+                    compose_service: zComposeService.optional(),
+                    compose_service_id: z.string().uuid().optional(),
+                    created_at: z.string().datetime().optional(),
+                    domain: z.string().optional(),
+                    id: z.string().uuid().optional(),
+                    port: z.number().int().optional()
+                })).optional(),
+                id: z.string().uuid().optional(),
+                port: z.number().int().optional(),
+                service_name: z.string().optional(),
+                updated_at: z.string().datetime().optional()
+            })).optional(),
             created_at: z.string().datetime().optional(),
             deployments: z.array(z.object({
                 application: zApplication.optional(),
-                application_id: z.unknown().optional(),
+                application_id: z.string().uuid().optional(),
                 commit_hash: z.string().optional(),
                 container_id: z.string().optional(),
                 container_image: z.string().optional(),
                 container_name: z.string().optional(),
                 container_status: z.string().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 image_s3_key: z.string().optional(),
                 image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
                 logs: z.array(z.object({
                     application: zApplication.optional(),
                     application_deployment: zApplicationDeployment.optional(),
-                    application_deployment_id: z.unknown().optional(),
-                    application_id: z.unknown().optional(),
+                    application_deployment_id: z.string().uuid().optional(),
+                    application_id: z.string().uuid().optional(),
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     log: z.string().optional(),
                     updated_at: z.string().datetime().optional()
                 })).optional(),
                 status: z.object({
                     application_deployment: zApplicationDeployment.optional(),
-                    application_deployment_id: z.unknown().optional(),
+                    application_deployment_id: z.string().uuid().optional(),
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     status: z.string().optional(),
                     updated_at: z.string().datetime().optional()
                 }).optional(),
@@ -3185,37 +3870,71 @@ export const zProjectFamilyResponse = z.object({
             dockerfile_path: z.string().optional(),
             domains: z.array(z.object({
                 application: zApplication.optional(),
-                application_id: z.unknown().optional(),
+                application_id: z.string().uuid().optional(),
+                compose_service: z.object({
+                    application: zApplication.optional(),
+                    application_id: z.string().uuid().optional(),
+                    created_at: z.string().datetime().optional(),
+                    domains: z.array(zApplicationDomain).optional(),
+                    id: z.string().uuid().optional(),
+                    port: z.number().int().optional(),
+                    service_name: z.string().optional(),
+                    updated_at: z.string().datetime().optional()
+                }).optional(),
+                compose_service_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
                 domain: z.string().optional(),
-                id: z.unknown().optional()
+                id: z.string().uuid().optional(),
+                port: z.number().int().optional()
             })).optional(),
             environment: z.string().optional(),
             environment_variables: z.string().optional(),
-            family_id: z.unknown().optional(),
-            id: z.unknown().optional(),
+            family_id: z.string().uuid().optional(),
+            id: z.string().uuid().optional(),
             is_live_deployment: z.boolean().optional(),
             labels: z.array(z.string()).optional(),
             logs: z.array(z.object({
                 application: zApplication.optional(),
-                application_deployment: zApplicationDeployment.optional(),
-                application_deployment_id: z.unknown().optional(),
-                application_id: z.unknown().optional(),
+                application_deployment: z.object({
+                    application: zApplication.optional(),
+                    application_id: z.string().uuid().optional(),
+                    commit_hash: z.string().optional(),
+                    container_id: z.string().optional(),
+                    container_image: z.string().optional(),
+                    container_name: z.string().optional(),
+                    container_status: z.string().optional(),
+                    created_at: z.string().datetime().optional(),
+                    id: z.string().uuid().optional(),
+                    image_s3_key: z.string().optional(),
+                    image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+                    logs: z.array(zApplicationLogs).optional(),
+                    status: z.object({
+                        application_deployment: zApplicationDeployment.optional(),
+                        application_deployment_id: z.string().uuid().optional(),
+                        created_at: z.string().datetime().optional(),
+                        id: z.string().uuid().optional(),
+                        status: z.string().optional(),
+                        updated_at: z.string().datetime().optional()
+                    }).optional(),
+                    updated_at: z.string().datetime().optional()
+                }).optional(),
+                application_deployment_id: z.string().uuid().optional(),
+                application_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 log: z.string().optional(),
                 updated_at: z.string().datetime().optional()
             })).optional(),
             name: z.string().optional(),
             organization: z.object({
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 logo: z.string().optional(),
                 metadata: z.string().optional(),
                 name: z.string().optional(),
                 slug: z.string().optional()
             }).optional(),
-            organization_id: z.unknown().optional(),
+            organization_id: z.string().uuid().optional(),
             port: z.number().int().optional(),
             post_run_command: z.string().optional(),
             pre_run_command: z.string().optional(),
@@ -3223,9 +3942,9 @@ export const zProjectFamilyResponse = z.object({
             repository: z.string().optional(),
             status: z.object({
                 application: zApplication.optional(),
-                application_id: z.unknown().optional(),
+                application_id: z.string().uuid().optional(),
                 created_at: z.string().datetime().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 status: z.string().optional(),
                 updated_at: z.string().datetime().optional()
             }).optional(),
@@ -3235,7 +3954,7 @@ export const zProjectFamilyResponse = z.object({
                 created_at: z.string().datetime().optional(),
                 email: z.string().optional(),
                 email_verified: z.boolean().optional(),
-                id: z.unknown().optional(),
+                id: z.string().uuid().optional(),
                 image: z.string().optional(),
                 is_onboarded: z.boolean().optional(),
                 is_verified: z.boolean().optional(),
@@ -3243,23 +3962,23 @@ export const zProjectFamilyResponse = z.object({
                 organization_users: z.array(z.object({
                     created_at: z.string().datetime().optional(),
                     deleted_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     organization: z.object({
                         created_at: z.string().datetime().optional(),
-                        id: z.unknown().optional(),
+                        id: z.string().uuid().optional(),
                         logo: z.string().optional(),
                         metadata: z.string().optional(),
                         name: z.string().optional(),
                         slug: z.string().optional()
                     }).optional(),
-                    organization_id: z.unknown().optional(),
+                    organization_id: z.string().uuid().optional(),
                     updated_at: z.string().datetime().optional(),
                     user: zUser.optional(),
-                    user_id: z.unknown().optional()
+                    user_id: z.string().uuid().optional()
                 })).optional(),
                 organizations: z.array(z.object({
                     created_at: z.string().datetime().optional(),
-                    id: z.unknown().optional(),
+                    id: z.string().uuid().optional(),
                     logo: z.string().optional(),
                     metadata: z.string().optional(),
                     name: z.string().optional(),
@@ -3270,7 +3989,7 @@ export const zProjectFamilyResponse = z.object({
                 updated_at: z.string().datetime().optional(),
                 username: z.string().optional()
             }).optional(),
-            user_id: z.unknown().optional()
+            user_id: z.string().uuid().optional()
         })).optional()
     }).optional(),
     message: z.string().optional(),
@@ -3515,6 +4234,34 @@ export const zDeleteApiV1DeployApplicationData = z.object({
  */
 export const zDeleteApiV1DeployApplicationResponse = zMessageResponse;
 
+export const zGetApiV1DeployApplicationComposeServicesData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetApiV1DeployApplicationComposeServicesResponse = zResponse;
+
+export const zPostApiV1DeployApplicationIndexData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zPostApiV1DeployApplicationIndexResponse = zIndexCodebaseResponse;
+
 export const zPutApiV1DeployApplicationLabelsData = z.object({
     body: zUpdateLabelsRequest,
     path: z.never().optional(),
@@ -3528,6 +4275,20 @@ export const zPutApiV1DeployApplicationLabelsData = z.object({
  * OK
  */
 export const zPutApiV1DeployApplicationLabelsResponse = zLabelsResponse;
+
+export const zPostApiV1DeployApplicationPreviewComposeData = z.object({
+    body: zPreviewComposeRequest,
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zPostApiV1DeployApplicationPreviewComposeResponse = zPreviewComposeResponse;
 
 export const zGetApiV1DeployApplicationProjectFamilyEnvironmentsData = z.object({
     body: z.never().optional(),

@@ -9,6 +9,8 @@ export type ClientOptions = {
  */
 export type AddApplicationDomainRequest = {
     domain?: string;
+    port?: number;
+    service_name?: string;
 };
 
 /**
@@ -26,7 +28,7 @@ export type AddApplicationToFamilyRequest = {
     environment_variables?: {
         [key: string]: string;
     };
-    family_id?: unknown;
+    family_id?: string;
     name?: string;
     path?: string;
     port?: number;
@@ -51,73 +53,73 @@ export type Application = {
     branch?: string;
     build_pack?: string;
     build_variables?: string;
-    created_at?: string;
-    deployments?: Array<{
+    compose_services?: Array<{
         application?: Application;
-        application_id?: unknown;
-        commit_hash?: string;
-        container_id?: string;
-        container_image?: string;
-        container_name?: string;
-        container_status?: string;
+        application_id?: string;
         created_at?: string;
-        id?: unknown;
-        image_s3_key?: string;
-        image_size?: number;
-        logs?: Array<{
+        domains?: Array<{
             application?: Application;
-            application_deployment?: ApplicationDeployment;
-            application_deployment_id?: unknown;
-            application_id?: unknown;
+            application_id?: string;
+            compose_service?: ComposeService;
+            compose_service_id?: string;
             created_at?: string;
-            id?: unknown;
-            log?: string;
-            updated_at?: string;
+            domain?: string;
+            id?: string;
+            port?: number;
         }>;
-        status?: {
-            application_deployment?: ApplicationDeployment;
-            application_deployment_id?: unknown;
-            created_at?: string;
-            id?: unknown;
-            status?: string;
-            updated_at?: string;
-        };
+        id?: string;
+        port?: number;
+        service_name?: string;
         updated_at?: string;
     }>;
+    created_at?: string;
+    deployments?: Array<ApplicationDeployment>;
     dockerfile_path?: string;
     domains?: Array<{
         application?: Application;
-        application_id?: unknown;
+        application_id?: string;
+        compose_service?: {
+            application?: Application;
+            application_id?: string;
+            created_at?: string;
+            domains?: Array<ApplicationDomain>;
+            id?: string;
+            port?: number;
+            service_name?: string;
+            updated_at?: string;
+        };
+        compose_service_id?: string;
         created_at?: string;
         domain?: string;
-        id?: unknown;
+        id?: string;
+        port?: number;
     }>;
     environment?: string;
     environment_variables?: string;
-    family_id?: unknown;
-    id?: unknown;
+    family_id?: string;
+    id?: string;
     is_live_deployment?: boolean;
     labels?: Array<string>;
     logs?: Array<{
         application?: Application;
         application_deployment?: ApplicationDeployment;
-        application_deployment_id?: unknown;
-        application_id?: unknown;
+        application_deployment_id?: string;
+        application_id?: string;
         created_at?: string;
-        id?: unknown;
+        id?: string;
         log?: string;
         updated_at?: string;
     }>;
     name?: string;
     organization?: {
         created_at?: string;
-        id?: unknown;
+        id?: string;
         logo?: string;
         metadata?: string;
         name?: string;
         slug?: string;
     };
-    organization_id?: unknown;
+    organization_id?: string;
     port?: number;
     post_run_command?: string;
     pre_run_command?: string;
@@ -125,9 +127,9 @@ export type Application = {
     repository?: string;
     status?: {
         application?: Application;
-        application_id?: unknown;
+        application_id?: string;
         created_at?: string;
-        id?: unknown;
+        id?: string;
         status?: string;
         updated_at?: string;
     };
@@ -137,7 +139,7 @@ export type Application = {
         created_at?: string;
         email?: string;
         email_verified?: boolean;
-        id?: unknown;
+        id?: string;
         image?: string;
         is_onboarded?: boolean;
         is_verified?: boolean;
@@ -145,23 +147,23 @@ export type Application = {
         organization_users?: Array<{
             created_at?: string;
             deleted_at?: string;
-            id?: unknown;
+            id?: string;
             organization?: {
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 logo?: string;
                 metadata?: string;
                 name?: string;
                 slug?: string;
             };
-            organization_id?: unknown;
+            organization_id?: string;
             updated_at?: string;
             user?: User;
-            user_id?: unknown;
+            user_id?: string;
         }>;
         organizations?: Array<{
             created_at?: string;
-            id?: unknown;
+            id?: string;
             logo?: string;
             metadata?: string;
             name?: string;
@@ -172,7 +174,7 @@ export type Application = {
         updated_at?: string;
         username?: string;
     };
-    user_id?: unknown;
+    user_id?: string;
 };
 
 export type ApplicationDeployment = {
@@ -181,73 +183,73 @@ export type ApplicationDeployment = {
         branch?: string;
         build_pack?: string;
         build_variables?: string;
-        created_at?: string;
-        deployments?: Array<{
+        compose_services?: Array<{
             application?: Application;
-            application_id?: unknown;
-            commit_hash?: string;
-            container_id?: string;
-            container_image?: string;
-            container_name?: string;
-            container_status?: string;
+            application_id?: string;
             created_at?: string;
-            id?: unknown;
-            image_s3_key?: string;
-            image_size?: number;
-            logs?: Array<{
+            domains?: Array<{
                 application?: Application;
-                application_deployment?: ApplicationDeployment;
-                application_deployment_id?: unknown;
-                application_id?: unknown;
+                application_id?: string;
+                compose_service?: ComposeService;
+                compose_service_id?: string;
                 created_at?: string;
-                id?: unknown;
-                log?: string;
-                updated_at?: string;
+                domain?: string;
+                id?: string;
+                port?: number;
             }>;
-            status?: {
-                application_deployment?: ApplicationDeployment;
-                application_deployment_id?: unknown;
-                created_at?: string;
-                id?: unknown;
-                status?: string;
-                updated_at?: string;
-            };
+            id?: string;
+            port?: number;
+            service_name?: string;
             updated_at?: string;
         }>;
+        created_at?: string;
+        deployments?: Array<ApplicationDeployment>;
         dockerfile_path?: string;
         domains?: Array<{
             application?: Application;
-            application_id?: unknown;
+            application_id?: string;
+            compose_service?: {
+                application?: Application;
+                application_id?: string;
+                created_at?: string;
+                domains?: Array<ApplicationDomain>;
+                id?: string;
+                port?: number;
+                service_name?: string;
+                updated_at?: string;
+            };
+            compose_service_id?: string;
             created_at?: string;
             domain?: string;
-            id?: unknown;
+            id?: string;
+            port?: number;
         }>;
         environment?: string;
         environment_variables?: string;
-        family_id?: unknown;
-        id?: unknown;
+        family_id?: string;
+        id?: string;
         is_live_deployment?: boolean;
         labels?: Array<string>;
         logs?: Array<{
             application?: Application;
             application_deployment?: ApplicationDeployment;
-            application_deployment_id?: unknown;
-            application_id?: unknown;
+            application_deployment_id?: string;
+            application_id?: string;
             created_at?: string;
-            id?: unknown;
+            id?: string;
             log?: string;
             updated_at?: string;
         }>;
         name?: string;
         organization?: {
             created_at?: string;
-            id?: unknown;
+            id?: string;
             logo?: string;
             metadata?: string;
             name?: string;
             slug?: string;
         };
-        organization_id?: unknown;
+        organization_id?: string;
         port?: number;
         post_run_command?: string;
         pre_run_command?: string;
@@ -255,9 +257,9 @@ export type ApplicationDeployment = {
         repository?: string;
         status?: {
             application?: Application;
-            application_id?: unknown;
+            application_id?: string;
             created_at?: string;
-            id?: unknown;
+            id?: string;
             status?: string;
             updated_at?: string;
         };
@@ -267,7 +269,7 @@ export type ApplicationDeployment = {
             created_at?: string;
             email?: string;
             email_verified?: boolean;
-            id?: unknown;
+            id?: string;
             image?: string;
             is_onboarded?: boolean;
             is_verified?: boolean;
@@ -275,23 +277,23 @@ export type ApplicationDeployment = {
             organization_users?: Array<{
                 created_at?: string;
                 deleted_at?: string;
-                id?: unknown;
+                id?: string;
                 organization?: {
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     logo?: string;
                     metadata?: string;
                     name?: string;
                     slug?: string;
                 };
-                organization_id?: unknown;
+                organization_id?: string;
                 updated_at?: string;
                 user?: User;
-                user_id?: unknown;
+                user_id?: string;
             }>;
             organizations?: Array<{
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 logo?: string;
                 metadata?: string;
                 name?: string;
@@ -302,36 +304,176 @@ export type ApplicationDeployment = {
             updated_at?: string;
             username?: string;
         };
-        user_id?: unknown;
+        user_id?: string;
     };
-    application_id?: unknown;
+    application_id?: string;
     commit_hash?: string;
     container_id?: string;
     container_image?: string;
     container_name?: string;
     container_status?: string;
     created_at?: string;
-    id?: unknown;
+    id?: string;
     image_s3_key?: string;
     image_size?: number;
     logs?: Array<{
-        application?: Application;
+        application?: {
+            base_path?: string;
+            branch?: string;
+            build_pack?: string;
+            build_variables?: string;
+            compose_services?: Array<{
+                application?: Application;
+                application_id?: string;
+                created_at?: string;
+                domains?: Array<{
+                    application?: Application;
+                    application_id?: string;
+                    compose_service?: ComposeService;
+                    compose_service_id?: string;
+                    created_at?: string;
+                    domain?: string;
+                    id?: string;
+                    port?: number;
+                }>;
+                id?: string;
+                port?: number;
+                service_name?: string;
+                updated_at?: string;
+            }>;
+            created_at?: string;
+            deployments?: Array<ApplicationDeployment>;
+            dockerfile_path?: string;
+            domains?: Array<{
+                application?: Application;
+                application_id?: string;
+                compose_service?: {
+                    application?: Application;
+                    application_id?: string;
+                    created_at?: string;
+                    domains?: Array<ApplicationDomain>;
+                    id?: string;
+                    port?: number;
+                    service_name?: string;
+                    updated_at?: string;
+                };
+                compose_service_id?: string;
+                created_at?: string;
+                domain?: string;
+                id?: string;
+                port?: number;
+            }>;
+            environment?: string;
+            environment_variables?: string;
+            family_id?: string;
+            id?: string;
+            is_live_deployment?: boolean;
+            labels?: Array<string>;
+            logs?: Array<ApplicationLogs>;
+            name?: string;
+            organization?: {
+                created_at?: string;
+                id?: string;
+                logo?: string;
+                metadata?: string;
+                name?: string;
+                slug?: string;
+            };
+            organization_id?: string;
+            port?: number;
+            post_run_command?: string;
+            pre_run_command?: string;
+            proxy_server?: string;
+            repository?: string;
+            status?: {
+                application?: Application;
+                application_id?: string;
+                created_at?: string;
+                id?: string;
+                status?: string;
+                updated_at?: string;
+            };
+            updated_at?: string;
+            user?: {
+                avatar?: string;
+                created_at?: string;
+                email?: string;
+                email_verified?: boolean;
+                id?: string;
+                image?: string;
+                is_onboarded?: boolean;
+                is_verified?: boolean;
+                name?: string;
+                organization_users?: Array<{
+                    created_at?: string;
+                    deleted_at?: string;
+                    id?: string;
+                    organization?: {
+                        created_at?: string;
+                        id?: string;
+                        logo?: string;
+                        metadata?: string;
+                        name?: string;
+                        slug?: string;
+                    };
+                    organization_id?: string;
+                    updated_at?: string;
+                    user?: User;
+                    user_id?: string;
+                }>;
+                organizations?: Array<{
+                    created_at?: string;
+                    id?: string;
+                    logo?: string;
+                    metadata?: string;
+                    name?: string;
+                    slug?: string;
+                }>;
+                provision_status?: string;
+                supertokens_user_id?: string;
+                updated_at?: string;
+                username?: string;
+            };
+            user_id?: string;
+        };
         application_deployment?: ApplicationDeployment;
-        application_deployment_id?: unknown;
-        application_id?: unknown;
+        application_deployment_id?: string;
+        application_id?: string;
         created_at?: string;
-        id?: unknown;
+        id?: string;
         log?: string;
         updated_at?: string;
     }>;
     status?: {
         application_deployment?: ApplicationDeployment;
-        application_deployment_id?: unknown;
+        application_deployment_id?: string;
         created_at?: string;
-        id?: unknown;
+        id?: string;
         status?: string;
         updated_at?: string;
     };
+    updated_at?: string;
+};
+
+export type ApplicationDomain = {
+    application?: Application;
+    application_id?: string;
+    compose_service?: ComposeService;
+    compose_service_id?: string;
+    created_at?: string;
+    domain?: string;
+    id?: string;
+    port?: number;
+};
+
+export type ApplicationLogs = {
+    application?: Application;
+    application_deployment?: ApplicationDeployment;
+    application_deployment_id?: string;
+    application_id?: string;
+    created_at?: string;
+    id?: string;
+    log?: string;
     updated_at?: string;
 };
 
@@ -344,34 +486,53 @@ export type ApplicationResponse = {
         branch?: string;
         build_pack?: string;
         build_variables?: string;
+        compose_services?: Array<{
+            application?: Application;
+            application_id?: string;
+            created_at?: string;
+            domains?: Array<{
+                application?: Application;
+                application_id?: string;
+                compose_service?: ComposeService;
+                compose_service_id?: string;
+                created_at?: string;
+                domain?: string;
+                id?: string;
+                port?: number;
+            }>;
+            id?: string;
+            port?: number;
+            service_name?: string;
+            updated_at?: string;
+        }>;
         created_at?: string;
         deployments?: Array<{
             application?: Application;
-            application_id?: unknown;
+            application_id?: string;
             commit_hash?: string;
             container_id?: string;
             container_image?: string;
             container_name?: string;
             container_status?: string;
             created_at?: string;
-            id?: unknown;
+            id?: string;
             image_s3_key?: string;
             image_size?: number;
             logs?: Array<{
                 application?: Application;
                 application_deployment?: ApplicationDeployment;
-                application_deployment_id?: unknown;
-                application_id?: unknown;
+                application_deployment_id?: string;
+                application_id?: string;
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 log?: string;
                 updated_at?: string;
             }>;
             status?: {
                 application_deployment?: ApplicationDeployment;
-                application_deployment_id?: unknown;
+                application_deployment_id?: string;
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 status?: string;
                 updated_at?: string;
             };
@@ -380,37 +541,71 @@ export type ApplicationResponse = {
         dockerfile_path?: string;
         domains?: Array<{
             application?: Application;
-            application_id?: unknown;
+            application_id?: string;
+            compose_service?: {
+                application?: Application;
+                application_id?: string;
+                created_at?: string;
+                domains?: Array<ApplicationDomain>;
+                id?: string;
+                port?: number;
+                service_name?: string;
+                updated_at?: string;
+            };
+            compose_service_id?: string;
             created_at?: string;
             domain?: string;
-            id?: unknown;
+            id?: string;
+            port?: number;
         }>;
         environment?: string;
         environment_variables?: string;
-        family_id?: unknown;
-        id?: unknown;
+        family_id?: string;
+        id?: string;
         is_live_deployment?: boolean;
         labels?: Array<string>;
         logs?: Array<{
             application?: Application;
-            application_deployment?: ApplicationDeployment;
-            application_deployment_id?: unknown;
-            application_id?: unknown;
+            application_deployment?: {
+                application?: Application;
+                application_id?: string;
+                commit_hash?: string;
+                container_id?: string;
+                container_image?: string;
+                container_name?: string;
+                container_status?: string;
+                created_at?: string;
+                id?: string;
+                image_s3_key?: string;
+                image_size?: number;
+                logs?: Array<ApplicationLogs>;
+                status?: {
+                    application_deployment?: ApplicationDeployment;
+                    application_deployment_id?: string;
+                    created_at?: string;
+                    id?: string;
+                    status?: string;
+                    updated_at?: string;
+                };
+                updated_at?: string;
+            };
+            application_deployment_id?: string;
+            application_id?: string;
             created_at?: string;
-            id?: unknown;
+            id?: string;
             log?: string;
             updated_at?: string;
         }>;
         name?: string;
         organization?: {
             created_at?: string;
-            id?: unknown;
+            id?: string;
             logo?: string;
             metadata?: string;
             name?: string;
             slug?: string;
         };
-        organization_id?: unknown;
+        organization_id?: string;
         port?: number;
         post_run_command?: string;
         pre_run_command?: string;
@@ -418,9 +613,9 @@ export type ApplicationResponse = {
         repository?: string;
         status?: {
             application?: Application;
-            application_id?: unknown;
+            application_id?: string;
             created_at?: string;
-            id?: unknown;
+            id?: string;
             status?: string;
             updated_at?: string;
         };
@@ -430,7 +625,7 @@ export type ApplicationResponse = {
             created_at?: string;
             email?: string;
             email_verified?: boolean;
-            id?: unknown;
+            id?: string;
             image?: string;
             is_onboarded?: boolean;
             is_verified?: boolean;
@@ -438,23 +633,23 @@ export type ApplicationResponse = {
             organization_users?: Array<{
                 created_at?: string;
                 deleted_at?: string;
-                id?: unknown;
+                id?: string;
                 organization?: {
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     logo?: string;
                     metadata?: string;
                     name?: string;
                     slug?: string;
                 };
-                organization_id?: unknown;
+                organization_id?: string;
                 updated_at?: string;
                 user?: User;
-                user_id?: unknown;
+                user_id?: string;
             }>;
             organizations?: Array<{
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 logo?: string;
                 metadata?: string;
                 name?: string;
@@ -465,7 +660,7 @@ export type ApplicationResponse = {
             updated_at?: string;
             username?: string;
         };
-        user_id?: unknown;
+        user_id?: string;
     };
     message?: string;
     status?: string;
@@ -527,6 +722,17 @@ export type CategoriesResponse = {
     status?: string;
 };
 
+export type ComposeService = {
+    application?: Application;
+    application_id?: string;
+    created_at?: string;
+    domains?: Array<ApplicationDomain>;
+    id?: string;
+    port?: number;
+    service_name?: string;
+    updated_at?: string;
+};
+
 /**
  * ContainerActionResponse schema
  */
@@ -578,6 +784,11 @@ export type CreateDeploymentRequest = {
     build_variables?: {
         [key: string]: string;
     };
+    compose_domains?: Array<{
+        domain?: string;
+        port?: number;
+        service_name?: string;
+    }>;
     dockerfile_path?: string;
     domains?: Array<string>;
     environment?: string;
@@ -603,7 +814,7 @@ export type CreateDirectoryRequest = {
  */
 export type CreateDomainRequest = {
     name?: string;
-    organization_id?: unknown;
+    organization_id?: string;
 };
 
 /**
@@ -658,6 +869,15 @@ export type CreateProjectRequest = {
     build_variables?: {
         [key: string]: string;
     };
+    compose_domains?: Array<{
+        domain?: string;
+        port?: number;
+        service_name?: string;
+    }>;
+    compose_services?: Array<{
+        port?: number;
+        service_name?: string;
+    }>;
     dockerfile_path?: string;
     domains?: Array<string>;
     environment?: string;
@@ -678,7 +898,7 @@ export type CreateSmtpConfigRequest = {
     from_email?: string;
     from_name?: string;
     host?: string;
-    organization_id?: unknown;
+    organization_id?: string;
     password?: string;
     port?: number;
     username?: string;
@@ -696,7 +916,7 @@ export type CreateWebhookConfigRequest = {
  * DeleteDeploymentRequest schema
  */
 export type DeleteDeploymentRequest = {
-    id?: unknown;
+    id?: string;
 };
 
 /**
@@ -724,7 +944,7 @@ export type DeleteGithubConnectorRequest = {
  * DeleteSMTPConfigRequest schema
  */
 export type DeleteSmtpConfigRequest = {
-    id?: unknown;
+    id?: string;
 };
 
 /**
@@ -738,7 +958,7 @@ export type DeleteWebhookConfigRequest = {
  * DeployProjectRequest schema
  */
 export type DeployProjectRequest = {
-    id?: unknown;
+    id?: string;
 };
 
 /**
@@ -751,73 +971,73 @@ export type DeploymentResponse = {
             branch?: string;
             build_pack?: string;
             build_variables?: string;
-            created_at?: string;
-            deployments?: Array<{
+            compose_services?: Array<{
                 application?: Application;
-                application_id?: unknown;
-                commit_hash?: string;
-                container_id?: string;
-                container_image?: string;
-                container_name?: string;
-                container_status?: string;
+                application_id?: string;
                 created_at?: string;
-                id?: unknown;
-                image_s3_key?: string;
-                image_size?: number;
-                logs?: Array<{
+                domains?: Array<{
                     application?: Application;
-                    application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: unknown;
-                    application_id?: unknown;
+                    application_id?: string;
+                    compose_service?: ComposeService;
+                    compose_service_id?: string;
                     created_at?: string;
-                    id?: unknown;
-                    log?: string;
-                    updated_at?: string;
+                    domain?: string;
+                    id?: string;
+                    port?: number;
                 }>;
-                status?: {
-                    application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: unknown;
-                    created_at?: string;
-                    id?: unknown;
-                    status?: string;
-                    updated_at?: string;
-                };
+                id?: string;
+                port?: number;
+                service_name?: string;
                 updated_at?: string;
             }>;
+            created_at?: string;
+            deployments?: Array<ApplicationDeployment>;
             dockerfile_path?: string;
             domains?: Array<{
                 application?: Application;
-                application_id?: unknown;
+                application_id?: string;
+                compose_service?: {
+                    application?: Application;
+                    application_id?: string;
+                    created_at?: string;
+                    domains?: Array<ApplicationDomain>;
+                    id?: string;
+                    port?: number;
+                    service_name?: string;
+                    updated_at?: string;
+                };
+                compose_service_id?: string;
                 created_at?: string;
                 domain?: string;
-                id?: unknown;
+                id?: string;
+                port?: number;
             }>;
             environment?: string;
             environment_variables?: string;
-            family_id?: unknown;
-            id?: unknown;
+            family_id?: string;
+            id?: string;
             is_live_deployment?: boolean;
             labels?: Array<string>;
             logs?: Array<{
                 application?: Application;
                 application_deployment?: ApplicationDeployment;
-                application_deployment_id?: unknown;
-                application_id?: unknown;
+                application_deployment_id?: string;
+                application_id?: string;
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 log?: string;
                 updated_at?: string;
             }>;
             name?: string;
             organization?: {
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 logo?: string;
                 metadata?: string;
                 name?: string;
                 slug?: string;
             };
-            organization_id?: unknown;
+            organization_id?: string;
             port?: number;
             post_run_command?: string;
             pre_run_command?: string;
@@ -825,9 +1045,9 @@ export type DeploymentResponse = {
             repository?: string;
             status?: {
                 application?: Application;
-                application_id?: unknown;
+                application_id?: string;
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 status?: string;
                 updated_at?: string;
             };
@@ -837,7 +1057,7 @@ export type DeploymentResponse = {
                 created_at?: string;
                 email?: string;
                 email_verified?: boolean;
-                id?: unknown;
+                id?: string;
                 image?: string;
                 is_onboarded?: boolean;
                 is_verified?: boolean;
@@ -845,23 +1065,23 @@ export type DeploymentResponse = {
                 organization_users?: Array<{
                     created_at?: string;
                     deleted_at?: string;
-                    id?: unknown;
+                    id?: string;
                     organization?: {
                         created_at?: string;
-                        id?: unknown;
+                        id?: string;
                         logo?: string;
                         metadata?: string;
                         name?: string;
                         slug?: string;
                     };
-                    organization_id?: unknown;
+                    organization_id?: string;
                     updated_at?: string;
                     user?: User;
-                    user_id?: unknown;
+                    user_id?: string;
                 }>;
                 organizations?: Array<{
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     logo?: string;
                     metadata?: string;
                     name?: string;
@@ -872,33 +1092,151 @@ export type DeploymentResponse = {
                 updated_at?: string;
                 username?: string;
             };
-            user_id?: unknown;
+            user_id?: string;
         };
-        application_id?: unknown;
+        application_id?: string;
         commit_hash?: string;
         container_id?: string;
         container_image?: string;
         container_name?: string;
         container_status?: string;
         created_at?: string;
-        id?: unknown;
+        id?: string;
         image_s3_key?: string;
         image_size?: number;
         logs?: Array<{
-            application?: Application;
+            application?: {
+                base_path?: string;
+                branch?: string;
+                build_pack?: string;
+                build_variables?: string;
+                compose_services?: Array<{
+                    application?: Application;
+                    application_id?: string;
+                    created_at?: string;
+                    domains?: Array<{
+                        application?: Application;
+                        application_id?: string;
+                        compose_service?: ComposeService;
+                        compose_service_id?: string;
+                        created_at?: string;
+                        domain?: string;
+                        id?: string;
+                        port?: number;
+                    }>;
+                    id?: string;
+                    port?: number;
+                    service_name?: string;
+                    updated_at?: string;
+                }>;
+                created_at?: string;
+                deployments?: Array<ApplicationDeployment>;
+                dockerfile_path?: string;
+                domains?: Array<{
+                    application?: Application;
+                    application_id?: string;
+                    compose_service?: {
+                        application?: Application;
+                        application_id?: string;
+                        created_at?: string;
+                        domains?: Array<ApplicationDomain>;
+                        id?: string;
+                        port?: number;
+                        service_name?: string;
+                        updated_at?: string;
+                    };
+                    compose_service_id?: string;
+                    created_at?: string;
+                    domain?: string;
+                    id?: string;
+                    port?: number;
+                }>;
+                environment?: string;
+                environment_variables?: string;
+                family_id?: string;
+                id?: string;
+                is_live_deployment?: boolean;
+                labels?: Array<string>;
+                logs?: Array<ApplicationLogs>;
+                name?: string;
+                organization?: {
+                    created_at?: string;
+                    id?: string;
+                    logo?: string;
+                    metadata?: string;
+                    name?: string;
+                    slug?: string;
+                };
+                organization_id?: string;
+                port?: number;
+                post_run_command?: string;
+                pre_run_command?: string;
+                proxy_server?: string;
+                repository?: string;
+                status?: {
+                    application?: Application;
+                    application_id?: string;
+                    created_at?: string;
+                    id?: string;
+                    status?: string;
+                    updated_at?: string;
+                };
+                updated_at?: string;
+                user?: {
+                    avatar?: string;
+                    created_at?: string;
+                    email?: string;
+                    email_verified?: boolean;
+                    id?: string;
+                    image?: string;
+                    is_onboarded?: boolean;
+                    is_verified?: boolean;
+                    name?: string;
+                    organization_users?: Array<{
+                        created_at?: string;
+                        deleted_at?: string;
+                        id?: string;
+                        organization?: {
+                            created_at?: string;
+                            id?: string;
+                            logo?: string;
+                            metadata?: string;
+                            name?: string;
+                            slug?: string;
+                        };
+                        organization_id?: string;
+                        updated_at?: string;
+                        user?: User;
+                        user_id?: string;
+                    }>;
+                    organizations?: Array<{
+                        created_at?: string;
+                        id?: string;
+                        logo?: string;
+                        metadata?: string;
+                        name?: string;
+                        slug?: string;
+                    }>;
+                    provision_status?: string;
+                    supertokens_user_id?: string;
+                    updated_at?: string;
+                    username?: string;
+                };
+                user_id?: string;
+            };
             application_deployment?: ApplicationDeployment;
-            application_deployment_id?: unknown;
-            application_id?: unknown;
+            application_deployment_id?: string;
+            application_id?: string;
             created_at?: string;
-            id?: unknown;
+            id?: string;
             log?: string;
             updated_at?: string;
         }>;
         status?: {
             application_deployment?: ApplicationDeployment;
-            application_deployment_id?: unknown;
+            application_deployment_id?: string;
             created_at?: string;
-            id?: unknown;
+            id?: string;
             status?: string;
             updated_at?: string;
         };
@@ -915,11 +1253,11 @@ export type DomainResponse = {
     data?: {
         created_at?: string;
         deleted_at?: string;
-        id?: unknown;
+        id?: string;
         name?: string;
-        organization_id?: unknown;
+        organization_id?: string;
         updated_at?: string;
-        user_id?: unknown;
+        user_id?: string;
     };
     message?: string;
     status?: string;
@@ -932,7 +1270,7 @@ export type DuplicateProjectRequest = {
     branch?: string;
     domains?: Array<string>;
     environment?: string;
-    source_project_id?: unknown;
+    source_project_id?: string;
 };
 
 /**
@@ -967,21 +1305,24 @@ export type ExecutionResponse = {
             extension_type?: string;
             featured?: boolean;
             icon?: string;
-            id?: unknown;
+            id?: string;
             is_verified?: boolean;
             name?: string;
-            parent_extension_id?: unknown;
+            parent_extension_id?: string;
             parsed_content?: string;
             updated_at?: string;
             validation_errors?: string;
             validation_status?: string;
             variables?: Array<{
                 created_at?: string;
-                default_value?: unknown;
+                /**
+                 * JSON-encoded value
+                 */
+                default_value?: string;
                 description?: string;
                 extension?: Extension;
-                extension_id?: unknown;
-                id?: unknown;
+                extension_id?: string;
+                id?: string;
                 is_required?: boolean;
                 validation_pattern?: string;
                 variable_name?: string;
@@ -990,8 +1331,8 @@ export type ExecutionResponse = {
             version?: string;
             yaml_content?: string;
         };
-        extension_id?: unknown;
-        id?: unknown;
+        extension_id?: string;
+        id?: string;
         log_seq?: number;
         server_hostname?: string;
         started_at?: string;
@@ -1000,9 +1341,9 @@ export type ExecutionResponse = {
             completed_at?: string;
             created_at?: string;
             execution?: ExtensionExecution;
-            execution_id?: unknown;
+            execution_id?: string;
             exit_code?: number;
-            id?: unknown;
+            id?: string;
             output?: string;
             phase?: string;
             started_at?: string;
@@ -1027,21 +1368,24 @@ export type Extension = {
     extension_type?: string;
     featured?: boolean;
     icon?: string;
-    id?: unknown;
+    id?: string;
     is_verified?: boolean;
     name?: string;
-    parent_extension_id?: unknown;
+    parent_extension_id?: string;
     parsed_content?: string;
     updated_at?: string;
     validation_errors?: string;
     validation_status?: string;
     variables?: Array<{
         created_at?: string;
-        default_value?: unknown;
+        /**
+         * JSON-encoded value
+         */
+        default_value?: string;
         description?: string;
         extension?: Extension;
-        extension_id?: unknown;
-        id?: unknown;
+        extension_id?: string;
+        id?: string;
         is_required?: boolean;
         validation_pattern?: string;
         variable_name?: string;
@@ -1068,21 +1412,24 @@ export type ExtensionExecution = {
         extension_type?: string;
         featured?: boolean;
         icon?: string;
-        id?: unknown;
+        id?: string;
         is_verified?: boolean;
         name?: string;
-        parent_extension_id?: unknown;
+        parent_extension_id?: string;
         parsed_content?: string;
         updated_at?: string;
         validation_errors?: string;
         validation_status?: string;
         variables?: Array<{
             created_at?: string;
-            default_value?: unknown;
+            /**
+             * JSON-encoded value
+             */
+            default_value?: string;
             description?: string;
             extension?: Extension;
-            extension_id?: unknown;
-            id?: unknown;
+            extension_id?: string;
+            id?: string;
             is_required?: boolean;
             validation_pattern?: string;
             variable_name?: string;
@@ -1091,8 +1438,8 @@ export type ExtensionExecution = {
         version?: string;
         yaml_content?: string;
     };
-    extension_id?: unknown;
-    id?: unknown;
+    extension_id?: string;
+    id?: string;
     log_seq?: number;
     server_hostname?: string;
     started_at?: string;
@@ -1101,9 +1448,9 @@ export type ExtensionExecution = {
         completed_at?: string;
         created_at?: string;
         execution?: ExtensionExecution;
-        execution_id?: unknown;
+        execution_id?: string;
         exit_code?: number;
-        id?: unknown;
+        id?: string;
         output?: string;
         phase?: string;
         started_at?: string;
@@ -1129,21 +1476,24 @@ export type ExtensionResponse = {
         extension_type?: string;
         featured?: boolean;
         icon?: string;
-        id?: unknown;
+        id?: string;
         is_verified?: boolean;
         name?: string;
-        parent_extension_id?: unknown;
+        parent_extension_id?: string;
         parsed_content?: string;
         updated_at?: string;
         validation_errors?: string;
         validation_status?: string;
         variables?: Array<{
             created_at?: string;
-            default_value?: unknown;
+            /**
+             * JSON-encoded value
+             */
+            default_value?: string;
             description?: string;
             extension?: Extension;
-            extension_id?: unknown;
-            id?: unknown;
+            extension_id?: string;
+            id?: string;
             is_required?: boolean;
             validation_pattern?: string;
             variable_name?: string;
@@ -1175,7 +1525,7 @@ export type GetActivitiesResponse = {
             id?: string;
             message?: string;
             metadata?: {
-                [key: string]: unknown;
+                [key: string]: string;
             };
             resource?: string;
             resource_id?: string;
@@ -1272,10 +1622,19 @@ export type HttpError = {
      */
     detail?: string;
     errors?: Array<{
+        /**
+         * Additional information about the error
+         */
         more?: {
-            [key: string]: unknown;
+            [key: string]: string;
         };
+        /**
+         * For example, name of the parameter that caused the error
+         */
         name?: string;
+        /**
+         * Human readable error message
+         */
         reason?: string;
     }>;
     instance?: string;
@@ -1297,6 +1656,15 @@ export type HttpError = {
  * HealthCheckResponse schema
  */
 export type HealthCheckResponse = {
+    message?: string;
+    status?: string;
+};
+
+/**
+ * IndexCodebaseResponse schema
+ */
+export type IndexCodebaseResponse = {
+    data?: unknown;
     message?: string;
     status?: string;
 };
@@ -1342,34 +1710,53 @@ export type ListApplicationsResponse = {
             branch?: string;
             build_pack?: string;
             build_variables?: string;
+            compose_services?: Array<{
+                application?: Application;
+                application_id?: string;
+                created_at?: string;
+                domains?: Array<{
+                    application?: Application;
+                    application_id?: string;
+                    compose_service?: ComposeService;
+                    compose_service_id?: string;
+                    created_at?: string;
+                    domain?: string;
+                    id?: string;
+                    port?: number;
+                }>;
+                id?: string;
+                port?: number;
+                service_name?: string;
+                updated_at?: string;
+            }>;
             created_at?: string;
             deployments?: Array<{
                 application?: Application;
-                application_id?: unknown;
+                application_id?: string;
                 commit_hash?: string;
                 container_id?: string;
                 container_image?: string;
                 container_name?: string;
                 container_status?: string;
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 image_s3_key?: string;
                 image_size?: number;
                 logs?: Array<{
                     application?: Application;
                     application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: unknown;
-                    application_id?: unknown;
+                    application_deployment_id?: string;
+                    application_id?: string;
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     log?: string;
                     updated_at?: string;
                 }>;
                 status?: {
                     application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: unknown;
+                    application_deployment_id?: string;
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     status?: string;
                     updated_at?: string;
                 };
@@ -1378,37 +1765,71 @@ export type ListApplicationsResponse = {
             dockerfile_path?: string;
             domains?: Array<{
                 application?: Application;
-                application_id?: unknown;
+                application_id?: string;
+                compose_service?: {
+                    application?: Application;
+                    application_id?: string;
+                    created_at?: string;
+                    domains?: Array<ApplicationDomain>;
+                    id?: string;
+                    port?: number;
+                    service_name?: string;
+                    updated_at?: string;
+                };
+                compose_service_id?: string;
                 created_at?: string;
                 domain?: string;
-                id?: unknown;
+                id?: string;
+                port?: number;
             }>;
             environment?: string;
             environment_variables?: string;
-            family_id?: unknown;
-            id?: unknown;
+            family_id?: string;
+            id?: string;
             is_live_deployment?: boolean;
             labels?: Array<string>;
             logs?: Array<{
                 application?: Application;
-                application_deployment?: ApplicationDeployment;
-                application_deployment_id?: unknown;
-                application_id?: unknown;
+                application_deployment?: {
+                    application?: Application;
+                    application_id?: string;
+                    commit_hash?: string;
+                    container_id?: string;
+                    container_image?: string;
+                    container_name?: string;
+                    container_status?: string;
+                    created_at?: string;
+                    id?: string;
+                    image_s3_key?: string;
+                    image_size?: number;
+                    logs?: Array<ApplicationLogs>;
+                    status?: {
+                        application_deployment?: ApplicationDeployment;
+                        application_deployment_id?: string;
+                        created_at?: string;
+                        id?: string;
+                        status?: string;
+                        updated_at?: string;
+                    };
+                    updated_at?: string;
+                };
+                application_deployment_id?: string;
+                application_id?: string;
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 log?: string;
                 updated_at?: string;
             }>;
             name?: string;
             organization?: {
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 logo?: string;
                 metadata?: string;
                 name?: string;
                 slug?: string;
             };
-            organization_id?: unknown;
+            organization_id?: string;
             port?: number;
             post_run_command?: string;
             pre_run_command?: string;
@@ -1416,9 +1837,9 @@ export type ListApplicationsResponse = {
             repository?: string;
             status?: {
                 application?: Application;
-                application_id?: unknown;
+                application_id?: string;
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 status?: string;
                 updated_at?: string;
             };
@@ -1428,7 +1849,7 @@ export type ListApplicationsResponse = {
                 created_at?: string;
                 email?: string;
                 email_verified?: boolean;
-                id?: unknown;
+                id?: string;
                 image?: string;
                 is_onboarded?: boolean;
                 is_verified?: boolean;
@@ -1436,23 +1857,23 @@ export type ListApplicationsResponse = {
                 organization_users?: Array<{
                     created_at?: string;
                     deleted_at?: string;
-                    id?: unknown;
+                    id?: string;
                     organization?: {
                         created_at?: string;
-                        id?: unknown;
+                        id?: string;
                         logo?: string;
                         metadata?: string;
                         name?: string;
                         slug?: string;
                     };
-                    organization_id?: unknown;
+                    organization_id?: string;
                     updated_at?: string;
                     user?: User;
-                    user_id?: unknown;
+                    user_id?: string;
                 }>;
                 organizations?: Array<{
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     logo?: string;
                     metadata?: string;
                     name?: string;
@@ -1463,7 +1884,7 @@ export type ListApplicationsResponse = {
                 updated_at?: string;
                 username?: string;
             };
-            user_id?: unknown;
+            user_id?: string;
         }>;
         page?: string;
         page_size?: string;
@@ -1499,12 +1920,12 @@ export type ListConnectorsResponse = {
         client_secret?: string;
         created_at?: string;
         deleted_at?: string;
-        id?: unknown;
+        id?: string;
         installation_id?: string;
         pem?: string;
         slug?: string;
         updated_at?: string;
-        user_id?: unknown;
+        user_id?: string;
         webhook_secret?: string;
     }>;
     message?: string;
@@ -1654,73 +2075,73 @@ export type ListDeploymentsResponse = {
                 branch?: string;
                 build_pack?: string;
                 build_variables?: string;
-                created_at?: string;
-                deployments?: Array<{
+                compose_services?: Array<{
                     application?: Application;
-                    application_id?: unknown;
-                    commit_hash?: string;
-                    container_id?: string;
-                    container_image?: string;
-                    container_name?: string;
-                    container_status?: string;
+                    application_id?: string;
                     created_at?: string;
-                    id?: unknown;
-                    image_s3_key?: string;
-                    image_size?: number;
-                    logs?: Array<{
+                    domains?: Array<{
                         application?: Application;
-                        application_deployment?: ApplicationDeployment;
-                        application_deployment_id?: unknown;
-                        application_id?: unknown;
+                        application_id?: string;
+                        compose_service?: ComposeService;
+                        compose_service_id?: string;
                         created_at?: string;
-                        id?: unknown;
-                        log?: string;
-                        updated_at?: string;
+                        domain?: string;
+                        id?: string;
+                        port?: number;
                     }>;
-                    status?: {
-                        application_deployment?: ApplicationDeployment;
-                        application_deployment_id?: unknown;
-                        created_at?: string;
-                        id?: unknown;
-                        status?: string;
-                        updated_at?: string;
-                    };
+                    id?: string;
+                    port?: number;
+                    service_name?: string;
                     updated_at?: string;
                 }>;
+                created_at?: string;
+                deployments?: Array<ApplicationDeployment>;
                 dockerfile_path?: string;
                 domains?: Array<{
                     application?: Application;
-                    application_id?: unknown;
+                    application_id?: string;
+                    compose_service?: {
+                        application?: Application;
+                        application_id?: string;
+                        created_at?: string;
+                        domains?: Array<ApplicationDomain>;
+                        id?: string;
+                        port?: number;
+                        service_name?: string;
+                        updated_at?: string;
+                    };
+                    compose_service_id?: string;
                     created_at?: string;
                     domain?: string;
-                    id?: unknown;
+                    id?: string;
+                    port?: number;
                 }>;
                 environment?: string;
                 environment_variables?: string;
-                family_id?: unknown;
-                id?: unknown;
+                family_id?: string;
+                id?: string;
                 is_live_deployment?: boolean;
                 labels?: Array<string>;
                 logs?: Array<{
                     application?: Application;
                     application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: unknown;
-                    application_id?: unknown;
+                    application_deployment_id?: string;
+                    application_id?: string;
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     log?: string;
                     updated_at?: string;
                 }>;
                 name?: string;
                 organization?: {
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     logo?: string;
                     metadata?: string;
                     name?: string;
                     slug?: string;
                 };
-                organization_id?: unknown;
+                organization_id?: string;
                 port?: number;
                 post_run_command?: string;
                 pre_run_command?: string;
@@ -1728,9 +2149,9 @@ export type ListDeploymentsResponse = {
                 repository?: string;
                 status?: {
                     application?: Application;
-                    application_id?: unknown;
+                    application_id?: string;
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     status?: string;
                     updated_at?: string;
                 };
@@ -1740,7 +2161,7 @@ export type ListDeploymentsResponse = {
                     created_at?: string;
                     email?: string;
                     email_verified?: boolean;
-                    id?: unknown;
+                    id?: string;
                     image?: string;
                     is_onboarded?: boolean;
                     is_verified?: boolean;
@@ -1748,23 +2169,23 @@ export type ListDeploymentsResponse = {
                     organization_users?: Array<{
                         created_at?: string;
                         deleted_at?: string;
-                        id?: unknown;
+                        id?: string;
                         organization?: {
                             created_at?: string;
-                            id?: unknown;
+                            id?: string;
                             logo?: string;
                             metadata?: string;
                             name?: string;
                             slug?: string;
                         };
-                        organization_id?: unknown;
+                        organization_id?: string;
                         updated_at?: string;
                         user?: User;
-                        user_id?: unknown;
+                        user_id?: string;
                     }>;
                     organizations?: Array<{
                         created_at?: string;
-                        id?: unknown;
+                        id?: string;
                         logo?: string;
                         metadata?: string;
                         name?: string;
@@ -1775,33 +2196,151 @@ export type ListDeploymentsResponse = {
                     updated_at?: string;
                     username?: string;
                 };
-                user_id?: unknown;
+                user_id?: string;
             };
-            application_id?: unknown;
+            application_id?: string;
             commit_hash?: string;
             container_id?: string;
             container_image?: string;
             container_name?: string;
             container_status?: string;
             created_at?: string;
-            id?: unknown;
+            id?: string;
             image_s3_key?: string;
             image_size?: number;
             logs?: Array<{
-                application?: Application;
+                application?: {
+                    base_path?: string;
+                    branch?: string;
+                    build_pack?: string;
+                    build_variables?: string;
+                    compose_services?: Array<{
+                        application?: Application;
+                        application_id?: string;
+                        created_at?: string;
+                        domains?: Array<{
+                            application?: Application;
+                            application_id?: string;
+                            compose_service?: ComposeService;
+                            compose_service_id?: string;
+                            created_at?: string;
+                            domain?: string;
+                            id?: string;
+                            port?: number;
+                        }>;
+                        id?: string;
+                        port?: number;
+                        service_name?: string;
+                        updated_at?: string;
+                    }>;
+                    created_at?: string;
+                    deployments?: Array<ApplicationDeployment>;
+                    dockerfile_path?: string;
+                    domains?: Array<{
+                        application?: Application;
+                        application_id?: string;
+                        compose_service?: {
+                            application?: Application;
+                            application_id?: string;
+                            created_at?: string;
+                            domains?: Array<ApplicationDomain>;
+                            id?: string;
+                            port?: number;
+                            service_name?: string;
+                            updated_at?: string;
+                        };
+                        compose_service_id?: string;
+                        created_at?: string;
+                        domain?: string;
+                        id?: string;
+                        port?: number;
+                    }>;
+                    environment?: string;
+                    environment_variables?: string;
+                    family_id?: string;
+                    id?: string;
+                    is_live_deployment?: boolean;
+                    labels?: Array<string>;
+                    logs?: Array<ApplicationLogs>;
+                    name?: string;
+                    organization?: {
+                        created_at?: string;
+                        id?: string;
+                        logo?: string;
+                        metadata?: string;
+                        name?: string;
+                        slug?: string;
+                    };
+                    organization_id?: string;
+                    port?: number;
+                    post_run_command?: string;
+                    pre_run_command?: string;
+                    proxy_server?: string;
+                    repository?: string;
+                    status?: {
+                        application?: Application;
+                        application_id?: string;
+                        created_at?: string;
+                        id?: string;
+                        status?: string;
+                        updated_at?: string;
+                    };
+                    updated_at?: string;
+                    user?: {
+                        avatar?: string;
+                        created_at?: string;
+                        email?: string;
+                        email_verified?: boolean;
+                        id?: string;
+                        image?: string;
+                        is_onboarded?: boolean;
+                        is_verified?: boolean;
+                        name?: string;
+                        organization_users?: Array<{
+                            created_at?: string;
+                            deleted_at?: string;
+                            id?: string;
+                            organization?: {
+                                created_at?: string;
+                                id?: string;
+                                logo?: string;
+                                metadata?: string;
+                                name?: string;
+                                slug?: string;
+                            };
+                            organization_id?: string;
+                            updated_at?: string;
+                            user?: User;
+                            user_id?: string;
+                        }>;
+                        organizations?: Array<{
+                            created_at?: string;
+                            id?: string;
+                            logo?: string;
+                            metadata?: string;
+                            name?: string;
+                            slug?: string;
+                        }>;
+                        provision_status?: string;
+                        supertokens_user_id?: string;
+                        updated_at?: string;
+                        username?: string;
+                    };
+                    user_id?: string;
+                };
                 application_deployment?: ApplicationDeployment;
-                application_deployment_id?: unknown;
-                application_id?: unknown;
+                application_deployment_id?: string;
+                application_id?: string;
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 log?: string;
                 updated_at?: string;
             }>;
             status?: {
                 application_deployment?: ApplicationDeployment;
-                application_deployment_id?: unknown;
+                application_deployment_id?: string;
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 status?: string;
                 updated_at?: string;
             };
@@ -1822,11 +2361,11 @@ export type ListDomainsResponse = {
     data?: Array<{
         created_at?: string;
         deleted_at?: string;
-        id?: unknown;
+        id?: string;
         name?: string;
-        organization_id?: unknown;
+        organization_id?: string;
         updated_at?: string;
-        user_id?: unknown;
+        user_id?: string;
     }>;
     message?: string;
     status?: string;
@@ -1853,21 +2392,24 @@ export type ListExecutionsResponse = {
             extension_type?: string;
             featured?: boolean;
             icon?: string;
-            id?: unknown;
+            id?: string;
             is_verified?: boolean;
             name?: string;
-            parent_extension_id?: unknown;
+            parent_extension_id?: string;
             parsed_content?: string;
             updated_at?: string;
             validation_errors?: string;
             validation_status?: string;
             variables?: Array<{
                 created_at?: string;
-                default_value?: unknown;
+                /**
+                 * JSON-encoded value
+                 */
+                default_value?: string;
                 description?: string;
                 extension?: Extension;
-                extension_id?: unknown;
-                id?: unknown;
+                extension_id?: string;
+                id?: string;
                 is_required?: boolean;
                 validation_pattern?: string;
                 variable_name?: string;
@@ -1876,8 +2418,8 @@ export type ListExecutionsResponse = {
             version?: string;
             yaml_content?: string;
         };
-        extension_id?: unknown;
-        id?: unknown;
+        extension_id?: string;
+        id?: string;
         log_seq?: number;
         server_hostname?: string;
         started_at?: string;
@@ -1886,9 +2428,9 @@ export type ListExecutionsResponse = {
             completed_at?: string;
             created_at?: string;
             execution?: ExtensionExecution;
-            execution_id?: unknown;
+            execution_id?: string;
             exit_code?: number;
-            id?: unknown;
+            id?: string;
             output?: string;
             phase?: string;
             started_at?: string;
@@ -1918,21 +2460,24 @@ export type ListExtensionsResponse = {
             extension_type?: string;
             featured?: boolean;
             icon?: string;
-            id?: unknown;
+            id?: string;
             is_verified?: boolean;
             name?: string;
-            parent_extension_id?: unknown;
+            parent_extension_id?: string;
             parsed_content?: string;
             updated_at?: string;
             validation_errors?: string;
             validation_status?: string;
             variables?: Array<{
                 created_at?: string;
-                default_value?: unknown;
+                /**
+                 * JSON-encoded value
+                 */
+                default_value?: string;
                 description?: string;
                 extension?: Extension;
-                extension_id?: unknown;
-                id?: unknown;
+                extension_id?: string;
+                id?: string;
                 is_required?: boolean;
                 validation_pattern?: string;
                 variable_name?: string;
@@ -1958,17 +2503,17 @@ export type ListFeatureFlagsResponse = {
         created_at?: string;
         deleted_at?: string;
         feature_name?: string;
-        id?: unknown;
+        id?: string;
         is_enabled?: boolean;
         organization?: {
             created_at?: string;
-            id?: unknown;
+            id?: string;
             logo?: string;
             metadata?: string;
             name?: string;
             slug?: string;
         };
-        organization_id?: unknown;
+        organization_id?: string;
         updated_at?: string;
     }>;
     message?: string;
@@ -2040,13 +2585,16 @@ export type ListLogsResponse = {
         execution_status?: string;
         logs?: Array<{
             created_at?: string;
-            data?: unknown;
-            execution_id?: unknown;
-            id?: unknown;
+            /**
+             * JSON-encoded value
+             */
+            data?: string;
+            execution_id?: string;
+            id?: string;
             level?: string;
             message?: string;
             sequence?: number;
-            step_id?: unknown;
+            step_id?: string;
         }>;
         next_after?: number;
     };
@@ -2196,7 +2744,7 @@ export type ListServersResponse = {
             description?: string;
             fingerprint?: string;
             host?: string;
-            id?: unknown;
+            id?: string;
             is_active?: boolean;
             key_size?: number;
             key_type?: string;
@@ -2204,29 +2752,29 @@ export type ListServersResponse = {
             name?: string;
             organization?: {
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 logo?: string;
                 metadata?: string;
                 name?: string;
                 slug?: string;
             };
-            organization_id?: unknown;
+            organization_id?: string;
             port?: number;
             provision?: {
                 created_at?: string;
                 domain?: string;
                 error?: string;
-                id?: unknown;
+                id?: string;
                 lxd_container_name?: string;
                 organization?: {
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     logo?: string;
                     metadata?: string;
                     name?: string;
                     slug?: string;
                 };
-                organization_id?: unknown;
+                organization_id?: string;
                 ssh_key?: {
                     auth_method?: string;
                     created_at?: string;
@@ -2234,7 +2782,7 @@ export type ListServersResponse = {
                     description?: string;
                     fingerprint?: string;
                     host?: string;
-                    id?: unknown;
+                    id?: string;
                     is_active?: boolean;
                     key_size?: number;
                     key_type?: string;
@@ -2242,19 +2790,19 @@ export type ListServersResponse = {
                     name?: string;
                     organization?: {
                         created_at?: string;
-                        id?: unknown;
+                        id?: string;
                         logo?: string;
                         metadata?: string;
                         name?: string;
                         slug?: string;
                     };
-                    organization_id?: unknown;
+                    organization_id?: string;
                     port?: number;
                     public_key?: string;
                     updated_at?: string;
                     user?: string;
                 };
-                ssh_key_id?: unknown;
+                ssh_key_id?: string;
                 step?: string;
                 subdomain?: string;
                 updated_at?: string;
@@ -2263,7 +2811,7 @@ export type ListServersResponse = {
                     created_at?: string;
                     email?: string;
                     email_verified?: boolean;
-                    id?: unknown;
+                    id?: string;
                     image?: string;
                     is_onboarded?: boolean;
                     is_verified?: boolean;
@@ -2271,23 +2819,23 @@ export type ListServersResponse = {
                     organization_users?: Array<{
                         created_at?: string;
                         deleted_at?: string;
-                        id?: unknown;
+                        id?: string;
                         organization?: {
                             created_at?: string;
-                            id?: unknown;
+                            id?: string;
                             logo?: string;
                             metadata?: string;
                             name?: string;
                             slug?: string;
                         };
-                        organization_id?: unknown;
+                        organization_id?: string;
                         updated_at?: string;
                         user?: User;
-                        user_id?: unknown;
+                        user_id?: string;
                     }>;
                     organizations?: Array<{
                         created_at?: string;
-                        id?: unknown;
+                        id?: string;
                         logo?: string;
                         metadata?: string;
                         name?: string;
@@ -2298,7 +2846,7 @@ export type ListServersResponse = {
                     updated_at?: string;
                     username?: string;
                 };
-                user_id?: unknown;
+                user_id?: string;
             };
             public_key?: string;
             updated_at?: string;
@@ -2324,34 +2872,44 @@ export type LogsResponse = {
                 branch?: string;
                 build_pack?: string;
                 build_variables?: string;
+                compose_services?: Array<{
+                    application?: Application;
+                    application_id?: string;
+                    created_at?: string;
+                    domains?: Array<{
+                        application?: Application;
+                        application_id?: string;
+                        compose_service?: ComposeService;
+                        compose_service_id?: string;
+                        created_at?: string;
+                        domain?: string;
+                        id?: string;
+                        port?: number;
+                    }>;
+                    id?: string;
+                    port?: number;
+                    service_name?: string;
+                    updated_at?: string;
+                }>;
                 created_at?: string;
                 deployments?: Array<{
                     application?: Application;
-                    application_id?: unknown;
+                    application_id?: string;
                     commit_hash?: string;
                     container_id?: string;
                     container_image?: string;
                     container_name?: string;
                     container_status?: string;
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     image_s3_key?: string;
                     image_size?: number;
-                    logs?: Array<{
-                        application?: Application;
-                        application_deployment?: ApplicationDeployment;
-                        application_deployment_id?: unknown;
-                        application_id?: unknown;
-                        created_at?: string;
-                        id?: unknown;
-                        log?: string;
-                        updated_at?: string;
-                    }>;
+                    logs?: Array<ApplicationLogs>;
                     status?: {
                         application_deployment?: ApplicationDeployment;
-                        application_deployment_id?: unknown;
+                        application_deployment_id?: string;
                         created_at?: string;
-                        id?: unknown;
+                        id?: string;
                         status?: string;
                         updated_at?: string;
                     };
@@ -2360,37 +2918,40 @@ export type LogsResponse = {
                 dockerfile_path?: string;
                 domains?: Array<{
                     application?: Application;
-                    application_id?: unknown;
+                    application_id?: string;
+                    compose_service?: {
+                        application?: Application;
+                        application_id?: string;
+                        created_at?: string;
+                        domains?: Array<ApplicationDomain>;
+                        id?: string;
+                        port?: number;
+                        service_name?: string;
+                        updated_at?: string;
+                    };
+                    compose_service_id?: string;
                     created_at?: string;
                     domain?: string;
-                    id?: unknown;
+                    id?: string;
+                    port?: number;
                 }>;
                 environment?: string;
                 environment_variables?: string;
-                family_id?: unknown;
-                id?: unknown;
+                family_id?: string;
+                id?: string;
                 is_live_deployment?: boolean;
                 labels?: Array<string>;
-                logs?: Array<{
-                    application?: Application;
-                    application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: unknown;
-                    application_id?: unknown;
-                    created_at?: string;
-                    id?: unknown;
-                    log?: string;
-                    updated_at?: string;
-                }>;
+                logs?: Array<ApplicationLogs>;
                 name?: string;
                 organization?: {
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     logo?: string;
                     metadata?: string;
                     name?: string;
                     slug?: string;
                 };
-                organization_id?: unknown;
+                organization_id?: string;
                 port?: number;
                 post_run_command?: string;
                 pre_run_command?: string;
@@ -2398,9 +2959,9 @@ export type LogsResponse = {
                 repository?: string;
                 status?: {
                     application?: Application;
-                    application_id?: unknown;
+                    application_id?: string;
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     status?: string;
                     updated_at?: string;
                 };
@@ -2410,7 +2971,7 @@ export type LogsResponse = {
                     created_at?: string;
                     email?: string;
                     email_verified?: boolean;
-                    id?: unknown;
+                    id?: string;
                     image?: string;
                     is_onboarded?: boolean;
                     is_verified?: boolean;
@@ -2418,23 +2979,23 @@ export type LogsResponse = {
                     organization_users?: Array<{
                         created_at?: string;
                         deleted_at?: string;
-                        id?: unknown;
+                        id?: string;
                         organization?: {
                             created_at?: string;
-                            id?: unknown;
+                            id?: string;
                             logo?: string;
                             metadata?: string;
                             name?: string;
                             slug?: string;
                         };
-                        organization_id?: unknown;
+                        organization_id?: string;
                         updated_at?: string;
                         user?: User;
-                        user_id?: unknown;
+                        user_id?: string;
                     }>;
                     organizations?: Array<{
                         created_at?: string;
-                        id?: unknown;
+                        id?: string;
                         logo?: string;
                         metadata?: string;
                         name?: string;
@@ -2445,44 +3006,153 @@ export type LogsResponse = {
                     updated_at?: string;
                     username?: string;
                 };
-                user_id?: unknown;
+                user_id?: string;
             };
             application_deployment?: {
-                application?: Application;
-                application_id?: unknown;
+                application?: {
+                    base_path?: string;
+                    branch?: string;
+                    build_pack?: string;
+                    build_variables?: string;
+                    compose_services?: Array<{
+                        application?: Application;
+                        application_id?: string;
+                        created_at?: string;
+                        domains?: Array<{
+                            application?: Application;
+                            application_id?: string;
+                            compose_service?: ComposeService;
+                            compose_service_id?: string;
+                            created_at?: string;
+                            domain?: string;
+                            id?: string;
+                            port?: number;
+                        }>;
+                        id?: string;
+                        port?: number;
+                        service_name?: string;
+                        updated_at?: string;
+                    }>;
+                    created_at?: string;
+                    deployments?: Array<ApplicationDeployment>;
+                    dockerfile_path?: string;
+                    domains?: Array<{
+                        application?: Application;
+                        application_id?: string;
+                        compose_service?: {
+                            application?: Application;
+                            application_id?: string;
+                            created_at?: string;
+                            domains?: Array<ApplicationDomain>;
+                            id?: string;
+                            port?: number;
+                            service_name?: string;
+                            updated_at?: string;
+                        };
+                        compose_service_id?: string;
+                        created_at?: string;
+                        domain?: string;
+                        id?: string;
+                        port?: number;
+                    }>;
+                    environment?: string;
+                    environment_variables?: string;
+                    family_id?: string;
+                    id?: string;
+                    is_live_deployment?: boolean;
+                    labels?: Array<string>;
+                    logs?: Array<ApplicationLogs>;
+                    name?: string;
+                    organization?: {
+                        created_at?: string;
+                        id?: string;
+                        logo?: string;
+                        metadata?: string;
+                        name?: string;
+                        slug?: string;
+                    };
+                    organization_id?: string;
+                    port?: number;
+                    post_run_command?: string;
+                    pre_run_command?: string;
+                    proxy_server?: string;
+                    repository?: string;
+                    status?: {
+                        application?: Application;
+                        application_id?: string;
+                        created_at?: string;
+                        id?: string;
+                        status?: string;
+                        updated_at?: string;
+                    };
+                    updated_at?: string;
+                    user?: {
+                        avatar?: string;
+                        created_at?: string;
+                        email?: string;
+                        email_verified?: boolean;
+                        id?: string;
+                        image?: string;
+                        is_onboarded?: boolean;
+                        is_verified?: boolean;
+                        name?: string;
+                        organization_users?: Array<{
+                            created_at?: string;
+                            deleted_at?: string;
+                            id?: string;
+                            organization?: {
+                                created_at?: string;
+                                id?: string;
+                                logo?: string;
+                                metadata?: string;
+                                name?: string;
+                                slug?: string;
+                            };
+                            organization_id?: string;
+                            updated_at?: string;
+                            user?: User;
+                            user_id?: string;
+                        }>;
+                        organizations?: Array<{
+                            created_at?: string;
+                            id?: string;
+                            logo?: string;
+                            metadata?: string;
+                            name?: string;
+                            slug?: string;
+                        }>;
+                        provision_status?: string;
+                        supertokens_user_id?: string;
+                        updated_at?: string;
+                        username?: string;
+                    };
+                    user_id?: string;
+                };
+                application_id?: string;
                 commit_hash?: string;
                 container_id?: string;
                 container_image?: string;
                 container_name?: string;
                 container_status?: string;
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 image_s3_key?: string;
                 image_size?: number;
-                logs?: Array<{
-                    application?: Application;
-                    application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: unknown;
-                    application_id?: unknown;
-                    created_at?: string;
-                    id?: unknown;
-                    log?: string;
-                    updated_at?: string;
-                }>;
+                logs?: Array<ApplicationLogs>;
                 status?: {
                     application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: unknown;
+                    application_deployment_id?: string;
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     status?: string;
                     updated_at?: string;
                 };
                 updated_at?: string;
             };
-            application_deployment_id?: unknown;
-            application_id?: unknown;
+            application_deployment_id?: string;
+            application_id?: string;
             created_at?: string;
-            id?: unknown;
+            id?: string;
             log?: string;
             updated_at?: string;
         }>;
@@ -2532,26 +3202,46 @@ export type PauseRequest = {
 export type PreferencesResponse = {
     data?: {
         activity?: Array<{
-            description?: string;
+            description: string;
             enabled?: boolean;
-            id?: string;
-            label?: string;
+            id: string;
+            label: string;
         }>;
         security?: Array<{
-            description?: string;
+            description: string;
             enabled?: boolean;
-            id?: string;
-            label?: string;
+            id: string;
+            label: string;
         }>;
         update?: Array<{
-            description?: string;
+            description: string;
             enabled?: boolean;
-            id?: string;
-            label?: string;
+            id: string;
+            label: string;
         }>;
     };
     message?: string;
     status?: string;
+};
+
+/**
+ * PreviewComposeRequest schema
+ */
+export type PreviewComposeRequest = {
+    base_path?: string;
+    branch?: string;
+    dockerfile_path?: string;
+    repository?: string;
+};
+
+/**
+ * PreviewComposeResponse schema
+ */
+export type PreviewComposeResponse = {
+    services?: Array<{
+        port?: number;
+        service_name?: string;
+    }>;
 };
 
 /**
@@ -2564,34 +3254,53 @@ export type ProjectFamilyResponse = {
             branch?: string;
             build_pack?: string;
             build_variables?: string;
+            compose_services?: Array<{
+                application?: Application;
+                application_id?: string;
+                created_at?: string;
+                domains?: Array<{
+                    application?: Application;
+                    application_id?: string;
+                    compose_service?: ComposeService;
+                    compose_service_id?: string;
+                    created_at?: string;
+                    domain?: string;
+                    id?: string;
+                    port?: number;
+                }>;
+                id?: string;
+                port?: number;
+                service_name?: string;
+                updated_at?: string;
+            }>;
             created_at?: string;
             deployments?: Array<{
                 application?: Application;
-                application_id?: unknown;
+                application_id?: string;
                 commit_hash?: string;
                 container_id?: string;
                 container_image?: string;
                 container_name?: string;
                 container_status?: string;
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 image_s3_key?: string;
                 image_size?: number;
                 logs?: Array<{
                     application?: Application;
                     application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: unknown;
-                    application_id?: unknown;
+                    application_deployment_id?: string;
+                    application_id?: string;
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     log?: string;
                     updated_at?: string;
                 }>;
                 status?: {
                     application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: unknown;
+                    application_deployment_id?: string;
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     status?: string;
                     updated_at?: string;
                 };
@@ -2600,37 +3309,71 @@ export type ProjectFamilyResponse = {
             dockerfile_path?: string;
             domains?: Array<{
                 application?: Application;
-                application_id?: unknown;
+                application_id?: string;
+                compose_service?: {
+                    application?: Application;
+                    application_id?: string;
+                    created_at?: string;
+                    domains?: Array<ApplicationDomain>;
+                    id?: string;
+                    port?: number;
+                    service_name?: string;
+                    updated_at?: string;
+                };
+                compose_service_id?: string;
                 created_at?: string;
                 domain?: string;
-                id?: unknown;
+                id?: string;
+                port?: number;
             }>;
             environment?: string;
             environment_variables?: string;
-            family_id?: unknown;
-            id?: unknown;
+            family_id?: string;
+            id?: string;
             is_live_deployment?: boolean;
             labels?: Array<string>;
             logs?: Array<{
                 application?: Application;
-                application_deployment?: ApplicationDeployment;
-                application_deployment_id?: unknown;
-                application_id?: unknown;
+                application_deployment?: {
+                    application?: Application;
+                    application_id?: string;
+                    commit_hash?: string;
+                    container_id?: string;
+                    container_image?: string;
+                    container_name?: string;
+                    container_status?: string;
+                    created_at?: string;
+                    id?: string;
+                    image_s3_key?: string;
+                    image_size?: number;
+                    logs?: Array<ApplicationLogs>;
+                    status?: {
+                        application_deployment?: ApplicationDeployment;
+                        application_deployment_id?: string;
+                        created_at?: string;
+                        id?: string;
+                        status?: string;
+                        updated_at?: string;
+                    };
+                    updated_at?: string;
+                };
+                application_deployment_id?: string;
+                application_id?: string;
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 log?: string;
                 updated_at?: string;
             }>;
             name?: string;
             organization?: {
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 logo?: string;
                 metadata?: string;
                 name?: string;
                 slug?: string;
             };
-            organization_id?: unknown;
+            organization_id?: string;
             port?: number;
             post_run_command?: string;
             pre_run_command?: string;
@@ -2638,9 +3381,9 @@ export type ProjectFamilyResponse = {
             repository?: string;
             status?: {
                 application?: Application;
-                application_id?: unknown;
+                application_id?: string;
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 status?: string;
                 updated_at?: string;
             };
@@ -2650,7 +3393,7 @@ export type ProjectFamilyResponse = {
                 created_at?: string;
                 email?: string;
                 email_verified?: boolean;
-                id?: unknown;
+                id?: string;
                 image?: string;
                 is_onboarded?: boolean;
                 is_verified?: boolean;
@@ -2658,23 +3401,23 @@ export type ProjectFamilyResponse = {
                 organization_users?: Array<{
                     created_at?: string;
                     deleted_at?: string;
-                    id?: unknown;
+                    id?: string;
                     organization?: {
                         created_at?: string;
-                        id?: unknown;
+                        id?: string;
                         logo?: string;
                         metadata?: string;
                         name?: string;
                         slug?: string;
                     };
-                    organization_id?: unknown;
+                    organization_id?: string;
                     updated_at?: string;
                     user?: User;
-                    user_id?: unknown;
+                    user_id?: string;
                 }>;
                 organizations?: Array<{
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     logo?: string;
                     metadata?: string;
                     name?: string;
@@ -2685,7 +3428,7 @@ export type ProjectFamilyResponse = {
                 updated_at?: string;
                 username?: string;
             };
-            user_id?: unknown;
+            user_id?: string;
         }>;
     };
     message?: string;
@@ -2749,14 +3492,14 @@ export type RandomSubdomainResponseWrapper = {
 export type ReDeployApplicationRequest = {
     force?: boolean;
     force_without_cache?: boolean;
-    id?: unknown;
+    id?: string;
 };
 
 /**
  * RecoverRequest schema
  */
 export type RecoverRequest = {
-    application_id?: unknown;
+    application_id?: string;
 };
 
 /**
@@ -2765,17 +3508,17 @@ export type RecoverRequest = {
 export type RecoverResponse = {
     data?: {
         failed?: Array<{
-            application_id?: unknown;
+            application_id?: string;
             application_name?: string;
             reason?: string;
         }>;
         recovered?: Array<{
-            application_id?: unknown;
+            application_id?: string;
             application_name?: string;
             reason?: string;
         }>;
         skipped?: Array<{
-            application_id?: unknown;
+            application_id?: string;
             application_name?: string;
             reason?: string;
         }>;
@@ -2805,14 +3548,14 @@ export type Response = {
  * RestartDeploymentRequest schema
  */
 export type RestartDeploymentRequest = {
-    id?: unknown;
+    id?: string;
 };
 
 /**
  * RollbackDeploymentRequest schema
  */
 export type RollbackDeploymentRequest = {
-    id?: unknown;
+    id?: string;
 };
 
 /**
@@ -2820,7 +3563,7 @@ export type RollbackDeploymentRequest = {
  */
 export type RunExtensionRequest = {
     variables?: {
-        [key: string]: unknown;
+        [key: string]: string;
     };
 };
 
@@ -2833,13 +3576,13 @@ export type SmtpConfigResponse = {
         from_email?: string;
         from_name?: string;
         host?: string;
-        id?: unknown;
+        id?: string;
         is_active?: boolean;
-        organization_id?: unknown;
+        organization_id?: string;
         port?: number;
         security?: string;
         updated_at?: string;
-        user_id?: unknown;
+        user_id?: string;
         username?: string;
     };
     message?: string;
@@ -2921,13 +3664,19 @@ export type UpdateDeploymentRequest = {
     build_variables?: {
         [key: string]: string;
     };
+    compose_domains?: Array<{
+        domain?: string;
+        port?: number;
+        service_name?: string;
+    }>;
     dockerfile_path?: string;
+    domains?: Array<string>;
     environment?: string;
     environment_variables?: {
         [key: string]: string;
     };
     force?: boolean;
-    id?: unknown;
+    id?: string;
     name?: string;
     port?: number;
     post_run_command?: string;
@@ -3030,8 +3779,8 @@ export type UpdateSmtpConfigRequest = {
     from_email?: string;
     from_name?: string;
     host?: string;
-    id?: unknown;
-    organization_id?: unknown;
+    id?: string;
+    organization_id?: string;
     password?: string;
     port?: number;
     username?: string;
@@ -3076,7 +3825,7 @@ export type User = {
     created_at?: string;
     email?: string;
     email_verified?: boolean;
-    id?: unknown;
+    id?: string;
     image?: string;
     is_onboarded?: boolean;
     is_verified?: boolean;
@@ -3084,23 +3833,23 @@ export type User = {
     organization_users?: Array<{
         created_at?: string;
         deleted_at?: string;
-        id?: unknown;
+        id?: string;
         organization?: {
             created_at?: string;
-            id?: unknown;
+            id?: string;
             logo?: string;
             metadata?: string;
             name?: string;
             slug?: string;
         };
-        organization_id?: unknown;
+        organization_id?: string;
         updated_at?: string;
         user?: User;
-        user_id?: unknown;
+        user_id?: string;
     }>;
     organizations?: Array<{
         created_at?: string;
-        id?: unknown;
+        id?: string;
         logo?: string;
         metadata?: string;
         name?: string;
@@ -3136,7 +3885,7 @@ export type UserPreferencesData = {
 export type UserPreferencesResponse = {
     data?: {
         created_at?: string;
-        id?: unknown;
+        id?: string;
         preferences?: {
             debug_mode?: boolean;
             show_api_error_details?: boolean;
@@ -3157,7 +3906,7 @@ export type UserPreferencesResponse = {
             created_at?: string;
             email?: string;
             email_verified?: boolean;
-            id?: unknown;
+            id?: string;
             image?: string;
             is_onboarded?: boolean;
             is_verified?: boolean;
@@ -3165,23 +3914,23 @@ export type UserPreferencesResponse = {
             organization_users?: Array<{
                 created_at?: string;
                 deleted_at?: string;
-                id?: unknown;
+                id?: string;
                 organization?: {
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     logo?: string;
                     metadata?: string;
                     name?: string;
                     slug?: string;
                 };
-                organization_id?: unknown;
+                organization_id?: string;
                 updated_at?: string;
                 user?: User;
-                user_id?: unknown;
+                user_id?: string;
             }>;
             organizations?: Array<{
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 logo?: string;
                 metadata?: string;
                 name?: string;
@@ -3192,7 +3941,7 @@ export type UserPreferencesResponse = {
             updated_at?: string;
             username?: string;
         };
-        user_id?: unknown;
+        user_id?: string;
     };
     message?: string;
     status?: string;
@@ -3207,7 +3956,7 @@ export type UserResponse = {
         created_at?: string;
         email?: string;
         email_verified?: boolean;
-        id?: unknown;
+        id?: string;
         image?: string;
         is_onboarded?: boolean;
         is_verified?: boolean;
@@ -3215,23 +3964,23 @@ export type UserResponse = {
         organization_users?: Array<{
             created_at?: string;
             deleted_at?: string;
-            id?: unknown;
+            id?: string;
             organization?: {
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 logo?: string;
                 metadata?: string;
                 name?: string;
                 slug?: string;
             };
-            organization_id?: unknown;
+            organization_id?: string;
             updated_at?: string;
             user?: User;
-            user_id?: unknown;
+            user_id?: string;
         }>;
         organizations?: Array<{
             created_at?: string;
-            id?: unknown;
+            id?: string;
             logo?: string;
             metadata?: string;
             name?: string;
@@ -3256,7 +4005,7 @@ export type UserSettingsResponse = {
         deleted_at?: string;
         font_family?: string;
         font_size?: number;
-        id?: unknown;
+        id?: string;
         language?: string;
         theme?: string;
         updated_at?: string;
@@ -3265,7 +4014,7 @@ export type UserSettingsResponse = {
             created_at?: string;
             email?: string;
             email_verified?: boolean;
-            id?: unknown;
+            id?: string;
             image?: string;
             is_onboarded?: boolean;
             is_verified?: boolean;
@@ -3273,23 +4022,23 @@ export type UserSettingsResponse = {
             organization_users?: Array<{
                 created_at?: string;
                 deleted_at?: string;
-                id?: unknown;
+                id?: string;
                 organization?: {
                     created_at?: string;
-                    id?: unknown;
+                    id?: string;
                     logo?: string;
                     metadata?: string;
                     name?: string;
                     slug?: string;
                 };
-                organization_id?: unknown;
+                organization_id?: string;
                 updated_at?: string;
                 user?: User;
-                user_id?: unknown;
+                user_id?: string;
             }>;
             organizations?: Array<{
                 created_at?: string;
-                id?: unknown;
+                id?: string;
                 logo?: string;
                 metadata?: string;
                 name?: string;
@@ -3300,7 +4049,7 @@ export type UserSettingsResponse = {
             updated_at?: string;
             username?: string;
         };
-        user_id?: unknown;
+        user_id?: string;
     };
     message?: string;
     status?: string;
@@ -3312,12 +4061,12 @@ export type UserSettingsResponse = {
 export type WebhookConfigResponse = {
     data?: {
         created_at?: string;
-        id?: unknown;
+        id?: string;
         is_active?: boolean;
-        organization_id?: unknown;
+        organization_id?: string;
         type?: string;
         updated_at?: string;
-        user_id?: unknown;
+        user_id?: string;
         webhook_url?: string;
     };
     message?: string;
@@ -3997,6 +4746,39 @@ export type PutApiV1DeployApplicationResponses = {
 
 export type PutApiV1DeployApplicationResponse = PutApiV1DeployApplicationResponses[keyof PutApiV1DeployApplicationResponses];
 
+export type GetApiV1DeployApplicationComposeServicesData = {
+    body?: never;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/deploy/application/compose-services';
+};
+
+export type GetApiV1DeployApplicationComposeServicesErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: HttpError;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: HttpError;
+    default: unknown;
+};
+
+export type GetApiV1DeployApplicationComposeServicesError = GetApiV1DeployApplicationComposeServicesErrors[keyof GetApiV1DeployApplicationComposeServicesErrors];
+
+export type GetApiV1DeployApplicationComposeServicesResponses = {
+    /**
+     * OK
+     */
+    200: Response;
+};
+
+export type GetApiV1DeployApplicationComposeServicesResponse = GetApiV1DeployApplicationComposeServicesResponses[keyof GetApiV1DeployApplicationComposeServicesResponses];
+
 export type GetApiV1DeployApplicationDeploymentsData = {
     /**
      * Request body for controller.GetApplicationDeploymentsRequest
@@ -4175,6 +4957,39 @@ export type PostApiV1DeployApplicationDomainsResponses = {
 
 export type PostApiV1DeployApplicationDomainsResponse = PostApiV1DeployApplicationDomainsResponses[keyof PostApiV1DeployApplicationDomainsResponses];
 
+export type PostApiV1DeployApplicationIndexData = {
+    body?: never;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/deploy/application/index';
+};
+
+export type PostApiV1DeployApplicationIndexErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: HttpError;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: HttpError;
+    default: unknown;
+};
+
+export type PostApiV1DeployApplicationIndexError = PostApiV1DeployApplicationIndexErrors[keyof PostApiV1DeployApplicationIndexErrors];
+
+export type PostApiV1DeployApplicationIndexResponses = {
+    /**
+     * OK
+     */
+    200: IndexCodebaseResponse;
+};
+
+export type PostApiV1DeployApplicationIndexResponse = PostApiV1DeployApplicationIndexResponses[keyof PostApiV1DeployApplicationIndexResponses];
+
 export type PutApiV1DeployApplicationLabelsData = {
     /**
      * Request body for controller.UpdateLabelsRequest
@@ -4245,6 +5060,42 @@ export type GetApiV1DeployApplicationLogsApplicationIdResponses = {
 };
 
 export type GetApiV1DeployApplicationLogsApplicationIdResponse = GetApiV1DeployApplicationLogsApplicationIdResponses[keyof GetApiV1DeployApplicationLogsApplicationIdResponses];
+
+export type PostApiV1DeployApplicationPreviewComposeData = {
+    /**
+     * Request body for types.PreviewComposeRequest
+     */
+    body: PreviewComposeRequest;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/deploy/application/preview-compose';
+};
+
+export type PostApiV1DeployApplicationPreviewComposeErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: HttpError;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: HttpError;
+    default: unknown;
+};
+
+export type PostApiV1DeployApplicationPreviewComposeError = PostApiV1DeployApplicationPreviewComposeErrors[keyof PostApiV1DeployApplicationPreviewComposeErrors];
+
+export type PostApiV1DeployApplicationPreviewComposeResponses = {
+    /**
+     * OK
+     */
+    200: PreviewComposeResponse;
+};
+
+export type PostApiV1DeployApplicationPreviewComposeResponse = PostApiV1DeployApplicationPreviewComposeResponses[keyof PostApiV1DeployApplicationPreviewComposeResponses];
 
 export type PostApiV1DeployApplicationProjectData = {
     /**
