@@ -3,8 +3,8 @@
 import { type InfiniteData, infiniteQueryOptions, queryOptions, type UseMutationOptions } from '@tanstack/react-query';
 
 import { client } from '../client.gen';
-import { deleteApiV1ContainerContainerId, deleteApiV1DeployApplication, deleteApiV1DeployApplicationDomains, deleteApiV1Domain, deleteApiV1ExtensionsId, deleteApiV1FileManagerDeleteDirectory, deleteApiV1GithubConnector, deleteApiV1Healthcheck, deleteApiV1NotificationSmtp, deleteApiV1NotificationWebhook, getApiV1AuditLogs, getApiV1AuthBootstrap, getApiV1AuthIsAdminRegistered, getApiV1Container, getApiV1ContainerContainerId, getApiV1DeployApplication, getApiV1DeployApplicationComposeServices, getApiV1DeployApplicationDeployments, getApiV1DeployApplicationDeploymentsDeploymentId, getApiV1DeployApplicationDeploymentsDeploymentIdLogs, getApiV1DeployApplicationLogsApplicationId, getApiV1DeployApplicationProjectFamily, getApiV1DeployApplicationProjectFamilyEnvironments, getApiV1DeployApplications, getApiV1DomainGenerate, getApiV1Domains, getApiV1Extensions, getApiV1ExtensionsByExtensionIdExtensionId, getApiV1ExtensionsByExtensionIdExtensionIdExecutions, getApiV1ExtensionsCategories, getApiV1ExtensionsExecutionExecutionId, getApiV1ExtensionsExecutionExecutionIdLogs, getApiV1ExtensionsId, getApiV1FeatureFlags, getApiV1FeatureFlagsCheck, getApiV1FileManager, getApiV1GithubConnectorAll, getApiV1GithubConnectorRepositories, getApiV1Health, getApiV1Healthcheck, getApiV1HealthcheckResults, getApiV1HealthcheckStats, getApiV1NotificationPreferences, getApiV1NotificationSmtp, getApiV1NotificationWebhookType, getApiV1Servers, getApiV1ServersSshStatus, getApiV1TrailStatusSessionId, getApiV1UpdateCheck, getApiV1User, getApiV1UserOnboarded, getApiV1UserPreferences, getApiV1UserSettings, getWs, getWsLiveApplicationId, type Options, patchApiV1HealthcheckToggle, patchApiV1UserAvatar, patchApiV1UserName, patchApiV1UserSettingsAutoUpdate, patchApiV1UserSettingsFont, patchApiV1UserSettingsLanguage, patchApiV1UserSettingsTheme, postApiV1AuthCliInit, postApiV1ContainerContainerIdLogs, postApiV1ContainerContainerIdRestart, postApiV1ContainerContainerIdStart, postApiV1ContainerContainerIdStop, postApiV1ContainerImages, postApiV1ContainerPruneBuildCache, postApiV1ContainerPruneImages, postApiV1DeployApplication, postApiV1DeployApplicationDomains, postApiV1DeployApplicationIndex, postApiV1DeployApplicationPreviewCompose, postApiV1DeployApplicationProject, postApiV1DeployApplicationProjectAddToFamily, postApiV1DeployApplicationProjectDeploy, postApiV1DeployApplicationProjectDuplicate, postApiV1DeployApplicationRecover, postApiV1DeployApplicationRedeploy, postApiV1DeployApplicationRestart, postApiV1DeployApplicationRollback, postApiV1Domain, postApiV1ExtensionsExecutionExecutionIdCancel, postApiV1ExtensionsExtensionIdFork, postApiV1ExtensionsExtensionIdRun, postApiV1FileManagerCopyDirectory, postApiV1FileManagerCreateDirectory, postApiV1FileManagerMoveDirectory, postApiV1FileManagerUpload, postApiV1GithubConnector, postApiV1GithubConnectorRepositoryBranches, postApiV1Healthcheck, postApiV1LivePause, postApiV1NotificationPreferences, postApiV1NotificationSmtp, postApiV1NotificationWebhook, postApiV1TrailProvision, postApiV1Update, postApiV1UserOnboarded, postApiV1Webhook, putApiV1ContainerContainerIdResources, putApiV1DeployApplication, putApiV1DeployApplicationLabels, putApiV1Domain, putApiV1FeatureFlags, putApiV1GithubConnector, putApiV1Healthcheck, putApiV1NotificationSmtp, putApiV1NotificationWebhook, putApiV1UserPreferences } from '../sdk.gen';
-import type { DeleteApiV1ContainerContainerIdData, DeleteApiV1ContainerContainerIdError, DeleteApiV1ContainerContainerIdResponse, DeleteApiV1DeployApplicationData, DeleteApiV1DeployApplicationDomainsData, DeleteApiV1DeployApplicationDomainsError, DeleteApiV1DeployApplicationDomainsResponse, DeleteApiV1DeployApplicationError, DeleteApiV1DeployApplicationResponse, DeleteApiV1DomainData, DeleteApiV1DomainError, DeleteApiV1DomainResponse, DeleteApiV1ExtensionsIdData, DeleteApiV1ExtensionsIdError, DeleteApiV1ExtensionsIdResponse, DeleteApiV1FileManagerDeleteDirectoryData, DeleteApiV1FileManagerDeleteDirectoryError, DeleteApiV1FileManagerDeleteDirectoryResponse, DeleteApiV1GithubConnectorData, DeleteApiV1GithubConnectorError, DeleteApiV1GithubConnectorResponse, DeleteApiV1HealthcheckData, DeleteApiV1HealthcheckError, DeleteApiV1HealthcheckResponse, DeleteApiV1NotificationSmtpData, DeleteApiV1NotificationSmtpError, DeleteApiV1NotificationSmtpResponse, DeleteApiV1NotificationWebhookData, DeleteApiV1NotificationWebhookError, DeleteApiV1NotificationWebhookResponse, GetApiV1AuditLogsData, GetApiV1AuditLogsError, GetApiV1AuditLogsResponse, GetApiV1AuthBootstrapData, GetApiV1AuthBootstrapError, GetApiV1AuthBootstrapResponse, GetApiV1AuthIsAdminRegisteredData, GetApiV1AuthIsAdminRegisteredError, GetApiV1AuthIsAdminRegisteredResponse, GetApiV1ContainerContainerIdData, GetApiV1ContainerContainerIdError, GetApiV1ContainerContainerIdResponse, GetApiV1ContainerData, GetApiV1ContainerError, GetApiV1ContainerResponse, GetApiV1DeployApplicationComposeServicesData, GetApiV1DeployApplicationComposeServicesError, GetApiV1DeployApplicationComposeServicesResponse, GetApiV1DeployApplicationData, GetApiV1DeployApplicationDeploymentsData, GetApiV1DeployApplicationDeploymentsDeploymentIdData, GetApiV1DeployApplicationDeploymentsDeploymentIdError, GetApiV1DeployApplicationDeploymentsDeploymentIdLogsData, GetApiV1DeployApplicationDeploymentsDeploymentIdLogsError, GetApiV1DeployApplicationDeploymentsDeploymentIdLogsResponse, GetApiV1DeployApplicationDeploymentsDeploymentIdResponse, GetApiV1DeployApplicationDeploymentsError, GetApiV1DeployApplicationDeploymentsResponse, GetApiV1DeployApplicationError, GetApiV1DeployApplicationLogsApplicationIdData, GetApiV1DeployApplicationLogsApplicationIdError, GetApiV1DeployApplicationLogsApplicationIdResponse, GetApiV1DeployApplicationProjectFamilyData, GetApiV1DeployApplicationProjectFamilyEnvironmentsData, GetApiV1DeployApplicationProjectFamilyEnvironmentsError, GetApiV1DeployApplicationProjectFamilyEnvironmentsResponse, GetApiV1DeployApplicationProjectFamilyError, GetApiV1DeployApplicationProjectFamilyResponse, GetApiV1DeployApplicationResponse, GetApiV1DeployApplicationsData, GetApiV1DeployApplicationsError, GetApiV1DeployApplicationsResponse, GetApiV1DomainGenerateData, GetApiV1DomainGenerateError, GetApiV1DomainGenerateResponse, GetApiV1DomainsData, GetApiV1DomainsError, GetApiV1DomainsResponse, GetApiV1ExtensionsByExtensionIdExtensionIdData, GetApiV1ExtensionsByExtensionIdExtensionIdError, GetApiV1ExtensionsByExtensionIdExtensionIdExecutionsData, GetApiV1ExtensionsByExtensionIdExtensionIdExecutionsError, GetApiV1ExtensionsByExtensionIdExtensionIdExecutionsResponse, GetApiV1ExtensionsByExtensionIdExtensionIdResponse, GetApiV1ExtensionsCategoriesData, GetApiV1ExtensionsCategoriesError, GetApiV1ExtensionsCategoriesResponse, GetApiV1ExtensionsData, GetApiV1ExtensionsError, GetApiV1ExtensionsExecutionExecutionIdData, GetApiV1ExtensionsExecutionExecutionIdError, GetApiV1ExtensionsExecutionExecutionIdLogsData, GetApiV1ExtensionsExecutionExecutionIdLogsError, GetApiV1ExtensionsExecutionExecutionIdLogsResponse, GetApiV1ExtensionsExecutionExecutionIdResponse, GetApiV1ExtensionsIdData, GetApiV1ExtensionsIdError, GetApiV1ExtensionsIdResponse, GetApiV1ExtensionsResponse, GetApiV1FeatureFlagsCheckData, GetApiV1FeatureFlagsCheckError, GetApiV1FeatureFlagsCheckResponse, GetApiV1FeatureFlagsData, GetApiV1FeatureFlagsError, GetApiV1FeatureFlagsResponse, GetApiV1FileManagerData, GetApiV1FileManagerError, GetApiV1FileManagerResponse, GetApiV1GithubConnectorAllData, GetApiV1GithubConnectorAllError, GetApiV1GithubConnectorAllResponse, GetApiV1GithubConnectorRepositoriesData, GetApiV1GithubConnectorRepositoriesError, GetApiV1GithubConnectorRepositoriesResponse, GetApiV1HealthcheckData, GetApiV1HealthcheckError, GetApiV1HealthcheckResponse, GetApiV1HealthcheckResultsData, GetApiV1HealthcheckResultsError, GetApiV1HealthcheckResultsResponse, GetApiV1HealthcheckStatsData, GetApiV1HealthcheckStatsError, GetApiV1HealthcheckStatsResponse, GetApiV1HealthData, GetApiV1HealthError, GetApiV1HealthResponse, GetApiV1NotificationPreferencesData, GetApiV1NotificationPreferencesError, GetApiV1NotificationPreferencesResponse, GetApiV1NotificationSmtpData, GetApiV1NotificationSmtpError, GetApiV1NotificationSmtpResponse, GetApiV1NotificationWebhookTypeData, GetApiV1NotificationWebhookTypeError, GetApiV1NotificationWebhookTypeResponse, GetApiV1ServersData, GetApiV1ServersError, GetApiV1ServersResponse, GetApiV1ServersSshStatusData, GetApiV1ServersSshStatusError, GetApiV1ServersSshStatusResponse, GetApiV1TrailStatusSessionIdData, GetApiV1TrailStatusSessionIdError, GetApiV1TrailStatusSessionIdResponse, GetApiV1UpdateCheckData, GetApiV1UpdateCheckError, GetApiV1UpdateCheckResponse, GetApiV1UserData, GetApiV1UserError, GetApiV1UserOnboardedData, GetApiV1UserOnboardedError, GetApiV1UserOnboardedResponse, GetApiV1UserPreferencesData, GetApiV1UserPreferencesError, GetApiV1UserPreferencesResponse, GetApiV1UserResponse, GetApiV1UserSettingsData, GetApiV1UserSettingsError, GetApiV1UserSettingsResponse, GetWsData, GetWsError, GetWsLiveApplicationIdData, GetWsLiveApplicationIdError, GetWsLiveApplicationIdResponse, GetWsResponse, PatchApiV1HealthcheckToggleData, PatchApiV1HealthcheckToggleError, PatchApiV1HealthcheckToggleResponse, PatchApiV1UserAvatarData, PatchApiV1UserAvatarError, PatchApiV1UserAvatarResponse, PatchApiV1UserNameData, PatchApiV1UserNameError, PatchApiV1UserNameResponse, PatchApiV1UserSettingsAutoUpdateData, PatchApiV1UserSettingsAutoUpdateError, PatchApiV1UserSettingsAutoUpdateResponse, PatchApiV1UserSettingsFontData, PatchApiV1UserSettingsFontError, PatchApiV1UserSettingsFontResponse, PatchApiV1UserSettingsLanguageData, PatchApiV1UserSettingsLanguageError, PatchApiV1UserSettingsLanguageResponse, PatchApiV1UserSettingsThemeData, PatchApiV1UserSettingsThemeError, PatchApiV1UserSettingsThemeResponse, PostApiV1AuthCliInitData, PostApiV1AuthCliInitError, PostApiV1AuthCliInitResponse, PostApiV1ContainerContainerIdLogsData, PostApiV1ContainerContainerIdLogsError, PostApiV1ContainerContainerIdLogsResponse, PostApiV1ContainerContainerIdRestartData, PostApiV1ContainerContainerIdRestartError, PostApiV1ContainerContainerIdRestartResponse, PostApiV1ContainerContainerIdStartData, PostApiV1ContainerContainerIdStartError, PostApiV1ContainerContainerIdStartResponse, PostApiV1ContainerContainerIdStopData, PostApiV1ContainerContainerIdStopError, PostApiV1ContainerContainerIdStopResponse, PostApiV1ContainerImagesData, PostApiV1ContainerImagesError, PostApiV1ContainerImagesResponse, PostApiV1ContainerPruneBuildCacheData, PostApiV1ContainerPruneBuildCacheError, PostApiV1ContainerPruneBuildCacheResponse, PostApiV1ContainerPruneImagesData, PostApiV1ContainerPruneImagesError, PostApiV1ContainerPruneImagesResponse, PostApiV1DeployApplicationData, PostApiV1DeployApplicationDomainsData, PostApiV1DeployApplicationDomainsError, PostApiV1DeployApplicationDomainsResponse, PostApiV1DeployApplicationError, PostApiV1DeployApplicationIndexData, PostApiV1DeployApplicationIndexError, PostApiV1DeployApplicationIndexResponse, PostApiV1DeployApplicationPreviewComposeData, PostApiV1DeployApplicationPreviewComposeError, PostApiV1DeployApplicationPreviewComposeResponse, PostApiV1DeployApplicationProjectAddToFamilyData, PostApiV1DeployApplicationProjectAddToFamilyError, PostApiV1DeployApplicationProjectAddToFamilyResponse, PostApiV1DeployApplicationProjectData, PostApiV1DeployApplicationProjectDeployData, PostApiV1DeployApplicationProjectDeployError, PostApiV1DeployApplicationProjectDeployResponse, PostApiV1DeployApplicationProjectDuplicateData, PostApiV1DeployApplicationProjectDuplicateError, PostApiV1DeployApplicationProjectDuplicateResponse, PostApiV1DeployApplicationProjectError, PostApiV1DeployApplicationProjectResponse, PostApiV1DeployApplicationRecoverData, PostApiV1DeployApplicationRecoverError, PostApiV1DeployApplicationRecoverResponse, PostApiV1DeployApplicationRedeployData, PostApiV1DeployApplicationRedeployError, PostApiV1DeployApplicationRedeployResponse, PostApiV1DeployApplicationResponse, PostApiV1DeployApplicationRestartData, PostApiV1DeployApplicationRestartError, PostApiV1DeployApplicationRestartResponse, PostApiV1DeployApplicationRollbackData, PostApiV1DeployApplicationRollbackError, PostApiV1DeployApplicationRollbackResponse, PostApiV1DomainData, PostApiV1DomainError, PostApiV1DomainResponse, PostApiV1ExtensionsExecutionExecutionIdCancelData, PostApiV1ExtensionsExecutionExecutionIdCancelError, PostApiV1ExtensionsExecutionExecutionIdCancelResponse, PostApiV1ExtensionsExtensionIdForkData, PostApiV1ExtensionsExtensionIdForkError, PostApiV1ExtensionsExtensionIdForkResponse, PostApiV1ExtensionsExtensionIdRunData, PostApiV1ExtensionsExtensionIdRunError, PostApiV1ExtensionsExtensionIdRunResponse, PostApiV1FileManagerCopyDirectoryData, PostApiV1FileManagerCopyDirectoryError, PostApiV1FileManagerCopyDirectoryResponse, PostApiV1FileManagerCreateDirectoryData, PostApiV1FileManagerCreateDirectoryError, PostApiV1FileManagerCreateDirectoryResponse, PostApiV1FileManagerMoveDirectoryData, PostApiV1FileManagerMoveDirectoryError, PostApiV1FileManagerMoveDirectoryResponse, PostApiV1FileManagerUploadData, PostApiV1FileManagerUploadError, PostApiV1FileManagerUploadResponse, PostApiV1GithubConnectorData, PostApiV1GithubConnectorError, PostApiV1GithubConnectorRepositoryBranchesData, PostApiV1GithubConnectorRepositoryBranchesError, PostApiV1GithubConnectorRepositoryBranchesResponse, PostApiV1GithubConnectorResponse, PostApiV1HealthcheckData, PostApiV1HealthcheckError, PostApiV1HealthcheckResponse, PostApiV1LivePauseData, PostApiV1LivePauseError, PostApiV1LivePauseResponse, PostApiV1NotificationPreferencesData, PostApiV1NotificationPreferencesError, PostApiV1NotificationPreferencesResponse, PostApiV1NotificationSmtpData, PostApiV1NotificationSmtpError, PostApiV1NotificationSmtpResponse, PostApiV1NotificationWebhookData, PostApiV1NotificationWebhookError, PostApiV1NotificationWebhookResponse, PostApiV1TrailProvisionData, PostApiV1TrailProvisionError, PostApiV1TrailProvisionResponse, PostApiV1UpdateData, PostApiV1UpdateError, PostApiV1UpdateResponse, PostApiV1UserOnboardedData, PostApiV1UserOnboardedError, PostApiV1UserOnboardedResponse, PostApiV1WebhookData, PostApiV1WebhookError, PostApiV1WebhookResponse, PutApiV1ContainerContainerIdResourcesData, PutApiV1ContainerContainerIdResourcesError, PutApiV1ContainerContainerIdResourcesResponse, PutApiV1DeployApplicationData, PutApiV1DeployApplicationError, PutApiV1DeployApplicationLabelsData, PutApiV1DeployApplicationLabelsError, PutApiV1DeployApplicationLabelsResponse, PutApiV1DeployApplicationResponse, PutApiV1DomainData, PutApiV1DomainError, PutApiV1DomainResponse, PutApiV1FeatureFlagsData, PutApiV1FeatureFlagsError, PutApiV1FeatureFlagsResponse, PutApiV1GithubConnectorData, PutApiV1GithubConnectorError, PutApiV1GithubConnectorResponse, PutApiV1HealthcheckData, PutApiV1HealthcheckError, PutApiV1HealthcheckResponse, PutApiV1NotificationSmtpData, PutApiV1NotificationSmtpError, PutApiV1NotificationSmtpResponse, PutApiV1NotificationWebhookData, PutApiV1NotificationWebhookError, PutApiV1NotificationWebhookResponse, PutApiV1UserPreferencesData, PutApiV1UserPreferencesError, PutApiV1UserPreferencesResponse } from '../types.gen';
+import { addApplicationDomain, addCustomDomain, addProjectToFamily, cancelExecution, checkAdminRegistration, checkCustomDomainDns, checkForUpdates, checkIfFeatureIsEnabled, checkOnboardingStatus, copyDirectory, createDirectory, createGitHubConnector, createHealthCheck, createProject, createSmtpConfig, createWebhookConfig, deleteApplication, deleteDirectory, deleteForkedExtension, deleteGitHubConnector, deleteHealthCheck, deleteSmtpConfig, deleteWebhookConfig, deployApplication, deployProject, duplicateProject, forkExtension, generateRandomSubdomain, getApplication, getApplicationLogs, getBootstrapSessionData, getContainer, getContainerLogs, getCurrentUserProfile, getDeployment, getDeploymentLogs, getExecution, getExtensionByExtensionId, getExtensionById, getHealthChecks, getHealthCheckStats, getNotificationPreferences, getSmtpConfig, getSshConnectionStatus, getTrailSessionStatus, getUserPreferences, getUserSettings, getWebhookConfig, handleGitHubWebhook, healthCheck, indexApplicationCodebase, initializeCliSession, listApplicationDeployments, listApplications, listAuditLogs, listComposeServices, listContainers, listDomains, listExecutionLogs, listExtensionCategories, listExtensionExecutions, listExtensions, listFamilyEnvironments, listFeatureFlags, listFiles, listGitHubConnectors, listGitHubRepositories, listHealthCheckResults, listImages, listProjectsInFamily, listRepositoryBranches, listServers, markOnboardingComplete, moveDirectory, type Options, pauseLiveDeployService, performUpdate, previewComposeServices, provisionTrailResources, pruneBuildCache, pruneImages, recoverApplication, redeployApplication, removeApplicationDomain, removeContainer, removeCustomDomain, restartContainer, restartDeployment, rollbackDeployment, runExtension, sendNotification, startContainer, stopContainer, toggleHealthCheck, updateApplication, updateApplicationLabels, updateAutoUpdateSettings, updateContainerResources, updateFeatureFlag, updateFontSettings, updateGitHubConnector, updateHealthCheck, updateLanguageSettings, updateNotificationPreferences, updateSmtpConfig, updateThemeSettings, updateUserAvatar, updateUserName, updateUserPreferences, updateWebhookConfig, uploadFile, verifyCustomDomain } from '../sdk.gen';
+import type { AddApplicationDomainData, AddApplicationDomainError, AddApplicationDomainResponse, AddCustomDomainData, AddCustomDomainError, AddCustomDomainResponse, AddProjectToFamilyData, AddProjectToFamilyError, AddProjectToFamilyResponse, CancelExecutionData, CancelExecutionError, CancelExecutionResponse, CheckAdminRegistrationData, CheckAdminRegistrationError, CheckAdminRegistrationResponse, CheckCustomDomainDnsData, CheckCustomDomainDnsError, CheckCustomDomainDnsResponse, CheckForUpdatesData, CheckForUpdatesError, CheckForUpdatesResponse, CheckIfFeatureIsEnabledData, CheckIfFeatureIsEnabledError, CheckIfFeatureIsEnabledResponse, CheckOnboardingStatusData, CheckOnboardingStatusError, CheckOnboardingStatusResponse, CopyDirectoryData, CopyDirectoryError, CopyDirectoryResponse, CreateDirectoryData, CreateDirectoryError, CreateDirectoryResponse, CreateGitHubConnectorData, CreateGitHubConnectorError, CreateGitHubConnectorResponse, CreateHealthCheckData, CreateHealthCheckError, CreateHealthCheckResponse, CreateProjectData, CreateProjectError, CreateProjectResponse, CreateSmtpConfigData, CreateSmtpConfigError, CreateSmtpConfigResponse, CreateWebhookConfigData, CreateWebhookConfigError, CreateWebhookConfigResponse, DeleteApplicationData, DeleteApplicationError, DeleteApplicationResponse, DeleteDirectoryData, DeleteDirectoryError, DeleteDirectoryResponse, DeleteForkedExtensionData, DeleteForkedExtensionError, DeleteForkedExtensionResponse, DeleteGitHubConnectorData, DeleteGitHubConnectorError, DeleteGitHubConnectorResponse, DeleteHealthCheckData, DeleteHealthCheckError, DeleteHealthCheckResponse, DeleteSmtpConfigData, DeleteSmtpConfigError, DeleteSmtpConfigResponse, DeleteWebhookConfigData, DeleteWebhookConfigError, DeleteWebhookConfigResponse, DeployApplicationData, DeployApplicationError, DeployApplicationResponse, DeployProjectData, DeployProjectError, DeployProjectResponse, DuplicateProjectData, DuplicateProjectError, DuplicateProjectResponse, ForkExtensionData, ForkExtensionError, ForkExtensionResponse, GenerateRandomSubdomainData, GenerateRandomSubdomainError, GenerateRandomSubdomainResponse, GetApplicationData, GetApplicationError, GetApplicationLogsData, GetApplicationLogsError, GetApplicationLogsResponse, GetApplicationResponse, GetBootstrapSessionDataData, GetBootstrapSessionDataError, GetBootstrapSessionDataResponse, GetContainerData, GetContainerError, GetContainerLogsData, GetContainerLogsError, GetContainerLogsResponse, GetContainerResponse2, GetCurrentUserProfileData, GetCurrentUserProfileError, GetCurrentUserProfileResponse, GetDeploymentData, GetDeploymentError, GetDeploymentLogsData, GetDeploymentLogsError, GetDeploymentLogsResponse, GetDeploymentResponse, GetExecutionData, GetExecutionError, GetExecutionResponse, GetExtensionByExtensionIdData, GetExtensionByExtensionIdError, GetExtensionByExtensionIdResponse, GetExtensionByIdData, GetExtensionByIdError, GetExtensionByIdResponse, GetHealthChecksData, GetHealthChecksError, GetHealthChecksResponse, GetHealthCheckStatsData, GetHealthCheckStatsError, GetHealthCheckStatsResponse, GetNotificationPreferencesData, GetNotificationPreferencesError, GetNotificationPreferencesResponse, GetSmtpConfigData, GetSmtpConfigError, GetSmtpConfigResponse, GetSshConnectionStatusData, GetSshConnectionStatusError, GetSshConnectionStatusResponse, GetTrailSessionStatusData, GetTrailSessionStatusError, GetTrailSessionStatusResponse, GetUserPreferencesData, GetUserPreferencesError, GetUserPreferencesResponse, GetUserSettingsData, GetUserSettingsError, GetUserSettingsResponse, GetWebhookConfigData, GetWebhookConfigError, GetWebhookConfigResponse, HandleGitHubWebhookData, HandleGitHubWebhookError, HandleGitHubWebhookResponse, HealthCheckData, HealthCheckError, HealthCheckResponse2, IndexApplicationCodebaseData, IndexApplicationCodebaseError, IndexApplicationCodebaseResponse, InitializeCliSessionData, InitializeCliSessionError, InitializeCliSessionResponse, ListApplicationDeploymentsData, ListApplicationDeploymentsError, ListApplicationDeploymentsResponse, ListApplicationsData, ListApplicationsError, ListApplicationsResponse2, ListAuditLogsData, ListAuditLogsError, ListAuditLogsResponse, ListComposeServicesData, ListComposeServicesError, ListComposeServicesResponse, ListContainersData, ListContainersError, ListContainersResponse2, ListDomainsData, ListDomainsError, ListDomainsResponse2, ListExecutionLogsData, ListExecutionLogsError, ListExecutionLogsResponse, ListExtensionCategoriesData, ListExtensionCategoriesError, ListExtensionCategoriesResponse, ListExtensionExecutionsData, ListExtensionExecutionsError, ListExtensionExecutionsResponse, ListExtensionsData, ListExtensionsError, ListExtensionsResponse2, ListFamilyEnvironmentsData, ListFamilyEnvironmentsError, ListFamilyEnvironmentsResponse, ListFeatureFlagsData, ListFeatureFlagsError, ListFeatureFlagsResponse2, ListFilesData, ListFilesError, ListFilesResponse2, ListGitHubConnectorsData, ListGitHubConnectorsError, ListGitHubConnectorsResponse, ListGitHubRepositoriesData, ListGitHubRepositoriesError, ListGitHubRepositoriesResponse, ListHealthCheckResultsData, ListHealthCheckResultsError, ListHealthCheckResultsResponse, ListImagesData, ListImagesError, ListImagesResponse2, ListProjectsInFamilyData, ListProjectsInFamilyError, ListProjectsInFamilyResponse, ListRepositoryBranchesData, ListRepositoryBranchesError, ListRepositoryBranchesResponse, ListServersData, ListServersError, ListServersResponse2, MarkOnboardingCompleteData, MarkOnboardingCompleteError, MarkOnboardingCompleteResponse2, MoveDirectoryData, MoveDirectoryError, MoveDirectoryResponse, PauseLiveDeployServiceData, PauseLiveDeployServiceError, PauseLiveDeployServiceResponse, PerformUpdateData, PerformUpdateError, PerformUpdateResponse, PreviewComposeServicesData, PreviewComposeServicesError, PreviewComposeServicesResponse, ProvisionTrailResourcesData, ProvisionTrailResourcesError, ProvisionTrailResourcesResponse, PruneBuildCacheData, PruneBuildCacheError, PruneBuildCacheResponse, PruneImagesData, PruneImagesError, PruneImagesResponse2, RecoverApplicationData, RecoverApplicationError, RecoverApplicationResponse, RedeployApplicationData, RedeployApplicationError, RedeployApplicationResponse, RemoveApplicationDomainData, RemoveApplicationDomainError, RemoveApplicationDomainResponse, RemoveContainerData, RemoveContainerError, RemoveContainerResponse, RemoveCustomDomainData, RemoveCustomDomainError, RemoveCustomDomainResponse, RestartContainerData, RestartContainerError, RestartContainerResponse, RestartDeploymentData, RestartDeploymentError, RestartDeploymentResponse, RollbackDeploymentData, RollbackDeploymentError, RollbackDeploymentResponse, RunExtensionData, RunExtensionError, RunExtensionResponse, SendNotificationData, SendNotificationError, SendNotificationResponse2, StartContainerData, StartContainerError, StartContainerResponse, StopContainerData, StopContainerError, StopContainerResponse, ToggleHealthCheckData, ToggleHealthCheckError, ToggleHealthCheckResponse, UpdateApplicationData, UpdateApplicationError, UpdateApplicationLabelsData, UpdateApplicationLabelsError, UpdateApplicationLabelsResponse, UpdateApplicationResponse, UpdateAutoUpdateSettingsData, UpdateAutoUpdateSettingsError, UpdateAutoUpdateSettingsResponse, UpdateContainerResourcesData, UpdateContainerResourcesError, UpdateContainerResourcesResponse2, UpdateFeatureFlagData, UpdateFeatureFlagError, UpdateFeatureFlagResponse, UpdateFontSettingsData, UpdateFontSettingsError, UpdateFontSettingsResponse, UpdateGitHubConnectorData, UpdateGitHubConnectorError, UpdateGitHubConnectorResponse, UpdateHealthCheckData, UpdateHealthCheckError, UpdateHealthCheckResponse, UpdateLanguageSettingsData, UpdateLanguageSettingsError, UpdateLanguageSettingsResponse, UpdateNotificationPreferencesData, UpdateNotificationPreferencesError, UpdateNotificationPreferencesResponse, UpdateSmtpConfigData, UpdateSmtpConfigError, UpdateSmtpConfigResponse, UpdateThemeSettingsData, UpdateThemeSettingsError, UpdateThemeSettingsResponse, UpdateUserAvatarData, UpdateUserAvatarError, UpdateUserAvatarResponse, UpdateUserNameData, UpdateUserNameError, UpdateUserNameResponse, UpdateUserPreferencesData, UpdateUserPreferencesError, UpdateUserPreferencesResponse, UpdateWebhookConfigData, UpdateWebhookConfigError, UpdateWebhookConfigResponse, UploadFileData, UploadFileError, UploadFileResponse, VerifyCustomDomainData, VerifyCustomDomainError, VerifyCustomDomainResponse } from '../types.gen';
 
 export type QueryKey<TOptions extends Options> = [
     Pick<TOptions, 'baseUrl' | 'body' | 'headers' | 'path' | 'query'> & {
@@ -39,30 +39,20 @@ const createQueryKey = <TOptions extends Options>(id: string, options?: TOptions
     return [params];
 };
 
-export const getApiV1AuditLogsQueryKey = (options?: Options<GetApiV1AuditLogsData>) => createQueryKey('getApiV1AuditLogs', options);
+export const listAuditLogsQueryKey = (options?: Options<ListAuditLogsData>) => createQueryKey('listAuditLogs', options);
 
 /**
- * get recent audit logs
+ * List audit logs
  *
- * #### Controller:
+ * List audit logs.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/audit/controller.(*AuditController).GetRecentAuditLogs`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1AuditLogsOptions = (options?: Options<GetApiV1AuditLogsData>) => queryOptions<GetApiV1AuditLogsResponse, GetApiV1AuditLogsError, GetApiV1AuditLogsResponse, ReturnType<typeof getApiV1AuditLogsQueryKey>>({
+export const listAuditLogsOptions = (options?: Options<ListAuditLogsData>) => queryOptions<ListAuditLogsResponse, ListAuditLogsError, ListAuditLogsResponse, ReturnType<typeof listAuditLogsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1AuditLogs({
+        const { data } = await listAuditLogs({
             ...options,
             ...queryKey[0],
             signal,
@@ -70,664 +60,7 @@ export const getApiV1AuditLogsOptions = (options?: Options<GetApiV1AuditLogsData
         });
         return data;
     },
-    queryKey: getApiV1AuditLogsQueryKey(options)
-});
-
-export const getApiV1AuthBootstrapQueryKey = (options?: Options<GetApiV1AuthBootstrapData>) => createQueryKey('getApiV1AuthBootstrap', options);
-
-/**
- * handle bootstrap
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/auth/controller.(*AuthController).HandleBootstrap`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
- */
-export const getApiV1AuthBootstrapOptions = (options?: Options<GetApiV1AuthBootstrapData>) => queryOptions<GetApiV1AuthBootstrapResponse, GetApiV1AuthBootstrapError, GetApiV1AuthBootstrapResponse, ReturnType<typeof getApiV1AuthBootstrapQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1AuthBootstrap({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getApiV1AuthBootstrapQueryKey(options)
-});
-
-/**
- * handle c l i init
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/auth/controller.(*AuthController).HandleCLIInit`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
- */
-export const postApiV1AuthCliInitMutation = (options?: Partial<Options<PostApiV1AuthCliInitData>>): UseMutationOptions<PostApiV1AuthCliInitResponse, PostApiV1AuthCliInitError, Options<PostApiV1AuthCliInitData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1AuthCliInitResponse, PostApiV1AuthCliInitError, Options<PostApiV1AuthCliInitData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1AuthCliInit({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1AuthIsAdminRegisteredQueryKey = (options?: Options<GetApiV1AuthIsAdminRegisteredData>) => createQueryKey('getApiV1AuthIsAdminRegistered', options);
-
-/**
- * is admin registered
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/auth/controller.(*AuthController).IsAdminRegistered`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- *
- * ---
- *
- *
- */
-export const getApiV1AuthIsAdminRegisteredOptions = (options?: Options<GetApiV1AuthIsAdminRegisteredData>) => queryOptions<GetApiV1AuthIsAdminRegisteredResponse, GetApiV1AuthIsAdminRegisteredError, GetApiV1AuthIsAdminRegisteredResponse, ReturnType<typeof getApiV1AuthIsAdminRegisteredQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1AuthIsAdminRegistered({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getApiV1AuthIsAdminRegisteredQueryKey(options)
-});
-
-export const getApiV1ContainerQueryKey = (options?: Options<GetApiV1ContainerData>) => createQueryKey('getApiV1Container', options);
-
-/**
- * list containers
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).ListContainers`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const getApiV1ContainerOptions = (options?: Options<GetApiV1ContainerData>) => queryOptions<GetApiV1ContainerResponse, GetApiV1ContainerError, GetApiV1ContainerResponse, ReturnType<typeof getApiV1ContainerQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1Container({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getApiV1ContainerQueryKey(options)
-});
-
-/**
- * list images
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).ListImages`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1ContainerImagesMutation = (options?: Partial<Options<PostApiV1ContainerImagesData>>): UseMutationOptions<PostApiV1ContainerImagesResponse, PostApiV1ContainerImagesError, Options<PostApiV1ContainerImagesData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1ContainerImagesResponse, PostApiV1ContainerImagesError, Options<PostApiV1ContainerImagesData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1ContainerImages({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * prune build cache
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).PruneBuildCache`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1ContainerPruneBuildCacheMutation = (options?: Partial<Options<PostApiV1ContainerPruneBuildCacheData>>): UseMutationOptions<PostApiV1ContainerPruneBuildCacheResponse, PostApiV1ContainerPruneBuildCacheError, Options<PostApiV1ContainerPruneBuildCacheData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1ContainerPruneBuildCacheResponse, PostApiV1ContainerPruneBuildCacheError, Options<PostApiV1ContainerPruneBuildCacheData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1ContainerPruneBuildCache({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * prune images
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).PruneImages`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1ContainerPruneImagesMutation = (options?: Partial<Options<PostApiV1ContainerPruneImagesData>>): UseMutationOptions<PostApiV1ContainerPruneImagesResponse, PostApiV1ContainerPruneImagesError, Options<PostApiV1ContainerPruneImagesData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1ContainerPruneImagesResponse, PostApiV1ContainerPruneImagesError, Options<PostApiV1ContainerPruneImagesData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1ContainerPruneImages({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * remove container
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).RemoveContainer`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const deleteApiV1ContainerContainerIdMutation = (options?: Partial<Options<DeleteApiV1ContainerContainerIdData>>): UseMutationOptions<DeleteApiV1ContainerContainerIdResponse, DeleteApiV1ContainerContainerIdError, Options<DeleteApiV1ContainerContainerIdData>> => {
-    const mutationOptions: UseMutationOptions<DeleteApiV1ContainerContainerIdResponse, DeleteApiV1ContainerContainerIdError, Options<DeleteApiV1ContainerContainerIdData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await deleteApiV1ContainerContainerId({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1ContainerContainerIdQueryKey = (options: Options<GetApiV1ContainerContainerIdData>) => createQueryKey('getApiV1ContainerContainerId', options);
-
-/**
- * get container
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).GetContainer`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const getApiV1ContainerContainerIdOptions = (options: Options<GetApiV1ContainerContainerIdData>) => queryOptions<GetApiV1ContainerContainerIdResponse, GetApiV1ContainerContainerIdError, GetApiV1ContainerContainerIdResponse, ReturnType<typeof getApiV1ContainerContainerIdQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1ContainerContainerId({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getApiV1ContainerContainerIdQueryKey(options)
-});
-
-/**
- * get container logs
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).GetContainerLogs`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1ContainerContainerIdLogsMutation = (options?: Partial<Options<PostApiV1ContainerContainerIdLogsData>>): UseMutationOptions<PostApiV1ContainerContainerIdLogsResponse, PostApiV1ContainerContainerIdLogsError, Options<PostApiV1ContainerContainerIdLogsData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1ContainerContainerIdLogsResponse, PostApiV1ContainerContainerIdLogsError, Options<PostApiV1ContainerContainerIdLogsData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1ContainerContainerIdLogs({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * update container resources
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).UpdateContainerResources`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const putApiV1ContainerContainerIdResourcesMutation = (options?: Partial<Options<PutApiV1ContainerContainerIdResourcesData>>): UseMutationOptions<PutApiV1ContainerContainerIdResourcesResponse, PutApiV1ContainerContainerIdResourcesError, Options<PutApiV1ContainerContainerIdResourcesData>> => {
-    const mutationOptions: UseMutationOptions<PutApiV1ContainerContainerIdResourcesResponse, PutApiV1ContainerContainerIdResourcesError, Options<PutApiV1ContainerContainerIdResourcesData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await putApiV1ContainerContainerIdResources({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * restart container
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).RestartContainer`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1ContainerContainerIdRestartMutation = (options?: Partial<Options<PostApiV1ContainerContainerIdRestartData>>): UseMutationOptions<PostApiV1ContainerContainerIdRestartResponse, PostApiV1ContainerContainerIdRestartError, Options<PostApiV1ContainerContainerIdRestartData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1ContainerContainerIdRestartResponse, PostApiV1ContainerContainerIdRestartError, Options<PostApiV1ContainerContainerIdRestartData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1ContainerContainerIdRestart({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * start container
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).StartContainer`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1ContainerContainerIdStartMutation = (options?: Partial<Options<PostApiV1ContainerContainerIdStartData>>): UseMutationOptions<PostApiV1ContainerContainerIdStartResponse, PostApiV1ContainerContainerIdStartError, Options<PostApiV1ContainerContainerIdStartData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1ContainerContainerIdStartResponse, PostApiV1ContainerContainerIdStartError, Options<PostApiV1ContainerContainerIdStartData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1ContainerContainerIdStart({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * stop container
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).StopContainer`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1ContainerContainerIdStopMutation = (options?: Partial<Options<PostApiV1ContainerContainerIdStopData>>): UseMutationOptions<PostApiV1ContainerContainerIdStopResponse, PostApiV1ContainerContainerIdStopError, Options<PostApiV1ContainerContainerIdStopData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1ContainerContainerIdStopResponse, PostApiV1ContainerContainerIdStopError, Options<PostApiV1ContainerContainerIdStopData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1ContainerContainerIdStop({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * delete application
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).DeleteApplication`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const deleteApiV1DeployApplicationMutation = (options?: Partial<Options<DeleteApiV1DeployApplicationData>>): UseMutationOptions<DeleteApiV1DeployApplicationResponse, DeleteApiV1DeployApplicationError, Options<DeleteApiV1DeployApplicationData>> => {
-    const mutationOptions: UseMutationOptions<DeleteApiV1DeployApplicationResponse, DeleteApiV1DeployApplicationError, Options<DeleteApiV1DeployApplicationData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await deleteApiV1DeployApplication({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1DeployApplicationQueryKey = (options?: Options<GetApiV1DeployApplicationData>) => createQueryKey('getApiV1DeployApplication', options);
-
-/**
- * get application by id
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetApplicationById`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const getApiV1DeployApplicationOptions = (options?: Options<GetApiV1DeployApplicationData>) => queryOptions<GetApiV1DeployApplicationResponse, GetApiV1DeployApplicationError, GetApiV1DeployApplicationResponse, ReturnType<typeof getApiV1DeployApplicationQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1DeployApplication({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getApiV1DeployApplicationQueryKey(options)
-});
-
-/**
- * handle deploy
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleDeploy`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1DeployApplicationMutation = (options?: Partial<Options<PostApiV1DeployApplicationData>>): UseMutationOptions<PostApiV1DeployApplicationResponse, PostApiV1DeployApplicationError, Options<PostApiV1DeployApplicationData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1DeployApplicationResponse, PostApiV1DeployApplicationError, Options<PostApiV1DeployApplicationData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1DeployApplication({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * update application
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).UpdateApplication`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const putApiV1DeployApplicationMutation = (options?: Partial<Options<PutApiV1DeployApplicationData>>): UseMutationOptions<PutApiV1DeployApplicationResponse, PutApiV1DeployApplicationError, Options<PutApiV1DeployApplicationData>> => {
-    const mutationOptions: UseMutationOptions<PutApiV1DeployApplicationResponse, PutApiV1DeployApplicationError, Options<PutApiV1DeployApplicationData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await putApiV1DeployApplication({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1DeployApplicationComposeServicesQueryKey = (options?: Options<GetApiV1DeployApplicationComposeServicesData>) => createQueryKey('getApiV1DeployApplicationComposeServices', options);
-
-/**
- * get compose services
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetComposeServices`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const getApiV1DeployApplicationComposeServicesOptions = (options?: Options<GetApiV1DeployApplicationComposeServicesData>) => queryOptions<GetApiV1DeployApplicationComposeServicesResponse, GetApiV1DeployApplicationComposeServicesError, GetApiV1DeployApplicationComposeServicesResponse, ReturnType<typeof getApiV1DeployApplicationComposeServicesQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1DeployApplicationComposeServices({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getApiV1DeployApplicationComposeServicesQueryKey(options)
-});
-
-export const getApiV1DeployApplicationDeploymentsQueryKey = (options: Options<GetApiV1DeployApplicationDeploymentsData>) => createQueryKey('getApiV1DeployApplicationDeployments', options);
-
-/**
- * get application deployments
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetApplicationDeployments`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const getApiV1DeployApplicationDeploymentsOptions = (options: Options<GetApiV1DeployApplicationDeploymentsData>) => queryOptions<GetApiV1DeployApplicationDeploymentsResponse, GetApiV1DeployApplicationDeploymentsError, GetApiV1DeployApplicationDeploymentsResponse, ReturnType<typeof getApiV1DeployApplicationDeploymentsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1DeployApplicationDeployments({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getApiV1DeployApplicationDeploymentsQueryKey(options)
+    queryKey: listAuditLogsQueryKey(options)
 });
 
 const createInfiniteParams = <K extends Pick<QueryKey<Options>[0], 'body' | 'headers' | 'path' | 'query'>>(queryKey: QueryKey<Options>, page: K) => {
@@ -759,39 +92,29 @@ const createInfiniteParams = <K extends Pick<QueryKey<Options>[0], 'body' | 'hea
     return params as unknown as typeof page;
 };
 
-export const getApiV1DeployApplicationDeploymentsInfiniteQueryKey = (options: Options<GetApiV1DeployApplicationDeploymentsData>): QueryKey<Options<GetApiV1DeployApplicationDeploymentsData>> => createQueryKey('getApiV1DeployApplicationDeployments', options, true);
+export const listAuditLogsInfiniteQueryKey = (options?: Options<ListAuditLogsData>): QueryKey<Options<ListAuditLogsData>> => createQueryKey('listAuditLogs', options, true);
 
 /**
- * get application deployments
+ * List audit logs
  *
- * #### Controller:
+ * List audit logs.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetApplicationDeployments`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DeployApplicationDeploymentsInfiniteOptions = (options: Options<GetApiV1DeployApplicationDeploymentsData>) => infiniteQueryOptions<GetApiV1DeployApplicationDeploymentsResponse, GetApiV1DeployApplicationDeploymentsError, InfiniteData<GetApiV1DeployApplicationDeploymentsResponse>, QueryKey<Options<GetApiV1DeployApplicationDeploymentsData>>, string | Pick<QueryKey<Options<GetApiV1DeployApplicationDeploymentsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+export const listAuditLogsInfiniteOptions = (options?: Options<ListAuditLogsData>) => infiniteQueryOptions<ListAuditLogsResponse, ListAuditLogsError, InfiniteData<ListAuditLogsResponse>, QueryKey<Options<ListAuditLogsData>>, number | Pick<QueryKey<Options<ListAuditLogsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
 // @ts-ignore
 {
     queryFn: async ({ pageParam, queryKey, signal }) => {
         // @ts-ignore
-        const page: Pick<QueryKey<Options<GetApiV1DeployApplicationDeploymentsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
-            body: {
+        const page: Pick<QueryKey<Options<ListAuditLogsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+            query: {
                 page: pageParam
             }
         };
         const params = createInfiniteParams(queryKey, page);
-        const { data } = await getApiV1DeployApplicationDeployments({
+        const { data } = await listAuditLogs({
             ...options,
             ...params,
             signal,
@@ -799,33 +122,23 @@ export const getApiV1DeployApplicationDeploymentsInfiniteOptions = (options: Opt
         });
         return data;
     },
-    queryKey: getApiV1DeployApplicationDeploymentsInfiniteQueryKey(options)
+    queryKey: listAuditLogsInfiniteQueryKey(options)
 });
 
-export const getApiV1DeployApplicationDeploymentsDeploymentIdQueryKey = (options: Options<GetApiV1DeployApplicationDeploymentsDeploymentIdData>) => createQueryKey('getApiV1DeployApplicationDeploymentsDeploymentId', options);
+export const getBootstrapSessionDataQueryKey = (options?: Options<GetBootstrapSessionDataData>) => createQueryKey('getBootstrapSessionData', options);
 
 /**
- * get deployment by id
+ * Get bootstrap session data
  *
- * #### Controller:
+ * Get bootstrap session data.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetDeploymentById`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: No organization scope required.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DeployApplicationDeploymentsDeploymentIdOptions = (options: Options<GetApiV1DeployApplicationDeploymentsDeploymentIdData>) => queryOptions<GetApiV1DeployApplicationDeploymentsDeploymentIdResponse, GetApiV1DeployApplicationDeploymentsDeploymentIdError, GetApiV1DeployApplicationDeploymentsDeploymentIdResponse, ReturnType<typeof getApiV1DeployApplicationDeploymentsDeploymentIdQueryKey>>({
+export const getBootstrapSessionDataOptions = (options?: Options<GetBootstrapSessionDataData>) => queryOptions<GetBootstrapSessionDataResponse, GetBootstrapSessionDataError, GetBootstrapSessionDataResponse, ReturnType<typeof getBootstrapSessionDataQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1DeployApplicationDeploymentsDeploymentId({
+        const { data } = await getBootstrapSessionData({
             ...options,
             ...queryKey[0],
             signal,
@@ -833,33 +146,46 @@ export const getApiV1DeployApplicationDeploymentsDeploymentIdOptions = (options:
         });
         return data;
     },
-    queryKey: getApiV1DeployApplicationDeploymentsDeploymentIdQueryKey(options)
+    queryKey: getBootstrapSessionDataQueryKey(options)
 });
 
-export const getApiV1DeployApplicationDeploymentsDeploymentIdLogsQueryKey = (options: Options<GetApiV1DeployApplicationDeploymentsDeploymentIdLogsData>) => createQueryKey('getApiV1DeployApplicationDeploymentsDeploymentIdLogs', options);
+/**
+ * Initialize CLI session
+ *
+ * Initialize CLI session.
+ *
+ * Auth: Required (bearer token).
+ * Scope: No organization scope required.
+ * Side effects: May mutate server state.
+ */
+export const initializeCliSessionMutation = (options?: Partial<Options<InitializeCliSessionData>>): UseMutationOptions<InitializeCliSessionResponse, InitializeCliSessionError, Options<InitializeCliSessionData>> => {
+    const mutationOptions: UseMutationOptions<InitializeCliSessionResponse, InitializeCliSessionError, Options<InitializeCliSessionData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await initializeCliSession({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const checkAdminRegistrationQueryKey = (options?: Options<CheckAdminRegistrationData>) => createQueryKey('checkAdminRegistration', options);
 
 /**
- * get deployment logs
+ * Check admin registration
  *
- * #### Controller:
+ * Check admin registration.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetDeploymentLogs`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Public endpoint.
+ * Scope: No organization scope required.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DeployApplicationDeploymentsDeploymentIdLogsOptions = (options: Options<GetApiV1DeployApplicationDeploymentsDeploymentIdLogsData>) => queryOptions<GetApiV1DeployApplicationDeploymentsDeploymentIdLogsResponse, GetApiV1DeployApplicationDeploymentsDeploymentIdLogsError, GetApiV1DeployApplicationDeploymentsDeploymentIdLogsResponse, ReturnType<typeof getApiV1DeployApplicationDeploymentsDeploymentIdLogsQueryKey>>({
+export const checkAdminRegistrationOptions = (options?: Options<CheckAdminRegistrationData>) => queryOptions<CheckAdminRegistrationResponse, CheckAdminRegistrationError, CheckAdminRegistrationResponse, ReturnType<typeof checkAdminRegistrationQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1DeployApplicationDeploymentsDeploymentIdLogs({
+        const { data } = await checkAdminRegistration({
             ...options,
             ...queryKey[0],
             signal,
@@ -867,165 +193,23 @@ export const getApiV1DeployApplicationDeploymentsDeploymentIdLogsOptions = (opti
         });
         return data;
     },
-    queryKey: getApiV1DeployApplicationDeploymentsDeploymentIdLogsQueryKey(options)
+    queryKey: checkAdminRegistrationQueryKey(options)
 });
 
-/**
- * remove application domain
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).RemoveApplicationDomain`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const deleteApiV1DeployApplicationDomainsMutation = (options?: Partial<Options<DeleteApiV1DeployApplicationDomainsData>>): UseMutationOptions<DeleteApiV1DeployApplicationDomainsResponse, DeleteApiV1DeployApplicationDomainsError, Options<DeleteApiV1DeployApplicationDomainsData>> => {
-    const mutationOptions: UseMutationOptions<DeleteApiV1DeployApplicationDomainsResponse, DeleteApiV1DeployApplicationDomainsError, Options<DeleteApiV1DeployApplicationDomainsData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await deleteApiV1DeployApplicationDomains({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
+export const listContainersQueryKey = (options?: Options<ListContainersData>) => createQueryKey('listContainers', options);
 
 /**
- * add application domain
+ * List containers
  *
- * #### Controller:
+ * List containers.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).AddApplicationDomain`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const postApiV1DeployApplicationDomainsMutation = (options?: Partial<Options<PostApiV1DeployApplicationDomainsData>>): UseMutationOptions<PostApiV1DeployApplicationDomainsResponse, PostApiV1DeployApplicationDomainsError, Options<PostApiV1DeployApplicationDomainsData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1DeployApplicationDomainsResponse, PostApiV1DeployApplicationDomainsError, Options<PostApiV1DeployApplicationDomainsData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1DeployApplicationDomains({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * index codebase
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).IndexCodebase`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1DeployApplicationIndexMutation = (options?: Partial<Options<PostApiV1DeployApplicationIndexData>>): UseMutationOptions<PostApiV1DeployApplicationIndexResponse, PostApiV1DeployApplicationIndexError, Options<PostApiV1DeployApplicationIndexData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1DeployApplicationIndexResponse, PostApiV1DeployApplicationIndexError, Options<PostApiV1DeployApplicationIndexData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1DeployApplicationIndex({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * update application labels
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).UpdateApplicationLabels`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const putApiV1DeployApplicationLabelsMutation = (options?: Partial<Options<PutApiV1DeployApplicationLabelsData>>): UseMutationOptions<PutApiV1DeployApplicationLabelsResponse, PutApiV1DeployApplicationLabelsError, Options<PutApiV1DeployApplicationLabelsData>> => {
-    const mutationOptions: UseMutationOptions<PutApiV1DeployApplicationLabelsResponse, PutApiV1DeployApplicationLabelsError, Options<PutApiV1DeployApplicationLabelsData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await putApiV1DeployApplicationLabels({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1DeployApplicationLogsApplicationIdQueryKey = (options: Options<GetApiV1DeployApplicationLogsApplicationIdData>) => createQueryKey('getApiV1DeployApplicationLogsApplicationId', options);
-
-/**
- * get logs
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetLogs`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const getApiV1DeployApplicationLogsApplicationIdOptions = (options: Options<GetApiV1DeployApplicationLogsApplicationIdData>) => queryOptions<GetApiV1DeployApplicationLogsApplicationIdResponse, GetApiV1DeployApplicationLogsApplicationIdError, GetApiV1DeployApplicationLogsApplicationIdResponse, ReturnType<typeof getApiV1DeployApplicationLogsApplicationIdQueryKey>>({
+export const listContainersOptions = (options?: Options<ListContainersData>) => queryOptions<ListContainersResponse2, ListContainersError, ListContainersResponse2, ReturnType<typeof listContainersQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1DeployApplicationLogsApplicationId({
+        const { data } = await listContainers({
             ...options,
             ...queryKey[0],
             signal,
@@ -1033,32 +217,22 @@ export const getApiV1DeployApplicationLogsApplicationIdOptions = (options: Optio
         });
         return data;
     },
-    queryKey: getApiV1DeployApplicationLogsApplicationIdQueryKey(options)
+    queryKey: listContainersQueryKey(options)
 });
 
 /**
- * preview compose services
+ * List images
  *
- * #### Controller:
+ * List images.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).PreviewComposeServices`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationPreviewComposeMutation = (options?: Partial<Options<PostApiV1DeployApplicationPreviewComposeData>>): UseMutationOptions<PostApiV1DeployApplicationPreviewComposeResponse, PostApiV1DeployApplicationPreviewComposeError, Options<PostApiV1DeployApplicationPreviewComposeData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1DeployApplicationPreviewComposeResponse, PostApiV1DeployApplicationPreviewComposeError, Options<PostApiV1DeployApplicationPreviewComposeData>> = {
+export const listImagesMutation = (options?: Partial<Options<ListImagesData>>): UseMutationOptions<ListImagesResponse2, ListImagesError, Options<ListImagesData>> => {
+    const mutationOptions: UseMutationOptions<ListImagesResponse2, ListImagesError, Options<ListImagesData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1DeployApplicationPreviewCompose({
+            const { data } = await listImages({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1070,28 +244,18 @@ export const postApiV1DeployApplicationPreviewComposeMutation = (options?: Parti
 };
 
 /**
- * handle create project
+ * Prune build cache
  *
- * #### Controller:
+ * Prune build cache.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleCreateProject`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationProjectMutation = (options?: Partial<Options<PostApiV1DeployApplicationProjectData>>): UseMutationOptions<PostApiV1DeployApplicationProjectResponse, PostApiV1DeployApplicationProjectError, Options<PostApiV1DeployApplicationProjectData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1DeployApplicationProjectResponse, PostApiV1DeployApplicationProjectError, Options<PostApiV1DeployApplicationProjectData>> = {
+export const pruneBuildCacheMutation = (options?: Partial<Options<PruneBuildCacheData>>): UseMutationOptions<PruneBuildCacheResponse, PruneBuildCacheError, Options<PruneBuildCacheData>> => {
+    const mutationOptions: UseMutationOptions<PruneBuildCacheResponse, PruneBuildCacheError, Options<PruneBuildCacheData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1DeployApplicationProject({
+            const { data } = await pruneBuildCache({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1103,28 +267,18 @@ export const postApiV1DeployApplicationProjectMutation = (options?: Partial<Opti
 };
 
 /**
- * handle add application to family
+ * Prune images
  *
- * #### Controller:
+ * Prune images.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleAddApplicationToFamily`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationProjectAddToFamilyMutation = (options?: Partial<Options<PostApiV1DeployApplicationProjectAddToFamilyData>>): UseMutationOptions<PostApiV1DeployApplicationProjectAddToFamilyResponse, PostApiV1DeployApplicationProjectAddToFamilyError, Options<PostApiV1DeployApplicationProjectAddToFamilyData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1DeployApplicationProjectAddToFamilyResponse, PostApiV1DeployApplicationProjectAddToFamilyError, Options<PostApiV1DeployApplicationProjectAddToFamilyData>> = {
+export const pruneImagesMutation = (options?: Partial<Options<PruneImagesData>>): UseMutationOptions<PruneImagesResponse2, PruneImagesError, Options<PruneImagesData>> => {
+    const mutationOptions: UseMutationOptions<PruneImagesResponse2, PruneImagesError, Options<PruneImagesData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1DeployApplicationProjectAddToFamily({
+            const { data } = await pruneImages({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1136,28 +290,18 @@ export const postApiV1DeployApplicationProjectAddToFamilyMutation = (options?: P
 };
 
 /**
- * handle deploy project
+ * Remove container
  *
- * #### Controller:
+ * Remove container.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleDeployProject`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationProjectDeployMutation = (options?: Partial<Options<PostApiV1DeployApplicationProjectDeployData>>): UseMutationOptions<PostApiV1DeployApplicationProjectDeployResponse, PostApiV1DeployApplicationProjectDeployError, Options<PostApiV1DeployApplicationProjectDeployData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1DeployApplicationProjectDeployResponse, PostApiV1DeployApplicationProjectDeployError, Options<PostApiV1DeployApplicationProjectDeployData>> = {
+export const removeContainerMutation = (options?: Partial<Options<RemoveContainerData>>): UseMutationOptions<RemoveContainerResponse, RemoveContainerError, Options<RemoveContainerData>> => {
+    const mutationOptions: UseMutationOptions<RemoveContainerResponse, RemoveContainerError, Options<RemoveContainerData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1DeployApplicationProjectDeploy({
+            const { data } = await removeContainer({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1168,63 +312,20 @@ export const postApiV1DeployApplicationProjectDeployMutation = (options?: Partia
     return mutationOptions;
 };
 
-/**
- * handle duplicate project
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleDuplicateProject`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1DeployApplicationProjectDuplicateMutation = (options?: Partial<Options<PostApiV1DeployApplicationProjectDuplicateData>>): UseMutationOptions<PostApiV1DeployApplicationProjectDuplicateResponse, PostApiV1DeployApplicationProjectDuplicateError, Options<PostApiV1DeployApplicationProjectDuplicateData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1DeployApplicationProjectDuplicateResponse, PostApiV1DeployApplicationProjectDuplicateError, Options<PostApiV1DeployApplicationProjectDuplicateData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1DeployApplicationProjectDuplicate({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1DeployApplicationProjectFamilyQueryKey = (options?: Options<GetApiV1DeployApplicationProjectFamilyData>) => createQueryKey('getApiV1DeployApplicationProjectFamily', options);
+export const getContainerQueryKey = (options: Options<GetContainerData>) => createQueryKey('getContainer', options);
 
 /**
- * handle get project family
+ * Get container
  *
- * #### Controller:
+ * Get container.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleGetProjectFamily`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DeployApplicationProjectFamilyOptions = (options?: Options<GetApiV1DeployApplicationProjectFamilyData>) => queryOptions<GetApiV1DeployApplicationProjectFamilyResponse, GetApiV1DeployApplicationProjectFamilyError, GetApiV1DeployApplicationProjectFamilyResponse, ReturnType<typeof getApiV1DeployApplicationProjectFamilyQueryKey>>({
+export const getContainerOptions = (options: Options<GetContainerData>) => queryOptions<GetContainerResponse2, GetContainerError, GetContainerResponse2, ReturnType<typeof getContainerQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1DeployApplicationProjectFamily({
+        const { data } = await getContainer({
             ...options,
             ...queryKey[0],
             signal,
@@ -1232,33 +333,161 @@ export const getApiV1DeployApplicationProjectFamilyOptions = (options?: Options<
         });
         return data;
     },
-    queryKey: getApiV1DeployApplicationProjectFamilyQueryKey(options)
+    queryKey: getContainerQueryKey(options)
 });
 
-export const getApiV1DeployApplicationProjectFamilyEnvironmentsQueryKey = (options?: Options<GetApiV1DeployApplicationProjectFamilyEnvironmentsData>) => createQueryKey('getApiV1DeployApplicationProjectFamilyEnvironments', options);
+/**
+ * Get container logs
+ *
+ * Get container logs.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const getContainerLogsMutation = (options?: Partial<Options<GetContainerLogsData>>): UseMutationOptions<GetContainerLogsResponse, GetContainerLogsError, Options<GetContainerLogsData>> => {
+    const mutationOptions: UseMutationOptions<GetContainerLogsResponse, GetContainerLogsError, Options<GetContainerLogsData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await getContainerLogs({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
 
 /**
- * handle get environments in family
+ * Update container resources
  *
- * #### Controller:
+ * Update container resources.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleGetEnvironmentsInFamily`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const getApiV1DeployApplicationProjectFamilyEnvironmentsOptions = (options?: Options<GetApiV1DeployApplicationProjectFamilyEnvironmentsData>) => queryOptions<GetApiV1DeployApplicationProjectFamilyEnvironmentsResponse, GetApiV1DeployApplicationProjectFamilyEnvironmentsError, GetApiV1DeployApplicationProjectFamilyEnvironmentsResponse, ReturnType<typeof getApiV1DeployApplicationProjectFamilyEnvironmentsQueryKey>>({
+export const updateContainerResourcesMutation = (options?: Partial<Options<UpdateContainerResourcesData>>): UseMutationOptions<UpdateContainerResourcesResponse2, UpdateContainerResourcesError, Options<UpdateContainerResourcesData>> => {
+    const mutationOptions: UseMutationOptions<UpdateContainerResourcesResponse2, UpdateContainerResourcesError, Options<UpdateContainerResourcesData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateContainerResources({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Restart container
+ *
+ * Restart container.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const restartContainerMutation = (options?: Partial<Options<RestartContainerData>>): UseMutationOptions<RestartContainerResponse, RestartContainerError, Options<RestartContainerData>> => {
+    const mutationOptions: UseMutationOptions<RestartContainerResponse, RestartContainerError, Options<RestartContainerData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await restartContainer({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Start container
+ *
+ * Start container.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const startContainerMutation = (options?: Partial<Options<StartContainerData>>): UseMutationOptions<StartContainerResponse, StartContainerError, Options<StartContainerData>> => {
+    const mutationOptions: UseMutationOptions<StartContainerResponse, StartContainerError, Options<StartContainerData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await startContainer({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Stop container
+ *
+ * Stop container.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const stopContainerMutation = (options?: Partial<Options<StopContainerData>>): UseMutationOptions<StopContainerResponse, StopContainerError, Options<StopContainerData>> => {
+    const mutationOptions: UseMutationOptions<StopContainerResponse, StopContainerError, Options<StopContainerData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await stopContainer({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Delete application
+ *
+ * Delete application.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const deleteApplicationMutation = (options?: Partial<Options<DeleteApplicationData>>): UseMutationOptions<DeleteApplicationResponse, DeleteApplicationError, Options<DeleteApplicationData>> => {
+    const mutationOptions: UseMutationOptions<DeleteApplicationResponse, DeleteApplicationError, Options<DeleteApplicationData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deleteApplication({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getApplicationQueryKey = (options: Options<GetApplicationData>) => createQueryKey('getApplication', options);
+
+/**
+ * Get application
+ *
+ * Get application.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getApplicationOptions = (options: Options<GetApplicationData>) => queryOptions<GetApplicationResponse, GetApplicationError, GetApplicationResponse, ReturnType<typeof getApplicationQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1DeployApplicationProjectFamilyEnvironments({
+        const { data } = await getApplication({
             ...options,
             ...queryKey[0],
             signal,
@@ -1266,32 +495,22 @@ export const getApiV1DeployApplicationProjectFamilyEnvironmentsOptions = (option
         });
         return data;
     },
-    queryKey: getApiV1DeployApplicationProjectFamilyEnvironmentsQueryKey(options)
+    queryKey: getApplicationQueryKey(options)
 });
 
 /**
- * handle recover
+ * Deploy application
  *
- * #### Controller:
+ * Deploy application.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleRecover`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationRecoverMutation = (options?: Partial<Options<PostApiV1DeployApplicationRecoverData>>): UseMutationOptions<PostApiV1DeployApplicationRecoverResponse, PostApiV1DeployApplicationRecoverError, Options<PostApiV1DeployApplicationRecoverData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1DeployApplicationRecoverResponse, PostApiV1DeployApplicationRecoverError, Options<PostApiV1DeployApplicationRecoverData>> = {
+export const deployApplicationMutation = (options?: Partial<Options<DeployApplicationData>>): UseMutationOptions<DeployApplicationResponse, DeployApplicationError, Options<DeployApplicationData>> => {
+    const mutationOptions: UseMutationOptions<DeployApplicationResponse, DeployApplicationError, Options<DeployApplicationData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1DeployApplicationRecover({
+            const { data } = await deployApplication({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1303,28 +522,18 @@ export const postApiV1DeployApplicationRecoverMutation = (options?: Partial<Opti
 };
 
 /**
- * re deploy application
+ * Update application
  *
- * #### Controller:
+ * Update application.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).ReDeployApplication`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationRedeployMutation = (options?: Partial<Options<PostApiV1DeployApplicationRedeployData>>): UseMutationOptions<PostApiV1DeployApplicationRedeployResponse, PostApiV1DeployApplicationRedeployError, Options<PostApiV1DeployApplicationRedeployData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1DeployApplicationRedeployResponse, PostApiV1DeployApplicationRedeployError, Options<PostApiV1DeployApplicationRedeployData>> = {
+export const updateApplicationMutation = (options?: Partial<Options<UpdateApplicationData>>): UseMutationOptions<UpdateApplicationResponse, UpdateApplicationError, Options<UpdateApplicationData>> => {
+    const mutationOptions: UseMutationOptions<UpdateApplicationResponse, UpdateApplicationError, Options<UpdateApplicationData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1DeployApplicationRedeploy({
+            const { data } = await updateApplication({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1335,96 +544,20 @@ export const postApiV1DeployApplicationRedeployMutation = (options?: Partial<Opt
     return mutationOptions;
 };
 
-/**
- * handle restart
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleRestart`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1DeployApplicationRestartMutation = (options?: Partial<Options<PostApiV1DeployApplicationRestartData>>): UseMutationOptions<PostApiV1DeployApplicationRestartResponse, PostApiV1DeployApplicationRestartError, Options<PostApiV1DeployApplicationRestartData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1DeployApplicationRestartResponse, PostApiV1DeployApplicationRestartError, Options<PostApiV1DeployApplicationRestartData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1DeployApplicationRestart({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
+export const listComposeServicesQueryKey = (options: Options<ListComposeServicesData>) => createQueryKey('listComposeServices', options);
 
 /**
- * handle rollback
+ * List compose services
  *
- * #### Controller:
+ * List compose services.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleRollback`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const postApiV1DeployApplicationRollbackMutation = (options?: Partial<Options<PostApiV1DeployApplicationRollbackData>>): UseMutationOptions<PostApiV1DeployApplicationRollbackResponse, PostApiV1DeployApplicationRollbackError, Options<PostApiV1DeployApplicationRollbackData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1DeployApplicationRollbackResponse, PostApiV1DeployApplicationRollbackError, Options<PostApiV1DeployApplicationRollbackData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1DeployApplicationRollback({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1DeployApplicationsQueryKey = (options: Options<GetApiV1DeployApplicationsData>) => createQueryKey('getApiV1DeployApplications', options);
-
-/**
- * get applications
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetApplications`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const getApiV1DeployApplicationsOptions = (options: Options<GetApiV1DeployApplicationsData>) => queryOptions<GetApiV1DeployApplicationsResponse, GetApiV1DeployApplicationsError, GetApiV1DeployApplicationsResponse, ReturnType<typeof getApiV1DeployApplicationsQueryKey>>({
+export const listComposeServicesOptions = (options: Options<ListComposeServicesData>) => queryOptions<ListComposeServicesResponse, ListComposeServicesError, ListComposeServicesResponse, ReturnType<typeof listComposeServicesQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1DeployApplications({
+        const { data } = await listComposeServices({
             ...options,
             ...queryKey[0],
             signal,
@@ -1432,42 +565,56 @@ export const getApiV1DeployApplicationsOptions = (options: Options<GetApiV1Deplo
         });
         return data;
     },
-    queryKey: getApiV1DeployApplicationsQueryKey(options)
+    queryKey: listComposeServicesQueryKey(options)
 });
 
-export const getApiV1DeployApplicationsInfiniteQueryKey = (options: Options<GetApiV1DeployApplicationsData>): QueryKey<Options<GetApiV1DeployApplicationsData>> => createQueryKey('getApiV1DeployApplications', options, true);
+export const listApplicationDeploymentsQueryKey = (options: Options<ListApplicationDeploymentsData>) => createQueryKey('listApplicationDeployments', options);
 
 /**
- * get applications
+ * List application deployments
  *
- * #### Controller:
+ * List application deployments.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetApplications`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DeployApplicationsInfiniteOptions = (options: Options<GetApiV1DeployApplicationsData>) => infiniteQueryOptions<GetApiV1DeployApplicationsResponse, GetApiV1DeployApplicationsError, InfiniteData<GetApiV1DeployApplicationsResponse>, QueryKey<Options<GetApiV1DeployApplicationsData>>, string | Pick<QueryKey<Options<GetApiV1DeployApplicationsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+export const listApplicationDeploymentsOptions = (options: Options<ListApplicationDeploymentsData>) => queryOptions<ListApplicationDeploymentsResponse, ListApplicationDeploymentsError, ListApplicationDeploymentsResponse, ReturnType<typeof listApplicationDeploymentsQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await listApplicationDeployments({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: listApplicationDeploymentsQueryKey(options)
+});
+
+export const listApplicationDeploymentsInfiniteQueryKey = (options: Options<ListApplicationDeploymentsData>): QueryKey<Options<ListApplicationDeploymentsData>> => createQueryKey('listApplicationDeployments', options, true);
+
+/**
+ * List application deployments
+ *
+ * List application deployments.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const listApplicationDeploymentsInfiniteOptions = (options: Options<ListApplicationDeploymentsData>) => infiniteQueryOptions<ListApplicationDeploymentsResponse, ListApplicationDeploymentsError, InfiniteData<ListApplicationDeploymentsResponse>, QueryKey<Options<ListApplicationDeploymentsData>>, number | Pick<QueryKey<Options<ListApplicationDeploymentsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
 // @ts-ignore
 {
     queryFn: async ({ pageParam, queryKey, signal }) => {
         // @ts-ignore
-        const page: Pick<QueryKey<Options<GetApiV1DeployApplicationsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
-            body: {
+        const page: Pick<QueryKey<Options<ListApplicationDeploymentsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+            query: {
                 page: pageParam
             }
         };
         const params = createInfiniteParams(queryKey, page);
-        const { data } = await getApiV1DeployApplications({
+        const { data } = await listApplicationDeployments({
             ...options,
             ...params,
             signal,
@@ -1475,132 +622,23 @@ export const getApiV1DeployApplicationsInfiniteOptions = (options: Options<GetAp
         });
         return data;
     },
-    queryKey: getApiV1DeployApplicationsInfiniteQueryKey(options)
+    queryKey: listApplicationDeploymentsInfiniteQueryKey(options)
 });
 
-/**
- * delete domain
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/domain/controller.(*DomainsController).DeleteDomain`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const deleteApiV1DomainMutation = (options?: Partial<Options<DeleteApiV1DomainData>>): UseMutationOptions<DeleteApiV1DomainResponse, DeleteApiV1DomainError, Options<DeleteApiV1DomainData>> => {
-    const mutationOptions: UseMutationOptions<DeleteApiV1DomainResponse, DeleteApiV1DomainError, Options<DeleteApiV1DomainData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await deleteApiV1Domain({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
+export const getDeploymentQueryKey = (options: Options<GetDeploymentData>) => createQueryKey('getDeployment', options);
 
 /**
- * create domain
+ * Get deployment
  *
- * #### Controller:
+ * Get deployment.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/domain/controller.(*DomainsController).CreateDomain`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const postApiV1DomainMutation = (options?: Partial<Options<PostApiV1DomainData>>): UseMutationOptions<PostApiV1DomainResponse, PostApiV1DomainError, Options<PostApiV1DomainData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1DomainResponse, PostApiV1DomainError, Options<PostApiV1DomainData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1Domain({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * update domain
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/domain/controller.(*DomainsController).UpdateDomain`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const putApiV1DomainMutation = (options?: Partial<Options<PutApiV1DomainData>>): UseMutationOptions<PutApiV1DomainResponse, PutApiV1DomainError, Options<PutApiV1DomainData>> => {
-    const mutationOptions: UseMutationOptions<PutApiV1DomainResponse, PutApiV1DomainError, Options<PutApiV1DomainData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await putApiV1Domain({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1DomainGenerateQueryKey = (options?: Options<GetApiV1DomainGenerateData>) => createQueryKey('getApiV1DomainGenerate', options);
-
-/**
- * generate random sub domain
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/domain/controller.(*DomainsController).GenerateRandomSubDomain`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const getApiV1DomainGenerateOptions = (options?: Options<GetApiV1DomainGenerateData>) => queryOptions<GetApiV1DomainGenerateResponse, GetApiV1DomainGenerateError, GetApiV1DomainGenerateResponse, ReturnType<typeof getApiV1DomainGenerateQueryKey>>({
+export const getDeploymentOptions = (options: Options<GetDeploymentData>) => queryOptions<GetDeploymentResponse, GetDeploymentError, GetDeploymentResponse, ReturnType<typeof getDeploymentQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1DomainGenerate({
+        const { data } = await getDeployment({
             ...options,
             ...queryKey[0],
             signal,
@@ -1608,33 +646,23 @@ export const getApiV1DomainGenerateOptions = (options?: Options<GetApiV1DomainGe
         });
         return data;
     },
-    queryKey: getApiV1DomainGenerateQueryKey(options)
+    queryKey: getDeploymentQueryKey(options)
 });
 
-export const getApiV1DomainsQueryKey = (options?: Options<GetApiV1DomainsData>) => createQueryKey('getApiV1Domains', options);
+export const getDeploymentLogsQueryKey = (options: Options<GetDeploymentLogsData>) => createQueryKey('getDeploymentLogs', options);
 
 /**
- * get domains
+ * Get deployment logs
  *
- * #### Controller:
+ * Get deployment logs.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/domain/controller.(*DomainsController).GetDomains`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DomainsOptions = (options?: Options<GetApiV1DomainsData>) => queryOptions<GetApiV1DomainsResponse, GetApiV1DomainsError, GetApiV1DomainsResponse, ReturnType<typeof getApiV1DomainsQueryKey>>({
+export const getDeploymentLogsOptions = (options: Options<GetDeploymentLogsData>) => queryOptions<GetDeploymentLogsResponse, GetDeploymentLogsError, GetDeploymentLogsResponse, ReturnType<typeof getDeploymentLogsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1Domains({
+        const { data } = await getDeploymentLogs({
             ...options,
             ...queryKey[0],
             signal,
@@ -1642,33 +670,148 @@ export const getApiV1DomainsOptions = (options?: Options<GetApiV1DomainsData>) =
         });
         return data;
     },
-    queryKey: getApiV1DomainsQueryKey(options)
+    queryKey: getDeploymentLogsQueryKey(options)
 });
 
-export const getApiV1ExtensionsQueryKey = (options?: Options<GetApiV1ExtensionsData>) => createQueryKey('getApiV1Extensions', options);
+export const getDeploymentLogsInfiniteQueryKey = (options: Options<GetDeploymentLogsData>): QueryKey<Options<GetDeploymentLogsData>> => createQueryKey('getDeploymentLogs', options, true);
 
 /**
- * get extensions
+ * Get deployment logs
  *
- * #### Controller:
+ * Get deployment logs.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).GetExtensions`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1ExtensionsOptions = (options?: Options<GetApiV1ExtensionsData>) => queryOptions<GetApiV1ExtensionsResponse, GetApiV1ExtensionsError, GetApiV1ExtensionsResponse, ReturnType<typeof getApiV1ExtensionsQueryKey>>({
+export const getDeploymentLogsInfiniteOptions = (options: Options<GetDeploymentLogsData>) => infiniteQueryOptions<GetDeploymentLogsResponse, GetDeploymentLogsError, InfiniteData<GetDeploymentLogsResponse>, QueryKey<Options<GetDeploymentLogsData>>, number | Pick<QueryKey<Options<GetDeploymentLogsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+// @ts-ignore
+{
+    queryFn: async ({ pageParam, queryKey, signal }) => {
+        // @ts-ignore
+        const page: Pick<QueryKey<Options<GetDeploymentLogsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+            query: {
+                page: pageParam
+            }
+        };
+        const params = createInfiniteParams(queryKey, page);
+        const { data } = await getDeploymentLogs({
+            ...options,
+            ...params,
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getDeploymentLogsInfiniteQueryKey(options)
+});
+
+/**
+ * Remove application domain
+ *
+ * Remove application domain.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const removeApplicationDomainMutation = (options?: Partial<Options<RemoveApplicationDomainData>>): UseMutationOptions<RemoveApplicationDomainResponse, RemoveApplicationDomainError, Options<RemoveApplicationDomainData>> => {
+    const mutationOptions: UseMutationOptions<RemoveApplicationDomainResponse, RemoveApplicationDomainError, Options<RemoveApplicationDomainData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await removeApplicationDomain({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Add application domain
+ *
+ * Add application domain.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const addApplicationDomainMutation = (options?: Partial<Options<AddApplicationDomainData>>): UseMutationOptions<AddApplicationDomainResponse, AddApplicationDomainError, Options<AddApplicationDomainData>> => {
+    const mutationOptions: UseMutationOptions<AddApplicationDomainResponse, AddApplicationDomainError, Options<AddApplicationDomainData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await addApplicationDomain({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Index application codebase
+ *
+ * Index application codebase.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const indexApplicationCodebaseMutation = (options?: Partial<Options<IndexApplicationCodebaseData>>): UseMutationOptions<IndexApplicationCodebaseResponse, IndexApplicationCodebaseError, Options<IndexApplicationCodebaseData>> => {
+    const mutationOptions: UseMutationOptions<IndexApplicationCodebaseResponse, IndexApplicationCodebaseError, Options<IndexApplicationCodebaseData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await indexApplicationCodebase({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Update application labels
+ *
+ * Update application labels.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateApplicationLabelsMutation = (options?: Partial<Options<UpdateApplicationLabelsData>>): UseMutationOptions<UpdateApplicationLabelsResponse, UpdateApplicationLabelsError, Options<UpdateApplicationLabelsData>> => {
+    const mutationOptions: UseMutationOptions<UpdateApplicationLabelsResponse, UpdateApplicationLabelsError, Options<UpdateApplicationLabelsData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateApplicationLabels({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getApplicationLogsQueryKey = (options: Options<GetApplicationLogsData>) => createQueryKey('getApplicationLogs', options);
+
+/**
+ * Get application logs
+ *
+ * Get application logs.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getApplicationLogsOptions = (options: Options<GetApplicationLogsData>) => queryOptions<GetApplicationLogsResponse, GetApplicationLogsError, GetApplicationLogsResponse, ReturnType<typeof getApplicationLogsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1Extensions({
+        const { data } = await getApplicationLogs({
             ...options,
             ...queryKey[0],
             signal,
@@ -1676,33 +819,171 @@ export const getApiV1ExtensionsOptions = (options?: Options<GetApiV1ExtensionsDa
         });
         return data;
     },
-    queryKey: getApiV1ExtensionsQueryKey(options)
+    queryKey: getApplicationLogsQueryKey(options)
 });
 
-export const getApiV1ExtensionsByExtensionIdExtensionIdQueryKey = (options: Options<GetApiV1ExtensionsByExtensionIdExtensionIdData>) => createQueryKey('getApiV1ExtensionsByExtensionIdExtensionId', options);
+export const getApplicationLogsInfiniteQueryKey = (options: Options<GetApplicationLogsData>): QueryKey<Options<GetApplicationLogsData>> => createQueryKey('getApplicationLogs', options, true);
 
 /**
- * get extension by extension i d
+ * Get application logs
  *
- * #### Controller:
+ * Get application logs.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).GetExtensionByExtensionID`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1ExtensionsByExtensionIdExtensionIdOptions = (options: Options<GetApiV1ExtensionsByExtensionIdExtensionIdData>) => queryOptions<GetApiV1ExtensionsByExtensionIdExtensionIdResponse, GetApiV1ExtensionsByExtensionIdExtensionIdError, GetApiV1ExtensionsByExtensionIdExtensionIdResponse, ReturnType<typeof getApiV1ExtensionsByExtensionIdExtensionIdQueryKey>>({
+export const getApplicationLogsInfiniteOptions = (options: Options<GetApplicationLogsData>) => infiniteQueryOptions<GetApplicationLogsResponse, GetApplicationLogsError, InfiniteData<GetApplicationLogsResponse>, QueryKey<Options<GetApplicationLogsData>>, number | Pick<QueryKey<Options<GetApplicationLogsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+// @ts-ignore
+{
+    queryFn: async ({ pageParam, queryKey, signal }) => {
+        // @ts-ignore
+        const page: Pick<QueryKey<Options<GetApplicationLogsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+            query: {
+                page: pageParam
+            }
+        };
+        const params = createInfiniteParams(queryKey, page);
+        const { data } = await getApplicationLogs({
+            ...options,
+            ...params,
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getApplicationLogsInfiniteQueryKey(options)
+});
+
+/**
+ * Preview compose services
+ *
+ * Preview compose services.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const previewComposeServicesMutation = (options?: Partial<Options<PreviewComposeServicesData>>): UseMutationOptions<PreviewComposeServicesResponse, PreviewComposeServicesError, Options<PreviewComposeServicesData>> => {
+    const mutationOptions: UseMutationOptions<PreviewComposeServicesResponse, PreviewComposeServicesError, Options<PreviewComposeServicesData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await previewComposeServices({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Create project
+ *
+ * Create project.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const createProjectMutation = (options?: Partial<Options<CreateProjectData>>): UseMutationOptions<CreateProjectResponse, CreateProjectError, Options<CreateProjectData>> => {
+    const mutationOptions: UseMutationOptions<CreateProjectResponse, CreateProjectError, Options<CreateProjectData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await createProject({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Add project to family
+ *
+ * Add project to family.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const addProjectToFamilyMutation = (options?: Partial<Options<AddProjectToFamilyData>>): UseMutationOptions<AddProjectToFamilyResponse, AddProjectToFamilyError, Options<AddProjectToFamilyData>> => {
+    const mutationOptions: UseMutationOptions<AddProjectToFamilyResponse, AddProjectToFamilyError, Options<AddProjectToFamilyData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await addProjectToFamily({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Deploy project
+ *
+ * Deploy project.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const deployProjectMutation = (options?: Partial<Options<DeployProjectData>>): UseMutationOptions<DeployProjectResponse, DeployProjectError, Options<DeployProjectData>> => {
+    const mutationOptions: UseMutationOptions<DeployProjectResponse, DeployProjectError, Options<DeployProjectData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deployProject({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Duplicate project
+ *
+ * Duplicate project.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const duplicateProjectMutation = (options?: Partial<Options<DuplicateProjectData>>): UseMutationOptions<DuplicateProjectResponse, DuplicateProjectError, Options<DuplicateProjectData>> => {
+    const mutationOptions: UseMutationOptions<DuplicateProjectResponse, DuplicateProjectError, Options<DuplicateProjectData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await duplicateProject({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const listProjectsInFamilyQueryKey = (options: Options<ListProjectsInFamilyData>) => createQueryKey('listProjectsInFamily', options);
+
+/**
+ * List projects in family
+ *
+ * List projects in family.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const listProjectsInFamilyOptions = (options: Options<ListProjectsInFamilyData>) => queryOptions<ListProjectsInFamilyResponse, ListProjectsInFamilyError, ListProjectsInFamilyResponse, ReturnType<typeof listProjectsInFamilyQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1ExtensionsByExtensionIdExtensionId({
+        const { data } = await listProjectsInFamily({
             ...options,
             ...queryKey[0],
             signal,
@@ -1710,33 +991,23 @@ export const getApiV1ExtensionsByExtensionIdExtensionIdOptions = (options: Optio
         });
         return data;
     },
-    queryKey: getApiV1ExtensionsByExtensionIdExtensionIdQueryKey(options)
+    queryKey: listProjectsInFamilyQueryKey(options)
 });
 
-export const getApiV1ExtensionsByExtensionIdExtensionIdExecutionsQueryKey = (options: Options<GetApiV1ExtensionsByExtensionIdExtensionIdExecutionsData>) => createQueryKey('getApiV1ExtensionsByExtensionIdExtensionIdExecutions', options);
+export const listFamilyEnvironmentsQueryKey = (options: Options<ListFamilyEnvironmentsData>) => createQueryKey('listFamilyEnvironments', options);
 
 /**
- * list executions by extension i d
+ * List family environments
  *
- * #### Controller:
+ * List family environments.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).ListExecutionsByExtensionID`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1ExtensionsByExtensionIdExtensionIdExecutionsOptions = (options: Options<GetApiV1ExtensionsByExtensionIdExtensionIdExecutionsData>) => queryOptions<GetApiV1ExtensionsByExtensionIdExtensionIdExecutionsResponse, GetApiV1ExtensionsByExtensionIdExtensionIdExecutionsError, GetApiV1ExtensionsByExtensionIdExtensionIdExecutionsResponse, ReturnType<typeof getApiV1ExtensionsByExtensionIdExtensionIdExecutionsQueryKey>>({
+export const listFamilyEnvironmentsOptions = (options: Options<ListFamilyEnvironmentsData>) => queryOptions<ListFamilyEnvironmentsResponse, ListFamilyEnvironmentsError, ListFamilyEnvironmentsResponse, ReturnType<typeof listFamilyEnvironmentsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1ExtensionsByExtensionIdExtensionIdExecutions({
+        const { data } = await listFamilyEnvironments({
             ...options,
             ...queryKey[0],
             signal,
@@ -1744,33 +1015,115 @@ export const getApiV1ExtensionsByExtensionIdExtensionIdExecutionsOptions = (opti
         });
         return data;
     },
-    queryKey: getApiV1ExtensionsByExtensionIdExtensionIdExecutionsQueryKey(options)
+    queryKey: listFamilyEnvironmentsQueryKey(options)
 });
 
-export const getApiV1ExtensionsCategoriesQueryKey = (options?: Options<GetApiV1ExtensionsCategoriesData>) => createQueryKey('getApiV1ExtensionsCategories', options);
+/**
+ * Recover application
+ *
+ * Recover application.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const recoverApplicationMutation = (options?: Partial<Options<RecoverApplicationData>>): UseMutationOptions<RecoverApplicationResponse, RecoverApplicationError, Options<RecoverApplicationData>> => {
+    const mutationOptions: UseMutationOptions<RecoverApplicationResponse, RecoverApplicationError, Options<RecoverApplicationData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await recoverApplication({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
 
 /**
- * get categories
+ * Redeploy application
  *
- * #### Controller:
+ * Redeploy application.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).GetCategories`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const getApiV1ExtensionsCategoriesOptions = (options?: Options<GetApiV1ExtensionsCategoriesData>) => queryOptions<GetApiV1ExtensionsCategoriesResponse, GetApiV1ExtensionsCategoriesError, GetApiV1ExtensionsCategoriesResponse, ReturnType<typeof getApiV1ExtensionsCategoriesQueryKey>>({
+export const redeployApplicationMutation = (options?: Partial<Options<RedeployApplicationData>>): UseMutationOptions<RedeployApplicationResponse, RedeployApplicationError, Options<RedeployApplicationData>> => {
+    const mutationOptions: UseMutationOptions<RedeployApplicationResponse, RedeployApplicationError, Options<RedeployApplicationData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await redeployApplication({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Restart deployment
+ *
+ * Restart deployment.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const restartDeploymentMutation = (options?: Partial<Options<RestartDeploymentData>>): UseMutationOptions<RestartDeploymentResponse, RestartDeploymentError, Options<RestartDeploymentData>> => {
+    const mutationOptions: UseMutationOptions<RestartDeploymentResponse, RestartDeploymentError, Options<RestartDeploymentData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await restartDeployment({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Rollback deployment
+ *
+ * Rollback deployment.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const rollbackDeploymentMutation = (options?: Partial<Options<RollbackDeploymentData>>): UseMutationOptions<RollbackDeploymentResponse, RollbackDeploymentError, Options<RollbackDeploymentData>> => {
+    const mutationOptions: UseMutationOptions<RollbackDeploymentResponse, RollbackDeploymentError, Options<RollbackDeploymentData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await rollbackDeployment({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const listApplicationsQueryKey = (options?: Options<ListApplicationsData>) => createQueryKey('listApplications', options);
+
+/**
+ * List applications
+ *
+ * List applications.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const listApplicationsOptions = (options?: Options<ListApplicationsData>) => queryOptions<ListApplicationsResponse2, ListApplicationsError, ListApplicationsResponse2, ReturnType<typeof listApplicationsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1ExtensionsCategories({
+        const { data } = await listApplications({
             ...options,
             ...queryKey[0],
             signal,
@@ -1778,33 +1131,56 @@ export const getApiV1ExtensionsCategoriesOptions = (options?: Options<GetApiV1Ex
         });
         return data;
     },
-    queryKey: getApiV1ExtensionsCategoriesQueryKey(options)
+    queryKey: listApplicationsQueryKey(options)
 });
 
-export const getApiV1ExtensionsExecutionExecutionIdQueryKey = (options: Options<GetApiV1ExtensionsExecutionExecutionIdData>) => createQueryKey('getApiV1ExtensionsExecutionExecutionId', options);
+export const listApplicationsInfiniteQueryKey = (options?: Options<ListApplicationsData>): QueryKey<Options<ListApplicationsData>> => createQueryKey('listApplications', options, true);
 
 /**
- * get execution
+ * List applications
  *
- * #### Controller:
+ * List applications.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).GetExecution`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1ExtensionsExecutionExecutionIdOptions = (options: Options<GetApiV1ExtensionsExecutionExecutionIdData>) => queryOptions<GetApiV1ExtensionsExecutionExecutionIdResponse, GetApiV1ExtensionsExecutionExecutionIdError, GetApiV1ExtensionsExecutionExecutionIdResponse, ReturnType<typeof getApiV1ExtensionsExecutionExecutionIdQueryKey>>({
+export const listApplicationsInfiniteOptions = (options?: Options<ListApplicationsData>) => infiniteQueryOptions<ListApplicationsResponse2, ListApplicationsError, InfiniteData<ListApplicationsResponse2>, QueryKey<Options<ListApplicationsData>>, number | Pick<QueryKey<Options<ListApplicationsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+// @ts-ignore
+{
+    queryFn: async ({ pageParam, queryKey, signal }) => {
+        // @ts-ignore
+        const page: Pick<QueryKey<Options<ListApplicationsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+            query: {
+                page: pageParam
+            }
+        };
+        const params = createInfiniteParams(queryKey, page);
+        const { data } = await listApplications({
+            ...options,
+            ...params,
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: listApplicationsInfiniteQueryKey(options)
+});
+
+export const listDomainsQueryKey = (options?: Options<ListDomainsData>) => createQueryKey('listDomains', options);
+
+/**
+ * List domains
+ *
+ * List domains.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const listDomainsOptions = (options?: Options<ListDomainsData>) => queryOptions<ListDomainsResponse2, ListDomainsError, ListDomainsResponse2, ReturnType<typeof listDomainsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1ExtensionsExecutionExecutionId({
+        const { data } = await listDomains({
             ...options,
             ...queryKey[0],
             signal,
@@ -1812,32 +1188,22 @@ export const getApiV1ExtensionsExecutionExecutionIdOptions = (options: Options<G
         });
         return data;
     },
-    queryKey: getApiV1ExtensionsExecutionExecutionIdQueryKey(options)
+    queryKey: listDomainsQueryKey(options)
 });
 
 /**
- * cancel execution
+ * Remove custom domain
  *
- * #### Controller:
+ * Remove custom domain.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).CancelExecution`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1ExtensionsExecutionExecutionIdCancelMutation = (options?: Partial<Options<PostApiV1ExtensionsExecutionExecutionIdCancelData>>): UseMutationOptions<PostApiV1ExtensionsExecutionExecutionIdCancelResponse, PostApiV1ExtensionsExecutionExecutionIdCancelError, Options<PostApiV1ExtensionsExecutionExecutionIdCancelData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1ExtensionsExecutionExecutionIdCancelResponse, PostApiV1ExtensionsExecutionExecutionIdCancelError, Options<PostApiV1ExtensionsExecutionExecutionIdCancelData>> = {
+export const removeCustomDomainMutation = (options?: Partial<Options<RemoveCustomDomainData>>): UseMutationOptions<RemoveCustomDomainResponse, RemoveCustomDomainError, Options<RemoveCustomDomainData>> => {
+    const mutationOptions: UseMutationOptions<RemoveCustomDomainResponse, RemoveCustomDomainError, Options<RemoveCustomDomainData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1ExtensionsExecutionExecutionIdCancel({
+            const { data } = await removeCustomDomain({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1848,30 +1214,43 @@ export const postApiV1ExtensionsExecutionExecutionIdCancelMutation = (options?: 
     return mutationOptions;
 };
 
-export const getApiV1ExtensionsExecutionExecutionIdLogsQueryKey = (options: Options<GetApiV1ExtensionsExecutionExecutionIdLogsData>) => createQueryKey('getApiV1ExtensionsExecutionExecutionIdLogs', options);
+/**
+ * Add custom domain
+ *
+ * Add custom domain.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const addCustomDomainMutation = (options?: Partial<Options<AddCustomDomainData>>): UseMutationOptions<AddCustomDomainResponse, AddCustomDomainError, Options<AddCustomDomainData>> => {
+    const mutationOptions: UseMutationOptions<AddCustomDomainResponse, AddCustomDomainError, Options<AddCustomDomainData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await addCustomDomain({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const checkCustomDomainDnsQueryKey = (options: Options<CheckCustomDomainDnsData>) => createQueryKey('checkCustomDomainDns', options);
 
 /**
- * list execution logs
+ * Check custom domain DNS
  *
- * #### Controller:
+ * Check custom domain DNS.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).ListExecutionLogs`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1ExtensionsExecutionExecutionIdLogsOptions = (options: Options<GetApiV1ExtensionsExecutionExecutionIdLogsData>) => queryOptions<GetApiV1ExtensionsExecutionExecutionIdLogsResponse, GetApiV1ExtensionsExecutionExecutionIdLogsError, GetApiV1ExtensionsExecutionExecutionIdLogsResponse, ReturnType<typeof getApiV1ExtensionsExecutionExecutionIdLogsQueryKey>>({
+export const checkCustomDomainDnsOptions = (options: Options<CheckCustomDomainDnsData>) => queryOptions<CheckCustomDomainDnsResponse, CheckCustomDomainDnsError, CheckCustomDomainDnsResponse, ReturnType<typeof checkCustomDomainDnsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1ExtensionsExecutionExecutionIdLogs({
+        const { data } = await checkCustomDomainDns({
             ...options,
             ...queryKey[0],
             signal,
@@ -1879,132 +1258,23 @@ export const getApiV1ExtensionsExecutionExecutionIdLogsOptions = (options: Optio
         });
         return data;
     },
-    queryKey: getApiV1ExtensionsExecutionExecutionIdLogsQueryKey(options)
+    queryKey: checkCustomDomainDnsQueryKey(options)
 });
 
-/**
- * fork extension
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).ForkExtension`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1ExtensionsExtensionIdForkMutation = (options?: Partial<Options<PostApiV1ExtensionsExtensionIdForkData>>): UseMutationOptions<PostApiV1ExtensionsExtensionIdForkResponse, PostApiV1ExtensionsExtensionIdForkError, Options<PostApiV1ExtensionsExtensionIdForkData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1ExtensionsExtensionIdForkResponse, PostApiV1ExtensionsExtensionIdForkError, Options<PostApiV1ExtensionsExtensionIdForkData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1ExtensionsExtensionIdFork({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
+export const generateRandomSubdomainQueryKey = (options?: Options<GenerateRandomSubdomainData>) => createQueryKey('generateRandomSubdomain', options);
 
 /**
- * run extension
+ * Generate random subdomain
  *
- * #### Controller:
+ * Generate random subdomain.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).RunExtension`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const postApiV1ExtensionsExtensionIdRunMutation = (options?: Partial<Options<PostApiV1ExtensionsExtensionIdRunData>>): UseMutationOptions<PostApiV1ExtensionsExtensionIdRunResponse, PostApiV1ExtensionsExtensionIdRunError, Options<PostApiV1ExtensionsExtensionIdRunData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1ExtensionsExtensionIdRunResponse, PostApiV1ExtensionsExtensionIdRunError, Options<PostApiV1ExtensionsExtensionIdRunData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1ExtensionsExtensionIdRun({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * delete fork
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).DeleteFork`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const deleteApiV1ExtensionsIdMutation = (options?: Partial<Options<DeleteApiV1ExtensionsIdData>>): UseMutationOptions<DeleteApiV1ExtensionsIdResponse, DeleteApiV1ExtensionsIdError, Options<DeleteApiV1ExtensionsIdData>> => {
-    const mutationOptions: UseMutationOptions<DeleteApiV1ExtensionsIdResponse, DeleteApiV1ExtensionsIdError, Options<DeleteApiV1ExtensionsIdData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await deleteApiV1ExtensionsId({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1ExtensionsIdQueryKey = (options: Options<GetApiV1ExtensionsIdData>) => createQueryKey('getApiV1ExtensionsId', options);
-
-/**
- * get extension
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).GetExtension`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const getApiV1ExtensionsIdOptions = (options: Options<GetApiV1ExtensionsIdData>) => queryOptions<GetApiV1ExtensionsIdResponse, GetApiV1ExtensionsIdError, GetApiV1ExtensionsIdResponse, ReturnType<typeof getApiV1ExtensionsIdQueryKey>>({
+export const generateRandomSubdomainOptions = (options?: Options<GenerateRandomSubdomainData>) => queryOptions<GenerateRandomSubdomainResponse, GenerateRandomSubdomainError, GenerateRandomSubdomainResponse, ReturnType<typeof generateRandomSubdomainQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1ExtensionsId({
+        const { data } = await generateRandomSubdomain({
             ...options,
             ...queryKey[0],
             signal,
@@ -2012,32 +1282,46 @@ export const getApiV1ExtensionsIdOptions = (options: Options<GetApiV1ExtensionsI
         });
         return data;
     },
-    queryKey: getApiV1ExtensionsIdQueryKey(options)
+    queryKey: generateRandomSubdomainQueryKey(options)
 });
 
-export const getApiV1FeatureFlagsQueryKey = (options?: Options<GetApiV1FeatureFlagsData>) => createQueryKey('getApiV1FeatureFlags', options);
+/**
+ * Verify custom domain
+ *
+ * Verify custom domain.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const verifyCustomDomainMutation = (options?: Partial<Options<VerifyCustomDomainData>>): UseMutationOptions<VerifyCustomDomainResponse, VerifyCustomDomainError, Options<VerifyCustomDomainData>> => {
+    const mutationOptions: UseMutationOptions<VerifyCustomDomainResponse, VerifyCustomDomainError, Options<VerifyCustomDomainData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await verifyCustomDomain({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const listExtensionsQueryKey = (options?: Options<ListExtensionsData>) => createQueryKey('listExtensions', options);
 
 /**
- * get feature flags
+ * List extensions
  *
- * #### Controller:
+ * List extensions.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/feature-flags/controller.(*FeatureFlagController).GetFeatureFlags`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1FeatureFlagsOptions = (options?: Options<GetApiV1FeatureFlagsData>) => queryOptions<GetApiV1FeatureFlagsResponse, GetApiV1FeatureFlagsError, GetApiV1FeatureFlagsResponse, ReturnType<typeof getApiV1FeatureFlagsQueryKey>>({
+export const listExtensionsOptions = (options?: Options<ListExtensionsData>) => queryOptions<ListExtensionsResponse2, ListExtensionsError, ListExtensionsResponse2, ReturnType<typeof listExtensionsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1FeatureFlags({
+        const { data } = await listExtensions({
             ...options,
             ...queryKey[0],
             signal,
@@ -2045,64 +1329,56 @@ export const getApiV1FeatureFlagsOptions = (options?: Options<GetApiV1FeatureFla
         });
         return data;
     },
-    queryKey: getApiV1FeatureFlagsQueryKey(options)
+    queryKey: listExtensionsQueryKey(options)
 });
 
-/**
- * update feature flag
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/feature-flags/controller.(*FeatureFlagController).UpdateFeatureFlag`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const putApiV1FeatureFlagsMutation = (options?: Partial<Options<PutApiV1FeatureFlagsData>>): UseMutationOptions<PutApiV1FeatureFlagsResponse, PutApiV1FeatureFlagsError, Options<PutApiV1FeatureFlagsData>> => {
-    const mutationOptions: UseMutationOptions<PutApiV1FeatureFlagsResponse, PutApiV1FeatureFlagsError, Options<PutApiV1FeatureFlagsData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await putApiV1FeatureFlags({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1FeatureFlagsCheckQueryKey = (options?: Options<GetApiV1FeatureFlagsCheckData>) => createQueryKey('getApiV1FeatureFlagsCheck', options);
+export const listExtensionsInfiniteQueryKey = (options?: Options<ListExtensionsData>): QueryKey<Options<ListExtensionsData>> => createQueryKey('listExtensions', options, true);
 
 /**
- * is feature enabled
+ * List extensions
  *
- * #### Controller:
+ * List extensions.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/feature-flags/controller.(*FeatureFlagController).IsFeatureEnabled`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1FeatureFlagsCheckOptions = (options?: Options<GetApiV1FeatureFlagsCheckData>) => queryOptions<GetApiV1FeatureFlagsCheckResponse, GetApiV1FeatureFlagsCheckError, GetApiV1FeatureFlagsCheckResponse, ReturnType<typeof getApiV1FeatureFlagsCheckQueryKey>>({
+export const listExtensionsInfiniteOptions = (options?: Options<ListExtensionsData>) => infiniteQueryOptions<ListExtensionsResponse2, ListExtensionsError, InfiniteData<ListExtensionsResponse2>, QueryKey<Options<ListExtensionsData>>, number | Pick<QueryKey<Options<ListExtensionsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+// @ts-ignore
+{
+    queryFn: async ({ pageParam, queryKey, signal }) => {
+        // @ts-ignore
+        const page: Pick<QueryKey<Options<ListExtensionsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+            query: {
+                page: pageParam
+            }
+        };
+        const params = createInfiniteParams(queryKey, page);
+        const { data } = await listExtensions({
+            ...options,
+            ...params,
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: listExtensionsInfiniteQueryKey(options)
+});
+
+export const getExtensionByExtensionIdQueryKey = (options: Options<GetExtensionByExtensionIdData>) => createQueryKey('getExtensionByExtensionId', options);
+
+/**
+ * Get extension by extension ID
+ *
+ * Get extension by extension ID.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getExtensionByExtensionIdOptions = (options: Options<GetExtensionByExtensionIdData>) => queryOptions<GetExtensionByExtensionIdResponse, GetExtensionByExtensionIdError, GetExtensionByExtensionIdResponse, ReturnType<typeof getExtensionByExtensionIdQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1FeatureFlagsCheck({
+        const { data } = await getExtensionByExtensionId({
             ...options,
             ...queryKey[0],
             signal,
@@ -2110,33 +1386,23 @@ export const getApiV1FeatureFlagsCheckOptions = (options?: Options<GetApiV1Featu
         });
         return data;
     },
-    queryKey: getApiV1FeatureFlagsCheckQueryKey(options)
+    queryKey: getExtensionByExtensionIdQueryKey(options)
 });
 
-export const getApiV1FileManagerQueryKey = (options: Options<GetApiV1FileManagerData>) => createQueryKey('getApiV1FileManager', options);
+export const listExtensionExecutionsQueryKey = (options: Options<ListExtensionExecutionsData>) => createQueryKey('listExtensionExecutions', options);
 
 /**
- * list files
+ * List extension executions
  *
- * #### Controller:
+ * List extension executions.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/file-manager/controller.(*FileManagerController).ListFiles`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1FileManagerOptions = (options: Options<GetApiV1FileManagerData>) => queryOptions<GetApiV1FileManagerResponse, GetApiV1FileManagerError, GetApiV1FileManagerResponse, ReturnType<typeof getApiV1FileManagerQueryKey>>({
+export const listExtensionExecutionsOptions = (options: Options<ListExtensionExecutionsData>) => queryOptions<ListExtensionExecutionsResponse, ListExtensionExecutionsError, ListExtensionExecutionsResponse, ReturnType<typeof listExtensionExecutionsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1FileManager({
+        const { data } = await listExtensionExecutions({
             ...options,
             ...queryKey[0],
             signal,
@@ -2144,297 +1410,23 @@ export const getApiV1FileManagerOptions = (options: Options<GetApiV1FileManagerD
         });
         return data;
     },
-    queryKey: getApiV1FileManagerQueryKey(options)
+    queryKey: listExtensionExecutionsQueryKey(options)
 });
 
-/**
- * copy directory
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/file-manager/controller.(*FileManagerController).CopyDirectory`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1FileManagerCopyDirectoryMutation = (options?: Partial<Options<PostApiV1FileManagerCopyDirectoryData>>): UseMutationOptions<PostApiV1FileManagerCopyDirectoryResponse, PostApiV1FileManagerCopyDirectoryError, Options<PostApiV1FileManagerCopyDirectoryData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1FileManagerCopyDirectoryResponse, PostApiV1FileManagerCopyDirectoryError, Options<PostApiV1FileManagerCopyDirectoryData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1FileManagerCopyDirectory({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
+export const listExtensionCategoriesQueryKey = (options?: Options<ListExtensionCategoriesData>) => createQueryKey('listExtensionCategories', options);
 
 /**
- * create directory
+ * List extension categories
  *
- * #### Controller:
+ * List extension categories.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/file-manager/controller.(*FileManagerController).CreateDirectory`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const postApiV1FileManagerCreateDirectoryMutation = (options?: Partial<Options<PostApiV1FileManagerCreateDirectoryData>>): UseMutationOptions<PostApiV1FileManagerCreateDirectoryResponse, PostApiV1FileManagerCreateDirectoryError, Options<PostApiV1FileManagerCreateDirectoryData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1FileManagerCreateDirectoryResponse, PostApiV1FileManagerCreateDirectoryError, Options<PostApiV1FileManagerCreateDirectoryData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1FileManagerCreateDirectory({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * delete directory
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/file-manager/controller.(*FileManagerController).DeleteDirectory`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const deleteApiV1FileManagerDeleteDirectoryMutation = (options?: Partial<Options<DeleteApiV1FileManagerDeleteDirectoryData>>): UseMutationOptions<DeleteApiV1FileManagerDeleteDirectoryResponse, DeleteApiV1FileManagerDeleteDirectoryError, Options<DeleteApiV1FileManagerDeleteDirectoryData>> => {
-    const mutationOptions: UseMutationOptions<DeleteApiV1FileManagerDeleteDirectoryResponse, DeleteApiV1FileManagerDeleteDirectoryError, Options<DeleteApiV1FileManagerDeleteDirectoryData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await deleteApiV1FileManagerDeleteDirectory({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * move directory
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/file-manager/controller.(*FileManagerController).MoveDirectory`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1FileManagerMoveDirectoryMutation = (options?: Partial<Options<PostApiV1FileManagerMoveDirectoryData>>): UseMutationOptions<PostApiV1FileManagerMoveDirectoryResponse, PostApiV1FileManagerMoveDirectoryError, Options<PostApiV1FileManagerMoveDirectoryData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1FileManagerMoveDirectoryResponse, PostApiV1FileManagerMoveDirectoryError, Options<PostApiV1FileManagerMoveDirectoryData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1FileManagerMoveDirectory({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * upload file
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/file-manager/controller.(*FileManagerController).UploadFile`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1FileManagerUploadMutation = (options?: Partial<Options<PostApiV1FileManagerUploadData>>): UseMutationOptions<PostApiV1FileManagerUploadResponse, PostApiV1FileManagerUploadError, Options<PostApiV1FileManagerUploadData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1FileManagerUploadResponse, PostApiV1FileManagerUploadError, Options<PostApiV1FileManagerUploadData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1FileManagerUpload({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * delete github connector
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/github-connector/controller.(*GithubConnectorController).DeleteGithubConnector`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const deleteApiV1GithubConnectorMutation = (options?: Partial<Options<DeleteApiV1GithubConnectorData>>): UseMutationOptions<DeleteApiV1GithubConnectorResponse, DeleteApiV1GithubConnectorError, Options<DeleteApiV1GithubConnectorData>> => {
-    const mutationOptions: UseMutationOptions<DeleteApiV1GithubConnectorResponse, DeleteApiV1GithubConnectorError, Options<DeleteApiV1GithubConnectorData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await deleteApiV1GithubConnector({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * create github connector
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/github-connector/controller.(*GithubConnectorController).CreateGithubConnector`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1GithubConnectorMutation = (options?: Partial<Options<PostApiV1GithubConnectorData>>): UseMutationOptions<PostApiV1GithubConnectorResponse, PostApiV1GithubConnectorError, Options<PostApiV1GithubConnectorData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1GithubConnectorResponse, PostApiV1GithubConnectorError, Options<PostApiV1GithubConnectorData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1GithubConnector({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * update github connector request
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/github-connector/controller.(*GithubConnectorController).UpdateGithubConnectorRequest`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const putApiV1GithubConnectorMutation = (options?: Partial<Options<PutApiV1GithubConnectorData>>): UseMutationOptions<PutApiV1GithubConnectorResponse, PutApiV1GithubConnectorError, Options<PutApiV1GithubConnectorData>> => {
-    const mutationOptions: UseMutationOptions<PutApiV1GithubConnectorResponse, PutApiV1GithubConnectorError, Options<PutApiV1GithubConnectorData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await putApiV1GithubConnector({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1GithubConnectorAllQueryKey = (options?: Options<GetApiV1GithubConnectorAllData>) => createQueryKey('getApiV1GithubConnectorAll', options);
-
-/**
- * get github connectors
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/github-connector/controller.(*GithubConnectorController).GetGithubConnectors`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const getApiV1GithubConnectorAllOptions = (options?: Options<GetApiV1GithubConnectorAllData>) => queryOptions<GetApiV1GithubConnectorAllResponse, GetApiV1GithubConnectorAllError, GetApiV1GithubConnectorAllResponse, ReturnType<typeof getApiV1GithubConnectorAllQueryKey>>({
+export const listExtensionCategoriesOptions = (options?: Options<ListExtensionCategoriesData>) => queryOptions<ListExtensionCategoriesResponse, ListExtensionCategoriesError, ListExtensionCategoriesResponse, ReturnType<typeof listExtensionCategoriesQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1GithubConnectorAll({
+        const { data } = await listExtensionCategories({
             ...options,
             ...queryKey[0],
             signal,
@@ -2442,33 +1434,23 @@ export const getApiV1GithubConnectorAllOptions = (options?: Options<GetApiV1Gith
         });
         return data;
     },
-    queryKey: getApiV1GithubConnectorAllQueryKey(options)
+    queryKey: listExtensionCategoriesQueryKey(options)
 });
 
-export const getApiV1GithubConnectorRepositoriesQueryKey = (options?: Options<GetApiV1GithubConnectorRepositoriesData>) => createQueryKey('getApiV1GithubConnectorRepositories', options);
+export const getExecutionQueryKey = (options: Options<GetExecutionData>) => createQueryKey('getExecution', options);
 
 /**
- * get github repositories
+ * Get execution
  *
- * #### Controller:
+ * Get execution.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/github-connector/controller.(*GithubConnectorController).GetGithubRepositories`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1GithubConnectorRepositoriesOptions = (options?: Options<GetApiV1GithubConnectorRepositoriesData>) => queryOptions<GetApiV1GithubConnectorRepositoriesResponse, GetApiV1GithubConnectorRepositoriesError, GetApiV1GithubConnectorRepositoriesResponse, ReturnType<typeof getApiV1GithubConnectorRepositoriesQueryKey>>({
+export const getExecutionOptions = (options: Options<GetExecutionData>) => queryOptions<GetExecutionResponse, GetExecutionError, GetExecutionResponse, ReturnType<typeof getExecutionQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1GithubConnectorRepositories({
+        const { data } = await getExecution({
             ...options,
             ...queryKey[0],
             signal,
@@ -2476,32 +1458,22 @@ export const getApiV1GithubConnectorRepositoriesOptions = (options?: Options<Get
         });
         return data;
     },
-    queryKey: getApiV1GithubConnectorRepositoriesQueryKey(options)
+    queryKey: getExecutionQueryKey(options)
 });
 
 /**
- * get github repository branches
+ * Cancel execution
  *
- * #### Controller:
+ * Cancel execution.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/github-connector/controller.(*GithubConnectorController).GetGithubRepositoryBranches`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1GithubConnectorRepositoryBranchesMutation = (options?: Partial<Options<PostApiV1GithubConnectorRepositoryBranchesData>>): UseMutationOptions<PostApiV1GithubConnectorRepositoryBranchesResponse, PostApiV1GithubConnectorRepositoryBranchesError, Options<PostApiV1GithubConnectorRepositoryBranchesData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1GithubConnectorRepositoryBranchesResponse, PostApiV1GithubConnectorRepositoryBranchesError, Options<PostApiV1GithubConnectorRepositoryBranchesData>> = {
+export const cancelExecutionMutation = (options?: Partial<Options<CancelExecutionData>>): UseMutationOptions<CancelExecutionResponse, CancelExecutionError, Options<CancelExecutionData>> => {
+    const mutationOptions: UseMutationOptions<CancelExecutionResponse, CancelExecutionError, Options<CancelExecutionData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1GithubConnectorRepositoryBranches({
+            const { data } = await cancelExecution({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2512,26 +1484,20 @@ export const postApiV1GithubConnectorRepositoryBranchesMutation = (options?: Par
     return mutationOptions;
 };
 
-export const getApiV1HealthQueryKey = (options?: Options<GetApiV1HealthData>) => createQueryKey('getApiV1Health', options);
+export const listExecutionLogsQueryKey = (options: Options<ListExecutionLogsData>) => createQueryKey('listExecutionLogs', options);
 
 /**
- * health check
+ * List execution logs
  *
- * #### Controller:
+ * List execution logs.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/health.HealthCheck`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1HealthOptions = (options?: Options<GetApiV1HealthData>) => queryOptions<GetApiV1HealthResponse, GetApiV1HealthError, GetApiV1HealthResponse, ReturnType<typeof getApiV1HealthQueryKey>>({
+export const listExecutionLogsOptions = (options: Options<ListExecutionLogsData>) => queryOptions<ListExecutionLogsResponse, ListExecutionLogsError, ListExecutionLogsResponse, ReturnType<typeof listExecutionLogsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1Health({
+        const { data } = await listExecutionLogs({
             ...options,
             ...queryKey[0],
             signal,
@@ -2539,32 +1505,22 @@ export const getApiV1HealthOptions = (options?: Options<GetApiV1HealthData>) => 
         });
         return data;
     },
-    queryKey: getApiV1HealthQueryKey(options)
+    queryKey: listExecutionLogsQueryKey(options)
 });
 
 /**
- * delete health check
+ * Fork extension
  *
- * #### Controller:
+ * Fork extension.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/healthcheck/controller.(*HealthCheckController).DeleteHealthCheck`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const deleteApiV1HealthcheckMutation = (options?: Partial<Options<DeleteApiV1HealthcheckData>>): UseMutationOptions<DeleteApiV1HealthcheckResponse, DeleteApiV1HealthcheckError, Options<DeleteApiV1HealthcheckData>> => {
-    const mutationOptions: UseMutationOptions<DeleteApiV1HealthcheckResponse, DeleteApiV1HealthcheckError, Options<DeleteApiV1HealthcheckData>> = {
+export const forkExtensionMutation = (options?: Partial<Options<ForkExtensionData>>): UseMutationOptions<ForkExtensionResponse, ForkExtensionError, Options<ForkExtensionData>> => {
+    const mutationOptions: UseMutationOptions<ForkExtensionResponse, ForkExtensionError, Options<ForkExtensionData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await deleteApiV1Healthcheck({
+            const { data } = await forkExtension({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2575,30 +1531,66 @@ export const deleteApiV1HealthcheckMutation = (options?: Partial<Options<DeleteA
     return mutationOptions;
 };
 
-export const getApiV1HealthcheckQueryKey = (options?: Options<GetApiV1HealthcheckData>) => createQueryKey('getApiV1Healthcheck', options);
+/**
+ * Run extension
+ *
+ * Run extension.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const runExtensionMutation = (options?: Partial<Options<RunExtensionData>>): UseMutationOptions<RunExtensionResponse, RunExtensionError, Options<RunExtensionData>> => {
+    const mutationOptions: UseMutationOptions<RunExtensionResponse, RunExtensionError, Options<RunExtensionData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await runExtension({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
 
 /**
- * get health check
+ * Delete forked extension
  *
- * #### Controller:
+ * Delete forked extension.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/healthcheck/controller.(*HealthCheckController).GetHealthCheck`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const getApiV1HealthcheckOptions = (options?: Options<GetApiV1HealthcheckData>) => queryOptions<GetApiV1HealthcheckResponse, GetApiV1HealthcheckError, GetApiV1HealthcheckResponse, ReturnType<typeof getApiV1HealthcheckQueryKey>>({
+export const deleteForkedExtensionMutation = (options?: Partial<Options<DeleteForkedExtensionData>>): UseMutationOptions<DeleteForkedExtensionResponse, DeleteForkedExtensionError, Options<DeleteForkedExtensionData>> => {
+    const mutationOptions: UseMutationOptions<DeleteForkedExtensionResponse, DeleteForkedExtensionError, Options<DeleteForkedExtensionData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deleteForkedExtension({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getExtensionByIdQueryKey = (options: Options<GetExtensionByIdData>) => createQueryKey('getExtensionById', options);
+
+/**
+ * Get extension by ID
+ *
+ * Get extension by ID.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getExtensionByIdOptions = (options: Options<GetExtensionByIdData>) => queryOptions<GetExtensionByIdResponse, GetExtensionByIdError, GetExtensionByIdResponse, ReturnType<typeof getExtensionByIdQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1Healthcheck({
+        const { data } = await getExtensionById({
             ...options,
             ...queryKey[0],
             signal,
@@ -2606,99 +1598,23 @@ export const getApiV1HealthcheckOptions = (options?: Options<GetApiV1Healthcheck
         });
         return data;
     },
-    queryKey: getApiV1HealthcheckQueryKey(options)
+    queryKey: getExtensionByIdQueryKey(options)
 });
 
-/**
- * create health check
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/healthcheck/controller.(*HealthCheckController).CreateHealthCheck`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1HealthcheckMutation = (options?: Partial<Options<PostApiV1HealthcheckData>>): UseMutationOptions<PostApiV1HealthcheckResponse, PostApiV1HealthcheckError, Options<PostApiV1HealthcheckData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1HealthcheckResponse, PostApiV1HealthcheckError, Options<PostApiV1HealthcheckData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1Healthcheck({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
+export const listFeatureFlagsQueryKey = (options?: Options<ListFeatureFlagsData>) => createQueryKey('listFeatureFlags', options);
 
 /**
- * update health check
+ * List feature flags
  *
- * #### Controller:
+ * List feature flags.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/healthcheck/controller.(*HealthCheckController).UpdateHealthCheck`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const putApiV1HealthcheckMutation = (options?: Partial<Options<PutApiV1HealthcheckData>>): UseMutationOptions<PutApiV1HealthcheckResponse, PutApiV1HealthcheckError, Options<PutApiV1HealthcheckData>> => {
-    const mutationOptions: UseMutationOptions<PutApiV1HealthcheckResponse, PutApiV1HealthcheckError, Options<PutApiV1HealthcheckData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await putApiV1Healthcheck({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1HealthcheckResultsQueryKey = (options?: Options<GetApiV1HealthcheckResultsData>) => createQueryKey('getApiV1HealthcheckResults', options);
-
-/**
- * get health check results
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/healthcheck/controller.(*HealthCheckController).GetHealthCheckResults`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const getApiV1HealthcheckResultsOptions = (options?: Options<GetApiV1HealthcheckResultsData>) => queryOptions<GetApiV1HealthcheckResultsResponse, GetApiV1HealthcheckResultsError, GetApiV1HealthcheckResultsResponse, ReturnType<typeof getApiV1HealthcheckResultsQueryKey>>({
+export const listFeatureFlagsOptions = (options?: Options<ListFeatureFlagsData>) => queryOptions<ListFeatureFlagsResponse2, ListFeatureFlagsError, ListFeatureFlagsResponse2, ReturnType<typeof listFeatureFlagsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1HealthcheckResults({
+        const { data } = await listFeatureFlags({
             ...options,
             ...queryKey[0],
             signal,
@@ -2706,33 +1622,46 @@ export const getApiV1HealthcheckResultsOptions = (options?: Options<GetApiV1Heal
         });
         return data;
     },
-    queryKey: getApiV1HealthcheckResultsQueryKey(options)
+    queryKey: listFeatureFlagsQueryKey(options)
 });
 
-export const getApiV1HealthcheckStatsQueryKey = (options?: Options<GetApiV1HealthcheckStatsData>) => createQueryKey('getApiV1HealthcheckStats', options);
+/**
+ * Update feature flag
+ *
+ * Update feature flag.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateFeatureFlagMutation = (options?: Partial<Options<UpdateFeatureFlagData>>): UseMutationOptions<UpdateFeatureFlagResponse, UpdateFeatureFlagError, Options<UpdateFeatureFlagData>> => {
+    const mutationOptions: UseMutationOptions<UpdateFeatureFlagResponse, UpdateFeatureFlagError, Options<UpdateFeatureFlagData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateFeatureFlag({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const checkIfFeatureIsEnabledQueryKey = (options: Options<CheckIfFeatureIsEnabledData>) => createQueryKey('checkIfFeatureIsEnabled', options);
 
 /**
- * get health check stats
+ * Check if feature is enabled
  *
- * #### Controller:
+ * Check if feature is enabled.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/healthcheck/controller.(*HealthCheckController).GetHealthCheckStats`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1HealthcheckStatsOptions = (options?: Options<GetApiV1HealthcheckStatsData>) => queryOptions<GetApiV1HealthcheckStatsResponse, GetApiV1HealthcheckStatsError, GetApiV1HealthcheckStatsResponse, ReturnType<typeof getApiV1HealthcheckStatsQueryKey>>({
+export const checkIfFeatureIsEnabledOptions = (options: Options<CheckIfFeatureIsEnabledData>) => queryOptions<CheckIfFeatureIsEnabledResponse, CheckIfFeatureIsEnabledError, CheckIfFeatureIsEnabledResponse, ReturnType<typeof checkIfFeatureIsEnabledQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1HealthcheckStats({
+        const { data } = await checkIfFeatureIsEnabled({
             ...options,
             ...queryKey[0],
             signal,
@@ -2740,95 +1669,23 @@ export const getApiV1HealthcheckStatsOptions = (options?: Options<GetApiV1Health
         });
         return data;
     },
-    queryKey: getApiV1HealthcheckStatsQueryKey(options)
+    queryKey: checkIfFeatureIsEnabledQueryKey(options)
 });
 
-/**
- * toggle health check
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/healthcheck/controller.(*HealthCheckController).ToggleHealthCheck`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const patchApiV1HealthcheckToggleMutation = (options?: Partial<Options<PatchApiV1HealthcheckToggleData>>): UseMutationOptions<PatchApiV1HealthcheckToggleResponse, PatchApiV1HealthcheckToggleError, Options<PatchApiV1HealthcheckToggleData>> => {
-    const mutationOptions: UseMutationOptions<PatchApiV1HealthcheckToggleResponse, PatchApiV1HealthcheckToggleError, Options<PatchApiV1HealthcheckToggleData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await patchApiV1HealthcheckToggle({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
+export const listFilesQueryKey = (options: Options<ListFilesData>) => createQueryKey('listFiles', options);
 
 /**
- * handle pause
+ * List files
  *
- * #### Controller:
+ * List files.
  *
- * `github.com/raghavyuva/nixopus-api/internal/routes.(*LiveDeployController).HandlePause`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const postApiV1LivePauseMutation = (options?: Partial<Options<PostApiV1LivePauseData>>): UseMutationOptions<PostApiV1LivePauseResponse, PostApiV1LivePauseError, Options<PostApiV1LivePauseData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1LivePauseResponse, PostApiV1LivePauseError, Options<PostApiV1LivePauseData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1LivePause({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1NotificationPreferencesQueryKey = (options?: Options<GetApiV1NotificationPreferencesData>) => createQueryKey('getApiV1NotificationPreferences', options);
-
-/**
- * get preferences
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).GetPreferences`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const getApiV1NotificationPreferencesOptions = (options?: Options<GetApiV1NotificationPreferencesData>) => queryOptions<GetApiV1NotificationPreferencesResponse, GetApiV1NotificationPreferencesError, GetApiV1NotificationPreferencesResponse, ReturnType<typeof getApiV1NotificationPreferencesQueryKey>>({
+export const listFilesOptions = (options: Options<ListFilesData>) => queryOptions<ListFilesResponse2, ListFilesError, ListFilesResponse2, ReturnType<typeof listFilesQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1NotificationPreferences({
+        const { data } = await listFiles({
             ...options,
             ...queryKey[0],
             signal,
@@ -2836,32 +1693,22 @@ export const getApiV1NotificationPreferencesOptions = (options?: Options<GetApiV
         });
         return data;
     },
-    queryKey: getApiV1NotificationPreferencesQueryKey(options)
+    queryKey: listFilesQueryKey(options)
 });
 
 /**
- * update preference
+ * Copy directory
  *
- * #### Controller:
+ * Copy directory.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).UpdatePreference`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1NotificationPreferencesMutation = (options?: Partial<Options<PostApiV1NotificationPreferencesData>>): UseMutationOptions<PostApiV1NotificationPreferencesResponse, PostApiV1NotificationPreferencesError, Options<PostApiV1NotificationPreferencesData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1NotificationPreferencesResponse, PostApiV1NotificationPreferencesError, Options<PostApiV1NotificationPreferencesData>> = {
+export const copyDirectoryMutation = (options?: Partial<Options<CopyDirectoryData>>): UseMutationOptions<CopyDirectoryResponse, CopyDirectoryError, Options<CopyDirectoryData>> => {
+    const mutationOptions: UseMutationOptions<CopyDirectoryResponse, CopyDirectoryError, Options<CopyDirectoryData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1NotificationPreferences({
+            const { data } = await copyDirectory({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2873,28 +1720,18 @@ export const postApiV1NotificationPreferencesMutation = (options?: Partial<Optio
 };
 
 /**
- * delete smtp
+ * Create directory
  *
- * #### Controller:
+ * Create directory.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).DeleteSmtp`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const deleteApiV1NotificationSmtpMutation = (options?: Partial<Options<DeleteApiV1NotificationSmtpData>>): UseMutationOptions<DeleteApiV1NotificationSmtpResponse, DeleteApiV1NotificationSmtpError, Options<DeleteApiV1NotificationSmtpData>> => {
-    const mutationOptions: UseMutationOptions<DeleteApiV1NotificationSmtpResponse, DeleteApiV1NotificationSmtpError, Options<DeleteApiV1NotificationSmtpData>> = {
+export const createDirectoryMutation = (options?: Partial<Options<CreateDirectoryData>>): UseMutationOptions<CreateDirectoryResponse, CreateDirectoryError, Options<CreateDirectoryData>> => {
+    const mutationOptions: UseMutationOptions<CreateDirectoryResponse, CreateDirectoryError, Options<CreateDirectoryData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await deleteApiV1NotificationSmtp({
+            const { data } = await createDirectory({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2905,30 +1742,158 @@ export const deleteApiV1NotificationSmtpMutation = (options?: Partial<Options<De
     return mutationOptions;
 };
 
-export const getApiV1NotificationSmtpQueryKey = (options?: Options<GetApiV1NotificationSmtpData>) => createQueryKey('getApiV1NotificationSmtp', options);
+/**
+ * Delete directory
+ *
+ * Delete directory.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const deleteDirectoryMutation = (options?: Partial<Options<DeleteDirectoryData>>): UseMutationOptions<DeleteDirectoryResponse, DeleteDirectoryError, Options<DeleteDirectoryData>> => {
+    const mutationOptions: UseMutationOptions<DeleteDirectoryResponse, DeleteDirectoryError, Options<DeleteDirectoryData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deleteDirectory({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
 
 /**
- * get smtp
+ * Move directory
  *
- * #### Controller:
+ * Move directory.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).GetSmtp`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const getApiV1NotificationSmtpOptions = (options?: Options<GetApiV1NotificationSmtpData>) => queryOptions<GetApiV1NotificationSmtpResponse, GetApiV1NotificationSmtpError, GetApiV1NotificationSmtpResponse, ReturnType<typeof getApiV1NotificationSmtpQueryKey>>({
+export const moveDirectoryMutation = (options?: Partial<Options<MoveDirectoryData>>): UseMutationOptions<MoveDirectoryResponse, MoveDirectoryError, Options<MoveDirectoryData>> => {
+    const mutationOptions: UseMutationOptions<MoveDirectoryResponse, MoveDirectoryError, Options<MoveDirectoryData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await moveDirectory({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Upload file
+ *
+ * Upload file.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const uploadFileMutation = (options?: Partial<Options<UploadFileData>>): UseMutationOptions<UploadFileResponse, UploadFileError, Options<UploadFileData>> => {
+    const mutationOptions: UseMutationOptions<UploadFileResponse, UploadFileError, Options<UploadFileData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await uploadFile({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Delete GitHub connector
+ *
+ * Delete GitHub connector.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const deleteGitHubConnectorMutation = (options?: Partial<Options<DeleteGitHubConnectorData>>): UseMutationOptions<DeleteGitHubConnectorResponse, DeleteGitHubConnectorError, Options<DeleteGitHubConnectorData>> => {
+    const mutationOptions: UseMutationOptions<DeleteGitHubConnectorResponse, DeleteGitHubConnectorError, Options<DeleteGitHubConnectorData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deleteGitHubConnector({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Create GitHub connector
+ *
+ * Create GitHub connector.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const createGitHubConnectorMutation = (options?: Partial<Options<CreateGitHubConnectorData>>): UseMutationOptions<CreateGitHubConnectorResponse, CreateGitHubConnectorError, Options<CreateGitHubConnectorData>> => {
+    const mutationOptions: UseMutationOptions<CreateGitHubConnectorResponse, CreateGitHubConnectorError, Options<CreateGitHubConnectorData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await createGitHubConnector({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Update GitHub connector
+ *
+ * Update GitHub connector.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateGitHubConnectorMutation = (options?: Partial<Options<UpdateGitHubConnectorData>>): UseMutationOptions<UpdateGitHubConnectorResponse, UpdateGitHubConnectorError, Options<UpdateGitHubConnectorData>> => {
+    const mutationOptions: UseMutationOptions<UpdateGitHubConnectorResponse, UpdateGitHubConnectorError, Options<UpdateGitHubConnectorData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateGitHubConnector({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const listGitHubConnectorsQueryKey = (options?: Options<ListGitHubConnectorsData>) => createQueryKey('listGitHubConnectors', options);
+
+/**
+ * List GitHub connectors
+ *
+ * List GitHub connectors.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const listGitHubConnectorsOptions = (options?: Options<ListGitHubConnectorsData>) => queryOptions<ListGitHubConnectorsResponse, ListGitHubConnectorsError, ListGitHubConnectorsResponse, ReturnType<typeof listGitHubConnectorsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1NotificationSmtp({
+        const { data } = await listGitHubConnectors({
             ...options,
             ...queryKey[0],
             signal,
@@ -2936,198 +1901,23 @@ export const getApiV1NotificationSmtpOptions = (options?: Options<GetApiV1Notifi
         });
         return data;
     },
-    queryKey: getApiV1NotificationSmtpQueryKey(options)
+    queryKey: listGitHubConnectorsQueryKey(options)
 });
 
-/**
- * add smtp
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).AddSmtp`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1NotificationSmtpMutation = (options?: Partial<Options<PostApiV1NotificationSmtpData>>): UseMutationOptions<PostApiV1NotificationSmtpResponse, PostApiV1NotificationSmtpError, Options<PostApiV1NotificationSmtpData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1NotificationSmtpResponse, PostApiV1NotificationSmtpError, Options<PostApiV1NotificationSmtpData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1NotificationSmtp({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
+export const listGitHubRepositoriesQueryKey = (options?: Options<ListGitHubRepositoriesData>) => createQueryKey('listGitHubRepositories', options);
 
 /**
- * update smtp
+ * List GitHub repositories
  *
- * #### Controller:
+ * List GitHub repositories.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).UpdateSmtp`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const putApiV1NotificationSmtpMutation = (options?: Partial<Options<PutApiV1NotificationSmtpData>>): UseMutationOptions<PutApiV1NotificationSmtpResponse, PutApiV1NotificationSmtpError, Options<PutApiV1NotificationSmtpData>> => {
-    const mutationOptions: UseMutationOptions<PutApiV1NotificationSmtpResponse, PutApiV1NotificationSmtpError, Options<PutApiV1NotificationSmtpData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await putApiV1NotificationSmtp({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * delete webhook config
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).DeleteWebhookConfig`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const deleteApiV1NotificationWebhookMutation = (options?: Partial<Options<DeleteApiV1NotificationWebhookData>>): UseMutationOptions<DeleteApiV1NotificationWebhookResponse, DeleteApiV1NotificationWebhookError, Options<DeleteApiV1NotificationWebhookData>> => {
-    const mutationOptions: UseMutationOptions<DeleteApiV1NotificationWebhookResponse, DeleteApiV1NotificationWebhookError, Options<DeleteApiV1NotificationWebhookData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await deleteApiV1NotificationWebhook({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * create webhook config
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).CreateWebhookConfig`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1NotificationWebhookMutation = (options?: Partial<Options<PostApiV1NotificationWebhookData>>): UseMutationOptions<PostApiV1NotificationWebhookResponse, PostApiV1NotificationWebhookError, Options<PostApiV1NotificationWebhookData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1NotificationWebhookResponse, PostApiV1NotificationWebhookError, Options<PostApiV1NotificationWebhookData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1NotificationWebhook({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * update webhook config
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).UpdateWebhookConfig`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const putApiV1NotificationWebhookMutation = (options?: Partial<Options<PutApiV1NotificationWebhookData>>): UseMutationOptions<PutApiV1NotificationWebhookResponse, PutApiV1NotificationWebhookError, Options<PutApiV1NotificationWebhookData>> => {
-    const mutationOptions: UseMutationOptions<PutApiV1NotificationWebhookResponse, PutApiV1NotificationWebhookError, Options<PutApiV1NotificationWebhookData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await putApiV1NotificationWebhook({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1NotificationWebhookTypeQueryKey = (options: Options<GetApiV1NotificationWebhookTypeData>) => createQueryKey('getApiV1NotificationWebhookType', options);
-
-/**
- * get webhook config
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).GetWebhookConfig`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const getApiV1NotificationWebhookTypeOptions = (options: Options<GetApiV1NotificationWebhookTypeData>) => queryOptions<GetApiV1NotificationWebhookTypeResponse, GetApiV1NotificationWebhookTypeError, GetApiV1NotificationWebhookTypeResponse, ReturnType<typeof getApiV1NotificationWebhookTypeQueryKey>>({
+export const listGitHubRepositoriesOptions = (options?: Options<ListGitHubRepositoriesData>) => queryOptions<ListGitHubRepositoriesResponse, ListGitHubRepositoriesError, ListGitHubRepositoriesResponse, ReturnType<typeof listGitHubRepositoriesQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1NotificationWebhookType({
+        const { data } = await listGitHubRepositories({
             ...options,
             ...queryKey[0],
             signal,
@@ -3135,32 +1925,46 @@ export const getApiV1NotificationWebhookTypeOptions = (options: Options<GetApiV1
         });
         return data;
     },
-    queryKey: getApiV1NotificationWebhookTypeQueryKey(options)
+    queryKey: listGitHubRepositoriesQueryKey(options)
 });
 
-export const getApiV1ServersQueryKey = (options?: Options<GetApiV1ServersData>) => createQueryKey('getApiV1Servers', options);
+/**
+ * List repository branches
+ *
+ * List repository branches.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const listRepositoryBranchesMutation = (options?: Partial<Options<ListRepositoryBranchesData>>): UseMutationOptions<ListRepositoryBranchesResponse, ListRepositoryBranchesError, Options<ListRepositoryBranchesData>> => {
+    const mutationOptions: UseMutationOptions<ListRepositoryBranchesResponse, ListRepositoryBranchesError, Options<ListRepositoryBranchesData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await listRepositoryBranches({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const healthCheckQueryKey = (options?: Options<HealthCheckData>) => createQueryKey('healthCheck', options);
 
 /**
- * list servers
+ * Health check
  *
- * #### Controller:
+ * Health check.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/server/controller.(*ServerController).ListServers`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Public endpoint.
+ * Scope: No organization scope required.
+ * Side effects: Read-only operation.
  */
-export const getApiV1ServersOptions = (options?: Options<GetApiV1ServersData>) => queryOptions<GetApiV1ServersResponse, GetApiV1ServersError, GetApiV1ServersResponse, ReturnType<typeof getApiV1ServersQueryKey>>({
+export const healthCheckOptions = (options?: Options<HealthCheckData>) => queryOptions<HealthCheckResponse2, HealthCheckError, HealthCheckResponse2, ReturnType<typeof healthCheckQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1Servers({
+        const { data } = await healthCheck({
             ...options,
             ...queryKey[0],
             signal,
@@ -3168,32 +1972,46 @@ export const getApiV1ServersOptions = (options?: Options<GetApiV1ServersData>) =
         });
         return data;
     },
-    queryKey: getApiV1ServersQueryKey(options)
+    queryKey: healthCheckQueryKey(options)
 });
 
-export const getApiV1ServersSshStatusQueryKey = (options?: Options<GetApiV1ServersSshStatusData>) => createQueryKey('getApiV1ServersSshStatus', options);
+/**
+ * Delete health check
+ *
+ * Delete health check.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const deleteHealthCheckMutation = (options?: Partial<Options<DeleteHealthCheckData>>): UseMutationOptions<DeleteHealthCheckResponse, DeleteHealthCheckError, Options<DeleteHealthCheckData>> => {
+    const mutationOptions: UseMutationOptions<DeleteHealthCheckResponse, DeleteHealthCheckError, Options<DeleteHealthCheckData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deleteHealthCheck({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getHealthChecksQueryKey = (options: Options<GetHealthChecksData>) => createQueryKey('getHealthChecks', options);
 
 /**
- * check s s h status
+ * Get health checks
  *
- * #### Controller:
+ * Get health checks.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/server/controller.(*ServerController).CheckSSHStatus`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1ServersSshStatusOptions = (options?: Options<GetApiV1ServersSshStatusData>) => queryOptions<GetApiV1ServersSshStatusResponse, GetApiV1ServersSshStatusError, GetApiV1ServersSshStatusResponse, ReturnType<typeof getApiV1ServersSshStatusQueryKey>>({
+export const getHealthChecksOptions = (options: Options<GetHealthChecksData>) => queryOptions<GetHealthChecksResponse, GetHealthChecksError, GetHealthChecksResponse, ReturnType<typeof getHealthChecksQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1ServersSshStatus({
+        const { data } = await getHealthChecks({
             ...options,
             ...queryKey[0],
             signal,
@@ -3201,32 +2019,22 @@ export const getApiV1ServersSshStatusOptions = (options?: Options<GetApiV1Server
         });
         return data;
     },
-    queryKey: getApiV1ServersSshStatusQueryKey(options)
+    queryKey: getHealthChecksQueryKey(options)
 });
 
 /**
- * provision trail
+ * Create health check
  *
- * #### Controller:
+ * Create health check.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/trail/controller.(*TrailController).ProvisionTrail`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1TrailProvisionMutation = (options?: Partial<Options<PostApiV1TrailProvisionData>>): UseMutationOptions<PostApiV1TrailProvisionResponse, PostApiV1TrailProvisionError, Options<PostApiV1TrailProvisionData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1TrailProvisionResponse, PostApiV1TrailProvisionError, Options<PostApiV1TrailProvisionData>> = {
+export const createHealthCheckMutation = (options?: Partial<Options<CreateHealthCheckData>>): UseMutationOptions<CreateHealthCheckResponse, CreateHealthCheckError, Options<CreateHealthCheckData>> => {
+    const mutationOptions: UseMutationOptions<CreateHealthCheckResponse, CreateHealthCheckError, Options<CreateHealthCheckData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1TrailProvision({
+            const { data } = await createHealthCheck({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -3237,30 +2045,43 @@ export const postApiV1TrailProvisionMutation = (options?: Partial<Options<PostAp
     return mutationOptions;
 };
 
-export const getApiV1TrailStatusSessionIdQueryKey = (options: Options<GetApiV1TrailStatusSessionIdData>) => createQueryKey('getApiV1TrailStatusSessionId', options);
+/**
+ * Update health check
+ *
+ * Update health check.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateHealthCheckMutation = (options?: Partial<Options<UpdateHealthCheckData>>): UseMutationOptions<UpdateHealthCheckResponse, UpdateHealthCheckError, Options<UpdateHealthCheckData>> => {
+    const mutationOptions: UseMutationOptions<UpdateHealthCheckResponse, UpdateHealthCheckError, Options<UpdateHealthCheckData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateHealthCheck({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const listHealthCheckResultsQueryKey = (options: Options<ListHealthCheckResultsData>) => createQueryKey('listHealthCheckResults', options);
 
 /**
- * get status
+ * List health check results
  *
- * #### Controller:
+ * List health check results.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/trail/controller.(*TrailController).GetStatus`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1TrailStatusSessionIdOptions = (options: Options<GetApiV1TrailStatusSessionIdData>) => queryOptions<GetApiV1TrailStatusSessionIdResponse, GetApiV1TrailStatusSessionIdError, GetApiV1TrailStatusSessionIdResponse, ReturnType<typeof getApiV1TrailStatusSessionIdQueryKey>>({
+export const listHealthCheckResultsOptions = (options: Options<ListHealthCheckResultsData>) => queryOptions<ListHealthCheckResultsResponse, ListHealthCheckResultsError, ListHealthCheckResultsResponse, ReturnType<typeof listHealthCheckResultsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1TrailStatusSessionId({
+        const { data } = await listHealthCheckResults({
             ...options,
             ...queryKey[0],
             signal,
@@ -3268,60 +2089,23 @@ export const getApiV1TrailStatusSessionIdOptions = (options: Options<GetApiV1Tra
         });
         return data;
     },
-    queryKey: getApiV1TrailStatusSessionIdQueryKey(options)
+    queryKey: listHealthCheckResultsQueryKey(options)
 });
 
-/**
- * perform update
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/update/controller.(*UpdateController).PerformUpdate`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
- */
-export const postApiV1UpdateMutation = (options?: Partial<Options<PostApiV1UpdateData>>): UseMutationOptions<PostApiV1UpdateResponse, PostApiV1UpdateError, Options<PostApiV1UpdateData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1UpdateResponse, PostApiV1UpdateError, Options<PostApiV1UpdateData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1Update({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1UpdateCheckQueryKey = (options?: Options<GetApiV1UpdateCheckData>) => createQueryKey('getApiV1UpdateCheck', options);
+export const getHealthCheckStatsQueryKey = (options: Options<GetHealthCheckStatsData>) => createQueryKey('getHealthCheckStats', options);
 
 /**
- * check for updates
+ * Get health check stats
  *
- * #### Controller:
+ * Get health check stats.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/update/controller.(*UpdateController).CheckForUpdates`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1UpdateCheckOptions = (options?: Options<GetApiV1UpdateCheckData>) => queryOptions<GetApiV1UpdateCheckResponse, GetApiV1UpdateCheckError, GetApiV1UpdateCheckResponse, ReturnType<typeof getApiV1UpdateCheckQueryKey>>({
+export const getHealthCheckStatsOptions = (options: Options<GetHealthCheckStatsData>) => queryOptions<GetHealthCheckStatsResponse, GetHealthCheckStatsError, GetHealthCheckStatsResponse, ReturnType<typeof getHealthCheckStatsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1UpdateCheck({
+        const { data } = await getHealthCheckStats({
             ...options,
             ...queryKey[0],
             signal,
@@ -3329,30 +2113,69 @@ export const getApiV1UpdateCheckOptions = (options?: Options<GetApiV1UpdateCheck
         });
         return data;
     },
-    queryKey: getApiV1UpdateCheckQueryKey(options)
+    queryKey: getHealthCheckStatsQueryKey(options)
 });
 
-export const getApiV1UserQueryKey = (options?: Options<GetApiV1UserData>) => createQueryKey('getApiV1User', options);
+/**
+ * Toggle health check
+ *
+ * Toggle health check.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const toggleHealthCheckMutation = (options?: Partial<Options<ToggleHealthCheckData>>): UseMutationOptions<ToggleHealthCheckResponse, ToggleHealthCheckError, Options<ToggleHealthCheckData>> => {
+    const mutationOptions: UseMutationOptions<ToggleHealthCheckResponse, ToggleHealthCheckError, Options<ToggleHealthCheckData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await toggleHealthCheck({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
 
 /**
- * get user details
+ * Pause live deploy service
  *
- * #### Controller:
+ * Pause live deploy service.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).GetUserDetails`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Public endpoint.
+ * Scope: No organization scope required.
+ * Side effects: May mutate server state.
  */
-export const getApiV1UserOptions = (options?: Options<GetApiV1UserData>) => queryOptions<GetApiV1UserResponse, GetApiV1UserError, GetApiV1UserResponse, ReturnType<typeof getApiV1UserQueryKey>>({
+export const pauseLiveDeployServiceMutation = (options?: Partial<Options<PauseLiveDeployServiceData>>): UseMutationOptions<PauseLiveDeployServiceResponse, PauseLiveDeployServiceError, Options<PauseLiveDeployServiceData>> => {
+    const mutationOptions: UseMutationOptions<PauseLiveDeployServiceResponse, PauseLiveDeployServiceError, Options<PauseLiveDeployServiceData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await pauseLiveDeployService({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getNotificationPreferencesQueryKey = (options?: Options<GetNotificationPreferencesData>) => createQueryKey('getNotificationPreferences', options);
+
+/**
+ * Get notification preferences
+ *
+ * Get notification preferences.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getNotificationPreferencesOptions = (options?: Options<GetNotificationPreferencesData>) => queryOptions<GetNotificationPreferencesResponse, GetNotificationPreferencesError, GetNotificationPreferencesResponse, ReturnType<typeof getNotificationPreferencesQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1User({
+        const { data } = await getNotificationPreferences({
             ...options,
             ...queryKey[0],
             signal,
@@ -3360,29 +2183,22 @@ export const getApiV1UserOptions = (options?: Options<GetApiV1UserData>) => quer
         });
         return data;
     },
-    queryKey: getApiV1UserQueryKey(options)
+    queryKey: getNotificationPreferencesQueryKey(options)
 });
 
 /**
- * update avatar
+ * Update notification preferences
  *
- * #### Controller:
+ * Update notification preferences.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).UpdateAvatar`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const patchApiV1UserAvatarMutation = (options?: Partial<Options<PatchApiV1UserAvatarData>>): UseMutationOptions<PatchApiV1UserAvatarResponse, PatchApiV1UserAvatarError, Options<PatchApiV1UserAvatarData>> => {
-    const mutationOptions: UseMutationOptions<PatchApiV1UserAvatarResponse, PatchApiV1UserAvatarError, Options<PatchApiV1UserAvatarData>> = {
+export const updateNotificationPreferencesMutation = (options?: Partial<Options<UpdateNotificationPreferencesData>>): UseMutationOptions<UpdateNotificationPreferencesResponse, UpdateNotificationPreferencesError, Options<UpdateNotificationPreferencesData>> => {
+    const mutationOptions: UseMutationOptions<UpdateNotificationPreferencesResponse, UpdateNotificationPreferencesError, Options<UpdateNotificationPreferencesData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await patchApiV1UserAvatar({
+            const { data } = await updateNotificationPreferences({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -3394,25 +2210,18 @@ export const patchApiV1UserAvatarMutation = (options?: Partial<Options<PatchApiV
 };
 
 /**
- * update user name
+ * Send notification
  *
- * #### Controller:
+ * Send notification.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).UpdateUserName`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const patchApiV1UserNameMutation = (options?: Partial<Options<PatchApiV1UserNameData>>): UseMutationOptions<PatchApiV1UserNameResponse, PatchApiV1UserNameError, Options<PatchApiV1UserNameData>> => {
-    const mutationOptions: UseMutationOptions<PatchApiV1UserNameResponse, PatchApiV1UserNameError, Options<PatchApiV1UserNameData>> = {
+export const sendNotificationMutation = (options?: Partial<Options<SendNotificationData>>): UseMutationOptions<SendNotificationResponse2, SendNotificationError, Options<SendNotificationData>> => {
+    const mutationOptions: UseMutationOptions<SendNotificationResponse2, SendNotificationError, Options<SendNotificationData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await patchApiV1UserName({
+            const { data } = await sendNotification({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -3423,27 +2232,43 @@ export const patchApiV1UserNameMutation = (options?: Partial<Options<PatchApiV1U
     return mutationOptions;
 };
 
-export const getApiV1UserOnboardedQueryKey = (options?: Options<GetApiV1UserOnboardedData>) => createQueryKey('getApiV1UserOnboarded', options);
+/**
+ * Delete SMTP config
+ *
+ * Delete SMTP config.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const deleteSmtpConfigMutation = (options?: Partial<Options<DeleteSmtpConfigData>>): UseMutationOptions<DeleteSmtpConfigResponse, DeleteSmtpConfigError, Options<DeleteSmtpConfigData>> => {
+    const mutationOptions: UseMutationOptions<DeleteSmtpConfigResponse, DeleteSmtpConfigError, Options<DeleteSmtpConfigData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deleteSmtpConfig({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getSmtpConfigQueryKey = (options: Options<GetSmtpConfigData>) => createQueryKey('getSmtpConfig', options);
 
 /**
- * get is onboarded
+ * Get SMTP config
  *
- * #### Controller:
+ * Get SMTP config.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).GetIsOnboarded`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1UserOnboardedOptions = (options?: Options<GetApiV1UserOnboardedData>) => queryOptions<GetApiV1UserOnboardedResponse, GetApiV1UserOnboardedError, GetApiV1UserOnboardedResponse, ReturnType<typeof getApiV1UserOnboardedQueryKey>>({
+export const getSmtpConfigOptions = (options: Options<GetSmtpConfigData>) => queryOptions<GetSmtpConfigResponse, GetSmtpConfigError, GetSmtpConfigResponse, ReturnType<typeof getSmtpConfigQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1UserOnboarded({
+        const { data } = await getSmtpConfig({
             ...options,
             ...queryKey[0],
             signal,
@@ -3451,29 +2276,22 @@ export const getApiV1UserOnboardedOptions = (options?: Options<GetApiV1UserOnboa
         });
         return data;
     },
-    queryKey: getApiV1UserOnboardedQueryKey(options)
+    queryKey: getSmtpConfigQueryKey(options)
 });
 
 /**
- * mark onboarding complete
+ * Create SMTP config
  *
- * #### Controller:
+ * Create SMTP config.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).MarkOnboardingComplete`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1UserOnboardedMutation = (options?: Partial<Options<PostApiV1UserOnboardedData>>): UseMutationOptions<PostApiV1UserOnboardedResponse, PostApiV1UserOnboardedError, Options<PostApiV1UserOnboardedData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1UserOnboardedResponse, PostApiV1UserOnboardedError, Options<PostApiV1UserOnboardedData>> = {
+export const createSmtpConfigMutation = (options?: Partial<Options<CreateSmtpConfigData>>): UseMutationOptions<CreateSmtpConfigResponse, CreateSmtpConfigError, Options<CreateSmtpConfigData>> => {
+    const mutationOptions: UseMutationOptions<CreateSmtpConfigResponse, CreateSmtpConfigError, Options<CreateSmtpConfigData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1UserOnboarded({
+            const { data } = await createSmtpConfig({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -3484,27 +2302,112 @@ export const postApiV1UserOnboardedMutation = (options?: Partial<Options<PostApi
     return mutationOptions;
 };
 
-export const getApiV1UserPreferencesQueryKey = (options?: Options<GetApiV1UserPreferencesData>) => createQueryKey('getApiV1UserPreferences', options);
+/**
+ * Update SMTP config
+ *
+ * Update SMTP config.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateSmtpConfigMutation = (options?: Partial<Options<UpdateSmtpConfigData>>): UseMutationOptions<UpdateSmtpConfigResponse, UpdateSmtpConfigError, Options<UpdateSmtpConfigData>> => {
+    const mutationOptions: UseMutationOptions<UpdateSmtpConfigResponse, UpdateSmtpConfigError, Options<UpdateSmtpConfigData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateSmtpConfig({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
 
 /**
- * get user preferences
+ * Delete webhook config
  *
- * #### Controller:
+ * Delete webhook config.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).GetUserPreferences`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const getApiV1UserPreferencesOptions = (options?: Options<GetApiV1UserPreferencesData>) => queryOptions<GetApiV1UserPreferencesResponse, GetApiV1UserPreferencesError, GetApiV1UserPreferencesResponse, ReturnType<typeof getApiV1UserPreferencesQueryKey>>({
+export const deleteWebhookConfigMutation = (options?: Partial<Options<DeleteWebhookConfigData>>): UseMutationOptions<DeleteWebhookConfigResponse, DeleteWebhookConfigError, Options<DeleteWebhookConfigData>> => {
+    const mutationOptions: UseMutationOptions<DeleteWebhookConfigResponse, DeleteWebhookConfigError, Options<DeleteWebhookConfigData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deleteWebhookConfig({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Create webhook config
+ *
+ * Create webhook config.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const createWebhookConfigMutation = (options?: Partial<Options<CreateWebhookConfigData>>): UseMutationOptions<CreateWebhookConfigResponse, CreateWebhookConfigError, Options<CreateWebhookConfigData>> => {
+    const mutationOptions: UseMutationOptions<CreateWebhookConfigResponse, CreateWebhookConfigError, Options<CreateWebhookConfigData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await createWebhookConfig({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Update webhook config
+ *
+ * Update webhook config.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateWebhookConfigMutation = (options?: Partial<Options<UpdateWebhookConfigData>>): UseMutationOptions<UpdateWebhookConfigResponse, UpdateWebhookConfigError, Options<UpdateWebhookConfigData>> => {
+    const mutationOptions: UseMutationOptions<UpdateWebhookConfigResponse, UpdateWebhookConfigError, Options<UpdateWebhookConfigData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateWebhookConfig({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getWebhookConfigQueryKey = (options: Options<GetWebhookConfigData>) => createQueryKey('getWebhookConfig', options);
+
+/**
+ * Get webhook config
+ *
+ * Get webhook config.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getWebhookConfigOptions = (options: Options<GetWebhookConfigData>) => queryOptions<GetWebhookConfigResponse, GetWebhookConfigError, GetWebhookConfigResponse, ReturnType<typeof getWebhookConfigQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1UserPreferences({
+        const { data } = await getWebhookConfig({
             ...options,
             ...queryKey[0],
             signal,
@@ -3512,60 +2415,23 @@ export const getApiV1UserPreferencesOptions = (options?: Options<GetApiV1UserPre
         });
         return data;
     },
-    queryKey: getApiV1UserPreferencesQueryKey(options)
+    queryKey: getWebhookConfigQueryKey(options)
 });
 
-/**
- * update user preferences
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).UpdateUserPreferences`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
- */
-export const putApiV1UserPreferencesMutation = (options?: Partial<Options<PutApiV1UserPreferencesData>>): UseMutationOptions<PutApiV1UserPreferencesResponse, PutApiV1UserPreferencesError, Options<PutApiV1UserPreferencesData>> => {
-    const mutationOptions: UseMutationOptions<PutApiV1UserPreferencesResponse, PutApiV1UserPreferencesError, Options<PutApiV1UserPreferencesData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await putApiV1UserPreferences({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getApiV1UserSettingsQueryKey = (options?: Options<GetApiV1UserSettingsData>) => createQueryKey('getApiV1UserSettings', options);
+export const listServersQueryKey = (options?: Options<ListServersData>) => createQueryKey('listServers', options);
 
 /**
- * get settings
+ * List servers
  *
- * #### Controller:
+ * List servers.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).GetSettings`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1UserSettingsOptions = (options?: Options<GetApiV1UserSettingsData>) => queryOptions<GetApiV1UserSettingsResponse, GetApiV1UserSettingsError, GetApiV1UserSettingsResponse, ReturnType<typeof getApiV1UserSettingsQueryKey>>({
+export const listServersOptions = (options?: Options<ListServersData>) => queryOptions<ListServersResponse2, ListServersError, ListServersResponse2, ReturnType<typeof listServersQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApiV1UserSettings({
+        const { data } = await listServers({
             ...options,
             ...queryKey[0],
             signal,
@@ -3573,178 +2439,56 @@ export const getApiV1UserSettingsOptions = (options?: Options<GetApiV1UserSettin
         });
         return data;
     },
-    queryKey: getApiV1UserSettingsQueryKey(options)
+    queryKey: listServersQueryKey(options)
 });
 
-/**
- * update auto update
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).UpdateAutoUpdate`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
- */
-export const patchApiV1UserSettingsAutoUpdateMutation = (options?: Partial<Options<PatchApiV1UserSettingsAutoUpdateData>>): UseMutationOptions<PatchApiV1UserSettingsAutoUpdateResponse, PatchApiV1UserSettingsAutoUpdateError, Options<PatchApiV1UserSettingsAutoUpdateData>> => {
-    const mutationOptions: UseMutationOptions<PatchApiV1UserSettingsAutoUpdateResponse, PatchApiV1UserSettingsAutoUpdateError, Options<PatchApiV1UserSettingsAutoUpdateData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await patchApiV1UserSettingsAutoUpdate({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
+export const listServersInfiniteQueryKey = (options?: Options<ListServersData>): QueryKey<Options<ListServersData>> => createQueryKey('listServers', options, true);
 
 /**
- * update font
+ * List servers
  *
- * #### Controller:
+ * List servers.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).UpdateFont`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const patchApiV1UserSettingsFontMutation = (options?: Partial<Options<PatchApiV1UserSettingsFontData>>): UseMutationOptions<PatchApiV1UserSettingsFontResponse, PatchApiV1UserSettingsFontError, Options<PatchApiV1UserSettingsFontData>> => {
-    const mutationOptions: UseMutationOptions<PatchApiV1UserSettingsFontResponse, PatchApiV1UserSettingsFontError, Options<PatchApiV1UserSettingsFontData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await patchApiV1UserSettingsFont({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
+export const listServersInfiniteOptions = (options?: Options<ListServersData>) => infiniteQueryOptions<ListServersResponse2, ListServersError, InfiniteData<ListServersResponse2>, QueryKey<Options<ListServersData>>, number | Pick<QueryKey<Options<ListServersData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+// @ts-ignore
+{
+    queryFn: async ({ pageParam, queryKey, signal }) => {
+        // @ts-ignore
+        const page: Pick<QueryKey<Options<ListServersData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+            query: {
+                page: pageParam
+            }
+        };
+        const params = createInfiniteParams(queryKey, page);
+        const { data } = await listServers({
+            ...options,
+            ...params,
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: listServersInfiniteQueryKey(options)
+});
+
+export const getSshConnectionStatusQueryKey = (options?: Options<GetSshConnectionStatusData>) => createQueryKey('getSshConnectionStatus', options);
 
 /**
- * update language
+ * Get SSH connection status
  *
- * #### Controller:
+ * Get SSH connection status.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).UpdateLanguage`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const patchApiV1UserSettingsLanguageMutation = (options?: Partial<Options<PatchApiV1UserSettingsLanguageData>>): UseMutationOptions<PatchApiV1UserSettingsLanguageResponse, PatchApiV1UserSettingsLanguageError, Options<PatchApiV1UserSettingsLanguageData>> => {
-    const mutationOptions: UseMutationOptions<PatchApiV1UserSettingsLanguageResponse, PatchApiV1UserSettingsLanguageError, Options<PatchApiV1UserSettingsLanguageData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await patchApiV1UserSettingsLanguage({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * update theme
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).UpdateTheme`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
- */
-export const patchApiV1UserSettingsThemeMutation = (options?: Partial<Options<PatchApiV1UserSettingsThemeData>>): UseMutationOptions<PatchApiV1UserSettingsThemeResponse, PatchApiV1UserSettingsThemeError, Options<PatchApiV1UserSettingsThemeData>> => {
-    const mutationOptions: UseMutationOptions<PatchApiV1UserSettingsThemeResponse, PatchApiV1UserSettingsThemeError, Options<PatchApiV1UserSettingsThemeData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await patchApiV1UserSettingsTheme({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * handle github webhook
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleGithubWebhook`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- *
- * ---
- *
- *
- */
-export const postApiV1WebhookMutation = (options?: Partial<Options<PostApiV1WebhookData>>): UseMutationOptions<PostApiV1WebhookResponse, PostApiV1WebhookError, Options<PostApiV1WebhookData>> => {
-    const mutationOptions: UseMutationOptions<PostApiV1WebhookResponse, PostApiV1WebhookError, Options<PostApiV1WebhookData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await postApiV1Webhook({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getWsQueryKey = (options?: Options<GetWsData>) => createQueryKey('getWs', options);
-
-/**
- * func1
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).RegisterWebSocketRoutes.func1`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- *
- * ---
- *
- *
- */
-export const getWsOptions = (options?: Options<GetWsData>) => queryOptions<GetWsResponse, GetWsError, GetWsResponse, ReturnType<typeof getWsQueryKey>>({
+export const getSshConnectionStatusOptions = (options?: Options<GetSshConnectionStatusData>) => queryOptions<GetSshConnectionStatusResponse, GetSshConnectionStatusError, GetSshConnectionStatusResponse, ReturnType<typeof getSshConnectionStatusQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getWs({
+        const { data } = await getSshConnectionStatus({
             ...options,
             ...queryKey[0],
             signal,
@@ -3752,29 +2496,46 @@ export const getWsOptions = (options?: Options<GetWsData>) => queryOptions<GetWs
         });
         return data;
     },
-    queryKey: getWsQueryKey(options)
+    queryKey: getSshConnectionStatusQueryKey(options)
 });
 
-export const getWsLiveApplicationIdQueryKey = (options: Options<GetWsLiveApplicationIdData>) => createQueryKey('getWsLiveApplicationId', options);
+/**
+ * Provision trail resources
+ *
+ * Provision trail resources.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const provisionTrailResourcesMutation = (options?: Partial<Options<ProvisionTrailResourcesData>>): UseMutationOptions<ProvisionTrailResourcesResponse, ProvisionTrailResourcesError, Options<ProvisionTrailResourcesData>> => {
+    const mutationOptions: UseMutationOptions<ProvisionTrailResourcesResponse, ProvisionTrailResourcesError, Options<ProvisionTrailResourcesData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await provisionTrailResources({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getTrailSessionStatusQueryKey = (options: Options<GetTrailSessionStatusData>) => createQueryKey('getTrailSessionStatus', options);
 
 /**
- * func1
+ * Get trail session status
  *
- * #### Controller:
+ * Get trail session status.
  *
- * `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).RegisterLiveDeployRoutes.func1`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getWsLiveApplicationIdOptions = (options: Options<GetWsLiveApplicationIdData>) => queryOptions<GetWsLiveApplicationIdResponse, GetWsLiveApplicationIdError, GetWsLiveApplicationIdResponse, ReturnType<typeof getWsLiveApplicationIdQueryKey>>({
+export const getTrailSessionStatusOptions = (options: Options<GetTrailSessionStatusData>) => queryOptions<GetTrailSessionStatusResponse, GetTrailSessionStatusError, GetTrailSessionStatusResponse, ReturnType<typeof getTrailSessionStatusQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getWsLiveApplicationId({
+        const { data } = await getTrailSessionStatus({
             ...options,
             ...queryKey[0],
             signal,
@@ -3782,5 +2543,355 @@ export const getWsLiveApplicationIdOptions = (options: Options<GetWsLiveApplicat
         });
         return data;
     },
-    queryKey: getWsLiveApplicationIdQueryKey(options)
+    queryKey: getTrailSessionStatusQueryKey(options)
 });
+
+/**
+ * Perform update
+ *
+ * Perform update.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const performUpdateMutation = (options?: Partial<Options<PerformUpdateData>>): UseMutationOptions<PerformUpdateResponse, PerformUpdateError, Options<PerformUpdateData>> => {
+    const mutationOptions: UseMutationOptions<PerformUpdateResponse, PerformUpdateError, Options<PerformUpdateData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await performUpdate({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const checkForUpdatesQueryKey = (options?: Options<CheckForUpdatesData>) => createQueryKey('checkForUpdates', options);
+
+/**
+ * Check for updates
+ *
+ * Check for updates.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const checkForUpdatesOptions = (options?: Options<CheckForUpdatesData>) => queryOptions<CheckForUpdatesResponse, CheckForUpdatesError, CheckForUpdatesResponse, ReturnType<typeof checkForUpdatesQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await checkForUpdates({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: checkForUpdatesQueryKey(options)
+});
+
+export const getCurrentUserProfileQueryKey = (options?: Options<GetCurrentUserProfileData>) => createQueryKey('getCurrentUserProfile', options);
+
+/**
+ * Get current user profile
+ *
+ * Get current user profile.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getCurrentUserProfileOptions = (options?: Options<GetCurrentUserProfileData>) => queryOptions<GetCurrentUserProfileResponse, GetCurrentUserProfileError, GetCurrentUserProfileResponse, ReturnType<typeof getCurrentUserProfileQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getCurrentUserProfile({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getCurrentUserProfileQueryKey(options)
+});
+
+/**
+ * Update user avatar
+ *
+ * Update user avatar.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateUserAvatarMutation = (options?: Partial<Options<UpdateUserAvatarData>>): UseMutationOptions<UpdateUserAvatarResponse, UpdateUserAvatarError, Options<UpdateUserAvatarData>> => {
+    const mutationOptions: UseMutationOptions<UpdateUserAvatarResponse, UpdateUserAvatarError, Options<UpdateUserAvatarData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateUserAvatar({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Update user name
+ *
+ * Update user name.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateUserNameMutation = (options?: Partial<Options<UpdateUserNameData>>): UseMutationOptions<UpdateUserNameResponse, UpdateUserNameError, Options<UpdateUserNameData>> => {
+    const mutationOptions: UseMutationOptions<UpdateUserNameResponse, UpdateUserNameError, Options<UpdateUserNameData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateUserName({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const checkOnboardingStatusQueryKey = (options?: Options<CheckOnboardingStatusData>) => createQueryKey('checkOnboardingStatus', options);
+
+/**
+ * Check onboarding status
+ *
+ * Check onboarding status.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const checkOnboardingStatusOptions = (options?: Options<CheckOnboardingStatusData>) => queryOptions<CheckOnboardingStatusResponse, CheckOnboardingStatusError, CheckOnboardingStatusResponse, ReturnType<typeof checkOnboardingStatusQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await checkOnboardingStatus({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: checkOnboardingStatusQueryKey(options)
+});
+
+/**
+ * Mark onboarding complete
+ *
+ * Mark onboarding complete.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const markOnboardingCompleteMutation = (options?: Partial<Options<MarkOnboardingCompleteData>>): UseMutationOptions<MarkOnboardingCompleteResponse2, MarkOnboardingCompleteError, Options<MarkOnboardingCompleteData>> => {
+    const mutationOptions: UseMutationOptions<MarkOnboardingCompleteResponse2, MarkOnboardingCompleteError, Options<MarkOnboardingCompleteData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await markOnboardingComplete({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getUserPreferencesQueryKey = (options?: Options<GetUserPreferencesData>) => createQueryKey('getUserPreferences', options);
+
+/**
+ * Get user preferences
+ *
+ * Get user preferences.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getUserPreferencesOptions = (options?: Options<GetUserPreferencesData>) => queryOptions<GetUserPreferencesResponse, GetUserPreferencesError, GetUserPreferencesResponse, ReturnType<typeof getUserPreferencesQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getUserPreferences({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getUserPreferencesQueryKey(options)
+});
+
+/**
+ * Update user preferences
+ *
+ * Update user preferences.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateUserPreferencesMutation = (options?: Partial<Options<UpdateUserPreferencesData>>): UseMutationOptions<UpdateUserPreferencesResponse, UpdateUserPreferencesError, Options<UpdateUserPreferencesData>> => {
+    const mutationOptions: UseMutationOptions<UpdateUserPreferencesResponse, UpdateUserPreferencesError, Options<UpdateUserPreferencesData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateUserPreferences({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getUserSettingsQueryKey = (options?: Options<GetUserSettingsData>) => createQueryKey('getUserSettings', options);
+
+/**
+ * Get user settings
+ *
+ * Get user settings.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getUserSettingsOptions = (options?: Options<GetUserSettingsData>) => queryOptions<GetUserSettingsResponse, GetUserSettingsError, GetUserSettingsResponse, ReturnType<typeof getUserSettingsQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getUserSettings({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getUserSettingsQueryKey(options)
+});
+
+/**
+ * Update auto-update settings
+ *
+ * Update auto-update settings.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateAutoUpdateSettingsMutation = (options?: Partial<Options<UpdateAutoUpdateSettingsData>>): UseMutationOptions<UpdateAutoUpdateSettingsResponse, UpdateAutoUpdateSettingsError, Options<UpdateAutoUpdateSettingsData>> => {
+    const mutationOptions: UseMutationOptions<UpdateAutoUpdateSettingsResponse, UpdateAutoUpdateSettingsError, Options<UpdateAutoUpdateSettingsData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateAutoUpdateSettings({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Update font settings
+ *
+ * Update font settings.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateFontSettingsMutation = (options?: Partial<Options<UpdateFontSettingsData>>): UseMutationOptions<UpdateFontSettingsResponse, UpdateFontSettingsError, Options<UpdateFontSettingsData>> => {
+    const mutationOptions: UseMutationOptions<UpdateFontSettingsResponse, UpdateFontSettingsError, Options<UpdateFontSettingsData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateFontSettings({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Update language settings
+ *
+ * Update language settings.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateLanguageSettingsMutation = (options?: Partial<Options<UpdateLanguageSettingsData>>): UseMutationOptions<UpdateLanguageSettingsResponse, UpdateLanguageSettingsError, Options<UpdateLanguageSettingsData>> => {
+    const mutationOptions: UseMutationOptions<UpdateLanguageSettingsResponse, UpdateLanguageSettingsError, Options<UpdateLanguageSettingsData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateLanguageSettings({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Update theme settings
+ *
+ * Update theme settings.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateThemeSettingsMutation = (options?: Partial<Options<UpdateThemeSettingsData>>): UseMutationOptions<UpdateThemeSettingsResponse, UpdateThemeSettingsError, Options<UpdateThemeSettingsData>> => {
+    const mutationOptions: UseMutationOptions<UpdateThemeSettingsResponse, UpdateThemeSettingsError, Options<UpdateThemeSettingsData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateThemeSettings({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Handle GitHub webhook
+ *
+ * Handle GitHub webhook.
+ *
+ * Auth: Public endpoint.
+ * Scope: No organization scope required.
+ * Side effects: May mutate server state.
+ */
+export const handleGitHubWebhookMutation = (options?: Partial<Options<HandleGitHubWebhookData>>): UseMutationOptions<HandleGitHubWebhookResponse, HandleGitHubWebhookError, Options<HandleGitHubWebhookData>> => {
+    const mutationOptions: UseMutationOptions<HandleGitHubWebhookResponse, HandleGitHubWebhookError, Options<HandleGitHubWebhookData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await handleGitHubWebhook({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};

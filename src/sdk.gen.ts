@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { DeleteApiV1ContainerContainerIdData, DeleteApiV1ContainerContainerIdErrors, DeleteApiV1ContainerContainerIdResponses, DeleteApiV1DeployApplicationData, DeleteApiV1DeployApplicationDomainsData, DeleteApiV1DeployApplicationDomainsErrors, DeleteApiV1DeployApplicationDomainsResponses, DeleteApiV1DeployApplicationErrors, DeleteApiV1DeployApplicationResponses, DeleteApiV1DomainData, DeleteApiV1DomainErrors, DeleteApiV1DomainResponses, DeleteApiV1ExtensionsIdData, DeleteApiV1ExtensionsIdErrors, DeleteApiV1ExtensionsIdResponses, DeleteApiV1FileManagerDeleteDirectoryData, DeleteApiV1FileManagerDeleteDirectoryErrors, DeleteApiV1FileManagerDeleteDirectoryResponses, DeleteApiV1GithubConnectorData, DeleteApiV1GithubConnectorErrors, DeleteApiV1GithubConnectorResponses, DeleteApiV1HealthcheckData, DeleteApiV1HealthcheckErrors, DeleteApiV1HealthcheckResponses, DeleteApiV1NotificationSmtpData, DeleteApiV1NotificationSmtpErrors, DeleteApiV1NotificationSmtpResponses, DeleteApiV1NotificationWebhookData, DeleteApiV1NotificationWebhookErrors, DeleteApiV1NotificationWebhookResponses, GetApiV1AuditLogsData, GetApiV1AuditLogsErrors, GetApiV1AuditLogsResponses, GetApiV1AuthBootstrapData, GetApiV1AuthBootstrapErrors, GetApiV1AuthBootstrapResponses, GetApiV1AuthIsAdminRegisteredData, GetApiV1AuthIsAdminRegisteredErrors, GetApiV1AuthIsAdminRegisteredResponses, GetApiV1ContainerContainerIdData, GetApiV1ContainerContainerIdErrors, GetApiV1ContainerContainerIdResponses, GetApiV1ContainerData, GetApiV1ContainerErrors, GetApiV1ContainerResponses, GetApiV1DeployApplicationComposeServicesData, GetApiV1DeployApplicationComposeServicesErrors, GetApiV1DeployApplicationComposeServicesResponses, GetApiV1DeployApplicationData, GetApiV1DeployApplicationDeploymentsData, GetApiV1DeployApplicationDeploymentsDeploymentIdData, GetApiV1DeployApplicationDeploymentsDeploymentIdErrors, GetApiV1DeployApplicationDeploymentsDeploymentIdLogsData, GetApiV1DeployApplicationDeploymentsDeploymentIdLogsErrors, GetApiV1DeployApplicationDeploymentsDeploymentIdLogsResponses, GetApiV1DeployApplicationDeploymentsDeploymentIdResponses, GetApiV1DeployApplicationDeploymentsErrors, GetApiV1DeployApplicationDeploymentsResponses, GetApiV1DeployApplicationErrors, GetApiV1DeployApplicationLogsApplicationIdData, GetApiV1DeployApplicationLogsApplicationIdErrors, GetApiV1DeployApplicationLogsApplicationIdResponses, GetApiV1DeployApplicationProjectFamilyData, GetApiV1DeployApplicationProjectFamilyEnvironmentsData, GetApiV1DeployApplicationProjectFamilyEnvironmentsErrors, GetApiV1DeployApplicationProjectFamilyEnvironmentsResponses, GetApiV1DeployApplicationProjectFamilyErrors, GetApiV1DeployApplicationProjectFamilyResponses, GetApiV1DeployApplicationResponses, GetApiV1DeployApplicationsData, GetApiV1DeployApplicationsErrors, GetApiV1DeployApplicationsResponses, GetApiV1DomainGenerateData, GetApiV1DomainGenerateErrors, GetApiV1DomainGenerateResponses, GetApiV1DomainsData, GetApiV1DomainsErrors, GetApiV1DomainsResponses, GetApiV1ExtensionsByExtensionIdExtensionIdData, GetApiV1ExtensionsByExtensionIdExtensionIdErrors, GetApiV1ExtensionsByExtensionIdExtensionIdExecutionsData, GetApiV1ExtensionsByExtensionIdExtensionIdExecutionsErrors, GetApiV1ExtensionsByExtensionIdExtensionIdExecutionsResponses, GetApiV1ExtensionsByExtensionIdExtensionIdResponses, GetApiV1ExtensionsCategoriesData, GetApiV1ExtensionsCategoriesErrors, GetApiV1ExtensionsCategoriesResponses, GetApiV1ExtensionsData, GetApiV1ExtensionsErrors, GetApiV1ExtensionsExecutionExecutionIdData, GetApiV1ExtensionsExecutionExecutionIdErrors, GetApiV1ExtensionsExecutionExecutionIdLogsData, GetApiV1ExtensionsExecutionExecutionIdLogsErrors, GetApiV1ExtensionsExecutionExecutionIdLogsResponses, GetApiV1ExtensionsExecutionExecutionIdResponses, GetApiV1ExtensionsIdData, GetApiV1ExtensionsIdErrors, GetApiV1ExtensionsIdResponses, GetApiV1ExtensionsResponses, GetApiV1FeatureFlagsCheckData, GetApiV1FeatureFlagsCheckErrors, GetApiV1FeatureFlagsCheckResponses, GetApiV1FeatureFlagsData, GetApiV1FeatureFlagsErrors, GetApiV1FeatureFlagsResponses, GetApiV1FileManagerData, GetApiV1FileManagerErrors, GetApiV1FileManagerResponses, GetApiV1GithubConnectorAllData, GetApiV1GithubConnectorAllErrors, GetApiV1GithubConnectorAllResponses, GetApiV1GithubConnectorRepositoriesData, GetApiV1GithubConnectorRepositoriesErrors, GetApiV1GithubConnectorRepositoriesResponses, GetApiV1HealthcheckData, GetApiV1HealthcheckErrors, GetApiV1HealthcheckResponses, GetApiV1HealthcheckResultsData, GetApiV1HealthcheckResultsErrors, GetApiV1HealthcheckResultsResponses, GetApiV1HealthcheckStatsData, GetApiV1HealthcheckStatsErrors, GetApiV1HealthcheckStatsResponses, GetApiV1HealthData, GetApiV1HealthErrors, GetApiV1HealthResponses, GetApiV1NotificationPreferencesData, GetApiV1NotificationPreferencesErrors, GetApiV1NotificationPreferencesResponses, GetApiV1NotificationSmtpData, GetApiV1NotificationSmtpErrors, GetApiV1NotificationSmtpResponses, GetApiV1NotificationWebhookTypeData, GetApiV1NotificationWebhookTypeErrors, GetApiV1NotificationWebhookTypeResponses, GetApiV1ServersData, GetApiV1ServersErrors, GetApiV1ServersResponses, GetApiV1ServersSshStatusData, GetApiV1ServersSshStatusErrors, GetApiV1ServersSshStatusResponses, GetApiV1TrailStatusSessionIdData, GetApiV1TrailStatusSessionIdErrors, GetApiV1TrailStatusSessionIdResponses, GetApiV1UpdateCheckData, GetApiV1UpdateCheckErrors, GetApiV1UpdateCheckResponses, GetApiV1UserData, GetApiV1UserErrors, GetApiV1UserOnboardedData, GetApiV1UserOnboardedErrors, GetApiV1UserOnboardedResponses, GetApiV1UserPreferencesData, GetApiV1UserPreferencesErrors, GetApiV1UserPreferencesResponses, GetApiV1UserResponses, GetApiV1UserSettingsData, GetApiV1UserSettingsErrors, GetApiV1UserSettingsResponses, GetWsData, GetWsErrors, GetWsLiveApplicationIdData, GetWsLiveApplicationIdErrors, GetWsLiveApplicationIdResponses, GetWsResponses, PatchApiV1HealthcheckToggleData, PatchApiV1HealthcheckToggleErrors, PatchApiV1HealthcheckToggleResponses, PatchApiV1UserAvatarData, PatchApiV1UserAvatarErrors, PatchApiV1UserAvatarResponses, PatchApiV1UserNameData, PatchApiV1UserNameErrors, PatchApiV1UserNameResponses, PatchApiV1UserSettingsAutoUpdateData, PatchApiV1UserSettingsAutoUpdateErrors, PatchApiV1UserSettingsAutoUpdateResponses, PatchApiV1UserSettingsFontData, PatchApiV1UserSettingsFontErrors, PatchApiV1UserSettingsFontResponses, PatchApiV1UserSettingsLanguageData, PatchApiV1UserSettingsLanguageErrors, PatchApiV1UserSettingsLanguageResponses, PatchApiV1UserSettingsThemeData, PatchApiV1UserSettingsThemeErrors, PatchApiV1UserSettingsThemeResponses, PostApiV1AuthCliInitData, PostApiV1AuthCliInitErrors, PostApiV1AuthCliInitResponses, PostApiV1ContainerContainerIdLogsData, PostApiV1ContainerContainerIdLogsErrors, PostApiV1ContainerContainerIdLogsResponses, PostApiV1ContainerContainerIdRestartData, PostApiV1ContainerContainerIdRestartErrors, PostApiV1ContainerContainerIdRestartResponses, PostApiV1ContainerContainerIdStartData, PostApiV1ContainerContainerIdStartErrors, PostApiV1ContainerContainerIdStartResponses, PostApiV1ContainerContainerIdStopData, PostApiV1ContainerContainerIdStopErrors, PostApiV1ContainerContainerIdStopResponses, PostApiV1ContainerImagesData, PostApiV1ContainerImagesErrors, PostApiV1ContainerImagesResponses, PostApiV1ContainerPruneBuildCacheData, PostApiV1ContainerPruneBuildCacheErrors, PostApiV1ContainerPruneBuildCacheResponses, PostApiV1ContainerPruneImagesData, PostApiV1ContainerPruneImagesErrors, PostApiV1ContainerPruneImagesResponses, PostApiV1DeployApplicationData, PostApiV1DeployApplicationDomainsData, PostApiV1DeployApplicationDomainsErrors, PostApiV1DeployApplicationDomainsResponses, PostApiV1DeployApplicationErrors, PostApiV1DeployApplicationIndexData, PostApiV1DeployApplicationIndexErrors, PostApiV1DeployApplicationIndexResponses, PostApiV1DeployApplicationPreviewComposeData, PostApiV1DeployApplicationPreviewComposeErrors, PostApiV1DeployApplicationPreviewComposeResponses, PostApiV1DeployApplicationProjectAddToFamilyData, PostApiV1DeployApplicationProjectAddToFamilyErrors, PostApiV1DeployApplicationProjectAddToFamilyResponses, PostApiV1DeployApplicationProjectData, PostApiV1DeployApplicationProjectDeployData, PostApiV1DeployApplicationProjectDeployErrors, PostApiV1DeployApplicationProjectDeployResponses, PostApiV1DeployApplicationProjectDuplicateData, PostApiV1DeployApplicationProjectDuplicateErrors, PostApiV1DeployApplicationProjectDuplicateResponses, PostApiV1DeployApplicationProjectErrors, PostApiV1DeployApplicationProjectResponses, PostApiV1DeployApplicationRecoverData, PostApiV1DeployApplicationRecoverErrors, PostApiV1DeployApplicationRecoverResponses, PostApiV1DeployApplicationRedeployData, PostApiV1DeployApplicationRedeployErrors, PostApiV1DeployApplicationRedeployResponses, PostApiV1DeployApplicationResponses, PostApiV1DeployApplicationRestartData, PostApiV1DeployApplicationRestartErrors, PostApiV1DeployApplicationRestartResponses, PostApiV1DeployApplicationRollbackData, PostApiV1DeployApplicationRollbackErrors, PostApiV1DeployApplicationRollbackResponses, PostApiV1DomainData, PostApiV1DomainErrors, PostApiV1DomainResponses, PostApiV1ExtensionsExecutionExecutionIdCancelData, PostApiV1ExtensionsExecutionExecutionIdCancelErrors, PostApiV1ExtensionsExecutionExecutionIdCancelResponses, PostApiV1ExtensionsExtensionIdForkData, PostApiV1ExtensionsExtensionIdForkErrors, PostApiV1ExtensionsExtensionIdForkResponses, PostApiV1ExtensionsExtensionIdRunData, PostApiV1ExtensionsExtensionIdRunErrors, PostApiV1ExtensionsExtensionIdRunResponses, PostApiV1FileManagerCopyDirectoryData, PostApiV1FileManagerCopyDirectoryErrors, PostApiV1FileManagerCopyDirectoryResponses, PostApiV1FileManagerCreateDirectoryData, PostApiV1FileManagerCreateDirectoryErrors, PostApiV1FileManagerCreateDirectoryResponses, PostApiV1FileManagerMoveDirectoryData, PostApiV1FileManagerMoveDirectoryErrors, PostApiV1FileManagerMoveDirectoryResponses, PostApiV1FileManagerUploadData, PostApiV1FileManagerUploadErrors, PostApiV1FileManagerUploadResponses, PostApiV1GithubConnectorData, PostApiV1GithubConnectorErrors, PostApiV1GithubConnectorRepositoryBranchesData, PostApiV1GithubConnectorRepositoryBranchesErrors, PostApiV1GithubConnectorRepositoryBranchesResponses, PostApiV1GithubConnectorResponses, PostApiV1HealthcheckData, PostApiV1HealthcheckErrors, PostApiV1HealthcheckResponses, PostApiV1LivePauseData, PostApiV1LivePauseErrors, PostApiV1LivePauseResponses, PostApiV1NotificationPreferencesData, PostApiV1NotificationPreferencesErrors, PostApiV1NotificationPreferencesResponses, PostApiV1NotificationSmtpData, PostApiV1NotificationSmtpErrors, PostApiV1NotificationSmtpResponses, PostApiV1NotificationWebhookData, PostApiV1NotificationWebhookErrors, PostApiV1NotificationWebhookResponses, PostApiV1TrailProvisionData, PostApiV1TrailProvisionErrors, PostApiV1TrailProvisionResponses, PostApiV1UpdateData, PostApiV1UpdateErrors, PostApiV1UpdateResponses, PostApiV1UserOnboardedData, PostApiV1UserOnboardedErrors, PostApiV1UserOnboardedResponses, PostApiV1WebhookData, PostApiV1WebhookErrors, PostApiV1WebhookResponses, PutApiV1ContainerContainerIdResourcesData, PutApiV1ContainerContainerIdResourcesErrors, PutApiV1ContainerContainerIdResourcesResponses, PutApiV1DeployApplicationData, PutApiV1DeployApplicationErrors, PutApiV1DeployApplicationLabelsData, PutApiV1DeployApplicationLabelsErrors, PutApiV1DeployApplicationLabelsResponses, PutApiV1DeployApplicationResponses, PutApiV1DomainData, PutApiV1DomainErrors, PutApiV1DomainResponses, PutApiV1FeatureFlagsData, PutApiV1FeatureFlagsErrors, PutApiV1FeatureFlagsResponses, PutApiV1GithubConnectorData, PutApiV1GithubConnectorErrors, PutApiV1GithubConnectorResponses, PutApiV1HealthcheckData, PutApiV1HealthcheckErrors, PutApiV1HealthcheckResponses, PutApiV1NotificationSmtpData, PutApiV1NotificationSmtpErrors, PutApiV1NotificationSmtpResponses, PutApiV1NotificationWebhookData, PutApiV1NotificationWebhookErrors, PutApiV1NotificationWebhookResponses, PutApiV1UserPreferencesData, PutApiV1UserPreferencesErrors, PutApiV1UserPreferencesResponses } from './types.gen';
+import type { AddApplicationDomainData, AddApplicationDomainErrors, AddApplicationDomainResponses, AddCustomDomainData, AddCustomDomainErrors, AddCustomDomainResponses, AddProjectToFamilyData, AddProjectToFamilyErrors, AddProjectToFamilyResponses, CancelExecutionData, CancelExecutionErrors, CancelExecutionResponses, CheckAdminRegistrationData, CheckAdminRegistrationErrors, CheckAdminRegistrationResponses, CheckCustomDomainDnsData, CheckCustomDomainDnsErrors, CheckCustomDomainDnsResponses, CheckForUpdatesData, CheckForUpdatesErrors, CheckForUpdatesResponses, CheckIfFeatureIsEnabledData, CheckIfFeatureIsEnabledErrors, CheckIfFeatureIsEnabledResponses, CheckOnboardingStatusData, CheckOnboardingStatusErrors, CheckOnboardingStatusResponses, CopyDirectoryData, CopyDirectoryErrors, CopyDirectoryResponses, CreateDirectoryData, CreateDirectoryErrors, CreateDirectoryResponses, CreateGitHubConnectorData, CreateGitHubConnectorErrors, CreateGitHubConnectorResponses, CreateHealthCheckData, CreateHealthCheckErrors, CreateHealthCheckResponses, CreateProjectData, CreateProjectErrors, CreateProjectResponses, CreateSmtpConfigData, CreateSmtpConfigErrors, CreateSmtpConfigResponses, CreateWebhookConfigData, CreateWebhookConfigErrors, CreateWebhookConfigResponses, DeleteApplicationData, DeleteApplicationErrors, DeleteApplicationResponses, DeleteDirectoryData, DeleteDirectoryErrors, DeleteDirectoryResponses, DeleteForkedExtensionData, DeleteForkedExtensionErrors, DeleteForkedExtensionResponses, DeleteGitHubConnectorData, DeleteGitHubConnectorErrors, DeleteGitHubConnectorResponses, DeleteHealthCheckData, DeleteHealthCheckErrors, DeleteHealthCheckResponses, DeleteSmtpConfigData, DeleteSmtpConfigErrors, DeleteSmtpConfigResponses, DeleteWebhookConfigData, DeleteWebhookConfigErrors, DeleteWebhookConfigResponses, DeployApplicationData, DeployApplicationErrors, DeployApplicationResponses, DeployProjectData, DeployProjectErrors, DeployProjectResponses, DuplicateProjectData, DuplicateProjectErrors, DuplicateProjectResponses, ForkExtensionData, ForkExtensionErrors, ForkExtensionResponses, GenerateRandomSubdomainData, GenerateRandomSubdomainErrors, GenerateRandomSubdomainResponses, GetApplicationData, GetApplicationErrors, GetApplicationLogsData, GetApplicationLogsErrors, GetApplicationLogsResponses, GetApplicationResponses, GetBootstrapSessionDataData, GetBootstrapSessionDataErrors, GetBootstrapSessionDataResponses, GetContainerData, GetContainerErrors, GetContainerLogsData, GetContainerLogsErrors, GetContainerLogsResponses, GetContainerResponses, GetCurrentUserProfileData, GetCurrentUserProfileErrors, GetCurrentUserProfileResponses, GetDeploymentData, GetDeploymentErrors, GetDeploymentLogsData, GetDeploymentLogsErrors, GetDeploymentLogsResponses, GetDeploymentResponses, GetExecutionData, GetExecutionErrors, GetExecutionResponses, GetExtensionByExtensionIdData, GetExtensionByExtensionIdErrors, GetExtensionByExtensionIdResponses, GetExtensionByIdData, GetExtensionByIdErrors, GetExtensionByIdResponses, GetHealthChecksData, GetHealthChecksErrors, GetHealthChecksResponses, GetHealthCheckStatsData, GetHealthCheckStatsErrors, GetHealthCheckStatsResponses, GetNotificationPreferencesData, GetNotificationPreferencesErrors, GetNotificationPreferencesResponses, GetSmtpConfigData, GetSmtpConfigErrors, GetSmtpConfigResponses, GetSshConnectionStatusData, GetSshConnectionStatusErrors, GetSshConnectionStatusResponses, GetTrailSessionStatusData, GetTrailSessionStatusErrors, GetTrailSessionStatusResponses, GetUserPreferencesData, GetUserPreferencesErrors, GetUserPreferencesResponses, GetUserSettingsData, GetUserSettingsErrors, GetUserSettingsResponses, GetWebhookConfigData, GetWebhookConfigErrors, GetWebhookConfigResponses, HandleGitHubWebhookData, HandleGitHubWebhookErrors, HandleGitHubWebhookResponses, HealthCheckData, HealthCheckErrors, HealthCheckResponses, IndexApplicationCodebaseData, IndexApplicationCodebaseErrors, IndexApplicationCodebaseResponses, InitializeCliSessionData, InitializeCliSessionErrors, InitializeCliSessionResponses, ListApplicationDeploymentsData, ListApplicationDeploymentsErrors, ListApplicationDeploymentsResponses, ListApplicationsData, ListApplicationsErrors, ListApplicationsResponses, ListAuditLogsData, ListAuditLogsErrors, ListAuditLogsResponses, ListComposeServicesData, ListComposeServicesErrors, ListComposeServicesResponses, ListContainersData, ListContainersErrors, ListContainersResponses, ListDomainsData, ListDomainsErrors, ListDomainsResponses, ListExecutionLogsData, ListExecutionLogsErrors, ListExecutionLogsResponses, ListExtensionCategoriesData, ListExtensionCategoriesErrors, ListExtensionCategoriesResponses, ListExtensionExecutionsData, ListExtensionExecutionsErrors, ListExtensionExecutionsResponses, ListExtensionsData, ListExtensionsErrors, ListExtensionsResponses, ListFamilyEnvironmentsData, ListFamilyEnvironmentsErrors, ListFamilyEnvironmentsResponses, ListFeatureFlagsData, ListFeatureFlagsErrors, ListFeatureFlagsResponses, ListFilesData, ListFilesErrors, ListFilesResponses, ListGitHubConnectorsData, ListGitHubConnectorsErrors, ListGitHubConnectorsResponses, ListGitHubRepositoriesData, ListGitHubRepositoriesErrors, ListGitHubRepositoriesResponses, ListHealthCheckResultsData, ListHealthCheckResultsErrors, ListHealthCheckResultsResponses, ListImagesData, ListImagesErrors, ListImagesResponses, ListProjectsInFamilyData, ListProjectsInFamilyErrors, ListProjectsInFamilyResponses, ListRepositoryBranchesData, ListRepositoryBranchesErrors, ListRepositoryBranchesResponses, ListServersData, ListServersErrors, ListServersResponses, MarkOnboardingCompleteData, MarkOnboardingCompleteErrors, MarkOnboardingCompleteResponses, MoveDirectoryData, MoveDirectoryErrors, MoveDirectoryResponses, PauseLiveDeployServiceData, PauseLiveDeployServiceErrors, PauseLiveDeployServiceResponses, PerformUpdateData, PerformUpdateErrors, PerformUpdateResponses, PreviewComposeServicesData, PreviewComposeServicesErrors, PreviewComposeServicesResponses, ProvisionTrailResourcesData, ProvisionTrailResourcesErrors, ProvisionTrailResourcesResponses, PruneBuildCacheData, PruneBuildCacheErrors, PruneBuildCacheResponses, PruneImagesData, PruneImagesErrors, PruneImagesResponses, RecoverApplicationData, RecoverApplicationErrors, RecoverApplicationResponses, RedeployApplicationData, RedeployApplicationErrors, RedeployApplicationResponses, RemoveApplicationDomainData, RemoveApplicationDomainErrors, RemoveApplicationDomainResponses, RemoveContainerData, RemoveContainerErrors, RemoveContainerResponses, RemoveCustomDomainData, RemoveCustomDomainErrors, RemoveCustomDomainResponses, RestartContainerData, RestartContainerErrors, RestartContainerResponses, RestartDeploymentData, RestartDeploymentErrors, RestartDeploymentResponses, RollbackDeploymentData, RollbackDeploymentErrors, RollbackDeploymentResponses, RunExtensionData, RunExtensionErrors, RunExtensionResponses, SendNotificationData, SendNotificationErrors, SendNotificationResponses, StartContainerData, StartContainerErrors, StartContainerResponses, StopContainerData, StopContainerErrors, StopContainerResponses, ToggleHealthCheckData, ToggleHealthCheckErrors, ToggleHealthCheckResponses, UpdateApplicationData, UpdateApplicationErrors, UpdateApplicationLabelsData, UpdateApplicationLabelsErrors, UpdateApplicationLabelsResponses, UpdateApplicationResponses, UpdateAutoUpdateSettingsData, UpdateAutoUpdateSettingsErrors, UpdateAutoUpdateSettingsResponses, UpdateContainerResourcesData, UpdateContainerResourcesErrors, UpdateContainerResourcesResponses, UpdateFeatureFlagData, UpdateFeatureFlagErrors, UpdateFeatureFlagResponses, UpdateFontSettingsData, UpdateFontSettingsErrors, UpdateFontSettingsResponses, UpdateGitHubConnectorData, UpdateGitHubConnectorErrors, UpdateGitHubConnectorResponses, UpdateHealthCheckData, UpdateHealthCheckErrors, UpdateHealthCheckResponses, UpdateLanguageSettingsData, UpdateLanguageSettingsErrors, UpdateLanguageSettingsResponses, UpdateNotificationPreferencesData, UpdateNotificationPreferencesErrors, UpdateNotificationPreferencesResponses, UpdateSmtpConfigData, UpdateSmtpConfigErrors, UpdateSmtpConfigResponses, UpdateThemeSettingsData, UpdateThemeSettingsErrors, UpdateThemeSettingsResponses, UpdateUserAvatarData, UpdateUserAvatarErrors, UpdateUserAvatarResponses, UpdateUserNameData, UpdateUserNameErrors, UpdateUserNameResponses, UpdateUserPreferencesData, UpdateUserPreferencesErrors, UpdateUserPreferencesResponses, UpdateWebhookConfigData, UpdateWebhookConfigErrors, UpdateWebhookConfigResponses, UploadFileData, UploadFileErrors, UploadFileResponses, VerifyCustomDomainData, VerifyCustomDomainErrors, VerifyCustomDomainResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -19,61 +19,37 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 };
 
 /**
- * get recent audit logs
+ * List audit logs
  *
- * #### Controller:
+ * List audit logs.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/audit/controller.(*AuditController).GetRecentAuditLogs`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1AuditLogs = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1AuditLogsData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1AuditLogsResponses, GetApiV1AuditLogsErrors, ThrowOnError>({ url: '/api/v1/audit/logs', ...options });
+export const listAuditLogs = <ThrowOnError extends boolean = false>(options?: Options<ListAuditLogsData, ThrowOnError>) => (options?.client ?? client).get<ListAuditLogsResponses, ListAuditLogsErrors, ThrowOnError>({ url: '/api/v1/audit/logs', ...options });
 
 /**
- * handle bootstrap
+ * Get bootstrap session data
  *
- * #### Controller:
+ * Get bootstrap session data.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/auth/controller.(*AuthController).HandleBootstrap`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: No organization scope required.
+ * Side effects: Read-only operation.
  */
-export const getApiV1AuthBootstrap = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1AuthBootstrapData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1AuthBootstrapResponses, GetApiV1AuthBootstrapErrors, ThrowOnError>({ url: '/api/v1/auth/bootstrap', ...options });
+export const getBootstrapSessionData = <ThrowOnError extends boolean = false>(options?: Options<GetBootstrapSessionDataData, ThrowOnError>) => (options?.client ?? client).get<GetBootstrapSessionDataResponses, GetBootstrapSessionDataErrors, ThrowOnError>({ url: '/api/v1/auth/bootstrap', ...options });
 
 /**
- * handle c l i init
+ * Initialize CLI session
  *
- * #### Controller:
+ * Initialize CLI session.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/auth/controller.(*AuthController).HandleCLIInit`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: No organization scope required.
+ * Side effects: May mutate server state.
  */
-export const postApiV1AuthCliInit = <ThrowOnError extends boolean = false>(options: Options<PostApiV1AuthCliInitData, ThrowOnError>) => (options.client ?? client).post<PostApiV1AuthCliInitResponses, PostApiV1AuthCliInitErrors, ThrowOnError>({
+export const initializeCliSession = <ThrowOnError extends boolean = false>(options: Options<InitializeCliSessionData, ThrowOnError>) => (options.client ?? client).post<InitializeCliSessionResponses, InitializeCliSessionErrors, ThrowOnError>({
     url: '/api/v1/auth/cli/init',
     ...options,
     headers: {
@@ -83,63 +59,37 @@ export const postApiV1AuthCliInit = <ThrowOnError extends boolean = false>(optio
 });
 
 /**
- * is admin registered
+ * Check admin registration
  *
- * #### Controller:
+ * Check admin registration.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/auth/controller.(*AuthController).IsAdminRegistered`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- *
- * ---
- *
- *
+ * Auth: Public endpoint.
+ * Scope: No organization scope required.
+ * Side effects: Read-only operation.
  */
-export const getApiV1AuthIsAdminRegistered = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1AuthIsAdminRegisteredData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1AuthIsAdminRegisteredResponses, GetApiV1AuthIsAdminRegisteredErrors, ThrowOnError>({ url: '/api/v1/auth/is-admin-registered', ...options });
+export const checkAdminRegistration = <ThrowOnError extends boolean = false>(options?: Options<CheckAdminRegistrationData, ThrowOnError>) => (options?.client ?? client).get<CheckAdminRegistrationResponses, CheckAdminRegistrationErrors, ThrowOnError>({ url: '/api/v1/auth/is-admin-registered', ...options });
 
 /**
- * list containers
+ * List containers
  *
- * #### Controller:
+ * List containers.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).ListContainers`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1Container = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1ContainerData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1ContainerResponses, GetApiV1ContainerErrors, ThrowOnError>({ url: '/api/v1/container', ...options });
+export const listContainers = <ThrowOnError extends boolean = false>(options?: Options<ListContainersData, ThrowOnError>) => (options?.client ?? client).get<ListContainersResponses, ListContainersErrors, ThrowOnError>({ url: '/api/v1/container', ...options });
 
 /**
- * list images
+ * List images
  *
- * #### Controller:
+ * List images.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).ListImages`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1ContainerImages = <ThrowOnError extends boolean = false>(options: Options<PostApiV1ContainerImagesData, ThrowOnError>) => (options.client ?? client).post<PostApiV1ContainerImagesResponses, PostApiV1ContainerImagesErrors, ThrowOnError>({
+export const listImages = <ThrowOnError extends boolean = false>(options: Options<ListImagesData, ThrowOnError>) => (options.client ?? client).post<ListImagesResponses, ListImagesErrors, ThrowOnError>({
     url: '/api/v1/container/images',
     ...options,
     headers: {
@@ -149,25 +99,15 @@ export const postApiV1ContainerImages = <ThrowOnError extends boolean = false>(o
 });
 
 /**
- * prune build cache
+ * Prune build cache
  *
- * #### Controller:
+ * Prune build cache.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).PruneBuildCache`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1ContainerPruneBuildCache = <ThrowOnError extends boolean = false>(options: Options<PostApiV1ContainerPruneBuildCacheData, ThrowOnError>) => (options.client ?? client).post<PostApiV1ContainerPruneBuildCacheResponses, PostApiV1ContainerPruneBuildCacheErrors, ThrowOnError>({
+export const pruneBuildCache = <ThrowOnError extends boolean = false>(options: Options<PruneBuildCacheData, ThrowOnError>) => (options.client ?? client).post<PruneBuildCacheResponses, PruneBuildCacheErrors, ThrowOnError>({
     url: '/api/v1/container/prune/build-cache',
     ...options,
     headers: {
@@ -177,25 +117,15 @@ export const postApiV1ContainerPruneBuildCache = <ThrowOnError extends boolean =
 });
 
 /**
- * prune images
+ * Prune images
  *
- * #### Controller:
+ * Prune images.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).PruneImages`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1ContainerPruneImages = <ThrowOnError extends boolean = false>(options: Options<PostApiV1ContainerPruneImagesData, ThrowOnError>) => (options.client ?? client).post<PostApiV1ContainerPruneImagesResponses, PostApiV1ContainerPruneImagesErrors, ThrowOnError>({
+export const pruneImages = <ThrowOnError extends boolean = false>(options: Options<PruneImagesData, ThrowOnError>) => (options.client ?? client).post<PruneImagesResponses, PruneImagesErrors, ThrowOnError>({
     url: '/api/v1/container/prune/images',
     ...options,
     headers: {
@@ -205,67 +135,37 @@ export const postApiV1ContainerPruneImages = <ThrowOnError extends boolean = fal
 });
 
 /**
- * remove container
+ * Remove container
  *
- * #### Controller:
+ * Remove container.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).RemoveContainer`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const deleteApiV1ContainerContainerId = <ThrowOnError extends boolean = false>(options: Options<DeleteApiV1ContainerContainerIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteApiV1ContainerContainerIdResponses, DeleteApiV1ContainerContainerIdErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}', ...options });
+export const removeContainer = <ThrowOnError extends boolean = false>(options: Options<RemoveContainerData, ThrowOnError>) => (options.client ?? client).delete<RemoveContainerResponses, RemoveContainerErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}', ...options });
 
 /**
- * get container
+ * Get container
  *
- * #### Controller:
+ * Get container.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).GetContainer`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1ContainerContainerId = <ThrowOnError extends boolean = false>(options: Options<GetApiV1ContainerContainerIdData, ThrowOnError>) => (options.client ?? client).get<GetApiV1ContainerContainerIdResponses, GetApiV1ContainerContainerIdErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}', ...options });
+export const getContainer = <ThrowOnError extends boolean = false>(options: Options<GetContainerData, ThrowOnError>) => (options.client ?? client).get<GetContainerResponses, GetContainerErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}', ...options });
 
 /**
- * get container logs
+ * Get container logs
  *
- * #### Controller:
+ * Get container logs.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).GetContainerLogs`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1ContainerContainerIdLogs = <ThrowOnError extends boolean = false>(options: Options<PostApiV1ContainerContainerIdLogsData, ThrowOnError>) => (options.client ?? client).post<PostApiV1ContainerContainerIdLogsResponses, PostApiV1ContainerContainerIdLogsErrors, ThrowOnError>({
+export const getContainerLogs = <ThrowOnError extends boolean = false>(options: Options<GetContainerLogsData, ThrowOnError>) => (options.client ?? client).post<GetContainerLogsResponses, GetContainerLogsErrors, ThrowOnError>({
     url: '/api/v1/container/{container_id}/logs',
     ...options,
     headers: {
@@ -275,25 +175,15 @@ export const postApiV1ContainerContainerIdLogs = <ThrowOnError extends boolean =
 });
 
 /**
- * update container resources
+ * Update container resources
  *
- * #### Controller:
+ * Update container resources.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).UpdateContainerResources`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const putApiV1ContainerContainerIdResources = <ThrowOnError extends boolean = false>(options: Options<PutApiV1ContainerContainerIdResourcesData, ThrowOnError>) => (options.client ?? client).put<PutApiV1ContainerContainerIdResourcesResponses, PutApiV1ContainerContainerIdResourcesErrors, ThrowOnError>({
+export const updateContainerResources = <ThrowOnError extends boolean = false>(options: Options<UpdateContainerResourcesData, ThrowOnError>) => (options.client ?? client).put<UpdateContainerResourcesResponses, UpdateContainerResourcesErrors, ThrowOnError>({
     url: '/api/v1/container/{container_id}/resources',
     ...options,
     headers: {
@@ -303,88 +193,48 @@ export const putApiV1ContainerContainerIdResources = <ThrowOnError extends boole
 });
 
 /**
- * restart container
+ * Restart container
  *
- * #### Controller:
+ * Restart container.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).RestartContainer`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1ContainerContainerIdRestart = <ThrowOnError extends boolean = false>(options: Options<PostApiV1ContainerContainerIdRestartData, ThrowOnError>) => (options.client ?? client).post<PostApiV1ContainerContainerIdRestartResponses, PostApiV1ContainerContainerIdRestartErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}/restart', ...options });
+export const restartContainer = <ThrowOnError extends boolean = false>(options: Options<RestartContainerData, ThrowOnError>) => (options.client ?? client).post<RestartContainerResponses, RestartContainerErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}/restart', ...options });
 
 /**
- * start container
+ * Start container
  *
- * #### Controller:
+ * Start container.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).StartContainer`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1ContainerContainerIdStart = <ThrowOnError extends boolean = false>(options: Options<PostApiV1ContainerContainerIdStartData, ThrowOnError>) => (options.client ?? client).post<PostApiV1ContainerContainerIdStartResponses, PostApiV1ContainerContainerIdStartErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}/start', ...options });
+export const startContainer = <ThrowOnError extends boolean = false>(options: Options<StartContainerData, ThrowOnError>) => (options.client ?? client).post<StartContainerResponses, StartContainerErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}/start', ...options });
 
 /**
- * stop container
+ * Stop container
  *
- * #### Controller:
+ * Stop container.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/container/controller.(*ContainerController).StopContainer`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1ContainerContainerIdStop = <ThrowOnError extends boolean = false>(options: Options<PostApiV1ContainerContainerIdStopData, ThrowOnError>) => (options.client ?? client).post<PostApiV1ContainerContainerIdStopResponses, PostApiV1ContainerContainerIdStopErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}/stop', ...options });
+export const stopContainer = <ThrowOnError extends boolean = false>(options: Options<StopContainerData, ThrowOnError>) => (options.client ?? client).post<StopContainerResponses, StopContainerErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}/stop', ...options });
 
 /**
- * delete application
+ * Delete application
  *
- * #### Controller:
+ * Delete application.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).DeleteApplication`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const deleteApiV1DeployApplication = <ThrowOnError extends boolean = false>(options: Options<DeleteApiV1DeployApplicationData, ThrowOnError>) => (options.client ?? client).delete<DeleteApiV1DeployApplicationResponses, DeleteApiV1DeployApplicationErrors, ThrowOnError>({
+export const deleteApplication = <ThrowOnError extends boolean = false>(options: Options<DeleteApplicationData, ThrowOnError>) => (options.client ?? client).delete<DeleteApplicationResponses, DeleteApplicationErrors, ThrowOnError>({
     url: '/api/v1/deploy/application',
     ...options,
     headers: {
@@ -394,46 +244,26 @@ export const deleteApiV1DeployApplication = <ThrowOnError extends boolean = fals
 });
 
 /**
- * get application by id
+ * Get application
  *
- * #### Controller:
+ * Get application.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetApplicationById`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DeployApplication = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1DeployApplicationData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1DeployApplicationResponses, GetApiV1DeployApplicationErrors, ThrowOnError>({ url: '/api/v1/deploy/application', ...options });
+export const getApplication = <ThrowOnError extends boolean = false>(options: Options<GetApplicationData, ThrowOnError>) => (options.client ?? client).get<GetApplicationResponses, GetApplicationErrors, ThrowOnError>({ url: '/api/v1/deploy/application', ...options });
 
 /**
- * handle deploy
+ * Deploy application
  *
- * #### Controller:
+ * Deploy application.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleDeploy`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplication = <ThrowOnError extends boolean = false>(options: Options<PostApiV1DeployApplicationData, ThrowOnError>) => (options.client ?? client).post<PostApiV1DeployApplicationResponses, PostApiV1DeployApplicationErrors, ThrowOnError>({
+export const deployApplication = <ThrowOnError extends boolean = false>(options: Options<DeployApplicationData, ThrowOnError>) => (options.client ?? client).post<DeployApplicationResponses, DeployApplicationErrors, ThrowOnError>({
     url: '/api/v1/deploy/application',
     ...options,
     headers: {
@@ -443,25 +273,15 @@ export const postApiV1DeployApplication = <ThrowOnError extends boolean = false>
 });
 
 /**
- * update application
+ * Update application
  *
- * #### Controller:
+ * Update application.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).UpdateApplication`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const putApiV1DeployApplication = <ThrowOnError extends boolean = false>(options: Options<PutApiV1DeployApplicationData, ThrowOnError>) => (options.client ?? client).put<PutApiV1DeployApplicationResponses, PutApiV1DeployApplicationErrors, ThrowOnError>({
+export const updateApplication = <ThrowOnError extends boolean = false>(options: Options<UpdateApplicationData, ThrowOnError>) => (options.client ?? client).put<UpdateApplicationResponses, UpdateApplicationErrors, ThrowOnError>({
     url: '/api/v1/deploy/application',
     ...options,
     headers: {
@@ -471,116 +291,59 @@ export const putApiV1DeployApplication = <ThrowOnError extends boolean = false>(
 });
 
 /**
- * get compose services
+ * List compose services
  *
- * #### Controller:
+ * List compose services.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetComposeServices`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DeployApplicationComposeServices = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1DeployApplicationComposeServicesData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1DeployApplicationComposeServicesResponses, GetApiV1DeployApplicationComposeServicesErrors, ThrowOnError>({ url: '/api/v1/deploy/application/compose-services', ...options });
+export const listComposeServices = <ThrowOnError extends boolean = false>(options: Options<ListComposeServicesData, ThrowOnError>) => (options.client ?? client).get<ListComposeServicesResponses, ListComposeServicesErrors, ThrowOnError>({ url: '/api/v1/deploy/application/compose-services', ...options });
 
 /**
- * get application deployments
+ * List application deployments
  *
- * #### Controller:
+ * List application deployments.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetApplicationDeployments`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DeployApplicationDeployments = <ThrowOnError extends boolean = false>(options: Options<GetApiV1DeployApplicationDeploymentsData, ThrowOnError>) => (options.client ?? client).get<GetApiV1DeployApplicationDeploymentsResponses, GetApiV1DeployApplicationDeploymentsErrors, ThrowOnError>({
-    url: '/api/v1/deploy/application/deployments',
-    ...options,
-    headers: {
-        'Content-Type': '*/*',
-        ...options.headers
-    }
-});
+export const listApplicationDeployments = <ThrowOnError extends boolean = false>(options: Options<ListApplicationDeploymentsData, ThrowOnError>) => (options.client ?? client).get<ListApplicationDeploymentsResponses, ListApplicationDeploymentsErrors, ThrowOnError>({ url: '/api/v1/deploy/application/deployments', ...options });
 
 /**
- * get deployment by id
+ * Get deployment
  *
- * #### Controller:
+ * Get deployment.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetDeploymentById`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DeployApplicationDeploymentsDeploymentId = <ThrowOnError extends boolean = false>(options: Options<GetApiV1DeployApplicationDeploymentsDeploymentIdData, ThrowOnError>) => (options.client ?? client).get<GetApiV1DeployApplicationDeploymentsDeploymentIdResponses, GetApiV1DeployApplicationDeploymentsDeploymentIdErrors, ThrowOnError>({ url: '/api/v1/deploy/application/deployments/{deployment_id}', ...options });
+export const getDeployment = <ThrowOnError extends boolean = false>(options: Options<GetDeploymentData, ThrowOnError>) => (options.client ?? client).get<GetDeploymentResponses, GetDeploymentErrors, ThrowOnError>({ url: '/api/v1/deploy/application/deployments/{deployment_id}', ...options });
 
 /**
- * get deployment logs
+ * Get deployment logs
  *
- * #### Controller:
+ * Get deployment logs.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetDeploymentLogs`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DeployApplicationDeploymentsDeploymentIdLogs = <ThrowOnError extends boolean = false>(options: Options<GetApiV1DeployApplicationDeploymentsDeploymentIdLogsData, ThrowOnError>) => (options.client ?? client).get<GetApiV1DeployApplicationDeploymentsDeploymentIdLogsResponses, GetApiV1DeployApplicationDeploymentsDeploymentIdLogsErrors, ThrowOnError>({ url: '/api/v1/deploy/application/deployments/{deployment_id}/logs', ...options });
+export const getDeploymentLogs = <ThrowOnError extends boolean = false>(options: Options<GetDeploymentLogsData, ThrowOnError>) => (options.client ?? client).get<GetDeploymentLogsResponses, GetDeploymentLogsErrors, ThrowOnError>({ url: '/api/v1/deploy/application/deployments/{deployment_id}/logs', ...options });
 
 /**
- * remove application domain
+ * Remove application domain
  *
- * #### Controller:
+ * Remove application domain.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).RemoveApplicationDomain`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const deleteApiV1DeployApplicationDomains = <ThrowOnError extends boolean = false>(options: Options<DeleteApiV1DeployApplicationDomainsData, ThrowOnError>) => (options.client ?? client).delete<DeleteApiV1DeployApplicationDomainsResponses, DeleteApiV1DeployApplicationDomainsErrors, ThrowOnError>({
+export const removeApplicationDomain = <ThrowOnError extends boolean = false>(options: Options<RemoveApplicationDomainData, ThrowOnError>) => (options.client ?? client).delete<RemoveApplicationDomainResponses, RemoveApplicationDomainErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/domains',
     ...options,
     headers: {
@@ -590,25 +353,15 @@ export const deleteApiV1DeployApplicationDomains = <ThrowOnError extends boolean
 });
 
 /**
- * add application domain
+ * Add application domain
  *
- * #### Controller:
+ * Add application domain.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).AddApplicationDomain`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationDomains = <ThrowOnError extends boolean = false>(options: Options<PostApiV1DeployApplicationDomainsData, ThrowOnError>) => (options.client ?? client).post<PostApiV1DeployApplicationDomainsResponses, PostApiV1DeployApplicationDomainsErrors, ThrowOnError>({
+export const addApplicationDomain = <ThrowOnError extends boolean = false>(options: Options<AddApplicationDomainData, ThrowOnError>) => (options.client ?? client).post<AddApplicationDomainResponses, AddApplicationDomainErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/domains',
     ...options,
     headers: {
@@ -618,46 +371,26 @@ export const postApiV1DeployApplicationDomains = <ThrowOnError extends boolean =
 });
 
 /**
- * index codebase
+ * Index application codebase
  *
- * #### Controller:
+ * Index application codebase.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).IndexCodebase`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationIndex = <ThrowOnError extends boolean = false>(options?: Options<PostApiV1DeployApplicationIndexData, ThrowOnError>) => (options?.client ?? client).post<PostApiV1DeployApplicationIndexResponses, PostApiV1DeployApplicationIndexErrors, ThrowOnError>({ url: '/api/v1/deploy/application/index', ...options });
+export const indexApplicationCodebase = <ThrowOnError extends boolean = false>(options: Options<IndexApplicationCodebaseData, ThrowOnError>) => (options.client ?? client).post<IndexApplicationCodebaseResponses, IndexApplicationCodebaseErrors, ThrowOnError>({ url: '/api/v1/deploy/application/index', ...options });
 
 /**
- * update application labels
+ * Update application labels
  *
- * #### Controller:
+ * Update application labels.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).UpdateApplicationLabels`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const putApiV1DeployApplicationLabels = <ThrowOnError extends boolean = false>(options: Options<PutApiV1DeployApplicationLabelsData, ThrowOnError>) => (options.client ?? client).put<PutApiV1DeployApplicationLabelsResponses, PutApiV1DeployApplicationLabelsErrors, ThrowOnError>({
+export const updateApplicationLabels = <ThrowOnError extends boolean = false>(options: Options<UpdateApplicationLabelsData, ThrowOnError>) => (options.client ?? client).put<UpdateApplicationLabelsResponses, UpdateApplicationLabelsErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/labels',
     ...options,
     headers: {
@@ -667,46 +400,26 @@ export const putApiV1DeployApplicationLabels = <ThrowOnError extends boolean = f
 });
 
 /**
- * get logs
+ * Get application logs
  *
- * #### Controller:
+ * Get application logs.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetLogs`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DeployApplicationLogsApplicationId = <ThrowOnError extends boolean = false>(options: Options<GetApiV1DeployApplicationLogsApplicationIdData, ThrowOnError>) => (options.client ?? client).get<GetApiV1DeployApplicationLogsApplicationIdResponses, GetApiV1DeployApplicationLogsApplicationIdErrors, ThrowOnError>({ url: '/api/v1/deploy/application/logs/{application_id}', ...options });
+export const getApplicationLogs = <ThrowOnError extends boolean = false>(options: Options<GetApplicationLogsData, ThrowOnError>) => (options.client ?? client).get<GetApplicationLogsResponses, GetApplicationLogsErrors, ThrowOnError>({ url: '/api/v1/deploy/application/logs/{application_id}', ...options });
 
 /**
- * preview compose services
+ * Preview compose services
  *
- * #### Controller:
+ * Preview compose services.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).PreviewComposeServices`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationPreviewCompose = <ThrowOnError extends boolean = false>(options: Options<PostApiV1DeployApplicationPreviewComposeData, ThrowOnError>) => (options.client ?? client).post<PostApiV1DeployApplicationPreviewComposeResponses, PostApiV1DeployApplicationPreviewComposeErrors, ThrowOnError>({
+export const previewComposeServices = <ThrowOnError extends boolean = false>(options: Options<PreviewComposeServicesData, ThrowOnError>) => (options.client ?? client).post<PreviewComposeServicesResponses, PreviewComposeServicesErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/preview-compose',
     ...options,
     headers: {
@@ -716,25 +429,15 @@ export const postApiV1DeployApplicationPreviewCompose = <ThrowOnError extends bo
 });
 
 /**
- * handle create project
+ * Create project
  *
- * #### Controller:
+ * Create project.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleCreateProject`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationProject = <ThrowOnError extends boolean = false>(options: Options<PostApiV1DeployApplicationProjectData, ThrowOnError>) => (options.client ?? client).post<PostApiV1DeployApplicationProjectResponses, PostApiV1DeployApplicationProjectErrors, ThrowOnError>({
+export const createProject = <ThrowOnError extends boolean = false>(options: Options<CreateProjectData, ThrowOnError>) => (options.client ?? client).post<CreateProjectResponses, CreateProjectErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/project',
     ...options,
     headers: {
@@ -744,25 +447,15 @@ export const postApiV1DeployApplicationProject = <ThrowOnError extends boolean =
 });
 
 /**
- * handle add application to family
+ * Add project to family
  *
- * #### Controller:
+ * Add project to family.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleAddApplicationToFamily`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationProjectAddToFamily = <ThrowOnError extends boolean = false>(options: Options<PostApiV1DeployApplicationProjectAddToFamilyData, ThrowOnError>) => (options.client ?? client).post<PostApiV1DeployApplicationProjectAddToFamilyResponses, PostApiV1DeployApplicationProjectAddToFamilyErrors, ThrowOnError>({
+export const addProjectToFamily = <ThrowOnError extends boolean = false>(options: Options<AddProjectToFamilyData, ThrowOnError>) => (options.client ?? client).post<AddProjectToFamilyResponses, AddProjectToFamilyErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/project/add-to-family',
     ...options,
     headers: {
@@ -772,25 +465,15 @@ export const postApiV1DeployApplicationProjectAddToFamily = <ThrowOnError extend
 });
 
 /**
- * handle deploy project
+ * Deploy project
  *
- * #### Controller:
+ * Deploy project.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleDeployProject`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationProjectDeploy = <ThrowOnError extends boolean = false>(options: Options<PostApiV1DeployApplicationProjectDeployData, ThrowOnError>) => (options.client ?? client).post<PostApiV1DeployApplicationProjectDeployResponses, PostApiV1DeployApplicationProjectDeployErrors, ThrowOnError>({
+export const deployProject = <ThrowOnError extends boolean = false>(options: Options<DeployProjectData, ThrowOnError>) => (options.client ?? client).post<DeployProjectResponses, DeployProjectErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/project/deploy',
     ...options,
     headers: {
@@ -800,25 +483,15 @@ export const postApiV1DeployApplicationProjectDeploy = <ThrowOnError extends boo
 });
 
 /**
- * handle duplicate project
+ * Duplicate project
  *
- * #### Controller:
+ * Duplicate project.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleDuplicateProject`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationProjectDuplicate = <ThrowOnError extends boolean = false>(options: Options<PostApiV1DeployApplicationProjectDuplicateData, ThrowOnError>) => (options.client ?? client).post<PostApiV1DeployApplicationProjectDuplicateResponses, PostApiV1DeployApplicationProjectDuplicateErrors, ThrowOnError>({
+export const duplicateProject = <ThrowOnError extends boolean = false>(options: Options<DuplicateProjectData, ThrowOnError>) => (options.client ?? client).post<DuplicateProjectResponses, DuplicateProjectErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/project/duplicate',
     ...options,
     headers: {
@@ -828,67 +501,37 @@ export const postApiV1DeployApplicationProjectDuplicate = <ThrowOnError extends 
 });
 
 /**
- * handle get project family
+ * List projects in family
  *
- * #### Controller:
+ * List projects in family.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleGetProjectFamily`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DeployApplicationProjectFamily = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1DeployApplicationProjectFamilyData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1DeployApplicationProjectFamilyResponses, GetApiV1DeployApplicationProjectFamilyErrors, ThrowOnError>({ url: '/api/v1/deploy/application/project/family', ...options });
+export const listProjectsInFamily = <ThrowOnError extends boolean = false>(options: Options<ListProjectsInFamilyData, ThrowOnError>) => (options.client ?? client).get<ListProjectsInFamilyResponses, ListProjectsInFamilyErrors, ThrowOnError>({ url: '/api/v1/deploy/application/project/family', ...options });
 
 /**
- * handle get environments in family
+ * List family environments
  *
- * #### Controller:
+ * List family environments.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleGetEnvironmentsInFamily`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DeployApplicationProjectFamilyEnvironments = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1DeployApplicationProjectFamilyEnvironmentsData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1DeployApplicationProjectFamilyEnvironmentsResponses, GetApiV1DeployApplicationProjectFamilyEnvironmentsErrors, ThrowOnError>({ url: '/api/v1/deploy/application/project/family/environments', ...options });
+export const listFamilyEnvironments = <ThrowOnError extends boolean = false>(options: Options<ListFamilyEnvironmentsData, ThrowOnError>) => (options.client ?? client).get<ListFamilyEnvironmentsResponses, ListFamilyEnvironmentsErrors, ThrowOnError>({ url: '/api/v1/deploy/application/project/family/environments', ...options });
 
 /**
- * handle recover
+ * Recover application
  *
- * #### Controller:
+ * Recover application.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleRecover`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationRecover = <ThrowOnError extends boolean = false>(options: Options<PostApiV1DeployApplicationRecoverData, ThrowOnError>) => (options.client ?? client).post<PostApiV1DeployApplicationRecoverResponses, PostApiV1DeployApplicationRecoverErrors, ThrowOnError>({
+export const recoverApplication = <ThrowOnError extends boolean = false>(options: Options<RecoverApplicationData, ThrowOnError>) => (options.client ?? client).post<RecoverApplicationResponses, RecoverApplicationErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/recover',
     ...options,
     headers: {
@@ -898,25 +541,15 @@ export const postApiV1DeployApplicationRecover = <ThrowOnError extends boolean =
 });
 
 /**
- * re deploy application
+ * Redeploy application
  *
- * #### Controller:
+ * Redeploy application.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).ReDeployApplication`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationRedeploy = <ThrowOnError extends boolean = false>(options: Options<PostApiV1DeployApplicationRedeployData, ThrowOnError>) => (options.client ?? client).post<PostApiV1DeployApplicationRedeployResponses, PostApiV1DeployApplicationRedeployErrors, ThrowOnError>({
+export const redeployApplication = <ThrowOnError extends boolean = false>(options: Options<RedeployApplicationData, ThrowOnError>) => (options.client ?? client).post<RedeployApplicationResponses, RedeployApplicationErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/redeploy',
     ...options,
     headers: {
@@ -926,25 +559,15 @@ export const postApiV1DeployApplicationRedeploy = <ThrowOnError extends boolean 
 });
 
 /**
- * handle restart
+ * Restart deployment
  *
- * #### Controller:
+ * Restart deployment.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleRestart`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationRestart = <ThrowOnError extends boolean = false>(options: Options<PostApiV1DeployApplicationRestartData, ThrowOnError>) => (options.client ?? client).post<PostApiV1DeployApplicationRestartResponses, PostApiV1DeployApplicationRestartErrors, ThrowOnError>({
+export const restartDeployment = <ThrowOnError extends boolean = false>(options: Options<RestartDeploymentData, ThrowOnError>) => (options.client ?? client).post<RestartDeploymentResponses, RestartDeploymentErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/restart',
     ...options,
     headers: {
@@ -954,25 +577,15 @@ export const postApiV1DeployApplicationRestart = <ThrowOnError extends boolean =
 });
 
 /**
- * handle rollback
+ * Rollback deployment
  *
- * #### Controller:
+ * Rollback deployment.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleRollback`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1DeployApplicationRollback = <ThrowOnError extends boolean = false>(options: Options<PostApiV1DeployApplicationRollbackData, ThrowOnError>) => (options.client ?? client).post<PostApiV1DeployApplicationRollbackResponses, PostApiV1DeployApplicationRollbackErrors, ThrowOnError>({
+export const rollbackDeployment = <ThrowOnError extends boolean = false>(options: Options<RollbackDeploymentData, ThrowOnError>) => (options.client ?? client).post<RollbackDeploymentResponses, RollbackDeploymentErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/rollback',
     ...options,
     headers: {
@@ -982,26 +595,38 @@ export const postApiV1DeployApplicationRollback = <ThrowOnError extends boolean 
 });
 
 /**
- * get applications
+ * List applications
  *
- * #### Controller:
+ * List applications.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).GetApplications`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DeployApplications = <ThrowOnError extends boolean = false>(options: Options<GetApiV1DeployApplicationsData, ThrowOnError>) => (options.client ?? client).get<GetApiV1DeployApplicationsResponses, GetApiV1DeployApplicationsErrors, ThrowOnError>({
-    url: '/api/v1/deploy/applications',
+export const listApplications = <ThrowOnError extends boolean = false>(options?: Options<ListApplicationsData, ThrowOnError>) => (options?.client ?? client).get<ListApplicationsResponses, ListApplicationsErrors, ThrowOnError>({ url: '/api/v1/deploy/applications', ...options });
+
+/**
+ * List domains
+ *
+ * List domains.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const listDomains = <ThrowOnError extends boolean = false>(options?: Options<ListDomainsData, ThrowOnError>) => (options?.client ?? client).get<ListDomainsResponses, ListDomainsErrors, ThrowOnError>({ url: '/api/v1/domain', ...options });
+
+/**
+ * Remove custom domain
+ *
+ * Remove custom domain.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const removeCustomDomain = <ThrowOnError extends boolean = false>(options: Options<RemoveCustomDomainData, ThrowOnError>) => (options.client ?? client).delete<RemoveCustomDomainResponses, RemoveCustomDomainErrors, ThrowOnError>({
+    url: '/api/v1/domain/custom',
     ...options,
     headers: {
         'Content-Type': '*/*',
@@ -1010,26 +635,16 @@ export const getApiV1DeployApplications = <ThrowOnError extends boolean = false>
 });
 
 /**
- * delete domain
+ * Add custom domain
  *
- * #### Controller:
+ * Add custom domain.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/domain/controller.(*DomainsController).DeleteDomain`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const deleteApiV1Domain = <ThrowOnError extends boolean = false>(options: Options<DeleteApiV1DomainData, ThrowOnError>) => (options.client ?? client).delete<DeleteApiV1DomainResponses, DeleteApiV1DomainErrors, ThrowOnError>({
-    url: '/api/v1/domain',
+export const addCustomDomain = <ThrowOnError extends boolean = false>(options: Options<AddCustomDomainData, ThrowOnError>) => (options.client ?? client).post<AddCustomDomainResponses, AddCustomDomainErrors, ThrowOnError>({
+    url: '/api/v1/domain/custom',
     ...options,
     headers: {
         'Content-Type': '*/*',
@@ -1038,26 +653,38 @@ export const deleteApiV1Domain = <ThrowOnError extends boolean = false>(options:
 });
 
 /**
- * create domain
+ * Check custom domain DNS
  *
- * #### Controller:
+ * Check custom domain DNS.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/domain/controller.(*DomainsController).CreateDomain`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const postApiV1Domain = <ThrowOnError extends boolean = false>(options: Options<PostApiV1DomainData, ThrowOnError>) => (options.client ?? client).post<PostApiV1DomainResponses, PostApiV1DomainErrors, ThrowOnError>({
-    url: '/api/v1/domain',
+export const checkCustomDomainDns = <ThrowOnError extends boolean = false>(options: Options<CheckCustomDomainDnsData, ThrowOnError>) => (options.client ?? client).get<CheckCustomDomainDnsResponses, CheckCustomDomainDnsErrors, ThrowOnError>({ url: '/api/v1/domain/dns-check', ...options });
+
+/**
+ * Generate random subdomain
+ *
+ * Generate random subdomain.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const generateRandomSubdomain = <ThrowOnError extends boolean = false>(options?: Options<GenerateRandomSubdomainData, ThrowOnError>) => (options?.client ?? client).get<GenerateRandomSubdomainResponses, GenerateRandomSubdomainErrors, ThrowOnError>({ url: '/api/v1/domain/generate', ...options });
+
+/**
+ * Verify custom domain
+ *
+ * Verify custom domain.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const verifyCustomDomain = <ThrowOnError extends boolean = false>(options: Options<VerifyCustomDomainData, ThrowOnError>) => (options.client ?? client).post<VerifyCustomDomainResponses, VerifyCustomDomainErrors, ThrowOnError>({
+    url: '/api/v1/domain/verify',
     ...options,
     headers: {
         'Content-Type': '*/*',
@@ -1066,242 +693,92 @@ export const postApiV1Domain = <ThrowOnError extends boolean = false>(options: O
 });
 
 /**
- * update domain
+ * List extensions
  *
- * #### Controller:
+ * List extensions.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/domain/controller.(*DomainsController).UpdateDomain`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const putApiV1Domain = <ThrowOnError extends boolean = false>(options: Options<PutApiV1DomainData, ThrowOnError>) => (options.client ?? client).put<PutApiV1DomainResponses, PutApiV1DomainErrors, ThrowOnError>({
-    url: '/api/v1/domain',
-    ...options,
-    headers: {
-        'Content-Type': '*/*',
-        ...options.headers
-    }
-});
+export const listExtensions = <ThrowOnError extends boolean = false>(options?: Options<ListExtensionsData, ThrowOnError>) => (options?.client ?? client).get<ListExtensionsResponses, ListExtensionsErrors, ThrowOnError>({ url: '/api/v1/extensions', ...options });
 
 /**
- * generate random sub domain
+ * Get extension by extension ID
  *
- * #### Controller:
+ * Get extension by extension ID.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/domain/controller.(*DomainsController).GenerateRandomSubDomain`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1DomainGenerate = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1DomainGenerateData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1DomainGenerateResponses, GetApiV1DomainGenerateErrors, ThrowOnError>({ url: '/api/v1/domain/generate', ...options });
+export const getExtensionByExtensionId = <ThrowOnError extends boolean = false>(options: Options<GetExtensionByExtensionIdData, ThrowOnError>) => (options.client ?? client).get<GetExtensionByExtensionIdResponses, GetExtensionByExtensionIdErrors, ThrowOnError>({ url: '/api/v1/extensions/by-extension-id/{extension_id}', ...options });
 
 /**
- * get domains
+ * List extension executions
  *
- * #### Controller:
+ * List extension executions.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/domain/controller.(*DomainsController).GetDomains`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1Domains = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1DomainsData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1DomainsResponses, GetApiV1DomainsErrors, ThrowOnError>({ url: '/api/v1/domains', ...options });
+export const listExtensionExecutions = <ThrowOnError extends boolean = false>(options: Options<ListExtensionExecutionsData, ThrowOnError>) => (options.client ?? client).get<ListExtensionExecutionsResponses, ListExtensionExecutionsErrors, ThrowOnError>({ url: '/api/v1/extensions/by-extension-id/{extension_id}/executions', ...options });
 
 /**
- * get extensions
+ * List extension categories
  *
- * #### Controller:
+ * List extension categories.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).GetExtensions`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1Extensions = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1ExtensionsData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1ExtensionsResponses, GetApiV1ExtensionsErrors, ThrowOnError>({ url: '/api/v1/extensions', ...options });
+export const listExtensionCategories = <ThrowOnError extends boolean = false>(options?: Options<ListExtensionCategoriesData, ThrowOnError>) => (options?.client ?? client).get<ListExtensionCategoriesResponses, ListExtensionCategoriesErrors, ThrowOnError>({ url: '/api/v1/extensions/categories', ...options });
 
 /**
- * get extension by extension i d
+ * Get execution
  *
- * #### Controller:
+ * Get execution.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).GetExtensionByExtensionID`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1ExtensionsByExtensionIdExtensionId = <ThrowOnError extends boolean = false>(options: Options<GetApiV1ExtensionsByExtensionIdExtensionIdData, ThrowOnError>) => (options.client ?? client).get<GetApiV1ExtensionsByExtensionIdExtensionIdResponses, GetApiV1ExtensionsByExtensionIdExtensionIdErrors, ThrowOnError>({ url: '/api/v1/extensions/by-extension-id/{extension_id}', ...options });
+export const getExecution = <ThrowOnError extends boolean = false>(options: Options<GetExecutionData, ThrowOnError>) => (options.client ?? client).get<GetExecutionResponses, GetExecutionErrors, ThrowOnError>({ url: '/api/v1/extensions/execution/{execution_id}', ...options });
 
 /**
- * list executions by extension i d
+ * Cancel execution
  *
- * #### Controller:
+ * Cancel execution.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).ListExecutionsByExtensionID`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const getApiV1ExtensionsByExtensionIdExtensionIdExecutions = <ThrowOnError extends boolean = false>(options: Options<GetApiV1ExtensionsByExtensionIdExtensionIdExecutionsData, ThrowOnError>) => (options.client ?? client).get<GetApiV1ExtensionsByExtensionIdExtensionIdExecutionsResponses, GetApiV1ExtensionsByExtensionIdExtensionIdExecutionsErrors, ThrowOnError>({ url: '/api/v1/extensions/by-extension-id/{extension_id}/executions', ...options });
+export const cancelExecution = <ThrowOnError extends boolean = false>(options: Options<CancelExecutionData, ThrowOnError>) => (options.client ?? client).post<CancelExecutionResponses, CancelExecutionErrors, ThrowOnError>({ url: '/api/v1/extensions/execution/{execution_id}/cancel', ...options });
 
 /**
- * get categories
+ * List execution logs
  *
- * #### Controller:
+ * List execution logs.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).GetCategories`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1ExtensionsCategories = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1ExtensionsCategoriesData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1ExtensionsCategoriesResponses, GetApiV1ExtensionsCategoriesErrors, ThrowOnError>({ url: '/api/v1/extensions/categories', ...options });
+export const listExecutionLogs = <ThrowOnError extends boolean = false>(options: Options<ListExecutionLogsData, ThrowOnError>) => (options.client ?? client).get<ListExecutionLogsResponses, ListExecutionLogsErrors, ThrowOnError>({ url: '/api/v1/extensions/execution/{execution_id}/logs', ...options });
 
 /**
- * get execution
+ * Fork extension
  *
- * #### Controller:
+ * Fork extension.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).GetExecution`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const getApiV1ExtensionsExecutionExecutionId = <ThrowOnError extends boolean = false>(options: Options<GetApiV1ExtensionsExecutionExecutionIdData, ThrowOnError>) => (options.client ?? client).get<GetApiV1ExtensionsExecutionExecutionIdResponses, GetApiV1ExtensionsExecutionExecutionIdErrors, ThrowOnError>({ url: '/api/v1/extensions/execution/{execution_id}', ...options });
-
-/**
- * cancel execution
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).CancelExecution`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1ExtensionsExecutionExecutionIdCancel = <ThrowOnError extends boolean = false>(options: Options<PostApiV1ExtensionsExecutionExecutionIdCancelData, ThrowOnError>) => (options.client ?? client).post<PostApiV1ExtensionsExecutionExecutionIdCancelResponses, PostApiV1ExtensionsExecutionExecutionIdCancelErrors, ThrowOnError>({ url: '/api/v1/extensions/execution/{execution_id}/cancel', ...options });
-
-/**
- * list execution logs
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).ListExecutionLogs`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const getApiV1ExtensionsExecutionExecutionIdLogs = <ThrowOnError extends boolean = false>(options: Options<GetApiV1ExtensionsExecutionExecutionIdLogsData, ThrowOnError>) => (options.client ?? client).get<GetApiV1ExtensionsExecutionExecutionIdLogsResponses, GetApiV1ExtensionsExecutionExecutionIdLogsErrors, ThrowOnError>({ url: '/api/v1/extensions/execution/{execution_id}/logs', ...options });
-
-/**
- * fork extension
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).ForkExtension`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
- */
-export const postApiV1ExtensionsExtensionIdFork = <ThrowOnError extends boolean = false>(options: Options<PostApiV1ExtensionsExtensionIdForkData, ThrowOnError>) => (options.client ?? client).post<PostApiV1ExtensionsExtensionIdForkResponses, PostApiV1ExtensionsExtensionIdForkErrors, ThrowOnError>({
+export const forkExtension = <ThrowOnError extends boolean = false>(options: Options<ForkExtensionData, ThrowOnError>) => (options.client ?? client).post<ForkExtensionResponses, ForkExtensionErrors, ThrowOnError>({
     url: '/api/v1/extensions/{extension_id}/fork',
     ...options,
     headers: {
@@ -1311,25 +788,15 @@ export const postApiV1ExtensionsExtensionIdFork = <ThrowOnError extends boolean 
 });
 
 /**
- * run extension
+ * Run extension
  *
- * #### Controller:
+ * Run extension.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).RunExtension`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1ExtensionsExtensionIdRun = <ThrowOnError extends boolean = false>(options: Options<PostApiV1ExtensionsExtensionIdRunData, ThrowOnError>) => (options.client ?? client).post<PostApiV1ExtensionsExtensionIdRunResponses, PostApiV1ExtensionsExtensionIdRunErrors, ThrowOnError>({
+export const runExtension = <ThrowOnError extends boolean = false>(options: Options<RunExtensionData, ThrowOnError>) => (options.client ?? client).post<RunExtensionResponses, RunExtensionErrors, ThrowOnError>({
     url: '/api/v1/extensions/{extension_id}/run',
     ...options,
     headers: {
@@ -1339,86 +806,48 @@ export const postApiV1ExtensionsExtensionIdRun = <ThrowOnError extends boolean =
 });
 
 /**
- * delete fork
+ * Delete forked extension
  *
- * #### Controller:
+ * Delete forked extension.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).DeleteFork`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const deleteApiV1ExtensionsId = <ThrowOnError extends boolean = false>(options: Options<DeleteApiV1ExtensionsIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteApiV1ExtensionsIdResponses, DeleteApiV1ExtensionsIdErrors, ThrowOnError>({ url: '/api/v1/extensions/{id}', ...options });
+export const deleteForkedExtension = <ThrowOnError extends boolean = false>(options: Options<DeleteForkedExtensionData, ThrowOnError>) => (options.client ?? client).delete<DeleteForkedExtensionResponses, DeleteForkedExtensionErrors, ThrowOnError>({ url: '/api/v1/extensions/{id}', ...options });
 
 /**
- * get extension
+ * Get extension by ID
  *
- * #### Controller:
+ * Get extension by ID.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/extension/controller.(*ExtensionsController).GetExtension`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1ExtensionsId = <ThrowOnError extends boolean = false>(options: Options<GetApiV1ExtensionsIdData, ThrowOnError>) => (options.client ?? client).get<GetApiV1ExtensionsIdResponses, GetApiV1ExtensionsIdErrors, ThrowOnError>({ url: '/api/v1/extensions/{id}', ...options });
+export const getExtensionById = <ThrowOnError extends boolean = false>(options: Options<GetExtensionByIdData, ThrowOnError>) => (options.client ?? client).get<GetExtensionByIdResponses, GetExtensionByIdErrors, ThrowOnError>({ url: '/api/v1/extensions/{id}', ...options });
 
 /**
- * get feature flags
+ * List feature flags
  *
- * #### Controller:
+ * List feature flags.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/feature-flags/controller.(*FeatureFlagController).GetFeatureFlags`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1FeatureFlags = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1FeatureFlagsData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1FeatureFlagsResponses, GetApiV1FeatureFlagsErrors, ThrowOnError>({ url: '/api/v1/feature-flags', ...options });
+export const listFeatureFlags = <ThrowOnError extends boolean = false>(options?: Options<ListFeatureFlagsData, ThrowOnError>) => (options?.client ?? client).get<ListFeatureFlagsResponses, ListFeatureFlagsErrors, ThrowOnError>({ url: '/api/v1/feature-flags', ...options });
 
 /**
- * update feature flag
+ * Update feature flag
  *
- * #### Controller:
+ * Update feature flag.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/feature-flags/controller.(*FeatureFlagController).UpdateFeatureFlag`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const putApiV1FeatureFlags = <ThrowOnError extends boolean = false>(options: Options<PutApiV1FeatureFlagsData, ThrowOnError>) => (options.client ?? client).put<PutApiV1FeatureFlagsResponses, PutApiV1FeatureFlagsErrors, ThrowOnError>({
+export const updateFeatureFlag = <ThrowOnError extends boolean = false>(options: Options<UpdateFeatureFlagData, ThrowOnError>) => (options.client ?? client).put<UpdateFeatureFlagResponses, UpdateFeatureFlagErrors, ThrowOnError>({
     url: '/api/v1/feature-flags',
     ...options,
     headers: {
@@ -1428,73 +857,37 @@ export const putApiV1FeatureFlags = <ThrowOnError extends boolean = false>(optio
 });
 
 /**
- * is feature enabled
+ * Check if feature is enabled
  *
- * #### Controller:
+ * Check if feature is enabled.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/feature-flags/controller.(*FeatureFlagController).IsFeatureEnabled`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1FeatureFlagsCheck = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1FeatureFlagsCheckData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1FeatureFlagsCheckResponses, GetApiV1FeatureFlagsCheckErrors, ThrowOnError>({ url: '/api/v1/feature-flags/check', ...options });
+export const checkIfFeatureIsEnabled = <ThrowOnError extends boolean = false>(options: Options<CheckIfFeatureIsEnabledData, ThrowOnError>) => (options.client ?? client).get<CheckIfFeatureIsEnabledResponses, CheckIfFeatureIsEnabledErrors, ThrowOnError>({ url: '/api/v1/feature-flags/check', ...options });
 
 /**
- * list files
+ * List files
  *
- * #### Controller:
+ * List files.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/file-manager/controller.(*FileManagerController).ListFiles`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1FileManager = <ThrowOnError extends boolean = false>(options: Options<GetApiV1FileManagerData, ThrowOnError>) => (options.client ?? client).get<GetApiV1FileManagerResponses, GetApiV1FileManagerErrors, ThrowOnError>({
-    url: '/api/v1/file-manager',
-    ...options,
-    headers: {
-        'Content-Type': '*/*',
-        ...options.headers
-    }
-});
+export const listFiles = <ThrowOnError extends boolean = false>(options: Options<ListFilesData, ThrowOnError>) => (options.client ?? client).get<ListFilesResponses, ListFilesErrors, ThrowOnError>({ url: '/api/v1/file-manager', ...options });
 
 /**
- * copy directory
+ * Copy directory
  *
- * #### Controller:
+ * Copy directory.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/file-manager/controller.(*FileManagerController).CopyDirectory`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1FileManagerCopyDirectory = <ThrowOnError extends boolean = false>(options: Options<PostApiV1FileManagerCopyDirectoryData, ThrowOnError>) => (options.client ?? client).post<PostApiV1FileManagerCopyDirectoryResponses, PostApiV1FileManagerCopyDirectoryErrors, ThrowOnError>({
+export const copyDirectory = <ThrowOnError extends boolean = false>(options: Options<CopyDirectoryData, ThrowOnError>) => (options.client ?? client).post<CopyDirectoryResponses, CopyDirectoryErrors, ThrowOnError>({
     url: '/api/v1/file-manager/copy-directory',
     ...options,
     headers: {
@@ -1504,25 +897,15 @@ export const postApiV1FileManagerCopyDirectory = <ThrowOnError extends boolean =
 });
 
 /**
- * create directory
+ * Create directory
  *
- * #### Controller:
+ * Create directory.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/file-manager/controller.(*FileManagerController).CreateDirectory`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1FileManagerCreateDirectory = <ThrowOnError extends boolean = false>(options: Options<PostApiV1FileManagerCreateDirectoryData, ThrowOnError>) => (options.client ?? client).post<PostApiV1FileManagerCreateDirectoryResponses, PostApiV1FileManagerCreateDirectoryErrors, ThrowOnError>({
+export const createDirectory = <ThrowOnError extends boolean = false>(options: Options<CreateDirectoryData, ThrowOnError>) => (options.client ?? client).post<CreateDirectoryResponses, CreateDirectoryErrors, ThrowOnError>({
     url: '/api/v1/file-manager/create-directory',
     ...options,
     headers: {
@@ -1532,25 +915,15 @@ export const postApiV1FileManagerCreateDirectory = <ThrowOnError extends boolean
 });
 
 /**
- * delete directory
+ * Delete directory
  *
- * #### Controller:
+ * Delete directory.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/file-manager/controller.(*FileManagerController).DeleteDirectory`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const deleteApiV1FileManagerDeleteDirectory = <ThrowOnError extends boolean = false>(options: Options<DeleteApiV1FileManagerDeleteDirectoryData, ThrowOnError>) => (options.client ?? client).delete<DeleteApiV1FileManagerDeleteDirectoryResponses, DeleteApiV1FileManagerDeleteDirectoryErrors, ThrowOnError>({
+export const deleteDirectory = <ThrowOnError extends boolean = false>(options: Options<DeleteDirectoryData, ThrowOnError>) => (options.client ?? client).delete<DeleteDirectoryResponses, DeleteDirectoryErrors, ThrowOnError>({
     url: '/api/v1/file-manager/delete-directory',
     ...options,
     headers: {
@@ -1560,25 +933,15 @@ export const deleteApiV1FileManagerDeleteDirectory = <ThrowOnError extends boole
 });
 
 /**
- * move directory
+ * Move directory
  *
- * #### Controller:
+ * Move directory.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/file-manager/controller.(*FileManagerController).MoveDirectory`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1FileManagerMoveDirectory = <ThrowOnError extends boolean = false>(options: Options<PostApiV1FileManagerMoveDirectoryData, ThrowOnError>) => (options.client ?? client).post<PostApiV1FileManagerMoveDirectoryResponses, PostApiV1FileManagerMoveDirectoryErrors, ThrowOnError>({
+export const moveDirectory = <ThrowOnError extends boolean = false>(options: Options<MoveDirectoryData, ThrowOnError>) => (options.client ?? client).post<MoveDirectoryResponses, MoveDirectoryErrors, ThrowOnError>({
     url: '/api/v1/file-manager/move-directory',
     ...options,
     headers: {
@@ -1588,46 +951,26 @@ export const postApiV1FileManagerMoveDirectory = <ThrowOnError extends boolean =
 });
 
 /**
- * upload file
+ * Upload file
  *
- * #### Controller:
+ * Upload file.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/file-manager/controller.(*FileManagerController).UploadFile`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1FileManagerUpload = <ThrowOnError extends boolean = false>(options?: Options<PostApiV1FileManagerUploadData, ThrowOnError>) => (options?.client ?? client).post<PostApiV1FileManagerUploadResponses, PostApiV1FileManagerUploadErrors, ThrowOnError>({ url: '/api/v1/file-manager/upload', ...options });
+export const uploadFile = <ThrowOnError extends boolean = false>(options?: Options<UploadFileData, ThrowOnError>) => (options?.client ?? client).post<UploadFileResponses, UploadFileErrors, ThrowOnError>({ url: '/api/v1/file-manager/upload', ...options });
 
 /**
- * delete github connector
+ * Delete GitHub connector
  *
- * #### Controller:
+ * Delete GitHub connector.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/github-connector/controller.(*GithubConnectorController).DeleteGithubConnector`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const deleteApiV1GithubConnector = <ThrowOnError extends boolean = false>(options: Options<DeleteApiV1GithubConnectorData, ThrowOnError>) => (options.client ?? client).delete<DeleteApiV1GithubConnectorResponses, DeleteApiV1GithubConnectorErrors, ThrowOnError>({
+export const deleteGitHubConnector = <ThrowOnError extends boolean = false>(options: Options<DeleteGitHubConnectorData, ThrowOnError>) => (options.client ?? client).delete<DeleteGitHubConnectorResponses, DeleteGitHubConnectorErrors, ThrowOnError>({
     url: '/api/v1/github-connector',
     ...options,
     headers: {
@@ -1637,25 +980,15 @@ export const deleteApiV1GithubConnector = <ThrowOnError extends boolean = false>
 });
 
 /**
- * create github connector
+ * Create GitHub connector
  *
- * #### Controller:
+ * Create GitHub connector.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/github-connector/controller.(*GithubConnectorController).CreateGithubConnector`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1GithubConnector = <ThrowOnError extends boolean = false>(options: Options<PostApiV1GithubConnectorData, ThrowOnError>) => (options.client ?? client).post<PostApiV1GithubConnectorResponses, PostApiV1GithubConnectorErrors, ThrowOnError>({
+export const createGitHubConnector = <ThrowOnError extends boolean = false>(options: Options<CreateGitHubConnectorData, ThrowOnError>) => (options.client ?? client).post<CreateGitHubConnectorResponses, CreateGitHubConnectorErrors, ThrowOnError>({
     url: '/api/v1/github-connector',
     ...options,
     headers: {
@@ -1665,25 +998,15 @@ export const postApiV1GithubConnector = <ThrowOnError extends boolean = false>(o
 });
 
 /**
- * update github connector request
+ * Update GitHub connector
  *
- * #### Controller:
+ * Update GitHub connector.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/github-connector/controller.(*GithubConnectorController).UpdateGithubConnectorRequest`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const putApiV1GithubConnector = <ThrowOnError extends boolean = false>(options: Options<PutApiV1GithubConnectorData, ThrowOnError>) => (options.client ?? client).put<PutApiV1GithubConnectorResponses, PutApiV1GithubConnectorErrors, ThrowOnError>({
+export const updateGitHubConnector = <ThrowOnError extends boolean = false>(options: Options<UpdateGitHubConnectorData, ThrowOnError>) => (options.client ?? client).put<UpdateGitHubConnectorResponses, UpdateGitHubConnectorErrors, ThrowOnError>({
     url: '/api/v1/github-connector',
     ...options,
     headers: {
@@ -1693,67 +1016,37 @@ export const putApiV1GithubConnector = <ThrowOnError extends boolean = false>(op
 });
 
 /**
- * get github connectors
+ * List GitHub connectors
  *
- * #### Controller:
+ * List GitHub connectors.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/github-connector/controller.(*GithubConnectorController).GetGithubConnectors`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1GithubConnectorAll = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1GithubConnectorAllData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1GithubConnectorAllResponses, GetApiV1GithubConnectorAllErrors, ThrowOnError>({ url: '/api/v1/github-connector/all', ...options });
+export const listGitHubConnectors = <ThrowOnError extends boolean = false>(options?: Options<ListGitHubConnectorsData, ThrowOnError>) => (options?.client ?? client).get<ListGitHubConnectorsResponses, ListGitHubConnectorsErrors, ThrowOnError>({ url: '/api/v1/github-connector/all', ...options });
 
 /**
- * get github repositories
+ * List GitHub repositories
  *
- * #### Controller:
+ * List GitHub repositories.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/github-connector/controller.(*GithubConnectorController).GetGithubRepositories`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1GithubConnectorRepositories = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1GithubConnectorRepositoriesData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1GithubConnectorRepositoriesResponses, GetApiV1GithubConnectorRepositoriesErrors, ThrowOnError>({ url: '/api/v1/github-connector/repositories', ...options });
+export const listGitHubRepositories = <ThrowOnError extends boolean = false>(options?: Options<ListGitHubRepositoriesData, ThrowOnError>) => (options?.client ?? client).get<ListGitHubRepositoriesResponses, ListGitHubRepositoriesErrors, ThrowOnError>({ url: '/api/v1/github-connector/repositories', ...options });
 
 /**
- * get github repository branches
+ * List repository branches
  *
- * #### Controller:
+ * List repository branches.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/github-connector/controller.(*GithubConnectorController).GetGithubRepositoryBranches`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1GithubConnectorRepositoryBranches = <ThrowOnError extends boolean = false>(options: Options<PostApiV1GithubConnectorRepositoryBranchesData, ThrowOnError>) => (options.client ?? client).post<PostApiV1GithubConnectorRepositoryBranchesResponses, PostApiV1GithubConnectorRepositoryBranchesErrors, ThrowOnError>({
+export const listRepositoryBranches = <ThrowOnError extends boolean = false>(options: Options<ListRepositoryBranchesData, ThrowOnError>) => (options.client ?? client).post<ListRepositoryBranchesResponses, ListRepositoryBranchesErrors, ThrowOnError>({
     url: '/api/v1/github-connector/repository/branches',
     ...options,
     headers: {
@@ -1763,84 +1056,48 @@ export const postApiV1GithubConnectorRepositoryBranches = <ThrowOnError extends 
 });
 
 /**
- * health check
+ * Health check
  *
- * #### Controller:
+ * Health check.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/health.HealthCheck`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- *
- * ---
- *
- *
+ * Auth: Public endpoint.
+ * Scope: No organization scope required.
+ * Side effects: Read-only operation.
  */
-export const getApiV1Health = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1HealthData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1HealthResponses, GetApiV1HealthErrors, ThrowOnError>({ url: '/api/v1/health', ...options });
+export const healthCheck = <ThrowOnError extends boolean = false>(options?: Options<HealthCheckData, ThrowOnError>) => (options?.client ?? client).get<HealthCheckResponses, HealthCheckErrors, ThrowOnError>({ url: '/api/v1/health', ...options });
 
 /**
- * delete health check
+ * Delete health check
  *
- * #### Controller:
+ * Delete health check.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/healthcheck/controller.(*HealthCheckController).DeleteHealthCheck`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const deleteApiV1Healthcheck = <ThrowOnError extends boolean = false>(options?: Options<DeleteApiV1HealthcheckData, ThrowOnError>) => (options?.client ?? client).delete<DeleteApiV1HealthcheckResponses, DeleteApiV1HealthcheckErrors, ThrowOnError>({ url: '/api/v1/healthcheck', ...options });
+export const deleteHealthCheck = <ThrowOnError extends boolean = false>(options: Options<DeleteHealthCheckData, ThrowOnError>) => (options.client ?? client).delete<DeleteHealthCheckResponses, DeleteHealthCheckErrors, ThrowOnError>({ url: '/api/v1/healthcheck', ...options });
 
 /**
- * get health check
+ * Get health checks
  *
- * #### Controller:
+ * Get health checks.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/healthcheck/controller.(*HealthCheckController).GetHealthCheck`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1Healthcheck = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1HealthcheckData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1HealthcheckResponses, GetApiV1HealthcheckErrors, ThrowOnError>({ url: '/api/v1/healthcheck', ...options });
+export const getHealthChecks = <ThrowOnError extends boolean = false>(options: Options<GetHealthChecksData, ThrowOnError>) => (options.client ?? client).get<GetHealthChecksResponses, GetHealthChecksErrors, ThrowOnError>({ url: '/api/v1/healthcheck', ...options });
 
 /**
- * create health check
+ * Create health check
  *
- * #### Controller:
+ * Create health check.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/healthcheck/controller.(*HealthCheckController).CreateHealthCheck`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1Healthcheck = <ThrowOnError extends boolean = false>(options: Options<PostApiV1HealthcheckData, ThrowOnError>) => (options.client ?? client).post<PostApiV1HealthcheckResponses, PostApiV1HealthcheckErrors, ThrowOnError>({
+export const createHealthCheck = <ThrowOnError extends boolean = false>(options: Options<CreateHealthCheckData, ThrowOnError>) => (options.client ?? client).post<CreateHealthCheckResponses, CreateHealthCheckErrors, ThrowOnError>({
     url: '/api/v1/healthcheck',
     ...options,
     headers: {
@@ -1850,25 +1107,15 @@ export const postApiV1Healthcheck = <ThrowOnError extends boolean = false>(optio
 });
 
 /**
- * update health check
+ * Update health check
  *
- * #### Controller:
+ * Update health check.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/healthcheck/controller.(*HealthCheckController).UpdateHealthCheck`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const putApiV1Healthcheck = <ThrowOnError extends boolean = false>(options: Options<PutApiV1HealthcheckData, ThrowOnError>) => (options.client ?? client).put<PutApiV1HealthcheckResponses, PutApiV1HealthcheckErrors, ThrowOnError>({
+export const updateHealthCheck = <ThrowOnError extends boolean = false>(options: Options<UpdateHealthCheckData, ThrowOnError>) => (options.client ?? client).put<UpdateHealthCheckResponses, UpdateHealthCheckErrors, ThrowOnError>({
     url: '/api/v1/healthcheck',
     ...options,
     headers: {
@@ -1878,67 +1125,37 @@ export const putApiV1Healthcheck = <ThrowOnError extends boolean = false>(option
 });
 
 /**
- * get health check results
+ * List health check results
  *
- * #### Controller:
+ * List health check results.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/healthcheck/controller.(*HealthCheckController).GetHealthCheckResults`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1HealthcheckResults = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1HealthcheckResultsData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1HealthcheckResultsResponses, GetApiV1HealthcheckResultsErrors, ThrowOnError>({ url: '/api/v1/healthcheck/results', ...options });
+export const listHealthCheckResults = <ThrowOnError extends boolean = false>(options: Options<ListHealthCheckResultsData, ThrowOnError>) => (options.client ?? client).get<ListHealthCheckResultsResponses, ListHealthCheckResultsErrors, ThrowOnError>({ url: '/api/v1/healthcheck/results', ...options });
 
 /**
- * get health check stats
+ * Get health check stats
  *
- * #### Controller:
+ * Get health check stats.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/healthcheck/controller.(*HealthCheckController).GetHealthCheckStats`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1HealthcheckStats = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1HealthcheckStatsData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1HealthcheckStatsResponses, GetApiV1HealthcheckStatsErrors, ThrowOnError>({ url: '/api/v1/healthcheck/stats', ...options });
+export const getHealthCheckStats = <ThrowOnError extends boolean = false>(options: Options<GetHealthCheckStatsData, ThrowOnError>) => (options.client ?? client).get<GetHealthCheckStatsResponses, GetHealthCheckStatsErrors, ThrowOnError>({ url: '/api/v1/healthcheck/stats', ...options });
 
 /**
- * toggle health check
+ * Toggle health check
  *
- * #### Controller:
+ * Toggle health check.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/healthcheck/controller.(*HealthCheckController).ToggleHealthCheck`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const patchApiV1HealthcheckToggle = <ThrowOnError extends boolean = false>(options: Options<PatchApiV1HealthcheckToggleData, ThrowOnError>) => (options.client ?? client).patch<PatchApiV1HealthcheckToggleResponses, PatchApiV1HealthcheckToggleErrors, ThrowOnError>({
+export const toggleHealthCheck = <ThrowOnError extends boolean = false>(options: Options<ToggleHealthCheckData, ThrowOnError>) => (options.client ?? client).patch<ToggleHealthCheckResponses, ToggleHealthCheckErrors, ThrowOnError>({
     url: '/api/v1/healthcheck/toggle',
     ...options,
     headers: {
@@ -1948,21 +1165,15 @@ export const patchApiV1HealthcheckToggle = <ThrowOnError extends boolean = false
 });
 
 /**
- * handle pause
+ * Pause live deploy service
  *
- * #### Controller:
+ * Pause live deploy service.
  *
- * `github.com/raghavyuva/nixopus-api/internal/routes.(*LiveDeployController).HandlePause`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- *
- * ---
- *
- *
+ * Auth: Public endpoint.
+ * Scope: No organization scope required.
+ * Side effects: May mutate server state.
  */
-export const postApiV1LivePause = <ThrowOnError extends boolean = false>(options: Options<PostApiV1LivePauseData, ThrowOnError>) => (options.client ?? client).post<PostApiV1LivePauseResponses, PostApiV1LivePauseErrors, ThrowOnError>({
+export const pauseLiveDeployService = <ThrowOnError extends boolean = false>(options: Options<PauseLiveDeployServiceData, ThrowOnError>) => (options.client ?? client).post<PauseLiveDeployServiceResponses, PauseLiveDeployServiceErrors, ThrowOnError>({
     url: '/api/v1/live/pause',
     ...options,
     headers: {
@@ -1972,46 +1183,26 @@ export const postApiV1LivePause = <ThrowOnError extends boolean = false>(options
 });
 
 /**
- * get preferences
+ * Get notification preferences
  *
- * #### Controller:
+ * Get notification preferences.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).GetPreferences`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1NotificationPreferences = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1NotificationPreferencesData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1NotificationPreferencesResponses, GetApiV1NotificationPreferencesErrors, ThrowOnError>({ url: '/api/v1/notification/preferences', ...options });
+export const getNotificationPreferences = <ThrowOnError extends boolean = false>(options?: Options<GetNotificationPreferencesData, ThrowOnError>) => (options?.client ?? client).get<GetNotificationPreferencesResponses, GetNotificationPreferencesErrors, ThrowOnError>({ url: '/api/v1/notification/preferences', ...options });
 
 /**
- * update preference
+ * Update notification preferences
  *
- * #### Controller:
+ * Update notification preferences.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).UpdatePreference`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1NotificationPreferences = <ThrowOnError extends boolean = false>(options: Options<PostApiV1NotificationPreferencesData, ThrowOnError>) => (options.client ?? client).post<PostApiV1NotificationPreferencesResponses, PostApiV1NotificationPreferencesErrors, ThrowOnError>({
+export const updateNotificationPreferences = <ThrowOnError extends boolean = false>(options: Options<UpdateNotificationPreferencesData, ThrowOnError>) => (options.client ?? client).post<UpdateNotificationPreferencesResponses, UpdateNotificationPreferencesErrors, ThrowOnError>({
     url: '/api/v1/notification/preferences',
     ...options,
     headers: {
@@ -2021,25 +1212,33 @@ export const postApiV1NotificationPreferences = <ThrowOnError extends boolean = 
 });
 
 /**
- * delete smtp
+ * Send notification
  *
- * #### Controller:
+ * Send notification.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).DeleteSmtp`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const deleteApiV1NotificationSmtp = <ThrowOnError extends boolean = false>(options: Options<DeleteApiV1NotificationSmtpData, ThrowOnError>) => (options.client ?? client).delete<DeleteApiV1NotificationSmtpResponses, DeleteApiV1NotificationSmtpErrors, ThrowOnError>({
+export const sendNotification = <ThrowOnError extends boolean = false>(options: Options<SendNotificationData, ThrowOnError>) => (options.client ?? client).post<SendNotificationResponses, SendNotificationErrors, ThrowOnError>({
+    url: '/api/v1/notification/send',
+    ...options,
+    headers: {
+        'Content-Type': '*/*',
+        ...options.headers
+    }
+});
+
+/**
+ * Delete SMTP config
+ *
+ * Delete SMTP config.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const deleteSmtpConfig = <ThrowOnError extends boolean = false>(options: Options<DeleteSmtpConfigData, ThrowOnError>) => (options.client ?? client).delete<DeleteSmtpConfigResponses, DeleteSmtpConfigErrors, ThrowOnError>({
     url: '/api/v1/notification/smtp',
     ...options,
     headers: {
@@ -2049,46 +1248,26 @@ export const deleteApiV1NotificationSmtp = <ThrowOnError extends boolean = false
 });
 
 /**
- * get smtp
+ * Get SMTP config
  *
- * #### Controller:
+ * Get SMTP config.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).GetSmtp`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1NotificationSmtp = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1NotificationSmtpData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1NotificationSmtpResponses, GetApiV1NotificationSmtpErrors, ThrowOnError>({ url: '/api/v1/notification/smtp', ...options });
+export const getSmtpConfig = <ThrowOnError extends boolean = false>(options: Options<GetSmtpConfigData, ThrowOnError>) => (options.client ?? client).get<GetSmtpConfigResponses, GetSmtpConfigErrors, ThrowOnError>({ url: '/api/v1/notification/smtp', ...options });
 
 /**
- * add smtp
+ * Create SMTP config
  *
- * #### Controller:
+ * Create SMTP config.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).AddSmtp`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1NotificationSmtp = <ThrowOnError extends boolean = false>(options: Options<PostApiV1NotificationSmtpData, ThrowOnError>) => (options.client ?? client).post<PostApiV1NotificationSmtpResponses, PostApiV1NotificationSmtpErrors, ThrowOnError>({
+export const createSmtpConfig = <ThrowOnError extends boolean = false>(options: Options<CreateSmtpConfigData, ThrowOnError>) => (options.client ?? client).post<CreateSmtpConfigResponses, CreateSmtpConfigErrors, ThrowOnError>({
     url: '/api/v1/notification/smtp',
     ...options,
     headers: {
@@ -2098,25 +1277,15 @@ export const postApiV1NotificationSmtp = <ThrowOnError extends boolean = false>(
 });
 
 /**
- * update smtp
+ * Update SMTP config
  *
- * #### Controller:
+ * Update SMTP config.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).UpdateSmtp`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const putApiV1NotificationSmtp = <ThrowOnError extends boolean = false>(options: Options<PutApiV1NotificationSmtpData, ThrowOnError>) => (options.client ?? client).put<PutApiV1NotificationSmtpResponses, PutApiV1NotificationSmtpErrors, ThrowOnError>({
+export const updateSmtpConfig = <ThrowOnError extends boolean = false>(options: Options<UpdateSmtpConfigData, ThrowOnError>) => (options.client ?? client).put<UpdateSmtpConfigResponses, UpdateSmtpConfigErrors, ThrowOnError>({
     url: '/api/v1/notification/smtp',
     ...options,
     headers: {
@@ -2126,25 +1295,15 @@ export const putApiV1NotificationSmtp = <ThrowOnError extends boolean = false>(o
 });
 
 /**
- * delete webhook config
+ * Delete webhook config
  *
- * #### Controller:
+ * Delete webhook config.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).DeleteWebhookConfig`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const deleteApiV1NotificationWebhook = <ThrowOnError extends boolean = false>(options: Options<DeleteApiV1NotificationWebhookData, ThrowOnError>) => (options.client ?? client).delete<DeleteApiV1NotificationWebhookResponses, DeleteApiV1NotificationWebhookErrors, ThrowOnError>({
+export const deleteWebhookConfig = <ThrowOnError extends boolean = false>(options: Options<DeleteWebhookConfigData, ThrowOnError>) => (options.client ?? client).delete<DeleteWebhookConfigResponses, DeleteWebhookConfigErrors, ThrowOnError>({
     url: '/api/v1/notification/webhook',
     ...options,
     headers: {
@@ -2154,25 +1313,15 @@ export const deleteApiV1NotificationWebhook = <ThrowOnError extends boolean = fa
 });
 
 /**
- * create webhook config
+ * Create webhook config
  *
- * #### Controller:
+ * Create webhook config.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).CreateWebhookConfig`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1NotificationWebhook = <ThrowOnError extends boolean = false>(options: Options<PostApiV1NotificationWebhookData, ThrowOnError>) => (options.client ?? client).post<PostApiV1NotificationWebhookResponses, PostApiV1NotificationWebhookErrors, ThrowOnError>({
+export const createWebhookConfig = <ThrowOnError extends boolean = false>(options: Options<CreateWebhookConfigData, ThrowOnError>) => (options.client ?? client).post<CreateWebhookConfigResponses, CreateWebhookConfigErrors, ThrowOnError>({
     url: '/api/v1/notification/webhook',
     ...options,
     headers: {
@@ -2182,25 +1331,15 @@ export const postApiV1NotificationWebhook = <ThrowOnError extends boolean = fals
 });
 
 /**
- * update webhook config
+ * Update webhook config
  *
- * #### Controller:
+ * Update webhook config.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).UpdateWebhookConfig`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const putApiV1NotificationWebhook = <ThrowOnError extends boolean = false>(options: Options<PutApiV1NotificationWebhookData, ThrowOnError>) => (options.client ?? client).put<PutApiV1NotificationWebhookResponses, PutApiV1NotificationWebhookErrors, ThrowOnError>({
+export const updateWebhookConfig = <ThrowOnError extends boolean = false>(options: Options<UpdateWebhookConfigData, ThrowOnError>) => (options.client ?? client).put<UpdateWebhookConfigResponses, UpdateWebhookConfigErrors, ThrowOnError>({
     url: '/api/v1/notification/webhook',
     ...options,
     headers: {
@@ -2210,86 +1349,48 @@ export const putApiV1NotificationWebhook = <ThrowOnError extends boolean = false
 });
 
 /**
- * get webhook config
+ * Get webhook config
  *
- * #### Controller:
+ * Get webhook config.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/notification/controller.(*NotificationController).GetWebhookConfig`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1NotificationWebhookType = <ThrowOnError extends boolean = false>(options: Options<GetApiV1NotificationWebhookTypeData, ThrowOnError>) => (options.client ?? client).get<GetApiV1NotificationWebhookTypeResponses, GetApiV1NotificationWebhookTypeErrors, ThrowOnError>({ url: '/api/v1/notification/webhook/{type}', ...options });
+export const getWebhookConfig = <ThrowOnError extends boolean = false>(options: Options<GetWebhookConfigData, ThrowOnError>) => (options.client ?? client).get<GetWebhookConfigResponses, GetWebhookConfigErrors, ThrowOnError>({ url: '/api/v1/notification/webhook/{type}', ...options });
 
 /**
- * list servers
+ * List servers
  *
- * #### Controller:
+ * List servers.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/server/controller.(*ServerController).ListServers`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1Servers = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1ServersData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1ServersResponses, GetApiV1ServersErrors, ThrowOnError>({ url: '/api/v1/servers', ...options });
+export const listServers = <ThrowOnError extends boolean = false>(options?: Options<ListServersData, ThrowOnError>) => (options?.client ?? client).get<ListServersResponses, ListServersErrors, ThrowOnError>({ url: '/api/v1/servers', ...options });
 
 /**
- * check s s h status
+ * Get SSH connection status
  *
- * #### Controller:
+ * Get SSH connection status.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/server/controller.(*ServerController).CheckSSHStatus`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1ServersSshStatus = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1ServersSshStatusData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1ServersSshStatusResponses, GetApiV1ServersSshStatusErrors, ThrowOnError>({ url: '/api/v1/servers/ssh/status', ...options });
+export const getSshConnectionStatus = <ThrowOnError extends boolean = false>(options?: Options<GetSshConnectionStatusData, ThrowOnError>) => (options?.client ?? client).get<GetSshConnectionStatusResponses, GetSshConnectionStatusErrors, ThrowOnError>({ url: '/api/v1/servers/ssh/status', ...options });
 
 /**
- * provision trail
+ * Provision trail resources
  *
- * #### Controller:
+ * Provision trail resources.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/trail/controller.(*TrailController).ProvisionTrail`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1TrailProvision = <ThrowOnError extends boolean = false>(options: Options<PostApiV1TrailProvisionData, ThrowOnError>) => (options.client ?? client).post<PostApiV1TrailProvisionResponses, PostApiV1TrailProvisionErrors, ThrowOnError>({
+export const provisionTrailResources = <ThrowOnError extends boolean = false>(options: Options<ProvisionTrailResourcesData, ThrowOnError>) => (options.client ?? client).post<ProvisionTrailResourcesResponses, ProvisionTrailResourcesErrors, ThrowOnError>({
     url: '/api/v1/trail/provision',
     ...options,
     headers: {
@@ -2299,43 +1400,26 @@ export const postApiV1TrailProvision = <ThrowOnError extends boolean = false>(op
 });
 
 /**
- * get status
+ * Get trail session status
  *
- * #### Controller:
+ * Get trail session status.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/trail/controller.(*TrailController).GetStatus`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func1`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func2`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).applyMiddleware.func3`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1TrailStatusSessionId = <ThrowOnError extends boolean = false>(options: Options<GetApiV1TrailStatusSessionIdData, ThrowOnError>) => (options.client ?? client).get<GetApiV1TrailStatusSessionIdResponses, GetApiV1TrailStatusSessionIdErrors, ThrowOnError>({ url: '/api/v1/trail/status/{sessionId}', ...options });
+export const getTrailSessionStatus = <ThrowOnError extends boolean = false>(options: Options<GetTrailSessionStatusData, ThrowOnError>) => (options.client ?? client).get<GetTrailSessionStatusResponses, GetTrailSessionStatusErrors, ThrowOnError>({ url: '/api/v1/trail/status/{sessionId}', ...options });
 
 /**
- * perform update
+ * Perform update
  *
- * #### Controller:
+ * Perform update.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/update/controller.(*UpdateController).PerformUpdate`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1Update = <ThrowOnError extends boolean = false>(options: Options<PostApiV1UpdateData, ThrowOnError>) => (options.client ?? client).post<PostApiV1UpdateResponses, PostApiV1UpdateErrors, ThrowOnError>({
+export const performUpdate = <ThrowOnError extends boolean = false>(options: Options<PerformUpdateData, ThrowOnError>) => (options.client ?? client).post<PerformUpdateResponses, PerformUpdateErrors, ThrowOnError>({
     url: '/api/v1/update',
     ...options,
     headers: {
@@ -2345,58 +1429,37 @@ export const postApiV1Update = <ThrowOnError extends boolean = false>(options: O
 });
 
 /**
- * check for updates
+ * Check for updates
  *
- * #### Controller:
+ * Check for updates.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/update/controller.(*UpdateController).CheckForUpdates`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1UpdateCheck = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1UpdateCheckData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1UpdateCheckResponses, GetApiV1UpdateCheckErrors, ThrowOnError>({ url: '/api/v1/update/check', ...options });
+export const checkForUpdates = <ThrowOnError extends boolean = false>(options?: Options<CheckForUpdatesData, ThrowOnError>) => (options?.client ?? client).get<CheckForUpdatesResponses, CheckForUpdatesErrors, ThrowOnError>({ url: '/api/v1/update/check', ...options });
 
 /**
- * get user details
+ * Get current user profile
  *
- * #### Controller:
+ * Get current user profile.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).GetUserDetails`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1User = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1UserData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1UserResponses, GetApiV1UserErrors, ThrowOnError>({ url: '/api/v1/user', ...options });
+export const getCurrentUserProfile = <ThrowOnError extends boolean = false>(options?: Options<GetCurrentUserProfileData, ThrowOnError>) => (options?.client ?? client).get<GetCurrentUserProfileResponses, GetCurrentUserProfileErrors, ThrowOnError>({ url: '/api/v1/user', ...options });
 
 /**
- * update avatar
+ * Update user avatar
  *
- * #### Controller:
+ * Update user avatar.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).UpdateAvatar`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const patchApiV1UserAvatar = <ThrowOnError extends boolean = false>(options: Options<PatchApiV1UserAvatarData, ThrowOnError>) => (options.client ?? client).patch<PatchApiV1UserAvatarResponses, PatchApiV1UserAvatarErrors, ThrowOnError>({
+export const updateUserAvatar = <ThrowOnError extends boolean = false>(options: Options<UpdateUserAvatarData, ThrowOnError>) => (options.client ?? client).patch<UpdateUserAvatarResponses, UpdateUserAvatarErrors, ThrowOnError>({
     url: '/api/v1/user/avatar',
     ...options,
     headers: {
@@ -2406,22 +1469,15 @@ export const patchApiV1UserAvatar = <ThrowOnError extends boolean = false>(optio
 });
 
 /**
- * update user name
+ * Update user name
  *
- * #### Controller:
+ * Update user name.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).UpdateUserName`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const patchApiV1UserName = <ThrowOnError extends boolean = false>(options: Options<PatchApiV1UserNameData, ThrowOnError>) => (options.client ?? client).patch<PatchApiV1UserNameResponses, PatchApiV1UserNameErrors, ThrowOnError>({
+export const updateUserName = <ThrowOnError extends boolean = false>(options: Options<UpdateUserNameData, ThrowOnError>) => (options.client ?? client).patch<UpdateUserNameResponses, UpdateUserNameErrors, ThrowOnError>({
     url: '/api/v1/user/name',
     ...options,
     headers: {
@@ -2431,76 +1487,48 @@ export const patchApiV1UserName = <ThrowOnError extends boolean = false>(options
 });
 
 /**
- * get is onboarded
+ * Check onboarding status
  *
- * #### Controller:
+ * Check onboarding status.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).GetIsOnboarded`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1UserOnboarded = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1UserOnboardedData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1UserOnboardedResponses, GetApiV1UserOnboardedErrors, ThrowOnError>({ url: '/api/v1/user/onboarded', ...options });
+export const checkOnboardingStatus = <ThrowOnError extends boolean = false>(options?: Options<CheckOnboardingStatusData, ThrowOnError>) => (options?.client ?? client).get<CheckOnboardingStatusResponses, CheckOnboardingStatusErrors, ThrowOnError>({ url: '/api/v1/user/onboarded', ...options });
 
 /**
- * mark onboarding complete
+ * Mark onboarding complete
  *
- * #### Controller:
+ * Mark onboarding complete.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).MarkOnboardingComplete`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const postApiV1UserOnboarded = <ThrowOnError extends boolean = false>(options?: Options<PostApiV1UserOnboardedData, ThrowOnError>) => (options?.client ?? client).post<PostApiV1UserOnboardedResponses, PostApiV1UserOnboardedErrors, ThrowOnError>({ url: '/api/v1/user/onboarded', ...options });
+export const markOnboardingComplete = <ThrowOnError extends boolean = false>(options?: Options<MarkOnboardingCompleteData, ThrowOnError>) => (options?.client ?? client).post<MarkOnboardingCompleteResponses, MarkOnboardingCompleteErrors, ThrowOnError>({ url: '/api/v1/user/onboarded', ...options });
 
 /**
- * get user preferences
+ * Get user preferences
  *
- * #### Controller:
+ * Get user preferences.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).GetUserPreferences`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1UserPreferences = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1UserPreferencesData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1UserPreferencesResponses, GetApiV1UserPreferencesErrors, ThrowOnError>({ url: '/api/v1/user/preferences', ...options });
+export const getUserPreferences = <ThrowOnError extends boolean = false>(options?: Options<GetUserPreferencesData, ThrowOnError>) => (options?.client ?? client).get<GetUserPreferencesResponses, GetUserPreferencesErrors, ThrowOnError>({ url: '/api/v1/user/preferences', ...options });
 
 /**
- * update user preferences
+ * Update user preferences
  *
- * #### Controller:
+ * Update user preferences.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).UpdateUserPreferences`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const putApiV1UserPreferences = <ThrowOnError extends boolean = false>(options: Options<PutApiV1UserPreferencesData, ThrowOnError>) => (options.client ?? client).put<PutApiV1UserPreferencesResponses, PutApiV1UserPreferencesErrors, ThrowOnError>({
+export const updateUserPreferences = <ThrowOnError extends boolean = false>(options: Options<UpdateUserPreferencesData, ThrowOnError>) => (options.client ?? client).put<UpdateUserPreferencesResponses, UpdateUserPreferencesErrors, ThrowOnError>({
     url: '/api/v1/user/preferences',
     ...options,
     headers: {
@@ -2510,40 +1538,26 @@ export const putApiV1UserPreferences = <ThrowOnError extends boolean = false>(op
 });
 
 /**
- * get settings
+ * Get user settings
  *
- * #### Controller:
+ * Get user settings.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).GetSettings`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
  */
-export const getApiV1UserSettings = <ThrowOnError extends boolean = false>(options?: Options<GetApiV1UserSettingsData, ThrowOnError>) => (options?.client ?? client).get<GetApiV1UserSettingsResponses, GetApiV1UserSettingsErrors, ThrowOnError>({ url: '/api/v1/user/settings', ...options });
+export const getUserSettings = <ThrowOnError extends boolean = false>(options?: Options<GetUserSettingsData, ThrowOnError>) => (options?.client ?? client).get<GetUserSettingsResponses, GetUserSettingsErrors, ThrowOnError>({ url: '/api/v1/user/settings', ...options });
 
 /**
- * update auto update
+ * Update auto-update settings
  *
- * #### Controller:
+ * Update auto-update settings.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).UpdateAutoUpdate`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const patchApiV1UserSettingsAutoUpdate = <ThrowOnError extends boolean = false>(options: Options<PatchApiV1UserSettingsAutoUpdateData, ThrowOnError>) => (options.client ?? client).patch<PatchApiV1UserSettingsAutoUpdateResponses, PatchApiV1UserSettingsAutoUpdateErrors, ThrowOnError>({
+export const updateAutoUpdateSettings = <ThrowOnError extends boolean = false>(options: Options<UpdateAutoUpdateSettingsData, ThrowOnError>) => (options.client ?? client).patch<UpdateAutoUpdateSettingsResponses, UpdateAutoUpdateSettingsErrors, ThrowOnError>({
     url: '/api/v1/user/settings/auto-update',
     ...options,
     headers: {
@@ -2553,22 +1567,15 @@ export const patchApiV1UserSettingsAutoUpdate = <ThrowOnError extends boolean = 
 });
 
 /**
- * update font
+ * Update font settings
  *
- * #### Controller:
+ * Update font settings.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).UpdateFont`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const patchApiV1UserSettingsFont = <ThrowOnError extends boolean = false>(options: Options<PatchApiV1UserSettingsFontData, ThrowOnError>) => (options.client ?? client).patch<PatchApiV1UserSettingsFontResponses, PatchApiV1UserSettingsFontErrors, ThrowOnError>({
+export const updateFontSettings = <ThrowOnError extends boolean = false>(options: Options<UpdateFontSettingsData, ThrowOnError>) => (options.client ?? client).patch<UpdateFontSettingsResponses, UpdateFontSettingsErrors, ThrowOnError>({
     url: '/api/v1/user/settings/font',
     ...options,
     headers: {
@@ -2578,22 +1585,15 @@ export const patchApiV1UserSettingsFont = <ThrowOnError extends boolean = false>
 });
 
 /**
- * update language
+ * Update language settings
  *
- * #### Controller:
+ * Update language settings.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).UpdateLanguage`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const patchApiV1UserSettingsLanguage = <ThrowOnError extends boolean = false>(options: Options<PatchApiV1UserSettingsLanguageData, ThrowOnError>) => (options.client ?? client).patch<PatchApiV1UserSettingsLanguageResponses, PatchApiV1UserSettingsLanguageErrors, ThrowOnError>({
+export const updateLanguageSettings = <ThrowOnError extends boolean = false>(options: Options<UpdateLanguageSettingsData, ThrowOnError>) => (options.client ?? client).patch<UpdateLanguageSettingsResponses, UpdateLanguageSettingsErrors, ThrowOnError>({
     url: '/api/v1/user/settings/language',
     ...options,
     headers: {
@@ -2603,22 +1603,15 @@ export const patchApiV1UserSettingsLanguage = <ThrowOnError extends boolean = fa
 });
 
 /**
- * update theme
+ * Update theme settings
  *
- * #### Controller:
+ * Update theme settings.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/user/controller.(*UserController).UpdateTheme`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- * - `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).SetupRoutes.(*Router).setupAuthentication.func2`
- *
- * ---
- *
- *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
  */
-export const patchApiV1UserSettingsTheme = <ThrowOnError extends boolean = false>(options: Options<PatchApiV1UserSettingsThemeData, ThrowOnError>) => (options.client ?? client).patch<PatchApiV1UserSettingsThemeResponses, PatchApiV1UserSettingsThemeErrors, ThrowOnError>({
+export const updateThemeSettings = <ThrowOnError extends boolean = false>(options: Options<UpdateThemeSettingsData, ThrowOnError>) => (options.client ?? client).patch<UpdateThemeSettingsResponses, UpdateThemeSettingsErrors, ThrowOnError>({
     url: '/api/v1/user/settings/theme',
     ...options,
     headers: {
@@ -2628,52 +1621,12 @@ export const patchApiV1UserSettingsTheme = <ThrowOnError extends boolean = false
 });
 
 /**
- * handle github webhook
+ * Handle GitHub webhook
  *
- * #### Controller:
+ * Handle GitHub webhook.
  *
- * `github.com/raghavyuva/nixopus-api/internal/features/deploy/controller.(*DeployController).HandleGithubWebhook`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- *
- * ---
- *
- *
+ * Auth: Public endpoint.
+ * Scope: No organization scope required.
+ * Side effects: May mutate server state.
  */
-export const postApiV1Webhook = <ThrowOnError extends boolean = false>(options?: Options<PostApiV1WebhookData, ThrowOnError>) => (options?.client ?? client).post<PostApiV1WebhookResponses, PostApiV1WebhookErrors, ThrowOnError>({ url: '/api/v1/webhook', ...options });
-
-/**
- * func1
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).RegisterWebSocketRoutes.func1`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- *
- * ---
- *
- *
- */
-export const getWs = <ThrowOnError extends boolean = false>(options?: Options<GetWsData, ThrowOnError>) => (options?.client ?? client).get<GetWsResponses, GetWsErrors, ThrowOnError>({ url: '/ws', ...options });
-
-/**
- * func1
- *
- * #### Controller:
- *
- * `github.com/raghavyuva/nixopus-api/internal/routes.(*Router).RegisterLiveDeployRoutes.func1`
- *
- * #### Middlewares:
- *
- * - `github.com/go-fuego/fuego.defaultLogger.middleware`
- *
- * ---
- *
- *
- */
-export const getWsLiveApplicationId = <ThrowOnError extends boolean = false>(options: Options<GetWsLiveApplicationIdData, ThrowOnError>) => (options.client ?? client).get<GetWsLiveApplicationIdResponses, GetWsLiveApplicationIdErrors, ThrowOnError>({ url: '/ws/live/{application_id}', ...options });
+export const handleGitHubWebhook = <ThrowOnError extends boolean = false>(options?: Options<HandleGitHubWebhookData, ThrowOnError>) => (options?.client ?? client).post<HandleGitHubWebhookResponses, HandleGitHubWebhookErrors, ThrowOnError>({ url: '/api/v1/webhook', ...options });
