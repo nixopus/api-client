@@ -2411,16 +2411,7 @@ export const zApplicationDeployment: z.AnyZodObject = z.object({
     id: z.string().uuid().optional(),
     image_s3_key: z.string().optional(),
     image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-    logs: z.array(z.object({
-        application: zApplication.optional(),
-        application_deployment: z.lazy(() => zApplicationDeployment).optional(),
-        application_deployment_id: z.string().uuid().optional(),
-        application_id: z.string().uuid().optional(),
-        created_at: z.string().datetime().optional(),
-        id: z.string().uuid().optional(),
-        log: z.string().optional(),
-        updated_at: z.string().datetime().optional()
-    })).optional(),
+    logs: z.array(z.lazy(() => zApplicationLogs)).optional(),
     status: z.object({
         application_deployment: z.lazy(() => zApplicationDeployment).optional(),
         application_deployment_id: z.string().uuid().optional(),
@@ -2443,9 +2434,31 @@ export const zApplicationDomain: z.AnyZodObject = z.object({
     port: z.number().int().optional()
 });
 
-export const zApplicationLogs = z.object({
+export const zApplicationLogs: z.AnyZodObject = z.object({
     application: zApplication.optional(),
-    application_deployment: zApplicationDeployment.optional(),
+    application_deployment: z.object({
+        application: zApplication.optional(),
+        application_id: z.string().uuid().optional(),
+        commit_hash: z.string().optional(),
+        container_id: z.string().uuid().optional(),
+        container_image: z.string().optional(),
+        container_name: z.string().optional(),
+        container_status: z.string().optional(),
+        created_at: z.string().datetime().optional(),
+        id: z.string().uuid().optional(),
+        image_s3_key: z.string().optional(),
+        image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+        logs: z.array(z.lazy(() => zApplicationLogs)).optional(),
+        status: z.object({
+            application_deployment: zApplicationDeployment.optional(),
+            application_deployment_id: z.string().uuid().optional(),
+            created_at: z.string().datetime().optional(),
+            id: z.string().uuid().optional(),
+            status: z.string().optional(),
+            updated_at: z.string().datetime().optional()
+        }).optional(),
+        updated_at: z.string().datetime().optional()
+    }).optional(),
     application_deployment_id: z.string().uuid().optional(),
     application_id: z.string().uuid().optional(),
     created_at: z.string().datetime().optional(),
@@ -2644,20 +2657,11 @@ export const zApplicationResponse: z.AnyZodObject = z.object({
     status: z.string().optional()
 });
 
-export const zComposeService: z.AnyZodObject = z.object({
+export const zComposeService = z.object({
     application: zApplication.optional(),
     application_id: z.string().uuid().optional(),
     created_at: z.string().datetime().optional(),
-    domains: z.array(z.object({
-        application: zApplication.optional(),
-        application_id: z.string().uuid().optional(),
-        compose_service: z.lazy(() => zComposeService).optional(),
-        compose_service_id: z.string().uuid().optional(),
-        created_at: z.string().datetime().optional(),
-        domain: z.string().optional(),
-        id: z.string().uuid().optional(),
-        port: z.number().int().optional()
-    })).optional(),
+    domains: z.array(zApplicationDomain).optional(),
     id: z.string().uuid().optional(),
     port: z.number().int().optional(),
     service_name: z.string().optional(),
