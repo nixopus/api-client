@@ -738,6 +738,26 @@ export const zHealthCheckStatsResponse = z.object({
 });
 
 /**
+ * HostExecRequest schema
+ */
+export const zHostExecRequest = z.object({
+    command: z.string()
+});
+
+/**
+ * HostExecResponse schema
+ */
+export const zHostExecResponse = z.object({
+    data: z.object({
+        exit_code: z.number().int().optional(),
+        stderr: z.string().optional(),
+        stdout: z.string().optional()
+    }).optional(),
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
  * IndexCodebaseResponse schema
  */
 export const zIndexCodebaseResponse = z.object({
@@ -1591,6 +1611,76 @@ export const zSendNotificationResponse = z.object({
 });
 
 /**
+ * SystemStatsResponse schema
+ */
+export const zSystemStatsResponse = z.object({
+    data: z.object({
+        architecture: z.string().optional(),
+        cpu: z.object({
+            overall: z.number().optional(),
+            per_core: z.array(z.object({
+                core_id: z.number().int().optional(),
+                usage: z.number().optional()
+            })).optional()
+        }).optional(),
+        cpu_cores: z.number().int().optional(),
+        cpu_info: z.string().optional(),
+        disk: z.object({
+            allMounts: z.array(z.object({
+                avail: z.string().optional(),
+                capacity: z.string().optional(),
+                filesystem: z.string().optional(),
+                mountPoint: z.string().optional(),
+                size: z.string().optional(),
+                used: z.string().optional()
+            })).optional(),
+            available: z.number().optional(),
+            mountPoint: z.string().optional(),
+            percentage: z.number().optional(),
+            total: z.number().optional(),
+            used: z.number().optional()
+        }).optional(),
+        hostname: z.string().optional(),
+        kernel_version: z.string().optional(),
+        load: z.object({
+            fifteenMin: z.number().optional(),
+            fiveMin: z.number().optional(),
+            oneMin: z.number().optional(),
+            uptime: z.string().optional()
+        }).optional(),
+        memory: z.object({
+            percentage: z.number().optional(),
+            rawInfo: z.string().optional(),
+            total: z.number().optional(),
+            used: z.number().optional()
+        }).optional(),
+        network: z.object({
+            downloadSpeed: z.number().optional(),
+            interfaces: z.array(z.object({
+                bytesRecv: z.number().int().gte(0).lte(18446744073709552000).optional(),
+                bytesSent: z.number().int().gte(0).lte(18446744073709552000).optional(),
+                dropIn: z.number().int().gte(0).lte(18446744073709552000).optional(),
+                dropOut: z.number().int().gte(0).lte(18446744073709552000).optional(),
+                errorIn: z.number().int().gte(0).lte(18446744073709552000).optional(),
+                errorOut: z.number().int().gte(0).lte(18446744073709552000).optional(),
+                name: z.string().optional(),
+                packetsRecv: z.number().int().gte(0).lte(18446744073709552000).optional(),
+                packetsSent: z.number().int().gte(0).lte(18446744073709552000).optional()
+            })).optional(),
+            totalBytesRecv: z.number().int().gte(0).lte(18446744073709552000).optional(),
+            totalBytesSent: z.number().int().gte(0).lte(18446744073709552000).optional(),
+            totalPacketsRecv: z.number().int().gte(0).lte(18446744073709552000).optional(),
+            totalPacketsSent: z.number().int().gte(0).lte(18446744073709552000).optional(),
+            uploadSpeed: z.number().optional()
+        }).optional(),
+        os_type: z.string().optional(),
+        timestamp: z.string().datetime().optional()
+    }).optional(),
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
  * ToggleHealthCheckRequest schema
  */
 export const zToggleHealthCheckRequest = z.object({
@@ -2411,7 +2501,16 @@ export const zApplicationDeployment: z.AnyZodObject = z.object({
     id: z.string().uuid().optional(),
     image_s3_key: z.string().optional(),
     image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-    logs: z.array(z.lazy(() => zApplicationLogs)).optional(),
+    logs: z.array(z.object({
+        application: zApplication.optional(),
+        application_deployment: z.lazy(() => zApplicationDeployment).optional(),
+        application_deployment_id: z.string().uuid().optional(),
+        application_id: z.string().uuid().optional(),
+        created_at: z.string().datetime().optional(),
+        id: z.string().uuid().optional(),
+        log: z.string().optional(),
+        updated_at: z.string().datetime().optional()
+    })).optional(),
     status: z.object({
         application_deployment: z.lazy(() => zApplicationDeployment).optional(),
         application_deployment_id: z.string().uuid().optional(),
@@ -5657,6 +5756,34 @@ export const zPauseLiveDeployServiceData = z.object({
  * OK
  */
 export const zPauseLiveDeployServiceResponse = zPauseResponse;
+
+export const zExecuteACommandOnTheHostMachineData = z.object({
+    body: zHostExecRequest,
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zExecuteACommandOnTheHostMachineResponse = zHostExecResponse;
+
+export const zGetMachineSystemStatsData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetMachineSystemStatsResponse = zSystemStatsResponse;
 
 export const zGetNotificationPreferencesData = z.object({
     body: z.never().optional(),

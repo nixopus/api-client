@@ -250,7 +250,16 @@ export type ApplicationDeployment = {
     id?: string;
     image_s3_key?: string;
     image_size?: number;
-    logs?: Array<ApplicationLogs>;
+    logs?: Array<{
+        application?: Application;
+        application_deployment?: ApplicationDeployment;
+        application_deployment_id?: string;
+        application_id?: string;
+        created_at?: string;
+        id?: string;
+        log?: string;
+        updated_at?: string;
+    }>;
     status?: {
         application_deployment?: ApplicationDeployment;
         application_deployment_id?: string;
@@ -2304,6 +2313,26 @@ export type HealthCheckStatsResponse = {
 };
 
 /**
+ * HostExecRequest schema
+ */
+export type HostExecRequest = {
+    command: string;
+};
+
+/**
+ * HostExecResponse schema
+ */
+export type HostExecResponse = {
+    data?: {
+        exit_code?: number;
+        stderr?: string;
+        stdout?: string;
+    };
+    message?: string;
+    status?: string;
+};
+
+/**
  * IndexCodebaseResponse schema
  */
 export type IndexCodebaseResponse = {
@@ -4291,6 +4320,76 @@ export type SendNotificationResponse = {
         channel?: string;
         error?: string;
         success?: boolean;
+    };
+    message?: string;
+    status?: string;
+};
+
+/**
+ * SystemStatsResponse schema
+ */
+export type SystemStatsResponse = {
+    data?: {
+        architecture?: string;
+        cpu?: {
+            overall?: number;
+            per_core?: Array<{
+                core_id?: number;
+                usage?: number;
+            }>;
+        };
+        cpu_cores?: number;
+        cpu_info?: string;
+        disk?: {
+            allMounts?: Array<{
+                avail?: string;
+                capacity?: string;
+                filesystem?: string;
+                mountPoint?: string;
+                size?: string;
+                used?: string;
+            }>;
+            available?: number;
+            mountPoint?: string;
+            percentage?: number;
+            total?: number;
+            used?: number;
+        };
+        hostname?: string;
+        kernel_version?: string;
+        load?: {
+            fifteenMin?: number;
+            fiveMin?: number;
+            oneMin?: number;
+            uptime?: string;
+        };
+        memory?: {
+            percentage?: number;
+            rawInfo?: string;
+            total?: number;
+            used?: number;
+        };
+        network?: {
+            downloadSpeed?: number;
+            interfaces?: Array<{
+                bytesRecv?: number;
+                bytesSent?: number;
+                dropIn?: number;
+                dropOut?: number;
+                errorIn?: number;
+                errorOut?: number;
+                name?: string;
+                packetsRecv?: number;
+                packetsSent?: number;
+            }>;
+            totalBytesRecv?: number;
+            totalBytesSent?: number;
+            totalPacketsRecv?: number;
+            totalPacketsSent?: number;
+            uploadSpeed?: number;
+        };
+        os_type?: string;
+        timestamp?: string;
     };
     message?: string;
     status?: string;
@@ -7860,6 +7959,75 @@ export type PauseLiveDeployServiceResponses = {
 };
 
 export type PauseLiveDeployServiceResponse = PauseLiveDeployServiceResponses[keyof PauseLiveDeployServiceResponses];
+
+export type ExecuteACommandOnTheHostMachineData = {
+    /**
+     * Request body for types.HostExecRequest
+     */
+    body: HostExecRequest;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/machine/exec';
+};
+
+export type ExecuteACommandOnTheHostMachineErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: ErrorEnvelope;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: ErrorEnvelope;
+    default: unknown;
+};
+
+export type ExecuteACommandOnTheHostMachineError = ExecuteACommandOnTheHostMachineErrors[keyof ExecuteACommandOnTheHostMachineErrors];
+
+export type ExecuteACommandOnTheHostMachineResponses = {
+    /**
+     * OK
+     */
+    200: HostExecResponse;
+};
+
+export type ExecuteACommandOnTheHostMachineResponse = ExecuteACommandOnTheHostMachineResponses[keyof ExecuteACommandOnTheHostMachineResponses];
+
+export type GetMachineSystemStatsData = {
+    body?: never;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/machine/stats';
+};
+
+export type GetMachineSystemStatsErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: ErrorEnvelope;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: ErrorEnvelope;
+    default: unknown;
+};
+
+export type GetMachineSystemStatsError = GetMachineSystemStatsErrors[keyof GetMachineSystemStatsErrors];
+
+export type GetMachineSystemStatsResponses = {
+    /**
+     * OK
+     */
+    200: SystemStatsResponse;
+};
+
+export type GetMachineSystemStatsResponse = GetMachineSystemStatsResponses[keyof GetMachineSystemStatsResponses];
 
 export type GetNotificationPreferencesData = {
     body?: never;
