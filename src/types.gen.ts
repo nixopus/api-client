@@ -250,16 +250,7 @@ export type ApplicationDeployment = {
     id?: string;
     image_s3_key?: string;
     image_size?: number;
-    logs?: Array<{
-        application?: Application;
-        application_deployment?: ApplicationDeployment;
-        application_deployment_id?: string;
-        application_id?: string;
-        created_at?: string;
-        id?: string;
-        log?: string;
-        updated_at?: string;
-    }>;
+    logs?: Array<ApplicationLogs>;
     status?: {
         application_deployment?: ApplicationDeployment;
         application_deployment_id?: string;
@@ -274,7 +265,16 @@ export type ApplicationDeployment = {
 export type ApplicationDomain = {
     application?: Application;
     application_id?: string;
-    compose_service?: ComposeService;
+    compose_service?: {
+        application?: Application;
+        application_id?: string;
+        created_at?: string;
+        domains?: Array<ApplicationDomain>;
+        id?: string;
+        port?: number;
+        service_name?: string;
+        updated_at?: string;
+    };
     compose_service_id?: string;
     created_at?: string;
     domain?: string;
@@ -982,6 +982,7 @@ export type CreateGithubConnectorRequest = {
     app_id?: string;
     client_id?: string;
     client_secret?: string;
+    installation_id?: string;
     pem?: string;
     slug?: string;
     webhook_secret?: string;
@@ -3279,6 +3280,23 @@ export type ListLogsResponse = {
 };
 
 /**
+ * ListPlansResponse schema
+ */
+export type ListPlansResponse = {
+    data?: Array<{
+        id?: string;
+        monthly_cost_cents?: number;
+        monthly_cost_usd?: string;
+        name?: string;
+        ram_mb?: number;
+        storage_mb?: number;
+        tier?: string;
+        vcpu?: number;
+    }>;
+    status?: string;
+};
+
+/**
  * ListRepositoriesResponse schema
  */
 export type ListRepositoriesResponse = {
@@ -3440,6 +3458,7 @@ export type ListServersResponse = {
                 created_at?: string;
                 domain?: string;
                 error?: string;
+                guest_ip?: string;
                 id?: string;
                 lxd_container_name?: string;
                 organization?: {
@@ -3451,6 +3470,7 @@ export type ListServersResponse = {
                     slug?: string;
                 };
                 organization_id?: string;
+                server_id?: string;
                 ssh_key?: {
                     auth_method?: string;
                     created_at?: string;
@@ -3839,6 +3859,47 @@ export type LogsResponse = {
         page?: number;
         page_size?: number;
         total_count?: number;
+    };
+    message?: string;
+    status?: string;
+};
+
+/**
+ * MachineActionResponse schema
+ */
+export type MachineActionResponse = {
+    message?: string;
+    status?: string;
+};
+
+/**
+ * MachineBillingResponse schema
+ */
+export type MachineBillingResponse = {
+    data?: {
+        billing_status?: string;
+        days_remaining?: number;
+        grace_deadline?: string;
+        has_machine?: boolean;
+        message?: string;
+        monthly_cost_cents?: number;
+        monthly_cost_usd?: string;
+        period_end?: string;
+        plan_name?: string;
+        plan_tier?: string;
+    };
+    status?: string;
+};
+
+/**
+ * MachineStateResponse schema
+ */
+export type MachineStateResponse = {
+    data?: {
+        active?: boolean;
+        pid?: number;
+        state?: string;
+        uptime_sec?: number;
     };
     message?: string;
     status?: string;
@@ -4296,6 +4357,35 @@ export type SshConnectionStatusResponse = {
     connected?: boolean;
     is_configured?: boolean;
     message?: string;
+    status?: string;
+};
+
+/**
+ * SelectPlanRequest schema
+ */
+export type SelectPlanRequest = {
+    plan_tier: string;
+};
+
+/**
+ * SelectPlanResponse schema
+ */
+export type SelectPlanResponse = {
+    balance_after_cents?: number;
+    charged_cents?: number;
+    error?: string;
+    message?: string;
+    period_end?: string;
+    plan?: {
+        id?: string;
+        monthly_cost_cents?: number;
+        monthly_cost_usd?: string;
+        name?: string;
+        ram_mb?: number;
+        storage_mb?: number;
+        tier?: string;
+        vcpu?: number;
+    };
     status?: string;
 };
 
@@ -7960,6 +8050,39 @@ export type PauseLiveDeployServiceResponses = {
 
 export type PauseLiveDeployServiceResponse = PauseLiveDeployServiceResponses[keyof PauseLiveDeployServiceResponses];
 
+export type GetMachineBillingStatusData = {
+    body?: never;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/machine/billing';
+};
+
+export type GetMachineBillingStatusErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: ErrorEnvelope;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: ErrorEnvelope;
+    default: unknown;
+};
+
+export type GetMachineBillingStatusError = GetMachineBillingStatusErrors[keyof GetMachineBillingStatusErrors];
+
+export type GetMachineBillingStatusResponses = {
+    /**
+     * OK
+     */
+    200: MachineBillingResponse;
+};
+
+export type GetMachineBillingStatusResponse = GetMachineBillingStatusResponses[keyof GetMachineBillingStatusResponses];
+
 export type ExecuteACommandOnTheHostMachineData = {
     /**
      * Request body for types.HostExecRequest
@@ -7996,6 +8119,174 @@ export type ExecuteACommandOnTheHostMachineResponses = {
 
 export type ExecuteACommandOnTheHostMachineResponse = ExecuteACommandOnTheHostMachineResponses[keyof ExecuteACommandOnTheHostMachineResponses];
 
+export type PauseMachineData = {
+    body?: never;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/machine/pause';
+};
+
+export type PauseMachineErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: ErrorEnvelope;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: ErrorEnvelope;
+    default: unknown;
+};
+
+export type PauseMachineError = PauseMachineErrors[keyof PauseMachineErrors];
+
+export type PauseMachineResponses = {
+    /**
+     * OK
+     */
+    200: MachineActionResponse;
+};
+
+export type PauseMachineResponse = PauseMachineResponses[keyof PauseMachineResponses];
+
+export type SelectAMachinePlanData = {
+    /**
+     * Request body for types.SelectPlanRequest
+     */
+    body: SelectPlanRequest;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/machine/plan/select';
+};
+
+export type SelectAMachinePlanErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: ErrorEnvelope;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: ErrorEnvelope;
+    default: unknown;
+};
+
+export type SelectAMachinePlanError = SelectAMachinePlanErrors[keyof SelectAMachinePlanErrors];
+
+export type SelectAMachinePlanResponses = {
+    /**
+     * OK
+     */
+    200: SelectPlanResponse;
+};
+
+export type SelectAMachinePlanResponse = SelectAMachinePlanResponses[keyof SelectAMachinePlanResponses];
+
+export type ListAvailableMachinePlansData = {
+    body?: never;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/machine/plans';
+};
+
+export type ListAvailableMachinePlansErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: ErrorEnvelope;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: ErrorEnvelope;
+    default: unknown;
+};
+
+export type ListAvailableMachinePlansError = ListAvailableMachinePlansErrors[keyof ListAvailableMachinePlansErrors];
+
+export type ListAvailableMachinePlansResponses = {
+    /**
+     * OK
+     */
+    200: ListPlansResponse;
+};
+
+export type ListAvailableMachinePlansResponse = ListAvailableMachinePlansResponses[keyof ListAvailableMachinePlansResponses];
+
+export type RestartMachineData = {
+    body?: never;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/machine/restart';
+};
+
+export type RestartMachineErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: ErrorEnvelope;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: ErrorEnvelope;
+    default: unknown;
+};
+
+export type RestartMachineError = RestartMachineErrors[keyof RestartMachineErrors];
+
+export type RestartMachineResponses = {
+    /**
+     * OK
+     */
+    200: MachineActionResponse;
+};
+
+export type RestartMachineResponse = RestartMachineResponses[keyof RestartMachineResponses];
+
+export type ResumeMachineData = {
+    body?: never;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/machine/resume';
+};
+
+export type ResumeMachineErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: ErrorEnvelope;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: ErrorEnvelope;
+    default: unknown;
+};
+
+export type ResumeMachineError = ResumeMachineErrors[keyof ResumeMachineErrors];
+
+export type ResumeMachineResponses = {
+    /**
+     * OK
+     */
+    200: MachineActionResponse;
+};
+
+export type ResumeMachineResponse = ResumeMachineResponses[keyof ResumeMachineResponses];
+
 export type GetMachineSystemStatsData = {
     body?: never;
     headers?: {
@@ -8028,6 +8319,39 @@ export type GetMachineSystemStatsResponses = {
 };
 
 export type GetMachineSystemStatsResponse = GetMachineSystemStatsResponses[keyof GetMachineSystemStatsResponses];
+
+export type GetMachineLifecycleStatusData = {
+    body?: never;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/machine/status';
+};
+
+export type GetMachineLifecycleStatusErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: ErrorEnvelope;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: ErrorEnvelope;
+    default: unknown;
+};
+
+export type GetMachineLifecycleStatusError = GetMachineLifecycleStatusErrors[keyof GetMachineLifecycleStatusErrors];
+
+export type GetMachineLifecycleStatusResponses = {
+    /**
+     * OK
+     */
+    200: MachineStateResponse;
+};
+
+export type GetMachineLifecycleStatusResponse = GetMachineLifecycleStatusResponses[keyof GetMachineLifecycleStatusResponses];
 
 export type GetNotificationPreferencesData = {
     body?: never;

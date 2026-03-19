@@ -183,6 +183,7 @@ export const zCreateGithubConnectorRequest = z.object({
     app_id: z.string().uuid().optional(),
     client_id: z.string().uuid().optional(),
     client_secret: z.string().optional(),
+    installation_id: z.string().uuid().optional(),
     pem: z.string().optional(),
     slug: z.string().optional(),
     webhook_secret: z.string().optional()
@@ -1200,6 +1201,23 @@ export const zListLogsResponse = z.object({
 });
 
 /**
+ * ListPlansResponse schema
+ */
+export const zListPlansResponse = z.object({
+    data: z.array(z.object({
+        id: z.string().uuid().optional(),
+        monthly_cost_cents: z.number().int().optional(),
+        monthly_cost_usd: z.string().optional(),
+        name: z.string().optional(),
+        ram_mb: z.number().int().optional(),
+        storage_mb: z.number().int().optional(),
+        tier: z.string().optional(),
+        vcpu: z.number().int().optional()
+    })).optional(),
+    status: z.string().optional()
+});
+
+/**
  * ListRepositoriesResponse schema
  */
 export const zListRepositoriesResponse = z.object({
@@ -1320,6 +1338,47 @@ export const zListRepositoriesResponse = z.object({
             web_commit_signoff_required: z.boolean().optional()
         })).optional(),
         total_count: z.number().int().optional()
+    }).optional(),
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
+ * MachineActionResponse schema
+ */
+export const zMachineActionResponse = z.object({
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
+ * MachineBillingResponse schema
+ */
+export const zMachineBillingResponse = z.object({
+    data: z.object({
+        billing_status: z.string().optional(),
+        days_remaining: z.number().int().optional(),
+        grace_deadline: z.string().optional(),
+        has_machine: z.boolean().optional(),
+        message: z.string().optional(),
+        monthly_cost_cents: z.number().int().optional(),
+        monthly_cost_usd: z.string().optional(),
+        period_end: z.string().optional(),
+        plan_name: z.string().optional(),
+        plan_tier: z.string().optional()
+    }).optional(),
+    status: z.string().optional()
+});
+
+/**
+ * MachineStateResponse schema
+ */
+export const zMachineStateResponse = z.object({
+    data: z.object({
+        active: z.boolean().optional(),
+        pid: z.number().int().optional(),
+        state: z.string().optional(),
+        uptime_sec: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional()
     }).optional(),
     message: z.string().optional(),
     status: z.string().optional()
@@ -1583,6 +1642,35 @@ export const zSshConnectionStatusResponse = z.object({
     connected: z.boolean().optional(),
     is_configured: z.boolean().optional(),
     message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
+ * SelectPlanRequest schema
+ */
+export const zSelectPlanRequest = z.object({
+    plan_tier: z.string()
+});
+
+/**
+ * SelectPlanResponse schema
+ */
+export const zSelectPlanResponse = z.object({
+    balance_after_cents: z.number().int().optional(),
+    charged_cents: z.number().int().optional(),
+    error: z.string().optional(),
+    message: z.string().optional(),
+    period_end: z.string().optional(),
+    plan: z.object({
+        id: z.string().uuid().optional(),
+        monthly_cost_cents: z.number().int().optional(),
+        monthly_cost_usd: z.string().optional(),
+        name: z.string().optional(),
+        ram_mb: z.number().int().optional(),
+        storage_mb: z.number().int().optional(),
+        tier: z.string().optional(),
+        vcpu: z.number().int().optional()
+    }).optional(),
     status: z.string().optional()
 });
 
@@ -1983,6 +2071,7 @@ export const zListServersResponse = z.object({
                 created_at: z.string().datetime().optional(),
                 domain: z.string().optional(),
                 error: z.string().optional(),
+                guest_ip: z.string().optional(),
                 id: z.string().uuid().optional(),
                 lxd_container_name: z.string().optional(),
                 organization: z.object({
@@ -1994,6 +2083,7 @@ export const zListServersResponse = z.object({
                     slug: z.string().optional()
                 }).optional(),
                 organization_id: z.string().uuid().optional(),
+                server_id: z.string().uuid().optional(),
                 ssh_key: z.object({
                     auth_method: z.string().optional(),
                     created_at: z.string().datetime().optional(),
@@ -2501,16 +2591,7 @@ export const zApplicationDeployment: z.AnyZodObject = z.object({
     id: z.string().uuid().optional(),
     image_s3_key: z.string().optional(),
     image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { message: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { message: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-    logs: z.array(z.object({
-        application: zApplication.optional(),
-        application_deployment: z.lazy(() => zApplicationDeployment).optional(),
-        application_deployment_id: z.string().uuid().optional(),
-        application_id: z.string().uuid().optional(),
-        created_at: z.string().datetime().optional(),
-        id: z.string().uuid().optional(),
-        log: z.string().optional(),
-        updated_at: z.string().datetime().optional()
-    })).optional(),
+    logs: z.array(z.lazy(() => zApplicationLogs)).optional(),
     status: z.object({
         application_deployment: z.lazy(() => zApplicationDeployment).optional(),
         application_deployment_id: z.string().uuid().optional(),
@@ -2525,7 +2606,16 @@ export const zApplicationDeployment: z.AnyZodObject = z.object({
 export const zApplicationDomain: z.AnyZodObject = z.object({
     application: zApplication.optional(),
     application_id: z.string().uuid().optional(),
-    compose_service: z.lazy(() => zComposeService).optional(),
+    compose_service: z.object({
+        application: zApplication.optional(),
+        application_id: z.string().uuid().optional(),
+        created_at: z.string().datetime().optional(),
+        domains: z.array(z.lazy(() => zApplicationDomain)).optional(),
+        id: z.string().uuid().optional(),
+        port: z.number().int().optional(),
+        service_name: z.string().optional(),
+        updated_at: z.string().datetime().optional()
+    }).optional(),
     compose_service_id: z.string().uuid().optional(),
     created_at: z.string().datetime().optional(),
     domain: z.string().optional(),
@@ -5757,6 +5847,20 @@ export const zPauseLiveDeployServiceData = z.object({
  */
 export const zPauseLiveDeployServiceResponse = zPauseResponse;
 
+export const zGetMachineBillingStatusData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetMachineBillingStatusResponse = zMachineBillingResponse;
+
 export const zExecuteACommandOnTheHostMachineData = z.object({
     body: zHostExecRequest,
     path: z.never().optional(),
@@ -5771,6 +5875,76 @@ export const zExecuteACommandOnTheHostMachineData = z.object({
  */
 export const zExecuteACommandOnTheHostMachineResponse = zHostExecResponse;
 
+export const zPauseMachineData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zPauseMachineResponse = zMachineActionResponse;
+
+export const zSelectAMachinePlanData = z.object({
+    body: zSelectPlanRequest,
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zSelectAMachinePlanResponse = zSelectPlanResponse;
+
+export const zListAvailableMachinePlansData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zListAvailableMachinePlansResponse = zListPlansResponse;
+
+export const zRestartMachineData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zRestartMachineResponse = zMachineActionResponse;
+
+export const zResumeMachineData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zResumeMachineResponse = zMachineActionResponse;
+
 export const zGetMachineSystemStatsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
@@ -5784,6 +5958,20 @@ export const zGetMachineSystemStatsData = z.object({
  * OK
  */
 export const zGetMachineSystemStatsResponse = zSystemStatsResponse;
+
+export const zGetMachineLifecycleStatusData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetMachineLifecycleStatusResponse = zMachineStateResponse;
 
 export const zGetNotificationPreferencesData = z.object({
     body: z.never().optional(),
