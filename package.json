@@ -24,7 +24,8 @@
     "@hey-api/openapi-ts": "0.93.0",
     "@tanstack/react-query": "^5.90.21",
     "tsup": "^8.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "zod": "^4.0.0"
   },
   "peerDependencies": {
     "@hey-api/client-fetch": "^0.4.0",
