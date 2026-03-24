@@ -265,16 +265,7 @@ export type ApplicationDeployment = {
 export type ApplicationDomain = {
     application?: Application;
     application_id?: string;
-    compose_service?: {
-        application?: Application;
-        application_id?: string;
-        created_at?: string;
-        domains?: Array<ApplicationDomain>;
-        id?: string;
-        port?: number;
-        service_name?: string;
-        updated_at?: string;
-    };
+    compose_service?: ComposeService;
     compose_service_id?: string;
     created_at?: string;
     domain?: string;
@@ -528,28 +519,10 @@ export type BootstrapResponse = {
 };
 
 /**
- * CLIInitRequest schema
+ * CancelDeploymentRequest schema
  */
-export type CliInitRequest = {
-    branch?: string;
-    domains?: Array<string>;
-    environment_variables?: {
-        [key: string]: string;
-    };
-    name?: string;
-    repository?: string;
-};
-
-/**
- * CLIInitResponse schema
- */
-export type CliInitResponse = {
-    deploy_domain?: string;
-    domain?: string;
-    family_id?: string;
-    message?: string;
-    project_id?: string;
-    status?: string;
+export type CancelDeploymentRequest = {
+    deployment_id?: string;
 };
 
 /**
@@ -2334,18 +2307,6 @@ export type HostExecResponse = {
 };
 
 /**
- * IndexCodebaseResponse schema
- */
-export type IndexCodebaseResponse = {
-    data?: {
-        indexed?: number;
-        skipped?: number;
-    };
-    message?: string;
-    status?: string;
-};
-
-/**
  * IsFeatureEnabledResponse schema
  */
 export type IsFeatureEnabledResponse = {
@@ -3931,21 +3892,6 @@ export type MoveDirectory = {
 };
 
 /**
- * PauseRequest schema
- */
-export type PauseRequest = {
-    application_id?: string;
-};
-
-/**
- * PauseResponse schema
- */
-export type PauseResponse = {
-    message?: string;
-    status?: string;
-};
-
-/**
  * PreferencesResponse schema
  */
 export type PreferencesResponse = {
@@ -5065,42 +5011,6 @@ export type GetBootstrapSessionDataResponses = {
 
 export type GetBootstrapSessionDataResponse = GetBootstrapSessionDataResponses[keyof GetBootstrapSessionDataResponses];
 
-export type InitializeCliSessionData = {
-    /**
-     * Request body for auth.CLIInitRequest
-     */
-    body: CliInitRequest;
-    headers?: {
-        Accept?: string;
-    };
-    path?: never;
-    query?: never;
-    url: '/api/v1/auth/cli/init';
-};
-
-export type InitializeCliSessionErrors = {
-    /**
-     * Bad Request _(validation or deserialization error)_
-     */
-    400: ErrorEnvelope;
-    /**
-     * Internal Server Error _(panics)_
-     */
-    500: ErrorEnvelope;
-    default: unknown;
-};
-
-export type InitializeCliSessionError = InitializeCliSessionErrors[keyof InitializeCliSessionErrors];
-
-export type InitializeCliSessionResponses = {
-    /**
-     * OK
-     */
-    200: CliInitResponse;
-};
-
-export type InitializeCliSessionResponse = InitializeCliSessionResponses[keyof InitializeCliSessionResponses];
-
 export type CheckAdminRegistrationData = {
     body?: never;
     headers?: {
@@ -5672,6 +5582,42 @@ export type UpdateApplicationResponses = {
 
 export type UpdateApplicationResponse = UpdateApplicationResponses[keyof UpdateApplicationResponses];
 
+export type CancelDeploymentData = {
+    /**
+     * Request body for types.CancelDeploymentRequest
+     */
+    body: CancelDeploymentRequest;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/deploy/application/cancel-deployment';
+};
+
+export type CancelDeploymentErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: ErrorEnvelope;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: ErrorEnvelope;
+    default: unknown;
+};
+
+export type CancelDeploymentError = CancelDeploymentErrors[keyof CancelDeploymentErrors];
+
+export type CancelDeploymentResponses = {
+    /**
+     * OK
+     */
+    200: MessageResponse;
+};
+
+export type CancelDeploymentResponse = CancelDeploymentResponses[keyof CancelDeploymentResponses];
+
 export type ListComposeServicesData = {
     body?: never;
     headers?: {
@@ -5932,44 +5878,6 @@ export type AddApplicationDomainResponses = {
 };
 
 export type AddApplicationDomainResponse = AddApplicationDomainResponses[keyof AddApplicationDomainResponses];
-
-export type IndexApplicationCodebaseData = {
-    body?: never;
-    headers?: {
-        Accept?: string;
-    };
-    path?: never;
-    query: {
-        /**
-         * Application ID
-         */
-        application_id: string;
-    };
-    url: '/api/v1/deploy/application/index';
-};
-
-export type IndexApplicationCodebaseErrors = {
-    /**
-     * Bad Request _(validation or deserialization error)_
-     */
-    400: ErrorEnvelope;
-    /**
-     * Internal Server Error _(panics)_
-     */
-    500: ErrorEnvelope;
-    default: unknown;
-};
-
-export type IndexApplicationCodebaseError = IndexApplicationCodebaseErrors[keyof IndexApplicationCodebaseErrors];
-
-export type IndexApplicationCodebaseResponses = {
-    /**
-     * OK
-     */
-    200: IndexCodebaseResponse;
-};
-
-export type IndexApplicationCodebaseResponse = IndexApplicationCodebaseResponses[keyof IndexApplicationCodebaseResponses];
 
 export type UpdateApplicationLabelsData = {
     /**
@@ -8004,51 +7912,6 @@ export type ToggleHealthCheckResponses = {
 };
 
 export type ToggleHealthCheckResponse = ToggleHealthCheckResponses[keyof ToggleHealthCheckResponses];
-
-export type PauseLiveDeployServiceData = {
-    /**
-     * Request body for routes.PauseRequest
-     */
-    body: PauseRequest;
-    headers?: {
-        Accept?: string;
-    };
-    path?: never;
-    query?: {
-        /**
-         * Application ID
-         */
-        application_id?: string;
-        /**
-         * Session token
-         */
-        token?: string;
-    };
-    url: '/api/v1/live/pause';
-};
-
-export type PauseLiveDeployServiceErrors = {
-    /**
-     * Bad Request _(validation or deserialization error)_
-     */
-    400: ErrorEnvelope;
-    /**
-     * Internal Server Error _(panics)_
-     */
-    500: ErrorEnvelope;
-    default: unknown;
-};
-
-export type PauseLiveDeployServiceError = PauseLiveDeployServiceErrors[keyof PauseLiveDeployServiceErrors];
-
-export type PauseLiveDeployServiceResponses = {
-    /**
-     * OK
-     */
-    200: PauseResponse;
-};
-
-export type PauseLiveDeployServiceResponse = PauseLiveDeployServiceResponses[keyof PauseLiveDeployServiceResponses];
 
 export type GetMachineBillingStatusData = {
     body?: never;

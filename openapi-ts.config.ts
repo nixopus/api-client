@@ -9,7 +9,6 @@ export default {
     {
       name: 'zod',
       includeInEntry: true,
-      compatibilityVersion: 3,
     },
     {
       name: '@tanstack/react-query',
