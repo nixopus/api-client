@@ -233,6 +233,17 @@ export const zCreateSmtpConfigRequest = z.object({
 });
 
 /**
+ * CreateServerRequest schema
+ */
+export const zCreateServerRequest = z.object({
+    credentials: z.record(z.string(), z.string()).optional(),
+    custom_url: z.string().optional(),
+    enabled: z.boolean().optional(),
+    name: z.string().optional(),
+    provider_id: z.uuid().optional()
+});
+
+/**
  * CreateWebhookConfigRequest schema
  */
 export const zCreateWebhookConfigRequest = z.object({
@@ -330,6 +341,13 @@ export const zDeleteSmtpConfigRequest = z.object({
 });
 
 /**
+ * DeleteServerRequest schema
+ */
+export const zDeleteServerRequest = z.object({
+    id: z.uuid().optional()
+});
+
+/**
  * DeleteWebhookConfigRequest schema
  */
 export const zDeleteWebhookConfigRequest = z.object({
@@ -362,12 +380,6 @@ export const zEnvironmentsInFamilyResponse = z.object({
     }).optional(),
     message: z.string().optional(),
     status: z.string().optional()
-});
-
-export const zErrorEnvelope = z.object({
-    code: z.string(),
-    details: z.record(z.string(), z.string()).optional(),
-    message: z.string()
 });
 
 export const zExtension = z.object({
@@ -1550,6 +1562,15 @@ export const zRemoveCustomDomainRequest = z.object({
 });
 
 /**
+ * Response schema
+ */
+export const zResponse = z.object({
+    data: z.unknown().optional(),
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
  * RestartDeploymentRequest schema
  */
 export const zRestartDeploymentRequest = z.object({
@@ -1723,6 +1744,15 @@ export const zSystemStatsResponse = z.object({
     }).optional(),
     message: z.string().optional(),
     status: z.string().optional()
+});
+
+/**
+ * TestServerRequest schema
+ */
+export const zTestServerRequest = z.object({
+    credentials: z.record(z.string(), z.string()).optional(),
+    custom_url: z.string().optional(),
+    provider_id: z.uuid().optional()
 });
 
 /**
@@ -1918,6 +1948,17 @@ export const zUpdateSmtpConfigRequest = z.object({
 });
 
 /**
+ * UpdateServerRequest schema
+ */
+export const zUpdateServerRequest = z.object({
+    credentials: z.record(z.string(), z.string()).optional(),
+    custom_url: z.string().optional(),
+    enabled: z.boolean().optional(),
+    id: z.uuid().optional(),
+    name: z.string().optional()
+});
+
+/**
  * UpdateThemeRequest schema
  */
 export const zUpdateThemeRequest = z.object({
@@ -1963,7 +2004,6 @@ export const zUser = z.object({
     name: z.string().optional(),
     organization_users: z.array(z.object({
         created_at: z.iso.datetime().optional(),
-        deleted_at: z.iso.datetime().optional(),
         id: z.uuid().optional(),
         organization: z.object({
             created_at: z.iso.datetime().optional(),
@@ -1974,7 +2014,7 @@ export const zUser = z.object({
             slug: z.string().optional()
         }).optional(),
         organization_id: z.uuid().optional(),
-        updated_at: z.iso.datetime().optional(),
+        role: z.string().optional(),
         user: z.lazy((): any => zUser).optional(),
         user_id: z.uuid().optional()
     })).optional(),
@@ -1987,7 +2027,6 @@ export const zUser = z.object({
         slug: z.string().optional()
     })).optional(),
     provision_status: z.string().optional(),
-    supertokens_user_id: z.uuid().optional(),
     updated_at: z.iso.datetime().optional(),
     username: z.string().optional()
 });
@@ -2085,7 +2124,6 @@ export const zListServersResponse = z.object({
                     name: z.string().optional(),
                     organization_users: z.array(z.object({
                         created_at: z.iso.datetime().optional(),
-                        deleted_at: z.iso.datetime().optional(),
                         id: z.uuid().optional(),
                         organization: z.object({
                             created_at: z.iso.datetime().optional(),
@@ -2096,7 +2134,7 @@ export const zListServersResponse = z.object({
                             slug: z.string().optional()
                         }).optional(),
                         organization_id: z.uuid().optional(),
-                        updated_at: z.iso.datetime().optional(),
+                        role: z.string().optional(),
                         user: zUser.optional(),
                         user_id: z.uuid().optional()
                     })).optional(),
@@ -2109,7 +2147,6 @@ export const zListServersResponse = z.object({
                         slug: z.string().optional()
                     })).optional(),
                     provision_status: z.string().optional(),
-                    supertokens_user_id: z.uuid().optional(),
                     updated_at: z.iso.datetime().optional(),
                     username: z.string().optional()
                 }).optional(),
@@ -2181,7 +2218,6 @@ export const zUserPreferencesResponse = z.object({
             name: z.string().optional(),
             organization_users: z.array(z.object({
                 created_at: z.iso.datetime().optional(),
-                deleted_at: z.iso.datetime().optional(),
                 id: z.uuid().optional(),
                 organization: z.object({
                     created_at: z.iso.datetime().optional(),
@@ -2192,7 +2228,7 @@ export const zUserPreferencesResponse = z.object({
                     slug: z.string().optional()
                 }).optional(),
                 organization_id: z.uuid().optional(),
-                updated_at: z.iso.datetime().optional(),
+                role: z.string().optional(),
                 user: zUser.optional(),
                 user_id: z.uuid().optional()
             })).optional(),
@@ -2205,7 +2241,6 @@ export const zUserPreferencesResponse = z.object({
                 slug: z.string().optional()
             })).optional(),
             provision_status: z.string().optional(),
-            supertokens_user_id: z.uuid().optional(),
             updated_at: z.iso.datetime().optional(),
             username: z.string().optional()
         }).optional(),
@@ -2231,7 +2266,6 @@ export const zUserResponse = z.object({
         name: z.string().optional(),
         organization_users: z.array(z.object({
             created_at: z.iso.datetime().optional(),
-            deleted_at: z.iso.datetime().optional(),
             id: z.uuid().optional(),
             organization: z.object({
                 created_at: z.iso.datetime().optional(),
@@ -2242,7 +2276,7 @@ export const zUserResponse = z.object({
                 slug: z.string().optional()
             }).optional(),
             organization_id: z.uuid().optional(),
-            updated_at: z.iso.datetime().optional(),
+            role: z.string().optional(),
             user: zUser.optional(),
             user_id: z.uuid().optional()
         })).optional(),
@@ -2255,7 +2289,6 @@ export const zUserResponse = z.object({
             slug: z.string().optional()
         })).optional(),
         provision_status: z.string().optional(),
-        supertokens_user_id: z.uuid().optional(),
         updated_at: z.iso.datetime().optional(),
         username: z.string().optional()
     }).optional(),
@@ -2289,7 +2322,6 @@ export const zUserSettingsResponse = z.object({
             name: z.string().optional(),
             organization_users: z.array(z.object({
                 created_at: z.iso.datetime().optional(),
-                deleted_at: z.iso.datetime().optional(),
                 id: z.uuid().optional(),
                 organization: z.object({
                     created_at: z.iso.datetime().optional(),
@@ -2300,7 +2332,7 @@ export const zUserSettingsResponse = z.object({
                     slug: z.string().optional()
                 }).optional(),
                 organization_id: z.uuid().optional(),
-                updated_at: z.iso.datetime().optional(),
+                role: z.string().optional(),
                 user: zUser.optional(),
                 user_id: z.uuid().optional()
             })).optional(),
@@ -2313,7 +2345,6 @@ export const zUserSettingsResponse = z.object({
                 slug: z.string().optional()
             })).optional(),
             provision_status: z.string().optional(),
-            supertokens_user_id: z.uuid().optional(),
             updated_at: z.iso.datetime().optional(),
             username: z.string().optional()
         }).optional(),
@@ -2505,7 +2536,6 @@ export const zApplication = z.object({
         name: z.string().optional(),
         organization_users: z.array(z.object({
             created_at: z.iso.datetime().optional(),
-            deleted_at: z.iso.datetime().optional(),
             id: z.uuid().optional(),
             organization: z.object({
                 created_at: z.iso.datetime().optional(),
@@ -2516,7 +2546,7 @@ export const zApplication = z.object({
                 slug: z.string().optional()
             }).optional(),
             organization_id: z.uuid().optional(),
-            updated_at: z.iso.datetime().optional(),
+            role: z.string().optional(),
             user: zUser.optional(),
             user_id: z.uuid().optional()
         })).optional(),
@@ -2529,7 +2559,6 @@ export const zApplication = z.object({
             slug: z.string().optional()
         })).optional(),
         provision_status: z.string().optional(),
-        supertokens_user_id: z.uuid().optional(),
         updated_at: z.iso.datetime().optional(),
         username: z.string().optional()
     }).optional(),
@@ -2548,7 +2577,16 @@ export const zApplicationDeployment = z.object({
     id: z.uuid().optional(),
     image_s3_key: z.string().optional(),
     image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-    logs: z.array(z.lazy((): any => zApplicationLogs)).optional(),
+    logs: z.array(z.object({
+        application: zApplication.optional(),
+        application_deployment: z.lazy((): any => zApplicationDeployment).optional(),
+        application_deployment_id: z.uuid().optional(),
+        application_id: z.uuid().optional(),
+        created_at: z.iso.datetime().optional(),
+        id: z.uuid().optional(),
+        log: z.string().optional(),
+        updated_at: z.iso.datetime().optional()
+    })).optional(),
     status: z.object({
         application_deployment: z.lazy((): any => zApplicationDeployment).optional(),
         application_deployment_id: z.uuid().optional(),
@@ -2573,29 +2611,7 @@ export const zApplicationDomain = z.object({
 
 export const zApplicationLogs = z.object({
     application: zApplication.optional(),
-    application_deployment: z.object({
-        application: zApplication.optional(),
-        application_id: z.uuid().optional(),
-        commit_hash: z.string().optional(),
-        container_id: z.uuid().optional(),
-        container_image: z.string().optional(),
-        container_name: z.string().optional(),
-        container_status: z.string().optional(),
-        created_at: z.iso.datetime().optional(),
-        id: z.uuid().optional(),
-        image_s3_key: z.string().optional(),
-        image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-        logs: z.array(z.lazy((): any => zApplicationLogs)).optional(),
-        status: z.object({
-            application_deployment: zApplicationDeployment.optional(),
-            application_deployment_id: z.uuid().optional(),
-            created_at: z.iso.datetime().optional(),
-            id: z.uuid().optional(),
-            status: z.string().optional(),
-            updated_at: z.iso.datetime().optional()
-        }).optional(),
-        updated_at: z.iso.datetime().optional()
-    }).optional(),
+    application_deployment: zApplicationDeployment.optional(),
     application_deployment_id: z.uuid().optional(),
     application_id: z.uuid().optional(),
     created_at: z.iso.datetime().optional(),
@@ -2760,7 +2776,6 @@ export const zApplicationResponse = z.object({
             name: z.string().optional(),
             organization_users: z.array(z.object({
                 created_at: z.iso.datetime().optional(),
-                deleted_at: z.iso.datetime().optional(),
                 id: z.uuid().optional(),
                 organization: z.object({
                     created_at: z.iso.datetime().optional(),
@@ -2771,7 +2786,7 @@ export const zApplicationResponse = z.object({
                     slug: z.string().optional()
                 }).optional(),
                 organization_id: z.uuid().optional(),
-                updated_at: z.iso.datetime().optional(),
+                role: z.string().optional(),
                 user: zUser.optional(),
                 user_id: z.uuid().optional()
             })).optional(),
@@ -2784,7 +2799,6 @@ export const zApplicationResponse = z.object({
                 slug: z.string().optional()
             })).optional(),
             provision_status: z.string().optional(),
-            supertokens_user_id: z.uuid().optional(),
             updated_at: z.iso.datetime().optional(),
             username: z.string().optional()
         }).optional(),
@@ -2798,7 +2812,16 @@ export const zComposeService = z.object({
     application: zApplication.optional(),
     application_id: z.uuid().optional(),
     created_at: z.iso.datetime().optional(),
-    domains: z.array(zApplicationDomain).optional(),
+    domains: z.array(z.object({
+        application: zApplication.optional(),
+        application_id: z.uuid().optional(),
+        compose_service: z.lazy((): any => zComposeService).optional(),
+        compose_service_id: z.uuid().optional(),
+        created_at: z.iso.datetime().optional(),
+        domain: z.string().optional(),
+        id: z.uuid().optional(),
+        port: z.int().optional()
+    })).optional(),
     id: z.uuid().optional(),
     port: z.int().optional(),
     service_name: z.string().optional(),
@@ -2935,7 +2958,6 @@ export const zComposeServicesResponse = z.object({
                 name: z.string().optional(),
                 organization_users: z.array(z.object({
                     created_at: z.iso.datetime().optional(),
-                    deleted_at: z.iso.datetime().optional(),
                     id: z.uuid().optional(),
                     organization: z.object({
                         created_at: z.iso.datetime().optional(),
@@ -2946,7 +2968,7 @@ export const zComposeServicesResponse = z.object({
                         slug: z.string().optional()
                     }).optional(),
                     organization_id: z.uuid().optional(),
-                    updated_at: z.iso.datetime().optional(),
+                    role: z.string().optional(),
                     user: zUser.optional(),
                     user_id: z.uuid().optional()
                 })).optional(),
@@ -2959,7 +2981,6 @@ export const zComposeServicesResponse = z.object({
                     slug: z.string().optional()
                 })).optional(),
                 provision_status: z.string().optional(),
-                supertokens_user_id: z.uuid().optional(),
                 updated_at: z.iso.datetime().optional(),
                 username: z.string().optional()
             }).optional(),
@@ -3084,7 +3105,6 @@ export const zComposeServicesResponse = z.object({
                     name: z.string().optional(),
                     organization_users: z.array(z.object({
                         created_at: z.iso.datetime().optional(),
-                        deleted_at: z.iso.datetime().optional(),
                         id: z.uuid().optional(),
                         organization: z.object({
                             created_at: z.iso.datetime().optional(),
@@ -3095,7 +3115,7 @@ export const zComposeServicesResponse = z.object({
                             slug: z.string().optional()
                         }).optional(),
                         organization_id: z.uuid().optional(),
-                        updated_at: z.iso.datetime().optional(),
+                        role: z.string().optional(),
                         user: zUser.optional(),
                         user_id: z.uuid().optional()
                     })).optional(),
@@ -3108,7 +3128,6 @@ export const zComposeServicesResponse = z.object({
                         slug: z.string().optional()
                     })).optional(),
                     provision_status: z.string().optional(),
-                    supertokens_user_id: z.uuid().optional(),
                     updated_at: z.iso.datetime().optional(),
                     username: z.string().optional()
                 }).optional(),
@@ -3235,7 +3254,6 @@ export const zDeploymentResponse = z.object({
                 name: z.string().optional(),
                 organization_users: z.array(z.object({
                     created_at: z.iso.datetime().optional(),
-                    deleted_at: z.iso.datetime().optional(),
                     id: z.uuid().optional(),
                     organization: z.object({
                         created_at: z.iso.datetime().optional(),
@@ -3246,7 +3264,7 @@ export const zDeploymentResponse = z.object({
                         slug: z.string().optional()
                     }).optional(),
                     organization_id: z.uuid().optional(),
-                    updated_at: z.iso.datetime().optional(),
+                    role: z.string().optional(),
                     user: zUser.optional(),
                     user_id: z.uuid().optional()
                 })).optional(),
@@ -3259,7 +3277,6 @@ export const zDeploymentResponse = z.object({
                     slug: z.string().optional()
                 })).optional(),
                 provision_status: z.string().optional(),
-                supertokens_user_id: z.uuid().optional(),
                 updated_at: z.iso.datetime().optional(),
                 username: z.string().optional()
             }).optional(),
@@ -3366,7 +3383,6 @@ export const zDeploymentResponse = z.object({
                     name: z.string().optional(),
                     organization_users: z.array(z.object({
                         created_at: z.iso.datetime().optional(),
-                        deleted_at: z.iso.datetime().optional(),
                         id: z.uuid().optional(),
                         organization: z.object({
                             created_at: z.iso.datetime().optional(),
@@ -3377,7 +3393,7 @@ export const zDeploymentResponse = z.object({
                             slug: z.string().optional()
                         }).optional(),
                         organization_id: z.uuid().optional(),
-                        updated_at: z.iso.datetime().optional(),
+                        role: z.string().optional(),
                         user: zUser.optional(),
                         user_id: z.uuid().optional()
                     })).optional(),
@@ -3390,7 +3406,6 @@ export const zDeploymentResponse = z.object({
                         slug: z.string().optional()
                     })).optional(),
                     provision_status: z.string().optional(),
-                    supertokens_user_id: z.uuid().optional(),
                     updated_at: z.iso.datetime().optional(),
                     username: z.string().optional()
                 }).optional(),
@@ -3574,7 +3589,6 @@ export const zHealthCheckResult = z.object({
                 name: z.string().optional(),
                 organization_users: z.array(z.object({
                     created_at: z.iso.datetime().optional(),
-                    deleted_at: z.iso.datetime().optional(),
                     id: z.uuid().optional(),
                     organization: z.object({
                         created_at: z.iso.datetime().optional(),
@@ -3585,7 +3599,7 @@ export const zHealthCheckResult = z.object({
                         slug: z.string().optional()
                     }).optional(),
                     organization_id: z.uuid().optional(),
-                    updated_at: z.iso.datetime().optional(),
+                    role: z.string().optional(),
                     user: zUser.optional(),
                     user_id: z.uuid().optional()
                 })).optional(),
@@ -3598,7 +3612,6 @@ export const zHealthCheckResult = z.object({
                     slug: z.string().optional()
                 })).optional(),
                 provision_status: z.string().optional(),
-                supertokens_user_id: z.uuid().optional(),
                 updated_at: z.iso.datetime().optional(),
                 username: z.string().optional()
             }).optional(),
@@ -3791,7 +3804,6 @@ export const zHealthCheckResultsResponse = z.object({
                     name: z.string().optional(),
                     organization_users: z.array(z.object({
                         created_at: z.iso.datetime().optional(),
-                        deleted_at: z.iso.datetime().optional(),
                         id: z.uuid().optional(),
                         organization: z.object({
                             created_at: z.iso.datetime().optional(),
@@ -3802,7 +3814,7 @@ export const zHealthCheckResultsResponse = z.object({
                             slug: z.string().optional()
                         }).optional(),
                         organization_id: z.uuid().optional(),
-                        updated_at: z.iso.datetime().optional(),
+                        role: z.string().optional(),
                         user: zUser.optional(),
                         user_id: z.uuid().optional()
                     })).optional(),
@@ -3815,7 +3827,6 @@ export const zHealthCheckResultsResponse = z.object({
                         slug: z.string().optional()
                     })).optional(),
                     provision_status: z.string().optional(),
-                    supertokens_user_id: z.uuid().optional(),
                     updated_at: z.iso.datetime().optional(),
                     username: z.string().optional()
                 }).optional(),
@@ -4009,7 +4020,6 @@ export const zListApplicationsResponse = z.object({
                 name: z.string().optional(),
                 organization_users: z.array(z.object({
                     created_at: z.iso.datetime().optional(),
-                    deleted_at: z.iso.datetime().optional(),
                     id: z.uuid().optional(),
                     organization: z.object({
                         created_at: z.iso.datetime().optional(),
@@ -4020,7 +4030,7 @@ export const zListApplicationsResponse = z.object({
                         slug: z.string().optional()
                     }).optional(),
                     organization_id: z.uuid().optional(),
-                    updated_at: z.iso.datetime().optional(),
+                    role: z.string().optional(),
                     user: zUser.optional(),
                     user_id: z.uuid().optional()
                 })).optional(),
@@ -4033,7 +4043,6 @@ export const zListApplicationsResponse = z.object({
                     slug: z.string().optional()
                 })).optional(),
                 provision_status: z.string().optional(),
-                supertokens_user_id: z.uuid().optional(),
                 updated_at: z.iso.datetime().optional(),
                 username: z.string().optional()
             }).optional(),
@@ -4152,7 +4161,6 @@ export const zListDeploymentsResponse = z.object({
                     name: z.string().optional(),
                     organization_users: z.array(z.object({
                         created_at: z.iso.datetime().optional(),
-                        deleted_at: z.iso.datetime().optional(),
                         id: z.uuid().optional(),
                         organization: z.object({
                             created_at: z.iso.datetime().optional(),
@@ -4163,7 +4171,7 @@ export const zListDeploymentsResponse = z.object({
                             slug: z.string().optional()
                         }).optional(),
                         organization_id: z.uuid().optional(),
-                        updated_at: z.iso.datetime().optional(),
+                        role: z.string().optional(),
                         user: zUser.optional(),
                         user_id: z.uuid().optional()
                     })).optional(),
@@ -4176,7 +4184,6 @@ export const zListDeploymentsResponse = z.object({
                         slug: z.string().optional()
                     })).optional(),
                     provision_status: z.string().optional(),
-                    supertokens_user_id: z.uuid().optional(),
                     updated_at: z.iso.datetime().optional(),
                     username: z.string().optional()
                 }).optional(),
@@ -4283,7 +4290,6 @@ export const zListDeploymentsResponse = z.object({
                         name: z.string().optional(),
                         organization_users: z.array(z.object({
                             created_at: z.iso.datetime().optional(),
-                            deleted_at: z.iso.datetime().optional(),
                             id: z.uuid().optional(),
                             organization: z.object({
                                 created_at: z.iso.datetime().optional(),
@@ -4294,7 +4300,7 @@ export const zListDeploymentsResponse = z.object({
                                 slug: z.string().optional()
                             }).optional(),
                             organization_id: z.uuid().optional(),
-                            updated_at: z.iso.datetime().optional(),
+                            role: z.string().optional(),
                             user: zUser.optional(),
                             user_id: z.uuid().optional()
                         })).optional(),
@@ -4307,7 +4313,6 @@ export const zListDeploymentsResponse = z.object({
                             slug: z.string().optional()
                         })).optional(),
                         provision_status: z.string().optional(),
-                        supertokens_user_id: z.uuid().optional(),
                         updated_at: z.iso.datetime().optional(),
                         username: z.string().optional()
                     }).optional(),
@@ -4457,7 +4462,6 @@ export const zLogsResponse = z.object({
                     name: z.string().optional(),
                     organization_users: z.array(z.object({
                         created_at: z.iso.datetime().optional(),
-                        deleted_at: z.iso.datetime().optional(),
                         id: z.uuid().optional(),
                         organization: z.object({
                             created_at: z.iso.datetime().optional(),
@@ -4468,7 +4472,7 @@ export const zLogsResponse = z.object({
                             slug: z.string().optional()
                         }).optional(),
                         organization_id: z.uuid().optional(),
-                        updated_at: z.iso.datetime().optional(),
+                        role: z.string().optional(),
                         user: zUser.optional(),
                         user_id: z.uuid().optional()
                     })).optional(),
@@ -4481,7 +4485,6 @@ export const zLogsResponse = z.object({
                         slug: z.string().optional()
                     })).optional(),
                     provision_status: z.string().optional(),
-                    supertokens_user_id: z.uuid().optional(),
                     updated_at: z.iso.datetime().optional(),
                     username: z.string().optional()
                 }).optional(),
@@ -4578,7 +4581,6 @@ export const zLogsResponse = z.object({
                         name: z.string().optional(),
                         organization_users: z.array(z.object({
                             created_at: z.iso.datetime().optional(),
-                            deleted_at: z.iso.datetime().optional(),
                             id: z.uuid().optional(),
                             organization: z.object({
                                 created_at: z.iso.datetime().optional(),
@@ -4589,7 +4591,7 @@ export const zLogsResponse = z.object({
                                 slug: z.string().optional()
                             }).optional(),
                             organization_id: z.uuid().optional(),
-                            updated_at: z.iso.datetime().optional(),
+                            role: z.string().optional(),
                             user: zUser.optional(),
                             user_id: z.uuid().optional()
                         })).optional(),
@@ -4602,7 +4604,6 @@ export const zLogsResponse = z.object({
                             slug: z.string().optional()
                         })).optional(),
                         provision_status: z.string().optional(),
-                        supertokens_user_id: z.uuid().optional(),
                         updated_at: z.iso.datetime().optional(),
                         username: z.string().optional()
                     }).optional(),
@@ -4801,7 +4802,6 @@ export const zProjectFamilyResponse = z.object({
                 name: z.string().optional(),
                 organization_users: z.array(z.object({
                     created_at: z.iso.datetime().optional(),
-                    deleted_at: z.iso.datetime().optional(),
                     id: z.uuid().optional(),
                     organization: z.object({
                         created_at: z.iso.datetime().optional(),
@@ -4812,7 +4812,7 @@ export const zProjectFamilyResponse = z.object({
                         slug: z.string().optional()
                     }).optional(),
                     organization_id: z.uuid().optional(),
-                    updated_at: z.iso.datetime().optional(),
+                    role: z.string().optional(),
                     user: zUser.optional(),
                     user_id: z.uuid().optional()
                 })).optional(),
@@ -4825,7 +4825,6 @@ export const zProjectFamilyResponse = z.object({
                     slug: z.string().optional()
                 })).optional(),
                 provision_status: z.string().optional(),
-                supertokens_user_id: z.uuid().optional(),
                 updated_at: z.iso.datetime().optional(),
                 username: z.string().optional()
             }).optional(),
@@ -4836,12 +4835,12 @@ export const zProjectFamilyResponse = z.object({
     status: z.string().optional()
 });
 
-export const zListAuditLogsData = z.object({
+export const zGetLogs3Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        page: z.int().gte(1).optional().default(1),
-        page_size: z.int().gte(1).lte(100).optional().default(20),
+        page: z.int().optional(),
+        page_size: z.int().optional(),
         search: z.string().optional(),
         resource_type: z.string().optional()
     }).optional(),
@@ -4853,9 +4852,9 @@ export const zListAuditLogsData = z.object({
 /**
  * OK
  */
-export const zListAuditLogsResponse = zGetActivitiesResponse;
+export const zGetLogs3Response = zGetActivitiesResponse;
 
-export const zGetBootstrapSessionDataData = z.object({
+export const zGetBootstrapData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -4867,9 +4866,9 @@ export const zGetBootstrapSessionDataData = z.object({
 /**
  * OK
  */
-export const zGetBootstrapSessionDataResponse = zBootstrapResponse;
+export const zGetBootstrapResponse = zBootstrapResponse;
 
-export const zCheckAdminRegistrationData = z.object({
+export const zGetIsAdminRegisteredData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -4881,9 +4880,9 @@ export const zCheckAdminRegistrationData = z.object({
 /**
  * OK
  */
-export const zCheckAdminRegistrationResponse = zAdminRegisteredResponse;
+export const zGetIsAdminRegisteredResponse = zAdminRegisteredResponse;
 
-export const zListContainersData = z.object({
+export const zGetEndpoint9Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -4895,9 +4894,9 @@ export const zListContainersData = z.object({
 /**
  * OK
  */
-export const zListContainersResponse2 = zListContainersResponse;
+export const zGetEndpoint9Response = zListContainersResponse;
 
-export const zListImagesData = z.object({
+export const zCreateImages2Data = z.object({
     body: zListImagesRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -4909,9 +4908,9 @@ export const zListImagesData = z.object({
 /**
  * OK
  */
-export const zListImagesResponse2 = zListImagesResponse;
+export const zCreateImages2Response = zListImagesResponse;
 
-export const zPruneBuildCacheData = z.object({
+export const zCreateBuildCacheData = z.object({
     body: zPruneBuildCacheRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -4923,9 +4922,9 @@ export const zPruneBuildCacheData = z.object({
 /**
  * OK
  */
-export const zPruneBuildCacheResponse = zMessageResponse;
+export const zCreateBuildCacheResponse = zMessageResponse;
 
-export const zPruneImagesData = z.object({
+export const zCreateImagesData = z.object({
     body: zPruneImagesRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -4937,9 +4936,9 @@ export const zPruneImagesData = z.object({
 /**
  * OK
  */
-export const zPruneImagesResponse2 = zPruneImagesResponse;
+export const zCreateImagesResponse = zPruneImagesResponse;
 
-export const zRemoveContainerData = z.object({
+export const zDeleteContainerIdData = z.object({
     body: z.never().optional(),
     path: z.object({
         container_id: z.string()
@@ -4953,9 +4952,9 @@ export const zRemoveContainerData = z.object({
 /**
  * OK
  */
-export const zRemoveContainerResponse = zContainerActionResponse;
+export const zDeleteContainerIdResponse = zContainerActionResponse;
 
-export const zGetContainerData = z.object({
+export const zGetContainerIdData = z.object({
     body: z.never().optional(),
     path: z.object({
         container_id: z.string()
@@ -4969,9 +4968,9 @@ export const zGetContainerData = z.object({
 /**
  * OK
  */
-export const zGetContainerResponse2 = zGetContainerResponse;
+export const zGetContainerIdResponse = zGetContainerResponse;
 
-export const zGetContainerLogsData = z.object({
+export const zCreateLogsData = z.object({
     body: zContainerLogsRequest,
     path: z.object({
         container_id: z.string()
@@ -4985,9 +4984,9 @@ export const zGetContainerLogsData = z.object({
 /**
  * OK
  */
-export const zGetContainerLogsResponse = zContainerLogsResponse;
+export const zCreateLogsResponse = zContainerLogsResponse;
 
-export const zUpdateContainerResourcesData = z.object({
+export const zUpdateResourcesData = z.object({
     body: zUpdateContainerResourcesRequest,
     path: z.object({
         container_id: z.string()
@@ -5001,9 +5000,9 @@ export const zUpdateContainerResourcesData = z.object({
 /**
  * OK
  */
-export const zUpdateContainerResourcesResponse2 = zUpdateContainerResourcesResponse;
+export const zUpdateResourcesResponse = zUpdateContainerResourcesResponse;
 
-export const zRestartContainerData = z.object({
+export const zCreateRestart2Data = z.object({
     body: z.never().optional(),
     path: z.object({
         container_id: z.string()
@@ -5017,9 +5016,9 @@ export const zRestartContainerData = z.object({
 /**
  * OK
  */
-export const zRestartContainerResponse = zContainerActionResponse;
+export const zCreateRestart2Response = zContainerActionResponse;
 
-export const zStartContainerData = z.object({
+export const zCreateStartData = z.object({
     body: z.never().optional(),
     path: z.object({
         container_id: z.string()
@@ -5033,9 +5032,9 @@ export const zStartContainerData = z.object({
 /**
  * OK
  */
-export const zStartContainerResponse = zContainerActionResponse;
+export const zCreateStartResponse = zContainerActionResponse;
 
-export const zStopContainerData = z.object({
+export const zCreateStopData = z.object({
     body: z.never().optional(),
     path: z.object({
         container_id: z.string()
@@ -5049,9 +5048,9 @@ export const zStopContainerData = z.object({
 /**
  * OK
  */
-export const zStopContainerResponse = zContainerActionResponse;
+export const zCreateStopResponse = zContainerActionResponse;
 
-export const zDeleteApplicationData = z.object({
+export const zDeleteEndpoint4Data = z.object({
     body: zDeleteDeploymentRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5063,9 +5062,9 @@ export const zDeleteApplicationData = z.object({
 /**
  * OK
  */
-export const zDeleteApplicationResponse = zMessageResponse;
+export const zDeleteEndpoint4Response = zMessageResponse;
 
-export const zCancelDeploymentData = z.object({
+export const zCreateCancelDeploymentData = z.object({
     body: zCancelDeploymentRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5077,13 +5076,13 @@ export const zCancelDeploymentData = z.object({
 /**
  * OK
  */
-export const zCancelDeploymentResponse = zMessageResponse;
+export const zCreateCancelDeploymentResponse = zMessageResponse;
 
-export const zUpdateApplicationLabelsData = z.object({
+export const zUpdateLabelsData = z.object({
     body: zUpdateLabelsRequest,
     path: z.never().optional(),
     query: z.object({
-        id: z.uuid()
+        id: z.string()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -5093,9 +5092,9 @@ export const zUpdateApplicationLabelsData = z.object({
 /**
  * OK
  */
-export const zUpdateApplicationLabelsResponse = zLabelsResponse;
+export const zUpdateLabelsResponse = zLabelsResponse;
 
-export const zPreviewComposeServicesData = z.object({
+export const zCreatePreviewComposeData = z.object({
     body: zPreviewComposeRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5107,13 +5106,13 @@ export const zPreviewComposeServicesData = z.object({
 /**
  * OK
  */
-export const zPreviewComposeServicesResponse = zPreviewComposeResponse;
+export const zCreatePreviewComposeResponse = zPreviewComposeResponse;
 
-export const zListFamilyEnvironmentsData = z.object({
+export const zGetEnvironmentsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        family_id: z.uuid()
+        family_id: z.string()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -5123,9 +5122,9 @@ export const zListFamilyEnvironmentsData = z.object({
 /**
  * OK
  */
-export const zListFamilyEnvironmentsResponse = zEnvironmentsInFamilyResponse;
+export const zGetEnvironmentsResponse = zEnvironmentsInFamilyResponse;
 
-export const zRecoverApplicationData = z.object({
+export const zCreateRecoverData = z.object({
     body: zRecoverRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5137,9 +5136,9 @@ export const zRecoverApplicationData = z.object({
 /**
  * OK
  */
-export const zRecoverApplicationResponse = zRecoverResponse;
+export const zCreateRecoverResponse = zRecoverResponse;
 
-export const zRestartDeploymentData = z.object({
+export const zCreateRestartData = z.object({
     body: zRestartDeploymentRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5151,9 +5150,9 @@ export const zRestartDeploymentData = z.object({
 /**
  * OK
  */
-export const zRestartDeploymentResponse = zMessageResponse;
+export const zCreateRestartResponse = zMessageResponse;
 
-export const zRollbackDeploymentData = z.object({
+export const zCreateRollbackData = z.object({
     body: zRollbackDeploymentRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5165,9 +5164,9 @@ export const zRollbackDeploymentData = z.object({
 /**
  * OK
  */
-export const zRollbackDeploymentResponse = zMessageResponse;
+export const zCreateRollbackResponse = zMessageResponse;
 
-export const zListDomainsData = z.object({
+export const zGetEndpoint3Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
@@ -5181,9 +5180,9 @@ export const zListDomainsData = z.object({
 /**
  * OK
  */
-export const zListDomainsResponse2 = zListDomainsResponse;
+export const zGetEndpoint3Response = zListDomainsResponse;
 
-export const zRemoveCustomDomainData = z.object({
+export const zDeleteCustomData = z.object({
     body: zRemoveCustomDomainRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5195,9 +5194,9 @@ export const zRemoveCustomDomainData = z.object({
 /**
  * OK
  */
-export const zRemoveCustomDomainResponse = zMessageResponse;
+export const zDeleteCustomResponse = zMessageResponse;
 
-export const zAddCustomDomainData = z.object({
+export const zCreateCustomData = z.object({
     body: zAddCustomDomainRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5209,13 +5208,13 @@ export const zAddCustomDomainData = z.object({
 /**
  * OK
  */
-export const zAddCustomDomainResponse = zDnsSetupResponse;
+export const zCreateCustomResponse = zDnsSetupResponse;
 
-export const zCheckCustomDomainDnsData = z.object({
+export const zGetDnsCheckData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        id: z.uuid()
+        id: z.string()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -5225,9 +5224,9 @@ export const zCheckCustomDomainDnsData = z.object({
 /**
  * OK
  */
-export const zCheckCustomDomainDnsResponse = zDnsCheckResponse;
+export const zGetDnsCheckResponse = zDnsCheckResponse;
 
-export const zGenerateRandomSubdomainData = z.object({
+export const zGetGenerateData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5239,9 +5238,9 @@ export const zGenerateRandomSubdomainData = z.object({
 /**
  * OK
  */
-export const zGenerateRandomSubdomainResponse = zRandomSubdomainResponseWrapper;
+export const zGetGenerateResponse = zRandomSubdomainResponseWrapper;
 
-export const zVerifyCustomDomainData = z.object({
+export const zCreateVerifyData = z.object({
     body: zVerifyCustomDomainRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5253,9 +5252,9 @@ export const zVerifyCustomDomainData = z.object({
 /**
  * OK
  */
-export const zVerifyCustomDomainResponse = zCustomDomainResponse;
+export const zCreateVerifyResponse = zCustomDomainResponse;
 
-export const zListExtensionsData = z.object({
+export const zGetEndpoint11Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
@@ -5264,8 +5263,8 @@ export const zListExtensionsData = z.object({
         type: z.string().optional(),
         sort_by: z.string().optional(),
         sort_dir: z.string().optional(),
-        page: z.int().gte(1).optional().default(1),
-        page_size: z.int().gte(1).lte(100).optional().default(20)
+        page: z.int().optional(),
+        page_size: z.int().optional()
     }).optional(),
     headers: z.object({
         Accept: z.string().optional()
@@ -5275,9 +5274,9 @@ export const zListExtensionsData = z.object({
 /**
  * OK
  */
-export const zListExtensionsResponse2 = zListExtensionsResponse;
+export const zGetEndpoint11Response = zListExtensionsResponse;
 
-export const zGetExtensionByExtensionIdData = z.object({
+export const zGetByExtensionIdData = z.object({
     body: z.never().optional(),
     path: z.object({
         extension_id: z.string()
@@ -5291,9 +5290,9 @@ export const zGetExtensionByExtensionIdData = z.object({
 /**
  * OK
  */
-export const zGetExtensionByExtensionIdResponse = zExtensionResponse;
+export const zGetByExtensionIdResponse = zExtensionResponse;
 
-export const zListExtensionExecutionsData = z.object({
+export const zGetExecutionsData = z.object({
     body: z.never().optional(),
     path: z.object({
         extension_id: z.string()
@@ -5307,9 +5306,9 @@ export const zListExtensionExecutionsData = z.object({
 /**
  * OK
  */
-export const zListExtensionExecutionsResponse = zListExecutionsResponse;
+export const zGetExecutionsResponse = zListExecutionsResponse;
 
-export const zListExtensionCategoriesData = z.object({
+export const zGetCategoriesData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5321,7 +5320,7 @@ export const zListExtensionCategoriesData = z.object({
 /**
  * OK
  */
-export const zListExtensionCategoriesResponse = zCategoriesResponse;
+export const zGetCategoriesResponse = zCategoriesResponse;
 
 export const zGetExecutionData = z.object({
     body: z.never().optional(),
@@ -5339,7 +5338,7 @@ export const zGetExecutionData = z.object({
  */
 export const zGetExecutionResponse = zExecutionResponse;
 
-export const zCancelExecutionData = z.object({
+export const zCreateCancelData = z.object({
     body: z.never().optional(),
     path: z.object({
         execution_id: z.string()
@@ -5353,16 +5352,16 @@ export const zCancelExecutionData = z.object({
 /**
  * OK
  */
-export const zCancelExecutionResponse = zMessageResponse;
+export const zCreateCancelResponse = zMessageResponse;
 
-export const zListExecutionLogsData = z.object({
+export const zGetLogs4Data = z.object({
     body: z.never().optional(),
     path: z.object({
         execution_id: z.string()
     }),
     query: z.object({
         afterSeq: z.int().optional(),
-        limit: z.int().gte(1).lte(100).optional().default(20)
+        limit: z.int().optional()
     }).optional(),
     headers: z.object({
         Accept: z.string().optional()
@@ -5372,9 +5371,9 @@ export const zListExecutionLogsData = z.object({
 /**
  * OK
  */
-export const zListExecutionLogsResponse = zListLogsResponse;
+export const zGetLogs4Response = zListLogsResponse;
 
-export const zForkExtensionData = z.object({
+export const zCreateForkData = z.object({
     body: zForkExtensionRequest,
     path: z.object({
         extension_id: z.string()
@@ -5388,9 +5387,9 @@ export const zForkExtensionData = z.object({
 /**
  * OK
  */
-export const zForkExtensionResponse = zExtensionResponse;
+export const zCreateForkResponse = zExtensionResponse;
 
-export const zRunExtensionData = z.object({
+export const zCreateRunData = z.object({
     body: zRunExtensionRequest,
     path: z.object({
         extension_id: z.string()
@@ -5404,9 +5403,9 @@ export const zRunExtensionData = z.object({
 /**
  * OK
  */
-export const zRunExtensionResponse = zExecutionResponse;
+export const zCreateRunResponse = zExecutionResponse;
 
-export const zDeleteForkedExtensionData = z.object({
+export const zDeleteIdData = z.object({
     body: z.never().optional(),
     path: z.object({
         id: z.string()
@@ -5420,9 +5419,9 @@ export const zDeleteForkedExtensionData = z.object({
 /**
  * OK
  */
-export const zDeleteForkedExtensionResponse = zMessageResponse;
+export const zDeleteIdResponse = zMessageResponse;
 
-export const zGetExtensionByIdData = z.object({
+export const zGetIdData = z.object({
     body: z.never().optional(),
     path: z.object({
         id: z.string()
@@ -5436,9 +5435,9 @@ export const zGetExtensionByIdData = z.object({
 /**
  * OK
  */
-export const zGetExtensionByIdResponse = zExtensionResponse;
+export const zGetIdResponse = zExtensionResponse;
 
-export const zListFeatureFlagsData = z.object({
+export const zGetEndpoint8Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5450,9 +5449,9 @@ export const zListFeatureFlagsData = z.object({
 /**
  * OK
  */
-export const zListFeatureFlagsResponse2 = zListFeatureFlagsResponse;
+export const zGetEndpoint8Response = zListFeatureFlagsResponse;
 
-export const zUpdateFeatureFlagData = z.object({
+export const zUpdateEndpoint5Data = z.object({
     body: zUpdateFeatureFlagRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5464,9 +5463,9 @@ export const zUpdateFeatureFlagData = z.object({
 /**
  * OK
  */
-export const zUpdateFeatureFlagResponse = zMessageResponse;
+export const zUpdateEndpoint5Response = zMessageResponse;
 
-export const zCheckIfFeatureIsEnabledData = z.object({
+export const zGetCheck2Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
@@ -5480,9 +5479,9 @@ export const zCheckIfFeatureIsEnabledData = z.object({
 /**
  * OK
  */
-export const zCheckIfFeatureIsEnabledResponse = zIsFeatureEnabledResponse;
+export const zGetCheck2Response = zIsFeatureEnabledResponse;
 
-export const zListFilesData = z.object({
+export const zGetEndpoint6Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
@@ -5496,9 +5495,9 @@ export const zListFilesData = z.object({
 /**
  * OK
  */
-export const zListFilesResponse2 = zListFilesResponse;
+export const zGetEndpoint6Response = zListFilesResponse;
 
-export const zCopyDirectoryData = z.object({
+export const zCreateCopyDirectoryData = z.object({
     body: zCopyDirectory,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5510,9 +5509,9 @@ export const zCopyDirectoryData = z.object({
 /**
  * OK
  */
-export const zCopyDirectoryResponse = zMessageResponse;
+export const zCreateCopyDirectoryResponse = zMessageResponse;
 
-export const zCreateDirectoryData = z.object({
+export const zCreateCreateDirectoryData = z.object({
     body: zCreateDirectoryRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5524,9 +5523,9 @@ export const zCreateDirectoryData = z.object({
 /**
  * OK
  */
-export const zCreateDirectoryResponse = zMessageResponse;
+export const zCreateCreateDirectoryResponse = zMessageResponse;
 
-export const zDeleteDirectoryData = z.object({
+export const zDeleteDeleteDirectoryData = z.object({
     body: zDeleteDirectoryRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5538,9 +5537,9 @@ export const zDeleteDirectoryData = z.object({
 /**
  * OK
  */
-export const zDeleteDirectoryResponse = zMessageResponse;
+export const zDeleteDeleteDirectoryResponse = zMessageResponse;
 
-export const zMoveDirectoryData = z.object({
+export const zCreateMoveDirectoryData = z.object({
     body: zMoveDirectory,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5552,9 +5551,9 @@ export const zMoveDirectoryData = z.object({
 /**
  * OK
  */
-export const zMoveDirectoryResponse = zMessageResponse;
+export const zCreateMoveDirectoryResponse = zMessageResponse;
 
-export const zUploadFileData = z.object({
+export const zCreateUploadData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5566,9 +5565,9 @@ export const zUploadFileData = z.object({
 /**
  * OK
  */
-export const zUploadFileResponse = zMessageResponse;
+export const zCreateUploadResponse = zMessageResponse;
 
-export const zDeleteGitHubConnectorData = z.object({
+export const zDeleteEndpointData = z.object({
     body: zDeleteGithubConnectorRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5580,9 +5579,9 @@ export const zDeleteGitHubConnectorData = z.object({
 /**
  * OK
  */
-export const zDeleteGitHubConnectorResponse = zMessageResponse;
+export const zDeleteEndpointResponse = zMessageResponse;
 
-export const zCreateGitHubConnectorData = z.object({
+export const zCreateEndpoint2Data = z.object({
     body: zCreateGithubConnectorRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5594,9 +5593,9 @@ export const zCreateGitHubConnectorData = z.object({
 /**
  * OK
  */
-export const zCreateGitHubConnectorResponse = zMessageResponse;
+export const zCreateEndpoint2Response = zMessageResponse;
 
-export const zUpdateGitHubConnectorData = z.object({
+export const zUpdateEndpointData = z.object({
     body: zUpdateGithubConnectorRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5608,9 +5607,9 @@ export const zUpdateGitHubConnectorData = z.object({
 /**
  * OK
  */
-export const zUpdateGitHubConnectorResponse = zMessageResponse;
+export const zUpdateEndpointResponse = zMessageResponse;
 
-export const zListGitHubConnectorsData = z.object({
+export const zGetAllData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5622,9 +5621,9 @@ export const zListGitHubConnectorsData = z.object({
 /**
  * OK
  */
-export const zListGitHubConnectorsResponse = zListConnectorsResponse;
+export const zGetAllResponse = zListConnectorsResponse;
 
-export const zListGitHubRepositoriesData = z.object({
+export const zGetRepositoriesData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5636,9 +5635,9 @@ export const zListGitHubRepositoriesData = z.object({
 /**
  * OK
  */
-export const zListGitHubRepositoriesResponse = zListRepositoriesResponse;
+export const zGetRepositoriesResponse = zListRepositoriesResponse;
 
-export const zListRepositoryBranchesData = z.object({
+export const zCreateBranchesData = z.object({
     body: zGetGithubRepositoryBranchesRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5650,9 +5649,9 @@ export const zListRepositoryBranchesData = z.object({
 /**
  * OK
  */
-export const zListRepositoryBranchesResponse = zListBranchesResponse;
+export const zCreateBranchesResponse = zListBranchesResponse;
 
-export const zHealthCheckData = z.object({
+export const zGetEndpointData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5664,13 +5663,13 @@ export const zHealthCheckData = z.object({
 /**
  * OK
  */
-export const zHealthCheckResponse2 = zHealthCheckResponse;
+export const zGetEndpointResponse = zHealthCheckResponse;
 
-export const zDeleteHealthCheckData = z.object({
+export const zDeleteEndpoint5Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        application_id: z.uuid()
+        application_id: z.string()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -5680,13 +5679,13 @@ export const zDeleteHealthCheckData = z.object({
 /**
  * OK
  */
-export const zDeleteHealthCheckResponse = zHealthCheckMessageResponse;
+export const zDeleteEndpoint5Response = zHealthCheckMessageResponse;
 
-export const zGetHealthChecksData = z.object({
+export const zGetEndpoint10Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        application_id: z.uuid()
+        application_id: z.string()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -5696,9 +5695,9 @@ export const zGetHealthChecksData = z.object({
 /**
  * OK
  */
-export const zGetHealthChecksResponse = zHealthCheckResponse;
+export const zGetEndpoint10Response = zHealthCheckResponse;
 
-export const zCreateHealthCheckData = z.object({
+export const zCreateEndpoint8Data = z.object({
     body: zCreateHealthCheckRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5710,9 +5709,9 @@ export const zCreateHealthCheckData = z.object({
 /**
  * OK
  */
-export const zCreateHealthCheckResponse = zHealthCheckResponse;
+export const zCreateEndpoint8Response = zHealthCheckResponse;
 
-export const zUpdateHealthCheckData = z.object({
+export const zUpdateEndpoint6Data = z.object({
     body: zUpdateHealthCheckRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5724,19 +5723,14 @@ export const zUpdateHealthCheckData = z.object({
 /**
  * OK
  */
-export const zUpdateHealthCheckResponse = zHealthCheckResponse;
+export const zUpdateEndpoint6Response = zHealthCheckResponse;
 
-export const zGetHealthCheckStatsData = z.object({
+export const zGetStatsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        application_id: z.uuid(),
-        period: z.enum([
-            '1h',
-            '24h',
-            '7d',
-            '30d'
-        ]).optional()
+        application_id: z.string(),
+        period: z.string().optional()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -5746,9 +5740,9 @@ export const zGetHealthCheckStatsData = z.object({
 /**
  * OK
  */
-export const zGetHealthCheckStatsResponse = zHealthCheckStatsResponse;
+export const zGetStatsResponse = zHealthCheckStatsResponse;
 
-export const zToggleHealthCheckData = z.object({
+export const zPatchToggleData = z.object({
     body: zToggleHealthCheckRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5760,9 +5754,9 @@ export const zToggleHealthCheckData = z.object({
 /**
  * OK
  */
-export const zToggleHealthCheckResponse = zHealthCheckResponse;
+export const zPatchToggleResponse = zHealthCheckResponse;
 
-export const zGetMachineBillingStatusData = z.object({
+export const zGetBillingData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5774,9 +5768,9 @@ export const zGetMachineBillingStatusData = z.object({
 /**
  * OK
  */
-export const zGetMachineBillingStatusResponse = zMachineBillingResponse;
+export const zGetBillingResponse = zMachineBillingResponse;
 
-export const zExecuteACommandOnTheHostMachineData = z.object({
+export const zCreateExecData = z.object({
     body: zHostExecRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5788,9 +5782,9 @@ export const zExecuteACommandOnTheHostMachineData = z.object({
 /**
  * OK
  */
-export const zExecuteACommandOnTheHostMachineResponse = zHostExecResponse;
+export const zCreateExecResponse = zHostExecResponse;
 
-export const zPauseMachineData = z.object({
+export const zCreatePauseData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5802,9 +5796,9 @@ export const zPauseMachineData = z.object({
 /**
  * OK
  */
-export const zPauseMachineResponse = zMachineActionResponse;
+export const zCreatePauseResponse = zMachineActionResponse;
 
-export const zSelectAMachinePlanData = z.object({
+export const zCreateSelectData = z.object({
     body: zSelectPlanRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5816,9 +5810,9 @@ export const zSelectAMachinePlanData = z.object({
 /**
  * OK
  */
-export const zSelectAMachinePlanResponse = zSelectPlanResponse;
+export const zCreateSelectResponse = zSelectPlanResponse;
 
-export const zListAvailableMachinePlansData = z.object({
+export const zGetPlansData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5830,9 +5824,9 @@ export const zListAvailableMachinePlansData = z.object({
 /**
  * OK
  */
-export const zListAvailableMachinePlansResponse = zListPlansResponse;
+export const zGetPlansResponse = zListPlansResponse;
 
-export const zRestartMachineData = z.object({
+export const zCreateRestart3Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5844,9 +5838,9 @@ export const zRestartMachineData = z.object({
 /**
  * OK
  */
-export const zRestartMachineResponse = zMachineActionResponse;
+export const zCreateRestart3Response = zMachineActionResponse;
 
-export const zResumeMachineData = z.object({
+export const zCreateResumeData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5858,9 +5852,9 @@ export const zResumeMachineData = z.object({
 /**
  * OK
  */
-export const zResumeMachineResponse = zMachineActionResponse;
+export const zCreateResumeResponse = zMachineActionResponse;
 
-export const zGetMachineSystemStatsData = z.object({
+export const zGetStats2Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5872,9 +5866,9 @@ export const zGetMachineSystemStatsData = z.object({
 /**
  * OK
  */
-export const zGetMachineSystemStatsResponse = zSystemStatsResponse;
+export const zGetStats2Response = zSystemStatsResponse;
 
-export const zGetMachineLifecycleStatusData = z.object({
+export const zGetStatus2Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5886,9 +5880,9 @@ export const zGetMachineLifecycleStatusData = z.object({
 /**
  * OK
  */
-export const zGetMachineLifecycleStatusResponse = zMachineStateResponse;
+export const zGetStatus2Response = zMachineStateResponse;
 
-export const zGetNotificationPreferencesData = z.object({
+export const zGetEndpoint13Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5900,9 +5894,125 @@ export const zGetNotificationPreferencesData = z.object({
 /**
  * OK
  */
-export const zGetNotificationPreferencesResponse = zPreferencesResponse;
+export const zGetEndpoint13Response = zResponse;
 
-export const zUpdateNotificationPreferencesData = z.object({
+export const zGetIconData = z.object({
+    body: z.never().optional(),
+    path: z.object({
+        provider_id: z.string()
+    }),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetIconResponse = zUnknownInterface;
+
+export const zGetServersData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetServersResponse = zResponse;
+
+export const zDeleteEndpoint6Data = z.object({
+    body: zDeleteServerRequest,
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zDeleteEndpoint6Response = zResponse;
+
+export const zGetEndpoint14Data = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetEndpoint14Response = zResponse;
+
+export const zCreateEndpoint9Data = z.object({
+    body: zCreateServerRequest,
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zCreateEndpoint9Response = zResponse;
+
+export const zCreateTestData = z.object({
+    body: zTestServerRequest,
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zCreateTestResponse = zResponse;
+
+export const zUpdateIdData = z.object({
+    body: zUpdateServerRequest,
+    path: z.object({
+        id: z.string()
+    }),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zUpdateIdResponse = zResponse;
+
+export const zGetEndpoint5Data = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetEndpoint5Response = zPreferencesResponse;
+
+export const zCreateEndpoint4Data = z.object({
     body: zUpdatePreferenceRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5914,9 +6024,9 @@ export const zUpdateNotificationPreferencesData = z.object({
 /**
  * OK
  */
-export const zUpdateNotificationPreferencesResponse = zMessageResponse;
+export const zCreateEndpoint4Response = zMessageResponse;
 
-export const zSendNotificationData = z.object({
+export const zCreateSendData = z.object({
     body: zSendNotificationRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5928,9 +6038,9 @@ export const zSendNotificationData = z.object({
 /**
  * OK
  */
-export const zSendNotificationResponse2 = zSendNotificationResponse;
+export const zCreateSendResponse = zSendNotificationResponse;
 
-export const zDeleteSmtpConfigData = z.object({
+export const zDeleteEndpoint2Data = z.object({
     body: zDeleteSmtpConfigRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5942,13 +6052,13 @@ export const zDeleteSmtpConfigData = z.object({
 /**
  * OK
  */
-export const zDeleteSmtpConfigResponse = zMessageResponse;
+export const zDeleteEndpoint2Response = zMessageResponse;
 
-export const zGetSmtpConfigData = z.object({
+export const zGetEndpoint4Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        id: z.uuid()
+        id: z.string()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -5958,9 +6068,9 @@ export const zGetSmtpConfigData = z.object({
 /**
  * OK
  */
-export const zGetSmtpConfigResponse = zSmtpConfigResponse;
+export const zGetEndpoint4Response = zSmtpConfigResponse;
 
-export const zCreateSmtpConfigData = z.object({
+export const zCreateEndpoint3Data = z.object({
     body: zCreateSmtpConfigRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5972,9 +6082,9 @@ export const zCreateSmtpConfigData = z.object({
 /**
  * OK
  */
-export const zCreateSmtpConfigResponse = zMessageResponse;
+export const zCreateEndpoint3Response = zMessageResponse;
 
-export const zUpdateSmtpConfigData = z.object({
+export const zUpdateEndpoint2Data = z.object({
     body: zUpdateSmtpConfigRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5986,9 +6096,9 @@ export const zUpdateSmtpConfigData = z.object({
 /**
  * OK
  */
-export const zUpdateSmtpConfigResponse = zMessageResponse;
+export const zUpdateEndpoint2Response = zMessageResponse;
 
-export const zDeleteWebhookConfigData = z.object({
+export const zDeleteEndpoint3Data = z.object({
     body: zDeleteWebhookConfigRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6000,9 +6110,9 @@ export const zDeleteWebhookConfigData = z.object({
 /**
  * OK
  */
-export const zDeleteWebhookConfigResponse = zMessageResponse;
+export const zDeleteEndpoint3Response = zMessageResponse;
 
-export const zCreateWebhookConfigData = z.object({
+export const zCreateEndpoint5Data = z.object({
     body: zCreateWebhookConfigRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6014,9 +6124,9 @@ export const zCreateWebhookConfigData = z.object({
 /**
  * OK
  */
-export const zCreateWebhookConfigResponse = zWebhookConfigResponse;
+export const zCreateEndpoint5Response = zWebhookConfigResponse;
 
-export const zUpdateWebhookConfigData = z.object({
+export const zUpdateEndpoint3Data = z.object({
     body: zUpdateWebhookConfigRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6028,9 +6138,9 @@ export const zUpdateWebhookConfigData = z.object({
 /**
  * OK
  */
-export const zUpdateWebhookConfigResponse = zWebhookConfigResponse;
+export const zUpdateEndpoint3Response = zWebhookConfigResponse;
 
-export const zGetWebhookConfigData = z.object({
+export const zGetTypeData = z.object({
     body: z.never().optional(),
     path: z.object({
         type: z.string()
@@ -6044,17 +6154,17 @@ export const zGetWebhookConfigData = z.object({
 /**
  * OK
  */
-export const zGetWebhookConfigResponse = zWebhookConfigResponse;
+export const zGetTypeResponse = zWebhookConfigResponse;
 
-export const zListServersData = z.object({
+export const zGetEndpoint12Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        page: z.int().gte(1).optional().default(1),
-        page_size: z.int().gte(1).lte(100).optional().default(20),
+        page: z.int().optional(),
+        page_size: z.int().optional(),
         search: z.string().optional(),
         sort_by: z.string().optional(),
-        sort_order: z.enum(['asc', 'desc']).optional(),
+        sort_order: z.string().optional(),
         status: z.string().optional(),
         is_active: z.boolean().optional()
     }).optional(),
@@ -6066,9 +6176,9 @@ export const zListServersData = z.object({
 /**
  * OK
  */
-export const zListServersResponse2 = zListServersResponse;
+export const zGetEndpoint12Response = zListServersResponse;
 
-export const zGetSshConnectionStatusData = z.object({
+export const zGetStatusData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6080,9 +6190,9 @@ export const zGetSshConnectionStatusData = z.object({
 /**
  * OK
  */
-export const zGetSshConnectionStatusResponse = zSshConnectionStatusResponse;
+export const zGetStatusResponse = zSshConnectionStatusResponse;
 
-export const zProvisionTrailResourcesData = z.object({
+export const zCreateProvisionData = z.object({
     body: zProvisionRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6094,9 +6204,9 @@ export const zProvisionTrailResourcesData = z.object({
 /**
  * OK
  */
-export const zProvisionTrailResourcesResponse = zProvisionTrailResponse;
+export const zCreateProvisionResponse = zProvisionTrailResponse;
 
-export const zGetTrailSessionStatusData = z.object({
+export const zGetStatus3Data = z.object({
     body: z.never().optional(),
     path: z.object({
         sessionId: z.string()
@@ -6110,9 +6220,9 @@ export const zGetTrailSessionStatusData = z.object({
 /**
  * OK
  */
-export const zGetTrailSessionStatusResponse = zTrailStatusEnvelopeResponse;
+export const zGetStatus3Response = zTrailStatusEnvelopeResponse;
 
-export const zPerformUpdateData = z.object({
+export const zCreateEndpoint7Data = z.object({
     body: zUpdateRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6124,9 +6234,9 @@ export const zPerformUpdateData = z.object({
 /**
  * OK
  */
-export const zPerformUpdateResponse = zUpdateResponse;
+export const zCreateEndpoint7Response = zUpdateResponse;
 
-export const zCheckForUpdatesData = z.object({
+export const zGetCheckData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6138,9 +6248,9 @@ export const zCheckForUpdatesData = z.object({
 /**
  * OK
  */
-export const zCheckForUpdatesResponse = zUpdateCheckResponse;
+export const zGetCheckResponse = zUpdateCheckResponse;
 
-export const zGetCurrentUserProfileData = z.object({
+export const zGetEndpoint2Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6152,9 +6262,9 @@ export const zGetCurrentUserProfileData = z.object({
 /**
  * OK
  */
-export const zGetCurrentUserProfileResponse = zUserResponse;
+export const zGetEndpoint2Response = zUserResponse;
 
-export const zUpdateUserAvatarData = z.object({
+export const zPatchAvatarData = z.object({
     body: zUpdateAvatarRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6166,9 +6276,9 @@ export const zUpdateUserAvatarData = z.object({
 /**
  * OK
  */
-export const zUpdateUserAvatarResponse = zMessageResponse;
+export const zPatchAvatarResponse = zMessageResponse;
 
-export const zUpdateUserNameData = z.object({
+export const zPatchNameData = z.object({
     body: zUpdateUserNameRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6180,9 +6290,9 @@ export const zUpdateUserNameData = z.object({
 /**
  * OK
  */
-export const zUpdateUserNameResponse = zUpdateUsernameResponse;
+export const zPatchNameResponse = zUpdateUsernameResponse;
 
-export const zCheckOnboardingStatusData = z.object({
+export const zGetOnboardedData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6194,9 +6304,9 @@ export const zCheckOnboardingStatusData = z.object({
 /**
  * OK
  */
-export const zCheckOnboardingStatusResponse = zIsOnboardedResponse;
+export const zGetOnboardedResponse = zIsOnboardedResponse;
 
-export const zMarkOnboardingCompleteData = z.object({
+export const zCreateOnboardedData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6208,9 +6318,9 @@ export const zMarkOnboardingCompleteData = z.object({
 /**
  * OK
  */
-export const zMarkOnboardingCompleteResponse2 = zMarkOnboardingCompleteResponse;
+export const zCreateOnboardedResponse = zMarkOnboardingCompleteResponse;
 
-export const zGetUserPreferencesData = z.object({
+export const zGetPreferencesData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6222,9 +6332,9 @@ export const zGetUserPreferencesData = z.object({
 /**
  * OK
  */
-export const zGetUserPreferencesResponse = zUserPreferencesResponse;
+export const zGetPreferencesResponse = zUserPreferencesResponse;
 
-export const zUpdateUserPreferencesData = z.object({
+export const zUpdatePreferencesData = z.object({
     body: zUserPreferencesData,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6236,9 +6346,9 @@ export const zUpdateUserPreferencesData = z.object({
 /**
  * OK
  */
-export const zUpdateUserPreferencesResponse = zUserPreferencesResponse;
+export const zUpdatePreferencesResponse = zUserPreferencesResponse;
 
-export const zGetUserSettingsData = z.object({
+export const zGetSettingsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6250,9 +6360,9 @@ export const zGetUserSettingsData = z.object({
 /**
  * OK
  */
-export const zGetUserSettingsResponse = zUserSettingsResponse;
+export const zGetSettingsResponse = zUserSettingsResponse;
 
-export const zUpdateAutoUpdateSettingsData = z.object({
+export const zPatchAutoUpdateData = z.object({
     body: zUpdateAutoUpdateRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6264,9 +6374,9 @@ export const zUpdateAutoUpdateSettingsData = z.object({
 /**
  * OK
  */
-export const zUpdateAutoUpdateSettingsResponse = zUserSettingsResponse;
+export const zPatchAutoUpdateResponse = zUserSettingsResponse;
 
-export const zUpdateFontSettingsData = z.object({
+export const zPatchFontData = z.object({
     body: zUpdateFontRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6278,9 +6388,9 @@ export const zUpdateFontSettingsData = z.object({
 /**
  * OK
  */
-export const zUpdateFontSettingsResponse = zUserSettingsResponse;
+export const zPatchFontResponse = zUserSettingsResponse;
 
-export const zUpdateLanguageSettingsData = z.object({
+export const zPatchLanguageData = z.object({
     body: zUpdateLanguageRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6292,9 +6402,9 @@ export const zUpdateLanguageSettingsData = z.object({
 /**
  * OK
  */
-export const zUpdateLanguageSettingsResponse = zUserSettingsResponse;
+export const zPatchLanguageResponse = zUserSettingsResponse;
 
-export const zUpdateThemeSettingsData = z.object({
+export const zPatchThemeData = z.object({
     body: zUpdateThemeRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6306,9 +6416,9 @@ export const zUpdateThemeSettingsData = z.object({
 /**
  * OK
  */
-export const zUpdateThemeSettingsResponse = zUserSettingsResponse;
+export const zPatchThemeResponse = zUserSettingsResponse;
 
-export const zHandleGitHubWebhookData = z.object({
+export const zCreateEndpointData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6320,13 +6430,13 @@ export const zHandleGitHubWebhookData = z.object({
 /**
  * OK
  */
-export const zHandleGitHubWebhookResponse = zMessageResponse;
+export const zCreateEndpointResponse = zMessageResponse;
 
-export const zGetApplicationData = z.object({
+export const zGetEndpoint7Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        id: z.uuid()
+        id: z.string()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -6336,9 +6446,9 @@ export const zGetApplicationData = z.object({
 /**
  * OK
  */
-export const zGetApplicationResponse = zApplicationResponse;
+export const zGetEndpoint7Response = zApplicationResponse;
 
-export const zDeployApplicationData = z.object({
+export const zCreateEndpoint6Data = z.object({
     body: zCreateDeploymentRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6350,9 +6460,9 @@ export const zDeployApplicationData = z.object({
 /**
  * OK
  */
-export const zDeployApplicationResponse = zApplicationResponse;
+export const zCreateEndpoint6Response = zApplicationResponse;
 
-export const zUpdateApplicationData = z.object({
+export const zUpdateEndpoint4Data = z.object({
     body: zUpdateDeploymentRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6364,13 +6474,13 @@ export const zUpdateApplicationData = z.object({
 /**
  * OK
  */
-export const zUpdateApplicationResponse = zApplicationResponse;
+export const zUpdateEndpoint4Response = zApplicationResponse;
 
-export const zListComposeServicesData = z.object({
+export const zGetComposeServicesData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        id: z.uuid()
+        id: z.string()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -6380,15 +6490,15 @@ export const zListComposeServicesData = z.object({
 /**
  * OK
  */
-export const zListComposeServicesResponse = zComposeServicesResponse;
+export const zGetComposeServicesResponse = zComposeServicesResponse;
 
-export const zListApplicationDeploymentsData = z.object({
+export const zGetDeployments2Data = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        id: z.uuid(),
-        page: z.int().gte(1).optional().default(1),
-        limit: z.int().gte(1).lte(100).optional().default(20)
+        id: z.string(),
+        page: z.int().optional(),
+        limit: z.int().optional()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -6398,9 +6508,9 @@ export const zListApplicationDeploymentsData = z.object({
 /**
  * OK
  */
-export const zListApplicationDeploymentsResponse = zListDeploymentsResponse;
+export const zGetDeployments2Response = zListDeploymentsResponse;
 
-export const zGetDeploymentData = z.object({
+export const zGetDeploymentsData = z.object({
     body: z.never().optional(),
     path: z.object({
         deployment_id: z.string()
@@ -6414,16 +6524,16 @@ export const zGetDeploymentData = z.object({
 /**
  * OK
  */
-export const zGetDeploymentResponse = zDeploymentResponse;
+export const zGetDeploymentsResponse = zDeploymentResponse;
 
-export const zGetDeploymentLogsData = z.object({
+export const zGetLogs2Data = z.object({
     body: z.never().optional(),
     path: z.object({
         deployment_id: z.string()
     }),
     query: z.object({
-        page: z.int().gte(1).optional().default(1),
-        page_size: z.int().gte(1).lte(100).optional().default(20),
+        page: z.int().optional(),
+        page_size: z.int().optional(),
         level: z.string().optional(),
         start_time: z.string().optional(),
         end_time: z.string().optional(),
@@ -6437,13 +6547,13 @@ export const zGetDeploymentLogsData = z.object({
 /**
  * OK
  */
-export const zGetDeploymentLogsResponse = zLogsResponse;
+export const zGetLogs2Response = zLogsResponse;
 
-export const zRemoveApplicationDomainData = z.object({
+export const zDeleteDomainsData = z.object({
     body: zRemoveApplicationDomainRequest,
     path: z.never().optional(),
     query: z.object({
-        id: z.uuid()
+        id: z.string()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -6453,13 +6563,13 @@ export const zRemoveApplicationDomainData = z.object({
 /**
  * OK
  */
-export const zRemoveApplicationDomainResponse = zApplicationResponse;
+export const zDeleteDomainsResponse = zApplicationResponse;
 
-export const zAddApplicationDomainData = z.object({
+export const zCreateDomainsData = z.object({
     body: zAddApplicationDomainRequest,
     path: z.never().optional(),
     query: z.object({
-        id: z.uuid()
+        id: z.string()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -6469,16 +6579,16 @@ export const zAddApplicationDomainData = z.object({
 /**
  * OK
  */
-export const zAddApplicationDomainResponse = zApplicationResponse;
+export const zCreateDomainsResponse = zApplicationResponse;
 
-export const zGetApplicationLogsData = z.object({
+export const zGetLogsData = z.object({
     body: z.never().optional(),
     path: z.object({
         application_id: z.string()
     }),
     query: z.object({
-        page: z.int().gte(1).optional().default(1),
-        page_size: z.int().gte(1).lte(100).optional().default(20),
+        page: z.int().optional(),
+        page_size: z.int().optional(),
         level: z.string().optional(),
         start_time: z.string().optional(),
         end_time: z.string().optional(),
@@ -6492,7 +6602,7 @@ export const zGetApplicationLogsData = z.object({
 /**
  * OK
  */
-export const zGetApplicationLogsResponse = zLogsResponse;
+export const zGetLogsResponse = zLogsResponse;
 
 export const zCreateProjectData = z.object({
     body: zCreateProjectRequest,
@@ -6508,7 +6618,7 @@ export const zCreateProjectData = z.object({
  */
 export const zCreateProjectResponse = zApplicationResponse;
 
-export const zAddProjectToFamilyData = z.object({
+export const zCreateAddToFamilyData = z.object({
     body: zAddApplicationToFamilyRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6520,9 +6630,9 @@ export const zAddProjectToFamilyData = z.object({
 /**
  * OK
  */
-export const zAddProjectToFamilyResponse = zApplicationResponse;
+export const zCreateAddToFamilyResponse = zApplicationResponse;
 
-export const zDeployProjectData = z.object({
+export const zCreateDeployData = z.object({
     body: zDeployProjectRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6534,9 +6644,9 @@ export const zDeployProjectData = z.object({
 /**
  * OK
  */
-export const zDeployProjectResponse = zApplicationResponse;
+export const zCreateDeployResponse = zApplicationResponse;
 
-export const zDuplicateProjectData = z.object({
+export const zCreateDuplicateData = z.object({
     body: zDuplicateProjectRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6548,13 +6658,13 @@ export const zDuplicateProjectData = z.object({
 /**
  * OK
  */
-export const zDuplicateProjectResponse = zApplicationResponse;
+export const zCreateDuplicateResponse = zApplicationResponse;
 
-export const zListProjectsInFamilyData = z.object({
+export const zGetFamilyData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        family_id: z.uuid()
+        family_id: z.string()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -6564,9 +6674,9 @@ export const zListProjectsInFamilyData = z.object({
 /**
  * OK
  */
-export const zListProjectsInFamilyResponse = zProjectFamilyResponse;
+export const zGetFamilyResponse = zProjectFamilyResponse;
 
-export const zRedeployApplicationData = z.object({
+export const zCreateRedeployData = z.object({
     body: zReDeployApplicationRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6578,16 +6688,16 @@ export const zRedeployApplicationData = z.object({
 /**
  * OK
  */
-export const zRedeployApplicationResponse = zApplicationResponse;
+export const zCreateRedeployResponse = zApplicationResponse;
 
-export const zListApplicationsData = z.object({
+export const zGetApplicationsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        page: z.int().gte(1).optional().default(1),
-        page_size: z.int().gte(1).lte(100).optional().default(20),
+        page: z.int().optional(),
+        page_size: z.int().optional(),
         sort_by: z.string().optional(),
-        sort_direction: z.enum(['asc', 'desc']).optional()
+        sort_direction: z.string().optional()
     }).optional(),
     headers: z.object({
         Accept: z.string().optional()
@@ -6597,14 +6707,14 @@ export const zListApplicationsData = z.object({
 /**
  * OK
  */
-export const zListApplicationsResponse2 = zListApplicationsResponse;
+export const zGetApplicationsResponse = zListApplicationsResponse;
 
-export const zListHealthCheckResultsData = z.object({
+export const zGetResultsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        application_id: z.uuid(),
-        limit: z.int().gte(1).lte(100).optional().default(20),
+        application_id: z.string(),
+        limit: z.int().optional(),
         start_time: z.string().optional(),
         end_time: z.string().optional()
     }),
@@ -6616,4 +6726,4 @@ export const zListHealthCheckResultsData = z.object({
 /**
  * OK
  */
-export const zListHealthCheckResultsResponse = zHealthCheckResultsResponse;
+export const zGetResultsResponse = zHealthCheckResultsResponse;

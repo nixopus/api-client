@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AddApplicationDomainData, AddApplicationDomainErrors, AddApplicationDomainResponses, AddCustomDomainData, AddCustomDomainErrors, AddCustomDomainResponses, AddProjectToFamilyData, AddProjectToFamilyErrors, AddProjectToFamilyResponses, CancelDeploymentData, CancelDeploymentErrors, CancelDeploymentResponses, CancelExecutionData, CancelExecutionErrors, CancelExecutionResponses, CheckAdminRegistrationData, CheckAdminRegistrationErrors, CheckAdminRegistrationResponses, CheckCustomDomainDnsData, CheckCustomDomainDnsErrors, CheckCustomDomainDnsResponses, CheckForUpdatesData, CheckForUpdatesErrors, CheckForUpdatesResponses, CheckIfFeatureIsEnabledData, CheckIfFeatureIsEnabledErrors, CheckIfFeatureIsEnabledResponses, CheckOnboardingStatusData, CheckOnboardingStatusErrors, CheckOnboardingStatusResponses, CopyDirectoryData, CopyDirectoryErrors, CopyDirectoryResponses, CreateDirectoryData, CreateDirectoryErrors, CreateDirectoryResponses, CreateGitHubConnectorData, CreateGitHubConnectorErrors, CreateGitHubConnectorResponses, CreateHealthCheckData, CreateHealthCheckErrors, CreateHealthCheckResponses, CreateProjectData, CreateProjectErrors, CreateProjectResponses, CreateSmtpConfigData, CreateSmtpConfigErrors, CreateSmtpConfigResponses, CreateWebhookConfigData, CreateWebhookConfigErrors, CreateWebhookConfigResponses, DeleteApplicationData, DeleteApplicationErrors, DeleteApplicationResponses, DeleteDirectoryData, DeleteDirectoryErrors, DeleteDirectoryResponses, DeleteForkedExtensionData, DeleteForkedExtensionErrors, DeleteForkedExtensionResponses, DeleteGitHubConnectorData, DeleteGitHubConnectorErrors, DeleteGitHubConnectorResponses, DeleteHealthCheckData, DeleteHealthCheckErrors, DeleteHealthCheckResponses, DeleteSmtpConfigData, DeleteSmtpConfigErrors, DeleteSmtpConfigResponses, DeleteWebhookConfigData, DeleteWebhookConfigErrors, DeleteWebhookConfigResponses, DeployApplicationData, DeployApplicationErrors, DeployApplicationResponses, DeployProjectData, DeployProjectErrors, DeployProjectResponses, DuplicateProjectData, DuplicateProjectErrors, DuplicateProjectResponses, ExecuteACommandOnTheHostMachineData, ExecuteACommandOnTheHostMachineErrors, ExecuteACommandOnTheHostMachineResponses, ForkExtensionData, ForkExtensionErrors, ForkExtensionResponses, GenerateRandomSubdomainData, GenerateRandomSubdomainErrors, GenerateRandomSubdomainResponses, GetApplicationData, GetApplicationErrors, GetApplicationLogsData, GetApplicationLogsErrors, GetApplicationLogsResponses, GetApplicationResponses, GetBootstrapSessionDataData, GetBootstrapSessionDataErrors, GetBootstrapSessionDataResponses, GetContainerData, GetContainerErrors, GetContainerLogsData, GetContainerLogsErrors, GetContainerLogsResponses, GetContainerResponses, GetCurrentUserProfileData, GetCurrentUserProfileErrors, GetCurrentUserProfileResponses, GetDeploymentData, GetDeploymentErrors, GetDeploymentLogsData, GetDeploymentLogsErrors, GetDeploymentLogsResponses, GetDeploymentResponses, GetExecutionData, GetExecutionErrors, GetExecutionResponses, GetExtensionByExtensionIdData, GetExtensionByExtensionIdErrors, GetExtensionByExtensionIdResponses, GetExtensionByIdData, GetExtensionByIdErrors, GetExtensionByIdResponses, GetHealthChecksData, GetHealthChecksErrors, GetHealthChecksResponses, GetHealthCheckStatsData, GetHealthCheckStatsErrors, GetHealthCheckStatsResponses, GetMachineBillingStatusData, GetMachineBillingStatusErrors, GetMachineBillingStatusResponses, GetMachineLifecycleStatusData, GetMachineLifecycleStatusErrors, GetMachineLifecycleStatusResponses, GetMachineSystemStatsData, GetMachineSystemStatsErrors, GetMachineSystemStatsResponses, GetNotificationPreferencesData, GetNotificationPreferencesErrors, GetNotificationPreferencesResponses, GetSmtpConfigData, GetSmtpConfigErrors, GetSmtpConfigResponses, GetSshConnectionStatusData, GetSshConnectionStatusErrors, GetSshConnectionStatusResponses, GetTrailSessionStatusData, GetTrailSessionStatusErrors, GetTrailSessionStatusResponses, GetUserPreferencesData, GetUserPreferencesErrors, GetUserPreferencesResponses, GetUserSettingsData, GetUserSettingsErrors, GetUserSettingsResponses, GetWebhookConfigData, GetWebhookConfigErrors, GetWebhookConfigResponses, HandleGitHubWebhookData, HandleGitHubWebhookErrors, HandleGitHubWebhookResponses, HealthCheckData, HealthCheckErrors, HealthCheckResponses, ListApplicationDeploymentsData, ListApplicationDeploymentsErrors, ListApplicationDeploymentsResponses, ListApplicationsData, ListApplicationsErrors, ListApplicationsResponses, ListAuditLogsData, ListAuditLogsErrors, ListAuditLogsResponses, ListAvailableMachinePlansData, ListAvailableMachinePlansErrors, ListAvailableMachinePlansResponses, ListComposeServicesData, ListComposeServicesErrors, ListComposeServicesResponses, ListContainersData, ListContainersErrors, ListContainersResponses, ListDomainsData, ListDomainsErrors, ListDomainsResponses, ListExecutionLogsData, ListExecutionLogsErrors, ListExecutionLogsResponses, ListExtensionCategoriesData, ListExtensionCategoriesErrors, ListExtensionCategoriesResponses, ListExtensionExecutionsData, ListExtensionExecutionsErrors, ListExtensionExecutionsResponses, ListExtensionsData, ListExtensionsErrors, ListExtensionsResponses, ListFamilyEnvironmentsData, ListFamilyEnvironmentsErrors, ListFamilyEnvironmentsResponses, ListFeatureFlagsData, ListFeatureFlagsErrors, ListFeatureFlagsResponses, ListFilesData, ListFilesErrors, ListFilesResponses, ListGitHubConnectorsData, ListGitHubConnectorsErrors, ListGitHubConnectorsResponses, ListGitHubRepositoriesData, ListGitHubRepositoriesErrors, ListGitHubRepositoriesResponses, ListHealthCheckResultsData, ListHealthCheckResultsErrors, ListHealthCheckResultsResponses, ListImagesData, ListImagesErrors, ListImagesResponses, ListProjectsInFamilyData, ListProjectsInFamilyErrors, ListProjectsInFamilyResponses, ListRepositoryBranchesData, ListRepositoryBranchesErrors, ListRepositoryBranchesResponses, ListServersData, ListServersErrors, ListServersResponses, MarkOnboardingCompleteData, MarkOnboardingCompleteErrors, MarkOnboardingCompleteResponses, MoveDirectoryData, MoveDirectoryErrors, MoveDirectoryResponses, PauseMachineData, PauseMachineErrors, PauseMachineResponses, PerformUpdateData, PerformUpdateErrors, PerformUpdateResponses, PreviewComposeServicesData, PreviewComposeServicesErrors, PreviewComposeServicesResponses, ProvisionTrailResourcesData, ProvisionTrailResourcesErrors, ProvisionTrailResourcesResponses, PruneBuildCacheData, PruneBuildCacheErrors, PruneBuildCacheResponses, PruneImagesData, PruneImagesErrors, PruneImagesResponses, RecoverApplicationData, RecoverApplicationErrors, RecoverApplicationResponses, RedeployApplicationData, RedeployApplicationErrors, RedeployApplicationResponses, RemoveApplicationDomainData, RemoveApplicationDomainErrors, RemoveApplicationDomainResponses, RemoveContainerData, RemoveContainerErrors, RemoveContainerResponses, RemoveCustomDomainData, RemoveCustomDomainErrors, RemoveCustomDomainResponses, RestartContainerData, RestartContainerErrors, RestartContainerResponses, RestartDeploymentData, RestartDeploymentErrors, RestartDeploymentResponses, RestartMachineData, RestartMachineErrors, RestartMachineResponses, ResumeMachineData, ResumeMachineErrors, ResumeMachineResponses, RollbackDeploymentData, RollbackDeploymentErrors, RollbackDeploymentResponses, RunExtensionData, RunExtensionErrors, RunExtensionResponses, SelectAMachinePlanData, SelectAMachinePlanErrors, SelectAMachinePlanResponses, SendNotificationData, SendNotificationErrors, SendNotificationResponses, StartContainerData, StartContainerErrors, StartContainerResponses, StopContainerData, StopContainerErrors, StopContainerResponses, ToggleHealthCheckData, ToggleHealthCheckErrors, ToggleHealthCheckResponses, UpdateApplicationData, UpdateApplicationErrors, UpdateApplicationLabelsData, UpdateApplicationLabelsErrors, UpdateApplicationLabelsResponses, UpdateApplicationResponses, UpdateAutoUpdateSettingsData, UpdateAutoUpdateSettingsErrors, UpdateAutoUpdateSettingsResponses, UpdateContainerResourcesData, UpdateContainerResourcesErrors, UpdateContainerResourcesResponses, UpdateFeatureFlagData, UpdateFeatureFlagErrors, UpdateFeatureFlagResponses, UpdateFontSettingsData, UpdateFontSettingsErrors, UpdateFontSettingsResponses, UpdateGitHubConnectorData, UpdateGitHubConnectorErrors, UpdateGitHubConnectorResponses, UpdateHealthCheckData, UpdateHealthCheckErrors, UpdateHealthCheckResponses, UpdateLanguageSettingsData, UpdateLanguageSettingsErrors, UpdateLanguageSettingsResponses, UpdateNotificationPreferencesData, UpdateNotificationPreferencesErrors, UpdateNotificationPreferencesResponses, UpdateSmtpConfigData, UpdateSmtpConfigErrors, UpdateSmtpConfigResponses, UpdateThemeSettingsData, UpdateThemeSettingsErrors, UpdateThemeSettingsResponses, UpdateUserAvatarData, UpdateUserAvatarErrors, UpdateUserAvatarResponses, UpdateUserNameData, UpdateUserNameErrors, UpdateUserNameResponses, UpdateUserPreferencesData, UpdateUserPreferencesErrors, UpdateUserPreferencesResponses, UpdateWebhookConfigData, UpdateWebhookConfigErrors, UpdateWebhookConfigResponses, UploadFileData, UploadFileErrors, UploadFileResponses, VerifyCustomDomainData, VerifyCustomDomainErrors, VerifyCustomDomainResponses } from './types.gen';
+import type { CreateAddToFamilyData, CreateAddToFamilyErrors, CreateAddToFamilyResponses, CreateBranchesData, CreateBranchesErrors, CreateBranchesResponses, CreateBuildCacheData, CreateBuildCacheErrors, CreateBuildCacheResponses, CreateCancelData, CreateCancelDeploymentData, CreateCancelDeploymentErrors, CreateCancelDeploymentResponses, CreateCancelErrors, CreateCancelResponses, CreateCopyDirectoryData, CreateCopyDirectoryErrors, CreateCopyDirectoryResponses, CreateCreateDirectoryData, CreateCreateDirectoryErrors, CreateCreateDirectoryResponses, CreateCustomData, CreateCustomErrors, CreateCustomResponses, CreateDeployData, CreateDeployErrors, CreateDeployResponses, CreateDomainsData, CreateDomainsErrors, CreateDomainsResponses, CreateDuplicateData, CreateDuplicateErrors, CreateDuplicateResponses, CreateEndpoint2Data, CreateEndpoint2Errors, CreateEndpoint2Responses, CreateEndpoint3Data, CreateEndpoint3Errors, CreateEndpoint3Responses, CreateEndpoint4Data, CreateEndpoint4Errors, CreateEndpoint4Responses, CreateEndpoint5Data, CreateEndpoint5Errors, CreateEndpoint5Responses, CreateEndpoint6Data, CreateEndpoint6Errors, CreateEndpoint6Responses, CreateEndpoint7Data, CreateEndpoint7Errors, CreateEndpoint7Responses, CreateEndpoint8Data, CreateEndpoint8Errors, CreateEndpoint8Responses, CreateEndpoint9Data, CreateEndpoint9Errors, CreateEndpoint9Responses, CreateEndpointData, CreateEndpointErrors, CreateEndpointResponses, CreateExecData, CreateExecErrors, CreateExecResponses, CreateForkData, CreateForkErrors, CreateForkResponses, CreateImages2Data, CreateImages2Errors, CreateImages2Responses, CreateImagesData, CreateImagesErrors, CreateImagesResponses, CreateLogsData, CreateLogsErrors, CreateLogsResponses, CreateMoveDirectoryData, CreateMoveDirectoryErrors, CreateMoveDirectoryResponses, CreateOnboardedData, CreateOnboardedErrors, CreateOnboardedResponses, CreatePauseData, CreatePauseErrors, CreatePauseResponses, CreatePreviewComposeData, CreatePreviewComposeErrors, CreatePreviewComposeResponses, CreateProjectData, CreateProjectErrors, CreateProjectResponses, CreateProvisionData, CreateProvisionErrors, CreateProvisionResponses, CreateRecoverData, CreateRecoverErrors, CreateRecoverResponses, CreateRedeployData, CreateRedeployErrors, CreateRedeployResponses, CreateRestart2Data, CreateRestart2Errors, CreateRestart2Responses, CreateRestart3Data, CreateRestart3Errors, CreateRestart3Responses, CreateRestartData, CreateRestartErrors, CreateRestartResponses, CreateResumeData, CreateResumeErrors, CreateResumeResponses, CreateRollbackData, CreateRollbackErrors, CreateRollbackResponses, CreateRunData, CreateRunErrors, CreateRunResponses, CreateSelectData, CreateSelectErrors, CreateSelectResponses, CreateSendData, CreateSendErrors, CreateSendResponses, CreateStartData, CreateStartErrors, CreateStartResponses, CreateStopData, CreateStopErrors, CreateStopResponses, CreateTestData, CreateTestErrors, CreateTestResponses, CreateUploadData, CreateUploadErrors, CreateUploadResponses, CreateVerifyData, CreateVerifyErrors, CreateVerifyResponses, DeleteContainerIdData, DeleteContainerIdErrors, DeleteContainerIdResponses, DeleteCustomData, DeleteCustomErrors, DeleteCustomResponses, DeleteDeleteDirectoryData, DeleteDeleteDirectoryErrors, DeleteDeleteDirectoryResponses, DeleteDomainsData, DeleteDomainsErrors, DeleteDomainsResponses, DeleteEndpoint2Data, DeleteEndpoint2Errors, DeleteEndpoint2Responses, DeleteEndpoint3Data, DeleteEndpoint3Errors, DeleteEndpoint3Responses, DeleteEndpoint4Data, DeleteEndpoint4Errors, DeleteEndpoint4Responses, DeleteEndpoint5Data, DeleteEndpoint5Errors, DeleteEndpoint5Responses, DeleteEndpoint6Data, DeleteEndpoint6Errors, DeleteEndpoint6Responses, DeleteEndpointData, DeleteEndpointErrors, DeleteEndpointResponses, DeleteIdData, DeleteIdErrors, DeleteIdResponses, GetAllData, GetAllErrors, GetAllResponses, GetApplicationsData, GetApplicationsErrors, GetApplicationsResponses, GetBillingData, GetBillingErrors, GetBillingResponses, GetBootstrapData, GetBootstrapErrors, GetBootstrapResponses, GetByExtensionIdData, GetByExtensionIdErrors, GetByExtensionIdResponses, GetCategoriesData, GetCategoriesErrors, GetCategoriesResponses, GetCheck2Data, GetCheck2Errors, GetCheck2Responses, GetCheckData, GetCheckErrors, GetCheckResponses, GetComposeServicesData, GetComposeServicesErrors, GetComposeServicesResponses, GetContainerIdData, GetContainerIdErrors, GetContainerIdResponses, GetDeployments2Data, GetDeployments2Errors, GetDeployments2Responses, GetDeploymentsData, GetDeploymentsErrors, GetDeploymentsResponses, GetDnsCheckData, GetDnsCheckErrors, GetDnsCheckResponses, GetEndpoint10Data, GetEndpoint10Errors, GetEndpoint10Responses, GetEndpoint11Data, GetEndpoint11Errors, GetEndpoint11Responses, GetEndpoint12Data, GetEndpoint12Errors, GetEndpoint12Responses, GetEndpoint13Data, GetEndpoint13Errors, GetEndpoint13Responses, GetEndpoint14Data, GetEndpoint14Errors, GetEndpoint14Responses, GetEndpoint2Data, GetEndpoint2Errors, GetEndpoint2Responses, GetEndpoint3Data, GetEndpoint3Errors, GetEndpoint3Responses, GetEndpoint4Data, GetEndpoint4Errors, GetEndpoint4Responses, GetEndpoint5Data, GetEndpoint5Errors, GetEndpoint5Responses, GetEndpoint6Data, GetEndpoint6Errors, GetEndpoint6Responses, GetEndpoint7Data, GetEndpoint7Errors, GetEndpoint7Responses, GetEndpoint8Data, GetEndpoint8Errors, GetEndpoint8Responses, GetEndpoint9Data, GetEndpoint9Errors, GetEndpoint9Responses, GetEndpointData, GetEndpointErrors, GetEndpointResponses, GetEnvironmentsData, GetEnvironmentsErrors, GetEnvironmentsResponses, GetExecutionData, GetExecutionErrors, GetExecutionResponses, GetExecutionsData, GetExecutionsErrors, GetExecutionsResponses, GetFamilyData, GetFamilyErrors, GetFamilyResponses, GetGenerateData, GetGenerateErrors, GetGenerateResponses, GetIconData, GetIconErrors, GetIconResponses, GetIdData, GetIdErrors, GetIdResponses, GetIsAdminRegisteredData, GetIsAdminRegisteredErrors, GetIsAdminRegisteredResponses, GetLogs2Data, GetLogs2Errors, GetLogs2Responses, GetLogs3Data, GetLogs3Errors, GetLogs3Responses, GetLogs4Data, GetLogs4Errors, GetLogs4Responses, GetLogsData, GetLogsErrors, GetLogsResponses, GetOnboardedData, GetOnboardedErrors, GetOnboardedResponses, GetPlansData, GetPlansErrors, GetPlansResponses, GetPreferencesData, GetPreferencesErrors, GetPreferencesResponses, GetRepositoriesData, GetRepositoriesErrors, GetRepositoriesResponses, GetResultsData, GetResultsErrors, GetResultsResponses, GetServersData, GetServersErrors, GetServersResponses, GetSettingsData, GetSettingsErrors, GetSettingsResponses, GetStats2Data, GetStats2Errors, GetStats2Responses, GetStatsData, GetStatsErrors, GetStatsResponses, GetStatus2Data, GetStatus2Errors, GetStatus2Responses, GetStatus3Data, GetStatus3Errors, GetStatus3Responses, GetStatusData, GetStatusErrors, GetStatusResponses, GetTypeData, GetTypeErrors, GetTypeResponses, PatchAutoUpdateData, PatchAutoUpdateErrors, PatchAutoUpdateResponses, PatchAvatarData, PatchAvatarErrors, PatchAvatarResponses, PatchFontData, PatchFontErrors, PatchFontResponses, PatchLanguageData, PatchLanguageErrors, PatchLanguageResponses, PatchNameData, PatchNameErrors, PatchNameResponses, PatchThemeData, PatchThemeErrors, PatchThemeResponses, PatchToggleData, PatchToggleErrors, PatchToggleResponses, UpdateEndpoint2Data, UpdateEndpoint2Errors, UpdateEndpoint2Responses, UpdateEndpoint3Data, UpdateEndpoint3Errors, UpdateEndpoint3Responses, UpdateEndpoint4Data, UpdateEndpoint4Errors, UpdateEndpoint4Responses, UpdateEndpoint5Data, UpdateEndpoint5Errors, UpdateEndpoint5Responses, UpdateEndpoint6Data, UpdateEndpoint6Errors, UpdateEndpoint6Responses, UpdateEndpointData, UpdateEndpointErrors, UpdateEndpointResponses, UpdateIdData, UpdateIdErrors, UpdateIdResponses, UpdateLabelsData, UpdateLabelsErrors, UpdateLabelsResponses, UpdatePreferencesData, UpdatePreferencesErrors, UpdatePreferencesResponses, UpdateResourcesData, UpdateResourcesErrors, UpdateResourcesResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -21,57 +21,57 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 /**
  * List audit logs
  *
- * List audit logs.
+ * Get logs.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listAuditLogs = <ThrowOnError extends boolean = false>(options?: Options<ListAuditLogsData, ThrowOnError>) => (options?.client ?? client).get<ListAuditLogsResponses, ListAuditLogsErrors, ThrowOnError>({ url: '/api/v1/audit/logs', ...options });
+export const getLogs3 = <ThrowOnError extends boolean = false>(options?: Options<GetLogs3Data, ThrowOnError>) => (options?.client ?? client).get<GetLogs3Responses, GetLogs3Errors, ThrowOnError>({ url: '/api/v1/audit/logs', ...options });
 
 /**
  * Get bootstrap session data
  *
- * Get bootstrap session data.
- *
- * Auth: Required (bearer token).
- * Scope: No organization scope required.
- * Side effects: Read-only operation.
- */
-export const getBootstrapSessionData = <ThrowOnError extends boolean = false>(options?: Options<GetBootstrapSessionDataData, ThrowOnError>) => (options?.client ?? client).get<GetBootstrapSessionDataResponses, GetBootstrapSessionDataErrors, ThrowOnError>({ url: '/api/v1/auth/bootstrap', ...options });
-
-/**
- * Check admin registration
- *
- * Check admin registration.
- *
- * Auth: Public endpoint.
- * Scope: No organization scope required.
- * Side effects: Read-only operation.
- */
-export const checkAdminRegistration = <ThrowOnError extends boolean = false>(options?: Options<CheckAdminRegistrationData, ThrowOnError>) => (options?.client ?? client).get<CheckAdminRegistrationResponses, CheckAdminRegistrationErrors, ThrowOnError>({ url: '/api/v1/auth/is-admin-registered', ...options });
-
-/**
- * List containers
- *
- * List containers.
+ * Get bootstrap.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listContainers = <ThrowOnError extends boolean = false>(options?: Options<ListContainersData, ThrowOnError>) => (options?.client ?? client).get<ListContainersResponses, ListContainersErrors, ThrowOnError>({ url: '/api/v1/container', ...options });
+export const getBootstrap = <ThrowOnError extends boolean = false>(options?: Options<GetBootstrapData, ThrowOnError>) => (options?.client ?? client).get<GetBootstrapResponses, GetBootstrapErrors, ThrowOnError>({ url: '/api/v1/auth/bootstrap', ...options });
+
+/**
+ * Check admin registration
+ *
+ * Get is admin registered.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getIsAdminRegistered = <ThrowOnError extends boolean = false>(options?: Options<GetIsAdminRegisteredData, ThrowOnError>) => (options?.client ?? client).get<GetIsAdminRegisteredResponses, GetIsAdminRegisteredErrors, ThrowOnError>({ url: '/api/v1/auth/is-admin-registered', ...options });
+
+/**
+ * List containers
+ *
+ * Get endpoint.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getEndpoint9 = <ThrowOnError extends boolean = false>(options?: Options<GetEndpoint9Data, ThrowOnError>) => (options?.client ?? client).get<GetEndpoint9Responses, GetEndpoint9Errors, ThrowOnError>({ url: '/api/v1/container', ...options });
 
 /**
  * List images
  *
- * List images.
+ * Create images.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const listImages = <ThrowOnError extends boolean = false>(options: Options<ListImagesData, ThrowOnError>) => (options.client ?? client).post<ListImagesResponses, ListImagesErrors, ThrowOnError>({
+export const createImages2 = <ThrowOnError extends boolean = false>(options: Options<CreateImages2Data, ThrowOnError>) => (options.client ?? client).post<CreateImages2Responses, CreateImages2Errors, ThrowOnError>({
     url: '/api/v1/container/images',
     ...options,
     headers: {
@@ -83,13 +83,13 @@ export const listImages = <ThrowOnError extends boolean = false>(options: Option
 /**
  * Prune build cache
  *
- * Prune build cache.
+ * Create build cache.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const pruneBuildCache = <ThrowOnError extends boolean = false>(options: Options<PruneBuildCacheData, ThrowOnError>) => (options.client ?? client).post<PruneBuildCacheResponses, PruneBuildCacheErrors, ThrowOnError>({
+export const createBuildCache = <ThrowOnError extends boolean = false>(options: Options<CreateBuildCacheData, ThrowOnError>) => (options.client ?? client).post<CreateBuildCacheResponses, CreateBuildCacheErrors, ThrowOnError>({
     url: '/api/v1/container/prune/build-cache',
     ...options,
     headers: {
@@ -101,13 +101,13 @@ export const pruneBuildCache = <ThrowOnError extends boolean = false>(options: O
 /**
  * Prune images
  *
- * Prune images.
+ * Create images.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const pruneImages = <ThrowOnError extends boolean = false>(options: Options<PruneImagesData, ThrowOnError>) => (options.client ?? client).post<PruneImagesResponses, PruneImagesErrors, ThrowOnError>({
+export const createImages = <ThrowOnError extends boolean = false>(options: Options<CreateImagesData, ThrowOnError>) => (options.client ?? client).post<CreateImagesResponses, CreateImagesErrors, ThrowOnError>({
     url: '/api/v1/container/prune/images',
     ...options,
     headers: {
@@ -119,35 +119,35 @@ export const pruneImages = <ThrowOnError extends boolean = false>(options: Optio
 /**
  * Remove container
  *
- * Remove container.
+ * Delete {container id}.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const removeContainer = <ThrowOnError extends boolean = false>(options: Options<RemoveContainerData, ThrowOnError>) => (options.client ?? client).delete<RemoveContainerResponses, RemoveContainerErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}', ...options });
+export const deleteContainerId = <ThrowOnError extends boolean = false>(options: Options<DeleteContainerIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteContainerIdResponses, DeleteContainerIdErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}', ...options });
 
 /**
  * Get container
  *
- * Get container.
+ * Get {container id}.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getContainer = <ThrowOnError extends boolean = false>(options: Options<GetContainerData, ThrowOnError>) => (options.client ?? client).get<GetContainerResponses, GetContainerErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}', ...options });
+export const getContainerId = <ThrowOnError extends boolean = false>(options: Options<GetContainerIdData, ThrowOnError>) => (options.client ?? client).get<GetContainerIdResponses, GetContainerIdErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}', ...options });
 
 /**
  * Get container logs
  *
- * Get container logs.
+ * Create logs.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const getContainerLogs = <ThrowOnError extends boolean = false>(options: Options<GetContainerLogsData, ThrowOnError>) => (options.client ?? client).post<GetContainerLogsResponses, GetContainerLogsErrors, ThrowOnError>({
+export const createLogs = <ThrowOnError extends boolean = false>(options: Options<CreateLogsData, ThrowOnError>) => (options.client ?? client).post<CreateLogsResponses, CreateLogsErrors, ThrowOnError>({
     url: '/api/v1/container/{container_id}/logs',
     ...options,
     headers: {
@@ -159,13 +159,13 @@ export const getContainerLogs = <ThrowOnError extends boolean = false>(options: 
 /**
  * Update container resources
  *
- * Update container resources.
+ * Update resources.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateContainerResources = <ThrowOnError extends boolean = false>(options: Options<UpdateContainerResourcesData, ThrowOnError>) => (options.client ?? client).put<UpdateContainerResourcesResponses, UpdateContainerResourcesErrors, ThrowOnError>({
+export const updateResources = <ThrowOnError extends boolean = false>(options: Options<UpdateResourcesData, ThrowOnError>) => (options.client ?? client).put<UpdateResourcesResponses, UpdateResourcesErrors, ThrowOnError>({
     url: '/api/v1/container/{container_id}/resources',
     ...options,
     headers: {
@@ -177,46 +177,46 @@ export const updateContainerResources = <ThrowOnError extends boolean = false>(o
 /**
  * Restart container
  *
- * Restart container.
+ * Create restart.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const restartContainer = <ThrowOnError extends boolean = false>(options: Options<RestartContainerData, ThrowOnError>) => (options.client ?? client).post<RestartContainerResponses, RestartContainerErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}/restart', ...options });
+export const createRestart2 = <ThrowOnError extends boolean = false>(options: Options<CreateRestart2Data, ThrowOnError>) => (options.client ?? client).post<CreateRestart2Responses, CreateRestart2Errors, ThrowOnError>({ url: '/api/v1/container/{container_id}/restart', ...options });
 
 /**
  * Start container
  *
- * Start container.
+ * Create start.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const startContainer = <ThrowOnError extends boolean = false>(options: Options<StartContainerData, ThrowOnError>) => (options.client ?? client).post<StartContainerResponses, StartContainerErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}/start', ...options });
+export const createStart = <ThrowOnError extends boolean = false>(options: Options<CreateStartData, ThrowOnError>) => (options.client ?? client).post<CreateStartResponses, CreateStartErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}/start', ...options });
 
 /**
  * Stop container
  *
- * Stop container.
+ * Create stop.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const stopContainer = <ThrowOnError extends boolean = false>(options: Options<StopContainerData, ThrowOnError>) => (options.client ?? client).post<StopContainerResponses, StopContainerErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}/stop', ...options });
+export const createStop = <ThrowOnError extends boolean = false>(options: Options<CreateStopData, ThrowOnError>) => (options.client ?? client).post<CreateStopResponses, CreateStopErrors, ThrowOnError>({ url: '/api/v1/container/{container_id}/stop', ...options });
 
 /**
  * Delete application
  *
- * Delete application.
+ * Delete endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deleteApplication = <ThrowOnError extends boolean = false>(options: Options<DeleteApplicationData, ThrowOnError>) => (options.client ?? client).delete<DeleteApplicationResponses, DeleteApplicationErrors, ThrowOnError>({
+export const deleteEndpoint4 = <ThrowOnError extends boolean = false>(options: Options<DeleteEndpoint4Data, ThrowOnError>) => (options.client ?? client).delete<DeleteEndpoint4Responses, DeleteEndpoint4Errors, ThrowOnError>({
     url: '/api/v1/deploy/application',
     ...options,
     headers: {
@@ -228,24 +228,24 @@ export const deleteApplication = <ThrowOnError extends boolean = false>(options:
 /**
  * Get application
  *
- * Get application.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getApplication = <ThrowOnError extends boolean = false>(options: Options<GetApplicationData, ThrowOnError>) => (options.client ?? client).get<GetApplicationResponses, GetApplicationErrors, ThrowOnError>({ url: '/api/v1/deploy/application', ...options });
+export const getEndpoint7 = <ThrowOnError extends boolean = false>(options: Options<GetEndpoint7Data, ThrowOnError>) => (options.client ?? client).get<GetEndpoint7Responses, GetEndpoint7Errors, ThrowOnError>({ url: '/api/v1/deploy/application', ...options });
 
 /**
  * Deploy application
  *
- * Deploy application.
+ * Create endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deployApplication = <ThrowOnError extends boolean = false>(options: Options<DeployApplicationData, ThrowOnError>) => (options.client ?? client).post<DeployApplicationResponses, DeployApplicationErrors, ThrowOnError>({
+export const createEndpoint6 = <ThrowOnError extends boolean = false>(options: Options<CreateEndpoint6Data, ThrowOnError>) => (options.client ?? client).post<CreateEndpoint6Responses, CreateEndpoint6Errors, ThrowOnError>({
     url: '/api/v1/deploy/application',
     ...options,
     headers: {
@@ -257,13 +257,13 @@ export const deployApplication = <ThrowOnError extends boolean = false>(options:
 /**
  * Update application
  *
- * Update application.
+ * Update endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateApplication = <ThrowOnError extends boolean = false>(options: Options<UpdateApplicationData, ThrowOnError>) => (options.client ?? client).put<UpdateApplicationResponses, UpdateApplicationErrors, ThrowOnError>({
+export const updateEndpoint4 = <ThrowOnError extends boolean = false>(options: Options<UpdateEndpoint4Data, ThrowOnError>) => (options.client ?? client).put<UpdateEndpoint4Responses, UpdateEndpoint4Errors, ThrowOnError>({
     url: '/api/v1/deploy/application',
     ...options,
     headers: {
@@ -275,13 +275,13 @@ export const updateApplication = <ThrowOnError extends boolean = false>(options:
 /**
  * Cancel deployment
  *
- * Cancel deployment.
+ * Create cancel deployment.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const cancelDeployment = <ThrowOnError extends boolean = false>(options: Options<CancelDeploymentData, ThrowOnError>) => (options.client ?? client).post<CancelDeploymentResponses, CancelDeploymentErrors, ThrowOnError>({
+export const createCancelDeployment = <ThrowOnError extends boolean = false>(options: Options<CreateCancelDeploymentData, ThrowOnError>) => (options.client ?? client).post<CreateCancelDeploymentResponses, CreateCancelDeploymentErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/cancel-deployment',
     ...options,
     headers: {
@@ -293,57 +293,57 @@ export const cancelDeployment = <ThrowOnError extends boolean = false>(options: 
 /**
  * List compose services
  *
- * List compose services.
+ * Get compose services.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listComposeServices = <ThrowOnError extends boolean = false>(options: Options<ListComposeServicesData, ThrowOnError>) => (options.client ?? client).get<ListComposeServicesResponses, ListComposeServicesErrors, ThrowOnError>({ url: '/api/v1/deploy/application/compose-services', ...options });
+export const getComposeServices = <ThrowOnError extends boolean = false>(options: Options<GetComposeServicesData, ThrowOnError>) => (options.client ?? client).get<GetComposeServicesResponses, GetComposeServicesErrors, ThrowOnError>({ url: '/api/v1/deploy/application/compose-services', ...options });
 
 /**
  * List application deployments
  *
- * List application deployments.
+ * Get deployments.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listApplicationDeployments = <ThrowOnError extends boolean = false>(options: Options<ListApplicationDeploymentsData, ThrowOnError>) => (options.client ?? client).get<ListApplicationDeploymentsResponses, ListApplicationDeploymentsErrors, ThrowOnError>({ url: '/api/v1/deploy/application/deployments', ...options });
+export const getDeployments2 = <ThrowOnError extends boolean = false>(options: Options<GetDeployments2Data, ThrowOnError>) => (options.client ?? client).get<GetDeployments2Responses, GetDeployments2Errors, ThrowOnError>({ url: '/api/v1/deploy/application/deployments', ...options });
 
 /**
  * Get deployment
  *
- * Get deployment.
+ * Get deployments.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getDeployment = <ThrowOnError extends boolean = false>(options: Options<GetDeploymentData, ThrowOnError>) => (options.client ?? client).get<GetDeploymentResponses, GetDeploymentErrors, ThrowOnError>({ url: '/api/v1/deploy/application/deployments/{deployment_id}', ...options });
+export const getDeployments = <ThrowOnError extends boolean = false>(options: Options<GetDeploymentsData, ThrowOnError>) => (options.client ?? client).get<GetDeploymentsResponses, GetDeploymentsErrors, ThrowOnError>({ url: '/api/v1/deploy/application/deployments/{deployment_id}', ...options });
 
 /**
  * Get deployment logs
  *
- * Get deployment logs.
+ * Get logs.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getDeploymentLogs = <ThrowOnError extends boolean = false>(options: Options<GetDeploymentLogsData, ThrowOnError>) => (options.client ?? client).get<GetDeploymentLogsResponses, GetDeploymentLogsErrors, ThrowOnError>({ url: '/api/v1/deploy/application/deployments/{deployment_id}/logs', ...options });
+export const getLogs2 = <ThrowOnError extends boolean = false>(options: Options<GetLogs2Data, ThrowOnError>) => (options.client ?? client).get<GetLogs2Responses, GetLogs2Errors, ThrowOnError>({ url: '/api/v1/deploy/application/deployments/{deployment_id}/logs', ...options });
 
 /**
  * Remove application domain
  *
- * Remove application domain.
+ * Delete domains.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const removeApplicationDomain = <ThrowOnError extends boolean = false>(options: Options<RemoveApplicationDomainData, ThrowOnError>) => (options.client ?? client).delete<RemoveApplicationDomainResponses, RemoveApplicationDomainErrors, ThrowOnError>({
+export const deleteDomains = <ThrowOnError extends boolean = false>(options: Options<DeleteDomainsData, ThrowOnError>) => (options.client ?? client).delete<DeleteDomainsResponses, DeleteDomainsErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/domains',
     ...options,
     headers: {
@@ -355,13 +355,13 @@ export const removeApplicationDomain = <ThrowOnError extends boolean = false>(op
 /**
  * Add application domain
  *
- * Add application domain.
+ * Create domains.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const addApplicationDomain = <ThrowOnError extends boolean = false>(options: Options<AddApplicationDomainData, ThrowOnError>) => (options.client ?? client).post<AddApplicationDomainResponses, AddApplicationDomainErrors, ThrowOnError>({
+export const createDomains = <ThrowOnError extends boolean = false>(options: Options<CreateDomainsData, ThrowOnError>) => (options.client ?? client).post<CreateDomainsResponses, CreateDomainsErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/domains',
     ...options,
     headers: {
@@ -373,13 +373,13 @@ export const addApplicationDomain = <ThrowOnError extends boolean = false>(optio
 /**
  * Update application labels
  *
- * Update application labels.
+ * Update labels.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateApplicationLabels = <ThrowOnError extends boolean = false>(options: Options<UpdateApplicationLabelsData, ThrowOnError>) => (options.client ?? client).put<UpdateApplicationLabelsResponses, UpdateApplicationLabelsErrors, ThrowOnError>({
+export const updateLabels = <ThrowOnError extends boolean = false>(options: Options<UpdateLabelsData, ThrowOnError>) => (options.client ?? client).put<UpdateLabelsResponses, UpdateLabelsErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/labels',
     ...options,
     headers: {
@@ -391,24 +391,24 @@ export const updateApplicationLabels = <ThrowOnError extends boolean = false>(op
 /**
  * Get application logs
  *
- * Get application logs.
+ * Get logs.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getApplicationLogs = <ThrowOnError extends boolean = false>(options: Options<GetApplicationLogsData, ThrowOnError>) => (options.client ?? client).get<GetApplicationLogsResponses, GetApplicationLogsErrors, ThrowOnError>({ url: '/api/v1/deploy/application/logs/{application_id}', ...options });
+export const getLogs = <ThrowOnError extends boolean = false>(options: Options<GetLogsData, ThrowOnError>) => (options.client ?? client).get<GetLogsResponses, GetLogsErrors, ThrowOnError>({ url: '/api/v1/deploy/application/logs/{application_id}', ...options });
 
 /**
  * Preview compose services
  *
- * Preview compose services.
+ * Create preview compose.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const previewComposeServices = <ThrowOnError extends boolean = false>(options: Options<PreviewComposeServicesData, ThrowOnError>) => (options.client ?? client).post<PreviewComposeServicesResponses, PreviewComposeServicesErrors, ThrowOnError>({
+export const createPreviewCompose = <ThrowOnError extends boolean = false>(options: Options<CreatePreviewComposeData, ThrowOnError>) => (options.client ?? client).post<CreatePreviewComposeResponses, CreatePreviewComposeErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/preview-compose',
     ...options,
     headers: {
@@ -438,13 +438,13 @@ export const createProject = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Add project to family
  *
- * Add project to family.
+ * Create add to family.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const addProjectToFamily = <ThrowOnError extends boolean = false>(options: Options<AddProjectToFamilyData, ThrowOnError>) => (options.client ?? client).post<AddProjectToFamilyResponses, AddProjectToFamilyErrors, ThrowOnError>({
+export const createAddToFamily = <ThrowOnError extends boolean = false>(options: Options<CreateAddToFamilyData, ThrowOnError>) => (options.client ?? client).post<CreateAddToFamilyResponses, CreateAddToFamilyErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/project/add-to-family',
     ...options,
     headers: {
@@ -456,13 +456,13 @@ export const addProjectToFamily = <ThrowOnError extends boolean = false>(options
 /**
  * Deploy project
  *
- * Deploy project.
+ * Create deploy.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deployProject = <ThrowOnError extends boolean = false>(options: Options<DeployProjectData, ThrowOnError>) => (options.client ?? client).post<DeployProjectResponses, DeployProjectErrors, ThrowOnError>({
+export const createDeploy = <ThrowOnError extends boolean = false>(options: Options<CreateDeployData, ThrowOnError>) => (options.client ?? client).post<CreateDeployResponses, CreateDeployErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/project/deploy',
     ...options,
     headers: {
@@ -474,13 +474,13 @@ export const deployProject = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Duplicate project
  *
- * Duplicate project.
+ * Create duplicate.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const duplicateProject = <ThrowOnError extends boolean = false>(options: Options<DuplicateProjectData, ThrowOnError>) => (options.client ?? client).post<DuplicateProjectResponses, DuplicateProjectErrors, ThrowOnError>({
+export const createDuplicate = <ThrowOnError extends boolean = false>(options: Options<CreateDuplicateData, ThrowOnError>) => (options.client ?? client).post<CreateDuplicateResponses, CreateDuplicateErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/project/duplicate',
     ...options,
     headers: {
@@ -492,35 +492,35 @@ export const duplicateProject = <ThrowOnError extends boolean = false>(options: 
 /**
  * List projects in family
  *
- * List projects in family.
+ * Get family.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listProjectsInFamily = <ThrowOnError extends boolean = false>(options: Options<ListProjectsInFamilyData, ThrowOnError>) => (options.client ?? client).get<ListProjectsInFamilyResponses, ListProjectsInFamilyErrors, ThrowOnError>({ url: '/api/v1/deploy/application/project/family', ...options });
+export const getFamily = <ThrowOnError extends boolean = false>(options: Options<GetFamilyData, ThrowOnError>) => (options.client ?? client).get<GetFamilyResponses, GetFamilyErrors, ThrowOnError>({ url: '/api/v1/deploy/application/project/family', ...options });
 
 /**
  * List family environments
  *
- * List family environments.
+ * Get environments.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listFamilyEnvironments = <ThrowOnError extends boolean = false>(options: Options<ListFamilyEnvironmentsData, ThrowOnError>) => (options.client ?? client).get<ListFamilyEnvironmentsResponses, ListFamilyEnvironmentsErrors, ThrowOnError>({ url: '/api/v1/deploy/application/project/family/environments', ...options });
+export const getEnvironments = <ThrowOnError extends boolean = false>(options: Options<GetEnvironmentsData, ThrowOnError>) => (options.client ?? client).get<GetEnvironmentsResponses, GetEnvironmentsErrors, ThrowOnError>({ url: '/api/v1/deploy/application/project/family/environments', ...options });
 
 /**
  * Recover application
  *
- * Recover application.
+ * Create recover.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const recoverApplication = <ThrowOnError extends boolean = false>(options: Options<RecoverApplicationData, ThrowOnError>) => (options.client ?? client).post<RecoverApplicationResponses, RecoverApplicationErrors, ThrowOnError>({
+export const createRecover = <ThrowOnError extends boolean = false>(options: Options<CreateRecoverData, ThrowOnError>) => (options.client ?? client).post<CreateRecoverResponses, CreateRecoverErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/recover',
     ...options,
     headers: {
@@ -532,13 +532,13 @@ export const recoverApplication = <ThrowOnError extends boolean = false>(options
 /**
  * Redeploy application
  *
- * Redeploy application.
+ * Create redeploy.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const redeployApplication = <ThrowOnError extends boolean = false>(options: Options<RedeployApplicationData, ThrowOnError>) => (options.client ?? client).post<RedeployApplicationResponses, RedeployApplicationErrors, ThrowOnError>({
+export const createRedeploy = <ThrowOnError extends boolean = false>(options: Options<CreateRedeployData, ThrowOnError>) => (options.client ?? client).post<CreateRedeployResponses, CreateRedeployErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/redeploy',
     ...options,
     headers: {
@@ -550,13 +550,13 @@ export const redeployApplication = <ThrowOnError extends boolean = false>(option
 /**
  * Restart deployment
  *
- * Restart deployment.
+ * Create restart.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const restartDeployment = <ThrowOnError extends boolean = false>(options: Options<RestartDeploymentData, ThrowOnError>) => (options.client ?? client).post<RestartDeploymentResponses, RestartDeploymentErrors, ThrowOnError>({
+export const createRestart = <ThrowOnError extends boolean = false>(options: Options<CreateRestartData, ThrowOnError>) => (options.client ?? client).post<CreateRestartResponses, CreateRestartErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/restart',
     ...options,
     headers: {
@@ -568,13 +568,13 @@ export const restartDeployment = <ThrowOnError extends boolean = false>(options:
 /**
  * Rollback deployment
  *
- * Rollback deployment.
+ * Create rollback.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const rollbackDeployment = <ThrowOnError extends boolean = false>(options: Options<RollbackDeploymentData, ThrowOnError>) => (options.client ?? client).post<RollbackDeploymentResponses, RollbackDeploymentErrors, ThrowOnError>({
+export const createRollback = <ThrowOnError extends boolean = false>(options: Options<CreateRollbackData, ThrowOnError>) => (options.client ?? client).post<CreateRollbackResponses, CreateRollbackErrors, ThrowOnError>({
     url: '/api/v1/deploy/application/rollback',
     ...options,
     headers: {
@@ -586,35 +586,35 @@ export const rollbackDeployment = <ThrowOnError extends boolean = false>(options
 /**
  * List applications
  *
- * List applications.
+ * Get applications.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listApplications = <ThrowOnError extends boolean = false>(options?: Options<ListApplicationsData, ThrowOnError>) => (options?.client ?? client).get<ListApplicationsResponses, ListApplicationsErrors, ThrowOnError>({ url: '/api/v1/deploy/applications', ...options });
+export const getApplications = <ThrowOnError extends boolean = false>(options?: Options<GetApplicationsData, ThrowOnError>) => (options?.client ?? client).get<GetApplicationsResponses, GetApplicationsErrors, ThrowOnError>({ url: '/api/v1/deploy/applications', ...options });
 
 /**
  * List domains
  *
- * List domains.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listDomains = <ThrowOnError extends boolean = false>(options?: Options<ListDomainsData, ThrowOnError>) => (options?.client ?? client).get<ListDomainsResponses, ListDomainsErrors, ThrowOnError>({ url: '/api/v1/domain', ...options });
+export const getEndpoint3 = <ThrowOnError extends boolean = false>(options?: Options<GetEndpoint3Data, ThrowOnError>) => (options?.client ?? client).get<GetEndpoint3Responses, GetEndpoint3Errors, ThrowOnError>({ url: '/api/v1/domain', ...options });
 
 /**
  * Remove custom domain
  *
- * Remove custom domain.
+ * Delete custom.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const removeCustomDomain = <ThrowOnError extends boolean = false>(options: Options<RemoveCustomDomainData, ThrowOnError>) => (options.client ?? client).delete<RemoveCustomDomainResponses, RemoveCustomDomainErrors, ThrowOnError>({
+export const deleteCustom = <ThrowOnError extends boolean = false>(options: Options<DeleteCustomData, ThrowOnError>) => (options.client ?? client).delete<DeleteCustomResponses, DeleteCustomErrors, ThrowOnError>({
     url: '/api/v1/domain/custom',
     ...options,
     headers: {
@@ -626,13 +626,13 @@ export const removeCustomDomain = <ThrowOnError extends boolean = false>(options
 /**
  * Add custom domain
  *
- * Add custom domain.
+ * Create custom.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const addCustomDomain = <ThrowOnError extends boolean = false>(options: Options<AddCustomDomainData, ThrowOnError>) => (options.client ?? client).post<AddCustomDomainResponses, AddCustomDomainErrors, ThrowOnError>({
+export const createCustom = <ThrowOnError extends boolean = false>(options: Options<CreateCustomData, ThrowOnError>) => (options.client ?? client).post<CreateCustomResponses, CreateCustomErrors, ThrowOnError>({
     url: '/api/v1/domain/custom',
     ...options,
     headers: {
@@ -644,35 +644,35 @@ export const addCustomDomain = <ThrowOnError extends boolean = false>(options: O
 /**
  * Check custom domain DNS
  *
- * Check custom domain DNS.
+ * Get dns check.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const checkCustomDomainDns = <ThrowOnError extends boolean = false>(options: Options<CheckCustomDomainDnsData, ThrowOnError>) => (options.client ?? client).get<CheckCustomDomainDnsResponses, CheckCustomDomainDnsErrors, ThrowOnError>({ url: '/api/v1/domain/dns-check', ...options });
+export const getDnsCheck = <ThrowOnError extends boolean = false>(options: Options<GetDnsCheckData, ThrowOnError>) => (options.client ?? client).get<GetDnsCheckResponses, GetDnsCheckErrors, ThrowOnError>({ url: '/api/v1/domain/dns-check', ...options });
 
 /**
  * Generate random subdomain
  *
- * Generate random subdomain.
+ * Get generate.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const generateRandomSubdomain = <ThrowOnError extends boolean = false>(options?: Options<GenerateRandomSubdomainData, ThrowOnError>) => (options?.client ?? client).get<GenerateRandomSubdomainResponses, GenerateRandomSubdomainErrors, ThrowOnError>({ url: '/api/v1/domain/generate', ...options });
+export const getGenerate = <ThrowOnError extends boolean = false>(options?: Options<GetGenerateData, ThrowOnError>) => (options?.client ?? client).get<GetGenerateResponses, GetGenerateErrors, ThrowOnError>({ url: '/api/v1/domain/generate', ...options });
 
 /**
  * Verify custom domain
  *
- * Verify custom domain.
+ * Create verify.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const verifyCustomDomain = <ThrowOnError extends boolean = false>(options: Options<VerifyCustomDomainData, ThrowOnError>) => (options.client ?? client).post<VerifyCustomDomainResponses, VerifyCustomDomainErrors, ThrowOnError>({
+export const createVerify = <ThrowOnError extends boolean = false>(options: Options<CreateVerifyData, ThrowOnError>) => (options.client ?? client).post<CreateVerifyResponses, CreateVerifyErrors, ThrowOnError>({
     url: '/api/v1/domain/verify',
     ...options,
     headers: {
@@ -684,46 +684,46 @@ export const verifyCustomDomain = <ThrowOnError extends boolean = false>(options
 /**
  * List extensions
  *
- * List extensions.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listExtensions = <ThrowOnError extends boolean = false>(options?: Options<ListExtensionsData, ThrowOnError>) => (options?.client ?? client).get<ListExtensionsResponses, ListExtensionsErrors, ThrowOnError>({ url: '/api/v1/extensions', ...options });
+export const getEndpoint11 = <ThrowOnError extends boolean = false>(options?: Options<GetEndpoint11Data, ThrowOnError>) => (options?.client ?? client).get<GetEndpoint11Responses, GetEndpoint11Errors, ThrowOnError>({ url: '/api/v1/extensions', ...options });
 
 /**
  * Get extension by extension ID
  *
- * Get extension by extension ID.
+ * Get by extension id.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getExtensionByExtensionId = <ThrowOnError extends boolean = false>(options: Options<GetExtensionByExtensionIdData, ThrowOnError>) => (options.client ?? client).get<GetExtensionByExtensionIdResponses, GetExtensionByExtensionIdErrors, ThrowOnError>({ url: '/api/v1/extensions/by-extension-id/{extension_id}', ...options });
+export const getByExtensionId = <ThrowOnError extends boolean = false>(options: Options<GetByExtensionIdData, ThrowOnError>) => (options.client ?? client).get<GetByExtensionIdResponses, GetByExtensionIdErrors, ThrowOnError>({ url: '/api/v1/extensions/by-extension-id/{extension_id}', ...options });
 
 /**
  * List extension executions
  *
- * List extension executions.
+ * Get executions.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listExtensionExecutions = <ThrowOnError extends boolean = false>(options: Options<ListExtensionExecutionsData, ThrowOnError>) => (options.client ?? client).get<ListExtensionExecutionsResponses, ListExtensionExecutionsErrors, ThrowOnError>({ url: '/api/v1/extensions/by-extension-id/{extension_id}/executions', ...options });
+export const getExecutions = <ThrowOnError extends boolean = false>(options: Options<GetExecutionsData, ThrowOnError>) => (options.client ?? client).get<GetExecutionsResponses, GetExecutionsErrors, ThrowOnError>({ url: '/api/v1/extensions/by-extension-id/{extension_id}/executions', ...options });
 
 /**
  * List extension categories
  *
- * List extension categories.
+ * Get categories.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listExtensionCategories = <ThrowOnError extends boolean = false>(options?: Options<ListExtensionCategoriesData, ThrowOnError>) => (options?.client ?? client).get<ListExtensionCategoriesResponses, ListExtensionCategoriesErrors, ThrowOnError>({ url: '/api/v1/extensions/categories', ...options });
+export const getCategories = <ThrowOnError extends boolean = false>(options?: Options<GetCategoriesData, ThrowOnError>) => (options?.client ?? client).get<GetCategoriesResponses, GetCategoriesErrors, ThrowOnError>({ url: '/api/v1/extensions/categories', ...options });
 
 /**
  * Get execution
@@ -739,35 +739,35 @@ export const getExecution = <ThrowOnError extends boolean = false>(options: Opti
 /**
  * Cancel execution
  *
- * Cancel execution.
+ * Create cancel.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const cancelExecution = <ThrowOnError extends boolean = false>(options: Options<CancelExecutionData, ThrowOnError>) => (options.client ?? client).post<CancelExecutionResponses, CancelExecutionErrors, ThrowOnError>({ url: '/api/v1/extensions/execution/{execution_id}/cancel', ...options });
+export const createCancel = <ThrowOnError extends boolean = false>(options: Options<CreateCancelData, ThrowOnError>) => (options.client ?? client).post<CreateCancelResponses, CreateCancelErrors, ThrowOnError>({ url: '/api/v1/extensions/execution/{execution_id}/cancel', ...options });
 
 /**
  * List execution logs
  *
- * List execution logs.
+ * Get logs.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listExecutionLogs = <ThrowOnError extends boolean = false>(options: Options<ListExecutionLogsData, ThrowOnError>) => (options.client ?? client).get<ListExecutionLogsResponses, ListExecutionLogsErrors, ThrowOnError>({ url: '/api/v1/extensions/execution/{execution_id}/logs', ...options });
+export const getLogs4 = <ThrowOnError extends boolean = false>(options: Options<GetLogs4Data, ThrowOnError>) => (options.client ?? client).get<GetLogs4Responses, GetLogs4Errors, ThrowOnError>({ url: '/api/v1/extensions/execution/{execution_id}/logs', ...options });
 
 /**
  * Fork extension
  *
- * Fork extension.
+ * Create fork.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const forkExtension = <ThrowOnError extends boolean = false>(options: Options<ForkExtensionData, ThrowOnError>) => (options.client ?? client).post<ForkExtensionResponses, ForkExtensionErrors, ThrowOnError>({
+export const createFork = <ThrowOnError extends boolean = false>(options: Options<CreateForkData, ThrowOnError>) => (options.client ?? client).post<CreateForkResponses, CreateForkErrors, ThrowOnError>({
     url: '/api/v1/extensions/{extension_id}/fork',
     ...options,
     headers: {
@@ -779,13 +779,13 @@ export const forkExtension = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Run extension
  *
- * Run extension.
+ * Create run.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const runExtension = <ThrowOnError extends boolean = false>(options: Options<RunExtensionData, ThrowOnError>) => (options.client ?? client).post<RunExtensionResponses, RunExtensionErrors, ThrowOnError>({
+export const createRun = <ThrowOnError extends boolean = false>(options: Options<CreateRunData, ThrowOnError>) => (options.client ?? client).post<CreateRunResponses, CreateRunErrors, ThrowOnError>({
     url: '/api/v1/extensions/{extension_id}/run',
     ...options,
     headers: {
@@ -797,46 +797,46 @@ export const runExtension = <ThrowOnError extends boolean = false>(options: Opti
 /**
  * Delete forked extension
  *
- * Delete forked extension.
+ * Delete {id}.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deleteForkedExtension = <ThrowOnError extends boolean = false>(options: Options<DeleteForkedExtensionData, ThrowOnError>) => (options.client ?? client).delete<DeleteForkedExtensionResponses, DeleteForkedExtensionErrors, ThrowOnError>({ url: '/api/v1/extensions/{id}', ...options });
+export const deleteId = <ThrowOnError extends boolean = false>(options: Options<DeleteIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteIdResponses, DeleteIdErrors, ThrowOnError>({ url: '/api/v1/extensions/{id}', ...options });
 
 /**
  * Get extension by ID
  *
- * Get extension by ID.
+ * Get {id}.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getExtensionById = <ThrowOnError extends boolean = false>(options: Options<GetExtensionByIdData, ThrowOnError>) => (options.client ?? client).get<GetExtensionByIdResponses, GetExtensionByIdErrors, ThrowOnError>({ url: '/api/v1/extensions/{id}', ...options });
+export const getId = <ThrowOnError extends boolean = false>(options: Options<GetIdData, ThrowOnError>) => (options.client ?? client).get<GetIdResponses, GetIdErrors, ThrowOnError>({ url: '/api/v1/extensions/{id}', ...options });
 
 /**
  * List feature flags
  *
- * List feature flags.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listFeatureFlags = <ThrowOnError extends boolean = false>(options?: Options<ListFeatureFlagsData, ThrowOnError>) => (options?.client ?? client).get<ListFeatureFlagsResponses, ListFeatureFlagsErrors, ThrowOnError>({ url: '/api/v1/feature-flags', ...options });
+export const getEndpoint8 = <ThrowOnError extends boolean = false>(options?: Options<GetEndpoint8Data, ThrowOnError>) => (options?.client ?? client).get<GetEndpoint8Responses, GetEndpoint8Errors, ThrowOnError>({ url: '/api/v1/feature-flags', ...options });
 
 /**
  * Update feature flag
  *
- * Update feature flag.
+ * Update endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateFeatureFlag = <ThrowOnError extends boolean = false>(options: Options<UpdateFeatureFlagData, ThrowOnError>) => (options.client ?? client).put<UpdateFeatureFlagResponses, UpdateFeatureFlagErrors, ThrowOnError>({
+export const updateEndpoint5 = <ThrowOnError extends boolean = false>(options: Options<UpdateEndpoint5Data, ThrowOnError>) => (options.client ?? client).put<UpdateEndpoint5Responses, UpdateEndpoint5Errors, ThrowOnError>({
     url: '/api/v1/feature-flags',
     ...options,
     headers: {
@@ -848,35 +848,35 @@ export const updateFeatureFlag = <ThrowOnError extends boolean = false>(options:
 /**
  * Check if feature is enabled
  *
- * Check if feature is enabled.
+ * Get check.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const checkIfFeatureIsEnabled = <ThrowOnError extends boolean = false>(options: Options<CheckIfFeatureIsEnabledData, ThrowOnError>) => (options.client ?? client).get<CheckIfFeatureIsEnabledResponses, CheckIfFeatureIsEnabledErrors, ThrowOnError>({ url: '/api/v1/feature-flags/check', ...options });
+export const getCheck2 = <ThrowOnError extends boolean = false>(options: Options<GetCheck2Data, ThrowOnError>) => (options.client ?? client).get<GetCheck2Responses, GetCheck2Errors, ThrowOnError>({ url: '/api/v1/feature-flags/check', ...options });
 
 /**
  * List files
  *
- * List files.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listFiles = <ThrowOnError extends boolean = false>(options: Options<ListFilesData, ThrowOnError>) => (options.client ?? client).get<ListFilesResponses, ListFilesErrors, ThrowOnError>({ url: '/api/v1/file-manager', ...options });
+export const getEndpoint6 = <ThrowOnError extends boolean = false>(options: Options<GetEndpoint6Data, ThrowOnError>) => (options.client ?? client).get<GetEndpoint6Responses, GetEndpoint6Errors, ThrowOnError>({ url: '/api/v1/file-manager', ...options });
 
 /**
  * Copy directory
  *
- * Copy directory.
+ * Create copy directory.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const copyDirectory = <ThrowOnError extends boolean = false>(options: Options<CopyDirectoryData, ThrowOnError>) => (options.client ?? client).post<CopyDirectoryResponses, CopyDirectoryErrors, ThrowOnError>({
+export const createCopyDirectory = <ThrowOnError extends boolean = false>(options: Options<CreateCopyDirectoryData, ThrowOnError>) => (options.client ?? client).post<CreateCopyDirectoryResponses, CreateCopyDirectoryErrors, ThrowOnError>({
     url: '/api/v1/file-manager/copy-directory',
     ...options,
     headers: {
@@ -888,13 +888,13 @@ export const copyDirectory = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Create directory
  *
- * Create directory.
+ * Create create directory.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const createDirectory = <ThrowOnError extends boolean = false>(options: Options<CreateDirectoryData, ThrowOnError>) => (options.client ?? client).post<CreateDirectoryResponses, CreateDirectoryErrors, ThrowOnError>({
+export const createCreateDirectory = <ThrowOnError extends boolean = false>(options: Options<CreateCreateDirectoryData, ThrowOnError>) => (options.client ?? client).post<CreateCreateDirectoryResponses, CreateCreateDirectoryErrors, ThrowOnError>({
     url: '/api/v1/file-manager/create-directory',
     ...options,
     headers: {
@@ -906,13 +906,13 @@ export const createDirectory = <ThrowOnError extends boolean = false>(options: O
 /**
  * Delete directory
  *
- * Delete directory.
+ * Delete delete directory.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deleteDirectory = <ThrowOnError extends boolean = false>(options: Options<DeleteDirectoryData, ThrowOnError>) => (options.client ?? client).delete<DeleteDirectoryResponses, DeleteDirectoryErrors, ThrowOnError>({
+export const deleteDeleteDirectory = <ThrowOnError extends boolean = false>(options: Options<DeleteDeleteDirectoryData, ThrowOnError>) => (options.client ?? client).delete<DeleteDeleteDirectoryResponses, DeleteDeleteDirectoryErrors, ThrowOnError>({
     url: '/api/v1/file-manager/delete-directory',
     ...options,
     headers: {
@@ -924,13 +924,13 @@ export const deleteDirectory = <ThrowOnError extends boolean = false>(options: O
 /**
  * Move directory
  *
- * Move directory.
+ * Create move directory.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const moveDirectory = <ThrowOnError extends boolean = false>(options: Options<MoveDirectoryData, ThrowOnError>) => (options.client ?? client).post<MoveDirectoryResponses, MoveDirectoryErrors, ThrowOnError>({
+export const createMoveDirectory = <ThrowOnError extends boolean = false>(options: Options<CreateMoveDirectoryData, ThrowOnError>) => (options.client ?? client).post<CreateMoveDirectoryResponses, CreateMoveDirectoryErrors, ThrowOnError>({
     url: '/api/v1/file-manager/move-directory',
     ...options,
     headers: {
@@ -942,24 +942,24 @@ export const moveDirectory = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Upload file
  *
- * Upload file.
+ * Create upload.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const uploadFile = <ThrowOnError extends boolean = false>(options?: Options<UploadFileData, ThrowOnError>) => (options?.client ?? client).post<UploadFileResponses, UploadFileErrors, ThrowOnError>({ url: '/api/v1/file-manager/upload', ...options });
+export const createUpload = <ThrowOnError extends boolean = false>(options?: Options<CreateUploadData, ThrowOnError>) => (options?.client ?? client).post<CreateUploadResponses, CreateUploadErrors, ThrowOnError>({ url: '/api/v1/file-manager/upload', ...options });
 
 /**
  * Delete GitHub connector
  *
- * Delete GitHub connector.
+ * Delete endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deleteGitHubConnector = <ThrowOnError extends boolean = false>(options: Options<DeleteGitHubConnectorData, ThrowOnError>) => (options.client ?? client).delete<DeleteGitHubConnectorResponses, DeleteGitHubConnectorErrors, ThrowOnError>({
+export const deleteEndpoint = <ThrowOnError extends boolean = false>(options: Options<DeleteEndpointData, ThrowOnError>) => (options.client ?? client).delete<DeleteEndpointResponses, DeleteEndpointErrors, ThrowOnError>({
     url: '/api/v1/github-connector',
     ...options,
     headers: {
@@ -971,13 +971,13 @@ export const deleteGitHubConnector = <ThrowOnError extends boolean = false>(opti
 /**
  * Create GitHub connector
  *
- * Create GitHub connector.
+ * Create endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const createGitHubConnector = <ThrowOnError extends boolean = false>(options: Options<CreateGitHubConnectorData, ThrowOnError>) => (options.client ?? client).post<CreateGitHubConnectorResponses, CreateGitHubConnectorErrors, ThrowOnError>({
+export const createEndpoint2 = <ThrowOnError extends boolean = false>(options: Options<CreateEndpoint2Data, ThrowOnError>) => (options.client ?? client).post<CreateEndpoint2Responses, CreateEndpoint2Errors, ThrowOnError>({
     url: '/api/v1/github-connector',
     ...options,
     headers: {
@@ -989,13 +989,13 @@ export const createGitHubConnector = <ThrowOnError extends boolean = false>(opti
 /**
  * Update GitHub connector
  *
- * Update GitHub connector.
+ * Update endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateGitHubConnector = <ThrowOnError extends boolean = false>(options: Options<UpdateGitHubConnectorData, ThrowOnError>) => (options.client ?? client).put<UpdateGitHubConnectorResponses, UpdateGitHubConnectorErrors, ThrowOnError>({
+export const updateEndpoint = <ThrowOnError extends boolean = false>(options: Options<UpdateEndpointData, ThrowOnError>) => (options.client ?? client).put<UpdateEndpointResponses, UpdateEndpointErrors, ThrowOnError>({
     url: '/api/v1/github-connector',
     ...options,
     headers: {
@@ -1007,35 +1007,35 @@ export const updateGitHubConnector = <ThrowOnError extends boolean = false>(opti
 /**
  * List GitHub connectors
  *
- * List GitHub connectors.
+ * Get all.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listGitHubConnectors = <ThrowOnError extends boolean = false>(options?: Options<ListGitHubConnectorsData, ThrowOnError>) => (options?.client ?? client).get<ListGitHubConnectorsResponses, ListGitHubConnectorsErrors, ThrowOnError>({ url: '/api/v1/github-connector/all', ...options });
+export const getAll = <ThrowOnError extends boolean = false>(options?: Options<GetAllData, ThrowOnError>) => (options?.client ?? client).get<GetAllResponses, GetAllErrors, ThrowOnError>({ url: '/api/v1/github-connector/all', ...options });
 
 /**
  * List GitHub repositories
  *
- * List GitHub repositories.
+ * Get repositories.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listGitHubRepositories = <ThrowOnError extends boolean = false>(options?: Options<ListGitHubRepositoriesData, ThrowOnError>) => (options?.client ?? client).get<ListGitHubRepositoriesResponses, ListGitHubRepositoriesErrors, ThrowOnError>({ url: '/api/v1/github-connector/repositories', ...options });
+export const getRepositories = <ThrowOnError extends boolean = false>(options?: Options<GetRepositoriesData, ThrowOnError>) => (options?.client ?? client).get<GetRepositoriesResponses, GetRepositoriesErrors, ThrowOnError>({ url: '/api/v1/github-connector/repositories', ...options });
 
 /**
  * List repository branches
  *
- * List repository branches.
+ * Create branches.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const listRepositoryBranches = <ThrowOnError extends boolean = false>(options: Options<ListRepositoryBranchesData, ThrowOnError>) => (options.client ?? client).post<ListRepositoryBranchesResponses, ListRepositoryBranchesErrors, ThrowOnError>({
+export const createBranches = <ThrowOnError extends boolean = false>(options: Options<CreateBranchesData, ThrowOnError>) => (options.client ?? client).post<CreateBranchesResponses, CreateBranchesErrors, ThrowOnError>({
     url: '/api/v1/github-connector/repository/branches',
     ...options,
     headers: {
@@ -1047,46 +1047,46 @@ export const listRepositoryBranches = <ThrowOnError extends boolean = false>(opt
 /**
  * Health check
  *
- * Health check.
+ * Get endpoint.
  *
- * Auth: Public endpoint.
- * Scope: No organization scope required.
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const healthCheck = <ThrowOnError extends boolean = false>(options?: Options<HealthCheckData, ThrowOnError>) => (options?.client ?? client).get<HealthCheckResponses, HealthCheckErrors, ThrowOnError>({ url: '/api/v1/health', ...options });
+export const getEndpoint = <ThrowOnError extends boolean = false>(options?: Options<GetEndpointData, ThrowOnError>) => (options?.client ?? client).get<GetEndpointResponses, GetEndpointErrors, ThrowOnError>({ url: '/api/v1/health', ...options });
 
 /**
  * Delete health check
  *
- * Delete health check.
+ * Delete endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deleteHealthCheck = <ThrowOnError extends boolean = false>(options: Options<DeleteHealthCheckData, ThrowOnError>) => (options.client ?? client).delete<DeleteHealthCheckResponses, DeleteHealthCheckErrors, ThrowOnError>({ url: '/api/v1/healthcheck', ...options });
+export const deleteEndpoint5 = <ThrowOnError extends boolean = false>(options: Options<DeleteEndpoint5Data, ThrowOnError>) => (options.client ?? client).delete<DeleteEndpoint5Responses, DeleteEndpoint5Errors, ThrowOnError>({ url: '/api/v1/healthcheck', ...options });
 
 /**
  * Get health checks
  *
- * Get health checks.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getHealthChecks = <ThrowOnError extends boolean = false>(options: Options<GetHealthChecksData, ThrowOnError>) => (options.client ?? client).get<GetHealthChecksResponses, GetHealthChecksErrors, ThrowOnError>({ url: '/api/v1/healthcheck', ...options });
+export const getEndpoint10 = <ThrowOnError extends boolean = false>(options: Options<GetEndpoint10Data, ThrowOnError>) => (options.client ?? client).get<GetEndpoint10Responses, GetEndpoint10Errors, ThrowOnError>({ url: '/api/v1/healthcheck', ...options });
 
 /**
  * Create health check
  *
- * Create health check.
+ * Create endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const createHealthCheck = <ThrowOnError extends boolean = false>(options: Options<CreateHealthCheckData, ThrowOnError>) => (options.client ?? client).post<CreateHealthCheckResponses, CreateHealthCheckErrors, ThrowOnError>({
+export const createEndpoint8 = <ThrowOnError extends boolean = false>(options: Options<CreateEndpoint8Data, ThrowOnError>) => (options.client ?? client).post<CreateEndpoint8Responses, CreateEndpoint8Errors, ThrowOnError>({
     url: '/api/v1/healthcheck',
     ...options,
     headers: {
@@ -1098,13 +1098,13 @@ export const createHealthCheck = <ThrowOnError extends boolean = false>(options:
 /**
  * Update health check
  *
- * Update health check.
+ * Update endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateHealthCheck = <ThrowOnError extends boolean = false>(options: Options<UpdateHealthCheckData, ThrowOnError>) => (options.client ?? client).put<UpdateHealthCheckResponses, UpdateHealthCheckErrors, ThrowOnError>({
+export const updateEndpoint6 = <ThrowOnError extends boolean = false>(options: Options<UpdateEndpoint6Data, ThrowOnError>) => (options.client ?? client).put<UpdateEndpoint6Responses, UpdateEndpoint6Errors, ThrowOnError>({
     url: '/api/v1/healthcheck',
     ...options,
     headers: {
@@ -1116,35 +1116,35 @@ export const updateHealthCheck = <ThrowOnError extends boolean = false>(options:
 /**
  * List health check results
  *
- * List health check results.
+ * Get results.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listHealthCheckResults = <ThrowOnError extends boolean = false>(options: Options<ListHealthCheckResultsData, ThrowOnError>) => (options.client ?? client).get<ListHealthCheckResultsResponses, ListHealthCheckResultsErrors, ThrowOnError>({ url: '/api/v1/healthcheck/results', ...options });
+export const getResults = <ThrowOnError extends boolean = false>(options: Options<GetResultsData, ThrowOnError>) => (options.client ?? client).get<GetResultsResponses, GetResultsErrors, ThrowOnError>({ url: '/api/v1/healthcheck/results', ...options });
 
 /**
  * Get health check stats
  *
- * Get health check stats.
+ * Get stats.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getHealthCheckStats = <ThrowOnError extends boolean = false>(options: Options<GetHealthCheckStatsData, ThrowOnError>) => (options.client ?? client).get<GetHealthCheckStatsResponses, GetHealthCheckStatsErrors, ThrowOnError>({ url: '/api/v1/healthcheck/stats', ...options });
+export const getStats = <ThrowOnError extends boolean = false>(options: Options<GetStatsData, ThrowOnError>) => (options.client ?? client).get<GetStatsResponses, GetStatsErrors, ThrowOnError>({ url: '/api/v1/healthcheck/stats', ...options });
 
 /**
  * Toggle health check
  *
- * Toggle health check.
+ * Patch toggle.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const toggleHealthCheck = <ThrowOnError extends boolean = false>(options: Options<ToggleHealthCheckData, ThrowOnError>) => (options.client ?? client).patch<ToggleHealthCheckResponses, ToggleHealthCheckErrors, ThrowOnError>({
+export const patchToggle = <ThrowOnError extends boolean = false>(options: Options<PatchToggleData, ThrowOnError>) => (options.client ?? client).patch<PatchToggleResponses, PatchToggleErrors, ThrowOnError>({
     url: '/api/v1/healthcheck/toggle',
     ...options,
     headers: {
@@ -1156,24 +1156,20 @@ export const toggleHealthCheck = <ThrowOnError extends boolean = false>(options:
 /**
  * Get machine billing status
  *
- * Get machine billing status.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
+ * Returns the current machine billing status, plan details, and any grace period warnings for the organization.
  */
-export const getMachineBillingStatus = <ThrowOnError extends boolean = false>(options?: Options<GetMachineBillingStatusData, ThrowOnError>) => (options?.client ?? client).get<GetMachineBillingStatusResponses, GetMachineBillingStatusErrors, ThrowOnError>({ url: '/api/v1/machine/billing', ...options });
+export const getBilling = <ThrowOnError extends boolean = false>(options?: Options<GetBillingData, ThrowOnError>) => (options?.client ?? client).get<GetBillingResponses, GetBillingErrors, ThrowOnError>({ url: '/api/v1/machine/billing', ...options });
 
 /**
  * Execute a command on the host machine
  *
- * Execute a command on the host machine.
+ * Create exec.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const executeACommandOnTheHostMachine = <ThrowOnError extends boolean = false>(options: Options<ExecuteACommandOnTheHostMachineData, ThrowOnError>) => (options.client ?? client).post<ExecuteACommandOnTheHostMachineResponses, ExecuteACommandOnTheHostMachineErrors, ThrowOnError>({
+export const createExec = <ThrowOnError extends boolean = false>(options: Options<CreateExecData, ThrowOnError>) => (options.client ?? client).post<CreateExecResponses, CreateExecErrors, ThrowOnError>({
     url: '/api/v1/machine/exec',
     ...options,
     headers: {
@@ -1185,24 +1181,16 @@ export const executeACommandOnTheHostMachine = <ThrowOnError extends boolean = f
 /**
  * Pause machine
  *
- * Pause machine.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
+ * Pauses the provisioned machine instance.
  */
-export const pauseMachine = <ThrowOnError extends boolean = false>(options?: Options<PauseMachineData, ThrowOnError>) => (options?.client ?? client).post<PauseMachineResponses, PauseMachineErrors, ThrowOnError>({ url: '/api/v1/machine/pause', ...options });
+export const createPause = <ThrowOnError extends boolean = false>(options?: Options<CreatePauseData, ThrowOnError>) => (options?.client ?? client).post<CreatePauseResponses, CreatePauseErrors, ThrowOnError>({ url: '/api/v1/machine/pause', ...options });
 
 /**
  * Select a machine plan
  *
- * Select a machine plan.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
+ * Select a machine plan for the organization. Deducts the monthly cost from the wallet immediately. Requires sufficient wallet balance.
  */
-export const selectAMachinePlan = <ThrowOnError extends boolean = false>(options: Options<SelectAMachinePlanData, ThrowOnError>) => (options.client ?? client).post<SelectAMachinePlanResponses, SelectAMachinePlanErrors, ThrowOnError>({
+export const createSelect = <ThrowOnError extends boolean = false>(options: Options<CreateSelectData, ThrowOnError>) => (options.client ?? client).post<CreateSelectResponses, CreateSelectErrors, ThrowOnError>({
     url: '/api/v1/machine/plan/select',
     ...options,
     headers: {
@@ -1214,79 +1202,179 @@ export const selectAMachinePlan = <ThrowOnError extends boolean = false>(options
 /**
  * List available machine plans
  *
- * List available machine plans.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
+ * Returns all active machine plans with pricing, specs, and tier information.
  */
-export const listAvailableMachinePlans = <ThrowOnError extends boolean = false>(options?: Options<ListAvailableMachinePlansData, ThrowOnError>) => (options?.client ?? client).get<ListAvailableMachinePlansResponses, ListAvailableMachinePlansErrors, ThrowOnError>({ url: '/api/v1/machine/plans', ...options });
+export const getPlans = <ThrowOnError extends boolean = false>(options?: Options<GetPlansData, ThrowOnError>) => (options?.client ?? client).get<GetPlansResponses, GetPlansErrors, ThrowOnError>({ url: '/api/v1/machine/plans', ...options });
 
 /**
  * Restart machine
  *
- * Restart machine.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
+ * Restarts the provisioned machine instance.
  */
-export const restartMachine = <ThrowOnError extends boolean = false>(options?: Options<RestartMachineData, ThrowOnError>) => (options?.client ?? client).post<RestartMachineResponses, RestartMachineErrors, ThrowOnError>({ url: '/api/v1/machine/restart', ...options });
+export const createRestart3 = <ThrowOnError extends boolean = false>(options?: Options<CreateRestart3Data, ThrowOnError>) => (options?.client ?? client).post<CreateRestart3Responses, CreateRestart3Errors, ThrowOnError>({ url: '/api/v1/machine/restart', ...options });
 
 /**
  * Resume machine
  *
- * Resume machine.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
+ * Resumes a paused machine instance.
  */
-export const resumeMachine = <ThrowOnError extends boolean = false>(options?: Options<ResumeMachineData, ThrowOnError>) => (options?.client ?? client).post<ResumeMachineResponses, ResumeMachineErrors, ThrowOnError>({ url: '/api/v1/machine/resume', ...options });
+export const createResume = <ThrowOnError extends boolean = false>(options?: Options<CreateResumeData, ThrowOnError>) => (options?.client ?? client).post<CreateResumeResponses, CreateResumeErrors, ThrowOnError>({ url: '/api/v1/machine/resume', ...options });
 
 /**
  * Get machine system stats
  *
- * Get machine system stats.
+ * Get stats.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getMachineSystemStats = <ThrowOnError extends boolean = false>(options?: Options<GetMachineSystemStatsData, ThrowOnError>) => (options?.client ?? client).get<GetMachineSystemStatsResponses, GetMachineSystemStatsErrors, ThrowOnError>({ url: '/api/v1/machine/stats', ...options });
+export const getStats2 = <ThrowOnError extends boolean = false>(options?: Options<GetStats2Data, ThrowOnError>) => (options?.client ?? client).get<GetStats2Responses, GetStats2Errors, ThrowOnError>({ url: '/api/v1/machine/stats', ...options });
 
 /**
  * Get machine lifecycle status
  *
- * Get machine lifecycle status.
+ * Returns the current state of the provisioned machine instance (active, paused, etc).
+ */
+export const getStatus2 = <ThrowOnError extends boolean = false>(options?: Options<GetStatus2Data, ThrowOnError>) => (options?.client ?? client).get<GetStatus2Responses, GetStatus2Errors, ThrowOnError>({ url: '/api/v1/machine/status', ...options });
+
+/**
+ * List MCP provider catalog
+ *
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getMachineLifecycleStatus = <ThrowOnError extends boolean = false>(options?: Options<GetMachineLifecycleStatusData, ThrowOnError>) => (options?.client ?? client).get<GetMachineLifecycleStatusResponses, GetMachineLifecycleStatusErrors, ThrowOnError>({ url: '/api/v1/machine/status', ...options });
+export const getEndpoint13 = <ThrowOnError extends boolean = false>(options?: Options<GetEndpoint13Data, ThrowOnError>) => (options?.client ?? client).get<GetEndpoint13Responses, GetEndpoint13Errors, ThrowOnError>({ url: '/api/v1/mcp/catalog', ...options });
 
 /**
- * Get notification preferences
+ * Get provider icon
  *
- * Get notification preferences.
+ * Get icon.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getNotificationPreferences = <ThrowOnError extends boolean = false>(options?: Options<GetNotificationPreferencesData, ThrowOnError>) => (options?.client ?? client).get<GetNotificationPreferencesResponses, GetNotificationPreferencesErrors, ThrowOnError>({ url: '/api/v1/notification/preferences', ...options });
+export const getIcon = <ThrowOnError extends boolean = false>(options: Options<GetIconData, ThrowOnError>) => (options.client ?? client).get<GetIconResponses, GetIconErrors, ThrowOnError>({ url: '/api/v1/mcp/catalog/{provider_id}/icon', ...options });
 
 /**
- * Update notification preferences
+ * Agent: list enabled servers with credentials
  *
- * Update notification preferences.
+ * Get servers.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getServers = <ThrowOnError extends boolean = false>(options?: Options<GetServersData, ThrowOnError>) => (options?.client ?? client).get<GetServersResponses, GetServersErrors, ThrowOnError>({ url: '/api/v1/mcp/internal/servers', ...options });
+
+/**
+ * Delete MCP server
+ *
+ * Delete endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateNotificationPreferences = <ThrowOnError extends boolean = false>(options: Options<UpdateNotificationPreferencesData, ThrowOnError>) => (options.client ?? client).post<UpdateNotificationPreferencesResponses, UpdateNotificationPreferencesErrors, ThrowOnError>({
+export const deleteEndpoint6 = <ThrowOnError extends boolean = false>(options: Options<DeleteEndpoint6Data, ThrowOnError>) => (options.client ?? client).delete<DeleteEndpoint6Responses, DeleteEndpoint6Errors, ThrowOnError>({
+    url: '/api/v1/mcp/servers',
+    ...options,
+    headers: {
+        'Content-Type': '*/*',
+        ...options.headers
+    }
+});
+
+/**
+ * List org MCP servers
+ *
+ * Get endpoint.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getEndpoint14 = <ThrowOnError extends boolean = false>(options?: Options<GetEndpoint14Data, ThrowOnError>) => (options?.client ?? client).get<GetEndpoint14Responses, GetEndpoint14Errors, ThrowOnError>({ url: '/api/v1/mcp/servers', ...options });
+
+/**
+ * Add MCP server
+ *
+ * Create endpoint.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const createEndpoint9 = <ThrowOnError extends boolean = false>(options: Options<CreateEndpoint9Data, ThrowOnError>) => (options.client ?? client).post<CreateEndpoint9Responses, CreateEndpoint9Errors, ThrowOnError>({
+    url: '/api/v1/mcp/servers',
+    ...options,
+    headers: {
+        'Content-Type': '*/*',
+        ...options.headers
+    }
+});
+
+/**
+ * Test MCP server connection
+ *
+ * Create test.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const createTest = <ThrowOnError extends boolean = false>(options: Options<CreateTestData, ThrowOnError>) => (options.client ?? client).post<CreateTestResponses, CreateTestErrors, ThrowOnError>({
+    url: '/api/v1/mcp/servers/test',
+    ...options,
+    headers: {
+        'Content-Type': '*/*',
+        ...options.headers
+    }
+});
+
+/**
+ * Update MCP server
+ *
+ * Update {id}.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateId = <ThrowOnError extends boolean = false>(options: Options<UpdateIdData, ThrowOnError>) => (options.client ?? client).put<UpdateIdResponses, UpdateIdErrors, ThrowOnError>({
+    url: '/api/v1/mcp/servers/{id}',
+    ...options,
+    headers: {
+        'Content-Type': '*/*',
+        ...options.headers
+    }
+});
+
+/**
+ * Get notification preferences
+ *
+ * Get endpoint.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getEndpoint5 = <ThrowOnError extends boolean = false>(options?: Options<GetEndpoint5Data, ThrowOnError>) => (options?.client ?? client).get<GetEndpoint5Responses, GetEndpoint5Errors, ThrowOnError>({ url: '/api/v1/notification/preferences', ...options });
+
+/**
+ * Update notification preferences
+ *
+ * Create endpoint.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const createEndpoint4 = <ThrowOnError extends boolean = false>(options: Options<CreateEndpoint4Data, ThrowOnError>) => (options.client ?? client).post<CreateEndpoint4Responses, CreateEndpoint4Errors, ThrowOnError>({
     url: '/api/v1/notification/preferences',
     ...options,
     headers: {
@@ -1298,13 +1386,13 @@ export const updateNotificationPreferences = <ThrowOnError extends boolean = fal
 /**
  * Send notification
  *
- * Send notification.
+ * Create send.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const sendNotification = <ThrowOnError extends boolean = false>(options: Options<SendNotificationData, ThrowOnError>) => (options.client ?? client).post<SendNotificationResponses, SendNotificationErrors, ThrowOnError>({
+export const createSend = <ThrowOnError extends boolean = false>(options: Options<CreateSendData, ThrowOnError>) => (options.client ?? client).post<CreateSendResponses, CreateSendErrors, ThrowOnError>({
     url: '/api/v1/notification/send',
     ...options,
     headers: {
@@ -1316,13 +1404,13 @@ export const sendNotification = <ThrowOnError extends boolean = false>(options: 
 /**
  * Delete SMTP config
  *
- * Delete SMTP config.
+ * Delete endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deleteSmtpConfig = <ThrowOnError extends boolean = false>(options: Options<DeleteSmtpConfigData, ThrowOnError>) => (options.client ?? client).delete<DeleteSmtpConfigResponses, DeleteSmtpConfigErrors, ThrowOnError>({
+export const deleteEndpoint2 = <ThrowOnError extends boolean = false>(options: Options<DeleteEndpoint2Data, ThrowOnError>) => (options.client ?? client).delete<DeleteEndpoint2Responses, DeleteEndpoint2Errors, ThrowOnError>({
     url: '/api/v1/notification/smtp',
     ...options,
     headers: {
@@ -1334,24 +1422,24 @@ export const deleteSmtpConfig = <ThrowOnError extends boolean = false>(options: 
 /**
  * Get SMTP config
  *
- * Get SMTP config.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getSmtpConfig = <ThrowOnError extends boolean = false>(options: Options<GetSmtpConfigData, ThrowOnError>) => (options.client ?? client).get<GetSmtpConfigResponses, GetSmtpConfigErrors, ThrowOnError>({ url: '/api/v1/notification/smtp', ...options });
+export const getEndpoint4 = <ThrowOnError extends boolean = false>(options: Options<GetEndpoint4Data, ThrowOnError>) => (options.client ?? client).get<GetEndpoint4Responses, GetEndpoint4Errors, ThrowOnError>({ url: '/api/v1/notification/smtp', ...options });
 
 /**
  * Create SMTP config
  *
- * Create SMTP config.
+ * Create endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const createSmtpConfig = <ThrowOnError extends boolean = false>(options: Options<CreateSmtpConfigData, ThrowOnError>) => (options.client ?? client).post<CreateSmtpConfigResponses, CreateSmtpConfigErrors, ThrowOnError>({
+export const createEndpoint3 = <ThrowOnError extends boolean = false>(options: Options<CreateEndpoint3Data, ThrowOnError>) => (options.client ?? client).post<CreateEndpoint3Responses, CreateEndpoint3Errors, ThrowOnError>({
     url: '/api/v1/notification/smtp',
     ...options,
     headers: {
@@ -1363,13 +1451,13 @@ export const createSmtpConfig = <ThrowOnError extends boolean = false>(options: 
 /**
  * Update SMTP config
  *
- * Update SMTP config.
+ * Update endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateSmtpConfig = <ThrowOnError extends boolean = false>(options: Options<UpdateSmtpConfigData, ThrowOnError>) => (options.client ?? client).put<UpdateSmtpConfigResponses, UpdateSmtpConfigErrors, ThrowOnError>({
+export const updateEndpoint2 = <ThrowOnError extends boolean = false>(options: Options<UpdateEndpoint2Data, ThrowOnError>) => (options.client ?? client).put<UpdateEndpoint2Responses, UpdateEndpoint2Errors, ThrowOnError>({
     url: '/api/v1/notification/smtp',
     ...options,
     headers: {
@@ -1381,13 +1469,13 @@ export const updateSmtpConfig = <ThrowOnError extends boolean = false>(options: 
 /**
  * Delete webhook config
  *
- * Delete webhook config.
+ * Delete endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deleteWebhookConfig = <ThrowOnError extends boolean = false>(options: Options<DeleteWebhookConfigData, ThrowOnError>) => (options.client ?? client).delete<DeleteWebhookConfigResponses, DeleteWebhookConfigErrors, ThrowOnError>({
+export const deleteEndpoint3 = <ThrowOnError extends boolean = false>(options: Options<DeleteEndpoint3Data, ThrowOnError>) => (options.client ?? client).delete<DeleteEndpoint3Responses, DeleteEndpoint3Errors, ThrowOnError>({
     url: '/api/v1/notification/webhook',
     ...options,
     headers: {
@@ -1399,13 +1487,13 @@ export const deleteWebhookConfig = <ThrowOnError extends boolean = false>(option
 /**
  * Create webhook config
  *
- * Create webhook config.
+ * Create endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const createWebhookConfig = <ThrowOnError extends boolean = false>(options: Options<CreateWebhookConfigData, ThrowOnError>) => (options.client ?? client).post<CreateWebhookConfigResponses, CreateWebhookConfigErrors, ThrowOnError>({
+export const createEndpoint5 = <ThrowOnError extends boolean = false>(options: Options<CreateEndpoint5Data, ThrowOnError>) => (options.client ?? client).post<CreateEndpoint5Responses, CreateEndpoint5Errors, ThrowOnError>({
     url: '/api/v1/notification/webhook',
     ...options,
     headers: {
@@ -1417,13 +1505,13 @@ export const createWebhookConfig = <ThrowOnError extends boolean = false>(option
 /**
  * Update webhook config
  *
- * Update webhook config.
+ * Update endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateWebhookConfig = <ThrowOnError extends boolean = false>(options: Options<UpdateWebhookConfigData, ThrowOnError>) => (options.client ?? client).put<UpdateWebhookConfigResponses, UpdateWebhookConfigErrors, ThrowOnError>({
+export const updateEndpoint3 = <ThrowOnError extends boolean = false>(options: Options<UpdateEndpoint3Data, ThrowOnError>) => (options.client ?? client).put<UpdateEndpoint3Responses, UpdateEndpoint3Errors, ThrowOnError>({
     url: '/api/v1/notification/webhook',
     ...options,
     headers: {
@@ -1435,46 +1523,46 @@ export const updateWebhookConfig = <ThrowOnError extends boolean = false>(option
 /**
  * Get webhook config
  *
- * Get webhook config.
+ * Get {type}.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getWebhookConfig = <ThrowOnError extends boolean = false>(options: Options<GetWebhookConfigData, ThrowOnError>) => (options.client ?? client).get<GetWebhookConfigResponses, GetWebhookConfigErrors, ThrowOnError>({ url: '/api/v1/notification/webhook/{type}', ...options });
+export const getType = <ThrowOnError extends boolean = false>(options: Options<GetTypeData, ThrowOnError>) => (options.client ?? client).get<GetTypeResponses, GetTypeErrors, ThrowOnError>({ url: '/api/v1/notification/webhook/{type}', ...options });
 
 /**
  * List servers
  *
- * List servers.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listServers = <ThrowOnError extends boolean = false>(options?: Options<ListServersData, ThrowOnError>) => (options?.client ?? client).get<ListServersResponses, ListServersErrors, ThrowOnError>({ url: '/api/v1/servers', ...options });
+export const getEndpoint12 = <ThrowOnError extends boolean = false>(options?: Options<GetEndpoint12Data, ThrowOnError>) => (options?.client ?? client).get<GetEndpoint12Responses, GetEndpoint12Errors, ThrowOnError>({ url: '/api/v1/servers', ...options });
 
 /**
  * Get SSH connection status
  *
- * Get SSH connection status.
+ * Get status.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getSshConnectionStatus = <ThrowOnError extends boolean = false>(options?: Options<GetSshConnectionStatusData, ThrowOnError>) => (options?.client ?? client).get<GetSshConnectionStatusResponses, GetSshConnectionStatusErrors, ThrowOnError>({ url: '/api/v1/servers/ssh/status', ...options });
+export const getStatus = <ThrowOnError extends boolean = false>(options?: Options<GetStatusData, ThrowOnError>) => (options?.client ?? client).get<GetStatusResponses, GetStatusErrors, ThrowOnError>({ url: '/api/v1/servers/ssh/status', ...options });
 
 /**
  * Provision trail resources
  *
- * Provision trail resources.
+ * Create provision.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const provisionTrailResources = <ThrowOnError extends boolean = false>(options: Options<ProvisionTrailResourcesData, ThrowOnError>) => (options.client ?? client).post<ProvisionTrailResourcesResponses, ProvisionTrailResourcesErrors, ThrowOnError>({
+export const createProvision = <ThrowOnError extends boolean = false>(options: Options<CreateProvisionData, ThrowOnError>) => (options.client ?? client).post<CreateProvisionResponses, CreateProvisionErrors, ThrowOnError>({
     url: '/api/v1/trail/provision',
     ...options,
     headers: {
@@ -1486,24 +1574,24 @@ export const provisionTrailResources = <ThrowOnError extends boolean = false>(op
 /**
  * Get trail session status
  *
- * Get trail session status.
+ * Get status.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getTrailSessionStatus = <ThrowOnError extends boolean = false>(options: Options<GetTrailSessionStatusData, ThrowOnError>) => (options.client ?? client).get<GetTrailSessionStatusResponses, GetTrailSessionStatusErrors, ThrowOnError>({ url: '/api/v1/trail/status/{sessionId}', ...options });
+export const getStatus3 = <ThrowOnError extends boolean = false>(options: Options<GetStatus3Data, ThrowOnError>) => (options.client ?? client).get<GetStatus3Responses, GetStatus3Errors, ThrowOnError>({ url: '/api/v1/trail/status/{sessionId}', ...options });
 
 /**
  * Perform update
  *
- * Perform update.
+ * Create endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const performUpdate = <ThrowOnError extends boolean = false>(options: Options<PerformUpdateData, ThrowOnError>) => (options.client ?? client).post<PerformUpdateResponses, PerformUpdateErrors, ThrowOnError>({
+export const createEndpoint7 = <ThrowOnError extends boolean = false>(options: Options<CreateEndpoint7Data, ThrowOnError>) => (options.client ?? client).post<CreateEndpoint7Responses, CreateEndpoint7Errors, ThrowOnError>({
     url: '/api/v1/update',
     ...options,
     headers: {
@@ -1515,35 +1603,35 @@ export const performUpdate = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Check for updates
  *
- * Check for updates.
+ * Get check.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const checkForUpdates = <ThrowOnError extends boolean = false>(options?: Options<CheckForUpdatesData, ThrowOnError>) => (options?.client ?? client).get<CheckForUpdatesResponses, CheckForUpdatesErrors, ThrowOnError>({ url: '/api/v1/update/check', ...options });
+export const getCheck = <ThrowOnError extends boolean = false>(options?: Options<GetCheckData, ThrowOnError>) => (options?.client ?? client).get<GetCheckResponses, GetCheckErrors, ThrowOnError>({ url: '/api/v1/update/check', ...options });
 
 /**
  * Get current user profile
  *
- * Get current user profile.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getCurrentUserProfile = <ThrowOnError extends boolean = false>(options?: Options<GetCurrentUserProfileData, ThrowOnError>) => (options?.client ?? client).get<GetCurrentUserProfileResponses, GetCurrentUserProfileErrors, ThrowOnError>({ url: '/api/v1/user', ...options });
+export const getEndpoint2 = <ThrowOnError extends boolean = false>(options?: Options<GetEndpoint2Data, ThrowOnError>) => (options?.client ?? client).get<GetEndpoint2Responses, GetEndpoint2Errors, ThrowOnError>({ url: '/api/v1/user', ...options });
 
 /**
  * Update user avatar
  *
- * Update user avatar.
+ * Patch avatar.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateUserAvatar = <ThrowOnError extends boolean = false>(options: Options<UpdateUserAvatarData, ThrowOnError>) => (options.client ?? client).patch<UpdateUserAvatarResponses, UpdateUserAvatarErrors, ThrowOnError>({
+export const patchAvatar = <ThrowOnError extends boolean = false>(options: Options<PatchAvatarData, ThrowOnError>) => (options.client ?? client).patch<PatchAvatarResponses, PatchAvatarErrors, ThrowOnError>({
     url: '/api/v1/user/avatar',
     ...options,
     headers: {
@@ -1555,13 +1643,13 @@ export const updateUserAvatar = <ThrowOnError extends boolean = false>(options: 
 /**
  * Update user name
  *
- * Update user name.
+ * Patch name.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateUserName = <ThrowOnError extends boolean = false>(options: Options<UpdateUserNameData, ThrowOnError>) => (options.client ?? client).patch<UpdateUserNameResponses, UpdateUserNameErrors, ThrowOnError>({
+export const patchName = <ThrowOnError extends boolean = false>(options: Options<PatchNameData, ThrowOnError>) => (options.client ?? client).patch<PatchNameResponses, PatchNameErrors, ThrowOnError>({
     url: '/api/v1/user/name',
     ...options,
     headers: {
@@ -1573,46 +1661,46 @@ export const updateUserName = <ThrowOnError extends boolean = false>(options: Op
 /**
  * Check onboarding status
  *
- * Check onboarding status.
+ * Get onboarded.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const checkOnboardingStatus = <ThrowOnError extends boolean = false>(options?: Options<CheckOnboardingStatusData, ThrowOnError>) => (options?.client ?? client).get<CheckOnboardingStatusResponses, CheckOnboardingStatusErrors, ThrowOnError>({ url: '/api/v1/user/onboarded', ...options });
+export const getOnboarded = <ThrowOnError extends boolean = false>(options?: Options<GetOnboardedData, ThrowOnError>) => (options?.client ?? client).get<GetOnboardedResponses, GetOnboardedErrors, ThrowOnError>({ url: '/api/v1/user/onboarded', ...options });
 
 /**
  * Mark onboarding complete
  *
- * Mark onboarding complete.
+ * Create onboarded.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const markOnboardingComplete = <ThrowOnError extends boolean = false>(options?: Options<MarkOnboardingCompleteData, ThrowOnError>) => (options?.client ?? client).post<MarkOnboardingCompleteResponses, MarkOnboardingCompleteErrors, ThrowOnError>({ url: '/api/v1/user/onboarded', ...options });
+export const createOnboarded = <ThrowOnError extends boolean = false>(options?: Options<CreateOnboardedData, ThrowOnError>) => (options?.client ?? client).post<CreateOnboardedResponses, CreateOnboardedErrors, ThrowOnError>({ url: '/api/v1/user/onboarded', ...options });
 
 /**
  * Get user preferences
  *
- * Get user preferences.
+ * Get preferences.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getUserPreferences = <ThrowOnError extends boolean = false>(options?: Options<GetUserPreferencesData, ThrowOnError>) => (options?.client ?? client).get<GetUserPreferencesResponses, GetUserPreferencesErrors, ThrowOnError>({ url: '/api/v1/user/preferences', ...options });
+export const getPreferences = <ThrowOnError extends boolean = false>(options?: Options<GetPreferencesData, ThrowOnError>) => (options?.client ?? client).get<GetPreferencesResponses, GetPreferencesErrors, ThrowOnError>({ url: '/api/v1/user/preferences', ...options });
 
 /**
  * Update user preferences
  *
- * Update user preferences.
+ * Update preferences.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateUserPreferences = <ThrowOnError extends boolean = false>(options: Options<UpdateUserPreferencesData, ThrowOnError>) => (options.client ?? client).put<UpdateUserPreferencesResponses, UpdateUserPreferencesErrors, ThrowOnError>({
+export const updatePreferences = <ThrowOnError extends boolean = false>(options: Options<UpdatePreferencesData, ThrowOnError>) => (options.client ?? client).put<UpdatePreferencesResponses, UpdatePreferencesErrors, ThrowOnError>({
     url: '/api/v1/user/preferences',
     ...options,
     headers: {
@@ -1624,24 +1712,24 @@ export const updateUserPreferences = <ThrowOnError extends boolean = false>(opti
 /**
  * Get user settings
  *
- * Get user settings.
+ * Get settings.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getUserSettings = <ThrowOnError extends boolean = false>(options?: Options<GetUserSettingsData, ThrowOnError>) => (options?.client ?? client).get<GetUserSettingsResponses, GetUserSettingsErrors, ThrowOnError>({ url: '/api/v1/user/settings', ...options });
+export const getSettings = <ThrowOnError extends boolean = false>(options?: Options<GetSettingsData, ThrowOnError>) => (options?.client ?? client).get<GetSettingsResponses, GetSettingsErrors, ThrowOnError>({ url: '/api/v1/user/settings', ...options });
 
 /**
  * Update auto-update settings
  *
- * Update auto-update settings.
+ * Patch auto update.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateAutoUpdateSettings = <ThrowOnError extends boolean = false>(options: Options<UpdateAutoUpdateSettingsData, ThrowOnError>) => (options.client ?? client).patch<UpdateAutoUpdateSettingsResponses, UpdateAutoUpdateSettingsErrors, ThrowOnError>({
+export const patchAutoUpdate = <ThrowOnError extends boolean = false>(options: Options<PatchAutoUpdateData, ThrowOnError>) => (options.client ?? client).patch<PatchAutoUpdateResponses, PatchAutoUpdateErrors, ThrowOnError>({
     url: '/api/v1/user/settings/auto-update',
     ...options,
     headers: {
@@ -1653,13 +1741,13 @@ export const updateAutoUpdateSettings = <ThrowOnError extends boolean = false>(o
 /**
  * Update font settings
  *
- * Update font settings.
+ * Patch font.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateFontSettings = <ThrowOnError extends boolean = false>(options: Options<UpdateFontSettingsData, ThrowOnError>) => (options.client ?? client).patch<UpdateFontSettingsResponses, UpdateFontSettingsErrors, ThrowOnError>({
+export const patchFont = <ThrowOnError extends boolean = false>(options: Options<PatchFontData, ThrowOnError>) => (options.client ?? client).patch<PatchFontResponses, PatchFontErrors, ThrowOnError>({
     url: '/api/v1/user/settings/font',
     ...options,
     headers: {
@@ -1671,13 +1759,13 @@ export const updateFontSettings = <ThrowOnError extends boolean = false>(options
 /**
  * Update language settings
  *
- * Update language settings.
+ * Patch language.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateLanguageSettings = <ThrowOnError extends boolean = false>(options: Options<UpdateLanguageSettingsData, ThrowOnError>) => (options.client ?? client).patch<UpdateLanguageSettingsResponses, UpdateLanguageSettingsErrors, ThrowOnError>({
+export const patchLanguage = <ThrowOnError extends boolean = false>(options: Options<PatchLanguageData, ThrowOnError>) => (options.client ?? client).patch<PatchLanguageResponses, PatchLanguageErrors, ThrowOnError>({
     url: '/api/v1/user/settings/language',
     ...options,
     headers: {
@@ -1689,13 +1777,13 @@ export const updateLanguageSettings = <ThrowOnError extends boolean = false>(opt
 /**
  * Update theme settings
  *
- * Update theme settings.
+ * Patch theme.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateThemeSettings = <ThrowOnError extends boolean = false>(options: Options<UpdateThemeSettingsData, ThrowOnError>) => (options.client ?? client).patch<UpdateThemeSettingsResponses, UpdateThemeSettingsErrors, ThrowOnError>({
+export const patchTheme = <ThrowOnError extends boolean = false>(options: Options<PatchThemeData, ThrowOnError>) => (options.client ?? client).patch<PatchThemeResponses, PatchThemeErrors, ThrowOnError>({
     url: '/api/v1/user/settings/theme',
     ...options,
     headers: {
@@ -1707,10 +1795,10 @@ export const updateThemeSettings = <ThrowOnError extends boolean = false>(option
 /**
  * Handle GitHub webhook
  *
- * Handle GitHub webhook.
+ * Create endpoint.
  *
- * Auth: Public endpoint.
- * Scope: No organization scope required.
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const handleGitHubWebhook = <ThrowOnError extends boolean = false>(options?: Options<HandleGitHubWebhookData, ThrowOnError>) => (options?.client ?? client).post<HandleGitHubWebhookResponses, HandleGitHubWebhookErrors, ThrowOnError>({ url: '/api/v1/webhook', ...options });
+export const createEndpoint = <ThrowOnError extends boolean = false>(options?: Options<CreateEndpointData, ThrowOnError>) => (options?.client ?? client).post<CreateEndpointResponses, CreateEndpointErrors, ThrowOnError>({ url: '/api/v1/webhook', ...options });

@@ -3,8 +3,8 @@
 import { type InfiniteData, infiniteQueryOptions, queryOptions, type UseMutationOptions } from '@tanstack/react-query';
 
 import { client } from '../client.gen';
-import { addApplicationDomain, addCustomDomain, addProjectToFamily, cancelDeployment, cancelExecution, checkAdminRegistration, checkCustomDomainDns, checkForUpdates, checkIfFeatureIsEnabled, checkOnboardingStatus, copyDirectory, createDirectory, createGitHubConnector, createHealthCheck, createProject, createSmtpConfig, createWebhookConfig, deleteApplication, deleteDirectory, deleteForkedExtension, deleteGitHubConnector, deleteHealthCheck, deleteSmtpConfig, deleteWebhookConfig, deployApplication, deployProject, duplicateProject, executeACommandOnTheHostMachine, forkExtension, generateRandomSubdomain, getApplication, getApplicationLogs, getBootstrapSessionData, getContainer, getContainerLogs, getCurrentUserProfile, getDeployment, getDeploymentLogs, getExecution, getExtensionByExtensionId, getExtensionById, getHealthChecks, getHealthCheckStats, getMachineBillingStatus, getMachineLifecycleStatus, getMachineSystemStats, getNotificationPreferences, getSmtpConfig, getSshConnectionStatus, getTrailSessionStatus, getUserPreferences, getUserSettings, getWebhookConfig, handleGitHubWebhook, healthCheck, listApplicationDeployments, listApplications, listAuditLogs, listAvailableMachinePlans, listComposeServices, listContainers, listDomains, listExecutionLogs, listExtensionCategories, listExtensionExecutions, listExtensions, listFamilyEnvironments, listFeatureFlags, listFiles, listGitHubConnectors, listGitHubRepositories, listHealthCheckResults, listImages, listProjectsInFamily, listRepositoryBranches, listServers, markOnboardingComplete, moveDirectory, type Options, pauseMachine, performUpdate, previewComposeServices, provisionTrailResources, pruneBuildCache, pruneImages, recoverApplication, redeployApplication, removeApplicationDomain, removeContainer, removeCustomDomain, restartContainer, restartDeployment, restartMachine, resumeMachine, rollbackDeployment, runExtension, selectAMachinePlan, sendNotification, startContainer, stopContainer, toggleHealthCheck, updateApplication, updateApplicationLabels, updateAutoUpdateSettings, updateContainerResources, updateFeatureFlag, updateFontSettings, updateGitHubConnector, updateHealthCheck, updateLanguageSettings, updateNotificationPreferences, updateSmtpConfig, updateThemeSettings, updateUserAvatar, updateUserName, updateUserPreferences, updateWebhookConfig, uploadFile, verifyCustomDomain } from '../sdk.gen';
-import type { AddApplicationDomainData, AddApplicationDomainError, AddApplicationDomainResponse, AddCustomDomainData, AddCustomDomainError, AddCustomDomainResponse, AddProjectToFamilyData, AddProjectToFamilyError, AddProjectToFamilyResponse, CancelDeploymentData, CancelDeploymentError, CancelDeploymentResponse, CancelExecutionData, CancelExecutionError, CancelExecutionResponse, CheckAdminRegistrationData, CheckAdminRegistrationError, CheckAdminRegistrationResponse, CheckCustomDomainDnsData, CheckCustomDomainDnsError, CheckCustomDomainDnsResponse, CheckForUpdatesData, CheckForUpdatesError, CheckForUpdatesResponse, CheckIfFeatureIsEnabledData, CheckIfFeatureIsEnabledError, CheckIfFeatureIsEnabledResponse, CheckOnboardingStatusData, CheckOnboardingStatusError, CheckOnboardingStatusResponse, CopyDirectoryData, CopyDirectoryError, CopyDirectoryResponse, CreateDirectoryData, CreateDirectoryError, CreateDirectoryResponse, CreateGitHubConnectorData, CreateGitHubConnectorError, CreateGitHubConnectorResponse, CreateHealthCheckData, CreateHealthCheckError, CreateHealthCheckResponse, CreateProjectData, CreateProjectError, CreateProjectResponse, CreateSmtpConfigData, CreateSmtpConfigError, CreateSmtpConfigResponse, CreateWebhookConfigData, CreateWebhookConfigError, CreateWebhookConfigResponse, DeleteApplicationData, DeleteApplicationError, DeleteApplicationResponse, DeleteDirectoryData, DeleteDirectoryError, DeleteDirectoryResponse, DeleteForkedExtensionData, DeleteForkedExtensionError, DeleteForkedExtensionResponse, DeleteGitHubConnectorData, DeleteGitHubConnectorError, DeleteGitHubConnectorResponse, DeleteHealthCheckData, DeleteHealthCheckError, DeleteHealthCheckResponse, DeleteSmtpConfigData, DeleteSmtpConfigError, DeleteSmtpConfigResponse, DeleteWebhookConfigData, DeleteWebhookConfigError, DeleteWebhookConfigResponse, DeployApplicationData, DeployApplicationError, DeployApplicationResponse, DeployProjectData, DeployProjectError, DeployProjectResponse, DuplicateProjectData, DuplicateProjectError, DuplicateProjectResponse, ExecuteACommandOnTheHostMachineData, ExecuteACommandOnTheHostMachineError, ExecuteACommandOnTheHostMachineResponse, ForkExtensionData, ForkExtensionError, ForkExtensionResponse, GenerateRandomSubdomainData, GenerateRandomSubdomainError, GenerateRandomSubdomainResponse, GetApplicationData, GetApplicationError, GetApplicationLogsData, GetApplicationLogsError, GetApplicationLogsResponse, GetApplicationResponse, GetBootstrapSessionDataData, GetBootstrapSessionDataError, GetBootstrapSessionDataResponse, GetContainerData, GetContainerError, GetContainerLogsData, GetContainerLogsError, GetContainerLogsResponse, GetContainerResponse2, GetCurrentUserProfileData, GetCurrentUserProfileError, GetCurrentUserProfileResponse, GetDeploymentData, GetDeploymentError, GetDeploymentLogsData, GetDeploymentLogsError, GetDeploymentLogsResponse, GetDeploymentResponse, GetExecutionData, GetExecutionError, GetExecutionResponse, GetExtensionByExtensionIdData, GetExtensionByExtensionIdError, GetExtensionByExtensionIdResponse, GetExtensionByIdData, GetExtensionByIdError, GetExtensionByIdResponse, GetHealthChecksData, GetHealthChecksError, GetHealthChecksResponse, GetHealthCheckStatsData, GetHealthCheckStatsError, GetHealthCheckStatsResponse, GetMachineBillingStatusData, GetMachineBillingStatusError, GetMachineBillingStatusResponse, GetMachineLifecycleStatusData, GetMachineLifecycleStatusError, GetMachineLifecycleStatusResponse, GetMachineSystemStatsData, GetMachineSystemStatsError, GetMachineSystemStatsResponse, GetNotificationPreferencesData, GetNotificationPreferencesError, GetNotificationPreferencesResponse, GetSmtpConfigData, GetSmtpConfigError, GetSmtpConfigResponse, GetSshConnectionStatusData, GetSshConnectionStatusError, GetSshConnectionStatusResponse, GetTrailSessionStatusData, GetTrailSessionStatusError, GetTrailSessionStatusResponse, GetUserPreferencesData, GetUserPreferencesError, GetUserPreferencesResponse, GetUserSettingsData, GetUserSettingsError, GetUserSettingsResponse, GetWebhookConfigData, GetWebhookConfigError, GetWebhookConfigResponse, HandleGitHubWebhookData, HandleGitHubWebhookError, HandleGitHubWebhookResponse, HealthCheckData, HealthCheckError, HealthCheckResponse2, ListApplicationDeploymentsData, ListApplicationDeploymentsError, ListApplicationDeploymentsResponse, ListApplicationsData, ListApplicationsError, ListApplicationsResponse2, ListAuditLogsData, ListAuditLogsError, ListAuditLogsResponse, ListAvailableMachinePlansData, ListAvailableMachinePlansError, ListAvailableMachinePlansResponse, ListComposeServicesData, ListComposeServicesError, ListComposeServicesResponse, ListContainersData, ListContainersError, ListContainersResponse2, ListDomainsData, ListDomainsError, ListDomainsResponse2, ListExecutionLogsData, ListExecutionLogsError, ListExecutionLogsResponse, ListExtensionCategoriesData, ListExtensionCategoriesError, ListExtensionCategoriesResponse, ListExtensionExecutionsData, ListExtensionExecutionsError, ListExtensionExecutionsResponse, ListExtensionsData, ListExtensionsError, ListExtensionsResponse2, ListFamilyEnvironmentsData, ListFamilyEnvironmentsError, ListFamilyEnvironmentsResponse, ListFeatureFlagsData, ListFeatureFlagsError, ListFeatureFlagsResponse2, ListFilesData, ListFilesError, ListFilesResponse2, ListGitHubConnectorsData, ListGitHubConnectorsError, ListGitHubConnectorsResponse, ListGitHubRepositoriesData, ListGitHubRepositoriesError, ListGitHubRepositoriesResponse, ListHealthCheckResultsData, ListHealthCheckResultsError, ListHealthCheckResultsResponse, ListImagesData, ListImagesError, ListImagesResponse2, ListProjectsInFamilyData, ListProjectsInFamilyError, ListProjectsInFamilyResponse, ListRepositoryBranchesData, ListRepositoryBranchesError, ListRepositoryBranchesResponse, ListServersData, ListServersError, ListServersResponse2, MarkOnboardingCompleteData, MarkOnboardingCompleteError, MarkOnboardingCompleteResponse2, MoveDirectoryData, MoveDirectoryError, MoveDirectoryResponse, PauseMachineData, PauseMachineError, PauseMachineResponse, PerformUpdateData, PerformUpdateError, PerformUpdateResponse, PreviewComposeServicesData, PreviewComposeServicesError, PreviewComposeServicesResponse, ProvisionTrailResourcesData, ProvisionTrailResourcesError, ProvisionTrailResourcesResponse, PruneBuildCacheData, PruneBuildCacheError, PruneBuildCacheResponse, PruneImagesData, PruneImagesError, PruneImagesResponse2, RecoverApplicationData, RecoverApplicationError, RecoverApplicationResponse, RedeployApplicationData, RedeployApplicationError, RedeployApplicationResponse, RemoveApplicationDomainData, RemoveApplicationDomainError, RemoveApplicationDomainResponse, RemoveContainerData, RemoveContainerError, RemoveContainerResponse, RemoveCustomDomainData, RemoveCustomDomainError, RemoveCustomDomainResponse, RestartContainerData, RestartContainerError, RestartContainerResponse, RestartDeploymentData, RestartDeploymentError, RestartDeploymentResponse, RestartMachineData, RestartMachineError, RestartMachineResponse, ResumeMachineData, ResumeMachineError, ResumeMachineResponse, RollbackDeploymentData, RollbackDeploymentError, RollbackDeploymentResponse, RunExtensionData, RunExtensionError, RunExtensionResponse, SelectAMachinePlanData, SelectAMachinePlanError, SelectAMachinePlanResponse, SendNotificationData, SendNotificationError, SendNotificationResponse2, StartContainerData, StartContainerError, StartContainerResponse, StopContainerData, StopContainerError, StopContainerResponse, ToggleHealthCheckData, ToggleHealthCheckError, ToggleHealthCheckResponse, UpdateApplicationData, UpdateApplicationError, UpdateApplicationLabelsData, UpdateApplicationLabelsError, UpdateApplicationLabelsResponse, UpdateApplicationResponse, UpdateAutoUpdateSettingsData, UpdateAutoUpdateSettingsError, UpdateAutoUpdateSettingsResponse, UpdateContainerResourcesData, UpdateContainerResourcesError, UpdateContainerResourcesResponse2, UpdateFeatureFlagData, UpdateFeatureFlagError, UpdateFeatureFlagResponse, UpdateFontSettingsData, UpdateFontSettingsError, UpdateFontSettingsResponse, UpdateGitHubConnectorData, UpdateGitHubConnectorError, UpdateGitHubConnectorResponse, UpdateHealthCheckData, UpdateHealthCheckError, UpdateHealthCheckResponse, UpdateLanguageSettingsData, UpdateLanguageSettingsError, UpdateLanguageSettingsResponse, UpdateNotificationPreferencesData, UpdateNotificationPreferencesError, UpdateNotificationPreferencesResponse, UpdateSmtpConfigData, UpdateSmtpConfigError, UpdateSmtpConfigResponse, UpdateThemeSettingsData, UpdateThemeSettingsError, UpdateThemeSettingsResponse, UpdateUserAvatarData, UpdateUserAvatarError, UpdateUserAvatarResponse, UpdateUserNameData, UpdateUserNameError, UpdateUserNameResponse, UpdateUserPreferencesData, UpdateUserPreferencesError, UpdateUserPreferencesResponse, UpdateWebhookConfigData, UpdateWebhookConfigError, UpdateWebhookConfigResponse, UploadFileData, UploadFileError, UploadFileResponse, VerifyCustomDomainData, VerifyCustomDomainError, VerifyCustomDomainResponse } from '../types.gen';
+import { createAddToFamily, createBranches, createBuildCache, createCancel, createCancelDeployment, createCopyDirectory, createCreateDirectory, createCustom, createDeploy, createDomains, createDuplicate, createEndpoint, createEndpoint2, createEndpoint3, createEndpoint4, createEndpoint5, createEndpoint6, createEndpoint7, createEndpoint8, createEndpoint9, createExec, createFork, createImages, createImages2, createLogs, createMoveDirectory, createOnboarded, createPause, createPreviewCompose, createProject, createProvision, createRecover, createRedeploy, createRestart, createRestart2, createRestart3, createResume, createRollback, createRun, createSelect, createSend, createStart, createStop, createTest, createUpload, createVerify, deleteContainerId, deleteCustom, deleteDeleteDirectory, deleteDomains, deleteEndpoint, deleteEndpoint2, deleteEndpoint3, deleteEndpoint4, deleteEndpoint5, deleteEndpoint6, deleteId, getAll, getApplications, getBilling, getBootstrap, getByExtensionId, getCategories, getCheck, getCheck2, getComposeServices, getContainerId, getDeployments, getDeployments2, getDnsCheck, getEndpoint, getEndpoint10, getEndpoint11, getEndpoint12, getEndpoint13, getEndpoint14, getEndpoint2, getEndpoint3, getEndpoint4, getEndpoint5, getEndpoint6, getEndpoint7, getEndpoint8, getEndpoint9, getEnvironments, getExecution, getExecutions, getFamily, getGenerate, getIcon, getId, getIsAdminRegistered, getLogs, getLogs2, getLogs3, getLogs4, getOnboarded, getPlans, getPreferences, getRepositories, getResults, getServers, getSettings, getStats, getStats2, getStatus, getStatus2, getStatus3, getType, type Options, patchAutoUpdate, patchAvatar, patchFont, patchLanguage, patchName, patchTheme, patchToggle, updateEndpoint, updateEndpoint2, updateEndpoint3, updateEndpoint4, updateEndpoint5, updateEndpoint6, updateId, updateLabels, updatePreferences, updateResources } from '../sdk.gen';
+import type { CreateAddToFamilyData, CreateAddToFamilyError, CreateAddToFamilyResponse, CreateBranchesData, CreateBranchesError, CreateBranchesResponse, CreateBuildCacheData, CreateBuildCacheError, CreateBuildCacheResponse, CreateCancelData, CreateCancelDeploymentData, CreateCancelDeploymentError, CreateCancelDeploymentResponse, CreateCancelError, CreateCancelResponse, CreateCopyDirectoryData, CreateCopyDirectoryError, CreateCopyDirectoryResponse, CreateCreateDirectoryData, CreateCreateDirectoryError, CreateCreateDirectoryResponse, CreateCustomData, CreateCustomError, CreateCustomResponse, CreateDeployData, CreateDeployError, CreateDeployResponse, CreateDomainsData, CreateDomainsError, CreateDomainsResponse, CreateDuplicateData, CreateDuplicateError, CreateDuplicateResponse, CreateEndpoint2Data, CreateEndpoint2Error, CreateEndpoint2Response, CreateEndpoint3Data, CreateEndpoint3Error, CreateEndpoint3Response, CreateEndpoint4Data, CreateEndpoint4Error, CreateEndpoint4Response, CreateEndpoint5Data, CreateEndpoint5Error, CreateEndpoint5Response, CreateEndpoint6Data, CreateEndpoint6Error, CreateEndpoint6Response, CreateEndpoint7Data, CreateEndpoint7Error, CreateEndpoint7Response, CreateEndpoint8Data, CreateEndpoint8Error, CreateEndpoint8Response, CreateEndpoint9Data, CreateEndpoint9Error, CreateEndpoint9Response, CreateEndpointData, CreateEndpointError, CreateEndpointResponse, CreateExecData, CreateExecError, CreateExecResponse, CreateForkData, CreateForkError, CreateForkResponse, CreateImages2Data, CreateImages2Error, CreateImages2Response, CreateImagesData, CreateImagesError, CreateImagesResponse, CreateLogsData, CreateLogsError, CreateLogsResponse, CreateMoveDirectoryData, CreateMoveDirectoryError, CreateMoveDirectoryResponse, CreateOnboardedData, CreateOnboardedError, CreateOnboardedResponse, CreatePauseData, CreatePauseError, CreatePauseResponse, CreatePreviewComposeData, CreatePreviewComposeError, CreatePreviewComposeResponse, CreateProjectData, CreateProjectError, CreateProjectResponse, CreateProvisionData, CreateProvisionError, CreateProvisionResponse, CreateRecoverData, CreateRecoverError, CreateRecoverResponse, CreateRedeployData, CreateRedeployError, CreateRedeployResponse, CreateRestart2Data, CreateRestart2Error, CreateRestart2Response, CreateRestart3Data, CreateRestart3Error, CreateRestart3Response, CreateRestartData, CreateRestartError, CreateRestartResponse, CreateResumeData, CreateResumeError, CreateResumeResponse, CreateRollbackData, CreateRollbackError, CreateRollbackResponse, CreateRunData, CreateRunError, CreateRunResponse, CreateSelectData, CreateSelectError, CreateSelectResponse, CreateSendData, CreateSendError, CreateSendResponse, CreateStartData, CreateStartError, CreateStartResponse, CreateStopData, CreateStopError, CreateStopResponse, CreateTestData, CreateTestError, CreateTestResponse, CreateUploadData, CreateUploadError, CreateUploadResponse, CreateVerifyData, CreateVerifyError, CreateVerifyResponse, DeleteContainerIdData, DeleteContainerIdError, DeleteContainerIdResponse, DeleteCustomData, DeleteCustomError, DeleteCustomResponse, DeleteDeleteDirectoryData, DeleteDeleteDirectoryError, DeleteDeleteDirectoryResponse, DeleteDomainsData, DeleteDomainsError, DeleteDomainsResponse, DeleteEndpoint2Data, DeleteEndpoint2Error, DeleteEndpoint2Response, DeleteEndpoint3Data, DeleteEndpoint3Error, DeleteEndpoint3Response, DeleteEndpoint4Data, DeleteEndpoint4Error, DeleteEndpoint4Response, DeleteEndpoint5Data, DeleteEndpoint5Error, DeleteEndpoint5Response, DeleteEndpoint6Data, DeleteEndpoint6Error, DeleteEndpoint6Response, DeleteEndpointData, DeleteEndpointError, DeleteEndpointResponse, DeleteIdData, DeleteIdError, DeleteIdResponse, GetAllData, GetAllError, GetAllResponse, GetApplicationsData, GetApplicationsError, GetApplicationsResponse, GetBillingData, GetBillingError, GetBillingResponse, GetBootstrapData, GetBootstrapError, GetBootstrapResponse, GetByExtensionIdData, GetByExtensionIdError, GetByExtensionIdResponse, GetCategoriesData, GetCategoriesError, GetCategoriesResponse, GetCheck2Data, GetCheck2Error, GetCheck2Response, GetCheckData, GetCheckError, GetCheckResponse, GetComposeServicesData, GetComposeServicesError, GetComposeServicesResponse, GetContainerIdData, GetContainerIdError, GetContainerIdResponse, GetDeployments2Data, GetDeployments2Error, GetDeployments2Response, GetDeploymentsData, GetDeploymentsError, GetDeploymentsResponse, GetDnsCheckData, GetDnsCheckError, GetDnsCheckResponse, GetEndpoint10Data, GetEndpoint10Error, GetEndpoint10Response, GetEndpoint11Data, GetEndpoint11Error, GetEndpoint11Response, GetEndpoint12Data, GetEndpoint12Error, GetEndpoint12Response, GetEndpoint13Data, GetEndpoint13Error, GetEndpoint13Response, GetEndpoint14Data, GetEndpoint14Error, GetEndpoint14Response, GetEndpoint2Data, GetEndpoint2Error, GetEndpoint2Response, GetEndpoint3Data, GetEndpoint3Error, GetEndpoint3Response, GetEndpoint4Data, GetEndpoint4Error, GetEndpoint4Response, GetEndpoint5Data, GetEndpoint5Error, GetEndpoint5Response, GetEndpoint6Data, GetEndpoint6Error, GetEndpoint6Response, GetEndpoint7Data, GetEndpoint7Error, GetEndpoint7Response, GetEndpoint8Data, GetEndpoint8Error, GetEndpoint8Response, GetEndpoint9Data, GetEndpoint9Error, GetEndpoint9Response, GetEndpointData, GetEndpointError, GetEndpointResponse, GetEnvironmentsData, GetEnvironmentsError, GetEnvironmentsResponse, GetExecutionData, GetExecutionError, GetExecutionResponse, GetExecutionsData, GetExecutionsError, GetExecutionsResponse, GetFamilyData, GetFamilyError, GetFamilyResponse, GetGenerateData, GetGenerateError, GetGenerateResponse, GetIconData, GetIconError, GetIconResponse, GetIdData, GetIdError, GetIdResponse, GetIsAdminRegisteredData, GetIsAdminRegisteredError, GetIsAdminRegisteredResponse, GetLogs2Data, GetLogs2Error, GetLogs2Response, GetLogs3Data, GetLogs3Error, GetLogs3Response, GetLogs4Data, GetLogs4Error, GetLogs4Response, GetLogsData, GetLogsError, GetLogsResponse, GetOnboardedData, GetOnboardedError, GetOnboardedResponse, GetPlansData, GetPlansError, GetPlansResponse, GetPreferencesData, GetPreferencesError, GetPreferencesResponse, GetRepositoriesData, GetRepositoriesError, GetRepositoriesResponse, GetResultsData, GetResultsError, GetResultsResponse, GetServersData, GetServersError, GetServersResponse, GetSettingsData, GetSettingsError, GetSettingsResponse, GetStats2Data, GetStats2Error, GetStats2Response, GetStatsData, GetStatsError, GetStatsResponse, GetStatus2Data, GetStatus2Error, GetStatus2Response, GetStatus3Data, GetStatus3Error, GetStatus3Response, GetStatusData, GetStatusError, GetStatusResponse, GetTypeData, GetTypeError, GetTypeResponse, PatchAutoUpdateData, PatchAutoUpdateError, PatchAutoUpdateResponse, PatchAvatarData, PatchAvatarError, PatchAvatarResponse, PatchFontData, PatchFontError, PatchFontResponse, PatchLanguageData, PatchLanguageError, PatchLanguageResponse, PatchNameData, PatchNameError, PatchNameResponse, PatchThemeData, PatchThemeError, PatchThemeResponse, PatchToggleData, PatchToggleError, PatchToggleResponse, UpdateEndpoint2Data, UpdateEndpoint2Error, UpdateEndpoint2Response, UpdateEndpoint3Data, UpdateEndpoint3Error, UpdateEndpoint3Response, UpdateEndpoint4Data, UpdateEndpoint4Error, UpdateEndpoint4Response, UpdateEndpoint5Data, UpdateEndpoint5Error, UpdateEndpoint5Response, UpdateEndpoint6Data, UpdateEndpoint6Error, UpdateEndpoint6Response, UpdateEndpointData, UpdateEndpointError, UpdateEndpointResponse, UpdateIdData, UpdateIdError, UpdateIdResponse, UpdateLabelsData, UpdateLabelsError, UpdateLabelsResponse, UpdatePreferencesData, UpdatePreferencesError, UpdatePreferencesResponse, UpdateResourcesData, UpdateResourcesError, UpdateResourcesResponse } from '../types.gen';
 
 export type QueryKey<TOptions extends Options> = [
     Pick<TOptions, 'baseUrl' | 'body' | 'headers' | 'path' | 'query'> & {
@@ -39,20 +39,20 @@ const createQueryKey = <TOptions extends Options>(id: string, options?: TOptions
     return [params];
 };
 
-export const listAuditLogsQueryKey = (options?: Options<ListAuditLogsData>) => createQueryKey('listAuditLogs', options);
+export const getLogs3QueryKey = (options?: Options<GetLogs3Data>) => createQueryKey('getLogs3', options);
 
 /**
  * List audit logs
  *
- * List audit logs.
+ * Get logs.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listAuditLogsOptions = (options?: Options<ListAuditLogsData>) => queryOptions<ListAuditLogsResponse, ListAuditLogsError, ListAuditLogsResponse, ReturnType<typeof listAuditLogsQueryKey>>({
+export const getLogs3Options = (options?: Options<GetLogs3Data>) => queryOptions<GetLogs3Response, GetLogs3Error, GetLogs3Response, ReturnType<typeof getLogs3QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listAuditLogs({
+        const { data } = await getLogs3({
             ...options,
             ...queryKey[0],
             signal,
@@ -60,7 +60,7 @@ export const listAuditLogsOptions = (options?: Options<ListAuditLogsData>) => qu
         });
         return data;
     },
-    queryKey: listAuditLogsQueryKey(options)
+    queryKey: getLogs3QueryKey(options)
 });
 
 const createInfiniteParams = <K extends Pick<QueryKey<Options>[0], 'body' | 'headers' | 'path' | 'query'>>(queryKey: QueryKey<Options>, page: K) => {
@@ -92,29 +92,29 @@ const createInfiniteParams = <K extends Pick<QueryKey<Options>[0], 'body' | 'hea
     return params as unknown as typeof page;
 };
 
-export const listAuditLogsInfiniteQueryKey = (options?: Options<ListAuditLogsData>): QueryKey<Options<ListAuditLogsData>> => createQueryKey('listAuditLogs', options, true);
+export const getLogs3InfiniteQueryKey = (options?: Options<GetLogs3Data>): QueryKey<Options<GetLogs3Data>> => createQueryKey('getLogs3', options, true);
 
 /**
  * List audit logs
  *
- * List audit logs.
+ * Get logs.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listAuditLogsInfiniteOptions = (options?: Options<ListAuditLogsData>) => infiniteQueryOptions<ListAuditLogsResponse, ListAuditLogsError, InfiniteData<ListAuditLogsResponse>, QueryKey<Options<ListAuditLogsData>>, number | Pick<QueryKey<Options<ListAuditLogsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+export const getLogs3InfiniteOptions = (options?: Options<GetLogs3Data>) => infiniteQueryOptions<GetLogs3Response, GetLogs3Error, InfiniteData<GetLogs3Response>, QueryKey<Options<GetLogs3Data>>, number | Pick<QueryKey<Options<GetLogs3Data>>[0], 'body' | 'headers' | 'path' | 'query'>>(
 // @ts-ignore
 {
     queryFn: async ({ pageParam, queryKey, signal }) => {
         // @ts-ignore
-        const page: Pick<QueryKey<Options<ListAuditLogsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+        const page: Pick<QueryKey<Options<GetLogs3Data>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
             query: {
                 page: pageParam
             }
         };
         const params = createInfiniteParams(queryKey, page);
-        const { data } = await listAuditLogs({
+        const { data } = await getLogs3({
             ...options,
             ...params,
             signal,
@@ -122,71 +122,23 @@ export const listAuditLogsInfiniteOptions = (options?: Options<ListAuditLogsData
         });
         return data;
     },
-    queryKey: listAuditLogsInfiniteQueryKey(options)
+    queryKey: getLogs3InfiniteQueryKey(options)
 });
 
-export const getBootstrapSessionDataQueryKey = (options?: Options<GetBootstrapSessionDataData>) => createQueryKey('getBootstrapSessionData', options);
+export const getBootstrapQueryKey = (options?: Options<GetBootstrapData>) => createQueryKey('getBootstrap', options);
 
 /**
  * Get bootstrap session data
  *
- * Get bootstrap session data.
- *
- * Auth: Required (bearer token).
- * Scope: No organization scope required.
- * Side effects: Read-only operation.
- */
-export const getBootstrapSessionDataOptions = (options?: Options<GetBootstrapSessionDataData>) => queryOptions<GetBootstrapSessionDataResponse, GetBootstrapSessionDataError, GetBootstrapSessionDataResponse, ReturnType<typeof getBootstrapSessionDataQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getBootstrapSessionData({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getBootstrapSessionDataQueryKey(options)
-});
-
-export const checkAdminRegistrationQueryKey = (options?: Options<CheckAdminRegistrationData>) => createQueryKey('checkAdminRegistration', options);
-
-/**
- * Check admin registration
- *
- * Check admin registration.
- *
- * Auth: Public endpoint.
- * Scope: No organization scope required.
- * Side effects: Read-only operation.
- */
-export const checkAdminRegistrationOptions = (options?: Options<CheckAdminRegistrationData>) => queryOptions<CheckAdminRegistrationResponse, CheckAdminRegistrationError, CheckAdminRegistrationResponse, ReturnType<typeof checkAdminRegistrationQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await checkAdminRegistration({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: checkAdminRegistrationQueryKey(options)
-});
-
-export const listContainersQueryKey = (options?: Options<ListContainersData>) => createQueryKey('listContainers', options);
-
-/**
- * List containers
- *
- * List containers.
+ * Get bootstrap.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listContainersOptions = (options?: Options<ListContainersData>) => queryOptions<ListContainersResponse2, ListContainersError, ListContainersResponse2, ReturnType<typeof listContainersQueryKey>>({
+export const getBootstrapOptions = (options?: Options<GetBootstrapData>) => queryOptions<GetBootstrapResponse, GetBootstrapError, GetBootstrapResponse, ReturnType<typeof getBootstrapQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listContainers({
+        const { data } = await getBootstrap({
             ...options,
             ...queryKey[0],
             signal,
@@ -194,22 +146,70 @@ export const listContainersOptions = (options?: Options<ListContainersData>) => 
         });
         return data;
     },
-    queryKey: listContainersQueryKey(options)
+    queryKey: getBootstrapQueryKey(options)
+});
+
+export const getIsAdminRegisteredQueryKey = (options?: Options<GetIsAdminRegisteredData>) => createQueryKey('getIsAdminRegistered', options);
+
+/**
+ * Check admin registration
+ *
+ * Get is admin registered.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getIsAdminRegisteredOptions = (options?: Options<GetIsAdminRegisteredData>) => queryOptions<GetIsAdminRegisteredResponse, GetIsAdminRegisteredError, GetIsAdminRegisteredResponse, ReturnType<typeof getIsAdminRegisteredQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getIsAdminRegistered({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getIsAdminRegisteredQueryKey(options)
+});
+
+export const getEndpoint9QueryKey = (options?: Options<GetEndpoint9Data>) => createQueryKey('getEndpoint9', options);
+
+/**
+ * List containers
+ *
+ * Get endpoint.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getEndpoint9Options = (options?: Options<GetEndpoint9Data>) => queryOptions<GetEndpoint9Response, GetEndpoint9Error, GetEndpoint9Response, ReturnType<typeof getEndpoint9QueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getEndpoint9({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getEndpoint9QueryKey(options)
 });
 
 /**
  * List images
  *
- * List images.
+ * Create images.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const listImagesMutation = (options?: Partial<Options<ListImagesData>>): UseMutationOptions<ListImagesResponse2, ListImagesError, Options<ListImagesData>> => {
-    const mutationOptions: UseMutationOptions<ListImagesResponse2, ListImagesError, Options<ListImagesData>> = {
+export const createImages2Mutation = (options?: Partial<Options<CreateImages2Data>>): UseMutationOptions<CreateImages2Response, CreateImages2Error, Options<CreateImages2Data>> => {
+    const mutationOptions: UseMutationOptions<CreateImages2Response, CreateImages2Error, Options<CreateImages2Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await listImages({
+            const { data } = await createImages2({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -223,16 +223,16 @@ export const listImagesMutation = (options?: Partial<Options<ListImagesData>>): 
 /**
  * Prune build cache
  *
- * Prune build cache.
+ * Create build cache.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const pruneBuildCacheMutation = (options?: Partial<Options<PruneBuildCacheData>>): UseMutationOptions<PruneBuildCacheResponse, PruneBuildCacheError, Options<PruneBuildCacheData>> => {
-    const mutationOptions: UseMutationOptions<PruneBuildCacheResponse, PruneBuildCacheError, Options<PruneBuildCacheData>> = {
+export const createBuildCacheMutation = (options?: Partial<Options<CreateBuildCacheData>>): UseMutationOptions<CreateBuildCacheResponse, CreateBuildCacheError, Options<CreateBuildCacheData>> => {
+    const mutationOptions: UseMutationOptions<CreateBuildCacheResponse, CreateBuildCacheError, Options<CreateBuildCacheData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await pruneBuildCache({
+            const { data } = await createBuildCache({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -246,16 +246,16 @@ export const pruneBuildCacheMutation = (options?: Partial<Options<PruneBuildCach
 /**
  * Prune images
  *
- * Prune images.
+ * Create images.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const pruneImagesMutation = (options?: Partial<Options<PruneImagesData>>): UseMutationOptions<PruneImagesResponse2, PruneImagesError, Options<PruneImagesData>> => {
-    const mutationOptions: UseMutationOptions<PruneImagesResponse2, PruneImagesError, Options<PruneImagesData>> = {
+export const createImagesMutation = (options?: Partial<Options<CreateImagesData>>): UseMutationOptions<CreateImagesResponse, CreateImagesError, Options<CreateImagesData>> => {
+    const mutationOptions: UseMutationOptions<CreateImagesResponse, CreateImagesError, Options<CreateImagesData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await pruneImages({
+            const { data } = await createImages({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -269,16 +269,16 @@ export const pruneImagesMutation = (options?: Partial<Options<PruneImagesData>>)
 /**
  * Remove container
  *
- * Remove container.
+ * Delete {container id}.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const removeContainerMutation = (options?: Partial<Options<RemoveContainerData>>): UseMutationOptions<RemoveContainerResponse, RemoveContainerError, Options<RemoveContainerData>> => {
-    const mutationOptions: UseMutationOptions<RemoveContainerResponse, RemoveContainerError, Options<RemoveContainerData>> = {
+export const deleteContainerIdMutation = (options?: Partial<Options<DeleteContainerIdData>>): UseMutationOptions<DeleteContainerIdResponse, DeleteContainerIdError, Options<DeleteContainerIdData>> => {
+    const mutationOptions: UseMutationOptions<DeleteContainerIdResponse, DeleteContainerIdError, Options<DeleteContainerIdData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await removeContainer({
+            const { data } = await deleteContainerId({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -289,20 +289,20 @@ export const removeContainerMutation = (options?: Partial<Options<RemoveContaine
     return mutationOptions;
 };
 
-export const getContainerQueryKey = (options: Options<GetContainerData>) => createQueryKey('getContainer', options);
+export const getContainerIdQueryKey = (options: Options<GetContainerIdData>) => createQueryKey('getContainerId', options);
 
 /**
  * Get container
  *
- * Get container.
+ * Get {container id}.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getContainerOptions = (options: Options<GetContainerData>) => queryOptions<GetContainerResponse2, GetContainerError, GetContainerResponse2, ReturnType<typeof getContainerQueryKey>>({
+export const getContainerIdOptions = (options: Options<GetContainerIdData>) => queryOptions<GetContainerIdResponse, GetContainerIdError, GetContainerIdResponse, ReturnType<typeof getContainerIdQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getContainer({
+        const { data } = await getContainerId({
             ...options,
             ...queryKey[0],
             signal,
@@ -310,22 +310,22 @@ export const getContainerOptions = (options: Options<GetContainerData>) => query
         });
         return data;
     },
-    queryKey: getContainerQueryKey(options)
+    queryKey: getContainerIdQueryKey(options)
 });
 
 /**
  * Get container logs
  *
- * Get container logs.
+ * Create logs.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const getContainerLogsMutation = (options?: Partial<Options<GetContainerLogsData>>): UseMutationOptions<GetContainerLogsResponse, GetContainerLogsError, Options<GetContainerLogsData>> => {
-    const mutationOptions: UseMutationOptions<GetContainerLogsResponse, GetContainerLogsError, Options<GetContainerLogsData>> = {
+export const createLogsMutation = (options?: Partial<Options<CreateLogsData>>): UseMutationOptions<CreateLogsResponse, CreateLogsError, Options<CreateLogsData>> => {
+    const mutationOptions: UseMutationOptions<CreateLogsResponse, CreateLogsError, Options<CreateLogsData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await getContainerLogs({
+            const { data } = await createLogs({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -339,16 +339,16 @@ export const getContainerLogsMutation = (options?: Partial<Options<GetContainerL
 /**
  * Update container resources
  *
- * Update container resources.
+ * Update resources.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateContainerResourcesMutation = (options?: Partial<Options<UpdateContainerResourcesData>>): UseMutationOptions<UpdateContainerResourcesResponse2, UpdateContainerResourcesError, Options<UpdateContainerResourcesData>> => {
-    const mutationOptions: UseMutationOptions<UpdateContainerResourcesResponse2, UpdateContainerResourcesError, Options<UpdateContainerResourcesData>> = {
+export const updateResourcesMutation = (options?: Partial<Options<UpdateResourcesData>>): UseMutationOptions<UpdateResourcesResponse, UpdateResourcesError, Options<UpdateResourcesData>> => {
+    const mutationOptions: UseMutationOptions<UpdateResourcesResponse, UpdateResourcesError, Options<UpdateResourcesData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateContainerResources({
+            const { data } = await updateResources({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -362,16 +362,16 @@ export const updateContainerResourcesMutation = (options?: Partial<Options<Updat
 /**
  * Restart container
  *
- * Restart container.
+ * Create restart.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const restartContainerMutation = (options?: Partial<Options<RestartContainerData>>): UseMutationOptions<RestartContainerResponse, RestartContainerError, Options<RestartContainerData>> => {
-    const mutationOptions: UseMutationOptions<RestartContainerResponse, RestartContainerError, Options<RestartContainerData>> = {
+export const createRestart2Mutation = (options?: Partial<Options<CreateRestart2Data>>): UseMutationOptions<CreateRestart2Response, CreateRestart2Error, Options<CreateRestart2Data>> => {
+    const mutationOptions: UseMutationOptions<CreateRestart2Response, CreateRestart2Error, Options<CreateRestart2Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await restartContainer({
+            const { data } = await createRestart2({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -385,16 +385,16 @@ export const restartContainerMutation = (options?: Partial<Options<RestartContai
 /**
  * Start container
  *
- * Start container.
+ * Create start.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const startContainerMutation = (options?: Partial<Options<StartContainerData>>): UseMutationOptions<StartContainerResponse, StartContainerError, Options<StartContainerData>> => {
-    const mutationOptions: UseMutationOptions<StartContainerResponse, StartContainerError, Options<StartContainerData>> = {
+export const createStartMutation = (options?: Partial<Options<CreateStartData>>): UseMutationOptions<CreateStartResponse, CreateStartError, Options<CreateStartData>> => {
+    const mutationOptions: UseMutationOptions<CreateStartResponse, CreateStartError, Options<CreateStartData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await startContainer({
+            const { data } = await createStart({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -408,16 +408,16 @@ export const startContainerMutation = (options?: Partial<Options<StartContainerD
 /**
  * Stop container
  *
- * Stop container.
+ * Create stop.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const stopContainerMutation = (options?: Partial<Options<StopContainerData>>): UseMutationOptions<StopContainerResponse, StopContainerError, Options<StopContainerData>> => {
-    const mutationOptions: UseMutationOptions<StopContainerResponse, StopContainerError, Options<StopContainerData>> = {
+export const createStopMutation = (options?: Partial<Options<CreateStopData>>): UseMutationOptions<CreateStopResponse, CreateStopError, Options<CreateStopData>> => {
+    const mutationOptions: UseMutationOptions<CreateStopResponse, CreateStopError, Options<CreateStopData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await stopContainer({
+            const { data } = await createStop({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -431,16 +431,16 @@ export const stopContainerMutation = (options?: Partial<Options<StopContainerDat
 /**
  * Delete application
  *
- * Delete application.
+ * Delete endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deleteApplicationMutation = (options?: Partial<Options<DeleteApplicationData>>): UseMutationOptions<DeleteApplicationResponse, DeleteApplicationError, Options<DeleteApplicationData>> => {
-    const mutationOptions: UseMutationOptions<DeleteApplicationResponse, DeleteApplicationError, Options<DeleteApplicationData>> = {
+export const deleteEndpoint4Mutation = (options?: Partial<Options<DeleteEndpoint4Data>>): UseMutationOptions<DeleteEndpoint4Response, DeleteEndpoint4Error, Options<DeleteEndpoint4Data>> => {
+    const mutationOptions: UseMutationOptions<DeleteEndpoint4Response, DeleteEndpoint4Error, Options<DeleteEndpoint4Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await deleteApplication({
+            const { data } = await deleteEndpoint4({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -451,20 +451,20 @@ export const deleteApplicationMutation = (options?: Partial<Options<DeleteApplic
     return mutationOptions;
 };
 
-export const getApplicationQueryKey = (options: Options<GetApplicationData>) => createQueryKey('getApplication', options);
+export const getEndpoint7QueryKey = (options: Options<GetEndpoint7Data>) => createQueryKey('getEndpoint7', options);
 
 /**
  * Get application
  *
- * Get application.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getApplicationOptions = (options: Options<GetApplicationData>) => queryOptions<GetApplicationResponse, GetApplicationError, GetApplicationResponse, ReturnType<typeof getApplicationQueryKey>>({
+export const getEndpoint7Options = (options: Options<GetEndpoint7Data>) => queryOptions<GetEndpoint7Response, GetEndpoint7Error, GetEndpoint7Response, ReturnType<typeof getEndpoint7QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApplication({
+        const { data } = await getEndpoint7({
             ...options,
             ...queryKey[0],
             signal,
@@ -472,22 +472,22 @@ export const getApplicationOptions = (options: Options<GetApplicationData>) => q
         });
         return data;
     },
-    queryKey: getApplicationQueryKey(options)
+    queryKey: getEndpoint7QueryKey(options)
 });
 
 /**
  * Deploy application
  *
- * Deploy application.
+ * Create endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deployApplicationMutation = (options?: Partial<Options<DeployApplicationData>>): UseMutationOptions<DeployApplicationResponse, DeployApplicationError, Options<DeployApplicationData>> => {
-    const mutationOptions: UseMutationOptions<DeployApplicationResponse, DeployApplicationError, Options<DeployApplicationData>> = {
+export const createEndpoint6Mutation = (options?: Partial<Options<CreateEndpoint6Data>>): UseMutationOptions<CreateEndpoint6Response, CreateEndpoint6Error, Options<CreateEndpoint6Data>> => {
+    const mutationOptions: UseMutationOptions<CreateEndpoint6Response, CreateEndpoint6Error, Options<CreateEndpoint6Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await deployApplication({
+            const { data } = await createEndpoint6({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -501,16 +501,16 @@ export const deployApplicationMutation = (options?: Partial<Options<DeployApplic
 /**
  * Update application
  *
- * Update application.
+ * Update endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateApplicationMutation = (options?: Partial<Options<UpdateApplicationData>>): UseMutationOptions<UpdateApplicationResponse, UpdateApplicationError, Options<UpdateApplicationData>> => {
-    const mutationOptions: UseMutationOptions<UpdateApplicationResponse, UpdateApplicationError, Options<UpdateApplicationData>> = {
+export const updateEndpoint4Mutation = (options?: Partial<Options<UpdateEndpoint4Data>>): UseMutationOptions<UpdateEndpoint4Response, UpdateEndpoint4Error, Options<UpdateEndpoint4Data>> => {
+    const mutationOptions: UseMutationOptions<UpdateEndpoint4Response, UpdateEndpoint4Error, Options<UpdateEndpoint4Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateApplication({
+            const { data } = await updateEndpoint4({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -524,16 +524,16 @@ export const updateApplicationMutation = (options?: Partial<Options<UpdateApplic
 /**
  * Cancel deployment
  *
- * Cancel deployment.
+ * Create cancel deployment.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const cancelDeploymentMutation = (options?: Partial<Options<CancelDeploymentData>>): UseMutationOptions<CancelDeploymentResponse, CancelDeploymentError, Options<CancelDeploymentData>> => {
-    const mutationOptions: UseMutationOptions<CancelDeploymentResponse, CancelDeploymentError, Options<CancelDeploymentData>> = {
+export const createCancelDeploymentMutation = (options?: Partial<Options<CreateCancelDeploymentData>>): UseMutationOptions<CreateCancelDeploymentResponse, CreateCancelDeploymentError, Options<CreateCancelDeploymentData>> => {
+    const mutationOptions: UseMutationOptions<CreateCancelDeploymentResponse, CreateCancelDeploymentError, Options<CreateCancelDeploymentData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await cancelDeployment({
+            const { data } = await createCancelDeployment({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -544,20 +544,20 @@ export const cancelDeploymentMutation = (options?: Partial<Options<CancelDeploym
     return mutationOptions;
 };
 
-export const listComposeServicesQueryKey = (options: Options<ListComposeServicesData>) => createQueryKey('listComposeServices', options);
+export const getComposeServicesQueryKey = (options: Options<GetComposeServicesData>) => createQueryKey('getComposeServices', options);
 
 /**
  * List compose services
  *
- * List compose services.
+ * Get compose services.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listComposeServicesOptions = (options: Options<ListComposeServicesData>) => queryOptions<ListComposeServicesResponse, ListComposeServicesError, ListComposeServicesResponse, ReturnType<typeof listComposeServicesQueryKey>>({
+export const getComposeServicesOptions = (options: Options<GetComposeServicesData>) => queryOptions<GetComposeServicesResponse, GetComposeServicesError, GetComposeServicesResponse, ReturnType<typeof getComposeServicesQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listComposeServices({
+        const { data } = await getComposeServices({
             ...options,
             ...queryKey[0],
             signal,
@@ -565,23 +565,23 @@ export const listComposeServicesOptions = (options: Options<ListComposeServicesD
         });
         return data;
     },
-    queryKey: listComposeServicesQueryKey(options)
+    queryKey: getComposeServicesQueryKey(options)
 });
 
-export const listApplicationDeploymentsQueryKey = (options: Options<ListApplicationDeploymentsData>) => createQueryKey('listApplicationDeployments', options);
+export const getDeployments2QueryKey = (options: Options<GetDeployments2Data>) => createQueryKey('getDeployments2', options);
 
 /**
  * List application deployments
  *
- * List application deployments.
+ * Get deployments.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listApplicationDeploymentsOptions = (options: Options<ListApplicationDeploymentsData>) => queryOptions<ListApplicationDeploymentsResponse, ListApplicationDeploymentsError, ListApplicationDeploymentsResponse, ReturnType<typeof listApplicationDeploymentsQueryKey>>({
+export const getDeployments2Options = (options: Options<GetDeployments2Data>) => queryOptions<GetDeployments2Response, GetDeployments2Error, GetDeployments2Response, ReturnType<typeof getDeployments2QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listApplicationDeployments({
+        const { data } = await getDeployments2({
             ...options,
             ...queryKey[0],
             signal,
@@ -589,32 +589,32 @@ export const listApplicationDeploymentsOptions = (options: Options<ListApplicati
         });
         return data;
     },
-    queryKey: listApplicationDeploymentsQueryKey(options)
+    queryKey: getDeployments2QueryKey(options)
 });
 
-export const listApplicationDeploymentsInfiniteQueryKey = (options: Options<ListApplicationDeploymentsData>): QueryKey<Options<ListApplicationDeploymentsData>> => createQueryKey('listApplicationDeployments', options, true);
+export const getDeployments2InfiniteQueryKey = (options: Options<GetDeployments2Data>): QueryKey<Options<GetDeployments2Data>> => createQueryKey('getDeployments2', options, true);
 
 /**
  * List application deployments
  *
- * List application deployments.
+ * Get deployments.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listApplicationDeploymentsInfiniteOptions = (options: Options<ListApplicationDeploymentsData>) => infiniteQueryOptions<ListApplicationDeploymentsResponse, ListApplicationDeploymentsError, InfiniteData<ListApplicationDeploymentsResponse>, QueryKey<Options<ListApplicationDeploymentsData>>, number | Pick<QueryKey<Options<ListApplicationDeploymentsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+export const getDeployments2InfiniteOptions = (options: Options<GetDeployments2Data>) => infiniteQueryOptions<GetDeployments2Response, GetDeployments2Error, InfiniteData<GetDeployments2Response>, QueryKey<Options<GetDeployments2Data>>, number | Pick<QueryKey<Options<GetDeployments2Data>>[0], 'body' | 'headers' | 'path' | 'query'>>(
 // @ts-ignore
 {
     queryFn: async ({ pageParam, queryKey, signal }) => {
         // @ts-ignore
-        const page: Pick<QueryKey<Options<ListApplicationDeploymentsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+        const page: Pick<QueryKey<Options<GetDeployments2Data>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
             query: {
                 page: pageParam
             }
         };
         const params = createInfiniteParams(queryKey, page);
-        const { data } = await listApplicationDeployments({
+        const { data } = await getDeployments2({
             ...options,
             ...params,
             signal,
@@ -622,23 +622,23 @@ export const listApplicationDeploymentsInfiniteOptions = (options: Options<ListA
         });
         return data;
     },
-    queryKey: listApplicationDeploymentsInfiniteQueryKey(options)
+    queryKey: getDeployments2InfiniteQueryKey(options)
 });
 
-export const getDeploymentQueryKey = (options: Options<GetDeploymentData>) => createQueryKey('getDeployment', options);
+export const getDeploymentsQueryKey = (options: Options<GetDeploymentsData>) => createQueryKey('getDeployments', options);
 
 /**
  * Get deployment
  *
- * Get deployment.
+ * Get deployments.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getDeploymentOptions = (options: Options<GetDeploymentData>) => queryOptions<GetDeploymentResponse, GetDeploymentError, GetDeploymentResponse, ReturnType<typeof getDeploymentQueryKey>>({
+export const getDeploymentsOptions = (options: Options<GetDeploymentsData>) => queryOptions<GetDeploymentsResponse, GetDeploymentsError, GetDeploymentsResponse, ReturnType<typeof getDeploymentsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getDeployment({
+        const { data } = await getDeployments({
             ...options,
             ...queryKey[0],
             signal,
@@ -646,23 +646,23 @@ export const getDeploymentOptions = (options: Options<GetDeploymentData>) => que
         });
         return data;
     },
-    queryKey: getDeploymentQueryKey(options)
+    queryKey: getDeploymentsQueryKey(options)
 });
 
-export const getDeploymentLogsQueryKey = (options: Options<GetDeploymentLogsData>) => createQueryKey('getDeploymentLogs', options);
+export const getLogs2QueryKey = (options: Options<GetLogs2Data>) => createQueryKey('getLogs2', options);
 
 /**
  * Get deployment logs
  *
- * Get deployment logs.
+ * Get logs.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getDeploymentLogsOptions = (options: Options<GetDeploymentLogsData>) => queryOptions<GetDeploymentLogsResponse, GetDeploymentLogsError, GetDeploymentLogsResponse, ReturnType<typeof getDeploymentLogsQueryKey>>({
+export const getLogs2Options = (options: Options<GetLogs2Data>) => queryOptions<GetLogs2Response, GetLogs2Error, GetLogs2Response, ReturnType<typeof getLogs2QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getDeploymentLogs({
+        const { data } = await getLogs2({
             ...options,
             ...queryKey[0],
             signal,
@@ -670,32 +670,32 @@ export const getDeploymentLogsOptions = (options: Options<GetDeploymentLogsData>
         });
         return data;
     },
-    queryKey: getDeploymentLogsQueryKey(options)
+    queryKey: getLogs2QueryKey(options)
 });
 
-export const getDeploymentLogsInfiniteQueryKey = (options: Options<GetDeploymentLogsData>): QueryKey<Options<GetDeploymentLogsData>> => createQueryKey('getDeploymentLogs', options, true);
+export const getLogs2InfiniteQueryKey = (options: Options<GetLogs2Data>): QueryKey<Options<GetLogs2Data>> => createQueryKey('getLogs2', options, true);
 
 /**
  * Get deployment logs
  *
- * Get deployment logs.
+ * Get logs.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getDeploymentLogsInfiniteOptions = (options: Options<GetDeploymentLogsData>) => infiniteQueryOptions<GetDeploymentLogsResponse, GetDeploymentLogsError, InfiniteData<GetDeploymentLogsResponse>, QueryKey<Options<GetDeploymentLogsData>>, number | Pick<QueryKey<Options<GetDeploymentLogsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+export const getLogs2InfiniteOptions = (options: Options<GetLogs2Data>) => infiniteQueryOptions<GetLogs2Response, GetLogs2Error, InfiniteData<GetLogs2Response>, QueryKey<Options<GetLogs2Data>>, number | Pick<QueryKey<Options<GetLogs2Data>>[0], 'body' | 'headers' | 'path' | 'query'>>(
 // @ts-ignore
 {
     queryFn: async ({ pageParam, queryKey, signal }) => {
         // @ts-ignore
-        const page: Pick<QueryKey<Options<GetDeploymentLogsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+        const page: Pick<QueryKey<Options<GetLogs2Data>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
             query: {
                 page: pageParam
             }
         };
         const params = createInfiniteParams(queryKey, page);
-        const { data } = await getDeploymentLogs({
+        const { data } = await getLogs2({
             ...options,
             ...params,
             signal,
@@ -703,22 +703,22 @@ export const getDeploymentLogsInfiniteOptions = (options: Options<GetDeploymentL
         });
         return data;
     },
-    queryKey: getDeploymentLogsInfiniteQueryKey(options)
+    queryKey: getLogs2InfiniteQueryKey(options)
 });
 
 /**
  * Remove application domain
  *
- * Remove application domain.
+ * Delete domains.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const removeApplicationDomainMutation = (options?: Partial<Options<RemoveApplicationDomainData>>): UseMutationOptions<RemoveApplicationDomainResponse, RemoveApplicationDomainError, Options<RemoveApplicationDomainData>> => {
-    const mutationOptions: UseMutationOptions<RemoveApplicationDomainResponse, RemoveApplicationDomainError, Options<RemoveApplicationDomainData>> = {
+export const deleteDomainsMutation = (options?: Partial<Options<DeleteDomainsData>>): UseMutationOptions<DeleteDomainsResponse, DeleteDomainsError, Options<DeleteDomainsData>> => {
+    const mutationOptions: UseMutationOptions<DeleteDomainsResponse, DeleteDomainsError, Options<DeleteDomainsData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await removeApplicationDomain({
+            const { data } = await deleteDomains({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -732,16 +732,16 @@ export const removeApplicationDomainMutation = (options?: Partial<Options<Remove
 /**
  * Add application domain
  *
- * Add application domain.
+ * Create domains.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const addApplicationDomainMutation = (options?: Partial<Options<AddApplicationDomainData>>): UseMutationOptions<AddApplicationDomainResponse, AddApplicationDomainError, Options<AddApplicationDomainData>> => {
-    const mutationOptions: UseMutationOptions<AddApplicationDomainResponse, AddApplicationDomainError, Options<AddApplicationDomainData>> = {
+export const createDomainsMutation = (options?: Partial<Options<CreateDomainsData>>): UseMutationOptions<CreateDomainsResponse, CreateDomainsError, Options<CreateDomainsData>> => {
+    const mutationOptions: UseMutationOptions<CreateDomainsResponse, CreateDomainsError, Options<CreateDomainsData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await addApplicationDomain({
+            const { data } = await createDomains({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -755,16 +755,16 @@ export const addApplicationDomainMutation = (options?: Partial<Options<AddApplic
 /**
  * Update application labels
  *
- * Update application labels.
+ * Update labels.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateApplicationLabelsMutation = (options?: Partial<Options<UpdateApplicationLabelsData>>): UseMutationOptions<UpdateApplicationLabelsResponse, UpdateApplicationLabelsError, Options<UpdateApplicationLabelsData>> => {
-    const mutationOptions: UseMutationOptions<UpdateApplicationLabelsResponse, UpdateApplicationLabelsError, Options<UpdateApplicationLabelsData>> = {
+export const updateLabelsMutation = (options?: Partial<Options<UpdateLabelsData>>): UseMutationOptions<UpdateLabelsResponse, UpdateLabelsError, Options<UpdateLabelsData>> => {
+    const mutationOptions: UseMutationOptions<UpdateLabelsResponse, UpdateLabelsError, Options<UpdateLabelsData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateApplicationLabels({
+            const { data } = await updateLabels({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -775,20 +775,20 @@ export const updateApplicationLabelsMutation = (options?: Partial<Options<Update
     return mutationOptions;
 };
 
-export const getApplicationLogsQueryKey = (options: Options<GetApplicationLogsData>) => createQueryKey('getApplicationLogs', options);
+export const getLogsQueryKey = (options: Options<GetLogsData>) => createQueryKey('getLogs', options);
 
 /**
  * Get application logs
  *
- * Get application logs.
+ * Get logs.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getApplicationLogsOptions = (options: Options<GetApplicationLogsData>) => queryOptions<GetApplicationLogsResponse, GetApplicationLogsError, GetApplicationLogsResponse, ReturnType<typeof getApplicationLogsQueryKey>>({
+export const getLogsOptions = (options: Options<GetLogsData>) => queryOptions<GetLogsResponse, GetLogsError, GetLogsResponse, ReturnType<typeof getLogsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getApplicationLogs({
+        const { data } = await getLogs({
             ...options,
             ...queryKey[0],
             signal,
@@ -796,32 +796,32 @@ export const getApplicationLogsOptions = (options: Options<GetApplicationLogsDat
         });
         return data;
     },
-    queryKey: getApplicationLogsQueryKey(options)
+    queryKey: getLogsQueryKey(options)
 });
 
-export const getApplicationLogsInfiniteQueryKey = (options: Options<GetApplicationLogsData>): QueryKey<Options<GetApplicationLogsData>> => createQueryKey('getApplicationLogs', options, true);
+export const getLogsInfiniteQueryKey = (options: Options<GetLogsData>): QueryKey<Options<GetLogsData>> => createQueryKey('getLogs', options, true);
 
 /**
  * Get application logs
  *
- * Get application logs.
+ * Get logs.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getApplicationLogsInfiniteOptions = (options: Options<GetApplicationLogsData>) => infiniteQueryOptions<GetApplicationLogsResponse, GetApplicationLogsError, InfiniteData<GetApplicationLogsResponse>, QueryKey<Options<GetApplicationLogsData>>, number | Pick<QueryKey<Options<GetApplicationLogsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+export const getLogsInfiniteOptions = (options: Options<GetLogsData>) => infiniteQueryOptions<GetLogsResponse, GetLogsError, InfiniteData<GetLogsResponse>, QueryKey<Options<GetLogsData>>, number | Pick<QueryKey<Options<GetLogsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
 // @ts-ignore
 {
     queryFn: async ({ pageParam, queryKey, signal }) => {
         // @ts-ignore
-        const page: Pick<QueryKey<Options<GetApplicationLogsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+        const page: Pick<QueryKey<Options<GetLogsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
             query: {
                 page: pageParam
             }
         };
         const params = createInfiniteParams(queryKey, page);
-        const { data } = await getApplicationLogs({
+        const { data } = await getLogs({
             ...options,
             ...params,
             signal,
@@ -829,22 +829,22 @@ export const getApplicationLogsInfiniteOptions = (options: Options<GetApplicatio
         });
         return data;
     },
-    queryKey: getApplicationLogsInfiniteQueryKey(options)
+    queryKey: getLogsInfiniteQueryKey(options)
 });
 
 /**
  * Preview compose services
  *
- * Preview compose services.
+ * Create preview compose.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const previewComposeServicesMutation = (options?: Partial<Options<PreviewComposeServicesData>>): UseMutationOptions<PreviewComposeServicesResponse, PreviewComposeServicesError, Options<PreviewComposeServicesData>> => {
-    const mutationOptions: UseMutationOptions<PreviewComposeServicesResponse, PreviewComposeServicesError, Options<PreviewComposeServicesData>> = {
+export const createPreviewComposeMutation = (options?: Partial<Options<CreatePreviewComposeData>>): UseMutationOptions<CreatePreviewComposeResponse, CreatePreviewComposeError, Options<CreatePreviewComposeData>> => {
+    const mutationOptions: UseMutationOptions<CreatePreviewComposeResponse, CreatePreviewComposeError, Options<CreatePreviewComposeData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await previewComposeServices({
+            const { data } = await createPreviewCompose({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -881,16 +881,16 @@ export const createProjectMutation = (options?: Partial<Options<CreateProjectDat
 /**
  * Add project to family
  *
- * Add project to family.
+ * Create add to family.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const addProjectToFamilyMutation = (options?: Partial<Options<AddProjectToFamilyData>>): UseMutationOptions<AddProjectToFamilyResponse, AddProjectToFamilyError, Options<AddProjectToFamilyData>> => {
-    const mutationOptions: UseMutationOptions<AddProjectToFamilyResponse, AddProjectToFamilyError, Options<AddProjectToFamilyData>> = {
+export const createAddToFamilyMutation = (options?: Partial<Options<CreateAddToFamilyData>>): UseMutationOptions<CreateAddToFamilyResponse, CreateAddToFamilyError, Options<CreateAddToFamilyData>> => {
+    const mutationOptions: UseMutationOptions<CreateAddToFamilyResponse, CreateAddToFamilyError, Options<CreateAddToFamilyData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await addProjectToFamily({
+            const { data } = await createAddToFamily({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -904,16 +904,16 @@ export const addProjectToFamilyMutation = (options?: Partial<Options<AddProjectT
 /**
  * Deploy project
  *
- * Deploy project.
+ * Create deploy.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deployProjectMutation = (options?: Partial<Options<DeployProjectData>>): UseMutationOptions<DeployProjectResponse, DeployProjectError, Options<DeployProjectData>> => {
-    const mutationOptions: UseMutationOptions<DeployProjectResponse, DeployProjectError, Options<DeployProjectData>> = {
+export const createDeployMutation = (options?: Partial<Options<CreateDeployData>>): UseMutationOptions<CreateDeployResponse, CreateDeployError, Options<CreateDeployData>> => {
+    const mutationOptions: UseMutationOptions<CreateDeployResponse, CreateDeployError, Options<CreateDeployData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await deployProject({
+            const { data } = await createDeploy({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -927,16 +927,16 @@ export const deployProjectMutation = (options?: Partial<Options<DeployProjectDat
 /**
  * Duplicate project
  *
- * Duplicate project.
+ * Create duplicate.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const duplicateProjectMutation = (options?: Partial<Options<DuplicateProjectData>>): UseMutationOptions<DuplicateProjectResponse, DuplicateProjectError, Options<DuplicateProjectData>> => {
-    const mutationOptions: UseMutationOptions<DuplicateProjectResponse, DuplicateProjectError, Options<DuplicateProjectData>> = {
+export const createDuplicateMutation = (options?: Partial<Options<CreateDuplicateData>>): UseMutationOptions<CreateDuplicateResponse, CreateDuplicateError, Options<CreateDuplicateData>> => {
+    const mutationOptions: UseMutationOptions<CreateDuplicateResponse, CreateDuplicateError, Options<CreateDuplicateData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await duplicateProject({
+            const { data } = await createDuplicate({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -947,20 +947,20 @@ export const duplicateProjectMutation = (options?: Partial<Options<DuplicateProj
     return mutationOptions;
 };
 
-export const listProjectsInFamilyQueryKey = (options: Options<ListProjectsInFamilyData>) => createQueryKey('listProjectsInFamily', options);
+export const getFamilyQueryKey = (options: Options<GetFamilyData>) => createQueryKey('getFamily', options);
 
 /**
  * List projects in family
  *
- * List projects in family.
+ * Get family.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listProjectsInFamilyOptions = (options: Options<ListProjectsInFamilyData>) => queryOptions<ListProjectsInFamilyResponse, ListProjectsInFamilyError, ListProjectsInFamilyResponse, ReturnType<typeof listProjectsInFamilyQueryKey>>({
+export const getFamilyOptions = (options: Options<GetFamilyData>) => queryOptions<GetFamilyResponse, GetFamilyError, GetFamilyResponse, ReturnType<typeof getFamilyQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listProjectsInFamily({
+        const { data } = await getFamily({
             ...options,
             ...queryKey[0],
             signal,
@@ -968,23 +968,23 @@ export const listProjectsInFamilyOptions = (options: Options<ListProjectsInFamil
         });
         return data;
     },
-    queryKey: listProjectsInFamilyQueryKey(options)
+    queryKey: getFamilyQueryKey(options)
 });
 
-export const listFamilyEnvironmentsQueryKey = (options: Options<ListFamilyEnvironmentsData>) => createQueryKey('listFamilyEnvironments', options);
+export const getEnvironmentsQueryKey = (options: Options<GetEnvironmentsData>) => createQueryKey('getEnvironments', options);
 
 /**
  * List family environments
  *
- * List family environments.
+ * Get environments.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listFamilyEnvironmentsOptions = (options: Options<ListFamilyEnvironmentsData>) => queryOptions<ListFamilyEnvironmentsResponse, ListFamilyEnvironmentsError, ListFamilyEnvironmentsResponse, ReturnType<typeof listFamilyEnvironmentsQueryKey>>({
+export const getEnvironmentsOptions = (options: Options<GetEnvironmentsData>) => queryOptions<GetEnvironmentsResponse, GetEnvironmentsError, GetEnvironmentsResponse, ReturnType<typeof getEnvironmentsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listFamilyEnvironments({
+        const { data } = await getEnvironments({
             ...options,
             ...queryKey[0],
             signal,
@@ -992,22 +992,22 @@ export const listFamilyEnvironmentsOptions = (options: Options<ListFamilyEnviron
         });
         return data;
     },
-    queryKey: listFamilyEnvironmentsQueryKey(options)
+    queryKey: getEnvironmentsQueryKey(options)
 });
 
 /**
  * Recover application
  *
- * Recover application.
+ * Create recover.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const recoverApplicationMutation = (options?: Partial<Options<RecoverApplicationData>>): UseMutationOptions<RecoverApplicationResponse, RecoverApplicationError, Options<RecoverApplicationData>> => {
-    const mutationOptions: UseMutationOptions<RecoverApplicationResponse, RecoverApplicationError, Options<RecoverApplicationData>> = {
+export const createRecoverMutation = (options?: Partial<Options<CreateRecoverData>>): UseMutationOptions<CreateRecoverResponse, CreateRecoverError, Options<CreateRecoverData>> => {
+    const mutationOptions: UseMutationOptions<CreateRecoverResponse, CreateRecoverError, Options<CreateRecoverData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await recoverApplication({
+            const { data } = await createRecover({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1021,16 +1021,16 @@ export const recoverApplicationMutation = (options?: Partial<Options<RecoverAppl
 /**
  * Redeploy application
  *
- * Redeploy application.
+ * Create redeploy.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const redeployApplicationMutation = (options?: Partial<Options<RedeployApplicationData>>): UseMutationOptions<RedeployApplicationResponse, RedeployApplicationError, Options<RedeployApplicationData>> => {
-    const mutationOptions: UseMutationOptions<RedeployApplicationResponse, RedeployApplicationError, Options<RedeployApplicationData>> = {
+export const createRedeployMutation = (options?: Partial<Options<CreateRedeployData>>): UseMutationOptions<CreateRedeployResponse, CreateRedeployError, Options<CreateRedeployData>> => {
+    const mutationOptions: UseMutationOptions<CreateRedeployResponse, CreateRedeployError, Options<CreateRedeployData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await redeployApplication({
+            const { data } = await createRedeploy({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1044,16 +1044,16 @@ export const redeployApplicationMutation = (options?: Partial<Options<RedeployAp
 /**
  * Restart deployment
  *
- * Restart deployment.
+ * Create restart.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const restartDeploymentMutation = (options?: Partial<Options<RestartDeploymentData>>): UseMutationOptions<RestartDeploymentResponse, RestartDeploymentError, Options<RestartDeploymentData>> => {
-    const mutationOptions: UseMutationOptions<RestartDeploymentResponse, RestartDeploymentError, Options<RestartDeploymentData>> = {
+export const createRestartMutation = (options?: Partial<Options<CreateRestartData>>): UseMutationOptions<CreateRestartResponse, CreateRestartError, Options<CreateRestartData>> => {
+    const mutationOptions: UseMutationOptions<CreateRestartResponse, CreateRestartError, Options<CreateRestartData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await restartDeployment({
+            const { data } = await createRestart({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1067,16 +1067,16 @@ export const restartDeploymentMutation = (options?: Partial<Options<RestartDeplo
 /**
  * Rollback deployment
  *
- * Rollback deployment.
+ * Create rollback.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const rollbackDeploymentMutation = (options?: Partial<Options<RollbackDeploymentData>>): UseMutationOptions<RollbackDeploymentResponse, RollbackDeploymentError, Options<RollbackDeploymentData>> => {
-    const mutationOptions: UseMutationOptions<RollbackDeploymentResponse, RollbackDeploymentError, Options<RollbackDeploymentData>> = {
+export const createRollbackMutation = (options?: Partial<Options<CreateRollbackData>>): UseMutationOptions<CreateRollbackResponse, CreateRollbackError, Options<CreateRollbackData>> => {
+    const mutationOptions: UseMutationOptions<CreateRollbackResponse, CreateRollbackError, Options<CreateRollbackData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await rollbackDeployment({
+            const { data } = await createRollback({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1087,20 +1087,20 @@ export const rollbackDeploymentMutation = (options?: Partial<Options<RollbackDep
     return mutationOptions;
 };
 
-export const listApplicationsQueryKey = (options?: Options<ListApplicationsData>) => createQueryKey('listApplications', options);
+export const getApplicationsQueryKey = (options?: Options<GetApplicationsData>) => createQueryKey('getApplications', options);
 
 /**
  * List applications
  *
- * List applications.
+ * Get applications.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listApplicationsOptions = (options?: Options<ListApplicationsData>) => queryOptions<ListApplicationsResponse2, ListApplicationsError, ListApplicationsResponse2, ReturnType<typeof listApplicationsQueryKey>>({
+export const getApplicationsOptions = (options?: Options<GetApplicationsData>) => queryOptions<GetApplicationsResponse, GetApplicationsError, GetApplicationsResponse, ReturnType<typeof getApplicationsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listApplications({
+        const { data } = await getApplications({
             ...options,
             ...queryKey[0],
             signal,
@@ -1108,32 +1108,32 @@ export const listApplicationsOptions = (options?: Options<ListApplicationsData>)
         });
         return data;
     },
-    queryKey: listApplicationsQueryKey(options)
+    queryKey: getApplicationsQueryKey(options)
 });
 
-export const listApplicationsInfiniteQueryKey = (options?: Options<ListApplicationsData>): QueryKey<Options<ListApplicationsData>> => createQueryKey('listApplications', options, true);
+export const getApplicationsInfiniteQueryKey = (options?: Options<GetApplicationsData>): QueryKey<Options<GetApplicationsData>> => createQueryKey('getApplications', options, true);
 
 /**
  * List applications
  *
- * List applications.
+ * Get applications.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listApplicationsInfiniteOptions = (options?: Options<ListApplicationsData>) => infiniteQueryOptions<ListApplicationsResponse2, ListApplicationsError, InfiniteData<ListApplicationsResponse2>, QueryKey<Options<ListApplicationsData>>, number | Pick<QueryKey<Options<ListApplicationsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+export const getApplicationsInfiniteOptions = (options?: Options<GetApplicationsData>) => infiniteQueryOptions<GetApplicationsResponse, GetApplicationsError, InfiniteData<GetApplicationsResponse>, QueryKey<Options<GetApplicationsData>>, number | Pick<QueryKey<Options<GetApplicationsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
 // @ts-ignore
 {
     queryFn: async ({ pageParam, queryKey, signal }) => {
         // @ts-ignore
-        const page: Pick<QueryKey<Options<ListApplicationsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+        const page: Pick<QueryKey<Options<GetApplicationsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
             query: {
                 page: pageParam
             }
         };
         const params = createInfiniteParams(queryKey, page);
-        const { data } = await listApplications({
+        const { data } = await getApplications({
             ...options,
             ...params,
             signal,
@@ -1141,23 +1141,23 @@ export const listApplicationsInfiniteOptions = (options?: Options<ListApplicatio
         });
         return data;
     },
-    queryKey: listApplicationsInfiniteQueryKey(options)
+    queryKey: getApplicationsInfiniteQueryKey(options)
 });
 
-export const listDomainsQueryKey = (options?: Options<ListDomainsData>) => createQueryKey('listDomains', options);
+export const getEndpoint3QueryKey = (options?: Options<GetEndpoint3Data>) => createQueryKey('getEndpoint3', options);
 
 /**
  * List domains
  *
- * List domains.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listDomainsOptions = (options?: Options<ListDomainsData>) => queryOptions<ListDomainsResponse2, ListDomainsError, ListDomainsResponse2, ReturnType<typeof listDomainsQueryKey>>({
+export const getEndpoint3Options = (options?: Options<GetEndpoint3Data>) => queryOptions<GetEndpoint3Response, GetEndpoint3Error, GetEndpoint3Response, ReturnType<typeof getEndpoint3QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listDomains({
+        const { data } = await getEndpoint3({
             ...options,
             ...queryKey[0],
             signal,
@@ -1165,22 +1165,22 @@ export const listDomainsOptions = (options?: Options<ListDomainsData>) => queryO
         });
         return data;
     },
-    queryKey: listDomainsQueryKey(options)
+    queryKey: getEndpoint3QueryKey(options)
 });
 
 /**
  * Remove custom domain
  *
- * Remove custom domain.
+ * Delete custom.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const removeCustomDomainMutation = (options?: Partial<Options<RemoveCustomDomainData>>): UseMutationOptions<RemoveCustomDomainResponse, RemoveCustomDomainError, Options<RemoveCustomDomainData>> => {
-    const mutationOptions: UseMutationOptions<RemoveCustomDomainResponse, RemoveCustomDomainError, Options<RemoveCustomDomainData>> = {
+export const deleteCustomMutation = (options?: Partial<Options<DeleteCustomData>>): UseMutationOptions<DeleteCustomResponse, DeleteCustomError, Options<DeleteCustomData>> => {
+    const mutationOptions: UseMutationOptions<DeleteCustomResponse, DeleteCustomError, Options<DeleteCustomData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await removeCustomDomain({
+            const { data } = await deleteCustom({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1194,16 +1194,16 @@ export const removeCustomDomainMutation = (options?: Partial<Options<RemoveCusto
 /**
  * Add custom domain
  *
- * Add custom domain.
+ * Create custom.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const addCustomDomainMutation = (options?: Partial<Options<AddCustomDomainData>>): UseMutationOptions<AddCustomDomainResponse, AddCustomDomainError, Options<AddCustomDomainData>> => {
-    const mutationOptions: UseMutationOptions<AddCustomDomainResponse, AddCustomDomainError, Options<AddCustomDomainData>> = {
+export const createCustomMutation = (options?: Partial<Options<CreateCustomData>>): UseMutationOptions<CreateCustomResponse, CreateCustomError, Options<CreateCustomData>> => {
+    const mutationOptions: UseMutationOptions<CreateCustomResponse, CreateCustomError, Options<CreateCustomData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await addCustomDomain({
+            const { data } = await createCustom({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1214,20 +1214,20 @@ export const addCustomDomainMutation = (options?: Partial<Options<AddCustomDomai
     return mutationOptions;
 };
 
-export const checkCustomDomainDnsQueryKey = (options: Options<CheckCustomDomainDnsData>) => createQueryKey('checkCustomDomainDns', options);
+export const getDnsCheckQueryKey = (options: Options<GetDnsCheckData>) => createQueryKey('getDnsCheck', options);
 
 /**
  * Check custom domain DNS
  *
- * Check custom domain DNS.
+ * Get dns check.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const checkCustomDomainDnsOptions = (options: Options<CheckCustomDomainDnsData>) => queryOptions<CheckCustomDomainDnsResponse, CheckCustomDomainDnsError, CheckCustomDomainDnsResponse, ReturnType<typeof checkCustomDomainDnsQueryKey>>({
+export const getDnsCheckOptions = (options: Options<GetDnsCheckData>) => queryOptions<GetDnsCheckResponse, GetDnsCheckError, GetDnsCheckResponse, ReturnType<typeof getDnsCheckQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await checkCustomDomainDns({
+        const { data } = await getDnsCheck({
             ...options,
             ...queryKey[0],
             signal,
@@ -1235,23 +1235,23 @@ export const checkCustomDomainDnsOptions = (options: Options<CheckCustomDomainDn
         });
         return data;
     },
-    queryKey: checkCustomDomainDnsQueryKey(options)
+    queryKey: getDnsCheckQueryKey(options)
 });
 
-export const generateRandomSubdomainQueryKey = (options?: Options<GenerateRandomSubdomainData>) => createQueryKey('generateRandomSubdomain', options);
+export const getGenerateQueryKey = (options?: Options<GetGenerateData>) => createQueryKey('getGenerate', options);
 
 /**
  * Generate random subdomain
  *
- * Generate random subdomain.
+ * Get generate.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const generateRandomSubdomainOptions = (options?: Options<GenerateRandomSubdomainData>) => queryOptions<GenerateRandomSubdomainResponse, GenerateRandomSubdomainError, GenerateRandomSubdomainResponse, ReturnType<typeof generateRandomSubdomainQueryKey>>({
+export const getGenerateOptions = (options?: Options<GetGenerateData>) => queryOptions<GetGenerateResponse, GetGenerateError, GetGenerateResponse, ReturnType<typeof getGenerateQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await generateRandomSubdomain({
+        const { data } = await getGenerate({
             ...options,
             ...queryKey[0],
             signal,
@@ -1259,22 +1259,22 @@ export const generateRandomSubdomainOptions = (options?: Options<GenerateRandomS
         });
         return data;
     },
-    queryKey: generateRandomSubdomainQueryKey(options)
+    queryKey: getGenerateQueryKey(options)
 });
 
 /**
  * Verify custom domain
  *
- * Verify custom domain.
+ * Create verify.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const verifyCustomDomainMutation = (options?: Partial<Options<VerifyCustomDomainData>>): UseMutationOptions<VerifyCustomDomainResponse, VerifyCustomDomainError, Options<VerifyCustomDomainData>> => {
-    const mutationOptions: UseMutationOptions<VerifyCustomDomainResponse, VerifyCustomDomainError, Options<VerifyCustomDomainData>> = {
+export const createVerifyMutation = (options?: Partial<Options<CreateVerifyData>>): UseMutationOptions<CreateVerifyResponse, CreateVerifyError, Options<CreateVerifyData>> => {
+    const mutationOptions: UseMutationOptions<CreateVerifyResponse, CreateVerifyError, Options<CreateVerifyData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await verifyCustomDomain({
+            const { data } = await createVerify({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1285,20 +1285,20 @@ export const verifyCustomDomainMutation = (options?: Partial<Options<VerifyCusto
     return mutationOptions;
 };
 
-export const listExtensionsQueryKey = (options?: Options<ListExtensionsData>) => createQueryKey('listExtensions', options);
+export const getEndpoint11QueryKey = (options?: Options<GetEndpoint11Data>) => createQueryKey('getEndpoint11', options);
 
 /**
  * List extensions
  *
- * List extensions.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listExtensionsOptions = (options?: Options<ListExtensionsData>) => queryOptions<ListExtensionsResponse2, ListExtensionsError, ListExtensionsResponse2, ReturnType<typeof listExtensionsQueryKey>>({
+export const getEndpoint11Options = (options?: Options<GetEndpoint11Data>) => queryOptions<GetEndpoint11Response, GetEndpoint11Error, GetEndpoint11Response, ReturnType<typeof getEndpoint11QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listExtensions({
+        const { data } = await getEndpoint11({
             ...options,
             ...queryKey[0],
             signal,
@@ -1306,32 +1306,32 @@ export const listExtensionsOptions = (options?: Options<ListExtensionsData>) => 
         });
         return data;
     },
-    queryKey: listExtensionsQueryKey(options)
+    queryKey: getEndpoint11QueryKey(options)
 });
 
-export const listExtensionsInfiniteQueryKey = (options?: Options<ListExtensionsData>): QueryKey<Options<ListExtensionsData>> => createQueryKey('listExtensions', options, true);
+export const getEndpoint11InfiniteQueryKey = (options?: Options<GetEndpoint11Data>): QueryKey<Options<GetEndpoint11Data>> => createQueryKey('getEndpoint11', options, true);
 
 /**
  * List extensions
  *
- * List extensions.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listExtensionsInfiniteOptions = (options?: Options<ListExtensionsData>) => infiniteQueryOptions<ListExtensionsResponse2, ListExtensionsError, InfiniteData<ListExtensionsResponse2>, QueryKey<Options<ListExtensionsData>>, number | Pick<QueryKey<Options<ListExtensionsData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+export const getEndpoint11InfiniteOptions = (options?: Options<GetEndpoint11Data>) => infiniteQueryOptions<GetEndpoint11Response, GetEndpoint11Error, InfiniteData<GetEndpoint11Response>, QueryKey<Options<GetEndpoint11Data>>, number | Pick<QueryKey<Options<GetEndpoint11Data>>[0], 'body' | 'headers' | 'path' | 'query'>>(
 // @ts-ignore
 {
     queryFn: async ({ pageParam, queryKey, signal }) => {
         // @ts-ignore
-        const page: Pick<QueryKey<Options<ListExtensionsData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+        const page: Pick<QueryKey<Options<GetEndpoint11Data>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
             query: {
                 page: pageParam
             }
         };
         const params = createInfiniteParams(queryKey, page);
-        const { data } = await listExtensions({
+        const { data } = await getEndpoint11({
             ...options,
             ...params,
             signal,
@@ -1339,23 +1339,23 @@ export const listExtensionsInfiniteOptions = (options?: Options<ListExtensionsDa
         });
         return data;
     },
-    queryKey: listExtensionsInfiniteQueryKey(options)
+    queryKey: getEndpoint11InfiniteQueryKey(options)
 });
 
-export const getExtensionByExtensionIdQueryKey = (options: Options<GetExtensionByExtensionIdData>) => createQueryKey('getExtensionByExtensionId', options);
+export const getByExtensionIdQueryKey = (options: Options<GetByExtensionIdData>) => createQueryKey('getByExtensionId', options);
 
 /**
  * Get extension by extension ID
  *
- * Get extension by extension ID.
+ * Get by extension id.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getExtensionByExtensionIdOptions = (options: Options<GetExtensionByExtensionIdData>) => queryOptions<GetExtensionByExtensionIdResponse, GetExtensionByExtensionIdError, GetExtensionByExtensionIdResponse, ReturnType<typeof getExtensionByExtensionIdQueryKey>>({
+export const getByExtensionIdOptions = (options: Options<GetByExtensionIdData>) => queryOptions<GetByExtensionIdResponse, GetByExtensionIdError, GetByExtensionIdResponse, ReturnType<typeof getByExtensionIdQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getExtensionByExtensionId({
+        const { data } = await getByExtensionId({
             ...options,
             ...queryKey[0],
             signal,
@@ -1363,23 +1363,23 @@ export const getExtensionByExtensionIdOptions = (options: Options<GetExtensionBy
         });
         return data;
     },
-    queryKey: getExtensionByExtensionIdQueryKey(options)
+    queryKey: getByExtensionIdQueryKey(options)
 });
 
-export const listExtensionExecutionsQueryKey = (options: Options<ListExtensionExecutionsData>) => createQueryKey('listExtensionExecutions', options);
+export const getExecutionsQueryKey = (options: Options<GetExecutionsData>) => createQueryKey('getExecutions', options);
 
 /**
  * List extension executions
  *
- * List extension executions.
+ * Get executions.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listExtensionExecutionsOptions = (options: Options<ListExtensionExecutionsData>) => queryOptions<ListExtensionExecutionsResponse, ListExtensionExecutionsError, ListExtensionExecutionsResponse, ReturnType<typeof listExtensionExecutionsQueryKey>>({
+export const getExecutionsOptions = (options: Options<GetExecutionsData>) => queryOptions<GetExecutionsResponse, GetExecutionsError, GetExecutionsResponse, ReturnType<typeof getExecutionsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listExtensionExecutions({
+        const { data } = await getExecutions({
             ...options,
             ...queryKey[0],
             signal,
@@ -1387,23 +1387,23 @@ export const listExtensionExecutionsOptions = (options: Options<ListExtensionExe
         });
         return data;
     },
-    queryKey: listExtensionExecutionsQueryKey(options)
+    queryKey: getExecutionsQueryKey(options)
 });
 
-export const listExtensionCategoriesQueryKey = (options?: Options<ListExtensionCategoriesData>) => createQueryKey('listExtensionCategories', options);
+export const getCategoriesQueryKey = (options?: Options<GetCategoriesData>) => createQueryKey('getCategories', options);
 
 /**
  * List extension categories
  *
- * List extension categories.
+ * Get categories.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listExtensionCategoriesOptions = (options?: Options<ListExtensionCategoriesData>) => queryOptions<ListExtensionCategoriesResponse, ListExtensionCategoriesError, ListExtensionCategoriesResponse, ReturnType<typeof listExtensionCategoriesQueryKey>>({
+export const getCategoriesOptions = (options?: Options<GetCategoriesData>) => queryOptions<GetCategoriesResponse, GetCategoriesError, GetCategoriesResponse, ReturnType<typeof getCategoriesQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listExtensionCategories({
+        const { data } = await getCategories({
             ...options,
             ...queryKey[0],
             signal,
@@ -1411,7 +1411,7 @@ export const listExtensionCategoriesOptions = (options?: Options<ListExtensionCa
         });
         return data;
     },
-    queryKey: listExtensionCategoriesQueryKey(options)
+    queryKey: getCategoriesQueryKey(options)
 });
 
 export const getExecutionQueryKey = (options: Options<GetExecutionData>) => createQueryKey('getExecution', options);
@@ -1441,16 +1441,16 @@ export const getExecutionOptions = (options: Options<GetExecutionData>) => query
 /**
  * Cancel execution
  *
- * Cancel execution.
+ * Create cancel.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const cancelExecutionMutation = (options?: Partial<Options<CancelExecutionData>>): UseMutationOptions<CancelExecutionResponse, CancelExecutionError, Options<CancelExecutionData>> => {
-    const mutationOptions: UseMutationOptions<CancelExecutionResponse, CancelExecutionError, Options<CancelExecutionData>> = {
+export const createCancelMutation = (options?: Partial<Options<CreateCancelData>>): UseMutationOptions<CreateCancelResponse, CreateCancelError, Options<CreateCancelData>> => {
+    const mutationOptions: UseMutationOptions<CreateCancelResponse, CreateCancelError, Options<CreateCancelData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await cancelExecution({
+            const { data } = await createCancel({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1461,20 +1461,20 @@ export const cancelExecutionMutation = (options?: Partial<Options<CancelExecutio
     return mutationOptions;
 };
 
-export const listExecutionLogsQueryKey = (options: Options<ListExecutionLogsData>) => createQueryKey('listExecutionLogs', options);
+export const getLogs4QueryKey = (options: Options<GetLogs4Data>) => createQueryKey('getLogs4', options);
 
 /**
  * List execution logs
  *
- * List execution logs.
+ * Get logs.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listExecutionLogsOptions = (options: Options<ListExecutionLogsData>) => queryOptions<ListExecutionLogsResponse, ListExecutionLogsError, ListExecutionLogsResponse, ReturnType<typeof listExecutionLogsQueryKey>>({
+export const getLogs4Options = (options: Options<GetLogs4Data>) => queryOptions<GetLogs4Response, GetLogs4Error, GetLogs4Response, ReturnType<typeof getLogs4QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listExecutionLogs({
+        const { data } = await getLogs4({
             ...options,
             ...queryKey[0],
             signal,
@@ -1482,22 +1482,22 @@ export const listExecutionLogsOptions = (options: Options<ListExecutionLogsData>
         });
         return data;
     },
-    queryKey: listExecutionLogsQueryKey(options)
+    queryKey: getLogs4QueryKey(options)
 });
 
 /**
  * Fork extension
  *
- * Fork extension.
+ * Create fork.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const forkExtensionMutation = (options?: Partial<Options<ForkExtensionData>>): UseMutationOptions<ForkExtensionResponse, ForkExtensionError, Options<ForkExtensionData>> => {
-    const mutationOptions: UseMutationOptions<ForkExtensionResponse, ForkExtensionError, Options<ForkExtensionData>> = {
+export const createForkMutation = (options?: Partial<Options<CreateForkData>>): UseMutationOptions<CreateForkResponse, CreateForkError, Options<CreateForkData>> => {
+    const mutationOptions: UseMutationOptions<CreateForkResponse, CreateForkError, Options<CreateForkData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await forkExtension({
+            const { data } = await createFork({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1511,16 +1511,16 @@ export const forkExtensionMutation = (options?: Partial<Options<ForkExtensionDat
 /**
  * Run extension
  *
- * Run extension.
+ * Create run.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const runExtensionMutation = (options?: Partial<Options<RunExtensionData>>): UseMutationOptions<RunExtensionResponse, RunExtensionError, Options<RunExtensionData>> => {
-    const mutationOptions: UseMutationOptions<RunExtensionResponse, RunExtensionError, Options<RunExtensionData>> = {
+export const createRunMutation = (options?: Partial<Options<CreateRunData>>): UseMutationOptions<CreateRunResponse, CreateRunError, Options<CreateRunData>> => {
+    const mutationOptions: UseMutationOptions<CreateRunResponse, CreateRunError, Options<CreateRunData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await runExtension({
+            const { data } = await createRun({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1534,16 +1534,16 @@ export const runExtensionMutation = (options?: Partial<Options<RunExtensionData>
 /**
  * Delete forked extension
  *
- * Delete forked extension.
+ * Delete {id}.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deleteForkedExtensionMutation = (options?: Partial<Options<DeleteForkedExtensionData>>): UseMutationOptions<DeleteForkedExtensionResponse, DeleteForkedExtensionError, Options<DeleteForkedExtensionData>> => {
-    const mutationOptions: UseMutationOptions<DeleteForkedExtensionResponse, DeleteForkedExtensionError, Options<DeleteForkedExtensionData>> = {
+export const deleteIdMutation = (options?: Partial<Options<DeleteIdData>>): UseMutationOptions<DeleteIdResponse, DeleteIdError, Options<DeleteIdData>> => {
+    const mutationOptions: UseMutationOptions<DeleteIdResponse, DeleteIdError, Options<DeleteIdData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await deleteForkedExtension({
+            const { data } = await deleteId({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1554,20 +1554,20 @@ export const deleteForkedExtensionMutation = (options?: Partial<Options<DeleteFo
     return mutationOptions;
 };
 
-export const getExtensionByIdQueryKey = (options: Options<GetExtensionByIdData>) => createQueryKey('getExtensionById', options);
+export const getIdQueryKey = (options: Options<GetIdData>) => createQueryKey('getId', options);
 
 /**
  * Get extension by ID
  *
- * Get extension by ID.
+ * Get {id}.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getExtensionByIdOptions = (options: Options<GetExtensionByIdData>) => queryOptions<GetExtensionByIdResponse, GetExtensionByIdError, GetExtensionByIdResponse, ReturnType<typeof getExtensionByIdQueryKey>>({
+export const getIdOptions = (options: Options<GetIdData>) => queryOptions<GetIdResponse, GetIdError, GetIdResponse, ReturnType<typeof getIdQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getExtensionById({
+        const { data } = await getId({
             ...options,
             ...queryKey[0],
             signal,
@@ -1575,23 +1575,23 @@ export const getExtensionByIdOptions = (options: Options<GetExtensionByIdData>) 
         });
         return data;
     },
-    queryKey: getExtensionByIdQueryKey(options)
+    queryKey: getIdQueryKey(options)
 });
 
-export const listFeatureFlagsQueryKey = (options?: Options<ListFeatureFlagsData>) => createQueryKey('listFeatureFlags', options);
+export const getEndpoint8QueryKey = (options?: Options<GetEndpoint8Data>) => createQueryKey('getEndpoint8', options);
 
 /**
  * List feature flags
  *
- * List feature flags.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listFeatureFlagsOptions = (options?: Options<ListFeatureFlagsData>) => queryOptions<ListFeatureFlagsResponse2, ListFeatureFlagsError, ListFeatureFlagsResponse2, ReturnType<typeof listFeatureFlagsQueryKey>>({
+export const getEndpoint8Options = (options?: Options<GetEndpoint8Data>) => queryOptions<GetEndpoint8Response, GetEndpoint8Error, GetEndpoint8Response, ReturnType<typeof getEndpoint8QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listFeatureFlags({
+        const { data } = await getEndpoint8({
             ...options,
             ...queryKey[0],
             signal,
@@ -1599,22 +1599,22 @@ export const listFeatureFlagsOptions = (options?: Options<ListFeatureFlagsData>)
         });
         return data;
     },
-    queryKey: listFeatureFlagsQueryKey(options)
+    queryKey: getEndpoint8QueryKey(options)
 });
 
 /**
  * Update feature flag
  *
- * Update feature flag.
+ * Update endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateFeatureFlagMutation = (options?: Partial<Options<UpdateFeatureFlagData>>): UseMutationOptions<UpdateFeatureFlagResponse, UpdateFeatureFlagError, Options<UpdateFeatureFlagData>> => {
-    const mutationOptions: UseMutationOptions<UpdateFeatureFlagResponse, UpdateFeatureFlagError, Options<UpdateFeatureFlagData>> = {
+export const updateEndpoint5Mutation = (options?: Partial<Options<UpdateEndpoint5Data>>): UseMutationOptions<UpdateEndpoint5Response, UpdateEndpoint5Error, Options<UpdateEndpoint5Data>> => {
+    const mutationOptions: UseMutationOptions<UpdateEndpoint5Response, UpdateEndpoint5Error, Options<UpdateEndpoint5Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateFeatureFlag({
+            const { data } = await updateEndpoint5({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1625,20 +1625,20 @@ export const updateFeatureFlagMutation = (options?: Partial<Options<UpdateFeatur
     return mutationOptions;
 };
 
-export const checkIfFeatureIsEnabledQueryKey = (options: Options<CheckIfFeatureIsEnabledData>) => createQueryKey('checkIfFeatureIsEnabled', options);
+export const getCheck2QueryKey = (options: Options<GetCheck2Data>) => createQueryKey('getCheck2', options);
 
 /**
  * Check if feature is enabled
  *
- * Check if feature is enabled.
+ * Get check.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const checkIfFeatureIsEnabledOptions = (options: Options<CheckIfFeatureIsEnabledData>) => queryOptions<CheckIfFeatureIsEnabledResponse, CheckIfFeatureIsEnabledError, CheckIfFeatureIsEnabledResponse, ReturnType<typeof checkIfFeatureIsEnabledQueryKey>>({
+export const getCheck2Options = (options: Options<GetCheck2Data>) => queryOptions<GetCheck2Response, GetCheck2Error, GetCheck2Response, ReturnType<typeof getCheck2QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await checkIfFeatureIsEnabled({
+        const { data } = await getCheck2({
             ...options,
             ...queryKey[0],
             signal,
@@ -1646,23 +1646,23 @@ export const checkIfFeatureIsEnabledOptions = (options: Options<CheckIfFeatureIs
         });
         return data;
     },
-    queryKey: checkIfFeatureIsEnabledQueryKey(options)
+    queryKey: getCheck2QueryKey(options)
 });
 
-export const listFilesQueryKey = (options: Options<ListFilesData>) => createQueryKey('listFiles', options);
+export const getEndpoint6QueryKey = (options: Options<GetEndpoint6Data>) => createQueryKey('getEndpoint6', options);
 
 /**
  * List files
  *
- * List files.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listFilesOptions = (options: Options<ListFilesData>) => queryOptions<ListFilesResponse2, ListFilesError, ListFilesResponse2, ReturnType<typeof listFilesQueryKey>>({
+export const getEndpoint6Options = (options: Options<GetEndpoint6Data>) => queryOptions<GetEndpoint6Response, GetEndpoint6Error, GetEndpoint6Response, ReturnType<typeof getEndpoint6QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listFiles({
+        const { data } = await getEndpoint6({
             ...options,
             ...queryKey[0],
             signal,
@@ -1670,22 +1670,22 @@ export const listFilesOptions = (options: Options<ListFilesData>) => queryOption
         });
         return data;
     },
-    queryKey: listFilesQueryKey(options)
+    queryKey: getEndpoint6QueryKey(options)
 });
 
 /**
  * Copy directory
  *
- * Copy directory.
+ * Create copy directory.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const copyDirectoryMutation = (options?: Partial<Options<CopyDirectoryData>>): UseMutationOptions<CopyDirectoryResponse, CopyDirectoryError, Options<CopyDirectoryData>> => {
-    const mutationOptions: UseMutationOptions<CopyDirectoryResponse, CopyDirectoryError, Options<CopyDirectoryData>> = {
+export const createCopyDirectoryMutation = (options?: Partial<Options<CreateCopyDirectoryData>>): UseMutationOptions<CreateCopyDirectoryResponse, CreateCopyDirectoryError, Options<CreateCopyDirectoryData>> => {
+    const mutationOptions: UseMutationOptions<CreateCopyDirectoryResponse, CreateCopyDirectoryError, Options<CreateCopyDirectoryData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await copyDirectory({
+            const { data } = await createCopyDirectory({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1699,16 +1699,16 @@ export const copyDirectoryMutation = (options?: Partial<Options<CopyDirectoryDat
 /**
  * Create directory
  *
- * Create directory.
+ * Create create directory.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const createDirectoryMutation = (options?: Partial<Options<CreateDirectoryData>>): UseMutationOptions<CreateDirectoryResponse, CreateDirectoryError, Options<CreateDirectoryData>> => {
-    const mutationOptions: UseMutationOptions<CreateDirectoryResponse, CreateDirectoryError, Options<CreateDirectoryData>> = {
+export const createCreateDirectoryMutation = (options?: Partial<Options<CreateCreateDirectoryData>>): UseMutationOptions<CreateCreateDirectoryResponse, CreateCreateDirectoryError, Options<CreateCreateDirectoryData>> => {
+    const mutationOptions: UseMutationOptions<CreateCreateDirectoryResponse, CreateCreateDirectoryError, Options<CreateCreateDirectoryData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await createDirectory({
+            const { data } = await createCreateDirectory({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1722,16 +1722,16 @@ export const createDirectoryMutation = (options?: Partial<Options<CreateDirector
 /**
  * Delete directory
  *
- * Delete directory.
+ * Delete delete directory.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deleteDirectoryMutation = (options?: Partial<Options<DeleteDirectoryData>>): UseMutationOptions<DeleteDirectoryResponse, DeleteDirectoryError, Options<DeleteDirectoryData>> => {
-    const mutationOptions: UseMutationOptions<DeleteDirectoryResponse, DeleteDirectoryError, Options<DeleteDirectoryData>> = {
+export const deleteDeleteDirectoryMutation = (options?: Partial<Options<DeleteDeleteDirectoryData>>): UseMutationOptions<DeleteDeleteDirectoryResponse, DeleteDeleteDirectoryError, Options<DeleteDeleteDirectoryData>> => {
+    const mutationOptions: UseMutationOptions<DeleteDeleteDirectoryResponse, DeleteDeleteDirectoryError, Options<DeleteDeleteDirectoryData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await deleteDirectory({
+            const { data } = await deleteDeleteDirectory({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1745,16 +1745,16 @@ export const deleteDirectoryMutation = (options?: Partial<Options<DeleteDirector
 /**
  * Move directory
  *
- * Move directory.
+ * Create move directory.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const moveDirectoryMutation = (options?: Partial<Options<MoveDirectoryData>>): UseMutationOptions<MoveDirectoryResponse, MoveDirectoryError, Options<MoveDirectoryData>> => {
-    const mutationOptions: UseMutationOptions<MoveDirectoryResponse, MoveDirectoryError, Options<MoveDirectoryData>> = {
+export const createMoveDirectoryMutation = (options?: Partial<Options<CreateMoveDirectoryData>>): UseMutationOptions<CreateMoveDirectoryResponse, CreateMoveDirectoryError, Options<CreateMoveDirectoryData>> => {
+    const mutationOptions: UseMutationOptions<CreateMoveDirectoryResponse, CreateMoveDirectoryError, Options<CreateMoveDirectoryData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await moveDirectory({
+            const { data } = await createMoveDirectory({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1768,16 +1768,16 @@ export const moveDirectoryMutation = (options?: Partial<Options<MoveDirectoryDat
 /**
  * Upload file
  *
- * Upload file.
+ * Create upload.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const uploadFileMutation = (options?: Partial<Options<UploadFileData>>): UseMutationOptions<UploadFileResponse, UploadFileError, Options<UploadFileData>> => {
-    const mutationOptions: UseMutationOptions<UploadFileResponse, UploadFileError, Options<UploadFileData>> = {
+export const createUploadMutation = (options?: Partial<Options<CreateUploadData>>): UseMutationOptions<CreateUploadResponse, CreateUploadError, Options<CreateUploadData>> => {
+    const mutationOptions: UseMutationOptions<CreateUploadResponse, CreateUploadError, Options<CreateUploadData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await uploadFile({
+            const { data } = await createUpload({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1791,16 +1791,16 @@ export const uploadFileMutation = (options?: Partial<Options<UploadFileData>>): 
 /**
  * Delete GitHub connector
  *
- * Delete GitHub connector.
+ * Delete endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deleteGitHubConnectorMutation = (options?: Partial<Options<DeleteGitHubConnectorData>>): UseMutationOptions<DeleteGitHubConnectorResponse, DeleteGitHubConnectorError, Options<DeleteGitHubConnectorData>> => {
-    const mutationOptions: UseMutationOptions<DeleteGitHubConnectorResponse, DeleteGitHubConnectorError, Options<DeleteGitHubConnectorData>> = {
+export const deleteEndpointMutation = (options?: Partial<Options<DeleteEndpointData>>): UseMutationOptions<DeleteEndpointResponse, DeleteEndpointError, Options<DeleteEndpointData>> => {
+    const mutationOptions: UseMutationOptions<DeleteEndpointResponse, DeleteEndpointError, Options<DeleteEndpointData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await deleteGitHubConnector({
+            const { data } = await deleteEndpoint({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1814,16 +1814,16 @@ export const deleteGitHubConnectorMutation = (options?: Partial<Options<DeleteGi
 /**
  * Create GitHub connector
  *
- * Create GitHub connector.
+ * Create endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const createGitHubConnectorMutation = (options?: Partial<Options<CreateGitHubConnectorData>>): UseMutationOptions<CreateGitHubConnectorResponse, CreateGitHubConnectorError, Options<CreateGitHubConnectorData>> => {
-    const mutationOptions: UseMutationOptions<CreateGitHubConnectorResponse, CreateGitHubConnectorError, Options<CreateGitHubConnectorData>> = {
+export const createEndpoint2Mutation = (options?: Partial<Options<CreateEndpoint2Data>>): UseMutationOptions<CreateEndpoint2Response, CreateEndpoint2Error, Options<CreateEndpoint2Data>> => {
+    const mutationOptions: UseMutationOptions<CreateEndpoint2Response, CreateEndpoint2Error, Options<CreateEndpoint2Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await createGitHubConnector({
+            const { data } = await createEndpoint2({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1837,16 +1837,16 @@ export const createGitHubConnectorMutation = (options?: Partial<Options<CreateGi
 /**
  * Update GitHub connector
  *
- * Update GitHub connector.
+ * Update endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateGitHubConnectorMutation = (options?: Partial<Options<UpdateGitHubConnectorData>>): UseMutationOptions<UpdateGitHubConnectorResponse, UpdateGitHubConnectorError, Options<UpdateGitHubConnectorData>> => {
-    const mutationOptions: UseMutationOptions<UpdateGitHubConnectorResponse, UpdateGitHubConnectorError, Options<UpdateGitHubConnectorData>> = {
+export const updateEndpointMutation = (options?: Partial<Options<UpdateEndpointData>>): UseMutationOptions<UpdateEndpointResponse, UpdateEndpointError, Options<UpdateEndpointData>> => {
+    const mutationOptions: UseMutationOptions<UpdateEndpointResponse, UpdateEndpointError, Options<UpdateEndpointData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateGitHubConnector({
+            const { data } = await updateEndpoint({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1857,20 +1857,20 @@ export const updateGitHubConnectorMutation = (options?: Partial<Options<UpdateGi
     return mutationOptions;
 };
 
-export const listGitHubConnectorsQueryKey = (options?: Options<ListGitHubConnectorsData>) => createQueryKey('listGitHubConnectors', options);
+export const getAllQueryKey = (options?: Options<GetAllData>) => createQueryKey('getAll', options);
 
 /**
  * List GitHub connectors
  *
- * List GitHub connectors.
+ * Get all.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listGitHubConnectorsOptions = (options?: Options<ListGitHubConnectorsData>) => queryOptions<ListGitHubConnectorsResponse, ListGitHubConnectorsError, ListGitHubConnectorsResponse, ReturnType<typeof listGitHubConnectorsQueryKey>>({
+export const getAllOptions = (options?: Options<GetAllData>) => queryOptions<GetAllResponse, GetAllError, GetAllResponse, ReturnType<typeof getAllQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listGitHubConnectors({
+        const { data } = await getAll({
             ...options,
             ...queryKey[0],
             signal,
@@ -1878,23 +1878,23 @@ export const listGitHubConnectorsOptions = (options?: Options<ListGitHubConnecto
         });
         return data;
     },
-    queryKey: listGitHubConnectorsQueryKey(options)
+    queryKey: getAllQueryKey(options)
 });
 
-export const listGitHubRepositoriesQueryKey = (options?: Options<ListGitHubRepositoriesData>) => createQueryKey('listGitHubRepositories', options);
+export const getRepositoriesQueryKey = (options?: Options<GetRepositoriesData>) => createQueryKey('getRepositories', options);
 
 /**
  * List GitHub repositories
  *
- * List GitHub repositories.
+ * Get repositories.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listGitHubRepositoriesOptions = (options?: Options<ListGitHubRepositoriesData>) => queryOptions<ListGitHubRepositoriesResponse, ListGitHubRepositoriesError, ListGitHubRepositoriesResponse, ReturnType<typeof listGitHubRepositoriesQueryKey>>({
+export const getRepositoriesOptions = (options?: Options<GetRepositoriesData>) => queryOptions<GetRepositoriesResponse, GetRepositoriesError, GetRepositoriesResponse, ReturnType<typeof getRepositoriesQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listGitHubRepositories({
+        const { data } = await getRepositories({
             ...options,
             ...queryKey[0],
             signal,
@@ -1902,22 +1902,22 @@ export const listGitHubRepositoriesOptions = (options?: Options<ListGitHubReposi
         });
         return data;
     },
-    queryKey: listGitHubRepositoriesQueryKey(options)
+    queryKey: getRepositoriesQueryKey(options)
 });
 
 /**
  * List repository branches
  *
- * List repository branches.
+ * Create branches.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const listRepositoryBranchesMutation = (options?: Partial<Options<ListRepositoryBranchesData>>): UseMutationOptions<ListRepositoryBranchesResponse, ListRepositoryBranchesError, Options<ListRepositoryBranchesData>> => {
-    const mutationOptions: UseMutationOptions<ListRepositoryBranchesResponse, ListRepositoryBranchesError, Options<ListRepositoryBranchesData>> = {
+export const createBranchesMutation = (options?: Partial<Options<CreateBranchesData>>): UseMutationOptions<CreateBranchesResponse, CreateBranchesError, Options<CreateBranchesData>> => {
+    const mutationOptions: UseMutationOptions<CreateBranchesResponse, CreateBranchesError, Options<CreateBranchesData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await listRepositoryBranches({
+            const { data } = await createBranches({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1928,20 +1928,20 @@ export const listRepositoryBranchesMutation = (options?: Partial<Options<ListRep
     return mutationOptions;
 };
 
-export const healthCheckQueryKey = (options?: Options<HealthCheckData>) => createQueryKey('healthCheck', options);
+export const getEndpointQueryKey = (options?: Options<GetEndpointData>) => createQueryKey('getEndpoint', options);
 
 /**
  * Health check
  *
- * Health check.
+ * Get endpoint.
  *
- * Auth: Public endpoint.
- * Scope: No organization scope required.
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const healthCheckOptions = (options?: Options<HealthCheckData>) => queryOptions<HealthCheckResponse2, HealthCheckError, HealthCheckResponse2, ReturnType<typeof healthCheckQueryKey>>({
+export const getEndpointOptions = (options?: Options<GetEndpointData>) => queryOptions<GetEndpointResponse, GetEndpointError, GetEndpointResponse, ReturnType<typeof getEndpointQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await healthCheck({
+        const { data } = await getEndpoint({
             ...options,
             ...queryKey[0],
             signal,
@@ -1949,22 +1949,22 @@ export const healthCheckOptions = (options?: Options<HealthCheckData>) => queryO
         });
         return data;
     },
-    queryKey: healthCheckQueryKey(options)
+    queryKey: getEndpointQueryKey(options)
 });
 
 /**
  * Delete health check
  *
- * Delete health check.
+ * Delete endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deleteHealthCheckMutation = (options?: Partial<Options<DeleteHealthCheckData>>): UseMutationOptions<DeleteHealthCheckResponse, DeleteHealthCheckError, Options<DeleteHealthCheckData>> => {
-    const mutationOptions: UseMutationOptions<DeleteHealthCheckResponse, DeleteHealthCheckError, Options<DeleteHealthCheckData>> = {
+export const deleteEndpoint5Mutation = (options?: Partial<Options<DeleteEndpoint5Data>>): UseMutationOptions<DeleteEndpoint5Response, DeleteEndpoint5Error, Options<DeleteEndpoint5Data>> => {
+    const mutationOptions: UseMutationOptions<DeleteEndpoint5Response, DeleteEndpoint5Error, Options<DeleteEndpoint5Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await deleteHealthCheck({
+            const { data } = await deleteEndpoint5({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -1975,20 +1975,20 @@ export const deleteHealthCheckMutation = (options?: Partial<Options<DeleteHealth
     return mutationOptions;
 };
 
-export const getHealthChecksQueryKey = (options: Options<GetHealthChecksData>) => createQueryKey('getHealthChecks', options);
+export const getEndpoint10QueryKey = (options: Options<GetEndpoint10Data>) => createQueryKey('getEndpoint10', options);
 
 /**
  * Get health checks
  *
- * Get health checks.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getHealthChecksOptions = (options: Options<GetHealthChecksData>) => queryOptions<GetHealthChecksResponse, GetHealthChecksError, GetHealthChecksResponse, ReturnType<typeof getHealthChecksQueryKey>>({
+export const getEndpoint10Options = (options: Options<GetEndpoint10Data>) => queryOptions<GetEndpoint10Response, GetEndpoint10Error, GetEndpoint10Response, ReturnType<typeof getEndpoint10QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getHealthChecks({
+        const { data } = await getEndpoint10({
             ...options,
             ...queryKey[0],
             signal,
@@ -1996,22 +1996,22 @@ export const getHealthChecksOptions = (options: Options<GetHealthChecksData>) =>
         });
         return data;
     },
-    queryKey: getHealthChecksQueryKey(options)
+    queryKey: getEndpoint10QueryKey(options)
 });
 
 /**
  * Create health check
  *
- * Create health check.
+ * Create endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const createHealthCheckMutation = (options?: Partial<Options<CreateHealthCheckData>>): UseMutationOptions<CreateHealthCheckResponse, CreateHealthCheckError, Options<CreateHealthCheckData>> => {
-    const mutationOptions: UseMutationOptions<CreateHealthCheckResponse, CreateHealthCheckError, Options<CreateHealthCheckData>> = {
+export const createEndpoint8Mutation = (options?: Partial<Options<CreateEndpoint8Data>>): UseMutationOptions<CreateEndpoint8Response, CreateEndpoint8Error, Options<CreateEndpoint8Data>> => {
+    const mutationOptions: UseMutationOptions<CreateEndpoint8Response, CreateEndpoint8Error, Options<CreateEndpoint8Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await createHealthCheck({
+            const { data } = await createEndpoint8({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2025,16 +2025,16 @@ export const createHealthCheckMutation = (options?: Partial<Options<CreateHealth
 /**
  * Update health check
  *
- * Update health check.
+ * Update endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateHealthCheckMutation = (options?: Partial<Options<UpdateHealthCheckData>>): UseMutationOptions<UpdateHealthCheckResponse, UpdateHealthCheckError, Options<UpdateHealthCheckData>> => {
-    const mutationOptions: UseMutationOptions<UpdateHealthCheckResponse, UpdateHealthCheckError, Options<UpdateHealthCheckData>> = {
+export const updateEndpoint6Mutation = (options?: Partial<Options<UpdateEndpoint6Data>>): UseMutationOptions<UpdateEndpoint6Response, UpdateEndpoint6Error, Options<UpdateEndpoint6Data>> => {
+    const mutationOptions: UseMutationOptions<UpdateEndpoint6Response, UpdateEndpoint6Error, Options<UpdateEndpoint6Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateHealthCheck({
+            const { data } = await updateEndpoint6({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2045,20 +2045,20 @@ export const updateHealthCheckMutation = (options?: Partial<Options<UpdateHealth
     return mutationOptions;
 };
 
-export const listHealthCheckResultsQueryKey = (options: Options<ListHealthCheckResultsData>) => createQueryKey('listHealthCheckResults', options);
+export const getResultsQueryKey = (options: Options<GetResultsData>) => createQueryKey('getResults', options);
 
 /**
  * List health check results
  *
- * List health check results.
+ * Get results.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listHealthCheckResultsOptions = (options: Options<ListHealthCheckResultsData>) => queryOptions<ListHealthCheckResultsResponse, ListHealthCheckResultsError, ListHealthCheckResultsResponse, ReturnType<typeof listHealthCheckResultsQueryKey>>({
+export const getResultsOptions = (options: Options<GetResultsData>) => queryOptions<GetResultsResponse, GetResultsError, GetResultsResponse, ReturnType<typeof getResultsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listHealthCheckResults({
+        const { data } = await getResults({
             ...options,
             ...queryKey[0],
             signal,
@@ -2066,23 +2066,23 @@ export const listHealthCheckResultsOptions = (options: Options<ListHealthCheckRe
         });
         return data;
     },
-    queryKey: listHealthCheckResultsQueryKey(options)
+    queryKey: getResultsQueryKey(options)
 });
 
-export const getHealthCheckStatsQueryKey = (options: Options<GetHealthCheckStatsData>) => createQueryKey('getHealthCheckStats', options);
+export const getStatsQueryKey = (options: Options<GetStatsData>) => createQueryKey('getStats', options);
 
 /**
  * Get health check stats
  *
- * Get health check stats.
+ * Get stats.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getHealthCheckStatsOptions = (options: Options<GetHealthCheckStatsData>) => queryOptions<GetHealthCheckStatsResponse, GetHealthCheckStatsError, GetHealthCheckStatsResponse, ReturnType<typeof getHealthCheckStatsQueryKey>>({
+export const getStatsOptions = (options: Options<GetStatsData>) => queryOptions<GetStatsResponse, GetStatsError, GetStatsResponse, ReturnType<typeof getStatsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getHealthCheckStats({
+        const { data } = await getStats({
             ...options,
             ...queryKey[0],
             signal,
@@ -2090,22 +2090,22 @@ export const getHealthCheckStatsOptions = (options: Options<GetHealthCheckStatsD
         });
         return data;
     },
-    queryKey: getHealthCheckStatsQueryKey(options)
+    queryKey: getStatsQueryKey(options)
 });
 
 /**
  * Toggle health check
  *
- * Toggle health check.
+ * Patch toggle.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const toggleHealthCheckMutation = (options?: Partial<Options<ToggleHealthCheckData>>): UseMutationOptions<ToggleHealthCheckResponse, ToggleHealthCheckError, Options<ToggleHealthCheckData>> => {
-    const mutationOptions: UseMutationOptions<ToggleHealthCheckResponse, ToggleHealthCheckError, Options<ToggleHealthCheckData>> = {
+export const patchToggleMutation = (options?: Partial<Options<PatchToggleData>>): UseMutationOptions<PatchToggleResponse, PatchToggleError, Options<PatchToggleData>> => {
+    const mutationOptions: UseMutationOptions<PatchToggleResponse, PatchToggleError, Options<PatchToggleData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await toggleHealthCheck({
+            const { data } = await patchToggle({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2116,20 +2116,16 @@ export const toggleHealthCheckMutation = (options?: Partial<Options<ToggleHealth
     return mutationOptions;
 };
 
-export const getMachineBillingStatusQueryKey = (options?: Options<GetMachineBillingStatusData>) => createQueryKey('getMachineBillingStatus', options);
+export const getBillingQueryKey = (options?: Options<GetBillingData>) => createQueryKey('getBilling', options);
 
 /**
  * Get machine billing status
  *
- * Get machine billing status.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
+ * Returns the current machine billing status, plan details, and any grace period warnings for the organization.
  */
-export const getMachineBillingStatusOptions = (options?: Options<GetMachineBillingStatusData>) => queryOptions<GetMachineBillingStatusResponse, GetMachineBillingStatusError, GetMachineBillingStatusResponse, ReturnType<typeof getMachineBillingStatusQueryKey>>({
+export const getBillingOptions = (options?: Options<GetBillingData>) => queryOptions<GetBillingResponse, GetBillingError, GetBillingResponse, ReturnType<typeof getBillingQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getMachineBillingStatus({
+        const { data } = await getBilling({
             ...options,
             ...queryKey[0],
             signal,
@@ -2137,22 +2133,22 @@ export const getMachineBillingStatusOptions = (options?: Options<GetMachineBilli
         });
         return data;
     },
-    queryKey: getMachineBillingStatusQueryKey(options)
+    queryKey: getBillingQueryKey(options)
 });
 
 /**
  * Execute a command on the host machine
  *
- * Execute a command on the host machine.
+ * Create exec.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const executeACommandOnTheHostMachineMutation = (options?: Partial<Options<ExecuteACommandOnTheHostMachineData>>): UseMutationOptions<ExecuteACommandOnTheHostMachineResponse, ExecuteACommandOnTheHostMachineError, Options<ExecuteACommandOnTheHostMachineData>> => {
-    const mutationOptions: UseMutationOptions<ExecuteACommandOnTheHostMachineResponse, ExecuteACommandOnTheHostMachineError, Options<ExecuteACommandOnTheHostMachineData>> = {
+export const createExecMutation = (options?: Partial<Options<CreateExecData>>): UseMutationOptions<CreateExecResponse, CreateExecError, Options<CreateExecData>> => {
+    const mutationOptions: UseMutationOptions<CreateExecResponse, CreateExecError, Options<CreateExecData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await executeACommandOnTheHostMachine({
+            const { data } = await createExec({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2166,16 +2162,12 @@ export const executeACommandOnTheHostMachineMutation = (options?: Partial<Option
 /**
  * Pause machine
  *
- * Pause machine.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
+ * Pauses the provisioned machine instance.
  */
-export const pauseMachineMutation = (options?: Partial<Options<PauseMachineData>>): UseMutationOptions<PauseMachineResponse, PauseMachineError, Options<PauseMachineData>> => {
-    const mutationOptions: UseMutationOptions<PauseMachineResponse, PauseMachineError, Options<PauseMachineData>> = {
+export const createPauseMutation = (options?: Partial<Options<CreatePauseData>>): UseMutationOptions<CreatePauseResponse, CreatePauseError, Options<CreatePauseData>> => {
+    const mutationOptions: UseMutationOptions<CreatePauseResponse, CreatePauseError, Options<CreatePauseData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await pauseMachine({
+            const { data } = await createPause({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2189,16 +2181,12 @@ export const pauseMachineMutation = (options?: Partial<Options<PauseMachineData>
 /**
  * Select a machine plan
  *
- * Select a machine plan.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
+ * Select a machine plan for the organization. Deducts the monthly cost from the wallet immediately. Requires sufficient wallet balance.
  */
-export const selectAMachinePlanMutation = (options?: Partial<Options<SelectAMachinePlanData>>): UseMutationOptions<SelectAMachinePlanResponse, SelectAMachinePlanError, Options<SelectAMachinePlanData>> => {
-    const mutationOptions: UseMutationOptions<SelectAMachinePlanResponse, SelectAMachinePlanError, Options<SelectAMachinePlanData>> = {
+export const createSelectMutation = (options?: Partial<Options<CreateSelectData>>): UseMutationOptions<CreateSelectResponse, CreateSelectError, Options<CreateSelectData>> => {
+    const mutationOptions: UseMutationOptions<CreateSelectResponse, CreateSelectError, Options<CreateSelectData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await selectAMachinePlan({
+            const { data } = await createSelect({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2209,20 +2197,16 @@ export const selectAMachinePlanMutation = (options?: Partial<Options<SelectAMach
     return mutationOptions;
 };
 
-export const listAvailableMachinePlansQueryKey = (options?: Options<ListAvailableMachinePlansData>) => createQueryKey('listAvailableMachinePlans', options);
+export const getPlansQueryKey = (options?: Options<GetPlansData>) => createQueryKey('getPlans', options);
 
 /**
  * List available machine plans
  *
- * List available machine plans.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
+ * Returns all active machine plans with pricing, specs, and tier information.
  */
-export const listAvailableMachinePlansOptions = (options?: Options<ListAvailableMachinePlansData>) => queryOptions<ListAvailableMachinePlansResponse, ListAvailableMachinePlansError, ListAvailableMachinePlansResponse, ReturnType<typeof listAvailableMachinePlansQueryKey>>({
+export const getPlansOptions = (options?: Options<GetPlansData>) => queryOptions<GetPlansResponse, GetPlansError, GetPlansResponse, ReturnType<typeof getPlansQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listAvailableMachinePlans({
+        const { data } = await getPlans({
             ...options,
             ...queryKey[0],
             signal,
@@ -2230,22 +2214,18 @@ export const listAvailableMachinePlansOptions = (options?: Options<ListAvailable
         });
         return data;
     },
-    queryKey: listAvailableMachinePlansQueryKey(options)
+    queryKey: getPlansQueryKey(options)
 });
 
 /**
  * Restart machine
  *
- * Restart machine.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
+ * Restarts the provisioned machine instance.
  */
-export const restartMachineMutation = (options?: Partial<Options<RestartMachineData>>): UseMutationOptions<RestartMachineResponse, RestartMachineError, Options<RestartMachineData>> => {
-    const mutationOptions: UseMutationOptions<RestartMachineResponse, RestartMachineError, Options<RestartMachineData>> = {
+export const createRestart3Mutation = (options?: Partial<Options<CreateRestart3Data>>): UseMutationOptions<CreateRestart3Response, CreateRestart3Error, Options<CreateRestart3Data>> => {
+    const mutationOptions: UseMutationOptions<CreateRestart3Response, CreateRestart3Error, Options<CreateRestart3Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await restartMachine({
+            const { data } = await createRestart3({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2259,16 +2239,12 @@ export const restartMachineMutation = (options?: Partial<Options<RestartMachineD
 /**
  * Resume machine
  *
- * Resume machine.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
+ * Resumes a paused machine instance.
  */
-export const resumeMachineMutation = (options?: Partial<Options<ResumeMachineData>>): UseMutationOptions<ResumeMachineResponse, ResumeMachineError, Options<ResumeMachineData>> => {
-    const mutationOptions: UseMutationOptions<ResumeMachineResponse, ResumeMachineError, Options<ResumeMachineData>> = {
+export const createResumeMutation = (options?: Partial<Options<CreateResumeData>>): UseMutationOptions<CreateResumeResponse, CreateResumeError, Options<CreateResumeData>> => {
+    const mutationOptions: UseMutationOptions<CreateResumeResponse, CreateResumeError, Options<CreateResumeData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await resumeMachine({
+            const { data } = await createResume({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2279,20 +2255,20 @@ export const resumeMachineMutation = (options?: Partial<Options<ResumeMachineDat
     return mutationOptions;
 };
 
-export const getMachineSystemStatsQueryKey = (options?: Options<GetMachineSystemStatsData>) => createQueryKey('getMachineSystemStats', options);
+export const getStats2QueryKey = (options?: Options<GetStats2Data>) => createQueryKey('getStats2', options);
 
 /**
  * Get machine system stats
  *
- * Get machine system stats.
+ * Get stats.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getMachineSystemStatsOptions = (options?: Options<GetMachineSystemStatsData>) => queryOptions<GetMachineSystemStatsResponse, GetMachineSystemStatsError, GetMachineSystemStatsResponse, ReturnType<typeof getMachineSystemStatsQueryKey>>({
+export const getStats2Options = (options?: Options<GetStats2Data>) => queryOptions<GetStats2Response, GetStats2Error, GetStats2Response, ReturnType<typeof getStats2QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getMachineSystemStats({
+        const { data } = await getStats2({
             ...options,
             ...queryKey[0],
             signal,
@@ -2300,23 +2276,19 @@ export const getMachineSystemStatsOptions = (options?: Options<GetMachineSystemS
         });
         return data;
     },
-    queryKey: getMachineSystemStatsQueryKey(options)
+    queryKey: getStats2QueryKey(options)
 });
 
-export const getMachineLifecycleStatusQueryKey = (options?: Options<GetMachineLifecycleStatusData>) => createQueryKey('getMachineLifecycleStatus', options);
+export const getStatus2QueryKey = (options?: Options<GetStatus2Data>) => createQueryKey('getStatus2', options);
 
 /**
  * Get machine lifecycle status
  *
- * Get machine lifecycle status.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
+ * Returns the current state of the provisioned machine instance (active, paused, etc).
  */
-export const getMachineLifecycleStatusOptions = (options?: Options<GetMachineLifecycleStatusData>) => queryOptions<GetMachineLifecycleStatusResponse, GetMachineLifecycleStatusError, GetMachineLifecycleStatusResponse, ReturnType<typeof getMachineLifecycleStatusQueryKey>>({
+export const getStatus2Options = (options?: Options<GetStatus2Data>) => queryOptions<GetStatus2Response, GetStatus2Error, GetStatus2Response, ReturnType<typeof getStatus2QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getMachineLifecycleStatus({
+        const { data } = await getStatus2({
             ...options,
             ...queryKey[0],
             signal,
@@ -2324,23 +2296,23 @@ export const getMachineLifecycleStatusOptions = (options?: Options<GetMachineLif
         });
         return data;
     },
-    queryKey: getMachineLifecycleStatusQueryKey(options)
+    queryKey: getStatus2QueryKey(options)
 });
 
-export const getNotificationPreferencesQueryKey = (options?: Options<GetNotificationPreferencesData>) => createQueryKey('getNotificationPreferences', options);
+export const getEndpoint13QueryKey = (options?: Options<GetEndpoint13Data>) => createQueryKey('getEndpoint13', options);
 
 /**
- * Get notification preferences
+ * List MCP provider catalog
  *
- * Get notification preferences.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getNotificationPreferencesOptions = (options?: Options<GetNotificationPreferencesData>) => queryOptions<GetNotificationPreferencesResponse, GetNotificationPreferencesError, GetNotificationPreferencesResponse, ReturnType<typeof getNotificationPreferencesQueryKey>>({
+export const getEndpoint13Options = (options?: Options<GetEndpoint13Data>) => queryOptions<GetEndpoint13Response, GetEndpoint13Error, GetEndpoint13Response, ReturnType<typeof getEndpoint13QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getNotificationPreferences({
+        const { data } = await getEndpoint13({
             ...options,
             ...queryKey[0],
             signal,
@@ -2348,22 +2320,210 @@ export const getNotificationPreferencesOptions = (options?: Options<GetNotificat
         });
         return data;
     },
-    queryKey: getNotificationPreferencesQueryKey(options)
+    queryKey: getEndpoint13QueryKey(options)
+});
+
+export const getIconQueryKey = (options: Options<GetIconData>) => createQueryKey('getIcon', options);
+
+/**
+ * Get provider icon
+ *
+ * Get icon.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getIconOptions = (options: Options<GetIconData>) => queryOptions<GetIconResponse, GetIconError, GetIconResponse, ReturnType<typeof getIconQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getIcon({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getIconQueryKey(options)
+});
+
+export const getServersQueryKey = (options?: Options<GetServersData>) => createQueryKey('getServers', options);
+
+/**
+ * Agent: list enabled servers with credentials
+ *
+ * Get servers.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getServersOptions = (options?: Options<GetServersData>) => queryOptions<GetServersResponse, GetServersError, GetServersResponse, ReturnType<typeof getServersQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getServers({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getServersQueryKey(options)
 });
 
 /**
- * Update notification preferences
+ * Delete MCP server
  *
- * Update notification preferences.
+ * Delete endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateNotificationPreferencesMutation = (options?: Partial<Options<UpdateNotificationPreferencesData>>): UseMutationOptions<UpdateNotificationPreferencesResponse, UpdateNotificationPreferencesError, Options<UpdateNotificationPreferencesData>> => {
-    const mutationOptions: UseMutationOptions<UpdateNotificationPreferencesResponse, UpdateNotificationPreferencesError, Options<UpdateNotificationPreferencesData>> = {
+export const deleteEndpoint6Mutation = (options?: Partial<Options<DeleteEndpoint6Data>>): UseMutationOptions<DeleteEndpoint6Response, DeleteEndpoint6Error, Options<DeleteEndpoint6Data>> => {
+    const mutationOptions: UseMutationOptions<DeleteEndpoint6Response, DeleteEndpoint6Error, Options<DeleteEndpoint6Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateNotificationPreferences({
+            const { data } = await deleteEndpoint6({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getEndpoint14QueryKey = (options?: Options<GetEndpoint14Data>) => createQueryKey('getEndpoint14', options);
+
+/**
+ * List org MCP servers
+ *
+ * Get endpoint.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getEndpoint14Options = (options?: Options<GetEndpoint14Data>) => queryOptions<GetEndpoint14Response, GetEndpoint14Error, GetEndpoint14Response, ReturnType<typeof getEndpoint14QueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getEndpoint14({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getEndpoint14QueryKey(options)
+});
+
+/**
+ * Add MCP server
+ *
+ * Create endpoint.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const createEndpoint9Mutation = (options?: Partial<Options<CreateEndpoint9Data>>): UseMutationOptions<CreateEndpoint9Response, CreateEndpoint9Error, Options<CreateEndpoint9Data>> => {
+    const mutationOptions: UseMutationOptions<CreateEndpoint9Response, CreateEndpoint9Error, Options<CreateEndpoint9Data>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await createEndpoint9({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Test MCP server connection
+ *
+ * Create test.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const createTestMutation = (options?: Partial<Options<CreateTestData>>): UseMutationOptions<CreateTestResponse, CreateTestError, Options<CreateTestData>> => {
+    const mutationOptions: UseMutationOptions<CreateTestResponse, CreateTestError, Options<CreateTestData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await createTest({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Update MCP server
+ *
+ * Update {id}.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const updateIdMutation = (options?: Partial<Options<UpdateIdData>>): UseMutationOptions<UpdateIdResponse, UpdateIdError, Options<UpdateIdData>> => {
+    const mutationOptions: UseMutationOptions<UpdateIdResponse, UpdateIdError, Options<UpdateIdData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await updateId({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getEndpoint5QueryKey = (options?: Options<GetEndpoint5Data>) => createQueryKey('getEndpoint5', options);
+
+/**
+ * Get notification preferences
+ *
+ * Get endpoint.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getEndpoint5Options = (options?: Options<GetEndpoint5Data>) => queryOptions<GetEndpoint5Response, GetEndpoint5Error, GetEndpoint5Response, ReturnType<typeof getEndpoint5QueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getEndpoint5({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getEndpoint5QueryKey(options)
+});
+
+/**
+ * Update notification preferences
+ *
+ * Create endpoint.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const createEndpoint4Mutation = (options?: Partial<Options<CreateEndpoint4Data>>): UseMutationOptions<CreateEndpoint4Response, CreateEndpoint4Error, Options<CreateEndpoint4Data>> => {
+    const mutationOptions: UseMutationOptions<CreateEndpoint4Response, CreateEndpoint4Error, Options<CreateEndpoint4Data>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await createEndpoint4({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2377,16 +2537,16 @@ export const updateNotificationPreferencesMutation = (options?: Partial<Options<
 /**
  * Send notification
  *
- * Send notification.
+ * Create send.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const sendNotificationMutation = (options?: Partial<Options<SendNotificationData>>): UseMutationOptions<SendNotificationResponse2, SendNotificationError, Options<SendNotificationData>> => {
-    const mutationOptions: UseMutationOptions<SendNotificationResponse2, SendNotificationError, Options<SendNotificationData>> = {
+export const createSendMutation = (options?: Partial<Options<CreateSendData>>): UseMutationOptions<CreateSendResponse, CreateSendError, Options<CreateSendData>> => {
+    const mutationOptions: UseMutationOptions<CreateSendResponse, CreateSendError, Options<CreateSendData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await sendNotification({
+            const { data } = await createSend({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2400,16 +2560,16 @@ export const sendNotificationMutation = (options?: Partial<Options<SendNotificat
 /**
  * Delete SMTP config
  *
- * Delete SMTP config.
+ * Delete endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deleteSmtpConfigMutation = (options?: Partial<Options<DeleteSmtpConfigData>>): UseMutationOptions<DeleteSmtpConfigResponse, DeleteSmtpConfigError, Options<DeleteSmtpConfigData>> => {
-    const mutationOptions: UseMutationOptions<DeleteSmtpConfigResponse, DeleteSmtpConfigError, Options<DeleteSmtpConfigData>> = {
+export const deleteEndpoint2Mutation = (options?: Partial<Options<DeleteEndpoint2Data>>): UseMutationOptions<DeleteEndpoint2Response, DeleteEndpoint2Error, Options<DeleteEndpoint2Data>> => {
+    const mutationOptions: UseMutationOptions<DeleteEndpoint2Response, DeleteEndpoint2Error, Options<DeleteEndpoint2Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await deleteSmtpConfig({
+            const { data } = await deleteEndpoint2({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2420,20 +2580,20 @@ export const deleteSmtpConfigMutation = (options?: Partial<Options<DeleteSmtpCon
     return mutationOptions;
 };
 
-export const getSmtpConfigQueryKey = (options: Options<GetSmtpConfigData>) => createQueryKey('getSmtpConfig', options);
+export const getEndpoint4QueryKey = (options: Options<GetEndpoint4Data>) => createQueryKey('getEndpoint4', options);
 
 /**
  * Get SMTP config
  *
- * Get SMTP config.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getSmtpConfigOptions = (options: Options<GetSmtpConfigData>) => queryOptions<GetSmtpConfigResponse, GetSmtpConfigError, GetSmtpConfigResponse, ReturnType<typeof getSmtpConfigQueryKey>>({
+export const getEndpoint4Options = (options: Options<GetEndpoint4Data>) => queryOptions<GetEndpoint4Response, GetEndpoint4Error, GetEndpoint4Response, ReturnType<typeof getEndpoint4QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getSmtpConfig({
+        const { data } = await getEndpoint4({
             ...options,
             ...queryKey[0],
             signal,
@@ -2441,22 +2601,22 @@ export const getSmtpConfigOptions = (options: Options<GetSmtpConfigData>) => que
         });
         return data;
     },
-    queryKey: getSmtpConfigQueryKey(options)
+    queryKey: getEndpoint4QueryKey(options)
 });
 
 /**
  * Create SMTP config
  *
- * Create SMTP config.
+ * Create endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const createSmtpConfigMutation = (options?: Partial<Options<CreateSmtpConfigData>>): UseMutationOptions<CreateSmtpConfigResponse, CreateSmtpConfigError, Options<CreateSmtpConfigData>> => {
-    const mutationOptions: UseMutationOptions<CreateSmtpConfigResponse, CreateSmtpConfigError, Options<CreateSmtpConfigData>> = {
+export const createEndpoint3Mutation = (options?: Partial<Options<CreateEndpoint3Data>>): UseMutationOptions<CreateEndpoint3Response, CreateEndpoint3Error, Options<CreateEndpoint3Data>> => {
+    const mutationOptions: UseMutationOptions<CreateEndpoint3Response, CreateEndpoint3Error, Options<CreateEndpoint3Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await createSmtpConfig({
+            const { data } = await createEndpoint3({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2470,16 +2630,16 @@ export const createSmtpConfigMutation = (options?: Partial<Options<CreateSmtpCon
 /**
  * Update SMTP config
  *
- * Update SMTP config.
+ * Update endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateSmtpConfigMutation = (options?: Partial<Options<UpdateSmtpConfigData>>): UseMutationOptions<UpdateSmtpConfigResponse, UpdateSmtpConfigError, Options<UpdateSmtpConfigData>> => {
-    const mutationOptions: UseMutationOptions<UpdateSmtpConfigResponse, UpdateSmtpConfigError, Options<UpdateSmtpConfigData>> = {
+export const updateEndpoint2Mutation = (options?: Partial<Options<UpdateEndpoint2Data>>): UseMutationOptions<UpdateEndpoint2Response, UpdateEndpoint2Error, Options<UpdateEndpoint2Data>> => {
+    const mutationOptions: UseMutationOptions<UpdateEndpoint2Response, UpdateEndpoint2Error, Options<UpdateEndpoint2Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateSmtpConfig({
+            const { data } = await updateEndpoint2({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2493,16 +2653,16 @@ export const updateSmtpConfigMutation = (options?: Partial<Options<UpdateSmtpCon
 /**
  * Delete webhook config
  *
- * Delete webhook config.
+ * Delete endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const deleteWebhookConfigMutation = (options?: Partial<Options<DeleteWebhookConfigData>>): UseMutationOptions<DeleteWebhookConfigResponse, DeleteWebhookConfigError, Options<DeleteWebhookConfigData>> => {
-    const mutationOptions: UseMutationOptions<DeleteWebhookConfigResponse, DeleteWebhookConfigError, Options<DeleteWebhookConfigData>> = {
+export const deleteEndpoint3Mutation = (options?: Partial<Options<DeleteEndpoint3Data>>): UseMutationOptions<DeleteEndpoint3Response, DeleteEndpoint3Error, Options<DeleteEndpoint3Data>> => {
+    const mutationOptions: UseMutationOptions<DeleteEndpoint3Response, DeleteEndpoint3Error, Options<DeleteEndpoint3Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await deleteWebhookConfig({
+            const { data } = await deleteEndpoint3({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2516,16 +2676,16 @@ export const deleteWebhookConfigMutation = (options?: Partial<Options<DeleteWebh
 /**
  * Create webhook config
  *
- * Create webhook config.
+ * Create endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const createWebhookConfigMutation = (options?: Partial<Options<CreateWebhookConfigData>>): UseMutationOptions<CreateWebhookConfigResponse, CreateWebhookConfigError, Options<CreateWebhookConfigData>> => {
-    const mutationOptions: UseMutationOptions<CreateWebhookConfigResponse, CreateWebhookConfigError, Options<CreateWebhookConfigData>> = {
+export const createEndpoint5Mutation = (options?: Partial<Options<CreateEndpoint5Data>>): UseMutationOptions<CreateEndpoint5Response, CreateEndpoint5Error, Options<CreateEndpoint5Data>> => {
+    const mutationOptions: UseMutationOptions<CreateEndpoint5Response, CreateEndpoint5Error, Options<CreateEndpoint5Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await createWebhookConfig({
+            const { data } = await createEndpoint5({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2539,16 +2699,16 @@ export const createWebhookConfigMutation = (options?: Partial<Options<CreateWebh
 /**
  * Update webhook config
  *
- * Update webhook config.
+ * Update endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateWebhookConfigMutation = (options?: Partial<Options<UpdateWebhookConfigData>>): UseMutationOptions<UpdateWebhookConfigResponse, UpdateWebhookConfigError, Options<UpdateWebhookConfigData>> => {
-    const mutationOptions: UseMutationOptions<UpdateWebhookConfigResponse, UpdateWebhookConfigError, Options<UpdateWebhookConfigData>> = {
+export const updateEndpoint3Mutation = (options?: Partial<Options<UpdateEndpoint3Data>>): UseMutationOptions<UpdateEndpoint3Response, UpdateEndpoint3Error, Options<UpdateEndpoint3Data>> => {
+    const mutationOptions: UseMutationOptions<UpdateEndpoint3Response, UpdateEndpoint3Error, Options<UpdateEndpoint3Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateWebhookConfig({
+            const { data } = await updateEndpoint3({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2559,20 +2719,20 @@ export const updateWebhookConfigMutation = (options?: Partial<Options<UpdateWebh
     return mutationOptions;
 };
 
-export const getWebhookConfigQueryKey = (options: Options<GetWebhookConfigData>) => createQueryKey('getWebhookConfig', options);
+export const getTypeQueryKey = (options: Options<GetTypeData>) => createQueryKey('getType', options);
 
 /**
  * Get webhook config
  *
- * Get webhook config.
+ * Get {type}.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getWebhookConfigOptions = (options: Options<GetWebhookConfigData>) => queryOptions<GetWebhookConfigResponse, GetWebhookConfigError, GetWebhookConfigResponse, ReturnType<typeof getWebhookConfigQueryKey>>({
+export const getTypeOptions = (options: Options<GetTypeData>) => queryOptions<GetTypeResponse, GetTypeError, GetTypeResponse, ReturnType<typeof getTypeQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getWebhookConfig({
+        const { data } = await getType({
             ...options,
             ...queryKey[0],
             signal,
@@ -2580,23 +2740,23 @@ export const getWebhookConfigOptions = (options: Options<GetWebhookConfigData>) 
         });
         return data;
     },
-    queryKey: getWebhookConfigQueryKey(options)
+    queryKey: getTypeQueryKey(options)
 });
 
-export const listServersQueryKey = (options?: Options<ListServersData>) => createQueryKey('listServers', options);
+export const getEndpoint12QueryKey = (options?: Options<GetEndpoint12Data>) => createQueryKey('getEndpoint12', options);
 
 /**
  * List servers
  *
- * List servers.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listServersOptions = (options?: Options<ListServersData>) => queryOptions<ListServersResponse2, ListServersError, ListServersResponse2, ReturnType<typeof listServersQueryKey>>({
+export const getEndpoint12Options = (options?: Options<GetEndpoint12Data>) => queryOptions<GetEndpoint12Response, GetEndpoint12Error, GetEndpoint12Response, ReturnType<typeof getEndpoint12QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listServers({
+        const { data } = await getEndpoint12({
             ...options,
             ...queryKey[0],
             signal,
@@ -2604,32 +2764,32 @@ export const listServersOptions = (options?: Options<ListServersData>) => queryO
         });
         return data;
     },
-    queryKey: listServersQueryKey(options)
+    queryKey: getEndpoint12QueryKey(options)
 });
 
-export const listServersInfiniteQueryKey = (options?: Options<ListServersData>): QueryKey<Options<ListServersData>> => createQueryKey('listServers', options, true);
+export const getEndpoint12InfiniteQueryKey = (options?: Options<GetEndpoint12Data>): QueryKey<Options<GetEndpoint12Data>> => createQueryKey('getEndpoint12', options, true);
 
 /**
  * List servers
  *
- * List servers.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listServersInfiniteOptions = (options?: Options<ListServersData>) => infiniteQueryOptions<ListServersResponse2, ListServersError, InfiniteData<ListServersResponse2>, QueryKey<Options<ListServersData>>, number | Pick<QueryKey<Options<ListServersData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+export const getEndpoint12InfiniteOptions = (options?: Options<GetEndpoint12Data>) => infiniteQueryOptions<GetEndpoint12Response, GetEndpoint12Error, InfiniteData<GetEndpoint12Response>, QueryKey<Options<GetEndpoint12Data>>, number | Pick<QueryKey<Options<GetEndpoint12Data>>[0], 'body' | 'headers' | 'path' | 'query'>>(
 // @ts-ignore
 {
     queryFn: async ({ pageParam, queryKey, signal }) => {
         // @ts-ignore
-        const page: Pick<QueryKey<Options<ListServersData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+        const page: Pick<QueryKey<Options<GetEndpoint12Data>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
             query: {
                 page: pageParam
             }
         };
         const params = createInfiniteParams(queryKey, page);
-        const { data } = await listServers({
+        const { data } = await getEndpoint12({
             ...options,
             ...params,
             signal,
@@ -2637,23 +2797,23 @@ export const listServersInfiniteOptions = (options?: Options<ListServersData>) =
         });
         return data;
     },
-    queryKey: listServersInfiniteQueryKey(options)
+    queryKey: getEndpoint12InfiniteQueryKey(options)
 });
 
-export const getSshConnectionStatusQueryKey = (options?: Options<GetSshConnectionStatusData>) => createQueryKey('getSshConnectionStatus', options);
+export const getStatusQueryKey = (options?: Options<GetStatusData>) => createQueryKey('getStatus', options);
 
 /**
  * Get SSH connection status
  *
- * Get SSH connection status.
+ * Get status.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getSshConnectionStatusOptions = (options?: Options<GetSshConnectionStatusData>) => queryOptions<GetSshConnectionStatusResponse, GetSshConnectionStatusError, GetSshConnectionStatusResponse, ReturnType<typeof getSshConnectionStatusQueryKey>>({
+export const getStatusOptions = (options?: Options<GetStatusData>) => queryOptions<GetStatusResponse, GetStatusError, GetStatusResponse, ReturnType<typeof getStatusQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getSshConnectionStatus({
+        const { data } = await getStatus({
             ...options,
             ...queryKey[0],
             signal,
@@ -2661,22 +2821,22 @@ export const getSshConnectionStatusOptions = (options?: Options<GetSshConnection
         });
         return data;
     },
-    queryKey: getSshConnectionStatusQueryKey(options)
+    queryKey: getStatusQueryKey(options)
 });
 
 /**
  * Provision trail resources
  *
- * Provision trail resources.
+ * Create provision.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const provisionTrailResourcesMutation = (options?: Partial<Options<ProvisionTrailResourcesData>>): UseMutationOptions<ProvisionTrailResourcesResponse, ProvisionTrailResourcesError, Options<ProvisionTrailResourcesData>> => {
-    const mutationOptions: UseMutationOptions<ProvisionTrailResourcesResponse, ProvisionTrailResourcesError, Options<ProvisionTrailResourcesData>> = {
+export const createProvisionMutation = (options?: Partial<Options<CreateProvisionData>>): UseMutationOptions<CreateProvisionResponse, CreateProvisionError, Options<CreateProvisionData>> => {
+    const mutationOptions: UseMutationOptions<CreateProvisionResponse, CreateProvisionError, Options<CreateProvisionData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await provisionTrailResources({
+            const { data } = await createProvision({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2687,20 +2847,20 @@ export const provisionTrailResourcesMutation = (options?: Partial<Options<Provis
     return mutationOptions;
 };
 
-export const getTrailSessionStatusQueryKey = (options: Options<GetTrailSessionStatusData>) => createQueryKey('getTrailSessionStatus', options);
+export const getStatus3QueryKey = (options: Options<GetStatus3Data>) => createQueryKey('getStatus3', options);
 
 /**
  * Get trail session status
  *
- * Get trail session status.
+ * Get status.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getTrailSessionStatusOptions = (options: Options<GetTrailSessionStatusData>) => queryOptions<GetTrailSessionStatusResponse, GetTrailSessionStatusError, GetTrailSessionStatusResponse, ReturnType<typeof getTrailSessionStatusQueryKey>>({
+export const getStatus3Options = (options: Options<GetStatus3Data>) => queryOptions<GetStatus3Response, GetStatus3Error, GetStatus3Response, ReturnType<typeof getStatus3QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getTrailSessionStatus({
+        const { data } = await getStatus3({
             ...options,
             ...queryKey[0],
             signal,
@@ -2708,22 +2868,22 @@ export const getTrailSessionStatusOptions = (options: Options<GetTrailSessionSta
         });
         return data;
     },
-    queryKey: getTrailSessionStatusQueryKey(options)
+    queryKey: getStatus3QueryKey(options)
 });
 
 /**
  * Perform update
  *
- * Perform update.
+ * Create endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const performUpdateMutation = (options?: Partial<Options<PerformUpdateData>>): UseMutationOptions<PerformUpdateResponse, PerformUpdateError, Options<PerformUpdateData>> => {
-    const mutationOptions: UseMutationOptions<PerformUpdateResponse, PerformUpdateError, Options<PerformUpdateData>> = {
+export const createEndpoint7Mutation = (options?: Partial<Options<CreateEndpoint7Data>>): UseMutationOptions<CreateEndpoint7Response, CreateEndpoint7Error, Options<CreateEndpoint7Data>> => {
+    const mutationOptions: UseMutationOptions<CreateEndpoint7Response, CreateEndpoint7Error, Options<CreateEndpoint7Data>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await performUpdate({
+            const { data } = await createEndpoint7({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2734,20 +2894,20 @@ export const performUpdateMutation = (options?: Partial<Options<PerformUpdateDat
     return mutationOptions;
 };
 
-export const checkForUpdatesQueryKey = (options?: Options<CheckForUpdatesData>) => createQueryKey('checkForUpdates', options);
+export const getCheckQueryKey = (options?: Options<GetCheckData>) => createQueryKey('getCheck', options);
 
 /**
  * Check for updates
  *
- * Check for updates.
+ * Get check.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const checkForUpdatesOptions = (options?: Options<CheckForUpdatesData>) => queryOptions<CheckForUpdatesResponse, CheckForUpdatesError, CheckForUpdatesResponse, ReturnType<typeof checkForUpdatesQueryKey>>({
+export const getCheckOptions = (options?: Options<GetCheckData>) => queryOptions<GetCheckResponse, GetCheckError, GetCheckResponse, ReturnType<typeof getCheckQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await checkForUpdates({
+        const { data } = await getCheck({
             ...options,
             ...queryKey[0],
             signal,
@@ -2755,23 +2915,23 @@ export const checkForUpdatesOptions = (options?: Options<CheckForUpdatesData>) =
         });
         return data;
     },
-    queryKey: checkForUpdatesQueryKey(options)
+    queryKey: getCheckQueryKey(options)
 });
 
-export const getCurrentUserProfileQueryKey = (options?: Options<GetCurrentUserProfileData>) => createQueryKey('getCurrentUserProfile', options);
+export const getEndpoint2QueryKey = (options?: Options<GetEndpoint2Data>) => createQueryKey('getEndpoint2', options);
 
 /**
  * Get current user profile
  *
- * Get current user profile.
+ * Get endpoint.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getCurrentUserProfileOptions = (options?: Options<GetCurrentUserProfileData>) => queryOptions<GetCurrentUserProfileResponse, GetCurrentUserProfileError, GetCurrentUserProfileResponse, ReturnType<typeof getCurrentUserProfileQueryKey>>({
+export const getEndpoint2Options = (options?: Options<GetEndpoint2Data>) => queryOptions<GetEndpoint2Response, GetEndpoint2Error, GetEndpoint2Response, ReturnType<typeof getEndpoint2QueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getCurrentUserProfile({
+        const { data } = await getEndpoint2({
             ...options,
             ...queryKey[0],
             signal,
@@ -2779,22 +2939,22 @@ export const getCurrentUserProfileOptions = (options?: Options<GetCurrentUserPro
         });
         return data;
     },
-    queryKey: getCurrentUserProfileQueryKey(options)
+    queryKey: getEndpoint2QueryKey(options)
 });
 
 /**
  * Update user avatar
  *
- * Update user avatar.
+ * Patch avatar.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateUserAvatarMutation = (options?: Partial<Options<UpdateUserAvatarData>>): UseMutationOptions<UpdateUserAvatarResponse, UpdateUserAvatarError, Options<UpdateUserAvatarData>> => {
-    const mutationOptions: UseMutationOptions<UpdateUserAvatarResponse, UpdateUserAvatarError, Options<UpdateUserAvatarData>> = {
+export const patchAvatarMutation = (options?: Partial<Options<PatchAvatarData>>): UseMutationOptions<PatchAvatarResponse, PatchAvatarError, Options<PatchAvatarData>> => {
+    const mutationOptions: UseMutationOptions<PatchAvatarResponse, PatchAvatarError, Options<PatchAvatarData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateUserAvatar({
+            const { data } = await patchAvatar({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2808,16 +2968,16 @@ export const updateUserAvatarMutation = (options?: Partial<Options<UpdateUserAva
 /**
  * Update user name
  *
- * Update user name.
+ * Patch name.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateUserNameMutation = (options?: Partial<Options<UpdateUserNameData>>): UseMutationOptions<UpdateUserNameResponse, UpdateUserNameError, Options<UpdateUserNameData>> => {
-    const mutationOptions: UseMutationOptions<UpdateUserNameResponse, UpdateUserNameError, Options<UpdateUserNameData>> = {
+export const patchNameMutation = (options?: Partial<Options<PatchNameData>>): UseMutationOptions<PatchNameResponse, PatchNameError, Options<PatchNameData>> => {
+    const mutationOptions: UseMutationOptions<PatchNameResponse, PatchNameError, Options<PatchNameData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateUserName({
+            const { data } = await patchName({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2828,20 +2988,20 @@ export const updateUserNameMutation = (options?: Partial<Options<UpdateUserNameD
     return mutationOptions;
 };
 
-export const checkOnboardingStatusQueryKey = (options?: Options<CheckOnboardingStatusData>) => createQueryKey('checkOnboardingStatus', options);
+export const getOnboardedQueryKey = (options?: Options<GetOnboardedData>) => createQueryKey('getOnboarded', options);
 
 /**
  * Check onboarding status
  *
- * Check onboarding status.
+ * Get onboarded.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const checkOnboardingStatusOptions = (options?: Options<CheckOnboardingStatusData>) => queryOptions<CheckOnboardingStatusResponse, CheckOnboardingStatusError, CheckOnboardingStatusResponse, ReturnType<typeof checkOnboardingStatusQueryKey>>({
+export const getOnboardedOptions = (options?: Options<GetOnboardedData>) => queryOptions<GetOnboardedResponse, GetOnboardedError, GetOnboardedResponse, ReturnType<typeof getOnboardedQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await checkOnboardingStatus({
+        const { data } = await getOnboarded({
             ...options,
             ...queryKey[0],
             signal,
@@ -2849,22 +3009,22 @@ export const checkOnboardingStatusOptions = (options?: Options<CheckOnboardingSt
         });
         return data;
     },
-    queryKey: checkOnboardingStatusQueryKey(options)
+    queryKey: getOnboardedQueryKey(options)
 });
 
 /**
  * Mark onboarding complete
  *
- * Mark onboarding complete.
+ * Create onboarded.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const markOnboardingCompleteMutation = (options?: Partial<Options<MarkOnboardingCompleteData>>): UseMutationOptions<MarkOnboardingCompleteResponse2, MarkOnboardingCompleteError, Options<MarkOnboardingCompleteData>> => {
-    const mutationOptions: UseMutationOptions<MarkOnboardingCompleteResponse2, MarkOnboardingCompleteError, Options<MarkOnboardingCompleteData>> = {
+export const createOnboardedMutation = (options?: Partial<Options<CreateOnboardedData>>): UseMutationOptions<CreateOnboardedResponse, CreateOnboardedError, Options<CreateOnboardedData>> => {
+    const mutationOptions: UseMutationOptions<CreateOnboardedResponse, CreateOnboardedError, Options<CreateOnboardedData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await markOnboardingComplete({
+            const { data } = await createOnboarded({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2875,20 +3035,20 @@ export const markOnboardingCompleteMutation = (options?: Partial<Options<MarkOnb
     return mutationOptions;
 };
 
-export const getUserPreferencesQueryKey = (options?: Options<GetUserPreferencesData>) => createQueryKey('getUserPreferences', options);
+export const getPreferencesQueryKey = (options?: Options<GetPreferencesData>) => createQueryKey('getPreferences', options);
 
 /**
  * Get user preferences
  *
- * Get user preferences.
+ * Get preferences.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getUserPreferencesOptions = (options?: Options<GetUserPreferencesData>) => queryOptions<GetUserPreferencesResponse, GetUserPreferencesError, GetUserPreferencesResponse, ReturnType<typeof getUserPreferencesQueryKey>>({
+export const getPreferencesOptions = (options?: Options<GetPreferencesData>) => queryOptions<GetPreferencesResponse, GetPreferencesError, GetPreferencesResponse, ReturnType<typeof getPreferencesQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getUserPreferences({
+        const { data } = await getPreferences({
             ...options,
             ...queryKey[0],
             signal,
@@ -2896,22 +3056,22 @@ export const getUserPreferencesOptions = (options?: Options<GetUserPreferencesDa
         });
         return data;
     },
-    queryKey: getUserPreferencesQueryKey(options)
+    queryKey: getPreferencesQueryKey(options)
 });
 
 /**
  * Update user preferences
  *
- * Update user preferences.
+ * Update preferences.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateUserPreferencesMutation = (options?: Partial<Options<UpdateUserPreferencesData>>): UseMutationOptions<UpdateUserPreferencesResponse, UpdateUserPreferencesError, Options<UpdateUserPreferencesData>> => {
-    const mutationOptions: UseMutationOptions<UpdateUserPreferencesResponse, UpdateUserPreferencesError, Options<UpdateUserPreferencesData>> = {
+export const updatePreferencesMutation = (options?: Partial<Options<UpdatePreferencesData>>): UseMutationOptions<UpdatePreferencesResponse, UpdatePreferencesError, Options<UpdatePreferencesData>> => {
+    const mutationOptions: UseMutationOptions<UpdatePreferencesResponse, UpdatePreferencesError, Options<UpdatePreferencesData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateUserPreferences({
+            const { data } = await updatePreferences({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2922,20 +3082,20 @@ export const updateUserPreferencesMutation = (options?: Partial<Options<UpdateUs
     return mutationOptions;
 };
 
-export const getUserSettingsQueryKey = (options?: Options<GetUserSettingsData>) => createQueryKey('getUserSettings', options);
+export const getSettingsQueryKey = (options?: Options<GetSettingsData>) => createQueryKey('getSettings', options);
 
 /**
  * Get user settings
  *
- * Get user settings.
+ * Get settings.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getUserSettingsOptions = (options?: Options<GetUserSettingsData>) => queryOptions<GetUserSettingsResponse, GetUserSettingsError, GetUserSettingsResponse, ReturnType<typeof getUserSettingsQueryKey>>({
+export const getSettingsOptions = (options?: Options<GetSettingsData>) => queryOptions<GetSettingsResponse, GetSettingsError, GetSettingsResponse, ReturnType<typeof getSettingsQueryKey>>({
     queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getUserSettings({
+        const { data } = await getSettings({
             ...options,
             ...queryKey[0],
             signal,
@@ -2943,22 +3103,22 @@ export const getUserSettingsOptions = (options?: Options<GetUserSettingsData>) =
         });
         return data;
     },
-    queryKey: getUserSettingsQueryKey(options)
+    queryKey: getSettingsQueryKey(options)
 });
 
 /**
  * Update auto-update settings
  *
- * Update auto-update settings.
+ * Patch auto update.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateAutoUpdateSettingsMutation = (options?: Partial<Options<UpdateAutoUpdateSettingsData>>): UseMutationOptions<UpdateAutoUpdateSettingsResponse, UpdateAutoUpdateSettingsError, Options<UpdateAutoUpdateSettingsData>> => {
-    const mutationOptions: UseMutationOptions<UpdateAutoUpdateSettingsResponse, UpdateAutoUpdateSettingsError, Options<UpdateAutoUpdateSettingsData>> = {
+export const patchAutoUpdateMutation = (options?: Partial<Options<PatchAutoUpdateData>>): UseMutationOptions<PatchAutoUpdateResponse, PatchAutoUpdateError, Options<PatchAutoUpdateData>> => {
+    const mutationOptions: UseMutationOptions<PatchAutoUpdateResponse, PatchAutoUpdateError, Options<PatchAutoUpdateData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateAutoUpdateSettings({
+            const { data } = await patchAutoUpdate({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2972,16 +3132,16 @@ export const updateAutoUpdateSettingsMutation = (options?: Partial<Options<Updat
 /**
  * Update font settings
  *
- * Update font settings.
+ * Patch font.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateFontSettingsMutation = (options?: Partial<Options<UpdateFontSettingsData>>): UseMutationOptions<UpdateFontSettingsResponse, UpdateFontSettingsError, Options<UpdateFontSettingsData>> => {
-    const mutationOptions: UseMutationOptions<UpdateFontSettingsResponse, UpdateFontSettingsError, Options<UpdateFontSettingsData>> = {
+export const patchFontMutation = (options?: Partial<Options<PatchFontData>>): UseMutationOptions<PatchFontResponse, PatchFontError, Options<PatchFontData>> => {
+    const mutationOptions: UseMutationOptions<PatchFontResponse, PatchFontError, Options<PatchFontData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateFontSettings({
+            const { data } = await patchFont({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -2995,16 +3155,16 @@ export const updateFontSettingsMutation = (options?: Partial<Options<UpdateFontS
 /**
  * Update language settings
  *
- * Update language settings.
+ * Patch language.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateLanguageSettingsMutation = (options?: Partial<Options<UpdateLanguageSettingsData>>): UseMutationOptions<UpdateLanguageSettingsResponse, UpdateLanguageSettingsError, Options<UpdateLanguageSettingsData>> => {
-    const mutationOptions: UseMutationOptions<UpdateLanguageSettingsResponse, UpdateLanguageSettingsError, Options<UpdateLanguageSettingsData>> = {
+export const patchLanguageMutation = (options?: Partial<Options<PatchLanguageData>>): UseMutationOptions<PatchLanguageResponse, PatchLanguageError, Options<PatchLanguageData>> => {
+    const mutationOptions: UseMutationOptions<PatchLanguageResponse, PatchLanguageError, Options<PatchLanguageData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateLanguageSettings({
+            const { data } = await patchLanguage({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -3018,16 +3178,16 @@ export const updateLanguageSettingsMutation = (options?: Partial<Options<UpdateL
 /**
  * Update theme settings
  *
- * Update theme settings.
+ * Patch theme.
  *
  * Auth: Required (bearer token).
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateThemeSettingsMutation = (options?: Partial<Options<UpdateThemeSettingsData>>): UseMutationOptions<UpdateThemeSettingsResponse, UpdateThemeSettingsError, Options<UpdateThemeSettingsData>> => {
-    const mutationOptions: UseMutationOptions<UpdateThemeSettingsResponse, UpdateThemeSettingsError, Options<UpdateThemeSettingsData>> = {
+export const patchThemeMutation = (options?: Partial<Options<PatchThemeData>>): UseMutationOptions<PatchThemeResponse, PatchThemeError, Options<PatchThemeData>> => {
+    const mutationOptions: UseMutationOptions<PatchThemeResponse, PatchThemeError, Options<PatchThemeData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await updateThemeSettings({
+            const { data } = await patchTheme({
                 ...options,
                 ...fnOptions,
                 throwOnError: true
@@ -3041,16 +3201,16 @@ export const updateThemeSettingsMutation = (options?: Partial<Options<UpdateThem
 /**
  * Handle GitHub webhook
  *
- * Handle GitHub webhook.
+ * Create endpoint.
  *
- * Auth: Public endpoint.
- * Scope: No organization scope required.
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const handleGitHubWebhookMutation = (options?: Partial<Options<HandleGitHubWebhookData>>): UseMutationOptions<HandleGitHubWebhookResponse, HandleGitHubWebhookError, Options<HandleGitHubWebhookData>> => {
-    const mutationOptions: UseMutationOptions<HandleGitHubWebhookResponse, HandleGitHubWebhookError, Options<HandleGitHubWebhookData>> = {
+export const createEndpointMutation = (options?: Partial<Options<CreateEndpointData>>): UseMutationOptions<CreateEndpointResponse, CreateEndpointError, Options<CreateEndpointData>> => {
+    const mutationOptions: UseMutationOptions<CreateEndpointResponse, CreateEndpointError, Options<CreateEndpointData>> = {
         mutationFn: async (fnOptions) => {
-            const { data } = await handleGitHubWebhook({
+            const { data } = await createEndpoint({
                 ...options,
                 ...fnOptions,
                 throwOnError: true

@@ -207,7 +207,6 @@ export type Application = {
         name?: string;
         organization_users?: Array<{
             created_at?: string;
-            deleted_at?: string;
             id?: string;
             organization?: {
                 created_at?: string;
@@ -218,7 +217,7 @@ export type Application = {
                 slug?: string;
             };
             organization_id?: string;
-            updated_at?: string;
+            role?: string;
             user?: User;
             user_id?: string;
         }>;
@@ -231,7 +230,6 @@ export type Application = {
             slug?: string;
         }>;
         provision_status?: string;
-        supertokens_user_id?: string;
         updated_at?: string;
         username?: string;
     };
@@ -250,7 +248,16 @@ export type ApplicationDeployment = {
     id?: string;
     image_s3_key?: string;
     image_size?: number;
-    logs?: Array<ApplicationLogs>;
+    logs?: Array<{
+        application?: Application;
+        application_deployment?: ApplicationDeployment;
+        application_deployment_id?: string;
+        application_id?: string;
+        created_at?: string;
+        id?: string;
+        log?: string;
+        updated_at?: string;
+    }>;
     status?: {
         application_deployment?: ApplicationDeployment;
         application_deployment_id?: string;
@@ -275,29 +282,7 @@ export type ApplicationDomain = {
 
 export type ApplicationLogs = {
     application?: Application;
-    application_deployment?: {
-        application?: Application;
-        application_id?: string;
-        commit_hash?: string;
-        container_id?: string;
-        container_image?: string;
-        container_name?: string;
-        container_status?: string;
-        created_at?: string;
-        id?: string;
-        image_s3_key?: string;
-        image_size?: number;
-        logs?: Array<ApplicationLogs>;
-        status?: {
-            application_deployment?: ApplicationDeployment;
-            application_deployment_id?: string;
-            created_at?: string;
-            id?: string;
-            status?: string;
-            updated_at?: string;
-        };
-        updated_at?: string;
-    };
+    application_deployment?: ApplicationDeployment;
     application_deployment_id?: string;
     application_id?: string;
     created_at?: string;
@@ -462,7 +447,6 @@ export type ApplicationResponse = {
             name?: string;
             organization_users?: Array<{
                 created_at?: string;
-                deleted_at?: string;
                 id?: string;
                 organization?: {
                     created_at?: string;
@@ -473,7 +457,7 @@ export type ApplicationResponse = {
                     slug?: string;
                 };
                 organization_id?: string;
-                updated_at?: string;
+                role?: string;
                 user?: User;
                 user_id?: string;
             }>;
@@ -486,7 +470,6 @@ export type ApplicationResponse = {
                 slug?: string;
             }>;
             provision_status?: string;
-            supertokens_user_id?: string;
             updated_at?: string;
             username?: string;
         };
@@ -538,7 +521,16 @@ export type ComposeService = {
     application?: Application;
     application_id?: string;
     created_at?: string;
-    domains?: Array<ApplicationDomain>;
+    domains?: Array<{
+        application?: Application;
+        application_id?: string;
+        compose_service?: ComposeService;
+        compose_service_id?: string;
+        created_at?: string;
+        domain?: string;
+        id?: string;
+        port?: number;
+    }>;
     id?: string;
     port?: number;
     service_name?: string;
@@ -675,7 +667,6 @@ export type ComposeServicesResponse = {
                 name?: string;
                 organization_users?: Array<{
                     created_at?: string;
-                    deleted_at?: string;
                     id?: string;
                     organization?: {
                         created_at?: string;
@@ -686,7 +677,7 @@ export type ComposeServicesResponse = {
                         slug?: string;
                     };
                     organization_id?: string;
-                    updated_at?: string;
+                    role?: string;
                     user?: User;
                     user_id?: string;
                 }>;
@@ -699,7 +690,6 @@ export type ComposeServicesResponse = {
                     slug?: string;
                 }>;
                 provision_status?: string;
-                supertokens_user_id?: string;
                 updated_at?: string;
                 username?: string;
             };
@@ -824,7 +814,6 @@ export type ComposeServicesResponse = {
                     name?: string;
                     organization_users?: Array<{
                         created_at?: string;
-                        deleted_at?: string;
                         id?: string;
                         organization?: {
                             created_at?: string;
@@ -835,7 +824,7 @@ export type ComposeServicesResponse = {
                             slug?: string;
                         };
                         organization_id?: string;
-                        updated_at?: string;
+                        role?: string;
                         user?: User;
                         user_id?: string;
                     }>;
@@ -848,7 +837,6 @@ export type ComposeServicesResponse = {
                         slug?: string;
                     }>;
                     provision_status?: string;
-                    supertokens_user_id?: string;
                     updated_at?: string;
                     username?: string;
                 };
@@ -1027,6 +1015,19 @@ export type CreateSmtpConfigRequest = {
 };
 
 /**
+ * CreateServerRequest schema
+ */
+export type CreateServerRequest = {
+    credentials?: {
+        [key: string]: string;
+    };
+    custom_url?: string;
+    enabled?: boolean;
+    name?: string;
+    provider_id?: string;
+};
+
+/**
  * CreateWebhookConfigRequest schema
  */
 export type CreateWebhookConfigRequest = {
@@ -1120,6 +1121,13 @@ export type DeleteGithubConnectorRequest = {
  * DeleteSMTPConfigRequest schema
  */
 export type DeleteSmtpConfigRequest = {
+    id?: string;
+};
+
+/**
+ * DeleteServerRequest schema
+ */
+export type DeleteServerRequest = {
     id?: string;
 };
 
@@ -1241,7 +1249,6 @@ export type DeploymentResponse = {
                 name?: string;
                 organization_users?: Array<{
                     created_at?: string;
-                    deleted_at?: string;
                     id?: string;
                     organization?: {
                         created_at?: string;
@@ -1252,7 +1259,7 @@ export type DeploymentResponse = {
                         slug?: string;
                     };
                     organization_id?: string;
-                    updated_at?: string;
+                    role?: string;
                     user?: User;
                     user_id?: string;
                 }>;
@@ -1265,7 +1272,6 @@ export type DeploymentResponse = {
                     slug?: string;
                 }>;
                 provision_status?: string;
-                supertokens_user_id?: string;
                 updated_at?: string;
                 username?: string;
             };
@@ -1372,7 +1378,6 @@ export type DeploymentResponse = {
                     name?: string;
                     organization_users?: Array<{
                         created_at?: string;
-                        deleted_at?: string;
                         id?: string;
                         organization?: {
                             created_at?: string;
@@ -1383,7 +1388,7 @@ export type DeploymentResponse = {
                             slug?: string;
                         };
                         organization_id?: string;
-                        updated_at?: string;
+                        role?: string;
                         user?: User;
                         user_id?: string;
                     }>;
@@ -1396,7 +1401,6 @@ export type DeploymentResponse = {
                         slug?: string;
                     }>;
                     provision_status?: string;
-                    supertokens_user_id?: string;
                     updated_at?: string;
                     username?: string;
                 };
@@ -1443,23 +1447,6 @@ export type EnvironmentsInFamilyResponse = {
     };
     message?: string;
     status?: string;
-};
-
-export type ErrorEnvelope = {
-    /**
-     * Machine-readable error code
-     */
-    code: string;
-    /**
-     * Additional context for programmatic handling
-     */
-    details?: {
-        [key: string]: string;
-    };
-    /**
-     * Human-readable error message
-     */
-    message: string;
 };
 
 /**
@@ -1985,7 +1972,6 @@ export type HealthCheckResult = {
                 name?: string;
                 organization_users?: Array<{
                     created_at?: string;
-                    deleted_at?: string;
                     id?: string;
                     organization?: {
                         created_at?: string;
@@ -1996,7 +1982,7 @@ export type HealthCheckResult = {
                         slug?: string;
                     };
                     organization_id?: string;
-                    updated_at?: string;
+                    role?: string;
                     user?: User;
                     user_id?: string;
                 }>;
@@ -2009,7 +1995,6 @@ export type HealthCheckResult = {
                     slug?: string;
                 }>;
                 provision_status?: string;
-                supertokens_user_id?: string;
                 updated_at?: string;
                 username?: string;
             };
@@ -2204,7 +2189,6 @@ export type HealthCheckResultsResponse = {
                     name?: string;
                     organization_users?: Array<{
                         created_at?: string;
-                        deleted_at?: string;
                         id?: string;
                         organization?: {
                             created_at?: string;
@@ -2215,7 +2199,7 @@ export type HealthCheckResultsResponse = {
                             slug?: string;
                         };
                         organization_id?: string;
-                        updated_at?: string;
+                        role?: string;
                         user?: User;
                         user_id?: string;
                     }>;
@@ -2228,7 +2212,6 @@ export type HealthCheckResultsResponse = {
                         slug?: string;
                     }>;
                     provision_status?: string;
-                    supertokens_user_id?: string;
                     updated_at?: string;
                     username?: string;
                 };
@@ -2494,7 +2477,6 @@ export type ListApplicationsResponse = {
                 name?: string;
                 organization_users?: Array<{
                     created_at?: string;
-                    deleted_at?: string;
                     id?: string;
                     organization?: {
                         created_at?: string;
@@ -2505,7 +2487,7 @@ export type ListApplicationsResponse = {
                         slug?: string;
                     };
                     organization_id?: string;
-                    updated_at?: string;
+                    role?: string;
                     user?: User;
                     user_id?: string;
                 }>;
@@ -2518,7 +2500,6 @@ export type ListApplicationsResponse = {
                     slug?: string;
                 }>;
                 provision_status?: string;
-                supertokens_user_id?: string;
                 updated_at?: string;
                 username?: string;
             };
@@ -2807,7 +2788,6 @@ export type ListDeploymentsResponse = {
                     name?: string;
                     organization_users?: Array<{
                         created_at?: string;
-                        deleted_at?: string;
                         id?: string;
                         organization?: {
                             created_at?: string;
@@ -2818,7 +2798,7 @@ export type ListDeploymentsResponse = {
                             slug?: string;
                         };
                         organization_id?: string;
-                        updated_at?: string;
+                        role?: string;
                         user?: User;
                         user_id?: string;
                     }>;
@@ -2831,7 +2811,6 @@ export type ListDeploymentsResponse = {
                         slug?: string;
                     }>;
                     provision_status?: string;
-                    supertokens_user_id?: string;
                     updated_at?: string;
                     username?: string;
                 };
@@ -2938,7 +2917,6 @@ export type ListDeploymentsResponse = {
                         name?: string;
                         organization_users?: Array<{
                             created_at?: string;
-                            deleted_at?: string;
                             id?: string;
                             organization?: {
                                 created_at?: string;
@@ -2949,7 +2927,7 @@ export type ListDeploymentsResponse = {
                                 slug?: string;
                             };
                             organization_id?: string;
-                            updated_at?: string;
+                            role?: string;
                             user?: User;
                             user_id?: string;
                         }>;
@@ -2962,7 +2940,6 @@ export type ListDeploymentsResponse = {
                             slug?: string;
                         }>;
                         provision_status?: string;
-                        supertokens_user_id?: string;
                         updated_at?: string;
                         username?: string;
                     };
@@ -3476,7 +3453,6 @@ export type ListServersResponse = {
                     name?: string;
                     organization_users?: Array<{
                         created_at?: string;
-                        deleted_at?: string;
                         id?: string;
                         organization?: {
                             created_at?: string;
@@ -3487,7 +3463,7 @@ export type ListServersResponse = {
                             slug?: string;
                         };
                         organization_id?: string;
-                        updated_at?: string;
+                        role?: string;
                         user?: User;
                         user_id?: string;
                     }>;
@@ -3500,7 +3476,6 @@ export type ListServersResponse = {
                         slug?: string;
                     }>;
                     provision_status?: string;
-                    supertokens_user_id?: string;
                     updated_at?: string;
                     username?: string;
                 };
@@ -3638,7 +3613,6 @@ export type LogsResponse = {
                     name?: string;
                     organization_users?: Array<{
                         created_at?: string;
-                        deleted_at?: string;
                         id?: string;
                         organization?: {
                             created_at?: string;
@@ -3649,7 +3623,7 @@ export type LogsResponse = {
                             slug?: string;
                         };
                         organization_id?: string;
-                        updated_at?: string;
+                        role?: string;
                         user?: User;
                         user_id?: string;
                     }>;
@@ -3662,7 +3636,6 @@ export type LogsResponse = {
                         slug?: string;
                     }>;
                     provision_status?: string;
-                    supertokens_user_id?: string;
                     updated_at?: string;
                     username?: string;
                 };
@@ -3759,7 +3732,6 @@ export type LogsResponse = {
                         name?: string;
                         organization_users?: Array<{
                             created_at?: string;
-                            deleted_at?: string;
                             id?: string;
                             organization?: {
                                 created_at?: string;
@@ -3770,7 +3742,7 @@ export type LogsResponse = {
                                 slug?: string;
                             };
                             organization_id?: string;
-                            updated_at?: string;
+                            role?: string;
                             user?: User;
                             user_id?: string;
                         }>;
@@ -3783,7 +3755,6 @@ export type LogsResponse = {
                             slug?: string;
                         }>;
                         provision_status?: string;
-                        supertokens_user_id?: string;
                         updated_at?: string;
                         username?: string;
                     };
@@ -4096,7 +4067,6 @@ export type ProjectFamilyResponse = {
                 name?: string;
                 organization_users?: Array<{
                     created_at?: string;
-                    deleted_at?: string;
                     id?: string;
                     organization?: {
                         created_at?: string;
@@ -4107,7 +4077,7 @@ export type ProjectFamilyResponse = {
                         slug?: string;
                     };
                     organization_id?: string;
-                    updated_at?: string;
+                    role?: string;
                     user?: User;
                     user_id?: string;
                 }>;
@@ -4120,7 +4090,6 @@ export type ProjectFamilyResponse = {
                     slug?: string;
                 }>;
                 provision_status?: string;
-                supertokens_user_id?: string;
                 updated_at?: string;
                 username?: string;
             };
@@ -4249,6 +4218,15 @@ export type RemoveApplicationDomainRequest = {
  */
 export type RemoveCustomDomainRequest = {
     id?: string;
+};
+
+/**
+ * Response schema
+ */
+export type Response = {
+    data?: unknown;
+    message?: string;
+    status?: string;
 };
 
 /**
@@ -4429,6 +4407,17 @@ export type SystemStatsResponse = {
     };
     message?: string;
     status?: string;
+};
+
+/**
+ * TestServerRequest schema
+ */
+export type TestServerRequest = {
+    credentials?: {
+        [key: string]: string;
+    };
+    custom_url?: string;
+    provider_id?: string;
 };
 
 /**
@@ -4630,6 +4619,19 @@ export type UpdateSmtpConfigRequest = {
 };
 
 /**
+ * UpdateServerRequest schema
+ */
+export type UpdateServerRequest = {
+    credentials?: {
+        [key: string]: string;
+    };
+    custom_url?: string;
+    enabled?: boolean;
+    id?: string;
+    name?: string;
+};
+
+/**
  * UpdateThemeRequest schema
  */
 export type UpdateThemeRequest = {
@@ -4675,7 +4677,6 @@ export type User = {
     name?: string;
     organization_users?: Array<{
         created_at?: string;
-        deleted_at?: string;
         id?: string;
         organization?: {
             created_at?: string;
@@ -4686,7 +4687,7 @@ export type User = {
             slug?: string;
         };
         organization_id?: string;
-        updated_at?: string;
+        role?: string;
         user?: User;
         user_id?: string;
     }>;
@@ -4699,7 +4700,6 @@ export type User = {
         slug?: string;
     }>;
     provision_status?: string;
-    supertokens_user_id?: string;
     updated_at?: string;
     username?: string;
 };
@@ -4756,7 +4756,6 @@ export type UserPreferencesResponse = {
             name?: string;
             organization_users?: Array<{
                 created_at?: string;
-                deleted_at?: string;
                 id?: string;
                 organization?: {
                     created_at?: string;
@@ -4767,7 +4766,7 @@ export type UserPreferencesResponse = {
                     slug?: string;
                 };
                 organization_id?: string;
-                updated_at?: string;
+                role?: string;
                 user?: User;
                 user_id?: string;
             }>;
@@ -4780,7 +4779,6 @@ export type UserPreferencesResponse = {
                 slug?: string;
             }>;
             provision_status?: string;
-            supertokens_user_id?: string;
             updated_at?: string;
             username?: string;
         };
@@ -4806,7 +4804,6 @@ export type UserResponse = {
         name?: string;
         organization_users?: Array<{
             created_at?: string;
-            deleted_at?: string;
             id?: string;
             organization?: {
                 created_at?: string;
@@ -4817,7 +4814,7 @@ export type UserResponse = {
                 slug?: string;
             };
             organization_id?: string;
-            updated_at?: string;
+            role?: string;
             user?: User;
             user_id?: string;
         }>;
@@ -4830,7 +4827,6 @@ export type UserResponse = {
             slug?: string;
         }>;
         provision_status?: string;
-        supertokens_user_id?: string;
         updated_at?: string;
         username?: string;
     };
@@ -4864,7 +4860,6 @@ export type UserSettingsResponse = {
             name?: string;
             organization_users?: Array<{
                 created_at?: string;
-                deleted_at?: string;
                 id?: string;
                 organization?: {
                     created_at?: string;
@@ -4875,7 +4870,7 @@ export type UserSettingsResponse = {
                     slug?: string;
                 };
                 organization_id?: string;
-                updated_at?: string;
+                role?: string;
                 user?: User;
                 user_id?: string;
             }>;
@@ -4888,7 +4883,6 @@ export type UserSettingsResponse = {
                 slug?: string;
             }>;
             provision_status?: string;
-            supertokens_user_id?: string;
             updated_at?: string;
             username?: string;
         };
@@ -4928,7 +4922,7 @@ export type WebhookConfigResponse = {
  */
 export type UnknownInterface = unknown;
 
-export type ListAuditLogsData = {
+export type GetLogs3Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -4955,30 +4949,30 @@ export type ListAuditLogsData = {
     url: '/api/v1/audit/logs';
 };
 
-export type ListAuditLogsErrors = {
+export type GetLogs3Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListAuditLogsError = ListAuditLogsErrors[keyof ListAuditLogsErrors];
+export type GetLogs3Error = GetLogs3Errors[keyof GetLogs3Errors];
 
-export type ListAuditLogsResponses = {
+export type GetLogs3Responses = {
     /**
      * OK
      */
     200: GetActivitiesResponse;
 };
 
-export type ListAuditLogsResponse = ListAuditLogsResponses[keyof ListAuditLogsResponses];
+export type GetLogs3Response = GetLogs3Responses[keyof GetLogs3Responses];
 
-export type GetBootstrapSessionDataData = {
+export type GetBootstrapData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -4988,30 +4982,30 @@ export type GetBootstrapSessionDataData = {
     url: '/api/v1/auth/bootstrap';
 };
 
-export type GetBootstrapSessionDataErrors = {
+export type GetBootstrapErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetBootstrapSessionDataError = GetBootstrapSessionDataErrors[keyof GetBootstrapSessionDataErrors];
+export type GetBootstrapError = GetBootstrapErrors[keyof GetBootstrapErrors];
 
-export type GetBootstrapSessionDataResponses = {
+export type GetBootstrapResponses = {
     /**
      * OK
      */
     200: BootstrapResponse;
 };
 
-export type GetBootstrapSessionDataResponse = GetBootstrapSessionDataResponses[keyof GetBootstrapSessionDataResponses];
+export type GetBootstrapResponse = GetBootstrapResponses[keyof GetBootstrapResponses];
 
-export type CheckAdminRegistrationData = {
+export type GetIsAdminRegisteredData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -5021,30 +5015,30 @@ export type CheckAdminRegistrationData = {
     url: '/api/v1/auth/is-admin-registered';
 };
 
-export type CheckAdminRegistrationErrors = {
+export type GetIsAdminRegisteredErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type CheckAdminRegistrationError = CheckAdminRegistrationErrors[keyof CheckAdminRegistrationErrors];
+export type GetIsAdminRegisteredError = GetIsAdminRegisteredErrors[keyof GetIsAdminRegisteredErrors];
 
-export type CheckAdminRegistrationResponses = {
+export type GetIsAdminRegisteredResponses = {
     /**
      * OK
      */
     200: AdminRegisteredResponse;
 };
 
-export type CheckAdminRegistrationResponse = CheckAdminRegistrationResponses[keyof CheckAdminRegistrationResponses];
+export type GetIsAdminRegisteredResponse = GetIsAdminRegisteredResponses[keyof GetIsAdminRegisteredResponses];
 
-export type ListContainersData = {
+export type GetEndpoint9Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -5054,30 +5048,30 @@ export type ListContainersData = {
     url: '/api/v1/container';
 };
 
-export type ListContainersErrors = {
+export type GetEndpoint9Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListContainersError = ListContainersErrors[keyof ListContainersErrors];
+export type GetEndpoint9Error = GetEndpoint9Errors[keyof GetEndpoint9Errors];
 
-export type ListContainersResponses = {
+export type GetEndpoint9Responses = {
     /**
      * OK
      */
     200: ListContainersResponse;
 };
 
-export type ListContainersResponse2 = ListContainersResponses[keyof ListContainersResponses];
+export type GetEndpoint9Response = GetEndpoint9Responses[keyof GetEndpoint9Responses];
 
-export type ListImagesData = {
+export type CreateImages2Data = {
     /**
      * Request body for controller.ListImagesRequest
      */
@@ -5090,30 +5084,30 @@ export type ListImagesData = {
     url: '/api/v1/container/images';
 };
 
-export type ListImagesErrors = {
+export type CreateImages2Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListImagesError = ListImagesErrors[keyof ListImagesErrors];
+export type CreateImages2Error = CreateImages2Errors[keyof CreateImages2Errors];
 
-export type ListImagesResponses = {
+export type CreateImages2Responses = {
     /**
      * OK
      */
     200: ListImagesResponse;
 };
 
-export type ListImagesResponse2 = ListImagesResponses[keyof ListImagesResponses];
+export type CreateImages2Response = CreateImages2Responses[keyof CreateImages2Responses];
 
-export type PruneBuildCacheData = {
+export type CreateBuildCacheData = {
     /**
      * Request body for controller.PruneBuildCacheRequest
      */
@@ -5126,30 +5120,30 @@ export type PruneBuildCacheData = {
     url: '/api/v1/container/prune/build-cache';
 };
 
-export type PruneBuildCacheErrors = {
+export type CreateBuildCacheErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type PruneBuildCacheError = PruneBuildCacheErrors[keyof PruneBuildCacheErrors];
+export type CreateBuildCacheError = CreateBuildCacheErrors[keyof CreateBuildCacheErrors];
 
-export type PruneBuildCacheResponses = {
+export type CreateBuildCacheResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type PruneBuildCacheResponse = PruneBuildCacheResponses[keyof PruneBuildCacheResponses];
+export type CreateBuildCacheResponse = CreateBuildCacheResponses[keyof CreateBuildCacheResponses];
 
-export type PruneImagesData = {
+export type CreateImagesData = {
     /**
      * Request body for controller.PruneImagesRequest
      */
@@ -5162,30 +5156,30 @@ export type PruneImagesData = {
     url: '/api/v1/container/prune/images';
 };
 
-export type PruneImagesErrors = {
+export type CreateImagesErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type PruneImagesError = PruneImagesErrors[keyof PruneImagesErrors];
+export type CreateImagesError = CreateImagesErrors[keyof CreateImagesErrors];
 
-export type PruneImagesResponses = {
+export type CreateImagesResponses = {
     /**
      * OK
      */
     200: PruneImagesResponse;
 };
 
-export type PruneImagesResponse2 = PruneImagesResponses[keyof PruneImagesResponses];
+export type CreateImagesResponse = CreateImagesResponses[keyof CreateImagesResponses];
 
-export type RemoveContainerData = {
+export type DeleteContainerIdData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -5197,30 +5191,30 @@ export type RemoveContainerData = {
     url: '/api/v1/container/{container_id}';
 };
 
-export type RemoveContainerErrors = {
+export type DeleteContainerIdErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type RemoveContainerError = RemoveContainerErrors[keyof RemoveContainerErrors];
+export type DeleteContainerIdError = DeleteContainerIdErrors[keyof DeleteContainerIdErrors];
 
-export type RemoveContainerResponses = {
+export type DeleteContainerIdResponses = {
     /**
      * OK
      */
     200: ContainerActionResponse;
 };
 
-export type RemoveContainerResponse = RemoveContainerResponses[keyof RemoveContainerResponses];
+export type DeleteContainerIdResponse = DeleteContainerIdResponses[keyof DeleteContainerIdResponses];
 
-export type GetContainerData = {
+export type GetContainerIdData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -5232,30 +5226,30 @@ export type GetContainerData = {
     url: '/api/v1/container/{container_id}';
 };
 
-export type GetContainerErrors = {
+export type GetContainerIdErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetContainerError = GetContainerErrors[keyof GetContainerErrors];
+export type GetContainerIdError = GetContainerIdErrors[keyof GetContainerIdErrors];
 
-export type GetContainerResponses = {
+export type GetContainerIdResponses = {
     /**
      * OK
      */
     200: GetContainerResponse;
 };
 
-export type GetContainerResponse2 = GetContainerResponses[keyof GetContainerResponses];
+export type GetContainerIdResponse = GetContainerIdResponses[keyof GetContainerIdResponses];
 
-export type GetContainerLogsData = {
+export type CreateLogsData = {
     /**
      * Request body for types.ContainerLogsRequest
      */
@@ -5270,30 +5264,30 @@ export type GetContainerLogsData = {
     url: '/api/v1/container/{container_id}/logs';
 };
 
-export type GetContainerLogsErrors = {
+export type CreateLogsErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetContainerLogsError = GetContainerLogsErrors[keyof GetContainerLogsErrors];
+export type CreateLogsError = CreateLogsErrors[keyof CreateLogsErrors];
 
-export type GetContainerLogsResponses = {
+export type CreateLogsResponses = {
     /**
      * OK
      */
     200: ContainerLogsResponse;
 };
 
-export type GetContainerLogsResponse = GetContainerLogsResponses[keyof GetContainerLogsResponses];
+export type CreateLogsResponse = CreateLogsResponses[keyof CreateLogsResponses];
 
-export type UpdateContainerResourcesData = {
+export type UpdateResourcesData = {
     /**
      * Request body for types.UpdateContainerResourcesRequest
      */
@@ -5308,30 +5302,30 @@ export type UpdateContainerResourcesData = {
     url: '/api/v1/container/{container_id}/resources';
 };
 
-export type UpdateContainerResourcesErrors = {
+export type UpdateResourcesErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateContainerResourcesError = UpdateContainerResourcesErrors[keyof UpdateContainerResourcesErrors];
+export type UpdateResourcesError = UpdateResourcesErrors[keyof UpdateResourcesErrors];
 
-export type UpdateContainerResourcesResponses = {
+export type UpdateResourcesResponses = {
     /**
      * OK
      */
     200: UpdateContainerResourcesResponse;
 };
 
-export type UpdateContainerResourcesResponse2 = UpdateContainerResourcesResponses[keyof UpdateContainerResourcesResponses];
+export type UpdateResourcesResponse = UpdateResourcesResponses[keyof UpdateResourcesResponses];
 
-export type RestartContainerData = {
+export type CreateRestart2Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -5343,30 +5337,30 @@ export type RestartContainerData = {
     url: '/api/v1/container/{container_id}/restart';
 };
 
-export type RestartContainerErrors = {
+export type CreateRestart2Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type RestartContainerError = RestartContainerErrors[keyof RestartContainerErrors];
+export type CreateRestart2Error = CreateRestart2Errors[keyof CreateRestart2Errors];
 
-export type RestartContainerResponses = {
+export type CreateRestart2Responses = {
     /**
      * OK
      */
     200: ContainerActionResponse;
 };
 
-export type RestartContainerResponse = RestartContainerResponses[keyof RestartContainerResponses];
+export type CreateRestart2Response = CreateRestart2Responses[keyof CreateRestart2Responses];
 
-export type StartContainerData = {
+export type CreateStartData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -5378,30 +5372,30 @@ export type StartContainerData = {
     url: '/api/v1/container/{container_id}/start';
 };
 
-export type StartContainerErrors = {
+export type CreateStartErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type StartContainerError = StartContainerErrors[keyof StartContainerErrors];
+export type CreateStartError = CreateStartErrors[keyof CreateStartErrors];
 
-export type StartContainerResponses = {
+export type CreateStartResponses = {
     /**
      * OK
      */
     200: ContainerActionResponse;
 };
 
-export type StartContainerResponse = StartContainerResponses[keyof StartContainerResponses];
+export type CreateStartResponse = CreateStartResponses[keyof CreateStartResponses];
 
-export type StopContainerData = {
+export type CreateStopData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -5413,30 +5407,30 @@ export type StopContainerData = {
     url: '/api/v1/container/{container_id}/stop';
 };
 
-export type StopContainerErrors = {
+export type CreateStopErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type StopContainerError = StopContainerErrors[keyof StopContainerErrors];
+export type CreateStopError = CreateStopErrors[keyof CreateStopErrors];
 
-export type StopContainerResponses = {
+export type CreateStopResponses = {
     /**
      * OK
      */
     200: ContainerActionResponse;
 };
 
-export type StopContainerResponse = StopContainerResponses[keyof StopContainerResponses];
+export type CreateStopResponse = CreateStopResponses[keyof CreateStopResponses];
 
-export type DeleteApplicationData = {
+export type DeleteEndpoint4Data = {
     /**
      * Request body for types.DeleteDeploymentRequest
      */
@@ -5449,30 +5443,30 @@ export type DeleteApplicationData = {
     url: '/api/v1/deploy/application';
 };
 
-export type DeleteApplicationErrors = {
+export type DeleteEndpoint4Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type DeleteApplicationError = DeleteApplicationErrors[keyof DeleteApplicationErrors];
+export type DeleteEndpoint4Error = DeleteEndpoint4Errors[keyof DeleteEndpoint4Errors];
 
-export type DeleteApplicationResponses = {
+export type DeleteEndpoint4Responses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type DeleteApplicationResponse = DeleteApplicationResponses[keyof DeleteApplicationResponses];
+export type DeleteEndpoint4Response = DeleteEndpoint4Responses[keyof DeleteEndpoint4Responses];
 
-export type GetApplicationData = {
+export type GetEndpoint7Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -5487,30 +5481,30 @@ export type GetApplicationData = {
     url: '/api/v1/deploy/application';
 };
 
-export type GetApplicationErrors = {
+export type GetEndpoint7Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetApplicationError = GetApplicationErrors[keyof GetApplicationErrors];
+export type GetEndpoint7Error = GetEndpoint7Errors[keyof GetEndpoint7Errors];
 
-export type GetApplicationResponses = {
+export type GetEndpoint7Responses = {
     /**
      * OK
      */
     200: ApplicationResponse;
 };
 
-export type GetApplicationResponse = GetApplicationResponses[keyof GetApplicationResponses];
+export type GetEndpoint7Response = GetEndpoint7Responses[keyof GetEndpoint7Responses];
 
-export type DeployApplicationData = {
+export type CreateEndpoint6Data = {
     /**
      * Request body for types.CreateDeploymentRequest
      */
@@ -5523,30 +5517,30 @@ export type DeployApplicationData = {
     url: '/api/v1/deploy/application';
 };
 
-export type DeployApplicationErrors = {
+export type CreateEndpoint6Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type DeployApplicationError = DeployApplicationErrors[keyof DeployApplicationErrors];
+export type CreateEndpoint6Error = CreateEndpoint6Errors[keyof CreateEndpoint6Errors];
 
-export type DeployApplicationResponses = {
+export type CreateEndpoint6Responses = {
     /**
      * OK
      */
     200: ApplicationResponse;
 };
 
-export type DeployApplicationResponse = DeployApplicationResponses[keyof DeployApplicationResponses];
+export type CreateEndpoint6Response = CreateEndpoint6Responses[keyof CreateEndpoint6Responses];
 
-export type UpdateApplicationData = {
+export type UpdateEndpoint4Data = {
     /**
      * Request body for types.UpdateDeploymentRequest
      */
@@ -5559,30 +5553,30 @@ export type UpdateApplicationData = {
     url: '/api/v1/deploy/application';
 };
 
-export type UpdateApplicationErrors = {
+export type UpdateEndpoint4Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateApplicationError = UpdateApplicationErrors[keyof UpdateApplicationErrors];
+export type UpdateEndpoint4Error = UpdateEndpoint4Errors[keyof UpdateEndpoint4Errors];
 
-export type UpdateApplicationResponses = {
+export type UpdateEndpoint4Responses = {
     /**
      * OK
      */
     200: ApplicationResponse;
 };
 
-export type UpdateApplicationResponse = UpdateApplicationResponses[keyof UpdateApplicationResponses];
+export type UpdateEndpoint4Response = UpdateEndpoint4Responses[keyof UpdateEndpoint4Responses];
 
-export type CancelDeploymentData = {
+export type CreateCancelDeploymentData = {
     /**
      * Request body for types.CancelDeploymentRequest
      */
@@ -5595,30 +5589,30 @@ export type CancelDeploymentData = {
     url: '/api/v1/deploy/application/cancel-deployment';
 };
 
-export type CancelDeploymentErrors = {
+export type CreateCancelDeploymentErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type CancelDeploymentError = CancelDeploymentErrors[keyof CancelDeploymentErrors];
+export type CreateCancelDeploymentError = CreateCancelDeploymentErrors[keyof CreateCancelDeploymentErrors];
 
-export type CancelDeploymentResponses = {
+export type CreateCancelDeploymentResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type CancelDeploymentResponse = CancelDeploymentResponses[keyof CancelDeploymentResponses];
+export type CreateCancelDeploymentResponse = CreateCancelDeploymentResponses[keyof CreateCancelDeploymentResponses];
 
-export type ListComposeServicesData = {
+export type GetComposeServicesData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -5633,30 +5627,30 @@ export type ListComposeServicesData = {
     url: '/api/v1/deploy/application/compose-services';
 };
 
-export type ListComposeServicesErrors = {
+export type GetComposeServicesErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListComposeServicesError = ListComposeServicesErrors[keyof ListComposeServicesErrors];
+export type GetComposeServicesError = GetComposeServicesErrors[keyof GetComposeServicesErrors];
 
-export type ListComposeServicesResponses = {
+export type GetComposeServicesResponses = {
     /**
      * OK
      */
     200: ComposeServicesResponse;
 };
 
-export type ListComposeServicesResponse = ListComposeServicesResponses[keyof ListComposeServicesResponses];
+export type GetComposeServicesResponse = GetComposeServicesResponses[keyof GetComposeServicesResponses];
 
-export type ListApplicationDeploymentsData = {
+export type GetDeployments2Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -5679,30 +5673,30 @@ export type ListApplicationDeploymentsData = {
     url: '/api/v1/deploy/application/deployments';
 };
 
-export type ListApplicationDeploymentsErrors = {
+export type GetDeployments2Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListApplicationDeploymentsError = ListApplicationDeploymentsErrors[keyof ListApplicationDeploymentsErrors];
+export type GetDeployments2Error = GetDeployments2Errors[keyof GetDeployments2Errors];
 
-export type ListApplicationDeploymentsResponses = {
+export type GetDeployments2Responses = {
     /**
      * OK
      */
     200: ListDeploymentsResponse;
 };
 
-export type ListApplicationDeploymentsResponse = ListApplicationDeploymentsResponses[keyof ListApplicationDeploymentsResponses];
+export type GetDeployments2Response = GetDeployments2Responses[keyof GetDeployments2Responses];
 
-export type GetDeploymentData = {
+export type GetDeploymentsData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -5714,30 +5708,30 @@ export type GetDeploymentData = {
     url: '/api/v1/deploy/application/deployments/{deployment_id}';
 };
 
-export type GetDeploymentErrors = {
+export type GetDeploymentsErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetDeploymentError = GetDeploymentErrors[keyof GetDeploymentErrors];
+export type GetDeploymentsError = GetDeploymentsErrors[keyof GetDeploymentsErrors];
 
-export type GetDeploymentResponses = {
+export type GetDeploymentsResponses = {
     /**
      * OK
      */
     200: DeploymentResponse;
 };
 
-export type GetDeploymentResponse = GetDeploymentResponses[keyof GetDeploymentResponses];
+export type GetDeploymentsResponse = GetDeploymentsResponses[keyof GetDeploymentsResponses];
 
-export type GetDeploymentLogsData = {
+export type GetLogs2Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -5774,30 +5768,30 @@ export type GetDeploymentLogsData = {
     url: '/api/v1/deploy/application/deployments/{deployment_id}/logs';
 };
 
-export type GetDeploymentLogsErrors = {
+export type GetLogs2Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetDeploymentLogsError = GetDeploymentLogsErrors[keyof GetDeploymentLogsErrors];
+export type GetLogs2Error = GetLogs2Errors[keyof GetLogs2Errors];
 
-export type GetDeploymentLogsResponses = {
+export type GetLogs2Responses = {
     /**
      * OK
      */
     200: LogsResponse;
 };
 
-export type GetDeploymentLogsResponse = GetDeploymentLogsResponses[keyof GetDeploymentLogsResponses];
+export type GetLogs2Response = GetLogs2Responses[keyof GetLogs2Responses];
 
-export type RemoveApplicationDomainData = {
+export type DeleteDomainsData = {
     /**
      * Request body for controller.RemoveApplicationDomainRequest
      */
@@ -5815,30 +5809,30 @@ export type RemoveApplicationDomainData = {
     url: '/api/v1/deploy/application/domains';
 };
 
-export type RemoveApplicationDomainErrors = {
+export type DeleteDomainsErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type RemoveApplicationDomainError = RemoveApplicationDomainErrors[keyof RemoveApplicationDomainErrors];
+export type DeleteDomainsError = DeleteDomainsErrors[keyof DeleteDomainsErrors];
 
-export type RemoveApplicationDomainResponses = {
+export type DeleteDomainsResponses = {
     /**
      * OK
      */
     200: ApplicationResponse;
 };
 
-export type RemoveApplicationDomainResponse = RemoveApplicationDomainResponses[keyof RemoveApplicationDomainResponses];
+export type DeleteDomainsResponse = DeleteDomainsResponses[keyof DeleteDomainsResponses];
 
-export type AddApplicationDomainData = {
+export type CreateDomainsData = {
     /**
      * Request body for controller.AddApplicationDomainRequest
      */
@@ -5856,30 +5850,30 @@ export type AddApplicationDomainData = {
     url: '/api/v1/deploy/application/domains';
 };
 
-export type AddApplicationDomainErrors = {
+export type CreateDomainsErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type AddApplicationDomainError = AddApplicationDomainErrors[keyof AddApplicationDomainErrors];
+export type CreateDomainsError = CreateDomainsErrors[keyof CreateDomainsErrors];
 
-export type AddApplicationDomainResponses = {
+export type CreateDomainsResponses = {
     /**
      * OK
      */
     200: ApplicationResponse;
 };
 
-export type AddApplicationDomainResponse = AddApplicationDomainResponses[keyof AddApplicationDomainResponses];
+export type CreateDomainsResponse = CreateDomainsResponses[keyof CreateDomainsResponses];
 
-export type UpdateApplicationLabelsData = {
+export type UpdateLabelsData = {
     /**
      * Request body for controller.UpdateLabelsRequest
      */
@@ -5897,30 +5891,30 @@ export type UpdateApplicationLabelsData = {
     url: '/api/v1/deploy/application/labels';
 };
 
-export type UpdateApplicationLabelsErrors = {
+export type UpdateLabelsErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateApplicationLabelsError = UpdateApplicationLabelsErrors[keyof UpdateApplicationLabelsErrors];
+export type UpdateLabelsError = UpdateLabelsErrors[keyof UpdateLabelsErrors];
 
-export type UpdateApplicationLabelsResponses = {
+export type UpdateLabelsResponses = {
     /**
      * OK
      */
     200: LabelsResponse;
 };
 
-export type UpdateApplicationLabelsResponse = UpdateApplicationLabelsResponses[keyof UpdateApplicationLabelsResponses];
+export type UpdateLabelsResponse = UpdateLabelsResponses[keyof UpdateLabelsResponses];
 
-export type GetApplicationLogsData = {
+export type GetLogsData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -5957,30 +5951,30 @@ export type GetApplicationLogsData = {
     url: '/api/v1/deploy/application/logs/{application_id}';
 };
 
-export type GetApplicationLogsErrors = {
+export type GetLogsErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetApplicationLogsError = GetApplicationLogsErrors[keyof GetApplicationLogsErrors];
+export type GetLogsError = GetLogsErrors[keyof GetLogsErrors];
 
-export type GetApplicationLogsResponses = {
+export type GetLogsResponses = {
     /**
      * OK
      */
     200: LogsResponse;
 };
 
-export type GetApplicationLogsResponse = GetApplicationLogsResponses[keyof GetApplicationLogsResponses];
+export type GetLogsResponse = GetLogsResponses[keyof GetLogsResponses];
 
-export type PreviewComposeServicesData = {
+export type CreatePreviewComposeData = {
     /**
      * Request body for types.PreviewComposeRequest
      */
@@ -5993,28 +5987,28 @@ export type PreviewComposeServicesData = {
     url: '/api/v1/deploy/application/preview-compose';
 };
 
-export type PreviewComposeServicesErrors = {
+export type CreatePreviewComposeErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type PreviewComposeServicesError = PreviewComposeServicesErrors[keyof PreviewComposeServicesErrors];
+export type CreatePreviewComposeError = CreatePreviewComposeErrors[keyof CreatePreviewComposeErrors];
 
-export type PreviewComposeServicesResponses = {
+export type CreatePreviewComposeResponses = {
     /**
      * OK
      */
     200: PreviewComposeResponse;
 };
 
-export type PreviewComposeServicesResponse = PreviewComposeServicesResponses[keyof PreviewComposeServicesResponses];
+export type CreatePreviewComposeResponse = CreatePreviewComposeResponses[keyof CreatePreviewComposeResponses];
 
 export type CreateProjectData = {
     /**
@@ -6033,11 +6027,11 @@ export type CreateProjectErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
@@ -6052,7 +6046,7 @@ export type CreateProjectResponses = {
 
 export type CreateProjectResponse = CreateProjectResponses[keyof CreateProjectResponses];
 
-export type AddProjectToFamilyData = {
+export type CreateAddToFamilyData = {
     /**
      * Request body for types.AddApplicationToFamilyRequest
      */
@@ -6065,30 +6059,30 @@ export type AddProjectToFamilyData = {
     url: '/api/v1/deploy/application/project/add-to-family';
 };
 
-export type AddProjectToFamilyErrors = {
+export type CreateAddToFamilyErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type AddProjectToFamilyError = AddProjectToFamilyErrors[keyof AddProjectToFamilyErrors];
+export type CreateAddToFamilyError = CreateAddToFamilyErrors[keyof CreateAddToFamilyErrors];
 
-export type AddProjectToFamilyResponses = {
+export type CreateAddToFamilyResponses = {
     /**
      * OK
      */
     200: ApplicationResponse;
 };
 
-export type AddProjectToFamilyResponse = AddProjectToFamilyResponses[keyof AddProjectToFamilyResponses];
+export type CreateAddToFamilyResponse = CreateAddToFamilyResponses[keyof CreateAddToFamilyResponses];
 
-export type DeployProjectData = {
+export type CreateDeployData = {
     /**
      * Request body for types.DeployProjectRequest
      */
@@ -6101,30 +6095,30 @@ export type DeployProjectData = {
     url: '/api/v1/deploy/application/project/deploy';
 };
 
-export type DeployProjectErrors = {
+export type CreateDeployErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type DeployProjectError = DeployProjectErrors[keyof DeployProjectErrors];
+export type CreateDeployError = CreateDeployErrors[keyof CreateDeployErrors];
 
-export type DeployProjectResponses = {
+export type CreateDeployResponses = {
     /**
      * OK
      */
     200: ApplicationResponse;
 };
 
-export type DeployProjectResponse = DeployProjectResponses[keyof DeployProjectResponses];
+export type CreateDeployResponse = CreateDeployResponses[keyof CreateDeployResponses];
 
-export type DuplicateProjectData = {
+export type CreateDuplicateData = {
     /**
      * Request body for types.DuplicateProjectRequest
      */
@@ -6137,30 +6131,30 @@ export type DuplicateProjectData = {
     url: '/api/v1/deploy/application/project/duplicate';
 };
 
-export type DuplicateProjectErrors = {
+export type CreateDuplicateErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type DuplicateProjectError = DuplicateProjectErrors[keyof DuplicateProjectErrors];
+export type CreateDuplicateError = CreateDuplicateErrors[keyof CreateDuplicateErrors];
 
-export type DuplicateProjectResponses = {
+export type CreateDuplicateResponses = {
     /**
      * OK
      */
     200: ApplicationResponse;
 };
 
-export type DuplicateProjectResponse = DuplicateProjectResponses[keyof DuplicateProjectResponses];
+export type CreateDuplicateResponse = CreateDuplicateResponses[keyof CreateDuplicateResponses];
 
-export type ListProjectsInFamilyData = {
+export type GetFamilyData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -6175,30 +6169,30 @@ export type ListProjectsInFamilyData = {
     url: '/api/v1/deploy/application/project/family';
 };
 
-export type ListProjectsInFamilyErrors = {
+export type GetFamilyErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListProjectsInFamilyError = ListProjectsInFamilyErrors[keyof ListProjectsInFamilyErrors];
+export type GetFamilyError = GetFamilyErrors[keyof GetFamilyErrors];
 
-export type ListProjectsInFamilyResponses = {
+export type GetFamilyResponses = {
     /**
      * OK
      */
     200: ProjectFamilyResponse;
 };
 
-export type ListProjectsInFamilyResponse = ListProjectsInFamilyResponses[keyof ListProjectsInFamilyResponses];
+export type GetFamilyResponse = GetFamilyResponses[keyof GetFamilyResponses];
 
-export type ListFamilyEnvironmentsData = {
+export type GetEnvironmentsData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -6213,30 +6207,30 @@ export type ListFamilyEnvironmentsData = {
     url: '/api/v1/deploy/application/project/family/environments';
 };
 
-export type ListFamilyEnvironmentsErrors = {
+export type GetEnvironmentsErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListFamilyEnvironmentsError = ListFamilyEnvironmentsErrors[keyof ListFamilyEnvironmentsErrors];
+export type GetEnvironmentsError = GetEnvironmentsErrors[keyof GetEnvironmentsErrors];
 
-export type ListFamilyEnvironmentsResponses = {
+export type GetEnvironmentsResponses = {
     /**
      * OK
      */
     200: EnvironmentsInFamilyResponse;
 };
 
-export type ListFamilyEnvironmentsResponse = ListFamilyEnvironmentsResponses[keyof ListFamilyEnvironmentsResponses];
+export type GetEnvironmentsResponse = GetEnvironmentsResponses[keyof GetEnvironmentsResponses];
 
-export type RecoverApplicationData = {
+export type CreateRecoverData = {
     /**
      * Request body for types.RecoverRequest
      */
@@ -6249,30 +6243,30 @@ export type RecoverApplicationData = {
     url: '/api/v1/deploy/application/recover';
 };
 
-export type RecoverApplicationErrors = {
+export type CreateRecoverErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type RecoverApplicationError = RecoverApplicationErrors[keyof RecoverApplicationErrors];
+export type CreateRecoverError = CreateRecoverErrors[keyof CreateRecoverErrors];
 
-export type RecoverApplicationResponses = {
+export type CreateRecoverResponses = {
     /**
      * OK
      */
     200: RecoverResponse;
 };
 
-export type RecoverApplicationResponse = RecoverApplicationResponses[keyof RecoverApplicationResponses];
+export type CreateRecoverResponse = CreateRecoverResponses[keyof CreateRecoverResponses];
 
-export type RedeployApplicationData = {
+export type CreateRedeployData = {
     /**
      * Request body for types.ReDeployApplicationRequest
      */
@@ -6285,30 +6279,30 @@ export type RedeployApplicationData = {
     url: '/api/v1/deploy/application/redeploy';
 };
 
-export type RedeployApplicationErrors = {
+export type CreateRedeployErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type RedeployApplicationError = RedeployApplicationErrors[keyof RedeployApplicationErrors];
+export type CreateRedeployError = CreateRedeployErrors[keyof CreateRedeployErrors];
 
-export type RedeployApplicationResponses = {
+export type CreateRedeployResponses = {
     /**
      * OK
      */
     200: ApplicationResponse;
 };
 
-export type RedeployApplicationResponse = RedeployApplicationResponses[keyof RedeployApplicationResponses];
+export type CreateRedeployResponse = CreateRedeployResponses[keyof CreateRedeployResponses];
 
-export type RestartDeploymentData = {
+export type CreateRestartData = {
     /**
      * Request body for types.RestartDeploymentRequest
      */
@@ -6321,30 +6315,30 @@ export type RestartDeploymentData = {
     url: '/api/v1/deploy/application/restart';
 };
 
-export type RestartDeploymentErrors = {
+export type CreateRestartErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type RestartDeploymentError = RestartDeploymentErrors[keyof RestartDeploymentErrors];
+export type CreateRestartError = CreateRestartErrors[keyof CreateRestartErrors];
 
-export type RestartDeploymentResponses = {
+export type CreateRestartResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type RestartDeploymentResponse = RestartDeploymentResponses[keyof RestartDeploymentResponses];
+export type CreateRestartResponse = CreateRestartResponses[keyof CreateRestartResponses];
 
-export type RollbackDeploymentData = {
+export type CreateRollbackData = {
     /**
      * Request body for types.RollbackDeploymentRequest
      */
@@ -6357,30 +6351,30 @@ export type RollbackDeploymentData = {
     url: '/api/v1/deploy/application/rollback';
 };
 
-export type RollbackDeploymentErrors = {
+export type CreateRollbackErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type RollbackDeploymentError = RollbackDeploymentErrors[keyof RollbackDeploymentErrors];
+export type CreateRollbackError = CreateRollbackErrors[keyof CreateRollbackErrors];
 
-export type RollbackDeploymentResponses = {
+export type CreateRollbackResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type RollbackDeploymentResponse = RollbackDeploymentResponses[keyof RollbackDeploymentResponses];
+export type CreateRollbackResponse = CreateRollbackResponses[keyof CreateRollbackResponses];
 
-export type ListApplicationsData = {
+export type GetApplicationsData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -6402,35 +6396,35 @@ export type ListApplicationsData = {
         /**
          * Sort direction
          */
-        sort_direction?: 'asc' | 'desc';
+        sort_direction?: string;
     };
     url: '/api/v1/deploy/applications';
 };
 
-export type ListApplicationsErrors = {
+export type GetApplicationsErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListApplicationsError = ListApplicationsErrors[keyof ListApplicationsErrors];
+export type GetApplicationsError = GetApplicationsErrors[keyof GetApplicationsErrors];
 
-export type ListApplicationsResponses = {
+export type GetApplicationsResponses = {
     /**
      * OK
      */
     200: ListApplicationsResponse;
 };
 
-export type ListApplicationsResponse2 = ListApplicationsResponses[keyof ListApplicationsResponses];
+export type GetApplicationsResponse = GetApplicationsResponses[keyof GetApplicationsResponses];
 
-export type ListDomainsData = {
+export type GetEndpoint3Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -6445,30 +6439,30 @@ export type ListDomainsData = {
     url: '/api/v1/domain';
 };
 
-export type ListDomainsErrors = {
+export type GetEndpoint3Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListDomainsError = ListDomainsErrors[keyof ListDomainsErrors];
+export type GetEndpoint3Error = GetEndpoint3Errors[keyof GetEndpoint3Errors];
 
-export type ListDomainsResponses = {
+export type GetEndpoint3Responses = {
     /**
      * OK
      */
     200: ListDomainsResponse;
 };
 
-export type ListDomainsResponse2 = ListDomainsResponses[keyof ListDomainsResponses];
+export type GetEndpoint3Response = GetEndpoint3Responses[keyof GetEndpoint3Responses];
 
-export type RemoveCustomDomainData = {
+export type DeleteCustomData = {
     /**
      * Request body for types.RemoveCustomDomainRequest
      */
@@ -6481,30 +6475,30 @@ export type RemoveCustomDomainData = {
     url: '/api/v1/domain/custom';
 };
 
-export type RemoveCustomDomainErrors = {
+export type DeleteCustomErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type RemoveCustomDomainError = RemoveCustomDomainErrors[keyof RemoveCustomDomainErrors];
+export type DeleteCustomError = DeleteCustomErrors[keyof DeleteCustomErrors];
 
-export type RemoveCustomDomainResponses = {
+export type DeleteCustomResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type RemoveCustomDomainResponse = RemoveCustomDomainResponses[keyof RemoveCustomDomainResponses];
+export type DeleteCustomResponse = DeleteCustomResponses[keyof DeleteCustomResponses];
 
-export type AddCustomDomainData = {
+export type CreateCustomData = {
     /**
      * Request body for types.AddCustomDomainRequest
      */
@@ -6517,30 +6511,30 @@ export type AddCustomDomainData = {
     url: '/api/v1/domain/custom';
 };
 
-export type AddCustomDomainErrors = {
+export type CreateCustomErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type AddCustomDomainError = AddCustomDomainErrors[keyof AddCustomDomainErrors];
+export type CreateCustomError = CreateCustomErrors[keyof CreateCustomErrors];
 
-export type AddCustomDomainResponses = {
+export type CreateCustomResponses = {
     /**
      * OK
      */
     200: DnsSetupResponse;
 };
 
-export type AddCustomDomainResponse = AddCustomDomainResponses[keyof AddCustomDomainResponses];
+export type CreateCustomResponse = CreateCustomResponses[keyof CreateCustomResponses];
 
-export type CheckCustomDomainDnsData = {
+export type GetDnsCheckData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -6555,30 +6549,30 @@ export type CheckCustomDomainDnsData = {
     url: '/api/v1/domain/dns-check';
 };
 
-export type CheckCustomDomainDnsErrors = {
+export type GetDnsCheckErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type CheckCustomDomainDnsError = CheckCustomDomainDnsErrors[keyof CheckCustomDomainDnsErrors];
+export type GetDnsCheckError = GetDnsCheckErrors[keyof GetDnsCheckErrors];
 
-export type CheckCustomDomainDnsResponses = {
+export type GetDnsCheckResponses = {
     /**
      * OK
      */
     200: DnsCheckResponse;
 };
 
-export type CheckCustomDomainDnsResponse = CheckCustomDomainDnsResponses[keyof CheckCustomDomainDnsResponses];
+export type GetDnsCheckResponse = GetDnsCheckResponses[keyof GetDnsCheckResponses];
 
-export type GenerateRandomSubdomainData = {
+export type GetGenerateData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -6588,30 +6582,30 @@ export type GenerateRandomSubdomainData = {
     url: '/api/v1/domain/generate';
 };
 
-export type GenerateRandomSubdomainErrors = {
+export type GetGenerateErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GenerateRandomSubdomainError = GenerateRandomSubdomainErrors[keyof GenerateRandomSubdomainErrors];
+export type GetGenerateError = GetGenerateErrors[keyof GetGenerateErrors];
 
-export type GenerateRandomSubdomainResponses = {
+export type GetGenerateResponses = {
     /**
      * OK
      */
     200: RandomSubdomainResponseWrapper;
 };
 
-export type GenerateRandomSubdomainResponse = GenerateRandomSubdomainResponses[keyof GenerateRandomSubdomainResponses];
+export type GetGenerateResponse = GetGenerateResponses[keyof GetGenerateResponses];
 
-export type VerifyCustomDomainData = {
+export type CreateVerifyData = {
     /**
      * Request body for types.VerifyCustomDomainRequest
      */
@@ -6624,30 +6618,30 @@ export type VerifyCustomDomainData = {
     url: '/api/v1/domain/verify';
 };
 
-export type VerifyCustomDomainErrors = {
+export type CreateVerifyErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type VerifyCustomDomainError = VerifyCustomDomainErrors[keyof VerifyCustomDomainErrors];
+export type CreateVerifyError = CreateVerifyErrors[keyof CreateVerifyErrors];
 
-export type VerifyCustomDomainResponses = {
+export type CreateVerifyResponses = {
     /**
      * OK
      */
     200: CustomDomainResponse;
 };
 
-export type VerifyCustomDomainResponse = VerifyCustomDomainResponses[keyof VerifyCustomDomainResponses];
+export type CreateVerifyResponse = CreateVerifyResponses[keyof CreateVerifyResponses];
 
-export type ListExtensionsData = {
+export type GetEndpoint11Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -6686,30 +6680,30 @@ export type ListExtensionsData = {
     url: '/api/v1/extensions';
 };
 
-export type ListExtensionsErrors = {
+export type GetEndpoint11Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListExtensionsError = ListExtensionsErrors[keyof ListExtensionsErrors];
+export type GetEndpoint11Error = GetEndpoint11Errors[keyof GetEndpoint11Errors];
 
-export type ListExtensionsResponses = {
+export type GetEndpoint11Responses = {
     /**
      * OK
      */
     200: ListExtensionsResponse;
 };
 
-export type ListExtensionsResponse2 = ListExtensionsResponses[keyof ListExtensionsResponses];
+export type GetEndpoint11Response = GetEndpoint11Responses[keyof GetEndpoint11Responses];
 
-export type GetExtensionByExtensionIdData = {
+export type GetByExtensionIdData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -6721,30 +6715,30 @@ export type GetExtensionByExtensionIdData = {
     url: '/api/v1/extensions/by-extension-id/{extension_id}';
 };
 
-export type GetExtensionByExtensionIdErrors = {
+export type GetByExtensionIdErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetExtensionByExtensionIdError = GetExtensionByExtensionIdErrors[keyof GetExtensionByExtensionIdErrors];
+export type GetByExtensionIdError = GetByExtensionIdErrors[keyof GetByExtensionIdErrors];
 
-export type GetExtensionByExtensionIdResponses = {
+export type GetByExtensionIdResponses = {
     /**
      * OK
      */
     200: ExtensionResponse;
 };
 
-export type GetExtensionByExtensionIdResponse = GetExtensionByExtensionIdResponses[keyof GetExtensionByExtensionIdResponses];
+export type GetByExtensionIdResponse = GetByExtensionIdResponses[keyof GetByExtensionIdResponses];
 
-export type ListExtensionExecutionsData = {
+export type GetExecutionsData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -6756,30 +6750,30 @@ export type ListExtensionExecutionsData = {
     url: '/api/v1/extensions/by-extension-id/{extension_id}/executions';
 };
 
-export type ListExtensionExecutionsErrors = {
+export type GetExecutionsErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListExtensionExecutionsError = ListExtensionExecutionsErrors[keyof ListExtensionExecutionsErrors];
+export type GetExecutionsError = GetExecutionsErrors[keyof GetExecutionsErrors];
 
-export type ListExtensionExecutionsResponses = {
+export type GetExecutionsResponses = {
     /**
      * OK
      */
     200: ListExecutionsResponse;
 };
 
-export type ListExtensionExecutionsResponse = ListExtensionExecutionsResponses[keyof ListExtensionExecutionsResponses];
+export type GetExecutionsResponse = GetExecutionsResponses[keyof GetExecutionsResponses];
 
-export type ListExtensionCategoriesData = {
+export type GetCategoriesData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -6789,28 +6783,28 @@ export type ListExtensionCategoriesData = {
     url: '/api/v1/extensions/categories';
 };
 
-export type ListExtensionCategoriesErrors = {
+export type GetCategoriesErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListExtensionCategoriesError = ListExtensionCategoriesErrors[keyof ListExtensionCategoriesErrors];
+export type GetCategoriesError = GetCategoriesErrors[keyof GetCategoriesErrors];
 
-export type ListExtensionCategoriesResponses = {
+export type GetCategoriesResponses = {
     /**
      * OK
      */
     200: CategoriesResponse;
 };
 
-export type ListExtensionCategoriesResponse = ListExtensionCategoriesResponses[keyof ListExtensionCategoriesResponses];
+export type GetCategoriesResponse = GetCategoriesResponses[keyof GetCategoriesResponses];
 
 export type GetExecutionData = {
     body?: never;
@@ -6828,11 +6822,11 @@ export type GetExecutionErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
@@ -6847,7 +6841,7 @@ export type GetExecutionResponses = {
 
 export type GetExecutionResponse = GetExecutionResponses[keyof GetExecutionResponses];
 
-export type CancelExecutionData = {
+export type CreateCancelData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -6859,30 +6853,30 @@ export type CancelExecutionData = {
     url: '/api/v1/extensions/execution/{execution_id}/cancel';
 };
 
-export type CancelExecutionErrors = {
+export type CreateCancelErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type CancelExecutionError = CancelExecutionErrors[keyof CancelExecutionErrors];
+export type CreateCancelError = CreateCancelErrors[keyof CreateCancelErrors];
 
-export type CancelExecutionResponses = {
+export type CreateCancelResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type CancelExecutionResponse = CancelExecutionResponses[keyof CancelExecutionResponses];
+export type CreateCancelResponse = CreateCancelResponses[keyof CreateCancelResponses];
 
-export type ListExecutionLogsData = {
+export type GetLogs4Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -6903,30 +6897,30 @@ export type ListExecutionLogsData = {
     url: '/api/v1/extensions/execution/{execution_id}/logs';
 };
 
-export type ListExecutionLogsErrors = {
+export type GetLogs4Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListExecutionLogsError = ListExecutionLogsErrors[keyof ListExecutionLogsErrors];
+export type GetLogs4Error = GetLogs4Errors[keyof GetLogs4Errors];
 
-export type ListExecutionLogsResponses = {
+export type GetLogs4Responses = {
     /**
      * OK
      */
     200: ListLogsResponse;
 };
 
-export type ListExecutionLogsResponse = ListExecutionLogsResponses[keyof ListExecutionLogsResponses];
+export type GetLogs4Response = GetLogs4Responses[keyof GetLogs4Responses];
 
-export type ForkExtensionData = {
+export type CreateForkData = {
     /**
      * Request body for controller.ForkExtensionRequest
      */
@@ -6941,30 +6935,30 @@ export type ForkExtensionData = {
     url: '/api/v1/extensions/{extension_id}/fork';
 };
 
-export type ForkExtensionErrors = {
+export type CreateForkErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ForkExtensionError = ForkExtensionErrors[keyof ForkExtensionErrors];
+export type CreateForkError = CreateForkErrors[keyof CreateForkErrors];
 
-export type ForkExtensionResponses = {
+export type CreateForkResponses = {
     /**
      * OK
      */
     200: ExtensionResponse;
 };
 
-export type ForkExtensionResponse = ForkExtensionResponses[keyof ForkExtensionResponses];
+export type CreateForkResponse = CreateForkResponses[keyof CreateForkResponses];
 
-export type RunExtensionData = {
+export type CreateRunData = {
     /**
      * Request body for controller.RunExtensionRequest
      */
@@ -6979,30 +6973,30 @@ export type RunExtensionData = {
     url: '/api/v1/extensions/{extension_id}/run';
 };
 
-export type RunExtensionErrors = {
+export type CreateRunErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type RunExtensionError = RunExtensionErrors[keyof RunExtensionErrors];
+export type CreateRunError = CreateRunErrors[keyof CreateRunErrors];
 
-export type RunExtensionResponses = {
+export type CreateRunResponses = {
     /**
      * OK
      */
     200: ExecutionResponse;
 };
 
-export type RunExtensionResponse = RunExtensionResponses[keyof RunExtensionResponses];
+export type CreateRunResponse = CreateRunResponses[keyof CreateRunResponses];
 
-export type DeleteForkedExtensionData = {
+export type DeleteIdData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7014,30 +7008,30 @@ export type DeleteForkedExtensionData = {
     url: '/api/v1/extensions/{id}';
 };
 
-export type DeleteForkedExtensionErrors = {
+export type DeleteIdErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type DeleteForkedExtensionError = DeleteForkedExtensionErrors[keyof DeleteForkedExtensionErrors];
+export type DeleteIdError = DeleteIdErrors[keyof DeleteIdErrors];
 
-export type DeleteForkedExtensionResponses = {
+export type DeleteIdResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type DeleteForkedExtensionResponse = DeleteForkedExtensionResponses[keyof DeleteForkedExtensionResponses];
+export type DeleteIdResponse = DeleteIdResponses[keyof DeleteIdResponses];
 
-export type GetExtensionByIdData = {
+export type GetIdData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7049,30 +7043,30 @@ export type GetExtensionByIdData = {
     url: '/api/v1/extensions/{id}';
 };
 
-export type GetExtensionByIdErrors = {
+export type GetIdErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetExtensionByIdError = GetExtensionByIdErrors[keyof GetExtensionByIdErrors];
+export type GetIdError = GetIdErrors[keyof GetIdErrors];
 
-export type GetExtensionByIdResponses = {
+export type GetIdResponses = {
     /**
      * OK
      */
     200: ExtensionResponse;
 };
 
-export type GetExtensionByIdResponse = GetExtensionByIdResponses[keyof GetExtensionByIdResponses];
+export type GetIdResponse = GetIdResponses[keyof GetIdResponses];
 
-export type ListFeatureFlagsData = {
+export type GetEndpoint8Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7082,30 +7076,30 @@ export type ListFeatureFlagsData = {
     url: '/api/v1/feature-flags';
 };
 
-export type ListFeatureFlagsErrors = {
+export type GetEndpoint8Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListFeatureFlagsError = ListFeatureFlagsErrors[keyof ListFeatureFlagsErrors];
+export type GetEndpoint8Error = GetEndpoint8Errors[keyof GetEndpoint8Errors];
 
-export type ListFeatureFlagsResponses = {
+export type GetEndpoint8Responses = {
     /**
      * OK
      */
     200: ListFeatureFlagsResponse;
 };
 
-export type ListFeatureFlagsResponse2 = ListFeatureFlagsResponses[keyof ListFeatureFlagsResponses];
+export type GetEndpoint8Response = GetEndpoint8Responses[keyof GetEndpoint8Responses];
 
-export type UpdateFeatureFlagData = {
+export type UpdateEndpoint5Data = {
     /**
      * Request body for types.UpdateFeatureFlagRequest
      */
@@ -7118,30 +7112,30 @@ export type UpdateFeatureFlagData = {
     url: '/api/v1/feature-flags';
 };
 
-export type UpdateFeatureFlagErrors = {
+export type UpdateEndpoint5Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateFeatureFlagError = UpdateFeatureFlagErrors[keyof UpdateFeatureFlagErrors];
+export type UpdateEndpoint5Error = UpdateEndpoint5Errors[keyof UpdateEndpoint5Errors];
 
-export type UpdateFeatureFlagResponses = {
+export type UpdateEndpoint5Responses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type UpdateFeatureFlagResponse = UpdateFeatureFlagResponses[keyof UpdateFeatureFlagResponses];
+export type UpdateEndpoint5Response = UpdateEndpoint5Responses[keyof UpdateEndpoint5Responses];
 
-export type CheckIfFeatureIsEnabledData = {
+export type GetCheck2Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7156,30 +7150,30 @@ export type CheckIfFeatureIsEnabledData = {
     url: '/api/v1/feature-flags/check';
 };
 
-export type CheckIfFeatureIsEnabledErrors = {
+export type GetCheck2Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type CheckIfFeatureIsEnabledError = CheckIfFeatureIsEnabledErrors[keyof CheckIfFeatureIsEnabledErrors];
+export type GetCheck2Error = GetCheck2Errors[keyof GetCheck2Errors];
 
-export type CheckIfFeatureIsEnabledResponses = {
+export type GetCheck2Responses = {
     /**
      * OK
      */
     200: IsFeatureEnabledResponse;
 };
 
-export type CheckIfFeatureIsEnabledResponse = CheckIfFeatureIsEnabledResponses[keyof CheckIfFeatureIsEnabledResponses];
+export type GetCheck2Response = GetCheck2Responses[keyof GetCheck2Responses];
 
-export type ListFilesData = {
+export type GetEndpoint6Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7194,30 +7188,30 @@ export type ListFilesData = {
     url: '/api/v1/file-manager';
 };
 
-export type ListFilesErrors = {
+export type GetEndpoint6Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListFilesError = ListFilesErrors[keyof ListFilesErrors];
+export type GetEndpoint6Error = GetEndpoint6Errors[keyof GetEndpoint6Errors];
 
-export type ListFilesResponses = {
+export type GetEndpoint6Responses = {
     /**
      * OK
      */
     200: ListFilesResponse;
 };
 
-export type ListFilesResponse2 = ListFilesResponses[keyof ListFilesResponses];
+export type GetEndpoint6Response = GetEndpoint6Responses[keyof GetEndpoint6Responses];
 
-export type CopyDirectoryData = {
+export type CreateCopyDirectoryData = {
     /**
      * Request body for controller.CopyDirectory
      */
@@ -7230,30 +7224,30 @@ export type CopyDirectoryData = {
     url: '/api/v1/file-manager/copy-directory';
 };
 
-export type CopyDirectoryErrors = {
+export type CreateCopyDirectoryErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type CopyDirectoryError = CopyDirectoryErrors[keyof CopyDirectoryErrors];
+export type CreateCopyDirectoryError = CreateCopyDirectoryErrors[keyof CreateCopyDirectoryErrors];
 
-export type CopyDirectoryResponses = {
+export type CreateCopyDirectoryResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type CopyDirectoryResponse = CopyDirectoryResponses[keyof CopyDirectoryResponses];
+export type CreateCopyDirectoryResponse = CreateCopyDirectoryResponses[keyof CreateCopyDirectoryResponses];
 
-export type CreateDirectoryData = {
+export type CreateCreateDirectoryData = {
     /**
      * Request body for controller.CreateDirectoryRequest
      */
@@ -7266,30 +7260,30 @@ export type CreateDirectoryData = {
     url: '/api/v1/file-manager/create-directory';
 };
 
-export type CreateDirectoryErrors = {
+export type CreateCreateDirectoryErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type CreateDirectoryError = CreateDirectoryErrors[keyof CreateDirectoryErrors];
+export type CreateCreateDirectoryError = CreateCreateDirectoryErrors[keyof CreateCreateDirectoryErrors];
 
-export type CreateDirectoryResponses = {
+export type CreateCreateDirectoryResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type CreateDirectoryResponse = CreateDirectoryResponses[keyof CreateDirectoryResponses];
+export type CreateCreateDirectoryResponse = CreateCreateDirectoryResponses[keyof CreateCreateDirectoryResponses];
 
-export type DeleteDirectoryData = {
+export type DeleteDeleteDirectoryData = {
     /**
      * Request body for controller.DeleteDirectoryRequest
      */
@@ -7302,30 +7296,30 @@ export type DeleteDirectoryData = {
     url: '/api/v1/file-manager/delete-directory';
 };
 
-export type DeleteDirectoryErrors = {
+export type DeleteDeleteDirectoryErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type DeleteDirectoryError = DeleteDirectoryErrors[keyof DeleteDirectoryErrors];
+export type DeleteDeleteDirectoryError = DeleteDeleteDirectoryErrors[keyof DeleteDeleteDirectoryErrors];
 
-export type DeleteDirectoryResponses = {
+export type DeleteDeleteDirectoryResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type DeleteDirectoryResponse = DeleteDirectoryResponses[keyof DeleteDirectoryResponses];
+export type DeleteDeleteDirectoryResponse = DeleteDeleteDirectoryResponses[keyof DeleteDeleteDirectoryResponses];
 
-export type MoveDirectoryData = {
+export type CreateMoveDirectoryData = {
     /**
      * Request body for controller.MoveDirectory
      */
@@ -7338,30 +7332,30 @@ export type MoveDirectoryData = {
     url: '/api/v1/file-manager/move-directory';
 };
 
-export type MoveDirectoryErrors = {
+export type CreateMoveDirectoryErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type MoveDirectoryError = MoveDirectoryErrors[keyof MoveDirectoryErrors];
+export type CreateMoveDirectoryError = CreateMoveDirectoryErrors[keyof CreateMoveDirectoryErrors];
 
-export type MoveDirectoryResponses = {
+export type CreateMoveDirectoryResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type MoveDirectoryResponse = MoveDirectoryResponses[keyof MoveDirectoryResponses];
+export type CreateMoveDirectoryResponse = CreateMoveDirectoryResponses[keyof CreateMoveDirectoryResponses];
 
-export type UploadFileData = {
+export type CreateUploadData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7371,30 +7365,30 @@ export type UploadFileData = {
     url: '/api/v1/file-manager/upload';
 };
 
-export type UploadFileErrors = {
+export type CreateUploadErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UploadFileError = UploadFileErrors[keyof UploadFileErrors];
+export type CreateUploadError = CreateUploadErrors[keyof CreateUploadErrors];
 
-export type UploadFileResponses = {
+export type CreateUploadResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type UploadFileResponse = UploadFileResponses[keyof UploadFileResponses];
+export type CreateUploadResponse = CreateUploadResponses[keyof CreateUploadResponses];
 
-export type DeleteGitHubConnectorData = {
+export type DeleteEndpointData = {
     /**
      * Request body for types.DeleteGithubConnectorRequest
      */
@@ -7407,30 +7401,30 @@ export type DeleteGitHubConnectorData = {
     url: '/api/v1/github-connector';
 };
 
-export type DeleteGitHubConnectorErrors = {
+export type DeleteEndpointErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type DeleteGitHubConnectorError = DeleteGitHubConnectorErrors[keyof DeleteGitHubConnectorErrors];
+export type DeleteEndpointError = DeleteEndpointErrors[keyof DeleteEndpointErrors];
 
-export type DeleteGitHubConnectorResponses = {
+export type DeleteEndpointResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type DeleteGitHubConnectorResponse = DeleteGitHubConnectorResponses[keyof DeleteGitHubConnectorResponses];
+export type DeleteEndpointResponse = DeleteEndpointResponses[keyof DeleteEndpointResponses];
 
-export type CreateGitHubConnectorData = {
+export type CreateEndpoint2Data = {
     /**
      * Request body for types.CreateGithubConnectorRequest
      */
@@ -7443,30 +7437,30 @@ export type CreateGitHubConnectorData = {
     url: '/api/v1/github-connector';
 };
 
-export type CreateGitHubConnectorErrors = {
+export type CreateEndpoint2Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type CreateGitHubConnectorError = CreateGitHubConnectorErrors[keyof CreateGitHubConnectorErrors];
+export type CreateEndpoint2Error = CreateEndpoint2Errors[keyof CreateEndpoint2Errors];
 
-export type CreateGitHubConnectorResponses = {
+export type CreateEndpoint2Responses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type CreateGitHubConnectorResponse = CreateGitHubConnectorResponses[keyof CreateGitHubConnectorResponses];
+export type CreateEndpoint2Response = CreateEndpoint2Responses[keyof CreateEndpoint2Responses];
 
-export type UpdateGitHubConnectorData = {
+export type UpdateEndpointData = {
     /**
      * Request body for types.UpdateGithubConnectorRequest
      */
@@ -7479,30 +7473,30 @@ export type UpdateGitHubConnectorData = {
     url: '/api/v1/github-connector';
 };
 
-export type UpdateGitHubConnectorErrors = {
+export type UpdateEndpointErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateGitHubConnectorError = UpdateGitHubConnectorErrors[keyof UpdateGitHubConnectorErrors];
+export type UpdateEndpointError = UpdateEndpointErrors[keyof UpdateEndpointErrors];
 
-export type UpdateGitHubConnectorResponses = {
+export type UpdateEndpointResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type UpdateGitHubConnectorResponse = UpdateGitHubConnectorResponses[keyof UpdateGitHubConnectorResponses];
+export type UpdateEndpointResponse = UpdateEndpointResponses[keyof UpdateEndpointResponses];
 
-export type ListGitHubConnectorsData = {
+export type GetAllData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7512,30 +7506,30 @@ export type ListGitHubConnectorsData = {
     url: '/api/v1/github-connector/all';
 };
 
-export type ListGitHubConnectorsErrors = {
+export type GetAllErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListGitHubConnectorsError = ListGitHubConnectorsErrors[keyof ListGitHubConnectorsErrors];
+export type GetAllError = GetAllErrors[keyof GetAllErrors];
 
-export type ListGitHubConnectorsResponses = {
+export type GetAllResponses = {
     /**
      * OK
      */
     200: ListConnectorsResponse;
 };
 
-export type ListGitHubConnectorsResponse = ListGitHubConnectorsResponses[keyof ListGitHubConnectorsResponses];
+export type GetAllResponse = GetAllResponses[keyof GetAllResponses];
 
-export type ListGitHubRepositoriesData = {
+export type GetRepositoriesData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7545,30 +7539,30 @@ export type ListGitHubRepositoriesData = {
     url: '/api/v1/github-connector/repositories';
 };
 
-export type ListGitHubRepositoriesErrors = {
+export type GetRepositoriesErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListGitHubRepositoriesError = ListGitHubRepositoriesErrors[keyof ListGitHubRepositoriesErrors];
+export type GetRepositoriesError = GetRepositoriesErrors[keyof GetRepositoriesErrors];
 
-export type ListGitHubRepositoriesResponses = {
+export type GetRepositoriesResponses = {
     /**
      * OK
      */
     200: ListRepositoriesResponse;
 };
 
-export type ListGitHubRepositoriesResponse = ListGitHubRepositoriesResponses[keyof ListGitHubRepositoriesResponses];
+export type GetRepositoriesResponse = GetRepositoriesResponses[keyof GetRepositoriesResponses];
 
-export type ListRepositoryBranchesData = {
+export type CreateBranchesData = {
     /**
      * Request body for controller.GetGithubRepositoryBranchesRequest
      */
@@ -7581,30 +7575,30 @@ export type ListRepositoryBranchesData = {
     url: '/api/v1/github-connector/repository/branches';
 };
 
-export type ListRepositoryBranchesErrors = {
+export type CreateBranchesErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListRepositoryBranchesError = ListRepositoryBranchesErrors[keyof ListRepositoryBranchesErrors];
+export type CreateBranchesError = CreateBranchesErrors[keyof CreateBranchesErrors];
 
-export type ListRepositoryBranchesResponses = {
+export type CreateBranchesResponses = {
     /**
      * OK
      */
     200: ListBranchesResponse;
 };
 
-export type ListRepositoryBranchesResponse = ListRepositoryBranchesResponses[keyof ListRepositoryBranchesResponses];
+export type CreateBranchesResponse = CreateBranchesResponses[keyof CreateBranchesResponses];
 
-export type HealthCheckData = {
+export type GetEndpointData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7614,30 +7608,30 @@ export type HealthCheckData = {
     url: '/api/v1/health';
 };
 
-export type HealthCheckErrors = {
+export type GetEndpointErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type HealthCheckError = HealthCheckErrors[keyof HealthCheckErrors];
+export type GetEndpointError = GetEndpointErrors[keyof GetEndpointErrors];
 
-export type HealthCheckResponses = {
+export type GetEndpointResponses = {
     /**
      * OK
      */
     200: HealthCheckResponse;
 };
 
-export type HealthCheckResponse2 = HealthCheckResponses[keyof HealthCheckResponses];
+export type GetEndpointResponse = GetEndpointResponses[keyof GetEndpointResponses];
 
-export type DeleteHealthCheckData = {
+export type DeleteEndpoint5Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7652,30 +7646,30 @@ export type DeleteHealthCheckData = {
     url: '/api/v1/healthcheck';
 };
 
-export type DeleteHealthCheckErrors = {
+export type DeleteEndpoint5Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type DeleteHealthCheckError = DeleteHealthCheckErrors[keyof DeleteHealthCheckErrors];
+export type DeleteEndpoint5Error = DeleteEndpoint5Errors[keyof DeleteEndpoint5Errors];
 
-export type DeleteHealthCheckResponses = {
+export type DeleteEndpoint5Responses = {
     /**
      * OK
      */
     200: HealthCheckMessageResponse;
 };
 
-export type DeleteHealthCheckResponse = DeleteHealthCheckResponses[keyof DeleteHealthCheckResponses];
+export type DeleteEndpoint5Response = DeleteEndpoint5Responses[keyof DeleteEndpoint5Responses];
 
-export type GetHealthChecksData = {
+export type GetEndpoint10Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7690,30 +7684,30 @@ export type GetHealthChecksData = {
     url: '/api/v1/healthcheck';
 };
 
-export type GetHealthChecksErrors = {
+export type GetEndpoint10Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetHealthChecksError = GetHealthChecksErrors[keyof GetHealthChecksErrors];
+export type GetEndpoint10Error = GetEndpoint10Errors[keyof GetEndpoint10Errors];
 
-export type GetHealthChecksResponses = {
+export type GetEndpoint10Responses = {
     /**
      * OK
      */
     200: HealthCheckResponse;
 };
 
-export type GetHealthChecksResponse = GetHealthChecksResponses[keyof GetHealthChecksResponses];
+export type GetEndpoint10Response = GetEndpoint10Responses[keyof GetEndpoint10Responses];
 
-export type CreateHealthCheckData = {
+export type CreateEndpoint8Data = {
     /**
      * Request body for types.CreateHealthCheckRequest
      */
@@ -7726,30 +7720,30 @@ export type CreateHealthCheckData = {
     url: '/api/v1/healthcheck';
 };
 
-export type CreateHealthCheckErrors = {
+export type CreateEndpoint8Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type CreateHealthCheckError = CreateHealthCheckErrors[keyof CreateHealthCheckErrors];
+export type CreateEndpoint8Error = CreateEndpoint8Errors[keyof CreateEndpoint8Errors];
 
-export type CreateHealthCheckResponses = {
+export type CreateEndpoint8Responses = {
     /**
      * OK
      */
     200: HealthCheckResponse;
 };
 
-export type CreateHealthCheckResponse = CreateHealthCheckResponses[keyof CreateHealthCheckResponses];
+export type CreateEndpoint8Response = CreateEndpoint8Responses[keyof CreateEndpoint8Responses];
 
-export type UpdateHealthCheckData = {
+export type UpdateEndpoint6Data = {
     /**
      * Request body for types.UpdateHealthCheckRequest
      */
@@ -7762,30 +7756,30 @@ export type UpdateHealthCheckData = {
     url: '/api/v1/healthcheck';
 };
 
-export type UpdateHealthCheckErrors = {
+export type UpdateEndpoint6Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateHealthCheckError = UpdateHealthCheckErrors[keyof UpdateHealthCheckErrors];
+export type UpdateEndpoint6Error = UpdateEndpoint6Errors[keyof UpdateEndpoint6Errors];
 
-export type UpdateHealthCheckResponses = {
+export type UpdateEndpoint6Responses = {
     /**
      * OK
      */
     200: HealthCheckResponse;
 };
 
-export type UpdateHealthCheckResponse = UpdateHealthCheckResponses[keyof UpdateHealthCheckResponses];
+export type UpdateEndpoint6Response = UpdateEndpoint6Responses[keyof UpdateEndpoint6Responses];
 
-export type ListHealthCheckResultsData = {
+export type GetResultsData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7812,30 +7806,30 @@ export type ListHealthCheckResultsData = {
     url: '/api/v1/healthcheck/results';
 };
 
-export type ListHealthCheckResultsErrors = {
+export type GetResultsErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListHealthCheckResultsError = ListHealthCheckResultsErrors[keyof ListHealthCheckResultsErrors];
+export type GetResultsError = GetResultsErrors[keyof GetResultsErrors];
 
-export type ListHealthCheckResultsResponses = {
+export type GetResultsResponses = {
     /**
      * OK
      */
     200: HealthCheckResultsResponse;
 };
 
-export type ListHealthCheckResultsResponse = ListHealthCheckResultsResponses[keyof ListHealthCheckResultsResponses];
+export type GetResultsResponse = GetResultsResponses[keyof GetResultsResponses];
 
-export type GetHealthCheckStatsData = {
+export type GetStatsData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7849,35 +7843,35 @@ export type GetHealthCheckStatsData = {
         /**
          * Aggregation period (1h,24h,7d,30d)
          */
-        period?: '1h' | '24h' | '7d' | '30d';
+        period?: string;
     };
     url: '/api/v1/healthcheck/stats';
 };
 
-export type GetHealthCheckStatsErrors = {
+export type GetStatsErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetHealthCheckStatsError = GetHealthCheckStatsErrors[keyof GetHealthCheckStatsErrors];
+export type GetStatsError = GetStatsErrors[keyof GetStatsErrors];
 
-export type GetHealthCheckStatsResponses = {
+export type GetStatsResponses = {
     /**
      * OK
      */
     200: HealthCheckStatsResponse;
 };
 
-export type GetHealthCheckStatsResponse = GetHealthCheckStatsResponses[keyof GetHealthCheckStatsResponses];
+export type GetStatsResponse = GetStatsResponses[keyof GetStatsResponses];
 
-export type ToggleHealthCheckData = {
+export type PatchToggleData = {
     /**
      * Request body for types.ToggleHealthCheckRequest
      */
@@ -7890,30 +7884,30 @@ export type ToggleHealthCheckData = {
     url: '/api/v1/healthcheck/toggle';
 };
 
-export type ToggleHealthCheckErrors = {
+export type PatchToggleErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ToggleHealthCheckError = ToggleHealthCheckErrors[keyof ToggleHealthCheckErrors];
+export type PatchToggleError = PatchToggleErrors[keyof PatchToggleErrors];
 
-export type ToggleHealthCheckResponses = {
+export type PatchToggleResponses = {
     /**
      * OK
      */
     200: HealthCheckResponse;
 };
 
-export type ToggleHealthCheckResponse = ToggleHealthCheckResponses[keyof ToggleHealthCheckResponses];
+export type PatchToggleResponse = PatchToggleResponses[keyof PatchToggleResponses];
 
-export type GetMachineBillingStatusData = {
+export type GetBillingData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7923,30 +7917,30 @@ export type GetMachineBillingStatusData = {
     url: '/api/v1/machine/billing';
 };
 
-export type GetMachineBillingStatusErrors = {
+export type GetBillingErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetMachineBillingStatusError = GetMachineBillingStatusErrors[keyof GetMachineBillingStatusErrors];
+export type GetBillingError = GetBillingErrors[keyof GetBillingErrors];
 
-export type GetMachineBillingStatusResponses = {
+export type GetBillingResponses = {
     /**
      * OK
      */
     200: MachineBillingResponse;
 };
 
-export type GetMachineBillingStatusResponse = GetMachineBillingStatusResponses[keyof GetMachineBillingStatusResponses];
+export type GetBillingResponse = GetBillingResponses[keyof GetBillingResponses];
 
-export type ExecuteACommandOnTheHostMachineData = {
+export type CreateExecData = {
     /**
      * Request body for types.HostExecRequest
      */
@@ -7959,30 +7953,30 @@ export type ExecuteACommandOnTheHostMachineData = {
     url: '/api/v1/machine/exec';
 };
 
-export type ExecuteACommandOnTheHostMachineErrors = {
+export type CreateExecErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ExecuteACommandOnTheHostMachineError = ExecuteACommandOnTheHostMachineErrors[keyof ExecuteACommandOnTheHostMachineErrors];
+export type CreateExecError = CreateExecErrors[keyof CreateExecErrors];
 
-export type ExecuteACommandOnTheHostMachineResponses = {
+export type CreateExecResponses = {
     /**
      * OK
      */
     200: HostExecResponse;
 };
 
-export type ExecuteACommandOnTheHostMachineResponse = ExecuteACommandOnTheHostMachineResponses[keyof ExecuteACommandOnTheHostMachineResponses];
+export type CreateExecResponse = CreateExecResponses[keyof CreateExecResponses];
 
-export type PauseMachineData = {
+export type CreatePauseData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -7992,30 +7986,30 @@ export type PauseMachineData = {
     url: '/api/v1/machine/pause';
 };
 
-export type PauseMachineErrors = {
+export type CreatePauseErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type PauseMachineError = PauseMachineErrors[keyof PauseMachineErrors];
+export type CreatePauseError = CreatePauseErrors[keyof CreatePauseErrors];
 
-export type PauseMachineResponses = {
+export type CreatePauseResponses = {
     /**
      * OK
      */
     200: MachineActionResponse;
 };
 
-export type PauseMachineResponse = PauseMachineResponses[keyof PauseMachineResponses];
+export type CreatePauseResponse = CreatePauseResponses[keyof CreatePauseResponses];
 
-export type SelectAMachinePlanData = {
+export type CreateSelectData = {
     /**
      * Request body for types.SelectPlanRequest
      */
@@ -8028,30 +8022,30 @@ export type SelectAMachinePlanData = {
     url: '/api/v1/machine/plan/select';
 };
 
-export type SelectAMachinePlanErrors = {
+export type CreateSelectErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type SelectAMachinePlanError = SelectAMachinePlanErrors[keyof SelectAMachinePlanErrors];
+export type CreateSelectError = CreateSelectErrors[keyof CreateSelectErrors];
 
-export type SelectAMachinePlanResponses = {
+export type CreateSelectResponses = {
     /**
      * OK
      */
     200: SelectPlanResponse;
 };
 
-export type SelectAMachinePlanResponse = SelectAMachinePlanResponses[keyof SelectAMachinePlanResponses];
+export type CreateSelectResponse = CreateSelectResponses[keyof CreateSelectResponses];
 
-export type ListAvailableMachinePlansData = {
+export type GetPlansData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8061,30 +8055,30 @@ export type ListAvailableMachinePlansData = {
     url: '/api/v1/machine/plans';
 };
 
-export type ListAvailableMachinePlansErrors = {
+export type GetPlansErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListAvailableMachinePlansError = ListAvailableMachinePlansErrors[keyof ListAvailableMachinePlansErrors];
+export type GetPlansError = GetPlansErrors[keyof GetPlansErrors];
 
-export type ListAvailableMachinePlansResponses = {
+export type GetPlansResponses = {
     /**
      * OK
      */
     200: ListPlansResponse;
 };
 
-export type ListAvailableMachinePlansResponse = ListAvailableMachinePlansResponses[keyof ListAvailableMachinePlansResponses];
+export type GetPlansResponse = GetPlansResponses[keyof GetPlansResponses];
 
-export type RestartMachineData = {
+export type CreateRestart3Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8094,30 +8088,30 @@ export type RestartMachineData = {
     url: '/api/v1/machine/restart';
 };
 
-export type RestartMachineErrors = {
+export type CreateRestart3Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type RestartMachineError = RestartMachineErrors[keyof RestartMachineErrors];
+export type CreateRestart3Error = CreateRestart3Errors[keyof CreateRestart3Errors];
 
-export type RestartMachineResponses = {
+export type CreateRestart3Responses = {
     /**
      * OK
      */
     200: MachineActionResponse;
 };
 
-export type RestartMachineResponse = RestartMachineResponses[keyof RestartMachineResponses];
+export type CreateRestart3Response = CreateRestart3Responses[keyof CreateRestart3Responses];
 
-export type ResumeMachineData = {
+export type CreateResumeData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8127,30 +8121,30 @@ export type ResumeMachineData = {
     url: '/api/v1/machine/resume';
 };
 
-export type ResumeMachineErrors = {
+export type CreateResumeErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ResumeMachineError = ResumeMachineErrors[keyof ResumeMachineErrors];
+export type CreateResumeError = CreateResumeErrors[keyof CreateResumeErrors];
 
-export type ResumeMachineResponses = {
+export type CreateResumeResponses = {
     /**
      * OK
      */
     200: MachineActionResponse;
 };
 
-export type ResumeMachineResponse = ResumeMachineResponses[keyof ResumeMachineResponses];
+export type CreateResumeResponse = CreateResumeResponses[keyof CreateResumeResponses];
 
-export type GetMachineSystemStatsData = {
+export type GetStats2Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8160,30 +8154,30 @@ export type GetMachineSystemStatsData = {
     url: '/api/v1/machine/stats';
 };
 
-export type GetMachineSystemStatsErrors = {
+export type GetStats2Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetMachineSystemStatsError = GetMachineSystemStatsErrors[keyof GetMachineSystemStatsErrors];
+export type GetStats2Error = GetStats2Errors[keyof GetStats2Errors];
 
-export type GetMachineSystemStatsResponses = {
+export type GetStats2Responses = {
     /**
      * OK
      */
     200: SystemStatsResponse;
 };
 
-export type GetMachineSystemStatsResponse = GetMachineSystemStatsResponses[keyof GetMachineSystemStatsResponses];
+export type GetStats2Response = GetStats2Responses[keyof GetStats2Responses];
 
-export type GetMachineLifecycleStatusData = {
+export type GetStatus2Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8193,30 +8187,310 @@ export type GetMachineLifecycleStatusData = {
     url: '/api/v1/machine/status';
 };
 
-export type GetMachineLifecycleStatusErrors = {
+export type GetStatus2Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetMachineLifecycleStatusError = GetMachineLifecycleStatusErrors[keyof GetMachineLifecycleStatusErrors];
+export type GetStatus2Error = GetStatus2Errors[keyof GetStatus2Errors];
 
-export type GetMachineLifecycleStatusResponses = {
+export type GetStatus2Responses = {
     /**
      * OK
      */
     200: MachineStateResponse;
 };
 
-export type GetMachineLifecycleStatusResponse = GetMachineLifecycleStatusResponses[keyof GetMachineLifecycleStatusResponses];
+export type GetStatus2Response = GetStatus2Responses[keyof GetStatus2Responses];
 
-export type GetNotificationPreferencesData = {
+export type GetEndpoint13Data = {
+    body?: never;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/mcp/catalog';
+};
+
+export type GetEndpoint13Errors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: HttpError;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: HttpError;
+    default: unknown;
+};
+
+export type GetEndpoint13Error = GetEndpoint13Errors[keyof GetEndpoint13Errors];
+
+export type GetEndpoint13Responses = {
+    /**
+     * OK
+     */
+    200: Response;
+};
+
+export type GetEndpoint13Response = GetEndpoint13Responses[keyof GetEndpoint13Responses];
+
+export type GetIconData = {
+    body?: never;
+    headers?: {
+        Accept?: string;
+    };
+    path: {
+        provider_id: string;
+    };
+    query?: never;
+    url: '/api/v1/mcp/catalog/{provider_id}/icon';
+};
+
+export type GetIconErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: HttpError;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: HttpError;
+    default: unknown;
+};
+
+export type GetIconError = GetIconErrors[keyof GetIconErrors];
+
+export type GetIconResponses = {
+    /**
+     * OK
+     */
+    200: UnknownInterface;
+};
+
+export type GetIconResponse = GetIconResponses[keyof GetIconResponses];
+
+export type GetServersData = {
+    body?: never;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/mcp/internal/servers';
+};
+
+export type GetServersErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: HttpError;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: HttpError;
+    default: unknown;
+};
+
+export type GetServersError = GetServersErrors[keyof GetServersErrors];
+
+export type GetServersResponses = {
+    /**
+     * OK
+     */
+    200: Response;
+};
+
+export type GetServersResponse = GetServersResponses[keyof GetServersResponses];
+
+export type DeleteEndpoint6Data = {
+    /**
+     * Request body for controller.DeleteServerRequest
+     */
+    body: DeleteServerRequest;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/mcp/servers';
+};
+
+export type DeleteEndpoint6Errors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: HttpError;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: HttpError;
+    default: unknown;
+};
+
+export type DeleteEndpoint6Error = DeleteEndpoint6Errors[keyof DeleteEndpoint6Errors];
+
+export type DeleteEndpoint6Responses = {
+    /**
+     * OK
+     */
+    200: Response;
+};
+
+export type DeleteEndpoint6Response = DeleteEndpoint6Responses[keyof DeleteEndpoint6Responses];
+
+export type GetEndpoint14Data = {
+    body?: never;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/mcp/servers';
+};
+
+export type GetEndpoint14Errors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: HttpError;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: HttpError;
+    default: unknown;
+};
+
+export type GetEndpoint14Error = GetEndpoint14Errors[keyof GetEndpoint14Errors];
+
+export type GetEndpoint14Responses = {
+    /**
+     * OK
+     */
+    200: Response;
+};
+
+export type GetEndpoint14Response = GetEndpoint14Responses[keyof GetEndpoint14Responses];
+
+export type CreateEndpoint9Data = {
+    /**
+     * Request body for validation.CreateServerRequest
+     */
+    body: CreateServerRequest;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/mcp/servers';
+};
+
+export type CreateEndpoint9Errors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: HttpError;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: HttpError;
+    default: unknown;
+};
+
+export type CreateEndpoint9Error = CreateEndpoint9Errors[keyof CreateEndpoint9Errors];
+
+export type CreateEndpoint9Responses = {
+    /**
+     * OK
+     */
+    200: Response;
+};
+
+export type CreateEndpoint9Response = CreateEndpoint9Responses[keyof CreateEndpoint9Responses];
+
+export type CreateTestData = {
+    /**
+     * Request body for validation.TestServerRequest
+     */
+    body: TestServerRequest;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/mcp/servers/test';
+};
+
+export type CreateTestErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: HttpError;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: HttpError;
+    default: unknown;
+};
+
+export type CreateTestError = CreateTestErrors[keyof CreateTestErrors];
+
+export type CreateTestResponses = {
+    /**
+     * OK
+     */
+    200: Response;
+};
+
+export type CreateTestResponse = CreateTestResponses[keyof CreateTestResponses];
+
+export type UpdateIdData = {
+    /**
+     * Request body for validation.UpdateServerRequest
+     */
+    body: UpdateServerRequest;
+    headers?: {
+        Accept?: string;
+    };
+    path: {
+        id: string;
+    };
+    query?: never;
+    url: '/api/v1/mcp/servers/{id}';
+};
+
+export type UpdateIdErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: HttpError;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: HttpError;
+    default: unknown;
+};
+
+export type UpdateIdError = UpdateIdErrors[keyof UpdateIdErrors];
+
+export type UpdateIdResponses = {
+    /**
+     * OK
+     */
+    200: Response;
+};
+
+export type UpdateIdResponse = UpdateIdResponses[keyof UpdateIdResponses];
+
+export type GetEndpoint5Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8226,30 +8500,30 @@ export type GetNotificationPreferencesData = {
     url: '/api/v1/notification/preferences';
 };
 
-export type GetNotificationPreferencesErrors = {
+export type GetEndpoint5Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetNotificationPreferencesError = GetNotificationPreferencesErrors[keyof GetNotificationPreferencesErrors];
+export type GetEndpoint5Error = GetEndpoint5Errors[keyof GetEndpoint5Errors];
 
-export type GetNotificationPreferencesResponses = {
+export type GetEndpoint5Responses = {
     /**
      * OK
      */
     200: PreferencesResponse;
 };
 
-export type GetNotificationPreferencesResponse = GetNotificationPreferencesResponses[keyof GetNotificationPreferencesResponses];
+export type GetEndpoint5Response = GetEndpoint5Responses[keyof GetEndpoint5Responses];
 
-export type UpdateNotificationPreferencesData = {
+export type CreateEndpoint4Data = {
     /**
      * Request body for notification.UpdatePreferenceRequest
      */
@@ -8262,30 +8536,30 @@ export type UpdateNotificationPreferencesData = {
     url: '/api/v1/notification/preferences';
 };
 
-export type UpdateNotificationPreferencesErrors = {
+export type CreateEndpoint4Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateNotificationPreferencesError = UpdateNotificationPreferencesErrors[keyof UpdateNotificationPreferencesErrors];
+export type CreateEndpoint4Error = CreateEndpoint4Errors[keyof CreateEndpoint4Errors];
 
-export type UpdateNotificationPreferencesResponses = {
+export type CreateEndpoint4Responses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type UpdateNotificationPreferencesResponse = UpdateNotificationPreferencesResponses[keyof UpdateNotificationPreferencesResponses];
+export type CreateEndpoint4Response = CreateEndpoint4Responses[keyof CreateEndpoint4Responses];
 
-export type SendNotificationData = {
+export type CreateSendData = {
     /**
      * Request body for notification.SendNotificationRequest
      */
@@ -8298,30 +8572,30 @@ export type SendNotificationData = {
     url: '/api/v1/notification/send';
 };
 
-export type SendNotificationErrors = {
+export type CreateSendErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type SendNotificationError = SendNotificationErrors[keyof SendNotificationErrors];
+export type CreateSendError = CreateSendErrors[keyof CreateSendErrors];
 
-export type SendNotificationResponses = {
+export type CreateSendResponses = {
     /**
      * OK
      */
     200: SendNotificationResponse;
 };
 
-export type SendNotificationResponse2 = SendNotificationResponses[keyof SendNotificationResponses];
+export type CreateSendResponse = CreateSendResponses[keyof CreateSendResponses];
 
-export type DeleteSmtpConfigData = {
+export type DeleteEndpoint2Data = {
     /**
      * Request body for notification.DeleteSMTPConfigRequest
      */
@@ -8334,30 +8608,30 @@ export type DeleteSmtpConfigData = {
     url: '/api/v1/notification/smtp';
 };
 
-export type DeleteSmtpConfigErrors = {
+export type DeleteEndpoint2Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type DeleteSmtpConfigError = DeleteSmtpConfigErrors[keyof DeleteSmtpConfigErrors];
+export type DeleteEndpoint2Error = DeleteEndpoint2Errors[keyof DeleteEndpoint2Errors];
 
-export type DeleteSmtpConfigResponses = {
+export type DeleteEndpoint2Responses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type DeleteSmtpConfigResponse = DeleteSmtpConfigResponses[keyof DeleteSmtpConfigResponses];
+export type DeleteEndpoint2Response = DeleteEndpoint2Responses[keyof DeleteEndpoint2Responses];
 
-export type GetSmtpConfigData = {
+export type GetEndpoint4Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8372,30 +8646,30 @@ export type GetSmtpConfigData = {
     url: '/api/v1/notification/smtp';
 };
 
-export type GetSmtpConfigErrors = {
+export type GetEndpoint4Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetSmtpConfigError = GetSmtpConfigErrors[keyof GetSmtpConfigErrors];
+export type GetEndpoint4Error = GetEndpoint4Errors[keyof GetEndpoint4Errors];
 
-export type GetSmtpConfigResponses = {
+export type GetEndpoint4Responses = {
     /**
      * OK
      */
     200: SmtpConfigResponse;
 };
 
-export type GetSmtpConfigResponse = GetSmtpConfigResponses[keyof GetSmtpConfigResponses];
+export type GetEndpoint4Response = GetEndpoint4Responses[keyof GetEndpoint4Responses];
 
-export type CreateSmtpConfigData = {
+export type CreateEndpoint3Data = {
     /**
      * Request body for notification.CreateSMTPConfigRequest
      */
@@ -8408,30 +8682,30 @@ export type CreateSmtpConfigData = {
     url: '/api/v1/notification/smtp';
 };
 
-export type CreateSmtpConfigErrors = {
+export type CreateEndpoint3Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type CreateSmtpConfigError = CreateSmtpConfigErrors[keyof CreateSmtpConfigErrors];
+export type CreateEndpoint3Error = CreateEndpoint3Errors[keyof CreateEndpoint3Errors];
 
-export type CreateSmtpConfigResponses = {
+export type CreateEndpoint3Responses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type CreateSmtpConfigResponse = CreateSmtpConfigResponses[keyof CreateSmtpConfigResponses];
+export type CreateEndpoint3Response = CreateEndpoint3Responses[keyof CreateEndpoint3Responses];
 
-export type UpdateSmtpConfigData = {
+export type UpdateEndpoint2Data = {
     /**
      * Request body for notification.UpdateSMTPConfigRequest
      */
@@ -8444,30 +8718,30 @@ export type UpdateSmtpConfigData = {
     url: '/api/v1/notification/smtp';
 };
 
-export type UpdateSmtpConfigErrors = {
+export type UpdateEndpoint2Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateSmtpConfigError = UpdateSmtpConfigErrors[keyof UpdateSmtpConfigErrors];
+export type UpdateEndpoint2Error = UpdateEndpoint2Errors[keyof UpdateEndpoint2Errors];
 
-export type UpdateSmtpConfigResponses = {
+export type UpdateEndpoint2Responses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type UpdateSmtpConfigResponse = UpdateSmtpConfigResponses[keyof UpdateSmtpConfigResponses];
+export type UpdateEndpoint2Response = UpdateEndpoint2Responses[keyof UpdateEndpoint2Responses];
 
-export type DeleteWebhookConfigData = {
+export type DeleteEndpoint3Data = {
     /**
      * Request body for notification.DeleteWebhookConfigRequest
      */
@@ -8480,30 +8754,30 @@ export type DeleteWebhookConfigData = {
     url: '/api/v1/notification/webhook';
 };
 
-export type DeleteWebhookConfigErrors = {
+export type DeleteEndpoint3Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type DeleteWebhookConfigError = DeleteWebhookConfigErrors[keyof DeleteWebhookConfigErrors];
+export type DeleteEndpoint3Error = DeleteEndpoint3Errors[keyof DeleteEndpoint3Errors];
 
-export type DeleteWebhookConfigResponses = {
+export type DeleteEndpoint3Responses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type DeleteWebhookConfigResponse = DeleteWebhookConfigResponses[keyof DeleteWebhookConfigResponses];
+export type DeleteEndpoint3Response = DeleteEndpoint3Responses[keyof DeleteEndpoint3Responses];
 
-export type CreateWebhookConfigData = {
+export type CreateEndpoint5Data = {
     /**
      * Request body for notification.CreateWebhookConfigRequest
      */
@@ -8516,30 +8790,30 @@ export type CreateWebhookConfigData = {
     url: '/api/v1/notification/webhook';
 };
 
-export type CreateWebhookConfigErrors = {
+export type CreateEndpoint5Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type CreateWebhookConfigError = CreateWebhookConfigErrors[keyof CreateWebhookConfigErrors];
+export type CreateEndpoint5Error = CreateEndpoint5Errors[keyof CreateEndpoint5Errors];
 
-export type CreateWebhookConfigResponses = {
+export type CreateEndpoint5Responses = {
     /**
      * OK
      */
     200: WebhookConfigResponse;
 };
 
-export type CreateWebhookConfigResponse = CreateWebhookConfigResponses[keyof CreateWebhookConfigResponses];
+export type CreateEndpoint5Response = CreateEndpoint5Responses[keyof CreateEndpoint5Responses];
 
-export type UpdateWebhookConfigData = {
+export type UpdateEndpoint3Data = {
     /**
      * Request body for notification.UpdateWebhookConfigRequest
      */
@@ -8552,30 +8826,30 @@ export type UpdateWebhookConfigData = {
     url: '/api/v1/notification/webhook';
 };
 
-export type UpdateWebhookConfigErrors = {
+export type UpdateEndpoint3Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateWebhookConfigError = UpdateWebhookConfigErrors[keyof UpdateWebhookConfigErrors];
+export type UpdateEndpoint3Error = UpdateEndpoint3Errors[keyof UpdateEndpoint3Errors];
 
-export type UpdateWebhookConfigResponses = {
+export type UpdateEndpoint3Responses = {
     /**
      * OK
      */
     200: WebhookConfigResponse;
 };
 
-export type UpdateWebhookConfigResponse = UpdateWebhookConfigResponses[keyof UpdateWebhookConfigResponses];
+export type UpdateEndpoint3Response = UpdateEndpoint3Responses[keyof UpdateEndpoint3Responses];
 
-export type GetWebhookConfigData = {
+export type GetTypeData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8587,30 +8861,30 @@ export type GetWebhookConfigData = {
     url: '/api/v1/notification/webhook/{type}';
 };
 
-export type GetWebhookConfigErrors = {
+export type GetTypeErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetWebhookConfigError = GetWebhookConfigErrors[keyof GetWebhookConfigErrors];
+export type GetTypeError = GetTypeErrors[keyof GetTypeErrors];
 
-export type GetWebhookConfigResponses = {
+export type GetTypeResponses = {
     /**
      * OK
      */
     200: WebhookConfigResponse;
 };
 
-export type GetWebhookConfigResponse = GetWebhookConfigResponses[keyof GetWebhookConfigResponses];
+export type GetTypeResponse = GetTypeResponses[keyof GetTypeResponses];
 
-export type ListServersData = {
+export type GetEndpoint12Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8636,7 +8910,7 @@ export type ListServersData = {
         /**
          * Sort order
          */
-        sort_order?: 'asc' | 'desc';
+        sort_order?: string;
         /**
          * Server status filter
          */
@@ -8649,30 +8923,30 @@ export type ListServersData = {
     url: '/api/v1/servers';
 };
 
-export type ListServersErrors = {
+export type GetEndpoint12Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ListServersError = ListServersErrors[keyof ListServersErrors];
+export type GetEndpoint12Error = GetEndpoint12Errors[keyof GetEndpoint12Errors];
 
-export type ListServersResponses = {
+export type GetEndpoint12Responses = {
     /**
      * OK
      */
     200: ListServersResponse;
 };
 
-export type ListServersResponse2 = ListServersResponses[keyof ListServersResponses];
+export type GetEndpoint12Response = GetEndpoint12Responses[keyof GetEndpoint12Responses];
 
-export type GetSshConnectionStatusData = {
+export type GetStatusData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8682,30 +8956,30 @@ export type GetSshConnectionStatusData = {
     url: '/api/v1/servers/ssh/status';
 };
 
-export type GetSshConnectionStatusErrors = {
+export type GetStatusErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetSshConnectionStatusError = GetSshConnectionStatusErrors[keyof GetSshConnectionStatusErrors];
+export type GetStatusError = GetStatusErrors[keyof GetStatusErrors];
 
-export type GetSshConnectionStatusResponses = {
+export type GetStatusResponses = {
     /**
      * OK
      */
     200: SshConnectionStatusResponse;
 };
 
-export type GetSshConnectionStatusResponse = GetSshConnectionStatusResponses[keyof GetSshConnectionStatusResponses];
+export type GetStatusResponse = GetStatusResponses[keyof GetStatusResponses];
 
-export type ProvisionTrailResourcesData = {
+export type CreateProvisionData = {
     /**
      * Request body for types.ProvisionRequest
      */
@@ -8718,30 +8992,30 @@ export type ProvisionTrailResourcesData = {
     url: '/api/v1/trail/provision';
 };
 
-export type ProvisionTrailResourcesErrors = {
+export type CreateProvisionErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type ProvisionTrailResourcesError = ProvisionTrailResourcesErrors[keyof ProvisionTrailResourcesErrors];
+export type CreateProvisionError = CreateProvisionErrors[keyof CreateProvisionErrors];
 
-export type ProvisionTrailResourcesResponses = {
+export type CreateProvisionResponses = {
     /**
      * OK
      */
     200: ProvisionTrailResponse;
 };
 
-export type ProvisionTrailResourcesResponse = ProvisionTrailResourcesResponses[keyof ProvisionTrailResourcesResponses];
+export type CreateProvisionResponse = CreateProvisionResponses[keyof CreateProvisionResponses];
 
-export type GetTrailSessionStatusData = {
+export type GetStatus3Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8753,30 +9027,30 @@ export type GetTrailSessionStatusData = {
     url: '/api/v1/trail/status/{sessionId}';
 };
 
-export type GetTrailSessionStatusErrors = {
+export type GetStatus3Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetTrailSessionStatusError = GetTrailSessionStatusErrors[keyof GetTrailSessionStatusErrors];
+export type GetStatus3Error = GetStatus3Errors[keyof GetStatus3Errors];
 
-export type GetTrailSessionStatusResponses = {
+export type GetStatus3Responses = {
     /**
      * OK
      */
     200: TrailStatusEnvelopeResponse;
 };
 
-export type GetTrailSessionStatusResponse = GetTrailSessionStatusResponses[keyof GetTrailSessionStatusResponses];
+export type GetStatus3Response = GetStatus3Responses[keyof GetStatus3Responses];
 
-export type PerformUpdateData = {
+export type CreateEndpoint7Data = {
     /**
      * Request body for types.UpdateRequest
      */
@@ -8789,30 +9063,30 @@ export type PerformUpdateData = {
     url: '/api/v1/update';
 };
 
-export type PerformUpdateErrors = {
+export type CreateEndpoint7Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type PerformUpdateError = PerformUpdateErrors[keyof PerformUpdateErrors];
+export type CreateEndpoint7Error = CreateEndpoint7Errors[keyof CreateEndpoint7Errors];
 
-export type PerformUpdateResponses = {
+export type CreateEndpoint7Responses = {
     /**
      * OK
      */
     200: UpdateResponse;
 };
 
-export type PerformUpdateResponse = PerformUpdateResponses[keyof PerformUpdateResponses];
+export type CreateEndpoint7Response = CreateEndpoint7Responses[keyof CreateEndpoint7Responses];
 
-export type CheckForUpdatesData = {
+export type GetCheckData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8822,30 +9096,30 @@ export type CheckForUpdatesData = {
     url: '/api/v1/update/check';
 };
 
-export type CheckForUpdatesErrors = {
+export type GetCheckErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type CheckForUpdatesError = CheckForUpdatesErrors[keyof CheckForUpdatesErrors];
+export type GetCheckError = GetCheckErrors[keyof GetCheckErrors];
 
-export type CheckForUpdatesResponses = {
+export type GetCheckResponses = {
     /**
      * OK
      */
     200: UpdateCheckResponse;
 };
 
-export type CheckForUpdatesResponse = CheckForUpdatesResponses[keyof CheckForUpdatesResponses];
+export type GetCheckResponse = GetCheckResponses[keyof GetCheckResponses];
 
-export type GetCurrentUserProfileData = {
+export type GetEndpoint2Data = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8855,30 +9129,30 @@ export type GetCurrentUserProfileData = {
     url: '/api/v1/user';
 };
 
-export type GetCurrentUserProfileErrors = {
+export type GetEndpoint2Errors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetCurrentUserProfileError = GetCurrentUserProfileErrors[keyof GetCurrentUserProfileErrors];
+export type GetEndpoint2Error = GetEndpoint2Errors[keyof GetEndpoint2Errors];
 
-export type GetCurrentUserProfileResponses = {
+export type GetEndpoint2Responses = {
     /**
      * OK
      */
     200: UserResponse;
 };
 
-export type GetCurrentUserProfileResponse = GetCurrentUserProfileResponses[keyof GetCurrentUserProfileResponses];
+export type GetEndpoint2Response = GetEndpoint2Responses[keyof GetEndpoint2Responses];
 
-export type UpdateUserAvatarData = {
+export type PatchAvatarData = {
     /**
      * Request body for types.UpdateAvatarRequest
      */
@@ -8891,30 +9165,30 @@ export type UpdateUserAvatarData = {
     url: '/api/v1/user/avatar';
 };
 
-export type UpdateUserAvatarErrors = {
+export type PatchAvatarErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateUserAvatarError = UpdateUserAvatarErrors[keyof UpdateUserAvatarErrors];
+export type PatchAvatarError = PatchAvatarErrors[keyof PatchAvatarErrors];
 
-export type UpdateUserAvatarResponses = {
+export type PatchAvatarResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type UpdateUserAvatarResponse = UpdateUserAvatarResponses[keyof UpdateUserAvatarResponses];
+export type PatchAvatarResponse = PatchAvatarResponses[keyof PatchAvatarResponses];
 
-export type UpdateUserNameData = {
+export type PatchNameData = {
     /**
      * Request body for types.UpdateUserNameRequest
      */
@@ -8927,30 +9201,30 @@ export type UpdateUserNameData = {
     url: '/api/v1/user/name';
 };
 
-export type UpdateUserNameErrors = {
+export type PatchNameErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateUserNameError = UpdateUserNameErrors[keyof UpdateUserNameErrors];
+export type PatchNameError = PatchNameErrors[keyof PatchNameErrors];
 
-export type UpdateUserNameResponses = {
+export type PatchNameResponses = {
     /**
      * OK
      */
     200: UpdateUsernameResponse;
 };
 
-export type UpdateUserNameResponse = UpdateUserNameResponses[keyof UpdateUserNameResponses];
+export type PatchNameResponse = PatchNameResponses[keyof PatchNameResponses];
 
-export type CheckOnboardingStatusData = {
+export type GetOnboardedData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8960,30 +9234,30 @@ export type CheckOnboardingStatusData = {
     url: '/api/v1/user/onboarded';
 };
 
-export type CheckOnboardingStatusErrors = {
+export type GetOnboardedErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type CheckOnboardingStatusError = CheckOnboardingStatusErrors[keyof CheckOnboardingStatusErrors];
+export type GetOnboardedError = GetOnboardedErrors[keyof GetOnboardedErrors];
 
-export type CheckOnboardingStatusResponses = {
+export type GetOnboardedResponses = {
     /**
      * OK
      */
     200: IsOnboardedResponse;
 };
 
-export type CheckOnboardingStatusResponse = CheckOnboardingStatusResponses[keyof CheckOnboardingStatusResponses];
+export type GetOnboardedResponse = GetOnboardedResponses[keyof GetOnboardedResponses];
 
-export type MarkOnboardingCompleteData = {
+export type CreateOnboardedData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -8993,30 +9267,30 @@ export type MarkOnboardingCompleteData = {
     url: '/api/v1/user/onboarded';
 };
 
-export type MarkOnboardingCompleteErrors = {
+export type CreateOnboardedErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type MarkOnboardingCompleteError = MarkOnboardingCompleteErrors[keyof MarkOnboardingCompleteErrors];
+export type CreateOnboardedError = CreateOnboardedErrors[keyof CreateOnboardedErrors];
 
-export type MarkOnboardingCompleteResponses = {
+export type CreateOnboardedResponses = {
     /**
      * OK
      */
     200: MarkOnboardingCompleteResponse;
 };
 
-export type MarkOnboardingCompleteResponse2 = MarkOnboardingCompleteResponses[keyof MarkOnboardingCompleteResponses];
+export type CreateOnboardedResponse = CreateOnboardedResponses[keyof CreateOnboardedResponses];
 
-export type GetUserPreferencesData = {
+export type GetPreferencesData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -9026,30 +9300,30 @@ export type GetUserPreferencesData = {
     url: '/api/v1/user/preferences';
 };
 
-export type GetUserPreferencesErrors = {
+export type GetPreferencesErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetUserPreferencesError = GetUserPreferencesErrors[keyof GetUserPreferencesErrors];
+export type GetPreferencesError = GetPreferencesErrors[keyof GetPreferencesErrors];
 
-export type GetUserPreferencesResponses = {
+export type GetPreferencesResponses = {
     /**
      * OK
      */
     200: UserPreferencesResponse;
 };
 
-export type GetUserPreferencesResponse = GetUserPreferencesResponses[keyof GetUserPreferencesResponses];
+export type GetPreferencesResponse = GetPreferencesResponses[keyof GetPreferencesResponses];
 
-export type UpdateUserPreferencesData = {
+export type UpdatePreferencesData = {
     /**
      * Request body for types.UserPreferencesData
      */
@@ -9062,30 +9336,30 @@ export type UpdateUserPreferencesData = {
     url: '/api/v1/user/preferences';
 };
 
-export type UpdateUserPreferencesErrors = {
+export type UpdatePreferencesErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateUserPreferencesError = UpdateUserPreferencesErrors[keyof UpdateUserPreferencesErrors];
+export type UpdatePreferencesError = UpdatePreferencesErrors[keyof UpdatePreferencesErrors];
 
-export type UpdateUserPreferencesResponses = {
+export type UpdatePreferencesResponses = {
     /**
      * OK
      */
     200: UserPreferencesResponse;
 };
 
-export type UpdateUserPreferencesResponse = UpdateUserPreferencesResponses[keyof UpdateUserPreferencesResponses];
+export type UpdatePreferencesResponse = UpdatePreferencesResponses[keyof UpdatePreferencesResponses];
 
-export type GetUserSettingsData = {
+export type GetSettingsData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -9095,30 +9369,30 @@ export type GetUserSettingsData = {
     url: '/api/v1/user/settings';
 };
 
-export type GetUserSettingsErrors = {
+export type GetSettingsErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type GetUserSettingsError = GetUserSettingsErrors[keyof GetUserSettingsErrors];
+export type GetSettingsError = GetSettingsErrors[keyof GetSettingsErrors];
 
-export type GetUserSettingsResponses = {
+export type GetSettingsResponses = {
     /**
      * OK
      */
     200: UserSettingsResponse;
 };
 
-export type GetUserSettingsResponse = GetUserSettingsResponses[keyof GetUserSettingsResponses];
+export type GetSettingsResponse = GetSettingsResponses[keyof GetSettingsResponses];
 
-export type UpdateAutoUpdateSettingsData = {
+export type PatchAutoUpdateData = {
     /**
      * Request body for controller.UpdateAutoUpdateRequest
      */
@@ -9131,30 +9405,30 @@ export type UpdateAutoUpdateSettingsData = {
     url: '/api/v1/user/settings/auto-update';
 };
 
-export type UpdateAutoUpdateSettingsErrors = {
+export type PatchAutoUpdateErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateAutoUpdateSettingsError = UpdateAutoUpdateSettingsErrors[keyof UpdateAutoUpdateSettingsErrors];
+export type PatchAutoUpdateError = PatchAutoUpdateErrors[keyof PatchAutoUpdateErrors];
 
-export type UpdateAutoUpdateSettingsResponses = {
+export type PatchAutoUpdateResponses = {
     /**
      * OK
      */
     200: UserSettingsResponse;
 };
 
-export type UpdateAutoUpdateSettingsResponse = UpdateAutoUpdateSettingsResponses[keyof UpdateAutoUpdateSettingsResponses];
+export type PatchAutoUpdateResponse = PatchAutoUpdateResponses[keyof PatchAutoUpdateResponses];
 
-export type UpdateFontSettingsData = {
+export type PatchFontData = {
     /**
      * Request body for controller.UpdateFontRequest
      */
@@ -9167,30 +9441,30 @@ export type UpdateFontSettingsData = {
     url: '/api/v1/user/settings/font';
 };
 
-export type UpdateFontSettingsErrors = {
+export type PatchFontErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateFontSettingsError = UpdateFontSettingsErrors[keyof UpdateFontSettingsErrors];
+export type PatchFontError = PatchFontErrors[keyof PatchFontErrors];
 
-export type UpdateFontSettingsResponses = {
+export type PatchFontResponses = {
     /**
      * OK
      */
     200: UserSettingsResponse;
 };
 
-export type UpdateFontSettingsResponse = UpdateFontSettingsResponses[keyof UpdateFontSettingsResponses];
+export type PatchFontResponse = PatchFontResponses[keyof PatchFontResponses];
 
-export type UpdateLanguageSettingsData = {
+export type PatchLanguageData = {
     /**
      * Request body for controller.UpdateLanguageRequest
      */
@@ -9203,30 +9477,30 @@ export type UpdateLanguageSettingsData = {
     url: '/api/v1/user/settings/language';
 };
 
-export type UpdateLanguageSettingsErrors = {
+export type PatchLanguageErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateLanguageSettingsError = UpdateLanguageSettingsErrors[keyof UpdateLanguageSettingsErrors];
+export type PatchLanguageError = PatchLanguageErrors[keyof PatchLanguageErrors];
 
-export type UpdateLanguageSettingsResponses = {
+export type PatchLanguageResponses = {
     /**
      * OK
      */
     200: UserSettingsResponse;
 };
 
-export type UpdateLanguageSettingsResponse = UpdateLanguageSettingsResponses[keyof UpdateLanguageSettingsResponses];
+export type PatchLanguageResponse = PatchLanguageResponses[keyof PatchLanguageResponses];
 
-export type UpdateThemeSettingsData = {
+export type PatchThemeData = {
     /**
      * Request body for controller.UpdateThemeRequest
      */
@@ -9239,30 +9513,30 @@ export type UpdateThemeSettingsData = {
     url: '/api/v1/user/settings/theme';
 };
 
-export type UpdateThemeSettingsErrors = {
+export type PatchThemeErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type UpdateThemeSettingsError = UpdateThemeSettingsErrors[keyof UpdateThemeSettingsErrors];
+export type PatchThemeError = PatchThemeErrors[keyof PatchThemeErrors];
 
-export type UpdateThemeSettingsResponses = {
+export type PatchThemeResponses = {
     /**
      * OK
      */
     200: UserSettingsResponse;
 };
 
-export type UpdateThemeSettingsResponse = UpdateThemeSettingsResponses[keyof UpdateThemeSettingsResponses];
+export type PatchThemeResponse = PatchThemeResponses[keyof PatchThemeResponses];
 
-export type HandleGitHubWebhookData = {
+export type CreateEndpointData = {
     body?: never;
     headers?: {
         Accept?: string;
@@ -9272,25 +9546,25 @@ export type HandleGitHubWebhookData = {
     url: '/api/v1/webhook';
 };
 
-export type HandleGitHubWebhookErrors = {
+export type CreateEndpointErrors = {
     /**
      * Bad Request _(validation or deserialization error)_
      */
-    400: ErrorEnvelope;
+    400: HttpError;
     /**
      * Internal Server Error _(panics)_
      */
-    500: ErrorEnvelope;
+    500: HttpError;
     default: unknown;
 };
 
-export type HandleGitHubWebhookError = HandleGitHubWebhookErrors[keyof HandleGitHubWebhookErrors];
+export type CreateEndpointError = CreateEndpointErrors[keyof CreateEndpointErrors];
 
-export type HandleGitHubWebhookResponses = {
+export type CreateEndpointResponses = {
     /**
      * OK
      */
     200: MessageResponse;
 };
 
-export type HandleGitHubWebhookResponse = HandleGitHubWebhookResponses[keyof HandleGitHubWebhookResponses];
+export type CreateEndpointResponse = CreateEndpointResponses[keyof CreateEndpointResponses];
