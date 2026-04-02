@@ -50,6 +50,106 @@ export const zAdminRegisteredResponse = z.object({
 });
 
 /**
+ * ApplicationServersResponse schema
+ */
+export const zApplicationServersResponse = z.object({
+    data: z.array(z.object({
+        application_id: z.uuid().optional(),
+        created_at: z.iso.datetime().optional(),
+        id: z.uuid().optional(),
+        is_primary: z.boolean().optional(),
+        server: z.object({
+            auth_method: z.string().optional(),
+            created_at: z.iso.datetime().optional(),
+            deleted_at: z.iso.datetime().optional(),
+            description: z.string().optional(),
+            fingerprint: z.string().optional(),
+            host: z.string().optional(),
+            id: z.uuid().optional(),
+            is_active: z.boolean().optional(),
+            is_default: z.boolean().optional(),
+            key_size: z.int().optional(),
+            key_type: z.string().optional(),
+            last_used_at: z.iso.datetime().optional(),
+            name: z.string().optional(),
+            organization: z.object({
+                created_at: z.iso.datetime().optional(),
+                id: z.uuid().optional(),
+                logo: z.string().optional(),
+                metadata: z.string().optional(),
+                name: z.string().optional(),
+                slug: z.string().optional()
+            }).optional(),
+            organization_id: z.uuid().optional(),
+            port: z.int().optional(),
+            proxy_host: z.string().optional(),
+            public_key: z.string().optional(),
+            updated_at: z.iso.datetime().optional(),
+            user: z.string().optional()
+        }).optional(),
+        server_id: z.uuid().optional()
+    })).optional(),
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
+ * BackupListResponse schema
+ */
+export const zBackupListResponse = z.object({
+    data: z.object({
+        backups: z.array(z.object({
+            completed_at: z.iso.datetime().optional(),
+            created_at: z.iso.datetime().optional(),
+            error: z.string().optional(),
+            id: z.uuid().optional(),
+            machine_name: z.string().optional(),
+            organization_id: z.uuid().optional(),
+            provision_id: z.uuid().optional(),
+            s3_path: z.string().optional(),
+            size_bytes: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+            snapshot_path: z.string().optional(),
+            started_at: z.iso.datetime().optional(),
+            status: z.string().optional(),
+            trigger: z.string().optional(),
+            updated_at: z.iso.datetime().optional(),
+            user_id: z.uuid().optional()
+        })).optional(),
+        page: z.int().gte(1).optional().default(1),
+        page_size: z.int().gte(1).lte(100).optional().default(20),
+        total_count: z.int().optional()
+    }).optional(),
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
+ * BackupScheduleData schema
+ */
+export const zBackupScheduleData = z.object({
+    day_of_week: z.int().optional(),
+    enabled: z.boolean().optional(),
+    frequency: z.string().optional(),
+    hour_utc: z.int().optional(),
+    retention_count: z.int().optional()
+});
+
+/**
+ * BackupScheduleResponse schema
+ */
+export const zBackupScheduleResponse = z.object({
+    data: z.object({
+        day_of_week: z.int().optional(),
+        enabled: z.boolean().optional(),
+        frequency: z.string().optional(),
+        hour_utc: z.int().optional(),
+        retention_count: z.int().optional()
+    }).optional(),
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
  * BootstrapResponse schema
  */
 export const zBootstrapResponse = z.object({
@@ -149,8 +249,12 @@ export const zCreateDeploymentRequest = z.object({
     port: z.int().optional(),
     post_run_command: z.string().optional(),
     pre_run_command: z.string().optional(),
+    primary_server_id: z.uuid().optional(),
     repository: z.string().optional(),
-    source: z.string().optional()
+    routing_strategy: z.string().optional(),
+    server_ids: z.array(z.uuid()).optional(),
+    source: z.string().optional(),
+    target_server_ids: z.array(z.uuid()).optional()
 });
 
 /**
@@ -215,7 +319,10 @@ export const zCreateProjectRequest = z.object({
     port: z.int().optional(),
     post_run_command: z.string().optional(),
     pre_run_command: z.string().optional(),
+    primary_server_id: z.uuid().optional(),
     repository: z.string().optional(),
+    routing_strategy: z.string().optional(),
+    server_ids: z.array(z.uuid()).optional(),
     source: z.string().optional()
 });
 
@@ -368,6 +475,9 @@ export const zDuplicateProjectRequest = z.object({
     branch: z.string().optional(),
     domains: z.array(z.string()).optional(),
     environment: z.string().optional(),
+    primary_server_id: z.uuid().optional(),
+    routing_strategy: z.string().optional(),
+    server_ids: z.array(z.uuid()).optional(),
     source_project_id: z.uuid().optional()
 });
 
@@ -380,6 +490,12 @@ export const zEnvironmentsInFamilyResponse = z.object({
     }).optional(),
     message: z.string().optional(),
     status: z.string().optional()
+});
+
+export const zErrorEnvelope = z.object({
+    code: z.string(),
+    details: z.record(z.string(), z.string()).optional(),
+    message: z.string()
 });
 
 export const zExtension = z.object({
@@ -1355,6 +1471,42 @@ export const zMachineBillingResponse = z.object({
 });
 
 /**
+ * MachineEventsResponse schema
+ */
+export const zMachineEventsResponse = z.object({
+    data: z.array(z.object({
+        count: z.int().optional(),
+        details: z.string().optional(),
+        event_type: z.string().optional(),
+        machine_name: z.string().optional(),
+        time: z.iso.datetime().optional()
+    })).optional(),
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
+ * MachineMetricsResponse schema
+ */
+export const zMachineMetricsResponse = z.object({
+    data: z.array(z.object({
+        cpu_usage_pct: z.number().optional(),
+        machine_name: z.string().optional(),
+        memory_bytes: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+        memory_limit_bytes: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+        net_rx_bytes: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+        net_rx_drops: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+        net_rx_packets: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+        net_tx_bytes: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+        net_tx_drops: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+        net_tx_packets: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+        time: z.iso.datetime().optional()
+    })).optional(),
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
  * MachineStateResponse schema
  */
 export const zMachineStateResponse = z.object({
@@ -1363,6 +1515,38 @@ export const zMachineStateResponse = z.object({
         pid: z.int().optional(),
         state: z.string().optional(),
         uptime_sec: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional()
+    }).optional(),
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
+ * MachineSummaryResponse schema
+ */
+export const zMachineSummaryResponse = z.object({
+    data: z.object({
+        avg_cpu_pct: z.number().optional(),
+        avg_memory_mb: z.number().optional(),
+        event_count: z.int().optional(),
+        machine_name: z.string().optional(),
+        max_cpu_pct: z.number().optional(),
+        max_memory_mb: z.number().optional(),
+        recent_events: z.array(z.object({
+            count: z.int().optional(),
+            details: z.string().optional(),
+            event_type: z.string().optional(),
+            machine_name: z.string().optional(),
+            time: z.iso.datetime().optional()
+        })).optional(),
+        total_bytes_sent_mb: z.number().optional(),
+        total_err_count: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+        total_req_count: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+        total_rx_drops: z.number().optional(),
+        total_rx_mb: z.number().optional(),
+        total_tx_drops: z.number().optional(),
+        total_tx_mb: z.number().optional(),
+        window_end: z.iso.datetime().optional(),
+        window_start: z.iso.datetime().optional()
     }).optional(),
     message: z.string().optional(),
     status: z.string().optional()
@@ -1512,7 +1696,8 @@ export const zRandomSubdomainResponseWrapper = z.object({
 export const zReDeployApplicationRequest = z.object({
     force: z.boolean().optional(),
     force_without_cache: z.boolean().optional(),
-    id: z.uuid().optional()
+    id: z.uuid().optional(),
+    target_server_ids: z.array(z.uuid()).optional()
 });
 
 /**
@@ -1581,7 +1766,8 @@ export const zRestartDeploymentRequest = z.object({
  * RollbackDeploymentRequest schema
  */
 export const zRollbackDeploymentRequest = z.object({
-    id: z.uuid().optional()
+    id: z.uuid().optional(),
+    target_server_ids: z.array(z.uuid()).optional()
 });
 
 /**
@@ -1677,6 +1863,53 @@ export const zSendNotificationResponse = z.object({
 });
 
 /**
+ * SetApplicationServersRequest schema
+ */
+export const zSetApplicationServersRequest = z.object({
+    application_id: z.uuid().optional(),
+    primary_server_id: z.uuid().optional(),
+    routing_strategy: z.string().optional(),
+    server_ids: z.array(z.uuid()).optional()
+});
+
+/**
+ * SetDefaultServerResponse schema
+ */
+export const zSetDefaultServerResponse = z.object({
+    data: z.object({
+        auth_method: z.string().optional(),
+        created_at: z.iso.datetime().optional(),
+        deleted_at: z.iso.datetime().optional(),
+        description: z.string().optional(),
+        fingerprint: z.string().optional(),
+        host: z.string().optional(),
+        id: z.uuid().optional(),
+        is_active: z.boolean().optional(),
+        is_default: z.boolean().optional(),
+        key_size: z.int().optional(),
+        key_type: z.string().optional(),
+        last_used_at: z.iso.datetime().optional(),
+        name: z.string().optional(),
+        organization: z.object({
+            created_at: z.iso.datetime().optional(),
+            id: z.uuid().optional(),
+            logo: z.string().optional(),
+            metadata: z.string().optional(),
+            name: z.string().optional(),
+            slug: z.string().optional()
+        }).optional(),
+        organization_id: z.uuid().optional(),
+        port: z.int().optional(),
+        proxy_host: z.string().optional(),
+        public_key: z.string().optional(),
+        updated_at: z.iso.datetime().optional(),
+        user: z.string().optional()
+    }).optional(),
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
  * SystemStatsResponse schema
  */
 export const zSystemStatsResponse = z.object({
@@ -1764,6 +1997,26 @@ export const zToggleHealthCheckRequest = z.object({
 });
 
 /**
+ * TrackInstallRequest schema
+ */
+export const zTrackInstallRequest = z.object({
+    arch: z.string().optional(),
+    duration: z.int().optional(),
+    error: z.string().optional(),
+    event_type: z.string().optional(),
+    os: z.string().optional(),
+    version: z.string().optional()
+});
+
+/**
+ * TrackInstallResponse schema
+ */
+export const zTrackInstallResponse = z.object({
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
  * TrailStatusEnvelopeResponse schema
  */
 export const zTrailStatusEnvelopeResponse = z.object({
@@ -1778,6 +2031,15 @@ export const zTrailStatusEnvelopeResponse = z.object({
     }).optional(),
     error: z.string().optional(),
     message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
+ * TriggerBackupResponse schema
+ */
+export const zTriggerBackupResponse = z.object({
+    message: z.string().optional(),
+    request_id: z.uuid().optional(),
     status: z.string().optional()
 });
 
@@ -1851,7 +2113,8 @@ export const zUpdateDeploymentRequest = z.object({
     name: z.string().optional(),
     port: z.int().optional(),
     post_run_command: z.string().optional(),
-    pre_run_command: z.string().optional()
+    pre_run_command: z.string().optional(),
+    routing_strategy: z.string().optional()
 });
 
 /**
@@ -2049,6 +2312,7 @@ export const zListServersResponse = z.object({
             host: z.string().optional(),
             id: z.uuid().optional(),
             is_active: z.boolean().optional(),
+            is_default: z.boolean().optional(),
             key_size: z.int().optional(),
             key_type: z.string().optional(),
             last_used_at: z.iso.datetime().optional(),
@@ -2065,11 +2329,13 @@ export const zListServersResponse = z.object({
             port: z.int().optional(),
             provision: z.object({
                 created_at: z.iso.datetime().optional(),
+                disk_size_gb: z.int().optional(),
                 domain: z.string().optional(),
                 error: z.string().optional(),
                 guest_ip: z.string().optional(),
                 id: z.uuid().optional(),
                 lxd_container_name: z.string().optional(),
+                memory_mb: z.int().optional(),
                 organization: z.object({
                     created_at: z.iso.datetime().optional(),
                     id: z.uuid().optional(),
@@ -2089,6 +2355,7 @@ export const zListServersResponse = z.object({
                     host: z.string().optional(),
                     id: z.uuid().optional(),
                     is_active: z.boolean().optional(),
+                    is_default: z.boolean().optional(),
                     key_size: z.int().optional(),
                     key_type: z.string().optional(),
                     last_used_at: z.iso.datetime().optional(),
@@ -2150,10 +2417,14 @@ export const zListServersResponse = z.object({
                     updated_at: z.iso.datetime().optional(),
                     username: z.string().optional()
                 }).optional(),
-                user_id: z.uuid().optional()
+                user_id: z.uuid().optional(),
+                vcpu_count: z.int().optional()
             }).optional(),
             proxy_host: z.string().optional(),
             public_key: z.string().optional(),
+            total_disk_gb: z.int().optional(),
+            total_ram_mb: z.int().optional(),
+            total_vcpu: z.int().optional(),
             updated_at: z.iso.datetime().optional(),
             user: z.string().optional()
         })).optional(),
@@ -2412,6 +2683,7 @@ export const zApplication = z.object({
     deployments: z.array(z.object({
         application: z.lazy((): any => zApplication).optional(),
         application_id: z.uuid().optional(),
+        children: z.array(z.lazy((): any => zApplicationDeployment)).optional(),
         commit_hash: z.string().optional(),
         container_id: z.uuid().optional(),
         container_image: z.string().optional(),
@@ -2431,6 +2703,8 @@ export const zApplication = z.object({
             log: z.string().optional(),
             updated_at: z.iso.datetime().optional()
         })).optional(),
+        parent_deployment_id: z.uuid().optional(),
+        server_id: z.uuid().optional(),
         status: z.object({
             application_deployment: z.lazy((): any => zApplicationDeployment).optional(),
             application_deployment_id: z.uuid().optional(),
@@ -2472,6 +2746,7 @@ export const zApplication = z.object({
         application_deployment: z.object({
             application: z.lazy((): any => zApplication).optional(),
             application_id: z.uuid().optional(),
+            children: z.array(z.lazy((): any => zApplicationDeployment)).optional(),
             commit_hash: z.string().optional(),
             container_id: z.uuid().optional(),
             container_image: z.string().optional(),
@@ -2482,6 +2757,8 @@ export const zApplication = z.object({
             image_s3_key: z.string().optional(),
             image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
             logs: z.array(z.lazy((): any => zApplicationLogs)).optional(),
+            parent_deployment_id: z.uuid().optional(),
+            server_id: z.uuid().optional(),
             status: z.object({
                 application_deployment: z.lazy((): any => zApplicationDeployment).optional(),
                 application_deployment_id: z.uuid().optional(),
@@ -2514,6 +2791,43 @@ export const zApplication = z.object({
     pre_run_command: z.string().optional(),
     proxy_server: z.string().optional(),
     repository: z.string().optional(),
+    routing_strategy: z.string().optional(),
+    servers: z.array(z.object({
+        application_id: z.uuid().optional(),
+        created_at: z.iso.datetime().optional(),
+        id: z.uuid().optional(),
+        is_primary: z.boolean().optional(),
+        server: z.object({
+            auth_method: z.string().optional(),
+            created_at: z.iso.datetime().optional(),
+            deleted_at: z.iso.datetime().optional(),
+            description: z.string().optional(),
+            fingerprint: z.string().optional(),
+            host: z.string().optional(),
+            id: z.uuid().optional(),
+            is_active: z.boolean().optional(),
+            is_default: z.boolean().optional(),
+            key_size: z.int().optional(),
+            key_type: z.string().optional(),
+            last_used_at: z.iso.datetime().optional(),
+            name: z.string().optional(),
+            organization: z.object({
+                created_at: z.iso.datetime().optional(),
+                id: z.uuid().optional(),
+                logo: z.string().optional(),
+                metadata: z.string().optional(),
+                name: z.string().optional(),
+                slug: z.string().optional()
+            }).optional(),
+            organization_id: z.uuid().optional(),
+            port: z.int().optional(),
+            proxy_host: z.string().optional(),
+            public_key: z.string().optional(),
+            updated_at: z.iso.datetime().optional(),
+            user: z.string().optional()
+        }).optional(),
+        server_id: z.uuid().optional()
+    })).optional(),
     source: z.string().optional(),
     status: z.object({
         application: z.lazy((): any => zApplication).optional(),
@@ -2568,6 +2882,7 @@ export const zApplication = z.object({
 export const zApplicationDeployment = z.object({
     application: zApplication.optional(),
     application_id: z.uuid().optional(),
+    children: z.array(z.lazy((): any => zApplicationDeployment)).optional(),
     commit_hash: z.string().optional(),
     container_id: z.uuid().optional(),
     container_image: z.string().optional(),
@@ -2587,6 +2902,8 @@ export const zApplicationDeployment = z.object({
         log: z.string().optional(),
         updated_at: z.iso.datetime().optional()
     })).optional(),
+    parent_deployment_id: z.uuid().optional(),
+    server_id: z.uuid().optional(),
     status: z.object({
         application_deployment: z.lazy((): any => zApplicationDeployment).optional(),
         application_deployment_id: z.uuid().optional(),
@@ -2652,6 +2969,7 @@ export const zApplicationResponse = z.object({
         deployments: z.array(z.object({
             application: zApplication.optional(),
             application_id: z.uuid().optional(),
+            children: z.array(zApplicationDeployment).optional(),
             commit_hash: z.string().optional(),
             container_id: z.uuid().optional(),
             container_image: z.string().optional(),
@@ -2671,6 +2989,8 @@ export const zApplicationResponse = z.object({
                 log: z.string().optional(),
                 updated_at: z.iso.datetime().optional()
             })).optional(),
+            parent_deployment_id: z.uuid().optional(),
+            server_id: z.uuid().optional(),
             status: z.object({
                 application_deployment: zApplicationDeployment.optional(),
                 application_deployment_id: z.uuid().optional(),
@@ -2712,6 +3032,7 @@ export const zApplicationResponse = z.object({
             application_deployment: z.object({
                 application: zApplication.optional(),
                 application_id: z.uuid().optional(),
+                children: z.array(zApplicationDeployment).optional(),
                 commit_hash: z.string().optional(),
                 container_id: z.uuid().optional(),
                 container_image: z.string().optional(),
@@ -2722,6 +3043,8 @@ export const zApplicationResponse = z.object({
                 image_s3_key: z.string().optional(),
                 image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
                 logs: z.array(zApplicationLogs).optional(),
+                parent_deployment_id: z.uuid().optional(),
+                server_id: z.uuid().optional(),
                 status: z.object({
                     application_deployment: zApplicationDeployment.optional(),
                     application_deployment_id: z.uuid().optional(),
@@ -2754,6 +3077,43 @@ export const zApplicationResponse = z.object({
         pre_run_command: z.string().optional(),
         proxy_server: z.string().optional(),
         repository: z.string().optional(),
+        routing_strategy: z.string().optional(),
+        servers: z.array(z.object({
+            application_id: z.uuid().optional(),
+            created_at: z.iso.datetime().optional(),
+            id: z.uuid().optional(),
+            is_primary: z.boolean().optional(),
+            server: z.object({
+                auth_method: z.string().optional(),
+                created_at: z.iso.datetime().optional(),
+                deleted_at: z.iso.datetime().optional(),
+                description: z.string().optional(),
+                fingerprint: z.string().optional(),
+                host: z.string().optional(),
+                id: z.uuid().optional(),
+                is_active: z.boolean().optional(),
+                is_default: z.boolean().optional(),
+                key_size: z.int().optional(),
+                key_type: z.string().optional(),
+                last_used_at: z.iso.datetime().optional(),
+                name: z.string().optional(),
+                organization: z.object({
+                    created_at: z.iso.datetime().optional(),
+                    id: z.uuid().optional(),
+                    logo: z.string().optional(),
+                    metadata: z.string().optional(),
+                    name: z.string().optional(),
+                    slug: z.string().optional()
+                }).optional(),
+                organization_id: z.uuid().optional(),
+                port: z.int().optional(),
+                proxy_host: z.string().optional(),
+                public_key: z.string().optional(),
+                updated_at: z.iso.datetime().optional(),
+                user: z.string().optional()
+            }).optional(),
+            server_id: z.uuid().optional()
+        })).optional(),
         source: z.string().optional(),
         status: z.object({
             application: zApplication.optional(),
@@ -2812,16 +3172,7 @@ export const zComposeService = z.object({
     application: zApplication.optional(),
     application_id: z.uuid().optional(),
     created_at: z.iso.datetime().optional(),
-    domains: z.array(z.object({
-        application: zApplication.optional(),
-        application_id: z.uuid().optional(),
-        compose_service: z.lazy((): any => zComposeService).optional(),
-        compose_service_id: z.uuid().optional(),
-        created_at: z.iso.datetime().optional(),
-        domain: z.string().optional(),
-        id: z.uuid().optional(),
-        port: z.int().optional()
-    })).optional(),
+    domains: z.array(zApplicationDomain).optional(),
     id: z.uuid().optional(),
     port: z.int().optional(),
     service_name: z.string().optional(),
@@ -2843,6 +3194,7 @@ export const zComposeServicesResponse = z.object({
             deployments: z.array(z.object({
                 application: zApplication.optional(),
                 application_id: z.uuid().optional(),
+                children: z.array(zApplicationDeployment).optional(),
                 commit_hash: z.string().optional(),
                 container_id: z.uuid().optional(),
                 container_image: z.string().optional(),
@@ -2862,6 +3214,8 @@ export const zComposeServicesResponse = z.object({
                     log: z.string().optional(),
                     updated_at: z.iso.datetime().optional()
                 })).optional(),
+                parent_deployment_id: z.uuid().optional(),
+                server_id: z.uuid().optional(),
                 status: z.object({
                     application_deployment: zApplicationDeployment.optional(),
                     application_deployment_id: z.uuid().optional(),
@@ -2894,6 +3248,7 @@ export const zComposeServicesResponse = z.object({
                 application_deployment: z.object({
                     application: zApplication.optional(),
                     application_id: z.uuid().optional(),
+                    children: z.array(zApplicationDeployment).optional(),
                     commit_hash: z.string().optional(),
                     container_id: z.uuid().optional(),
                     container_image: z.string().optional(),
@@ -2904,6 +3259,8 @@ export const zComposeServicesResponse = z.object({
                     image_s3_key: z.string().optional(),
                     image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
                     logs: z.array(zApplicationLogs).optional(),
+                    parent_deployment_id: z.uuid().optional(),
+                    server_id: z.uuid().optional(),
                     status: z.object({
                         application_deployment: zApplicationDeployment.optional(),
                         application_deployment_id: z.uuid().optional(),
@@ -2936,6 +3293,43 @@ export const zComposeServicesResponse = z.object({
             pre_run_command: z.string().optional(),
             proxy_server: z.string().optional(),
             repository: z.string().optional(),
+            routing_strategy: z.string().optional(),
+            servers: z.array(z.object({
+                application_id: z.uuid().optional(),
+                created_at: z.iso.datetime().optional(),
+                id: z.uuid().optional(),
+                is_primary: z.boolean().optional(),
+                server: z.object({
+                    auth_method: z.string().optional(),
+                    created_at: z.iso.datetime().optional(),
+                    deleted_at: z.iso.datetime().optional(),
+                    description: z.string().optional(),
+                    fingerprint: z.string().optional(),
+                    host: z.string().optional(),
+                    id: z.uuid().optional(),
+                    is_active: z.boolean().optional(),
+                    is_default: z.boolean().optional(),
+                    key_size: z.int().optional(),
+                    key_type: z.string().optional(),
+                    last_used_at: z.iso.datetime().optional(),
+                    name: z.string().optional(),
+                    organization: z.object({
+                        created_at: z.iso.datetime().optional(),
+                        id: z.uuid().optional(),
+                        logo: z.string().optional(),
+                        metadata: z.string().optional(),
+                        name: z.string().optional(),
+                        slug: z.string().optional()
+                    }).optional(),
+                    organization_id: z.uuid().optional(),
+                    port: z.int().optional(),
+                    proxy_host: z.string().optional(),
+                    public_key: z.string().optional(),
+                    updated_at: z.iso.datetime().optional(),
+                    user: z.string().optional()
+                }).optional(),
+                server_id: z.uuid().optional()
+            })).optional(),
             source: z.string().optional(),
             status: z.object({
                 application: zApplication.optional(),
@@ -2999,6 +3393,7 @@ export const zComposeServicesResponse = z.object({
                 deployments: z.array(z.object({
                     application: zApplication.optional(),
                     application_id: z.uuid().optional(),
+                    children: z.array(zApplicationDeployment).optional(),
                     commit_hash: z.string().optional(),
                     container_id: z.uuid().optional(),
                     container_image: z.string().optional(),
@@ -3018,6 +3413,8 @@ export const zComposeServicesResponse = z.object({
                         log: z.string().optional(),
                         updated_at: z.iso.datetime().optional()
                     })).optional(),
+                    parent_deployment_id: z.uuid().optional(),
+                    server_id: z.uuid().optional(),
                     status: z.object({
                         application_deployment: zApplicationDeployment.optional(),
                         application_deployment_id: z.uuid().optional(),
@@ -3041,6 +3438,7 @@ export const zComposeServicesResponse = z.object({
                     application_deployment: z.object({
                         application: zApplication.optional(),
                         application_id: z.uuid().optional(),
+                        children: z.array(zApplicationDeployment).optional(),
                         commit_hash: z.string().optional(),
                         container_id: z.uuid().optional(),
                         container_image: z.string().optional(),
@@ -3051,6 +3449,8 @@ export const zComposeServicesResponse = z.object({
                         image_s3_key: z.string().optional(),
                         image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
                         logs: z.array(zApplicationLogs).optional(),
+                        parent_deployment_id: z.uuid().optional(),
+                        server_id: z.uuid().optional(),
                         status: z.object({
                             application_deployment: zApplicationDeployment.optional(),
                             application_deployment_id: z.uuid().optional(),
@@ -3083,6 +3483,43 @@ export const zComposeServicesResponse = z.object({
                 pre_run_command: z.string().optional(),
                 proxy_server: z.string().optional(),
                 repository: z.string().optional(),
+                routing_strategy: z.string().optional(),
+                servers: z.array(z.object({
+                    application_id: z.uuid().optional(),
+                    created_at: z.iso.datetime().optional(),
+                    id: z.uuid().optional(),
+                    is_primary: z.boolean().optional(),
+                    server: z.object({
+                        auth_method: z.string().optional(),
+                        created_at: z.iso.datetime().optional(),
+                        deleted_at: z.iso.datetime().optional(),
+                        description: z.string().optional(),
+                        fingerprint: z.string().optional(),
+                        host: z.string().optional(),
+                        id: z.uuid().optional(),
+                        is_active: z.boolean().optional(),
+                        is_default: z.boolean().optional(),
+                        key_size: z.int().optional(),
+                        key_type: z.string().optional(),
+                        last_used_at: z.iso.datetime().optional(),
+                        name: z.string().optional(),
+                        organization: z.object({
+                            created_at: z.iso.datetime().optional(),
+                            id: z.uuid().optional(),
+                            logo: z.string().optional(),
+                            metadata: z.string().optional(),
+                            name: z.string().optional(),
+                            slug: z.string().optional()
+                        }).optional(),
+                        organization_id: z.uuid().optional(),
+                        port: z.int().optional(),
+                        proxy_host: z.string().optional(),
+                        public_key: z.string().optional(),
+                        updated_at: z.iso.datetime().optional(),
+                        user: z.string().optional()
+                    }).optional(),
+                    server_id: z.uuid().optional()
+                })).optional(),
                 source: z.string().optional(),
                 status: z.object({
                     application: zApplication.optional(),
@@ -3232,6 +3669,43 @@ export const zDeploymentResponse = z.object({
             pre_run_command: z.string().optional(),
             proxy_server: z.string().optional(),
             repository: z.string().optional(),
+            routing_strategy: z.string().optional(),
+            servers: z.array(z.object({
+                application_id: z.uuid().optional(),
+                created_at: z.iso.datetime().optional(),
+                id: z.uuid().optional(),
+                is_primary: z.boolean().optional(),
+                server: z.object({
+                    auth_method: z.string().optional(),
+                    created_at: z.iso.datetime().optional(),
+                    deleted_at: z.iso.datetime().optional(),
+                    description: z.string().optional(),
+                    fingerprint: z.string().optional(),
+                    host: z.string().optional(),
+                    id: z.uuid().optional(),
+                    is_active: z.boolean().optional(),
+                    is_default: z.boolean().optional(),
+                    key_size: z.int().optional(),
+                    key_type: z.string().optional(),
+                    last_used_at: z.iso.datetime().optional(),
+                    name: z.string().optional(),
+                    organization: z.object({
+                        created_at: z.iso.datetime().optional(),
+                        id: z.uuid().optional(),
+                        logo: z.string().optional(),
+                        metadata: z.string().optional(),
+                        name: z.string().optional(),
+                        slug: z.string().optional()
+                    }).optional(),
+                    organization_id: z.uuid().optional(),
+                    port: z.int().optional(),
+                    proxy_host: z.string().optional(),
+                    public_key: z.string().optional(),
+                    updated_at: z.iso.datetime().optional(),
+                    user: z.string().optional()
+                }).optional(),
+                server_id: z.uuid().optional()
+            })).optional(),
             source: z.string().optional(),
             status: z.object({
                 application: zApplication.optional(),
@@ -3283,6 +3757,7 @@ export const zDeploymentResponse = z.object({
             user_id: z.uuid().optional()
         }).optional(),
         application_id: z.uuid().optional(),
+        children: z.array(zApplicationDeployment).optional(),
         commit_hash: z.string().optional(),
         container_id: z.uuid().optional(),
         container_image: z.string().optional(),
@@ -3361,6 +3836,43 @@ export const zDeploymentResponse = z.object({
                 pre_run_command: z.string().optional(),
                 proxy_server: z.string().optional(),
                 repository: z.string().optional(),
+                routing_strategy: z.string().optional(),
+                servers: z.array(z.object({
+                    application_id: z.uuid().optional(),
+                    created_at: z.iso.datetime().optional(),
+                    id: z.uuid().optional(),
+                    is_primary: z.boolean().optional(),
+                    server: z.object({
+                        auth_method: z.string().optional(),
+                        created_at: z.iso.datetime().optional(),
+                        deleted_at: z.iso.datetime().optional(),
+                        description: z.string().optional(),
+                        fingerprint: z.string().optional(),
+                        host: z.string().optional(),
+                        id: z.uuid().optional(),
+                        is_active: z.boolean().optional(),
+                        is_default: z.boolean().optional(),
+                        key_size: z.int().optional(),
+                        key_type: z.string().optional(),
+                        last_used_at: z.iso.datetime().optional(),
+                        name: z.string().optional(),
+                        organization: z.object({
+                            created_at: z.iso.datetime().optional(),
+                            id: z.uuid().optional(),
+                            logo: z.string().optional(),
+                            metadata: z.string().optional(),
+                            name: z.string().optional(),
+                            slug: z.string().optional()
+                        }).optional(),
+                        organization_id: z.uuid().optional(),
+                        port: z.int().optional(),
+                        proxy_host: z.string().optional(),
+                        public_key: z.string().optional(),
+                        updated_at: z.iso.datetime().optional(),
+                        user: z.string().optional()
+                    }).optional(),
+                    server_id: z.uuid().optional()
+                })).optional(),
                 source: z.string().optional(),
                 status: z.object({
                     application: zApplication.optional(),
@@ -3419,6 +3931,8 @@ export const zDeploymentResponse = z.object({
             log: z.string().optional(),
             updated_at: z.iso.datetime().optional()
         })).optional(),
+        parent_deployment_id: z.uuid().optional(),
+        server_id: z.uuid().optional(),
         status: z.object({
             application_deployment: zApplicationDeployment.optional(),
             application_deployment_id: z.uuid().optional(),
@@ -3465,6 +3979,7 @@ export const zHealthCheckResult = z.object({
             deployments: z.array(z.object({
                 application: zApplication.optional(),
                 application_id: z.uuid().optional(),
+                children: z.array(zApplicationDeployment).optional(),
                 commit_hash: z.string().optional(),
                 container_id: z.uuid().optional(),
                 container_image: z.string().optional(),
@@ -3484,6 +3999,8 @@ export const zHealthCheckResult = z.object({
                     log: z.string().optional(),
                     updated_at: z.iso.datetime().optional()
                 })).optional(),
+                parent_deployment_id: z.uuid().optional(),
+                server_id: z.uuid().optional(),
                 status: z.object({
                     application_deployment: zApplicationDeployment.optional(),
                     application_deployment_id: z.uuid().optional(),
@@ -3525,6 +4042,7 @@ export const zHealthCheckResult = z.object({
                 application_deployment: z.object({
                     application: zApplication.optional(),
                     application_id: z.uuid().optional(),
+                    children: z.array(zApplicationDeployment).optional(),
                     commit_hash: z.string().optional(),
                     container_id: z.uuid().optional(),
                     container_image: z.string().optional(),
@@ -3535,6 +4053,8 @@ export const zHealthCheckResult = z.object({
                     image_s3_key: z.string().optional(),
                     image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
                     logs: z.array(zApplicationLogs).optional(),
+                    parent_deployment_id: z.uuid().optional(),
+                    server_id: z.uuid().optional(),
                     status: z.object({
                         application_deployment: zApplicationDeployment.optional(),
                         application_deployment_id: z.uuid().optional(),
@@ -3567,6 +4087,43 @@ export const zHealthCheckResult = z.object({
             pre_run_command: z.string().optional(),
             proxy_server: z.string().optional(),
             repository: z.string().optional(),
+            routing_strategy: z.string().optional(),
+            servers: z.array(z.object({
+                application_id: z.uuid().optional(),
+                created_at: z.iso.datetime().optional(),
+                id: z.uuid().optional(),
+                is_primary: z.boolean().optional(),
+                server: z.object({
+                    auth_method: z.string().optional(),
+                    created_at: z.iso.datetime().optional(),
+                    deleted_at: z.iso.datetime().optional(),
+                    description: z.string().optional(),
+                    fingerprint: z.string().optional(),
+                    host: z.string().optional(),
+                    id: z.uuid().optional(),
+                    is_active: z.boolean().optional(),
+                    is_default: z.boolean().optional(),
+                    key_size: z.int().optional(),
+                    key_type: z.string().optional(),
+                    last_used_at: z.iso.datetime().optional(),
+                    name: z.string().optional(),
+                    organization: z.object({
+                        created_at: z.iso.datetime().optional(),
+                        id: z.uuid().optional(),
+                        logo: z.string().optional(),
+                        metadata: z.string().optional(),
+                        name: z.string().optional(),
+                        slug: z.string().optional()
+                    }).optional(),
+                    organization_id: z.uuid().optional(),
+                    port: z.int().optional(),
+                    proxy_host: z.string().optional(),
+                    public_key: z.string().optional(),
+                    updated_at: z.iso.datetime().optional(),
+                    user: z.string().optional()
+                }).optional(),
+                server_id: z.uuid().optional()
+            })).optional(),
             source: z.string().optional(),
             status: z.object({
                 application: zApplication.optional(),
@@ -3680,6 +4237,7 @@ export const zHealthCheckResultsResponse = z.object({
                 deployments: z.array(z.object({
                     application: zApplication.optional(),
                     application_id: z.uuid().optional(),
+                    children: z.array(zApplicationDeployment).optional(),
                     commit_hash: z.string().optional(),
                     container_id: z.uuid().optional(),
                     container_image: z.string().optional(),
@@ -3699,6 +4257,8 @@ export const zHealthCheckResultsResponse = z.object({
                         log: z.string().optional(),
                         updated_at: z.iso.datetime().optional()
                     })).optional(),
+                    parent_deployment_id: z.uuid().optional(),
+                    server_id: z.uuid().optional(),
                     status: z.object({
                         application_deployment: zApplicationDeployment.optional(),
                         application_deployment_id: z.uuid().optional(),
@@ -3740,6 +4300,7 @@ export const zHealthCheckResultsResponse = z.object({
                     application_deployment: z.object({
                         application: zApplication.optional(),
                         application_id: z.uuid().optional(),
+                        children: z.array(zApplicationDeployment).optional(),
                         commit_hash: z.string().optional(),
                         container_id: z.uuid().optional(),
                         container_image: z.string().optional(),
@@ -3750,6 +4311,8 @@ export const zHealthCheckResultsResponse = z.object({
                         image_s3_key: z.string().optional(),
                         image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
                         logs: z.array(zApplicationLogs).optional(),
+                        parent_deployment_id: z.uuid().optional(),
+                        server_id: z.uuid().optional(),
                         status: z.object({
                             application_deployment: zApplicationDeployment.optional(),
                             application_deployment_id: z.uuid().optional(),
@@ -3782,6 +4345,43 @@ export const zHealthCheckResultsResponse = z.object({
                 pre_run_command: z.string().optional(),
                 proxy_server: z.string().optional(),
                 repository: z.string().optional(),
+                routing_strategy: z.string().optional(),
+                servers: z.array(z.object({
+                    application_id: z.uuid().optional(),
+                    created_at: z.iso.datetime().optional(),
+                    id: z.uuid().optional(),
+                    is_primary: z.boolean().optional(),
+                    server: z.object({
+                        auth_method: z.string().optional(),
+                        created_at: z.iso.datetime().optional(),
+                        deleted_at: z.iso.datetime().optional(),
+                        description: z.string().optional(),
+                        fingerprint: z.string().optional(),
+                        host: z.string().optional(),
+                        id: z.uuid().optional(),
+                        is_active: z.boolean().optional(),
+                        is_default: z.boolean().optional(),
+                        key_size: z.int().optional(),
+                        key_type: z.string().optional(),
+                        last_used_at: z.iso.datetime().optional(),
+                        name: z.string().optional(),
+                        organization: z.object({
+                            created_at: z.iso.datetime().optional(),
+                            id: z.uuid().optional(),
+                            logo: z.string().optional(),
+                            metadata: z.string().optional(),
+                            name: z.string().optional(),
+                            slug: z.string().optional()
+                        }).optional(),
+                        organization_id: z.uuid().optional(),
+                        port: z.int().optional(),
+                        proxy_host: z.string().optional(),
+                        public_key: z.string().optional(),
+                        updated_at: z.iso.datetime().optional(),
+                        user: z.string().optional()
+                    }).optional(),
+                    server_id: z.uuid().optional()
+                })).optional(),
                 source: z.string().optional(),
                 status: z.object({
                     application: zApplication.optional(),
@@ -3896,6 +4496,7 @@ export const zListApplicationsResponse = z.object({
             deployments: z.array(z.object({
                 application: zApplication.optional(),
                 application_id: z.uuid().optional(),
+                children: z.array(zApplicationDeployment).optional(),
                 commit_hash: z.string().optional(),
                 container_id: z.uuid().optional(),
                 container_image: z.string().optional(),
@@ -3915,6 +4516,8 @@ export const zListApplicationsResponse = z.object({
                     log: z.string().optional(),
                     updated_at: z.iso.datetime().optional()
                 })).optional(),
+                parent_deployment_id: z.uuid().optional(),
+                server_id: z.uuid().optional(),
                 status: z.object({
                     application_deployment: zApplicationDeployment.optional(),
                     application_deployment_id: z.uuid().optional(),
@@ -3956,6 +4559,7 @@ export const zListApplicationsResponse = z.object({
                 application_deployment: z.object({
                     application: zApplication.optional(),
                     application_id: z.uuid().optional(),
+                    children: z.array(zApplicationDeployment).optional(),
                     commit_hash: z.string().optional(),
                     container_id: z.uuid().optional(),
                     container_image: z.string().optional(),
@@ -3966,6 +4570,8 @@ export const zListApplicationsResponse = z.object({
                     image_s3_key: z.string().optional(),
                     image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
                     logs: z.array(zApplicationLogs).optional(),
+                    parent_deployment_id: z.uuid().optional(),
+                    server_id: z.uuid().optional(),
                     status: z.object({
                         application_deployment: zApplicationDeployment.optional(),
                         application_deployment_id: z.uuid().optional(),
@@ -3998,6 +4604,43 @@ export const zListApplicationsResponse = z.object({
             pre_run_command: z.string().optional(),
             proxy_server: z.string().optional(),
             repository: z.string().optional(),
+            routing_strategy: z.string().optional(),
+            servers: z.array(z.object({
+                application_id: z.uuid().optional(),
+                created_at: z.iso.datetime().optional(),
+                id: z.uuid().optional(),
+                is_primary: z.boolean().optional(),
+                server: z.object({
+                    auth_method: z.string().optional(),
+                    created_at: z.iso.datetime().optional(),
+                    deleted_at: z.iso.datetime().optional(),
+                    description: z.string().optional(),
+                    fingerprint: z.string().optional(),
+                    host: z.string().optional(),
+                    id: z.uuid().optional(),
+                    is_active: z.boolean().optional(),
+                    is_default: z.boolean().optional(),
+                    key_size: z.int().optional(),
+                    key_type: z.string().optional(),
+                    last_used_at: z.iso.datetime().optional(),
+                    name: z.string().optional(),
+                    organization: z.object({
+                        created_at: z.iso.datetime().optional(),
+                        id: z.uuid().optional(),
+                        logo: z.string().optional(),
+                        metadata: z.string().optional(),
+                        name: z.string().optional(),
+                        slug: z.string().optional()
+                    }).optional(),
+                    organization_id: z.uuid().optional(),
+                    port: z.int().optional(),
+                    proxy_host: z.string().optional(),
+                    public_key: z.string().optional(),
+                    updated_at: z.iso.datetime().optional(),
+                    user: z.string().optional()
+                }).optional(),
+                server_id: z.uuid().optional()
+            })).optional(),
             source: z.string().optional(),
             status: z.object({
                 application: zApplication.optional(),
@@ -4139,6 +4782,43 @@ export const zListDeploymentsResponse = z.object({
                 pre_run_command: z.string().optional(),
                 proxy_server: z.string().optional(),
                 repository: z.string().optional(),
+                routing_strategy: z.string().optional(),
+                servers: z.array(z.object({
+                    application_id: z.uuid().optional(),
+                    created_at: z.iso.datetime().optional(),
+                    id: z.uuid().optional(),
+                    is_primary: z.boolean().optional(),
+                    server: z.object({
+                        auth_method: z.string().optional(),
+                        created_at: z.iso.datetime().optional(),
+                        deleted_at: z.iso.datetime().optional(),
+                        description: z.string().optional(),
+                        fingerprint: z.string().optional(),
+                        host: z.string().optional(),
+                        id: z.uuid().optional(),
+                        is_active: z.boolean().optional(),
+                        is_default: z.boolean().optional(),
+                        key_size: z.int().optional(),
+                        key_type: z.string().optional(),
+                        last_used_at: z.iso.datetime().optional(),
+                        name: z.string().optional(),
+                        organization: z.object({
+                            created_at: z.iso.datetime().optional(),
+                            id: z.uuid().optional(),
+                            logo: z.string().optional(),
+                            metadata: z.string().optional(),
+                            name: z.string().optional(),
+                            slug: z.string().optional()
+                        }).optional(),
+                        organization_id: z.uuid().optional(),
+                        port: z.int().optional(),
+                        proxy_host: z.string().optional(),
+                        public_key: z.string().optional(),
+                        updated_at: z.iso.datetime().optional(),
+                        user: z.string().optional()
+                    }).optional(),
+                    server_id: z.uuid().optional()
+                })).optional(),
                 source: z.string().optional(),
                 status: z.object({
                     application: zApplication.optional(),
@@ -4190,6 +4870,7 @@ export const zListDeploymentsResponse = z.object({
                 user_id: z.uuid().optional()
             }).optional(),
             application_id: z.uuid().optional(),
+            children: z.array(zApplicationDeployment).optional(),
             commit_hash: z.string().optional(),
             container_id: z.uuid().optional(),
             container_image: z.string().optional(),
@@ -4268,6 +4949,43 @@ export const zListDeploymentsResponse = z.object({
                     pre_run_command: z.string().optional(),
                     proxy_server: z.string().optional(),
                     repository: z.string().optional(),
+                    routing_strategy: z.string().optional(),
+                    servers: z.array(z.object({
+                        application_id: z.uuid().optional(),
+                        created_at: z.iso.datetime().optional(),
+                        id: z.uuid().optional(),
+                        is_primary: z.boolean().optional(),
+                        server: z.object({
+                            auth_method: z.string().optional(),
+                            created_at: z.iso.datetime().optional(),
+                            deleted_at: z.iso.datetime().optional(),
+                            description: z.string().optional(),
+                            fingerprint: z.string().optional(),
+                            host: z.string().optional(),
+                            id: z.uuid().optional(),
+                            is_active: z.boolean().optional(),
+                            is_default: z.boolean().optional(),
+                            key_size: z.int().optional(),
+                            key_type: z.string().optional(),
+                            last_used_at: z.iso.datetime().optional(),
+                            name: z.string().optional(),
+                            organization: z.object({
+                                created_at: z.iso.datetime().optional(),
+                                id: z.uuid().optional(),
+                                logo: z.string().optional(),
+                                metadata: z.string().optional(),
+                                name: z.string().optional(),
+                                slug: z.string().optional()
+                            }).optional(),
+                            organization_id: z.uuid().optional(),
+                            port: z.int().optional(),
+                            proxy_host: z.string().optional(),
+                            public_key: z.string().optional(),
+                            updated_at: z.iso.datetime().optional(),
+                            user: z.string().optional()
+                        }).optional(),
+                        server_id: z.uuid().optional()
+                    })).optional(),
                     source: z.string().optional(),
                     status: z.object({
                         application: zApplication.optional(),
@@ -4326,6 +5044,8 @@ export const zListDeploymentsResponse = z.object({
                 log: z.string().optional(),
                 updated_at: z.iso.datetime().optional()
             })).optional(),
+            parent_deployment_id: z.uuid().optional(),
+            server_id: z.uuid().optional(),
             status: z.object({
                 application_deployment: zApplicationDeployment.optional(),
                 application_deployment_id: z.uuid().optional(),
@@ -4378,6 +5098,7 @@ export const zLogsResponse = z.object({
                 deployments: z.array(z.object({
                     application: zApplication.optional(),
                     application_id: z.uuid().optional(),
+                    children: z.array(zApplicationDeployment).optional(),
                     commit_hash: z.string().optional(),
                     container_id: z.uuid().optional(),
                     container_image: z.string().optional(),
@@ -4388,6 +5109,8 @@ export const zLogsResponse = z.object({
                     image_s3_key: z.string().optional(),
                     image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
                     logs: z.array(zApplicationLogs).optional(),
+                    parent_deployment_id: z.uuid().optional(),
+                    server_id: z.uuid().optional(),
                     status: z.object({
                         application_deployment: zApplicationDeployment.optional(),
                         application_deployment_id: z.uuid().optional(),
@@ -4440,6 +5163,43 @@ export const zLogsResponse = z.object({
                 pre_run_command: z.string().optional(),
                 proxy_server: z.string().optional(),
                 repository: z.string().optional(),
+                routing_strategy: z.string().optional(),
+                servers: z.array(z.object({
+                    application_id: z.uuid().optional(),
+                    created_at: z.iso.datetime().optional(),
+                    id: z.uuid().optional(),
+                    is_primary: z.boolean().optional(),
+                    server: z.object({
+                        auth_method: z.string().optional(),
+                        created_at: z.iso.datetime().optional(),
+                        deleted_at: z.iso.datetime().optional(),
+                        description: z.string().optional(),
+                        fingerprint: z.string().optional(),
+                        host: z.string().optional(),
+                        id: z.uuid().optional(),
+                        is_active: z.boolean().optional(),
+                        is_default: z.boolean().optional(),
+                        key_size: z.int().optional(),
+                        key_type: z.string().optional(),
+                        last_used_at: z.iso.datetime().optional(),
+                        name: z.string().optional(),
+                        organization: z.object({
+                            created_at: z.iso.datetime().optional(),
+                            id: z.uuid().optional(),
+                            logo: z.string().optional(),
+                            metadata: z.string().optional(),
+                            name: z.string().optional(),
+                            slug: z.string().optional()
+                        }).optional(),
+                        organization_id: z.uuid().optional(),
+                        port: z.int().optional(),
+                        proxy_host: z.string().optional(),
+                        public_key: z.string().optional(),
+                        updated_at: z.iso.datetime().optional(),
+                        user: z.string().optional()
+                    }).optional(),
+                    server_id: z.uuid().optional()
+                })).optional(),
                 source: z.string().optional(),
                 status: z.object({
                     application: zApplication.optional(),
@@ -4559,6 +5319,43 @@ export const zLogsResponse = z.object({
                     pre_run_command: z.string().optional(),
                     proxy_server: z.string().optional(),
                     repository: z.string().optional(),
+                    routing_strategy: z.string().optional(),
+                    servers: z.array(z.object({
+                        application_id: z.uuid().optional(),
+                        created_at: z.iso.datetime().optional(),
+                        id: z.uuid().optional(),
+                        is_primary: z.boolean().optional(),
+                        server: z.object({
+                            auth_method: z.string().optional(),
+                            created_at: z.iso.datetime().optional(),
+                            deleted_at: z.iso.datetime().optional(),
+                            description: z.string().optional(),
+                            fingerprint: z.string().optional(),
+                            host: z.string().optional(),
+                            id: z.uuid().optional(),
+                            is_active: z.boolean().optional(),
+                            is_default: z.boolean().optional(),
+                            key_size: z.int().optional(),
+                            key_type: z.string().optional(),
+                            last_used_at: z.iso.datetime().optional(),
+                            name: z.string().optional(),
+                            organization: z.object({
+                                created_at: z.iso.datetime().optional(),
+                                id: z.uuid().optional(),
+                                logo: z.string().optional(),
+                                metadata: z.string().optional(),
+                                name: z.string().optional(),
+                                slug: z.string().optional()
+                            }).optional(),
+                            organization_id: z.uuid().optional(),
+                            port: z.int().optional(),
+                            proxy_host: z.string().optional(),
+                            public_key: z.string().optional(),
+                            updated_at: z.iso.datetime().optional(),
+                            user: z.string().optional()
+                        }).optional(),
+                        server_id: z.uuid().optional()
+                    })).optional(),
                     source: z.string().optional(),
                     status: z.object({
                         application: zApplication.optional(),
@@ -4610,6 +5407,7 @@ export const zLogsResponse = z.object({
                     user_id: z.uuid().optional()
                 }).optional(),
                 application_id: z.uuid().optional(),
+                children: z.array(zApplicationDeployment).optional(),
                 commit_hash: z.string().optional(),
                 container_id: z.uuid().optional(),
                 container_image: z.string().optional(),
@@ -4620,6 +5418,8 @@ export const zLogsResponse = z.object({
                 image_s3_key: z.string().optional(),
                 image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
                 logs: z.array(zApplicationLogs).optional(),
+                parent_deployment_id: z.uuid().optional(),
+                server_id: z.uuid().optional(),
                 status: z.object({
                     application_deployment: zApplicationDeployment.optional(),
                     application_deployment_id: z.uuid().optional(),
@@ -4678,6 +5478,7 @@ export const zProjectFamilyResponse = z.object({
             deployments: z.array(z.object({
                 application: zApplication.optional(),
                 application_id: z.uuid().optional(),
+                children: z.array(zApplicationDeployment).optional(),
                 commit_hash: z.string().optional(),
                 container_id: z.uuid().optional(),
                 container_image: z.string().optional(),
@@ -4697,6 +5498,8 @@ export const zProjectFamilyResponse = z.object({
                     log: z.string().optional(),
                     updated_at: z.iso.datetime().optional()
                 })).optional(),
+                parent_deployment_id: z.uuid().optional(),
+                server_id: z.uuid().optional(),
                 status: z.object({
                     application_deployment: zApplicationDeployment.optional(),
                     application_deployment_id: z.uuid().optional(),
@@ -4738,6 +5541,7 @@ export const zProjectFamilyResponse = z.object({
                 application_deployment: z.object({
                     application: zApplication.optional(),
                     application_id: z.uuid().optional(),
+                    children: z.array(zApplicationDeployment).optional(),
                     commit_hash: z.string().optional(),
                     container_id: z.uuid().optional(),
                     container_image: z.string().optional(),
@@ -4748,6 +5552,8 @@ export const zProjectFamilyResponse = z.object({
                     image_s3_key: z.string().optional(),
                     image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
                     logs: z.array(zApplicationLogs).optional(),
+                    parent_deployment_id: z.uuid().optional(),
+                    server_id: z.uuid().optional(),
                     status: z.object({
                         application_deployment: zApplicationDeployment.optional(),
                         application_deployment_id: z.uuid().optional(),
@@ -4780,6 +5586,43 @@ export const zProjectFamilyResponse = z.object({
             pre_run_command: z.string().optional(),
             proxy_server: z.string().optional(),
             repository: z.string().optional(),
+            routing_strategy: z.string().optional(),
+            servers: z.array(z.object({
+                application_id: z.uuid().optional(),
+                created_at: z.iso.datetime().optional(),
+                id: z.uuid().optional(),
+                is_primary: z.boolean().optional(),
+                server: z.object({
+                    auth_method: z.string().optional(),
+                    created_at: z.iso.datetime().optional(),
+                    deleted_at: z.iso.datetime().optional(),
+                    description: z.string().optional(),
+                    fingerprint: z.string().optional(),
+                    host: z.string().optional(),
+                    id: z.uuid().optional(),
+                    is_active: z.boolean().optional(),
+                    is_default: z.boolean().optional(),
+                    key_size: z.int().optional(),
+                    key_type: z.string().optional(),
+                    last_used_at: z.iso.datetime().optional(),
+                    name: z.string().optional(),
+                    organization: z.object({
+                        created_at: z.iso.datetime().optional(),
+                        id: z.uuid().optional(),
+                        logo: z.string().optional(),
+                        metadata: z.string().optional(),
+                        name: z.string().optional(),
+                        slug: z.string().optional()
+                    }).optional(),
+                    organization_id: z.uuid().optional(),
+                    port: z.int().optional(),
+                    proxy_host: z.string().optional(),
+                    public_key: z.string().optional(),
+                    updated_at: z.iso.datetime().optional(),
+                    user: z.string().optional()
+                }).optional(),
+                server_id: z.uuid().optional()
+            })).optional(),
             source: z.string().optional(),
             status: z.object({
                 application: zApplication.optional(),
@@ -4835,12 +5678,12 @@ export const zProjectFamilyResponse = z.object({
     status: z.string().optional()
 });
 
-export const zGetLogs3Data = z.object({
+export const zListAuditLogsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        page: z.int().optional(),
-        page_size: z.int().optional(),
+        page: z.int().gte(1).optional().default(1),
+        page_size: z.int().gte(1).lte(100).optional().default(20),
         search: z.string().optional(),
         resource_type: z.string().optional()
     }).optional(),
@@ -4852,9 +5695,9 @@ export const zGetLogs3Data = z.object({
 /**
  * OK
  */
-export const zGetLogs3Response = zGetActivitiesResponse;
+export const zListAuditLogsResponse = zGetActivitiesResponse;
 
-export const zGetBootstrapData = z.object({
+export const zGetBootstrapSessionDataData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -4866,9 +5709,9 @@ export const zGetBootstrapData = z.object({
 /**
  * OK
  */
-export const zGetBootstrapResponse = zBootstrapResponse;
+export const zGetBootstrapSessionDataResponse = zBootstrapResponse;
 
-export const zGetIsAdminRegisteredData = z.object({
+export const zCheckAdminRegistrationData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -4880,9 +5723,23 @@ export const zGetIsAdminRegisteredData = z.object({
 /**
  * OK
  */
-export const zGetIsAdminRegisteredResponse = zAdminRegisteredResponse;
+export const zCheckAdminRegistrationResponse = zAdminRegisteredResponse;
 
-export const zGetEndpoint9Data = z.object({
+export const zTrackCliInstallationEventData = z.object({
+    body: zTrackInstallRequest,
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zTrackCliInstallationEventResponse = zTrackInstallResponse;
+
+export const zListContainersData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -4894,9 +5751,9 @@ export const zGetEndpoint9Data = z.object({
 /**
  * OK
  */
-export const zGetEndpoint9Response = zListContainersResponse;
+export const zListContainersResponse2 = zListContainersResponse;
 
-export const zCreateImages2Data = z.object({
+export const zListImagesData = z.object({
     body: zListImagesRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -4908,9 +5765,9 @@ export const zCreateImages2Data = z.object({
 /**
  * OK
  */
-export const zCreateImages2Response = zListImagesResponse;
+export const zListImagesResponse2 = zListImagesResponse;
 
-export const zCreateBuildCacheData = z.object({
+export const zPruneBuildCacheData = z.object({
     body: zPruneBuildCacheRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -4922,9 +5779,9 @@ export const zCreateBuildCacheData = z.object({
 /**
  * OK
  */
-export const zCreateBuildCacheResponse = zMessageResponse;
+export const zPruneBuildCacheResponse = zMessageResponse;
 
-export const zCreateImagesData = z.object({
+export const zPruneImagesData = z.object({
     body: zPruneImagesRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -4936,9 +5793,9 @@ export const zCreateImagesData = z.object({
 /**
  * OK
  */
-export const zCreateImagesResponse = zPruneImagesResponse;
+export const zPruneImagesResponse2 = zPruneImagesResponse;
 
-export const zDeleteContainerIdData = z.object({
+export const zRemoveContainerData = z.object({
     body: z.never().optional(),
     path: z.object({
         container_id: z.string()
@@ -4952,9 +5809,9 @@ export const zDeleteContainerIdData = z.object({
 /**
  * OK
  */
-export const zDeleteContainerIdResponse = zContainerActionResponse;
+export const zRemoveContainerResponse = zContainerActionResponse;
 
-export const zGetContainerIdData = z.object({
+export const zGetContainerData = z.object({
     body: z.never().optional(),
     path: z.object({
         container_id: z.string()
@@ -4968,9 +5825,9 @@ export const zGetContainerIdData = z.object({
 /**
  * OK
  */
-export const zGetContainerIdResponse = zGetContainerResponse;
+export const zGetContainerResponse2 = zGetContainerResponse;
 
-export const zCreateLogsData = z.object({
+export const zGetContainerLogsData = z.object({
     body: zContainerLogsRequest,
     path: z.object({
         container_id: z.string()
@@ -4984,9 +5841,9 @@ export const zCreateLogsData = z.object({
 /**
  * OK
  */
-export const zCreateLogsResponse = zContainerLogsResponse;
+export const zGetContainerLogsResponse = zContainerLogsResponse;
 
-export const zUpdateResourcesData = z.object({
+export const zUpdateContainerResourcesData = z.object({
     body: zUpdateContainerResourcesRequest,
     path: z.object({
         container_id: z.string()
@@ -5000,9 +5857,9 @@ export const zUpdateResourcesData = z.object({
 /**
  * OK
  */
-export const zUpdateResourcesResponse = zUpdateContainerResourcesResponse;
+export const zUpdateContainerResourcesResponse2 = zUpdateContainerResourcesResponse;
 
-export const zCreateRestart2Data = z.object({
+export const zRestartContainerData = z.object({
     body: z.never().optional(),
     path: z.object({
         container_id: z.string()
@@ -5016,9 +5873,9 @@ export const zCreateRestart2Data = z.object({
 /**
  * OK
  */
-export const zCreateRestart2Response = zContainerActionResponse;
+export const zRestartContainerResponse = zContainerActionResponse;
 
-export const zCreateStartData = z.object({
+export const zStartContainerData = z.object({
     body: z.never().optional(),
     path: z.object({
         container_id: z.string()
@@ -5032,9 +5889,9 @@ export const zCreateStartData = z.object({
 /**
  * OK
  */
-export const zCreateStartResponse = zContainerActionResponse;
+export const zStartContainerResponse = zContainerActionResponse;
 
-export const zCreateStopData = z.object({
+export const zStopContainerData = z.object({
     body: z.never().optional(),
     path: z.object({
         container_id: z.string()
@@ -5048,9 +5905,9 @@ export const zCreateStopData = z.object({
 /**
  * OK
  */
-export const zCreateStopResponse = zContainerActionResponse;
+export const zStopContainerResponse = zContainerActionResponse;
 
-export const zDeleteEndpoint4Data = z.object({
+export const zDeleteApplicationData = z.object({
     body: zDeleteDeploymentRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5062,9 +5919,9 @@ export const zDeleteEndpoint4Data = z.object({
 /**
  * OK
  */
-export const zDeleteEndpoint4Response = zMessageResponse;
+export const zDeleteApplicationResponse = zMessageResponse;
 
-export const zCreateCancelDeploymentData = z.object({
+export const zCancelDeploymentData = z.object({
     body: zCancelDeploymentRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5076,13 +5933,13 @@ export const zCreateCancelDeploymentData = z.object({
 /**
  * OK
  */
-export const zCreateCancelDeploymentResponse = zMessageResponse;
+export const zCancelDeploymentResponse = zMessageResponse;
 
-export const zUpdateLabelsData = z.object({
+export const zUpdateApplicationLabelsData = z.object({
     body: zUpdateLabelsRequest,
     path: z.never().optional(),
     query: z.object({
-        id: z.string()
+        id: z.uuid()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -5092,9 +5949,9 @@ export const zUpdateLabelsData = z.object({
 /**
  * OK
  */
-export const zUpdateLabelsResponse = zLabelsResponse;
+export const zUpdateApplicationLabelsResponse = zLabelsResponse;
 
-export const zCreatePreviewComposeData = z.object({
+export const zPreviewComposeServicesData = z.object({
     body: zPreviewComposeRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5106,13 +5963,13 @@ export const zCreatePreviewComposeData = z.object({
 /**
  * OK
  */
-export const zCreatePreviewComposeResponse = zPreviewComposeResponse;
+export const zPreviewComposeServicesResponse = zPreviewComposeResponse;
 
-export const zGetEnvironmentsData = z.object({
+export const zListFamilyEnvironmentsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        family_id: z.string()
+        family_id: z.uuid()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -5122,9 +5979,9 @@ export const zGetEnvironmentsData = z.object({
 /**
  * OK
  */
-export const zGetEnvironmentsResponse = zEnvironmentsInFamilyResponse;
+export const zListFamilyEnvironmentsResponse = zEnvironmentsInFamilyResponse;
 
-export const zCreateRecoverData = z.object({
+export const zRecoverApplicationData = z.object({
     body: zRecoverRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5136,9 +5993,9 @@ export const zCreateRecoverData = z.object({
 /**
  * OK
  */
-export const zCreateRecoverResponse = zRecoverResponse;
+export const zRecoverApplicationResponse = zRecoverResponse;
 
-export const zCreateRestartData = z.object({
+export const zRestartDeploymentData = z.object({
     body: zRestartDeploymentRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5150,9 +6007,9 @@ export const zCreateRestartData = z.object({
 /**
  * OK
  */
-export const zCreateRestartResponse = zMessageResponse;
+export const zRestartDeploymentResponse = zMessageResponse;
 
-export const zCreateRollbackData = z.object({
+export const zRollbackDeploymentData = z.object({
     body: zRollbackDeploymentRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5164,9 +6021,39 @@ export const zCreateRollbackData = z.object({
 /**
  * OK
  */
-export const zCreateRollbackResponse = zMessageResponse;
+export const zRollbackDeploymentResponse = zMessageResponse;
 
-export const zGetEndpoint3Data = z.object({
+export const zGetApplicationServersData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.object({
+        id: z.uuid()
+    }),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetApplicationServersResponse = zApplicationServersResponse;
+
+export const zSetApplicationServersData = z.object({
+    body: zSetApplicationServersRequest,
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zSetApplicationServersResponse = zApplicationServersResponse;
+
+export const zListDomainsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
@@ -5180,9 +6067,9 @@ export const zGetEndpoint3Data = z.object({
 /**
  * OK
  */
-export const zGetEndpoint3Response = zListDomainsResponse;
+export const zListDomainsResponse2 = zListDomainsResponse;
 
-export const zDeleteCustomData = z.object({
+export const zRemoveCustomDomainData = z.object({
     body: zRemoveCustomDomainRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5194,9 +6081,9 @@ export const zDeleteCustomData = z.object({
 /**
  * OK
  */
-export const zDeleteCustomResponse = zMessageResponse;
+export const zRemoveCustomDomainResponse = zMessageResponse;
 
-export const zCreateCustomData = z.object({
+export const zAddCustomDomainData = z.object({
     body: zAddCustomDomainRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5208,13 +6095,13 @@ export const zCreateCustomData = z.object({
 /**
  * OK
  */
-export const zCreateCustomResponse = zDnsSetupResponse;
+export const zAddCustomDomainResponse = zDnsSetupResponse;
 
-export const zGetDnsCheckData = z.object({
+export const zCheckCustomDomainDnsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        id: z.string()
+        id: z.uuid()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -5224,9 +6111,9 @@ export const zGetDnsCheckData = z.object({
 /**
  * OK
  */
-export const zGetDnsCheckResponse = zDnsCheckResponse;
+export const zCheckCustomDomainDnsResponse = zDnsCheckResponse;
 
-export const zGetGenerateData = z.object({
+export const zGenerateRandomSubdomainData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5238,9 +6125,9 @@ export const zGetGenerateData = z.object({
 /**
  * OK
  */
-export const zGetGenerateResponse = zRandomSubdomainResponseWrapper;
+export const zGenerateRandomSubdomainResponse = zRandomSubdomainResponseWrapper;
 
-export const zCreateVerifyData = z.object({
+export const zVerifyCustomDomainData = z.object({
     body: zVerifyCustomDomainRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5252,9 +6139,9 @@ export const zCreateVerifyData = z.object({
 /**
  * OK
  */
-export const zCreateVerifyResponse = zCustomDomainResponse;
+export const zVerifyCustomDomainResponse = zCustomDomainResponse;
 
-export const zGetEndpoint11Data = z.object({
+export const zListExtensionsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
@@ -5263,8 +6150,8 @@ export const zGetEndpoint11Data = z.object({
         type: z.string().optional(),
         sort_by: z.string().optional(),
         sort_dir: z.string().optional(),
-        page: z.int().optional(),
-        page_size: z.int().optional()
+        page: z.int().gte(1).optional().default(1),
+        page_size: z.int().gte(1).lte(100).optional().default(20)
     }).optional(),
     headers: z.object({
         Accept: z.string().optional()
@@ -5274,9 +6161,9 @@ export const zGetEndpoint11Data = z.object({
 /**
  * OK
  */
-export const zGetEndpoint11Response = zListExtensionsResponse;
+export const zListExtensionsResponse2 = zListExtensionsResponse;
 
-export const zGetByExtensionIdData = z.object({
+export const zGetExtensionByExtensionIdData = z.object({
     body: z.never().optional(),
     path: z.object({
         extension_id: z.string()
@@ -5290,9 +6177,9 @@ export const zGetByExtensionIdData = z.object({
 /**
  * OK
  */
-export const zGetByExtensionIdResponse = zExtensionResponse;
+export const zGetExtensionByExtensionIdResponse = zExtensionResponse;
 
-export const zGetExecutionsData = z.object({
+export const zListExtensionExecutionsData = z.object({
     body: z.never().optional(),
     path: z.object({
         extension_id: z.string()
@@ -5306,9 +6193,9 @@ export const zGetExecutionsData = z.object({
 /**
  * OK
  */
-export const zGetExecutionsResponse = zListExecutionsResponse;
+export const zListExtensionExecutionsResponse = zListExecutionsResponse;
 
-export const zGetCategoriesData = z.object({
+export const zListExtensionCategoriesData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5320,7 +6207,7 @@ export const zGetCategoriesData = z.object({
 /**
  * OK
  */
-export const zGetCategoriesResponse = zCategoriesResponse;
+export const zListExtensionCategoriesResponse = zCategoriesResponse;
 
 export const zGetExecutionData = z.object({
     body: z.never().optional(),
@@ -5338,7 +6225,7 @@ export const zGetExecutionData = z.object({
  */
 export const zGetExecutionResponse = zExecutionResponse;
 
-export const zCreateCancelData = z.object({
+export const zCancelExecutionData = z.object({
     body: z.never().optional(),
     path: z.object({
         execution_id: z.string()
@@ -5352,16 +6239,16 @@ export const zCreateCancelData = z.object({
 /**
  * OK
  */
-export const zCreateCancelResponse = zMessageResponse;
+export const zCancelExecutionResponse = zMessageResponse;
 
-export const zGetLogs4Data = z.object({
+export const zListExecutionLogsData = z.object({
     body: z.never().optional(),
     path: z.object({
         execution_id: z.string()
     }),
     query: z.object({
         afterSeq: z.int().optional(),
-        limit: z.int().optional()
+        limit: z.int().gte(1).lte(100).optional().default(20)
     }).optional(),
     headers: z.object({
         Accept: z.string().optional()
@@ -5371,9 +6258,9 @@ export const zGetLogs4Data = z.object({
 /**
  * OK
  */
-export const zGetLogs4Response = zListLogsResponse;
+export const zListExecutionLogsResponse = zListLogsResponse;
 
-export const zCreateForkData = z.object({
+export const zForkExtensionData = z.object({
     body: zForkExtensionRequest,
     path: z.object({
         extension_id: z.string()
@@ -5387,9 +6274,9 @@ export const zCreateForkData = z.object({
 /**
  * OK
  */
-export const zCreateForkResponse = zExtensionResponse;
+export const zForkExtensionResponse = zExtensionResponse;
 
-export const zCreateRunData = z.object({
+export const zRunExtensionData = z.object({
     body: zRunExtensionRequest,
     path: z.object({
         extension_id: z.string()
@@ -5403,9 +6290,9 @@ export const zCreateRunData = z.object({
 /**
  * OK
  */
-export const zCreateRunResponse = zExecutionResponse;
+export const zRunExtensionResponse = zExecutionResponse;
 
-export const zDeleteIdData = z.object({
+export const zDeleteForkedExtensionData = z.object({
     body: z.never().optional(),
     path: z.object({
         id: z.string()
@@ -5419,9 +6306,9 @@ export const zDeleteIdData = z.object({
 /**
  * OK
  */
-export const zDeleteIdResponse = zMessageResponse;
+export const zDeleteForkedExtensionResponse = zMessageResponse;
 
-export const zGetIdData = z.object({
+export const zGetExtensionByIdData = z.object({
     body: z.never().optional(),
     path: z.object({
         id: z.string()
@@ -5435,9 +6322,9 @@ export const zGetIdData = z.object({
 /**
  * OK
  */
-export const zGetIdResponse = zExtensionResponse;
+export const zGetExtensionByIdResponse = zExtensionResponse;
 
-export const zGetEndpoint8Data = z.object({
+export const zListFeatureFlagsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5449,9 +6336,9 @@ export const zGetEndpoint8Data = z.object({
 /**
  * OK
  */
-export const zGetEndpoint8Response = zListFeatureFlagsResponse;
+export const zListFeatureFlagsResponse2 = zListFeatureFlagsResponse;
 
-export const zUpdateEndpoint5Data = z.object({
+export const zUpdateFeatureFlagData = z.object({
     body: zUpdateFeatureFlagRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5463,9 +6350,9 @@ export const zUpdateEndpoint5Data = z.object({
 /**
  * OK
  */
-export const zUpdateEndpoint5Response = zMessageResponse;
+export const zUpdateFeatureFlagResponse = zMessageResponse;
 
-export const zGetCheck2Data = z.object({
+export const zCheckIfFeatureIsEnabledData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
@@ -5479,9 +6366,9 @@ export const zGetCheck2Data = z.object({
 /**
  * OK
  */
-export const zGetCheck2Response = zIsFeatureEnabledResponse;
+export const zCheckIfFeatureIsEnabledResponse = zIsFeatureEnabledResponse;
 
-export const zGetEndpoint6Data = z.object({
+export const zListFilesData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
@@ -5495,9 +6382,9 @@ export const zGetEndpoint6Data = z.object({
 /**
  * OK
  */
-export const zGetEndpoint6Response = zListFilesResponse;
+export const zListFilesResponse2 = zListFilesResponse;
 
-export const zCreateCopyDirectoryData = z.object({
+export const zCopyDirectoryData = z.object({
     body: zCopyDirectory,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5509,9 +6396,9 @@ export const zCreateCopyDirectoryData = z.object({
 /**
  * OK
  */
-export const zCreateCopyDirectoryResponse = zMessageResponse;
+export const zCopyDirectoryResponse = zMessageResponse;
 
-export const zCreateCreateDirectoryData = z.object({
+export const zCreateDirectoryData = z.object({
     body: zCreateDirectoryRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5523,9 +6410,9 @@ export const zCreateCreateDirectoryData = z.object({
 /**
  * OK
  */
-export const zCreateCreateDirectoryResponse = zMessageResponse;
+export const zCreateDirectoryResponse = zMessageResponse;
 
-export const zDeleteDeleteDirectoryData = z.object({
+export const zDeleteDirectoryData = z.object({
     body: zDeleteDirectoryRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5537,9 +6424,9 @@ export const zDeleteDeleteDirectoryData = z.object({
 /**
  * OK
  */
-export const zDeleteDeleteDirectoryResponse = zMessageResponse;
+export const zDeleteDirectoryResponse = zMessageResponse;
 
-export const zCreateMoveDirectoryData = z.object({
+export const zMoveDirectoryData = z.object({
     body: zMoveDirectory,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5551,9 +6438,9 @@ export const zCreateMoveDirectoryData = z.object({
 /**
  * OK
  */
-export const zCreateMoveDirectoryResponse = zMessageResponse;
+export const zMoveDirectoryResponse = zMessageResponse;
 
-export const zCreateUploadData = z.object({
+export const zUploadFileData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5565,9 +6452,9 @@ export const zCreateUploadData = z.object({
 /**
  * OK
  */
-export const zCreateUploadResponse = zMessageResponse;
+export const zUploadFileResponse = zMessageResponse;
 
-export const zDeleteEndpointData = z.object({
+export const zDeleteGitHubConnectorData = z.object({
     body: zDeleteGithubConnectorRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5579,9 +6466,9 @@ export const zDeleteEndpointData = z.object({
 /**
  * OK
  */
-export const zDeleteEndpointResponse = zMessageResponse;
+export const zDeleteGitHubConnectorResponse = zMessageResponse;
 
-export const zCreateEndpoint2Data = z.object({
+export const zCreateGitHubConnectorData = z.object({
     body: zCreateGithubConnectorRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5593,9 +6480,9 @@ export const zCreateEndpoint2Data = z.object({
 /**
  * OK
  */
-export const zCreateEndpoint2Response = zMessageResponse;
+export const zCreateGitHubConnectorResponse = zMessageResponse;
 
-export const zUpdateEndpointData = z.object({
+export const zUpdateGitHubConnectorData = z.object({
     body: zUpdateGithubConnectorRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5607,9 +6494,9 @@ export const zUpdateEndpointData = z.object({
 /**
  * OK
  */
-export const zUpdateEndpointResponse = zMessageResponse;
+export const zUpdateGitHubConnectorResponse = zMessageResponse;
 
-export const zGetAllData = z.object({
+export const zListGitHubConnectorsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5621,9 +6508,9 @@ export const zGetAllData = z.object({
 /**
  * OK
  */
-export const zGetAllResponse = zListConnectorsResponse;
+export const zListGitHubConnectorsResponse = zListConnectorsResponse;
 
-export const zGetRepositoriesData = z.object({
+export const zListGitHubRepositoriesData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5635,9 +6522,9 @@ export const zGetRepositoriesData = z.object({
 /**
  * OK
  */
-export const zGetRepositoriesResponse = zListRepositoriesResponse;
+export const zListGitHubRepositoriesResponse = zListRepositoriesResponse;
 
-export const zCreateBranchesData = z.object({
+export const zListRepositoryBranchesData = z.object({
     body: zGetGithubRepositoryBranchesRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5649,9 +6536,9 @@ export const zCreateBranchesData = z.object({
 /**
  * OK
  */
-export const zCreateBranchesResponse = zListBranchesResponse;
+export const zListRepositoryBranchesResponse = zListBranchesResponse;
 
-export const zGetEndpointData = z.object({
+export const zHealthCheckData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5663,13 +6550,13 @@ export const zGetEndpointData = z.object({
 /**
  * OK
  */
-export const zGetEndpointResponse = zHealthCheckResponse;
+export const zHealthCheckResponse2 = zHealthCheckResponse;
 
-export const zDeleteEndpoint5Data = z.object({
+export const zDeleteHealthCheckData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        application_id: z.string()
+        application_id: z.uuid()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -5679,13 +6566,13 @@ export const zDeleteEndpoint5Data = z.object({
 /**
  * OK
  */
-export const zDeleteEndpoint5Response = zHealthCheckMessageResponse;
+export const zDeleteHealthCheckResponse = zHealthCheckMessageResponse;
 
-export const zGetEndpoint10Data = z.object({
+export const zGetHealthChecksData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        application_id: z.string()
+        application_id: z.uuid()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -5695,9 +6582,9 @@ export const zGetEndpoint10Data = z.object({
 /**
  * OK
  */
-export const zGetEndpoint10Response = zHealthCheckResponse;
+export const zGetHealthChecksResponse = zHealthCheckResponse;
 
-export const zCreateEndpoint8Data = z.object({
+export const zCreateHealthCheckData = z.object({
     body: zCreateHealthCheckRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5709,9 +6596,9 @@ export const zCreateEndpoint8Data = z.object({
 /**
  * OK
  */
-export const zCreateEndpoint8Response = zHealthCheckResponse;
+export const zCreateHealthCheckResponse = zHealthCheckResponse;
 
-export const zUpdateEndpoint6Data = z.object({
+export const zUpdateHealthCheckData = z.object({
     body: zUpdateHealthCheckRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5723,14 +6610,19 @@ export const zUpdateEndpoint6Data = z.object({
 /**
  * OK
  */
-export const zUpdateEndpoint6Response = zHealthCheckResponse;
+export const zUpdateHealthCheckResponse = zHealthCheckResponse;
 
-export const zGetStatsData = z.object({
+export const zGetHealthCheckStatsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        application_id: z.string(),
-        period: z.string().optional()
+        application_id: z.uuid(),
+        period: z.enum([
+            '1h',
+            '24h',
+            '7d',
+            '30d'
+        ]).optional()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -5740,9 +6632,9 @@ export const zGetStatsData = z.object({
 /**
  * OK
  */
-export const zGetStatsResponse = zHealthCheckStatsResponse;
+export const zGetHealthCheckStatsResponse = zHealthCheckStatsResponse;
 
-export const zPatchToggleData = z.object({
+export const zToggleHealthCheckData = z.object({
     body: zToggleHealthCheckRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5754,9 +6646,9 @@ export const zPatchToggleData = z.object({
 /**
  * OK
  */
-export const zPatchToggleResponse = zHealthCheckResponse;
+export const zToggleHealthCheckResponse = zHealthCheckResponse;
 
-export const zGetBillingData = z.object({
+export const zTriggerMachineBackupData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5768,9 +6660,90 @@ export const zGetBillingData = z.object({
 /**
  * OK
  */
-export const zGetBillingResponse = zMachineBillingResponse;
+export const zTriggerMachineBackupResponse = zTriggerBackupResponse;
 
-export const zCreateExecData = z.object({
+export const zGetBackupScheduleData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetBackupScheduleResponse = zBackupScheduleResponse;
+
+export const zUpdateBackupScheduleData = z.object({
+    body: zBackupScheduleData,
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zUpdateBackupScheduleResponse = zBackupScheduleResponse;
+
+export const zListMachineBackupsData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.object({
+        page: z.int().gte(1).optional().default(1),
+        page_size: z.int().gte(1).lte(100).optional().default(20),
+        search: z.string().optional(),
+        sort_by: z.string().optional(),
+        sort_order: z.enum(['asc', 'desc']).optional(),
+        status: z.string().optional()
+    }).optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zListMachineBackupsResponse = zBackupListResponse;
+
+export const zGetMachineBillingStatusData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetMachineBillingStatusResponse = zMachineBillingResponse;
+
+export const zGetMachineEventsData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.object({
+        from: z.string().optional(),
+        to: z.string().optional(),
+        limit: z.int().gte(1).lte(100).optional().default(20)
+    }).optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetMachineEventsResponse = zMachineEventsResponse;
+
+export const zExecuteACommandOnTheHostMachineData = z.object({
     body: zHostExecRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5782,9 +6755,44 @@ export const zCreateExecData = z.object({
 /**
  * OK
  */
-export const zCreateExecResponse = zHostExecResponse;
+export const zExecuteACommandOnTheHostMachineResponse = zHostExecResponse;
 
-export const zCreatePauseData = z.object({
+export const zGetMachineMetricsData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.object({
+        from: z.string().optional(),
+        to: z.string().optional(),
+        limit: z.int().gte(1).lte(100).optional().default(20)
+    }).optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetMachineMetricsResponse = zMachineMetricsResponse;
+
+export const zGetMachineMetricsSummaryData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.object({
+        from: z.string().optional(),
+        to: z.string().optional()
+    }).optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetMachineMetricsSummaryResponse = zMachineSummaryResponse;
+
+export const zPauseMachineData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5796,9 +6804,9 @@ export const zCreatePauseData = z.object({
 /**
  * OK
  */
-export const zCreatePauseResponse = zMachineActionResponse;
+export const zPauseMachineResponse = zMachineActionResponse;
 
-export const zCreateSelectData = z.object({
+export const zSelectAMachinePlanData = z.object({
     body: zSelectPlanRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5810,9 +6818,9 @@ export const zCreateSelectData = z.object({
 /**
  * OK
  */
-export const zCreateSelectResponse = zSelectPlanResponse;
+export const zSelectAMachinePlanResponse = zSelectPlanResponse;
 
-export const zGetPlansData = z.object({
+export const zListAvailableMachinePlansData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5824,9 +6832,9 @@ export const zGetPlansData = z.object({
 /**
  * OK
  */
-export const zGetPlansResponse = zListPlansResponse;
+export const zListAvailableMachinePlansResponse = zListPlansResponse;
 
-export const zCreateRestart3Data = z.object({
+export const zRestartMachineData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5838,9 +6846,9 @@ export const zCreateRestart3Data = z.object({
 /**
  * OK
  */
-export const zCreateRestart3Response = zMachineActionResponse;
+export const zRestartMachineResponse = zMachineActionResponse;
 
-export const zCreateResumeData = z.object({
+export const zResumeMachineData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5852,9 +6860,9 @@ export const zCreateResumeData = z.object({
 /**
  * OK
  */
-export const zCreateResumeResponse = zMachineActionResponse;
+export const zResumeMachineResponse = zMachineActionResponse;
 
-export const zGetStats2Data = z.object({
+export const zGetMachineSystemStatsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5866,9 +6874,9 @@ export const zGetStats2Data = z.object({
 /**
  * OK
  */
-export const zGetStats2Response = zSystemStatsResponse;
+export const zGetMachineSystemStatsResponse = zSystemStatsResponse;
 
-export const zGetStatus2Data = z.object({
+export const zGetMachineLifecycleStatusData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5880,9 +6888,9 @@ export const zGetStatus2Data = z.object({
 /**
  * OK
  */
-export const zGetStatus2Response = zMachineStateResponse;
+export const zGetMachineLifecycleStatusResponse = zMachineStateResponse;
 
-export const zGetEndpoint13Data = z.object({
+export const zListMcpProviderCatalogData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5894,9 +6902,9 @@ export const zGetEndpoint13Data = z.object({
 /**
  * OK
  */
-export const zGetEndpoint13Response = zResponse;
+export const zListMcpProviderCatalogResponse = zResponse;
 
-export const zGetIconData = z.object({
+export const zGetProviderIconData = z.object({
     body: z.never().optional(),
     path: z.object({
         provider_id: z.string()
@@ -5910,9 +6918,9 @@ export const zGetIconData = z.object({
 /**
  * OK
  */
-export const zGetIconResponse = zUnknownInterface;
+export const zGetProviderIconResponse = zUnknownInterface;
 
-export const zGetServersData = z.object({
+export const zAgentListEnabledServersWithCredentialsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5924,9 +6932,23 @@ export const zGetServersData = z.object({
 /**
  * OK
  */
-export const zGetServersResponse = zResponse;
+export const zAgentListEnabledServersWithCredentialsResponse = zResponse;
 
-export const zDeleteEndpoint6Data = z.object({
+export const zAgentDiscoverToolsFromAllEnabledMcpServersData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zAgentDiscoverToolsFromAllEnabledMcpServersResponse = zResponse;
+
+export const zDeleteMcpServerData = z.object({
     body: zDeleteServerRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5938,9 +6960,9 @@ export const zDeleteEndpoint6Data = z.object({
 /**
  * OK
  */
-export const zDeleteEndpoint6Response = zResponse;
+export const zDeleteMcpServerResponse = zResponse;
 
-export const zGetEndpoint14Data = z.object({
+export const zListOrgMcpServersData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5952,9 +6974,9 @@ export const zGetEndpoint14Data = z.object({
 /**
  * OK
  */
-export const zGetEndpoint14Response = zResponse;
+export const zListOrgMcpServersResponse = zResponse;
 
-export const zCreateEndpoint9Data = z.object({
+export const zAddMcpServerData = z.object({
     body: zCreateServerRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5966,9 +6988,9 @@ export const zCreateEndpoint9Data = z.object({
 /**
  * OK
  */
-export const zCreateEndpoint9Response = zResponse;
+export const zAddMcpServerResponse = zResponse;
 
-export const zCreateTestData = z.object({
+export const zTestMcpServerConnectionData = z.object({
     body: zTestServerRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -5980,9 +7002,9 @@ export const zCreateTestData = z.object({
 /**
  * OK
  */
-export const zCreateTestResponse = zResponse;
+export const zTestMcpServerConnectionResponse = zResponse;
 
-export const zUpdateIdData = z.object({
+export const zUpdateMcpServerData = z.object({
     body: zUpdateServerRequest,
     path: z.object({
         id: z.string()
@@ -5996,9 +7018,9 @@ export const zUpdateIdData = z.object({
 /**
  * OK
  */
-export const zUpdateIdResponse = zResponse;
+export const zUpdateMcpServerResponse = zResponse;
 
-export const zGetEndpoint5Data = z.object({
+export const zGetNotificationPreferencesData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6010,9 +7032,9 @@ export const zGetEndpoint5Data = z.object({
 /**
  * OK
  */
-export const zGetEndpoint5Response = zPreferencesResponse;
+export const zGetNotificationPreferencesResponse = zPreferencesResponse;
 
-export const zCreateEndpoint4Data = z.object({
+export const zUpdateNotificationPreferencesData = z.object({
     body: zUpdatePreferenceRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6024,9 +7046,9 @@ export const zCreateEndpoint4Data = z.object({
 /**
  * OK
  */
-export const zCreateEndpoint4Response = zMessageResponse;
+export const zUpdateNotificationPreferencesResponse = zMessageResponse;
 
-export const zCreateSendData = z.object({
+export const zSendNotificationData = z.object({
     body: zSendNotificationRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6038,9 +7060,9 @@ export const zCreateSendData = z.object({
 /**
  * OK
  */
-export const zCreateSendResponse = zSendNotificationResponse;
+export const zSendNotificationResponse2 = zSendNotificationResponse;
 
-export const zDeleteEndpoint2Data = z.object({
+export const zDeleteSmtpConfigData = z.object({
     body: zDeleteSmtpConfigRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6052,13 +7074,13 @@ export const zDeleteEndpoint2Data = z.object({
 /**
  * OK
  */
-export const zDeleteEndpoint2Response = zMessageResponse;
+export const zDeleteSmtpConfigResponse = zMessageResponse;
 
-export const zGetEndpoint4Data = z.object({
+export const zGetSmtpConfigData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        id: z.string()
+        id: z.uuid()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -6068,9 +7090,9 @@ export const zGetEndpoint4Data = z.object({
 /**
  * OK
  */
-export const zGetEndpoint4Response = zSmtpConfigResponse;
+export const zGetSmtpConfigResponse = zSmtpConfigResponse;
 
-export const zCreateEndpoint3Data = z.object({
+export const zCreateSmtpConfigData = z.object({
     body: zCreateSmtpConfigRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6082,9 +7104,9 @@ export const zCreateEndpoint3Data = z.object({
 /**
  * OK
  */
-export const zCreateEndpoint3Response = zMessageResponse;
+export const zCreateSmtpConfigResponse = zMessageResponse;
 
-export const zUpdateEndpoint2Data = z.object({
+export const zUpdateSmtpConfigData = z.object({
     body: zUpdateSmtpConfigRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6096,9 +7118,9 @@ export const zUpdateEndpoint2Data = z.object({
 /**
  * OK
  */
-export const zUpdateEndpoint2Response = zMessageResponse;
+export const zUpdateSmtpConfigResponse = zMessageResponse;
 
-export const zDeleteEndpoint3Data = z.object({
+export const zDeleteWebhookConfigData = z.object({
     body: zDeleteWebhookConfigRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6110,9 +7132,9 @@ export const zDeleteEndpoint3Data = z.object({
 /**
  * OK
  */
-export const zDeleteEndpoint3Response = zMessageResponse;
+export const zDeleteWebhookConfigResponse = zMessageResponse;
 
-export const zCreateEndpoint5Data = z.object({
+export const zCreateWebhookConfigData = z.object({
     body: zCreateWebhookConfigRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6124,9 +7146,9 @@ export const zCreateEndpoint5Data = z.object({
 /**
  * OK
  */
-export const zCreateEndpoint5Response = zWebhookConfigResponse;
+export const zCreateWebhookConfigResponse = zWebhookConfigResponse;
 
-export const zUpdateEndpoint3Data = z.object({
+export const zUpdateWebhookConfigData = z.object({
     body: zUpdateWebhookConfigRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6138,9 +7160,9 @@ export const zUpdateEndpoint3Data = z.object({
 /**
  * OK
  */
-export const zUpdateEndpoint3Response = zWebhookConfigResponse;
+export const zUpdateWebhookConfigResponse = zWebhookConfigResponse;
 
-export const zGetTypeData = z.object({
+export const zGetWebhookConfigData = z.object({
     body: z.never().optional(),
     path: z.object({
         type: z.string()
@@ -6154,17 +7176,17 @@ export const zGetTypeData = z.object({
 /**
  * OK
  */
-export const zGetTypeResponse = zWebhookConfigResponse;
+export const zGetWebhookConfigResponse = zWebhookConfigResponse;
 
-export const zGetEndpoint12Data = z.object({
+export const zListServersData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        page: z.int().optional(),
-        page_size: z.int().optional(),
+        page: z.int().gte(1).optional().default(1),
+        page_size: z.int().gte(1).lte(100).optional().default(20),
         search: z.string().optional(),
         sort_by: z.string().optional(),
-        sort_order: z.string().optional(),
+        sort_order: z.enum(['asc', 'desc']).optional(),
         status: z.string().optional(),
         is_active: z.boolean().optional()
     }).optional(),
@@ -6176,9 +7198,9 @@ export const zGetEndpoint12Data = z.object({
 /**
  * OK
  */
-export const zGetEndpoint12Response = zListServersResponse;
+export const zListServersResponse2 = zListServersResponse;
 
-export const zGetStatusData = z.object({
+export const zGetSshConnectionStatusData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6190,9 +7212,41 @@ export const zGetStatusData = z.object({
 /**
  * OK
  */
-export const zGetStatusResponse = zSshConnectionStatusResponse;
+export const zGetSshConnectionStatusResponse = zSshConnectionStatusResponse;
 
-export const zCreateProvisionData = z.object({
+export const zSetServerAsOrgDefaultData = z.object({
+    body: z.never().optional(),
+    path: z.object({
+        id: z.string()
+    }),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zSetServerAsOrgDefaultResponse = zSetDefaultServerResponse;
+
+export const zGetSshConnectionStatusForASpecificServerData = z.object({
+    body: z.never().optional(),
+    path: z.object({
+        id: z.string()
+    }),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetSshConnectionStatusForASpecificServerResponse = zSshConnectionStatusResponse;
+
+export const zProvisionTrailResourcesData = z.object({
     body: zProvisionRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6204,9 +7258,9 @@ export const zCreateProvisionData = z.object({
 /**
  * OK
  */
-export const zCreateProvisionResponse = zProvisionTrailResponse;
+export const zProvisionTrailResourcesResponse = zProvisionTrailResponse;
 
-export const zGetStatus3Data = z.object({
+export const zGetTrailSessionStatusData = z.object({
     body: z.never().optional(),
     path: z.object({
         sessionId: z.string()
@@ -6220,9 +7274,9 @@ export const zGetStatus3Data = z.object({
 /**
  * OK
  */
-export const zGetStatus3Response = zTrailStatusEnvelopeResponse;
+export const zGetTrailSessionStatusResponse = zTrailStatusEnvelopeResponse;
 
-export const zCreateEndpoint7Data = z.object({
+export const zPerformUpdateData = z.object({
     body: zUpdateRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6234,9 +7288,9 @@ export const zCreateEndpoint7Data = z.object({
 /**
  * OK
  */
-export const zCreateEndpoint7Response = zUpdateResponse;
+export const zPerformUpdateResponse = zUpdateResponse;
 
-export const zGetCheckData = z.object({
+export const zCheckForUpdatesData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6248,9 +7302,9 @@ export const zGetCheckData = z.object({
 /**
  * OK
  */
-export const zGetCheckResponse = zUpdateCheckResponse;
+export const zCheckForUpdatesResponse = zUpdateCheckResponse;
 
-export const zGetEndpoint2Data = z.object({
+export const zGetCurrentUserProfileData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6262,9 +7316,9 @@ export const zGetEndpoint2Data = z.object({
 /**
  * OK
  */
-export const zGetEndpoint2Response = zUserResponse;
+export const zGetCurrentUserProfileResponse = zUserResponse;
 
-export const zPatchAvatarData = z.object({
+export const zUpdateUserAvatarData = z.object({
     body: zUpdateAvatarRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6276,9 +7330,9 @@ export const zPatchAvatarData = z.object({
 /**
  * OK
  */
-export const zPatchAvatarResponse = zMessageResponse;
+export const zUpdateUserAvatarResponse = zMessageResponse;
 
-export const zPatchNameData = z.object({
+export const zUpdateUserNameData = z.object({
     body: zUpdateUserNameRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6290,9 +7344,9 @@ export const zPatchNameData = z.object({
 /**
  * OK
  */
-export const zPatchNameResponse = zUpdateUsernameResponse;
+export const zUpdateUserNameResponse = zUpdateUsernameResponse;
 
-export const zGetOnboardedData = z.object({
+export const zCheckOnboardingStatusData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6304,9 +7358,9 @@ export const zGetOnboardedData = z.object({
 /**
  * OK
  */
-export const zGetOnboardedResponse = zIsOnboardedResponse;
+export const zCheckOnboardingStatusResponse = zIsOnboardedResponse;
 
-export const zCreateOnboardedData = z.object({
+export const zMarkOnboardingCompleteData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6318,9 +7372,9 @@ export const zCreateOnboardedData = z.object({
 /**
  * OK
  */
-export const zCreateOnboardedResponse = zMarkOnboardingCompleteResponse;
+export const zMarkOnboardingCompleteResponse2 = zMarkOnboardingCompleteResponse;
 
-export const zGetPreferencesData = z.object({
+export const zGetUserPreferencesData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6332,9 +7386,9 @@ export const zGetPreferencesData = z.object({
 /**
  * OK
  */
-export const zGetPreferencesResponse = zUserPreferencesResponse;
+export const zGetUserPreferencesResponse = zUserPreferencesResponse;
 
-export const zUpdatePreferencesData = z.object({
+export const zUpdateUserPreferencesData = z.object({
     body: zUserPreferencesData,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6346,9 +7400,9 @@ export const zUpdatePreferencesData = z.object({
 /**
  * OK
  */
-export const zUpdatePreferencesResponse = zUserPreferencesResponse;
+export const zUpdateUserPreferencesResponse = zUserPreferencesResponse;
 
-export const zGetSettingsData = z.object({
+export const zGetUserSettingsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6360,9 +7414,9 @@ export const zGetSettingsData = z.object({
 /**
  * OK
  */
-export const zGetSettingsResponse = zUserSettingsResponse;
+export const zGetUserSettingsResponse = zUserSettingsResponse;
 
-export const zPatchAutoUpdateData = z.object({
+export const zUpdateAutoUpdateSettingsData = z.object({
     body: zUpdateAutoUpdateRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6374,9 +7428,9 @@ export const zPatchAutoUpdateData = z.object({
 /**
  * OK
  */
-export const zPatchAutoUpdateResponse = zUserSettingsResponse;
+export const zUpdateAutoUpdateSettingsResponse = zUserSettingsResponse;
 
-export const zPatchFontData = z.object({
+export const zUpdateFontSettingsData = z.object({
     body: zUpdateFontRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6388,9 +7442,9 @@ export const zPatchFontData = z.object({
 /**
  * OK
  */
-export const zPatchFontResponse = zUserSettingsResponse;
+export const zUpdateFontSettingsResponse = zUserSettingsResponse;
 
-export const zPatchLanguageData = z.object({
+export const zUpdateLanguageSettingsData = z.object({
     body: zUpdateLanguageRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6402,9 +7456,9 @@ export const zPatchLanguageData = z.object({
 /**
  * OK
  */
-export const zPatchLanguageResponse = zUserSettingsResponse;
+export const zUpdateLanguageSettingsResponse = zUserSettingsResponse;
 
-export const zPatchThemeData = z.object({
+export const zUpdateThemeSettingsData = z.object({
     body: zUpdateThemeRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6416,9 +7470,9 @@ export const zPatchThemeData = z.object({
 /**
  * OK
  */
-export const zPatchThemeResponse = zUserSettingsResponse;
+export const zUpdateThemeSettingsResponse = zUserSettingsResponse;
 
-export const zCreateEndpointData = z.object({
+export const zHandleGitHubWebhookData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6430,13 +7484,13 @@ export const zCreateEndpointData = z.object({
 /**
  * OK
  */
-export const zCreateEndpointResponse = zMessageResponse;
+export const zHandleGitHubWebhookResponse = zMessageResponse;
 
-export const zGetEndpoint7Data = z.object({
+export const zGetApplicationData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        id: z.string()
+        id: z.uuid()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -6446,9 +7500,9 @@ export const zGetEndpoint7Data = z.object({
 /**
  * OK
  */
-export const zGetEndpoint7Response = zApplicationResponse;
+export const zGetApplicationResponse = zApplicationResponse;
 
-export const zCreateEndpoint6Data = z.object({
+export const zDeployApplicationData = z.object({
     body: zCreateDeploymentRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6460,9 +7514,9 @@ export const zCreateEndpoint6Data = z.object({
 /**
  * OK
  */
-export const zCreateEndpoint6Response = zApplicationResponse;
+export const zDeployApplicationResponse = zApplicationResponse;
 
-export const zUpdateEndpoint4Data = z.object({
+export const zUpdateApplicationData = z.object({
     body: zUpdateDeploymentRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6474,13 +7528,13 @@ export const zUpdateEndpoint4Data = z.object({
 /**
  * OK
  */
-export const zUpdateEndpoint4Response = zApplicationResponse;
+export const zUpdateApplicationResponse = zApplicationResponse;
 
-export const zGetComposeServicesData = z.object({
+export const zListComposeServicesData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        id: z.string()
+        id: z.uuid()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -6490,15 +7544,15 @@ export const zGetComposeServicesData = z.object({
 /**
  * OK
  */
-export const zGetComposeServicesResponse = zComposeServicesResponse;
+export const zListComposeServicesResponse = zComposeServicesResponse;
 
-export const zGetDeployments2Data = z.object({
+export const zListApplicationDeploymentsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        id: z.string(),
-        page: z.int().optional(),
-        limit: z.int().optional()
+        id: z.uuid(),
+        page: z.int().gte(1).optional().default(1),
+        limit: z.int().gte(1).lte(100).optional().default(20)
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -6508,9 +7562,9 @@ export const zGetDeployments2Data = z.object({
 /**
  * OK
  */
-export const zGetDeployments2Response = zListDeploymentsResponse;
+export const zListApplicationDeploymentsResponse = zListDeploymentsResponse;
 
-export const zGetDeploymentsData = z.object({
+export const zGetDeploymentData = z.object({
     body: z.never().optional(),
     path: z.object({
         deployment_id: z.string()
@@ -6524,16 +7578,16 @@ export const zGetDeploymentsData = z.object({
 /**
  * OK
  */
-export const zGetDeploymentsResponse = zDeploymentResponse;
+export const zGetDeploymentResponse = zDeploymentResponse;
 
-export const zGetLogs2Data = z.object({
+export const zGetDeploymentLogsData = z.object({
     body: z.never().optional(),
     path: z.object({
         deployment_id: z.string()
     }),
     query: z.object({
-        page: z.int().optional(),
-        page_size: z.int().optional(),
+        page: z.int().gte(1).optional().default(1),
+        page_size: z.int().gte(1).lte(100).optional().default(20),
         level: z.string().optional(),
         start_time: z.string().optional(),
         end_time: z.string().optional(),
@@ -6547,13 +7601,13 @@ export const zGetLogs2Data = z.object({
 /**
  * OK
  */
-export const zGetLogs2Response = zLogsResponse;
+export const zGetDeploymentLogsResponse = zLogsResponse;
 
-export const zDeleteDomainsData = z.object({
+export const zRemoveApplicationDomainData = z.object({
     body: zRemoveApplicationDomainRequest,
     path: z.never().optional(),
     query: z.object({
-        id: z.string()
+        id: z.uuid()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -6563,13 +7617,13 @@ export const zDeleteDomainsData = z.object({
 /**
  * OK
  */
-export const zDeleteDomainsResponse = zApplicationResponse;
+export const zRemoveApplicationDomainResponse = zApplicationResponse;
 
-export const zCreateDomainsData = z.object({
+export const zAddApplicationDomainData = z.object({
     body: zAddApplicationDomainRequest,
     path: z.never().optional(),
     query: z.object({
-        id: z.string()
+        id: z.uuid()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -6579,16 +7633,16 @@ export const zCreateDomainsData = z.object({
 /**
  * OK
  */
-export const zCreateDomainsResponse = zApplicationResponse;
+export const zAddApplicationDomainResponse = zApplicationResponse;
 
-export const zGetLogsData = z.object({
+export const zGetApplicationLogsData = z.object({
     body: z.never().optional(),
     path: z.object({
         application_id: z.string()
     }),
     query: z.object({
-        page: z.int().optional(),
-        page_size: z.int().optional(),
+        page: z.int().gte(1).optional().default(1),
+        page_size: z.int().gte(1).lte(100).optional().default(20),
         level: z.string().optional(),
         start_time: z.string().optional(),
         end_time: z.string().optional(),
@@ -6602,7 +7656,7 @@ export const zGetLogsData = z.object({
 /**
  * OK
  */
-export const zGetLogsResponse = zLogsResponse;
+export const zGetApplicationLogsResponse = zLogsResponse;
 
 export const zCreateProjectData = z.object({
     body: zCreateProjectRequest,
@@ -6618,7 +7672,7 @@ export const zCreateProjectData = z.object({
  */
 export const zCreateProjectResponse = zApplicationResponse;
 
-export const zCreateAddToFamilyData = z.object({
+export const zAddProjectToFamilyData = z.object({
     body: zAddApplicationToFamilyRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6630,9 +7684,9 @@ export const zCreateAddToFamilyData = z.object({
 /**
  * OK
  */
-export const zCreateAddToFamilyResponse = zApplicationResponse;
+export const zAddProjectToFamilyResponse = zApplicationResponse;
 
-export const zCreateDeployData = z.object({
+export const zDeployProjectData = z.object({
     body: zDeployProjectRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6644,9 +7698,9 @@ export const zCreateDeployData = z.object({
 /**
  * OK
  */
-export const zCreateDeployResponse = zApplicationResponse;
+export const zDeployProjectResponse = zApplicationResponse;
 
-export const zCreateDuplicateData = z.object({
+export const zDuplicateProjectData = z.object({
     body: zDuplicateProjectRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6658,13 +7712,13 @@ export const zCreateDuplicateData = z.object({
 /**
  * OK
  */
-export const zCreateDuplicateResponse = zApplicationResponse;
+export const zDuplicateProjectResponse = zApplicationResponse;
 
-export const zGetFamilyData = z.object({
+export const zListProjectsInFamilyData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        family_id: z.string()
+        family_id: z.uuid()
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -6674,9 +7728,9 @@ export const zGetFamilyData = z.object({
 /**
  * OK
  */
-export const zGetFamilyResponse = zProjectFamilyResponse;
+export const zListProjectsInFamilyResponse = zProjectFamilyResponse;
 
-export const zCreateRedeployData = z.object({
+export const zRedeployApplicationData = z.object({
     body: zReDeployApplicationRequest,
     path: z.never().optional(),
     query: z.never().optional(),
@@ -6688,16 +7742,16 @@ export const zCreateRedeployData = z.object({
 /**
  * OK
  */
-export const zCreateRedeployResponse = zApplicationResponse;
+export const zRedeployApplicationResponse = zApplicationResponse;
 
-export const zGetApplicationsData = z.object({
+export const zListApplicationsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        page: z.int().optional(),
-        page_size: z.int().optional(),
+        page: z.int().gte(1).optional().default(1),
+        page_size: z.int().gte(1).lte(100).optional().default(20),
         sort_by: z.string().optional(),
-        sort_direction: z.string().optional()
+        sort_direction: z.enum(['asc', 'desc']).optional()
     }).optional(),
     headers: z.object({
         Accept: z.string().optional()
@@ -6707,14 +7761,14 @@ export const zGetApplicationsData = z.object({
 /**
  * OK
  */
-export const zGetApplicationsResponse = zListApplicationsResponse;
+export const zListApplicationsResponse2 = zListApplicationsResponse;
 
-export const zGetResultsData = z.object({
+export const zListHealthCheckResultsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
     query: z.object({
-        application_id: z.string(),
-        limit: z.int().optional(),
+        application_id: z.uuid(),
+        limit: z.int().gte(1).lte(100).optional().default(20),
         start_time: z.string().optional(),
         end_time: z.string().optional()
     }),
@@ -6726,4 +7780,4 @@ export const zGetResultsData = z.object({
 /**
  * OK
  */
-export const zGetResultsResponse = zHealthCheckResultsResponse;
+export const zListHealthCheckResultsResponse = zHealthCheckResultsResponse;
