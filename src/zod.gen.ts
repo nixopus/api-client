@@ -172,6 +172,15 @@ export const zBootstrapResponse = z.object({
 });
 
 /**
+ * CallToolRequest schema
+ */
+export const zCallToolRequest = z.object({
+    arguments: z.record(z.string(), z.string()).optional(),
+    server_id: z.uuid().optional(),
+    tool_name: z.string().optional()
+});
+
+/**
  * CancelDeploymentRequest schema
  */
 export const zCancelDeploymentRequest = z.object({
@@ -2892,16 +2901,7 @@ export const zApplicationDeployment = z.object({
     id: z.uuid().optional(),
     image_s3_key: z.string().optional(),
     image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-    logs: z.array(z.object({
-        application: zApplication.optional(),
-        application_deployment: z.lazy((): any => zApplicationDeployment).optional(),
-        application_deployment_id: z.uuid().optional(),
-        application_id: z.uuid().optional(),
-        created_at: z.iso.datetime().optional(),
-        id: z.uuid().optional(),
-        log: z.string().optional(),
-        updated_at: z.iso.datetime().optional()
-    })).optional(),
+    logs: z.array(z.lazy((): any => zApplicationLogs)).optional(),
     parent_deployment_id: z.uuid().optional(),
     server_id: z.uuid().optional(),
     status: z.object({
@@ -2928,7 +2928,32 @@ export const zApplicationDomain = z.object({
 
 export const zApplicationLogs = z.object({
     application: zApplication.optional(),
-    application_deployment: zApplicationDeployment.optional(),
+    application_deployment: z.object({
+        application: zApplication.optional(),
+        application_id: z.uuid().optional(),
+        children: z.array(zApplicationDeployment).optional(),
+        commit_hash: z.string().optional(),
+        container_id: z.uuid().optional(),
+        container_image: z.string().optional(),
+        container_name: z.string().optional(),
+        container_status: z.string().optional(),
+        created_at: z.iso.datetime().optional(),
+        id: z.uuid().optional(),
+        image_s3_key: z.string().optional(),
+        image_size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
+        logs: z.array(z.lazy((): any => zApplicationLogs)).optional(),
+        parent_deployment_id: z.uuid().optional(),
+        server_id: z.uuid().optional(),
+        status: z.object({
+            application_deployment: zApplicationDeployment.optional(),
+            application_deployment_id: z.uuid().optional(),
+            created_at: z.iso.datetime().optional(),
+            id: z.uuid().optional(),
+            status: z.string().optional(),
+            updated_at: z.iso.datetime().optional()
+        }).optional(),
+        updated_at: z.iso.datetime().optional()
+    }).optional(),
     application_deployment_id: z.uuid().optional(),
     application_id: z.uuid().optional(),
     created_at: z.iso.datetime().optional(),
@@ -6947,6 +6972,20 @@ export const zAgentDiscoverToolsFromAllEnabledMcpServersData = z.object({
  * OK
  */
 export const zAgentDiscoverToolsFromAllEnabledMcpServersResponse = zResponse;
+
+export const zAgentInvokeAToolOnAnMcpServerData = z.object({
+    body: zCallToolRequest,
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zAgentInvokeAToolOnAnMcpServerResponse = zResponse;
 
 export const zDeleteMcpServerData = z.object({
     body: zDeleteServerRequest,

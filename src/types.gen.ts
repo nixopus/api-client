@@ -292,16 +292,7 @@ export type ApplicationDeployment = {
     id?: string;
     image_s3_key?: string;
     image_size?: number;
-    logs?: Array<{
-        application?: Application;
-        application_deployment?: ApplicationDeployment;
-        application_deployment_id?: string;
-        application_id?: string;
-        created_at?: string;
-        id?: string;
-        log?: string;
-        updated_at?: string;
-    }>;
+    logs?: Array<ApplicationLogs>;
     parent_deployment_id?: string;
     server_id?: string;
     status?: {
@@ -328,7 +319,32 @@ export type ApplicationDomain = {
 
 export type ApplicationLogs = {
     application?: Application;
-    application_deployment?: ApplicationDeployment;
+    application_deployment?: {
+        application?: Application;
+        application_id?: string;
+        children?: Array<ApplicationDeployment>;
+        commit_hash?: string;
+        container_id?: string;
+        container_image?: string;
+        container_name?: string;
+        container_status?: string;
+        created_at?: string;
+        id?: string;
+        image_s3_key?: string;
+        image_size?: number;
+        logs?: Array<ApplicationLogs>;
+        parent_deployment_id?: string;
+        server_id?: string;
+        status?: {
+            application_deployment?: ApplicationDeployment;
+            application_deployment_id?: string;
+            created_at?: string;
+            id?: string;
+            status?: string;
+            updated_at?: string;
+        };
+        updated_at?: string;
+    };
     application_deployment_id?: string;
     application_id?: string;
     created_at?: string;
@@ -688,6 +704,17 @@ export type BootstrapResponse = {
         name?: string;
         provisionStatus?: string;
     };
+};
+
+/**
+ * CallToolRequest schema
+ */
+export type CallToolRequest = {
+    arguments?: {
+        [key: string]: string;
+    };
+    server_id?: string;
+    tool_name?: string;
 };
 
 /**
@@ -9601,6 +9628,42 @@ export type AgentDiscoverToolsFromAllEnabledMcpServersResponses = {
 };
 
 export type AgentDiscoverToolsFromAllEnabledMcpServersResponse = AgentDiscoverToolsFromAllEnabledMcpServersResponses[keyof AgentDiscoverToolsFromAllEnabledMcpServersResponses];
+
+export type AgentInvokeAToolOnAnMcpServerData = {
+    /**
+     * Request body for validation.CallToolRequest
+     */
+    body: CallToolRequest;
+    headers?: {
+        Accept?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/mcp/internal/tools/call';
+};
+
+export type AgentInvokeAToolOnAnMcpServerErrors = {
+    /**
+     * Bad Request _(validation or deserialization error)_
+     */
+    400: ErrorEnvelope;
+    /**
+     * Internal Server Error _(panics)_
+     */
+    500: ErrorEnvelope;
+    default: unknown;
+};
+
+export type AgentInvokeAToolOnAnMcpServerError = AgentInvokeAToolOnAnMcpServerErrors[keyof AgentInvokeAToolOnAnMcpServerErrors];
+
+export type AgentInvokeAToolOnAnMcpServerResponses = {
+    /**
+     * OK
+     */
+    200: Response;
+};
+
+export type AgentInvokeAToolOnAnMcpServerResponse = AgentInvokeAToolOnAnMcpServerResponses[keyof AgentInvokeAToolOnAnMcpServerResponses];
 
 export type DeleteMcpServerData = {
     /**
