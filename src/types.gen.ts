@@ -61,11 +61,9 @@ export type Application = {
     build_pack?: string;
     build_variables?: string;
     compose_services?: Array<{
-        application?: Application;
         application_id?: string;
         created_at?: string;
         domains?: Array<{
-            application?: Application;
             application_id?: string;
             compose_service?: ComposeService;
             compose_service_id?: string;
@@ -80,47 +78,11 @@ export type Application = {
         updated_at?: string;
     }>;
     created_at?: string;
-    deployments?: Array<{
-        application?: Application;
-        application_id?: string;
-        children?: Array<ApplicationDeployment>;
-        commit_hash?: string;
-        container_id?: string;
-        container_image?: string;
-        container_name?: string;
-        container_status?: string;
-        created_at?: string;
-        id?: string;
-        image_s3_key?: string;
-        image_size?: number;
-        logs?: Array<{
-            application?: Application;
-            application_deployment?: ApplicationDeployment;
-            application_deployment_id?: string;
-            application_id?: string;
-            created_at?: string;
-            id?: string;
-            log?: string;
-            updated_at?: string;
-        }>;
-        parent_deployment_id?: string;
-        server_id?: string;
-        status?: {
-            application_deployment?: ApplicationDeployment;
-            application_deployment_id?: string;
-            created_at?: string;
-            id?: string;
-            status?: string;
-            updated_at?: string;
-        };
-        updated_at?: string;
-    }>;
+    deployments?: Array<ApplicationDeployment>;
     dockerfile_path?: string;
     domains?: Array<{
-        application?: Application;
         application_id?: string;
         compose_service?: {
-            application?: Application;
             application_id?: string;
             created_at?: string;
             domains?: Array<ApplicationDomain>;
@@ -142,33 +104,6 @@ export type Application = {
     is_live_deployment?: boolean;
     labels?: Array<string>;
     logs?: Array<{
-        application?: Application;
-        application_deployment?: {
-            application?: Application;
-            application_id?: string;
-            children?: Array<ApplicationDeployment>;
-            commit_hash?: string;
-            container_id?: string;
-            container_image?: string;
-            container_name?: string;
-            container_status?: string;
-            created_at?: string;
-            id?: string;
-            image_s3_key?: string;
-            image_size?: number;
-            logs?: Array<ApplicationLogs>;
-            parent_deployment_id?: string;
-            server_id?: string;
-            status?: {
-                application_deployment?: ApplicationDeployment;
-                application_deployment_id?: string;
-                created_at?: string;
-                id?: string;
-                status?: string;
-                updated_at?: string;
-            };
-            updated_at?: string;
-        };
         application_deployment_id?: string;
         application_id?: string;
         created_at?: string;
@@ -177,14 +112,6 @@ export type Application = {
         updated_at?: string;
     }>;
     name?: string;
-    organization?: {
-        created_at?: string;
-        id?: string;
-        logo?: string;
-        metadata?: string;
-        name?: string;
-        slug?: string;
-    };
     organization_id?: string;
     port?: number;
     post_run_command?: string;
@@ -211,14 +138,6 @@ export type Application = {
             key_type?: string;
             last_used_at?: string;
             name?: string;
-            organization?: {
-                created_at?: string;
-                id?: string;
-                logo?: string;
-                metadata?: string;
-                name?: string;
-                slug?: string;
-            };
             organization_id?: string;
             port?: number;
             proxy_host?: string;
@@ -230,7 +149,6 @@ export type Application = {
     }>;
     source?: string;
     status?: {
-        application?: Application;
         application_id?: string;
         created_at?: string;
         id?: string;
@@ -238,49 +156,113 @@ export type Application = {
         updated_at?: string;
     };
     updated_at?: string;
-    user?: {
-        avatar?: string;
-        created_at?: string;
-        email?: string;
-        email_verified?: boolean;
-        id?: string;
-        image?: string;
-        is_onboarded?: boolean;
-        is_verified?: boolean;
-        name?: string;
-        organization_users?: Array<{
-            created_at?: string;
-            id?: string;
-            organization?: {
-                created_at?: string;
-                id?: string;
-                logo?: string;
-                metadata?: string;
-                name?: string;
-                slug?: string;
-            };
-            organization_id?: string;
-            role?: string;
-            user?: User;
-            user_id?: string;
-        }>;
-        organizations?: Array<{
-            created_at?: string;
-            id?: string;
-            logo?: string;
-            metadata?: string;
-            name?: string;
-            slug?: string;
-        }>;
-        provision_status?: string;
-        updated_at?: string;
-        username?: string;
-    };
     user_id?: string;
 };
 
 export type ApplicationDeployment = {
-    application?: Application;
+    application?: {
+        base_path?: string;
+        branch?: string;
+        build_pack?: string;
+        build_variables?: string;
+        compose_services?: Array<{
+            application_id?: string;
+            created_at?: string;
+            domains?: Array<{
+                application_id?: string;
+                compose_service?: ComposeService;
+                compose_service_id?: string;
+                created_at?: string;
+                domain?: string;
+                id?: string;
+                port?: number;
+            }>;
+            id?: string;
+            port?: number;
+            service_name?: string;
+            updated_at?: string;
+        }>;
+        created_at?: string;
+        deployments?: Array<ApplicationDeployment>;
+        dockerfile_path?: string;
+        domains?: Array<{
+            application_id?: string;
+            compose_service?: {
+                application_id?: string;
+                created_at?: string;
+                domains?: Array<ApplicationDomain>;
+                id?: string;
+                port?: number;
+                service_name?: string;
+                updated_at?: string;
+            };
+            compose_service_id?: string;
+            created_at?: string;
+            domain?: string;
+            id?: string;
+            port?: number;
+        }>;
+        environment?: string;
+        environment_variables?: string;
+        family_id?: string;
+        id?: string;
+        is_live_deployment?: boolean;
+        labels?: Array<string>;
+        logs?: Array<{
+            application_deployment_id?: string;
+            application_id?: string;
+            created_at?: string;
+            id?: string;
+            log?: string;
+            updated_at?: string;
+        }>;
+        name?: string;
+        organization_id?: string;
+        port?: number;
+        post_run_command?: string;
+        pre_run_command?: string;
+        proxy_server?: string;
+        repository?: string;
+        routing_strategy?: string;
+        servers?: Array<{
+            application_id?: string;
+            created_at?: string;
+            id?: string;
+            is_primary?: boolean;
+            server?: {
+                auth_method?: string;
+                created_at?: string;
+                deleted_at?: string;
+                description?: string;
+                fingerprint?: string;
+                host?: string;
+                id?: string;
+                is_active?: boolean;
+                is_default?: boolean;
+                key_size?: number;
+                key_type?: string;
+                last_used_at?: string;
+                name?: string;
+                organization_id?: string;
+                port?: number;
+                proxy_host?: string;
+                public_key?: string;
+                updated_at?: string;
+                user?: string;
+            };
+            server_id?: string;
+        }>;
+        source?: string;
+        status?: {
+            application_id?: string;
+            created_at?: string;
+            id?: string;
+            status?: string;
+            updated_at?: string;
+        };
+        updated_at?: string;
+        user_id?: string;
+    };
     application_id?: string;
     children?: Array<ApplicationDeployment>;
     commit_hash?: string;
@@ -292,11 +274,17 @@ export type ApplicationDeployment = {
     id?: string;
     image_s3_key?: string;
     image_size?: number;
-    logs?: Array<ApplicationLogs>;
+    logs?: Array<{
+        application_deployment_id?: string;
+        application_id?: string;
+        created_at?: string;
+        id?: string;
+        log?: string;
+        updated_at?: string;
+    }>;
     parent_deployment_id?: string;
     server_id?: string;
     status?: {
-        application_deployment?: ApplicationDeployment;
         application_deployment_id?: string;
         created_at?: string;
         id?: string;
@@ -307,7 +295,6 @@ export type ApplicationDeployment = {
 };
 
 export type ApplicationDomain = {
-    application?: Application;
     application_id?: string;
     compose_service?: ComposeService;
     compose_service_id?: string;
@@ -315,42 +302,6 @@ export type ApplicationDomain = {
     domain?: string;
     id?: string;
     port?: number;
-};
-
-export type ApplicationLogs = {
-    application?: Application;
-    application_deployment?: {
-        application?: Application;
-        application_id?: string;
-        children?: Array<ApplicationDeployment>;
-        commit_hash?: string;
-        container_id?: string;
-        container_image?: string;
-        container_name?: string;
-        container_status?: string;
-        created_at?: string;
-        id?: string;
-        image_s3_key?: string;
-        image_size?: number;
-        logs?: Array<ApplicationLogs>;
-        parent_deployment_id?: string;
-        server_id?: string;
-        status?: {
-            application_deployment?: ApplicationDeployment;
-            application_deployment_id?: string;
-            created_at?: string;
-            id?: string;
-            status?: string;
-            updated_at?: string;
-        };
-        updated_at?: string;
-    };
-    application_deployment_id?: string;
-    application_id?: string;
-    created_at?: string;
-    id?: string;
-    log?: string;
-    updated_at?: string;
 };
 
 /**
@@ -363,11 +314,9 @@ export type ApplicationResponse = {
         build_pack?: string;
         build_variables?: string;
         compose_services?: Array<{
-            application?: Application;
             application_id?: string;
             created_at?: string;
             domains?: Array<{
-                application?: Application;
                 application_id?: string;
                 compose_service?: ComposeService;
                 compose_service_id?: string;
@@ -396,8 +345,6 @@ export type ApplicationResponse = {
             image_s3_key?: string;
             image_size?: number;
             logs?: Array<{
-                application?: Application;
-                application_deployment?: ApplicationDeployment;
                 application_deployment_id?: string;
                 application_id?: string;
                 created_at?: string;
@@ -408,7 +355,6 @@ export type ApplicationResponse = {
             parent_deployment_id?: string;
             server_id?: string;
             status?: {
-                application_deployment?: ApplicationDeployment;
                 application_deployment_id?: string;
                 created_at?: string;
                 id?: string;
@@ -419,10 +365,8 @@ export type ApplicationResponse = {
         }>;
         dockerfile_path?: string;
         domains?: Array<{
-            application?: Application;
             application_id?: string;
             compose_service?: {
-                application?: Application;
                 application_id?: string;
                 created_at?: string;
                 domains?: Array<ApplicationDomain>;
@@ -444,33 +388,6 @@ export type ApplicationResponse = {
         is_live_deployment?: boolean;
         labels?: Array<string>;
         logs?: Array<{
-            application?: Application;
-            application_deployment?: {
-                application?: Application;
-                application_id?: string;
-                children?: Array<ApplicationDeployment>;
-                commit_hash?: string;
-                container_id?: string;
-                container_image?: string;
-                container_name?: string;
-                container_status?: string;
-                created_at?: string;
-                id?: string;
-                image_s3_key?: string;
-                image_size?: number;
-                logs?: Array<ApplicationLogs>;
-                parent_deployment_id?: string;
-                server_id?: string;
-                status?: {
-                    application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    status?: string;
-                    updated_at?: string;
-                };
-                updated_at?: string;
-            };
             application_deployment_id?: string;
             application_id?: string;
             created_at?: string;
@@ -479,14 +396,6 @@ export type ApplicationResponse = {
             updated_at?: string;
         }>;
         name?: string;
-        organization?: {
-            created_at?: string;
-            id?: string;
-            logo?: string;
-            metadata?: string;
-            name?: string;
-            slug?: string;
-        };
         organization_id?: string;
         port?: number;
         post_run_command?: string;
@@ -513,14 +422,6 @@ export type ApplicationResponse = {
                 key_type?: string;
                 last_used_at?: string;
                 name?: string;
-                organization?: {
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                };
                 organization_id?: string;
                 port?: number;
                 proxy_host?: string;
@@ -532,7 +433,6 @@ export type ApplicationResponse = {
         }>;
         source?: string;
         status?: {
-            application?: Application;
             application_id?: string;
             created_at?: string;
             id?: string;
@@ -540,44 +440,6 @@ export type ApplicationResponse = {
             updated_at?: string;
         };
         updated_at?: string;
-        user?: {
-            avatar?: string;
-            created_at?: string;
-            email?: string;
-            email_verified?: boolean;
-            id?: string;
-            image?: string;
-            is_onboarded?: boolean;
-            is_verified?: boolean;
-            name?: string;
-            organization_users?: Array<{
-                created_at?: string;
-                id?: string;
-                organization?: {
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                };
-                organization_id?: string;
-                role?: string;
-                user?: User;
-                user_id?: string;
-            }>;
-            organizations?: Array<{
-                created_at?: string;
-                id?: string;
-                logo?: string;
-                metadata?: string;
-                name?: string;
-                slug?: string;
-            }>;
-            provision_status?: string;
-            updated_at?: string;
-            username?: string;
-        };
         user_id?: string;
     };
     message?: string;
@@ -607,14 +469,6 @@ export type ApplicationServersResponse = {
             key_type?: string;
             last_used_at?: string;
             name?: string;
-            organization?: {
-                created_at?: string;
-                id?: string;
-                logo?: string;
-                metadata?: string;
-                name?: string;
-                slug?: string;
-            };
             organization_id?: string;
             port?: number;
             proxy_host?: string;
@@ -734,10 +588,17 @@ export type CategoriesResponse = {
 };
 
 export type ComposeService = {
-    application?: Application;
     application_id?: string;
     created_at?: string;
-    domains?: Array<ApplicationDomain>;
+    domains?: Array<{
+        application_id?: string;
+        compose_service?: ComposeService;
+        compose_service_id?: string;
+        created_at?: string;
+        domain?: string;
+        id?: string;
+        port?: number;
+    }>;
     id?: string;
     port?: number;
     service_name?: string;
@@ -749,392 +610,9 @@ export type ComposeService = {
  */
 export type ComposeServicesResponse = {
     data?: Array<{
-        application?: {
-            base_path?: string;
-            branch?: string;
-            build_pack?: string;
-            build_variables?: string;
-            compose_services?: Array<ComposeService>;
-            created_at?: string;
-            deployments?: Array<{
-                application?: Application;
-                application_id?: string;
-                children?: Array<ApplicationDeployment>;
-                commit_hash?: string;
-                container_id?: string;
-                container_image?: string;
-                container_name?: string;
-                container_status?: string;
-                created_at?: string;
-                id?: string;
-                image_s3_key?: string;
-                image_size?: number;
-                logs?: Array<{
-                    application?: Application;
-                    application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: string;
-                    application_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    log?: string;
-                    updated_at?: string;
-                }>;
-                parent_deployment_id?: string;
-                server_id?: string;
-                status?: {
-                    application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    status?: string;
-                    updated_at?: string;
-                };
-                updated_at?: string;
-            }>;
-            dockerfile_path?: string;
-            domains?: Array<{
-                application?: Application;
-                application_id?: string;
-                compose_service?: ComposeService;
-                compose_service_id?: string;
-                created_at?: string;
-                domain?: string;
-                id?: string;
-                port?: number;
-            }>;
-            environment?: string;
-            environment_variables?: string;
-            family_id?: string;
-            id?: string;
-            is_live_deployment?: boolean;
-            labels?: Array<string>;
-            logs?: Array<{
-                application?: Application;
-                application_deployment?: {
-                    application?: Application;
-                    application_id?: string;
-                    children?: Array<ApplicationDeployment>;
-                    commit_hash?: string;
-                    container_id?: string;
-                    container_image?: string;
-                    container_name?: string;
-                    container_status?: string;
-                    created_at?: string;
-                    id?: string;
-                    image_s3_key?: string;
-                    image_size?: number;
-                    logs?: Array<ApplicationLogs>;
-                    parent_deployment_id?: string;
-                    server_id?: string;
-                    status?: {
-                        application_deployment?: ApplicationDeployment;
-                        application_deployment_id?: string;
-                        created_at?: string;
-                        id?: string;
-                        status?: string;
-                        updated_at?: string;
-                    };
-                    updated_at?: string;
-                };
-                application_deployment_id?: string;
-                application_id?: string;
-                created_at?: string;
-                id?: string;
-                log?: string;
-                updated_at?: string;
-            }>;
-            name?: string;
-            organization?: {
-                created_at?: string;
-                id?: string;
-                logo?: string;
-                metadata?: string;
-                name?: string;
-                slug?: string;
-            };
-            organization_id?: string;
-            port?: number;
-            post_run_command?: string;
-            pre_run_command?: string;
-            proxy_server?: string;
-            repository?: string;
-            routing_strategy?: string;
-            servers?: Array<{
-                application_id?: string;
-                created_at?: string;
-                id?: string;
-                is_primary?: boolean;
-                server?: {
-                    auth_method?: string;
-                    created_at?: string;
-                    deleted_at?: string;
-                    description?: string;
-                    fingerprint?: string;
-                    host?: string;
-                    id?: string;
-                    is_active?: boolean;
-                    is_default?: boolean;
-                    key_size?: number;
-                    key_type?: string;
-                    last_used_at?: string;
-                    name?: string;
-                    organization?: {
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    };
-                    organization_id?: string;
-                    port?: number;
-                    proxy_host?: string;
-                    public_key?: string;
-                    updated_at?: string;
-                    user?: string;
-                };
-                server_id?: string;
-            }>;
-            source?: string;
-            status?: {
-                application?: Application;
-                application_id?: string;
-                created_at?: string;
-                id?: string;
-                status?: string;
-                updated_at?: string;
-            };
-            updated_at?: string;
-            user?: {
-                avatar?: string;
-                created_at?: string;
-                email?: string;
-                email_verified?: boolean;
-                id?: string;
-                image?: string;
-                is_onboarded?: boolean;
-                is_verified?: boolean;
-                name?: string;
-                organization_users?: Array<{
-                    created_at?: string;
-                    id?: string;
-                    organization?: {
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    };
-                    organization_id?: string;
-                    role?: string;
-                    user?: User;
-                    user_id?: string;
-                }>;
-                organizations?: Array<{
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                }>;
-                provision_status?: string;
-                updated_at?: string;
-                username?: string;
-            };
-            user_id?: string;
-        };
         application_id?: string;
         created_at?: string;
         domains?: Array<{
-            application?: {
-                base_path?: string;
-                branch?: string;
-                build_pack?: string;
-                build_variables?: string;
-                compose_services?: Array<ComposeService>;
-                created_at?: string;
-                deployments?: Array<{
-                    application?: Application;
-                    application_id?: string;
-                    children?: Array<ApplicationDeployment>;
-                    commit_hash?: string;
-                    container_id?: string;
-                    container_image?: string;
-                    container_name?: string;
-                    container_status?: string;
-                    created_at?: string;
-                    id?: string;
-                    image_s3_key?: string;
-                    image_size?: number;
-                    logs?: Array<{
-                        application?: Application;
-                        application_deployment?: ApplicationDeployment;
-                        application_deployment_id?: string;
-                        application_id?: string;
-                        created_at?: string;
-                        id?: string;
-                        log?: string;
-                        updated_at?: string;
-                    }>;
-                    parent_deployment_id?: string;
-                    server_id?: string;
-                    status?: {
-                        application_deployment?: ApplicationDeployment;
-                        application_deployment_id?: string;
-                        created_at?: string;
-                        id?: string;
-                        status?: string;
-                        updated_at?: string;
-                    };
-                    updated_at?: string;
-                }>;
-                dockerfile_path?: string;
-                domains?: Array<ApplicationDomain>;
-                environment?: string;
-                environment_variables?: string;
-                family_id?: string;
-                id?: string;
-                is_live_deployment?: boolean;
-                labels?: Array<string>;
-                logs?: Array<{
-                    application?: Application;
-                    application_deployment?: {
-                        application?: Application;
-                        application_id?: string;
-                        children?: Array<ApplicationDeployment>;
-                        commit_hash?: string;
-                        container_id?: string;
-                        container_image?: string;
-                        container_name?: string;
-                        container_status?: string;
-                        created_at?: string;
-                        id?: string;
-                        image_s3_key?: string;
-                        image_size?: number;
-                        logs?: Array<ApplicationLogs>;
-                        parent_deployment_id?: string;
-                        server_id?: string;
-                        status?: {
-                            application_deployment?: ApplicationDeployment;
-                            application_deployment_id?: string;
-                            created_at?: string;
-                            id?: string;
-                            status?: string;
-                            updated_at?: string;
-                        };
-                        updated_at?: string;
-                    };
-                    application_deployment_id?: string;
-                    application_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    log?: string;
-                    updated_at?: string;
-                }>;
-                name?: string;
-                organization?: {
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                };
-                organization_id?: string;
-                port?: number;
-                post_run_command?: string;
-                pre_run_command?: string;
-                proxy_server?: string;
-                repository?: string;
-                routing_strategy?: string;
-                servers?: Array<{
-                    application_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    is_primary?: boolean;
-                    server?: {
-                        auth_method?: string;
-                        created_at?: string;
-                        deleted_at?: string;
-                        description?: string;
-                        fingerprint?: string;
-                        host?: string;
-                        id?: string;
-                        is_active?: boolean;
-                        is_default?: boolean;
-                        key_size?: number;
-                        key_type?: string;
-                        last_used_at?: string;
-                        name?: string;
-                        organization?: {
-                            created_at?: string;
-                            id?: string;
-                            logo?: string;
-                            metadata?: string;
-                            name?: string;
-                            slug?: string;
-                        };
-                        organization_id?: string;
-                        port?: number;
-                        proxy_host?: string;
-                        public_key?: string;
-                        updated_at?: string;
-                        user?: string;
-                    };
-                    server_id?: string;
-                }>;
-                source?: string;
-                status?: {
-                    application?: Application;
-                    application_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    status?: string;
-                    updated_at?: string;
-                };
-                updated_at?: string;
-                user?: {
-                    avatar?: string;
-                    created_at?: string;
-                    email?: string;
-                    email_verified?: boolean;
-                    id?: string;
-                    image?: string;
-                    is_onboarded?: boolean;
-                    is_verified?: boolean;
-                    name?: string;
-                    organization_users?: Array<{
-                        created_at?: string;
-                        id?: string;
-                        organization?: {
-                            created_at?: string;
-                            id?: string;
-                            logo?: string;
-                            metadata?: string;
-                            name?: string;
-                            slug?: string;
-                        };
-                        organization_id?: string;
-                        role?: string;
-                        user?: User;
-                        user_id?: string;
-                    }>;
-                    organizations?: Array<{
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    }>;
-                    provision_status?: string;
-                    updated_at?: string;
-                    username?: string;
-                };
-                user_id?: string;
-            };
             application_id?: string;
             compose_service?: ComposeService;
             compose_service_id?: string;
@@ -1456,11 +934,9 @@ export type DeploymentResponse = {
             build_pack?: string;
             build_variables?: string;
             compose_services?: Array<{
-                application?: Application;
                 application_id?: string;
                 created_at?: string;
                 domains?: Array<{
-                    application?: Application;
                     application_id?: string;
                     compose_service?: ComposeService;
                     compose_service_id?: string;
@@ -1478,10 +954,8 @@ export type DeploymentResponse = {
             deployments?: Array<ApplicationDeployment>;
             dockerfile_path?: string;
             domains?: Array<{
-                application?: Application;
                 application_id?: string;
                 compose_service?: {
-                    application?: Application;
                     application_id?: string;
                     created_at?: string;
                     domains?: Array<ApplicationDomain>;
@@ -1503,8 +977,6 @@ export type DeploymentResponse = {
             is_live_deployment?: boolean;
             labels?: Array<string>;
             logs?: Array<{
-                application?: Application;
-                application_deployment?: ApplicationDeployment;
                 application_deployment_id?: string;
                 application_id?: string;
                 created_at?: string;
@@ -1513,14 +985,6 @@ export type DeploymentResponse = {
                 updated_at?: string;
             }>;
             name?: string;
-            organization?: {
-                created_at?: string;
-                id?: string;
-                logo?: string;
-                metadata?: string;
-                name?: string;
-                slug?: string;
-            };
             organization_id?: string;
             port?: number;
             post_run_command?: string;
@@ -1547,14 +1011,6 @@ export type DeploymentResponse = {
                     key_type?: string;
                     last_used_at?: string;
                     name?: string;
-                    organization?: {
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    };
                     organization_id?: string;
                     port?: number;
                     proxy_host?: string;
@@ -1566,7 +1022,6 @@ export type DeploymentResponse = {
             }>;
             source?: string;
             status?: {
-                application?: Application;
                 application_id?: string;
                 created_at?: string;
                 id?: string;
@@ -1574,44 +1029,6 @@ export type DeploymentResponse = {
                 updated_at?: string;
             };
             updated_at?: string;
-            user?: {
-                avatar?: string;
-                created_at?: string;
-                email?: string;
-                email_verified?: boolean;
-                id?: string;
-                image?: string;
-                is_onboarded?: boolean;
-                is_verified?: boolean;
-                name?: string;
-                organization_users?: Array<{
-                    created_at?: string;
-                    id?: string;
-                    organization?: {
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    };
-                    organization_id?: string;
-                    role?: string;
-                    user?: User;
-                    user_id?: string;
-                }>;
-                organizations?: Array<{
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                }>;
-                provision_status?: string;
-                updated_at?: string;
-                username?: string;
-            };
             user_id?: string;
         };
         application_id?: string;
@@ -1626,162 +1043,6 @@ export type DeploymentResponse = {
         image_s3_key?: string;
         image_size?: number;
         logs?: Array<{
-            application?: {
-                base_path?: string;
-                branch?: string;
-                build_pack?: string;
-                build_variables?: string;
-                compose_services?: Array<{
-                    application?: Application;
-                    application_id?: string;
-                    created_at?: string;
-                    domains?: Array<{
-                        application?: Application;
-                        application_id?: string;
-                        compose_service?: ComposeService;
-                        compose_service_id?: string;
-                        created_at?: string;
-                        domain?: string;
-                        id?: string;
-                        port?: number;
-                    }>;
-                    id?: string;
-                    port?: number;
-                    service_name?: string;
-                    updated_at?: string;
-                }>;
-                created_at?: string;
-                deployments?: Array<ApplicationDeployment>;
-                dockerfile_path?: string;
-                domains?: Array<{
-                    application?: Application;
-                    application_id?: string;
-                    compose_service?: {
-                        application?: Application;
-                        application_id?: string;
-                        created_at?: string;
-                        domains?: Array<ApplicationDomain>;
-                        id?: string;
-                        port?: number;
-                        service_name?: string;
-                        updated_at?: string;
-                    };
-                    compose_service_id?: string;
-                    created_at?: string;
-                    domain?: string;
-                    id?: string;
-                    port?: number;
-                }>;
-                environment?: string;
-                environment_variables?: string;
-                family_id?: string;
-                id?: string;
-                is_live_deployment?: boolean;
-                labels?: Array<string>;
-                logs?: Array<ApplicationLogs>;
-                name?: string;
-                organization?: {
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                };
-                organization_id?: string;
-                port?: number;
-                post_run_command?: string;
-                pre_run_command?: string;
-                proxy_server?: string;
-                repository?: string;
-                routing_strategy?: string;
-                servers?: Array<{
-                    application_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    is_primary?: boolean;
-                    server?: {
-                        auth_method?: string;
-                        created_at?: string;
-                        deleted_at?: string;
-                        description?: string;
-                        fingerprint?: string;
-                        host?: string;
-                        id?: string;
-                        is_active?: boolean;
-                        is_default?: boolean;
-                        key_size?: number;
-                        key_type?: string;
-                        last_used_at?: string;
-                        name?: string;
-                        organization?: {
-                            created_at?: string;
-                            id?: string;
-                            logo?: string;
-                            metadata?: string;
-                            name?: string;
-                            slug?: string;
-                        };
-                        organization_id?: string;
-                        port?: number;
-                        proxy_host?: string;
-                        public_key?: string;
-                        updated_at?: string;
-                        user?: string;
-                    };
-                    server_id?: string;
-                }>;
-                source?: string;
-                status?: {
-                    application?: Application;
-                    application_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    status?: string;
-                    updated_at?: string;
-                };
-                updated_at?: string;
-                user?: {
-                    avatar?: string;
-                    created_at?: string;
-                    email?: string;
-                    email_verified?: boolean;
-                    id?: string;
-                    image?: string;
-                    is_onboarded?: boolean;
-                    is_verified?: boolean;
-                    name?: string;
-                    organization_users?: Array<{
-                        created_at?: string;
-                        id?: string;
-                        organization?: {
-                            created_at?: string;
-                            id?: string;
-                            logo?: string;
-                            metadata?: string;
-                            name?: string;
-                            slug?: string;
-                        };
-                        organization_id?: string;
-                        role?: string;
-                        user?: User;
-                        user_id?: string;
-                    }>;
-                    organizations?: Array<{
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    }>;
-                    provision_status?: string;
-                    updated_at?: string;
-                    username?: string;
-                };
-                user_id?: string;
-            };
-            application_deployment?: ApplicationDeployment;
             application_deployment_id?: string;
             application_id?: string;
             created_at?: string;
@@ -1792,7 +1053,6 @@ export type DeploymentResponse = {
         parent_deployment_id?: string;
         server_id?: string;
         status?: {
-            application_deployment?: ApplicationDeployment;
             application_deployment_id?: string;
             created_at?: string;
             id?: string;
@@ -1856,43 +1116,6 @@ export type ExecutionResponse = {
         error_message?: string;
         execution_log?: string;
         exit_code?: number;
-        extension?: {
-            author?: string;
-            category?: string;
-            content_hash?: string;
-            created_at?: string;
-            deleted_at?: string;
-            description?: string;
-            extension_id?: string;
-            extension_type?: string;
-            featured?: boolean;
-            icon?: string;
-            id?: string;
-            is_verified?: boolean;
-            name?: string;
-            parent_extension_id?: string;
-            parsed_content?: string;
-            updated_at?: string;
-            validation_errors?: string;
-            validation_status?: string;
-            variables?: Array<{
-                created_at?: string;
-                /**
-                 * JSON-encoded value
-                 */
-                default_value?: string;
-                description?: string;
-                extension?: Extension;
-                extension_id?: string;
-                id?: string;
-                is_required?: boolean;
-                validation_pattern?: string;
-                variable_name?: string;
-                variable_type?: string;
-            }>;
-            version?: string;
-            yaml_content?: string;
-        };
         extension_id?: string;
         id?: string;
         log_seq?: number;
@@ -1902,7 +1125,6 @@ export type ExecutionResponse = {
         steps?: Array<{
             completed_at?: string;
             created_at?: string;
-            execution?: ExtensionExecution;
             execution_id?: string;
             exit_code?: number;
             id?: string;
@@ -1917,110 +1139,6 @@ export type ExecutionResponse = {
     };
     message?: string;
     status?: string;
-};
-
-export type Extension = {
-    author?: string;
-    category?: string;
-    content_hash?: string;
-    created_at?: string;
-    deleted_at?: string;
-    description?: string;
-    extension_id?: string;
-    extension_type?: string;
-    featured?: boolean;
-    icon?: string;
-    id?: string;
-    is_verified?: boolean;
-    name?: string;
-    parent_extension_id?: string;
-    parsed_content?: string;
-    updated_at?: string;
-    validation_errors?: string;
-    validation_status?: string;
-    variables?: Array<{
-        created_at?: string;
-        /**
-         * JSON-encoded value
-         */
-        default_value?: string;
-        description?: string;
-        extension?: Extension;
-        extension_id?: string;
-        id?: string;
-        is_required?: boolean;
-        validation_pattern?: string;
-        variable_name?: string;
-        variable_type?: string;
-    }>;
-    version?: string;
-    yaml_content?: string;
-};
-
-export type ExtensionExecution = {
-    completed_at?: string;
-    created_at?: string;
-    error_message?: string;
-    execution_log?: string;
-    exit_code?: number;
-    extension?: {
-        author?: string;
-        category?: string;
-        content_hash?: string;
-        created_at?: string;
-        deleted_at?: string;
-        description?: string;
-        extension_id?: string;
-        extension_type?: string;
-        featured?: boolean;
-        icon?: string;
-        id?: string;
-        is_verified?: boolean;
-        name?: string;
-        parent_extension_id?: string;
-        parsed_content?: string;
-        updated_at?: string;
-        validation_errors?: string;
-        validation_status?: string;
-        variables?: Array<{
-            created_at?: string;
-            /**
-             * JSON-encoded value
-             */
-            default_value?: string;
-            description?: string;
-            extension?: Extension;
-            extension_id?: string;
-            id?: string;
-            is_required?: boolean;
-            validation_pattern?: string;
-            variable_name?: string;
-            variable_type?: string;
-        }>;
-        version?: string;
-        yaml_content?: string;
-    };
-    extension_id?: string;
-    id?: string;
-    log_seq?: number;
-    server_hostname?: string;
-    started_at?: string;
-    status?: string;
-    steps?: Array<{
-        completed_at?: string;
-        created_at?: string;
-        execution?: ExtensionExecution;
-        execution_id?: string;
-        exit_code?: number;
-        id?: string;
-        output?: string;
-        phase?: string;
-        started_at?: string;
-        status?: string;
-        step_name?: string;
-        step_order?: number;
-    }>;
-    variable_values?: string;
 };
 
 /**
@@ -2053,7 +1171,6 @@ export type ExtensionResponse = {
              */
             default_value?: string;
             description?: string;
-            extension?: Extension;
             extension_id?: string;
             id?: string;
             is_required?: boolean;
@@ -2213,262 +1330,6 @@ export type HealthCheckResponse = {
     status?: string;
 };
 
-export type HealthCheckResult = {
-    checked_at?: string;
-    error_message?: string;
-    health_check?: {
-        application?: {
-            base_path?: string;
-            branch?: string;
-            build_pack?: string;
-            build_variables?: string;
-            compose_services?: Array<{
-                application?: Application;
-                application_id?: string;
-                created_at?: string;
-                domains?: Array<{
-                    application?: Application;
-                    application_id?: string;
-                    compose_service?: ComposeService;
-                    compose_service_id?: string;
-                    created_at?: string;
-                    domain?: string;
-                    id?: string;
-                    port?: number;
-                }>;
-                id?: string;
-                port?: number;
-                service_name?: string;
-                updated_at?: string;
-            }>;
-            created_at?: string;
-            deployments?: Array<{
-                application?: Application;
-                application_id?: string;
-                children?: Array<ApplicationDeployment>;
-                commit_hash?: string;
-                container_id?: string;
-                container_image?: string;
-                container_name?: string;
-                container_status?: string;
-                created_at?: string;
-                id?: string;
-                image_s3_key?: string;
-                image_size?: number;
-                logs?: Array<{
-                    application?: Application;
-                    application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: string;
-                    application_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    log?: string;
-                    updated_at?: string;
-                }>;
-                parent_deployment_id?: string;
-                server_id?: string;
-                status?: {
-                    application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    status?: string;
-                    updated_at?: string;
-                };
-                updated_at?: string;
-            }>;
-            dockerfile_path?: string;
-            domains?: Array<{
-                application?: Application;
-                application_id?: string;
-                compose_service?: {
-                    application?: Application;
-                    application_id?: string;
-                    created_at?: string;
-                    domains?: Array<ApplicationDomain>;
-                    id?: string;
-                    port?: number;
-                    service_name?: string;
-                    updated_at?: string;
-                };
-                compose_service_id?: string;
-                created_at?: string;
-                domain?: string;
-                id?: string;
-                port?: number;
-            }>;
-            environment?: string;
-            environment_variables?: string;
-            family_id?: string;
-            id?: string;
-            is_live_deployment?: boolean;
-            labels?: Array<string>;
-            logs?: Array<{
-                application?: Application;
-                application_deployment?: {
-                    application?: Application;
-                    application_id?: string;
-                    children?: Array<ApplicationDeployment>;
-                    commit_hash?: string;
-                    container_id?: string;
-                    container_image?: string;
-                    container_name?: string;
-                    container_status?: string;
-                    created_at?: string;
-                    id?: string;
-                    image_s3_key?: string;
-                    image_size?: number;
-                    logs?: Array<ApplicationLogs>;
-                    parent_deployment_id?: string;
-                    server_id?: string;
-                    status?: {
-                        application_deployment?: ApplicationDeployment;
-                        application_deployment_id?: string;
-                        created_at?: string;
-                        id?: string;
-                        status?: string;
-                        updated_at?: string;
-                    };
-                    updated_at?: string;
-                };
-                application_deployment_id?: string;
-                application_id?: string;
-                created_at?: string;
-                id?: string;
-                log?: string;
-                updated_at?: string;
-            }>;
-            name?: string;
-            organization?: {
-                created_at?: string;
-                id?: string;
-                logo?: string;
-                metadata?: string;
-                name?: string;
-                slug?: string;
-            };
-            organization_id?: string;
-            port?: number;
-            post_run_command?: string;
-            pre_run_command?: string;
-            proxy_server?: string;
-            repository?: string;
-            routing_strategy?: string;
-            servers?: Array<{
-                application_id?: string;
-                created_at?: string;
-                id?: string;
-                is_primary?: boolean;
-                server?: {
-                    auth_method?: string;
-                    created_at?: string;
-                    deleted_at?: string;
-                    description?: string;
-                    fingerprint?: string;
-                    host?: string;
-                    id?: string;
-                    is_active?: boolean;
-                    is_default?: boolean;
-                    key_size?: number;
-                    key_type?: string;
-                    last_used_at?: string;
-                    name?: string;
-                    organization?: {
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    };
-                    organization_id?: string;
-                    port?: number;
-                    proxy_host?: string;
-                    public_key?: string;
-                    updated_at?: string;
-                    user?: string;
-                };
-                server_id?: string;
-            }>;
-            source?: string;
-            status?: {
-                application?: Application;
-                application_id?: string;
-                created_at?: string;
-                id?: string;
-                status?: string;
-                updated_at?: string;
-            };
-            updated_at?: string;
-            user?: {
-                avatar?: string;
-                created_at?: string;
-                email?: string;
-                email_verified?: boolean;
-                id?: string;
-                image?: string;
-                is_onboarded?: boolean;
-                is_verified?: boolean;
-                name?: string;
-                organization_users?: Array<{
-                    created_at?: string;
-                    id?: string;
-                    organization?: {
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    };
-                    organization_id?: string;
-                    role?: string;
-                    user?: User;
-                    user_id?: string;
-                }>;
-                organizations?: Array<{
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                }>;
-                provision_status?: string;
-                updated_at?: string;
-                username?: string;
-            };
-            user_id?: string;
-        };
-        application_id?: string;
-        body?: string;
-        consecutive_fails?: number;
-        created_at?: string;
-        enabled?: boolean;
-        endpoint?: string;
-        expected_status_codes?: Array<number>;
-        failure_threshold?: number;
-        headers?: {
-            [key: string]: string;
-        };
-        id?: string;
-        interval_seconds?: number;
-        last_checked_at?: string;
-        method?: string;
-        organization_id?: string;
-        results?: Array<HealthCheckResult>;
-        retention_days?: number;
-        success_threshold?: number;
-        timeout_seconds?: number;
-        updated_at?: string;
-    };
-    health_check_id?: string;
-    id?: string;
-    response_time_ms?: number;
-    status?: string;
-    status_code?: number;
-};
-
 /**
  * HealthCheckResultsResponse schema
  */
@@ -2476,252 +1337,6 @@ export type HealthCheckResultsResponse = {
     data?: Array<{
         checked_at?: string;
         error_message?: string;
-        health_check?: {
-            application?: {
-                base_path?: string;
-                branch?: string;
-                build_pack?: string;
-                build_variables?: string;
-                compose_services?: Array<{
-                    application?: Application;
-                    application_id?: string;
-                    created_at?: string;
-                    domains?: Array<{
-                        application?: Application;
-                        application_id?: string;
-                        compose_service?: ComposeService;
-                        compose_service_id?: string;
-                        created_at?: string;
-                        domain?: string;
-                        id?: string;
-                        port?: number;
-                    }>;
-                    id?: string;
-                    port?: number;
-                    service_name?: string;
-                    updated_at?: string;
-                }>;
-                created_at?: string;
-                deployments?: Array<{
-                    application?: Application;
-                    application_id?: string;
-                    children?: Array<ApplicationDeployment>;
-                    commit_hash?: string;
-                    container_id?: string;
-                    container_image?: string;
-                    container_name?: string;
-                    container_status?: string;
-                    created_at?: string;
-                    id?: string;
-                    image_s3_key?: string;
-                    image_size?: number;
-                    logs?: Array<{
-                        application?: Application;
-                        application_deployment?: ApplicationDeployment;
-                        application_deployment_id?: string;
-                        application_id?: string;
-                        created_at?: string;
-                        id?: string;
-                        log?: string;
-                        updated_at?: string;
-                    }>;
-                    parent_deployment_id?: string;
-                    server_id?: string;
-                    status?: {
-                        application_deployment?: ApplicationDeployment;
-                        application_deployment_id?: string;
-                        created_at?: string;
-                        id?: string;
-                        status?: string;
-                        updated_at?: string;
-                    };
-                    updated_at?: string;
-                }>;
-                dockerfile_path?: string;
-                domains?: Array<{
-                    application?: Application;
-                    application_id?: string;
-                    compose_service?: {
-                        application?: Application;
-                        application_id?: string;
-                        created_at?: string;
-                        domains?: Array<ApplicationDomain>;
-                        id?: string;
-                        port?: number;
-                        service_name?: string;
-                        updated_at?: string;
-                    };
-                    compose_service_id?: string;
-                    created_at?: string;
-                    domain?: string;
-                    id?: string;
-                    port?: number;
-                }>;
-                environment?: string;
-                environment_variables?: string;
-                family_id?: string;
-                id?: string;
-                is_live_deployment?: boolean;
-                labels?: Array<string>;
-                logs?: Array<{
-                    application?: Application;
-                    application_deployment?: {
-                        application?: Application;
-                        application_id?: string;
-                        children?: Array<ApplicationDeployment>;
-                        commit_hash?: string;
-                        container_id?: string;
-                        container_image?: string;
-                        container_name?: string;
-                        container_status?: string;
-                        created_at?: string;
-                        id?: string;
-                        image_s3_key?: string;
-                        image_size?: number;
-                        logs?: Array<ApplicationLogs>;
-                        parent_deployment_id?: string;
-                        server_id?: string;
-                        status?: {
-                            application_deployment?: ApplicationDeployment;
-                            application_deployment_id?: string;
-                            created_at?: string;
-                            id?: string;
-                            status?: string;
-                            updated_at?: string;
-                        };
-                        updated_at?: string;
-                    };
-                    application_deployment_id?: string;
-                    application_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    log?: string;
-                    updated_at?: string;
-                }>;
-                name?: string;
-                organization?: {
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                };
-                organization_id?: string;
-                port?: number;
-                post_run_command?: string;
-                pre_run_command?: string;
-                proxy_server?: string;
-                repository?: string;
-                routing_strategy?: string;
-                servers?: Array<{
-                    application_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    is_primary?: boolean;
-                    server?: {
-                        auth_method?: string;
-                        created_at?: string;
-                        deleted_at?: string;
-                        description?: string;
-                        fingerprint?: string;
-                        host?: string;
-                        id?: string;
-                        is_active?: boolean;
-                        is_default?: boolean;
-                        key_size?: number;
-                        key_type?: string;
-                        last_used_at?: string;
-                        name?: string;
-                        organization?: {
-                            created_at?: string;
-                            id?: string;
-                            logo?: string;
-                            metadata?: string;
-                            name?: string;
-                            slug?: string;
-                        };
-                        organization_id?: string;
-                        port?: number;
-                        proxy_host?: string;
-                        public_key?: string;
-                        updated_at?: string;
-                        user?: string;
-                    };
-                    server_id?: string;
-                }>;
-                source?: string;
-                status?: {
-                    application?: Application;
-                    application_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    status?: string;
-                    updated_at?: string;
-                };
-                updated_at?: string;
-                user?: {
-                    avatar?: string;
-                    created_at?: string;
-                    email?: string;
-                    email_verified?: boolean;
-                    id?: string;
-                    image?: string;
-                    is_onboarded?: boolean;
-                    is_verified?: boolean;
-                    name?: string;
-                    organization_users?: Array<{
-                        created_at?: string;
-                        id?: string;
-                        organization?: {
-                            created_at?: string;
-                            id?: string;
-                            logo?: string;
-                            metadata?: string;
-                            name?: string;
-                            slug?: string;
-                        };
-                        organization_id?: string;
-                        role?: string;
-                        user?: User;
-                        user_id?: string;
-                    }>;
-                    organizations?: Array<{
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    }>;
-                    provision_status?: string;
-                    updated_at?: string;
-                    username?: string;
-                };
-                user_id?: string;
-            };
-            application_id?: string;
-            body?: string;
-            consecutive_fails?: number;
-            created_at?: string;
-            enabled?: boolean;
-            endpoint?: string;
-            expected_status_codes?: Array<number>;
-            failure_threshold?: number;
-            headers?: {
-                [key: string]: string;
-            };
-            id?: string;
-            interval_seconds?: number;
-            last_checked_at?: string;
-            method?: string;
-            organization_id?: string;
-            results?: Array<HealthCheckResult>;
-            retention_days?: number;
-            success_threshold?: number;
-            timeout_seconds?: number;
-            updated_at?: string;
-        };
         health_check_id?: string;
         id?: string;
         response_time_ms?: number;
@@ -2814,11 +1429,9 @@ export type ListApplicationsResponse = {
             build_pack?: string;
             build_variables?: string;
             compose_services?: Array<{
-                application?: Application;
                 application_id?: string;
                 created_at?: string;
                 domains?: Array<{
-                    application?: Application;
                     application_id?: string;
                     compose_service?: ComposeService;
                     compose_service_id?: string;
@@ -2847,8 +1460,6 @@ export type ListApplicationsResponse = {
                 image_s3_key?: string;
                 image_size?: number;
                 logs?: Array<{
-                    application?: Application;
-                    application_deployment?: ApplicationDeployment;
                     application_deployment_id?: string;
                     application_id?: string;
                     created_at?: string;
@@ -2859,7 +1470,6 @@ export type ListApplicationsResponse = {
                 parent_deployment_id?: string;
                 server_id?: string;
                 status?: {
-                    application_deployment?: ApplicationDeployment;
                     application_deployment_id?: string;
                     created_at?: string;
                     id?: string;
@@ -2870,10 +1480,8 @@ export type ListApplicationsResponse = {
             }>;
             dockerfile_path?: string;
             domains?: Array<{
-                application?: Application;
                 application_id?: string;
                 compose_service?: {
-                    application?: Application;
                     application_id?: string;
                     created_at?: string;
                     domains?: Array<ApplicationDomain>;
@@ -2895,33 +1503,6 @@ export type ListApplicationsResponse = {
             is_live_deployment?: boolean;
             labels?: Array<string>;
             logs?: Array<{
-                application?: Application;
-                application_deployment?: {
-                    application?: Application;
-                    application_id?: string;
-                    children?: Array<ApplicationDeployment>;
-                    commit_hash?: string;
-                    container_id?: string;
-                    container_image?: string;
-                    container_name?: string;
-                    container_status?: string;
-                    created_at?: string;
-                    id?: string;
-                    image_s3_key?: string;
-                    image_size?: number;
-                    logs?: Array<ApplicationLogs>;
-                    parent_deployment_id?: string;
-                    server_id?: string;
-                    status?: {
-                        application_deployment?: ApplicationDeployment;
-                        application_deployment_id?: string;
-                        created_at?: string;
-                        id?: string;
-                        status?: string;
-                        updated_at?: string;
-                    };
-                    updated_at?: string;
-                };
                 application_deployment_id?: string;
                 application_id?: string;
                 created_at?: string;
@@ -2930,14 +1511,6 @@ export type ListApplicationsResponse = {
                 updated_at?: string;
             }>;
             name?: string;
-            organization?: {
-                created_at?: string;
-                id?: string;
-                logo?: string;
-                metadata?: string;
-                name?: string;
-                slug?: string;
-            };
             organization_id?: string;
             port?: number;
             post_run_command?: string;
@@ -2964,14 +1537,6 @@ export type ListApplicationsResponse = {
                     key_type?: string;
                     last_used_at?: string;
                     name?: string;
-                    organization?: {
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    };
                     organization_id?: string;
                     port?: number;
                     proxy_host?: string;
@@ -2983,7 +1548,6 @@ export type ListApplicationsResponse = {
             }>;
             source?: string;
             status?: {
-                application?: Application;
                 application_id?: string;
                 created_at?: string;
                 id?: string;
@@ -2991,44 +1555,6 @@ export type ListApplicationsResponse = {
                 updated_at?: string;
             };
             updated_at?: string;
-            user?: {
-                avatar?: string;
-                created_at?: string;
-                email?: string;
-                email_verified?: boolean;
-                id?: string;
-                image?: string;
-                is_onboarded?: boolean;
-                is_verified?: boolean;
-                name?: string;
-                organization_users?: Array<{
-                    created_at?: string;
-                    id?: string;
-                    organization?: {
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    };
-                    organization_id?: string;
-                    role?: string;
-                    user?: User;
-                    user_id?: string;
-                }>;
-                organizations?: Array<{
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                }>;
-                provision_status?: string;
-                updated_at?: string;
-                username?: string;
-            };
             user_id?: string;
         }>;
         page?: number;
@@ -3221,11 +1747,9 @@ export type ListDeploymentsResponse = {
                 build_pack?: string;
                 build_variables?: string;
                 compose_services?: Array<{
-                    application?: Application;
                     application_id?: string;
                     created_at?: string;
                     domains?: Array<{
-                        application?: Application;
                         application_id?: string;
                         compose_service?: ComposeService;
                         compose_service_id?: string;
@@ -3243,10 +1767,8 @@ export type ListDeploymentsResponse = {
                 deployments?: Array<ApplicationDeployment>;
                 dockerfile_path?: string;
                 domains?: Array<{
-                    application?: Application;
                     application_id?: string;
                     compose_service?: {
-                        application?: Application;
                         application_id?: string;
                         created_at?: string;
                         domains?: Array<ApplicationDomain>;
@@ -3268,8 +1790,6 @@ export type ListDeploymentsResponse = {
                 is_live_deployment?: boolean;
                 labels?: Array<string>;
                 logs?: Array<{
-                    application?: Application;
-                    application_deployment?: ApplicationDeployment;
                     application_deployment_id?: string;
                     application_id?: string;
                     created_at?: string;
@@ -3278,14 +1798,6 @@ export type ListDeploymentsResponse = {
                     updated_at?: string;
                 }>;
                 name?: string;
-                organization?: {
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                };
                 organization_id?: string;
                 port?: number;
                 post_run_command?: string;
@@ -3312,14 +1824,6 @@ export type ListDeploymentsResponse = {
                         key_type?: string;
                         last_used_at?: string;
                         name?: string;
-                        organization?: {
-                            created_at?: string;
-                            id?: string;
-                            logo?: string;
-                            metadata?: string;
-                            name?: string;
-                            slug?: string;
-                        };
                         organization_id?: string;
                         port?: number;
                         proxy_host?: string;
@@ -3331,7 +1835,6 @@ export type ListDeploymentsResponse = {
                 }>;
                 source?: string;
                 status?: {
-                    application?: Application;
                     application_id?: string;
                     created_at?: string;
                     id?: string;
@@ -3339,44 +1842,6 @@ export type ListDeploymentsResponse = {
                     updated_at?: string;
                 };
                 updated_at?: string;
-                user?: {
-                    avatar?: string;
-                    created_at?: string;
-                    email?: string;
-                    email_verified?: boolean;
-                    id?: string;
-                    image?: string;
-                    is_onboarded?: boolean;
-                    is_verified?: boolean;
-                    name?: string;
-                    organization_users?: Array<{
-                        created_at?: string;
-                        id?: string;
-                        organization?: {
-                            created_at?: string;
-                            id?: string;
-                            logo?: string;
-                            metadata?: string;
-                            name?: string;
-                            slug?: string;
-                        };
-                        organization_id?: string;
-                        role?: string;
-                        user?: User;
-                        user_id?: string;
-                    }>;
-                    organizations?: Array<{
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    }>;
-                    provision_status?: string;
-                    updated_at?: string;
-                    username?: string;
-                };
                 user_id?: string;
             };
             application_id?: string;
@@ -3391,162 +1856,6 @@ export type ListDeploymentsResponse = {
             image_s3_key?: string;
             image_size?: number;
             logs?: Array<{
-                application?: {
-                    base_path?: string;
-                    branch?: string;
-                    build_pack?: string;
-                    build_variables?: string;
-                    compose_services?: Array<{
-                        application?: Application;
-                        application_id?: string;
-                        created_at?: string;
-                        domains?: Array<{
-                            application?: Application;
-                            application_id?: string;
-                            compose_service?: ComposeService;
-                            compose_service_id?: string;
-                            created_at?: string;
-                            domain?: string;
-                            id?: string;
-                            port?: number;
-                        }>;
-                        id?: string;
-                        port?: number;
-                        service_name?: string;
-                        updated_at?: string;
-                    }>;
-                    created_at?: string;
-                    deployments?: Array<ApplicationDeployment>;
-                    dockerfile_path?: string;
-                    domains?: Array<{
-                        application?: Application;
-                        application_id?: string;
-                        compose_service?: {
-                            application?: Application;
-                            application_id?: string;
-                            created_at?: string;
-                            domains?: Array<ApplicationDomain>;
-                            id?: string;
-                            port?: number;
-                            service_name?: string;
-                            updated_at?: string;
-                        };
-                        compose_service_id?: string;
-                        created_at?: string;
-                        domain?: string;
-                        id?: string;
-                        port?: number;
-                    }>;
-                    environment?: string;
-                    environment_variables?: string;
-                    family_id?: string;
-                    id?: string;
-                    is_live_deployment?: boolean;
-                    labels?: Array<string>;
-                    logs?: Array<ApplicationLogs>;
-                    name?: string;
-                    organization?: {
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    };
-                    organization_id?: string;
-                    port?: number;
-                    post_run_command?: string;
-                    pre_run_command?: string;
-                    proxy_server?: string;
-                    repository?: string;
-                    routing_strategy?: string;
-                    servers?: Array<{
-                        application_id?: string;
-                        created_at?: string;
-                        id?: string;
-                        is_primary?: boolean;
-                        server?: {
-                            auth_method?: string;
-                            created_at?: string;
-                            deleted_at?: string;
-                            description?: string;
-                            fingerprint?: string;
-                            host?: string;
-                            id?: string;
-                            is_active?: boolean;
-                            is_default?: boolean;
-                            key_size?: number;
-                            key_type?: string;
-                            last_used_at?: string;
-                            name?: string;
-                            organization?: {
-                                created_at?: string;
-                                id?: string;
-                                logo?: string;
-                                metadata?: string;
-                                name?: string;
-                                slug?: string;
-                            };
-                            organization_id?: string;
-                            port?: number;
-                            proxy_host?: string;
-                            public_key?: string;
-                            updated_at?: string;
-                            user?: string;
-                        };
-                        server_id?: string;
-                    }>;
-                    source?: string;
-                    status?: {
-                        application?: Application;
-                        application_id?: string;
-                        created_at?: string;
-                        id?: string;
-                        status?: string;
-                        updated_at?: string;
-                    };
-                    updated_at?: string;
-                    user?: {
-                        avatar?: string;
-                        created_at?: string;
-                        email?: string;
-                        email_verified?: boolean;
-                        id?: string;
-                        image?: string;
-                        is_onboarded?: boolean;
-                        is_verified?: boolean;
-                        name?: string;
-                        organization_users?: Array<{
-                            created_at?: string;
-                            id?: string;
-                            organization?: {
-                                created_at?: string;
-                                id?: string;
-                                logo?: string;
-                                metadata?: string;
-                                name?: string;
-                                slug?: string;
-                            };
-                            organization_id?: string;
-                            role?: string;
-                            user?: User;
-                            user_id?: string;
-                        }>;
-                        organizations?: Array<{
-                            created_at?: string;
-                            id?: string;
-                            logo?: string;
-                            metadata?: string;
-                            name?: string;
-                            slug?: string;
-                        }>;
-                        provision_status?: string;
-                        updated_at?: string;
-                        username?: string;
-                    };
-                    user_id?: string;
-                };
-                application_deployment?: ApplicationDeployment;
                 application_deployment_id?: string;
                 application_id?: string;
                 created_at?: string;
@@ -3557,7 +1866,6 @@ export type ListDeploymentsResponse = {
             parent_deployment_id?: string;
             server_id?: string;
             status?: {
-                application_deployment?: ApplicationDeployment;
                 application_deployment_id?: string;
                 created_at?: string;
                 id?: string;
@@ -3606,43 +1914,6 @@ export type ListExecutionsResponse = {
         error_message?: string;
         execution_log?: string;
         exit_code?: number;
-        extension?: {
-            author?: string;
-            category?: string;
-            content_hash?: string;
-            created_at?: string;
-            deleted_at?: string;
-            description?: string;
-            extension_id?: string;
-            extension_type?: string;
-            featured?: boolean;
-            icon?: string;
-            id?: string;
-            is_verified?: boolean;
-            name?: string;
-            parent_extension_id?: string;
-            parsed_content?: string;
-            updated_at?: string;
-            validation_errors?: string;
-            validation_status?: string;
-            variables?: Array<{
-                created_at?: string;
-                /**
-                 * JSON-encoded value
-                 */
-                default_value?: string;
-                description?: string;
-                extension?: Extension;
-                extension_id?: string;
-                id?: string;
-                is_required?: boolean;
-                validation_pattern?: string;
-                variable_name?: string;
-                variable_type?: string;
-            }>;
-            version?: string;
-            yaml_content?: string;
-        };
         extension_id?: string;
         id?: string;
         log_seq?: number;
@@ -3652,7 +1923,6 @@ export type ListExecutionsResponse = {
         steps?: Array<{
             completed_at?: string;
             created_at?: string;
-            execution?: ExtensionExecution;
             execution_id?: string;
             exit_code?: number;
             id?: string;
@@ -3700,7 +1970,6 @@ export type ListExtensionsResponse = {
                  */
                 default_value?: string;
                 description?: string;
-                extension?: Extension;
                 extension_id?: string;
                 id?: string;
                 is_required?: boolean;
@@ -3730,14 +1999,6 @@ export type ListFeatureFlagsResponse = {
         feature_name?: string;
         id?: string;
         is_enabled?: boolean;
-        organization?: {
-            created_at?: string;
-            id?: string;
-            logo?: string;
-            metadata?: string;
-            name?: string;
-            slug?: string;
-        };
         organization_id?: string;
         updated_at?: string;
     }>;
@@ -3986,14 +2247,6 @@ export type ListServersResponse = {
             key_type?: string;
             last_used_at?: string;
             name?: string;
-            organization?: {
-                created_at?: string;
-                id?: string;
-                logo?: string;
-                metadata?: string;
-                name?: string;
-                slug?: string;
-            };
             organization_id?: string;
             port?: number;
             provision?: {
@@ -4005,87 +2258,12 @@ export type ListServersResponse = {
                 id?: string;
                 lxd_container_name?: string;
                 memory_mb?: number;
-                organization?: {
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                };
                 organization_id?: string;
                 server_id?: string;
-                ssh_key?: {
-                    auth_method?: string;
-                    created_at?: string;
-                    deleted_at?: string;
-                    description?: string;
-                    fingerprint?: string;
-                    host?: string;
-                    id?: string;
-                    is_active?: boolean;
-                    is_default?: boolean;
-                    key_size?: number;
-                    key_type?: string;
-                    last_used_at?: string;
-                    name?: string;
-                    organization?: {
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    };
-                    organization_id?: string;
-                    port?: number;
-                    proxy_host?: string;
-                    public_key?: string;
-                    updated_at?: string;
-                    user?: string;
-                };
                 ssh_key_id?: string;
                 step?: string;
                 subdomain?: string;
                 updated_at?: string;
-                user?: {
-                    avatar?: string;
-                    created_at?: string;
-                    email?: string;
-                    email_verified?: boolean;
-                    id?: string;
-                    image?: string;
-                    is_onboarded?: boolean;
-                    is_verified?: boolean;
-                    name?: string;
-                    organization_users?: Array<{
-                        created_at?: string;
-                        id?: string;
-                        organization?: {
-                            created_at?: string;
-                            id?: string;
-                            logo?: string;
-                            metadata?: string;
-                            name?: string;
-                            slug?: string;
-                        };
-                        organization_id?: string;
-                        role?: string;
-                        user?: User;
-                        user_id?: string;
-                    }>;
-                    organizations?: Array<{
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    }>;
-                    provision_status?: string;
-                    updated_at?: string;
-                    username?: string;
-                };
                 user_id?: string;
                 vcpu_count?: number;
             };
@@ -4112,366 +2290,6 @@ export type ListServersResponse = {
 export type LogsResponse = {
     data?: {
         logs?: Array<{
-            application?: {
-                base_path?: string;
-                branch?: string;
-                build_pack?: string;
-                build_variables?: string;
-                compose_services?: Array<{
-                    application?: Application;
-                    application_id?: string;
-                    created_at?: string;
-                    domains?: Array<{
-                        application?: Application;
-                        application_id?: string;
-                        compose_service?: ComposeService;
-                        compose_service_id?: string;
-                        created_at?: string;
-                        domain?: string;
-                        id?: string;
-                        port?: number;
-                    }>;
-                    id?: string;
-                    port?: number;
-                    service_name?: string;
-                    updated_at?: string;
-                }>;
-                created_at?: string;
-                deployments?: Array<{
-                    application?: Application;
-                    application_id?: string;
-                    children?: Array<ApplicationDeployment>;
-                    commit_hash?: string;
-                    container_id?: string;
-                    container_image?: string;
-                    container_name?: string;
-                    container_status?: string;
-                    created_at?: string;
-                    id?: string;
-                    image_s3_key?: string;
-                    image_size?: number;
-                    logs?: Array<ApplicationLogs>;
-                    parent_deployment_id?: string;
-                    server_id?: string;
-                    status?: {
-                        application_deployment?: ApplicationDeployment;
-                        application_deployment_id?: string;
-                        created_at?: string;
-                        id?: string;
-                        status?: string;
-                        updated_at?: string;
-                    };
-                    updated_at?: string;
-                }>;
-                dockerfile_path?: string;
-                domains?: Array<{
-                    application?: Application;
-                    application_id?: string;
-                    compose_service?: {
-                        application?: Application;
-                        application_id?: string;
-                        created_at?: string;
-                        domains?: Array<ApplicationDomain>;
-                        id?: string;
-                        port?: number;
-                        service_name?: string;
-                        updated_at?: string;
-                    };
-                    compose_service_id?: string;
-                    created_at?: string;
-                    domain?: string;
-                    id?: string;
-                    port?: number;
-                }>;
-                environment?: string;
-                environment_variables?: string;
-                family_id?: string;
-                id?: string;
-                is_live_deployment?: boolean;
-                labels?: Array<string>;
-                logs?: Array<ApplicationLogs>;
-                name?: string;
-                organization?: {
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                };
-                organization_id?: string;
-                port?: number;
-                post_run_command?: string;
-                pre_run_command?: string;
-                proxy_server?: string;
-                repository?: string;
-                routing_strategy?: string;
-                servers?: Array<{
-                    application_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    is_primary?: boolean;
-                    server?: {
-                        auth_method?: string;
-                        created_at?: string;
-                        deleted_at?: string;
-                        description?: string;
-                        fingerprint?: string;
-                        host?: string;
-                        id?: string;
-                        is_active?: boolean;
-                        is_default?: boolean;
-                        key_size?: number;
-                        key_type?: string;
-                        last_used_at?: string;
-                        name?: string;
-                        organization?: {
-                            created_at?: string;
-                            id?: string;
-                            logo?: string;
-                            metadata?: string;
-                            name?: string;
-                            slug?: string;
-                        };
-                        organization_id?: string;
-                        port?: number;
-                        proxy_host?: string;
-                        public_key?: string;
-                        updated_at?: string;
-                        user?: string;
-                    };
-                    server_id?: string;
-                }>;
-                source?: string;
-                status?: {
-                    application?: Application;
-                    application_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    status?: string;
-                    updated_at?: string;
-                };
-                updated_at?: string;
-                user?: {
-                    avatar?: string;
-                    created_at?: string;
-                    email?: string;
-                    email_verified?: boolean;
-                    id?: string;
-                    image?: string;
-                    is_onboarded?: boolean;
-                    is_verified?: boolean;
-                    name?: string;
-                    organization_users?: Array<{
-                        created_at?: string;
-                        id?: string;
-                        organization?: {
-                            created_at?: string;
-                            id?: string;
-                            logo?: string;
-                            metadata?: string;
-                            name?: string;
-                            slug?: string;
-                        };
-                        organization_id?: string;
-                        role?: string;
-                        user?: User;
-                        user_id?: string;
-                    }>;
-                    organizations?: Array<{
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    }>;
-                    provision_status?: string;
-                    updated_at?: string;
-                    username?: string;
-                };
-                user_id?: string;
-            };
-            application_deployment?: {
-                application?: {
-                    base_path?: string;
-                    branch?: string;
-                    build_pack?: string;
-                    build_variables?: string;
-                    compose_services?: Array<{
-                        application?: Application;
-                        application_id?: string;
-                        created_at?: string;
-                        domains?: Array<{
-                            application?: Application;
-                            application_id?: string;
-                            compose_service?: ComposeService;
-                            compose_service_id?: string;
-                            created_at?: string;
-                            domain?: string;
-                            id?: string;
-                            port?: number;
-                        }>;
-                        id?: string;
-                        port?: number;
-                        service_name?: string;
-                        updated_at?: string;
-                    }>;
-                    created_at?: string;
-                    deployments?: Array<ApplicationDeployment>;
-                    dockerfile_path?: string;
-                    domains?: Array<{
-                        application?: Application;
-                        application_id?: string;
-                        compose_service?: {
-                            application?: Application;
-                            application_id?: string;
-                            created_at?: string;
-                            domains?: Array<ApplicationDomain>;
-                            id?: string;
-                            port?: number;
-                            service_name?: string;
-                            updated_at?: string;
-                        };
-                        compose_service_id?: string;
-                        created_at?: string;
-                        domain?: string;
-                        id?: string;
-                        port?: number;
-                    }>;
-                    environment?: string;
-                    environment_variables?: string;
-                    family_id?: string;
-                    id?: string;
-                    is_live_deployment?: boolean;
-                    labels?: Array<string>;
-                    logs?: Array<ApplicationLogs>;
-                    name?: string;
-                    organization?: {
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    };
-                    organization_id?: string;
-                    port?: number;
-                    post_run_command?: string;
-                    pre_run_command?: string;
-                    proxy_server?: string;
-                    repository?: string;
-                    routing_strategy?: string;
-                    servers?: Array<{
-                        application_id?: string;
-                        created_at?: string;
-                        id?: string;
-                        is_primary?: boolean;
-                        server?: {
-                            auth_method?: string;
-                            created_at?: string;
-                            deleted_at?: string;
-                            description?: string;
-                            fingerprint?: string;
-                            host?: string;
-                            id?: string;
-                            is_active?: boolean;
-                            is_default?: boolean;
-                            key_size?: number;
-                            key_type?: string;
-                            last_used_at?: string;
-                            name?: string;
-                            organization?: {
-                                created_at?: string;
-                                id?: string;
-                                logo?: string;
-                                metadata?: string;
-                                name?: string;
-                                slug?: string;
-                            };
-                            organization_id?: string;
-                            port?: number;
-                            proxy_host?: string;
-                            public_key?: string;
-                            updated_at?: string;
-                            user?: string;
-                        };
-                        server_id?: string;
-                    }>;
-                    source?: string;
-                    status?: {
-                        application?: Application;
-                        application_id?: string;
-                        created_at?: string;
-                        id?: string;
-                        status?: string;
-                        updated_at?: string;
-                    };
-                    updated_at?: string;
-                    user?: {
-                        avatar?: string;
-                        created_at?: string;
-                        email?: string;
-                        email_verified?: boolean;
-                        id?: string;
-                        image?: string;
-                        is_onboarded?: boolean;
-                        is_verified?: boolean;
-                        name?: string;
-                        organization_users?: Array<{
-                            created_at?: string;
-                            id?: string;
-                            organization?: {
-                                created_at?: string;
-                                id?: string;
-                                logo?: string;
-                                metadata?: string;
-                                name?: string;
-                                slug?: string;
-                            };
-                            organization_id?: string;
-                            role?: string;
-                            user?: User;
-                            user_id?: string;
-                        }>;
-                        organizations?: Array<{
-                            created_at?: string;
-                            id?: string;
-                            logo?: string;
-                            metadata?: string;
-                            name?: string;
-                            slug?: string;
-                        }>;
-                        provision_status?: string;
-                        updated_at?: string;
-                        username?: string;
-                    };
-                    user_id?: string;
-                };
-                application_id?: string;
-                children?: Array<ApplicationDeployment>;
-                commit_hash?: string;
-                container_id?: string;
-                container_image?: string;
-                container_name?: string;
-                container_status?: string;
-                created_at?: string;
-                id?: string;
-                image_s3_key?: string;
-                image_size?: number;
-                logs?: Array<ApplicationLogs>;
-                parent_deployment_id?: string;
-                server_id?: string;
-                status?: {
-                    application_deployment?: ApplicationDeployment;
-                    application_deployment_id?: string;
-                    created_at?: string;
-                    id?: string;
-                    status?: string;
-                    updated_at?: string;
-                };
-                updated_at?: string;
-            };
             application_deployment_id?: string;
             application_id?: string;
             created_at?: string;
@@ -4680,11 +2498,9 @@ export type ProjectFamilyResponse = {
             build_pack?: string;
             build_variables?: string;
             compose_services?: Array<{
-                application?: Application;
                 application_id?: string;
                 created_at?: string;
                 domains?: Array<{
-                    application?: Application;
                     application_id?: string;
                     compose_service?: ComposeService;
                     compose_service_id?: string;
@@ -4713,8 +2529,6 @@ export type ProjectFamilyResponse = {
                 image_s3_key?: string;
                 image_size?: number;
                 logs?: Array<{
-                    application?: Application;
-                    application_deployment?: ApplicationDeployment;
                     application_deployment_id?: string;
                     application_id?: string;
                     created_at?: string;
@@ -4725,7 +2539,6 @@ export type ProjectFamilyResponse = {
                 parent_deployment_id?: string;
                 server_id?: string;
                 status?: {
-                    application_deployment?: ApplicationDeployment;
                     application_deployment_id?: string;
                     created_at?: string;
                     id?: string;
@@ -4736,10 +2549,8 @@ export type ProjectFamilyResponse = {
             }>;
             dockerfile_path?: string;
             domains?: Array<{
-                application?: Application;
                 application_id?: string;
                 compose_service?: {
-                    application?: Application;
                     application_id?: string;
                     created_at?: string;
                     domains?: Array<ApplicationDomain>;
@@ -4761,33 +2572,6 @@ export type ProjectFamilyResponse = {
             is_live_deployment?: boolean;
             labels?: Array<string>;
             logs?: Array<{
-                application?: Application;
-                application_deployment?: {
-                    application?: Application;
-                    application_id?: string;
-                    children?: Array<ApplicationDeployment>;
-                    commit_hash?: string;
-                    container_id?: string;
-                    container_image?: string;
-                    container_name?: string;
-                    container_status?: string;
-                    created_at?: string;
-                    id?: string;
-                    image_s3_key?: string;
-                    image_size?: number;
-                    logs?: Array<ApplicationLogs>;
-                    parent_deployment_id?: string;
-                    server_id?: string;
-                    status?: {
-                        application_deployment?: ApplicationDeployment;
-                        application_deployment_id?: string;
-                        created_at?: string;
-                        id?: string;
-                        status?: string;
-                        updated_at?: string;
-                    };
-                    updated_at?: string;
-                };
                 application_deployment_id?: string;
                 application_id?: string;
                 created_at?: string;
@@ -4796,14 +2580,6 @@ export type ProjectFamilyResponse = {
                 updated_at?: string;
             }>;
             name?: string;
-            organization?: {
-                created_at?: string;
-                id?: string;
-                logo?: string;
-                metadata?: string;
-                name?: string;
-                slug?: string;
-            };
             organization_id?: string;
             port?: number;
             post_run_command?: string;
@@ -4830,14 +2606,6 @@ export type ProjectFamilyResponse = {
                     key_type?: string;
                     last_used_at?: string;
                     name?: string;
-                    organization?: {
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    };
                     organization_id?: string;
                     port?: number;
                     proxy_host?: string;
@@ -4849,7 +2617,6 @@ export type ProjectFamilyResponse = {
             }>;
             source?: string;
             status?: {
-                application?: Application;
                 application_id?: string;
                 created_at?: string;
                 id?: string;
@@ -4857,44 +2624,6 @@ export type ProjectFamilyResponse = {
                 updated_at?: string;
             };
             updated_at?: string;
-            user?: {
-                avatar?: string;
-                created_at?: string;
-                email?: string;
-                email_verified?: boolean;
-                id?: string;
-                image?: string;
-                is_onboarded?: boolean;
-                is_verified?: boolean;
-                name?: string;
-                organization_users?: Array<{
-                    created_at?: string;
-                    id?: string;
-                    organization?: {
-                        created_at?: string;
-                        id?: string;
-                        logo?: string;
-                        metadata?: string;
-                        name?: string;
-                        slug?: string;
-                    };
-                    organization_id?: string;
-                    role?: string;
-                    user?: User;
-                    user_id?: string;
-                }>;
-                organizations?: Array<{
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                }>;
-                provision_status?: string;
-                updated_at?: string;
-                username?: string;
-            };
             user_id?: string;
         }>;
     };
@@ -5171,14 +2900,6 @@ export type SetDefaultServerResponse = {
         key_type?: string;
         last_used_at?: string;
         name?: string;
-        organization?: {
-            created_at?: string;
-            id?: string;
-            logo?: string;
-            metadata?: string;
-            name?: string;
-            slug?: string;
-        };
         organization_id?: string;
         port?: number;
         proxy_host?: string;
@@ -5625,44 +3346,6 @@ export type UserPreferencesResponse = {
             terminal_tab_stop_width?: number;
         };
         updated_at?: string;
-        user?: {
-            avatar?: string;
-            created_at?: string;
-            email?: string;
-            email_verified?: boolean;
-            id?: string;
-            image?: string;
-            is_onboarded?: boolean;
-            is_verified?: boolean;
-            name?: string;
-            organization_users?: Array<{
-                created_at?: string;
-                id?: string;
-                organization?: {
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                };
-                organization_id?: string;
-                role?: string;
-                user?: User;
-                user_id?: string;
-            }>;
-            organizations?: Array<{
-                created_at?: string;
-                id?: string;
-                logo?: string;
-                metadata?: string;
-                name?: string;
-                slug?: string;
-            }>;
-            provision_status?: string;
-            updated_at?: string;
-            username?: string;
-        };
         user_id?: string;
     };
     message?: string;
@@ -5729,44 +3412,6 @@ export type UserSettingsResponse = {
         language?: string;
         theme?: string;
         updated_at?: string;
-        user?: {
-            avatar?: string;
-            created_at?: string;
-            email?: string;
-            email_verified?: boolean;
-            id?: string;
-            image?: string;
-            is_onboarded?: boolean;
-            is_verified?: boolean;
-            name?: string;
-            organization_users?: Array<{
-                created_at?: string;
-                id?: string;
-                organization?: {
-                    created_at?: string;
-                    id?: string;
-                    logo?: string;
-                    metadata?: string;
-                    name?: string;
-                    slug?: string;
-                };
-                organization_id?: string;
-                role?: string;
-                user?: User;
-                user_id?: string;
-            }>;
-            organizations?: Array<{
-                created_at?: string;
-                id?: string;
-                logo?: string;
-                metadata?: string;
-                name?: string;
-                slug?: string;
-            }>;
-            provision_status?: string;
-            updated_at?: string;
-            username?: string;
-        };
         user_id?: string;
     };
     message?: string;
