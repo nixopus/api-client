@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AddApplicationDomainData, AddApplicationDomainErrors, AddApplicationDomainResponses, AddCustomDomainData, AddCustomDomainErrors, AddCustomDomainResponses, AddMcpServerData, AddMcpServerErrors, AddMcpServerResponses, AddProjectToFamilyData, AddProjectToFamilyErrors, AddProjectToFamilyResponses, AgentDiscoverToolsFromAllEnabledMcpServersData, AgentDiscoverToolsFromAllEnabledMcpServersErrors, AgentDiscoverToolsFromAllEnabledMcpServersResponses, AgentInvokeAToolOnAnMcpServerData, AgentInvokeAToolOnAnMcpServerErrors, AgentInvokeAToolOnAnMcpServerResponses, AgentListEnabledServersWithCredentialsData, AgentListEnabledServersWithCredentialsErrors, AgentListEnabledServersWithCredentialsResponses, CancelDeploymentData, CancelDeploymentErrors, CancelDeploymentResponses, CancelExecutionData, CancelExecutionErrors, CancelExecutionResponses, CheckAdminRegistrationData, CheckAdminRegistrationErrors, CheckAdminRegistrationResponses, CheckCustomDomainDnsData, CheckCustomDomainDnsErrors, CheckCustomDomainDnsResponses, CheckForUpdatesData, CheckForUpdatesErrors, CheckForUpdatesResponses, CheckIfFeatureIsEnabledData, CheckIfFeatureIsEnabledErrors, CheckIfFeatureIsEnabledResponses, CheckOnboardingStatusData, CheckOnboardingStatusErrors, CheckOnboardingStatusResponses, CopyDirectoryData, CopyDirectoryErrors, CopyDirectoryResponses, CreateDirectoryData, CreateDirectoryErrors, CreateDirectoryResponses, CreateGitHubConnectorData, CreateGitHubConnectorErrors, CreateGitHubConnectorResponses, CreateHealthCheckData, CreateHealthCheckErrors, CreateHealthCheckResponses, CreateProjectData, CreateProjectErrors, CreateProjectResponses, CreateSmtpConfigData, CreateSmtpConfigErrors, CreateSmtpConfigResponses, CreateWebhookConfigData, CreateWebhookConfigErrors, CreateWebhookConfigResponses, DeleteApplicationData, DeleteApplicationErrors, DeleteApplicationResponses, DeleteDirectoryData, DeleteDirectoryErrors, DeleteDirectoryResponses, DeleteForkedExtensionData, DeleteForkedExtensionErrors, DeleteForkedExtensionResponses, DeleteGitHubConnectorData, DeleteGitHubConnectorErrors, DeleteGitHubConnectorResponses, DeleteHealthCheckData, DeleteHealthCheckErrors, DeleteHealthCheckResponses, DeleteMcpServerData, DeleteMcpServerErrors, DeleteMcpServerResponses, DeleteSmtpConfigData, DeleteSmtpConfigErrors, DeleteSmtpConfigResponses, DeleteWebhookConfigData, DeleteWebhookConfigErrors, DeleteWebhookConfigResponses, DeployApplicationData, DeployApplicationErrors, DeployApplicationResponses, DeployProjectData, DeployProjectErrors, DeployProjectResponses, DuplicateProjectData, DuplicateProjectErrors, DuplicateProjectResponses, ExecuteACommandOnTheHostMachineData, ExecuteACommandOnTheHostMachineErrors, ExecuteACommandOnTheHostMachineResponses, ForkExtensionData, ForkExtensionErrors, ForkExtensionResponses, GenerateRandomSubdomainData, GenerateRandomSubdomainErrors, GenerateRandomSubdomainResponses, GetApplicationData, GetApplicationErrors, GetApplicationLogsData, GetApplicationLogsErrors, GetApplicationLogsResponses, GetApplicationResponses, GetApplicationServersData, GetApplicationServersErrors, GetApplicationServersResponses, GetBackupScheduleData, GetBackupScheduleErrors, GetBackupScheduleResponses, GetBootstrapSessionDataData, GetBootstrapSessionDataErrors, GetBootstrapSessionDataResponses, GetContainerData, GetContainerErrors, GetContainerLogsData, GetContainerLogsErrors, GetContainerLogsResponses, GetContainerResponses, GetCurrentUserProfileData, GetCurrentUserProfileErrors, GetCurrentUserProfileResponses, GetDeploymentData, GetDeploymentErrors, GetDeploymentLogsData, GetDeploymentLogsErrors, GetDeploymentLogsResponses, GetDeploymentResponses, GetExecutionData, GetExecutionErrors, GetExecutionResponses, GetExtensionByExtensionIdData, GetExtensionByExtensionIdErrors, GetExtensionByExtensionIdResponses, GetExtensionByIdData, GetExtensionByIdErrors, GetExtensionByIdResponses, GetHealthChecksData, GetHealthChecksErrors, GetHealthChecksResponses, GetHealthCheckStatsData, GetHealthCheckStatsErrors, GetHealthCheckStatsResponses, GetMachineBillingStatusData, GetMachineBillingStatusErrors, GetMachineBillingStatusResponses, GetMachineEventsData, GetMachineEventsErrors, GetMachineEventsResponses, GetMachineLifecycleStatusData, GetMachineLifecycleStatusErrors, GetMachineLifecycleStatusResponses, GetMachineMetricsData, GetMachineMetricsErrors, GetMachineMetricsResponses, GetMachineMetricsSummaryData, GetMachineMetricsSummaryErrors, GetMachineMetricsSummaryResponses, GetMachineSystemStatsData, GetMachineSystemStatsErrors, GetMachineSystemStatsResponses, GetNotificationPreferencesData, GetNotificationPreferencesErrors, GetNotificationPreferencesResponses, GetProviderIconData, GetProviderIconErrors, GetProviderIconResponses, GetSmtpConfigData, GetSmtpConfigErrors, GetSmtpConfigResponses, GetSshConnectionStatusData, GetSshConnectionStatusErrors, GetSshConnectionStatusForASpecificServerData, GetSshConnectionStatusForASpecificServerErrors, GetSshConnectionStatusForASpecificServerResponses, GetSshConnectionStatusResponses, GetTrailSessionStatusData, GetTrailSessionStatusErrors, GetTrailSessionStatusResponses, GetUserPreferencesData, GetUserPreferencesErrors, GetUserPreferencesResponses, GetUserSettingsData, GetUserSettingsErrors, GetUserSettingsResponses, GetWebhookConfigData, GetWebhookConfigErrors, GetWebhookConfigResponses, HandleGitHubWebhookData, HandleGitHubWebhookErrors, HandleGitHubWebhookResponses, HealthCheckData, HealthCheckErrors, HealthCheckResponses, ListApplicationDeploymentsData, ListApplicationDeploymentsErrors, ListApplicationDeploymentsResponses, ListApplicationsData, ListApplicationsErrors, ListApplicationsResponses, ListAuditLogsData, ListAuditLogsErrors, ListAuditLogsResponses, ListAvailableMachinePlansData, ListAvailableMachinePlansErrors, ListAvailableMachinePlansResponses, ListComposeServicesData, ListComposeServicesErrors, ListComposeServicesResponses, ListContainersData, ListContainersErrors, ListContainersResponses, ListDomainsData, ListDomainsErrors, ListDomainsResponses, ListExecutionLogsData, ListExecutionLogsErrors, ListExecutionLogsResponses, ListExtensionCategoriesData, ListExtensionCategoriesErrors, ListExtensionCategoriesResponses, ListExtensionExecutionsData, ListExtensionExecutionsErrors, ListExtensionExecutionsResponses, ListExtensionsData, ListExtensionsErrors, ListExtensionsResponses, ListFamilyEnvironmentsData, ListFamilyEnvironmentsErrors, ListFamilyEnvironmentsResponses, ListFeatureFlagsData, ListFeatureFlagsErrors, ListFeatureFlagsResponses, ListFilesData, ListFilesErrors, ListFilesResponses, ListGitHubConnectorsData, ListGitHubConnectorsErrors, ListGitHubConnectorsResponses, ListGitHubRepositoriesData, ListGitHubRepositoriesErrors, ListGitHubRepositoriesResponses, ListHealthCheckResultsData, ListHealthCheckResultsErrors, ListHealthCheckResultsResponses, ListImagesData, ListImagesErrors, ListImagesResponses, ListMachineBackupsData, ListMachineBackupsErrors, ListMachineBackupsResponses, ListMcpProviderCatalogData, ListMcpProviderCatalogErrors, ListMcpProviderCatalogResponses, ListOrgMcpServersData, ListOrgMcpServersErrors, ListOrgMcpServersResponses, ListProjectsInFamilyData, ListProjectsInFamilyErrors, ListProjectsInFamilyResponses, ListRepositoryBranchesData, ListRepositoryBranchesErrors, ListRepositoryBranchesResponses, ListServersData, ListServersErrors, ListServersResponses, MarkOnboardingCompleteData, MarkOnboardingCompleteErrors, MarkOnboardingCompleteResponses, MoveDirectoryData, MoveDirectoryErrors, MoveDirectoryResponses, PauseMachineData, PauseMachineErrors, PauseMachineResponses, PerformUpdateData, PerformUpdateErrors, PerformUpdateResponses, PreviewComposeServicesData, PreviewComposeServicesErrors, PreviewComposeServicesResponses, ProvisionTrailResourcesData, ProvisionTrailResourcesErrors, ProvisionTrailResourcesResponses, PruneBuildCacheData, PruneBuildCacheErrors, PruneBuildCacheResponses, PruneImagesData, PruneImagesErrors, PruneImagesResponses, RecoverApplicationData, RecoverApplicationErrors, RecoverApplicationResponses, RedeployApplicationData, RedeployApplicationErrors, RedeployApplicationResponses, RemoveApplicationDomainData, RemoveApplicationDomainErrors, RemoveApplicationDomainResponses, RemoveContainerData, RemoveContainerErrors, RemoveContainerResponses, RemoveCustomDomainData, RemoveCustomDomainErrors, RemoveCustomDomainResponses, RestartContainerData, RestartContainerErrors, RestartContainerResponses, RestartDeploymentData, RestartDeploymentErrors, RestartDeploymentResponses, RestartMachineData, RestartMachineErrors, RestartMachineResponses, ResumeMachineData, ResumeMachineErrors, ResumeMachineResponses, RollbackDeploymentData, RollbackDeploymentErrors, RollbackDeploymentResponses, RunExtensionData, RunExtensionErrors, RunExtensionResponses, SelectAMachinePlanData, SelectAMachinePlanErrors, SelectAMachinePlanResponses, SendNotificationData, SendNotificationErrors, SendNotificationResponses, SetApplicationServersData, SetApplicationServersErrors, SetApplicationServersResponses, SetServerAsOrgDefaultData, SetServerAsOrgDefaultErrors, SetServerAsOrgDefaultResponses, StartContainerData, StartContainerErrors, StartContainerResponses, StopContainerData, StopContainerErrors, StopContainerResponses, TestMcpServerConnectionData, TestMcpServerConnectionErrors, TestMcpServerConnectionResponses, ToggleHealthCheckData, ToggleHealthCheckErrors, ToggleHealthCheckResponses, TrackCliInstallationEventData, TrackCliInstallationEventErrors, TrackCliInstallationEventResponses, TriggerMachineBackupData, TriggerMachineBackupErrors, TriggerMachineBackupResponses, UpdateApplicationData, UpdateApplicationErrors, UpdateApplicationLabelsData, UpdateApplicationLabelsErrors, UpdateApplicationLabelsResponses, UpdateApplicationResponses, UpdateAutoUpdateSettingsData, UpdateAutoUpdateSettingsErrors, UpdateAutoUpdateSettingsResponses, UpdateBackupScheduleData, UpdateBackupScheduleErrors, UpdateBackupScheduleResponses, UpdateContainerResourcesData, UpdateContainerResourcesErrors, UpdateContainerResourcesResponses, UpdateFeatureFlagData, UpdateFeatureFlagErrors, UpdateFeatureFlagResponses, UpdateFontSettingsData, UpdateFontSettingsErrors, UpdateFontSettingsResponses, UpdateGitHubConnectorData, UpdateGitHubConnectorErrors, UpdateGitHubConnectorResponses, UpdateHealthCheckData, UpdateHealthCheckErrors, UpdateHealthCheckResponses, UpdateLanguageSettingsData, UpdateLanguageSettingsErrors, UpdateLanguageSettingsResponses, UpdateMcpServerData, UpdateMcpServerErrors, UpdateMcpServerResponses, UpdateNotificationPreferencesData, UpdateNotificationPreferencesErrors, UpdateNotificationPreferencesResponses, UpdateSmtpConfigData, UpdateSmtpConfigErrors, UpdateSmtpConfigResponses, UpdateThemeSettingsData, UpdateThemeSettingsErrors, UpdateThemeSettingsResponses, UpdateUserAvatarData, UpdateUserAvatarErrors, UpdateUserAvatarResponses, UpdateUserNameData, UpdateUserNameErrors, UpdateUserNameResponses, UpdateUserPreferencesData, UpdateUserPreferencesErrors, UpdateUserPreferencesResponses, UpdateWebhookConfigData, UpdateWebhookConfigErrors, UpdateWebhookConfigResponses, UploadFileData, UploadFileErrors, UploadFileResponses, VerifyCustomDomainData, VerifyCustomDomainErrors, VerifyCustomDomainResponses } from './types.gen';
+import type { AddApplicationDomainData, AddApplicationDomainErrors, AddApplicationDomainResponses, AddCustomDomainData, AddCustomDomainErrors, AddCustomDomainResponses, AddMcpServerData, AddMcpServerErrors, AddMcpServerResponses, AddProjectToFamilyData, AddProjectToFamilyErrors, AddProjectToFamilyResponses, AgentDiscoverToolsFromAllEnabledMcpServersData, AgentDiscoverToolsFromAllEnabledMcpServersErrors, AgentDiscoverToolsFromAllEnabledMcpServersResponses, AgentInvokeAToolOnAnMcpServerData, AgentInvokeAToolOnAnMcpServerErrors, AgentInvokeAToolOnAnMcpServerResponses, AgentListEnabledServersWithCredentialsData, AgentListEnabledServersWithCredentialsErrors, AgentListEnabledServersWithCredentialsResponses, CancelDeploymentData, CancelDeploymentErrors, CancelDeploymentResponses, CheckAdminRegistrationData, CheckAdminRegistrationErrors, CheckAdminRegistrationResponses, CheckCustomDomainDnsData, CheckCustomDomainDnsErrors, CheckCustomDomainDnsResponses, CheckForUpdatesData, CheckForUpdatesErrors, CheckForUpdatesResponses, CheckIfFeatureIsEnabledData, CheckIfFeatureIsEnabledErrors, CheckIfFeatureIsEnabledResponses, CheckOnboardingStatusData, CheckOnboardingStatusErrors, CheckOnboardingStatusResponses, CopyDirectoryData, CopyDirectoryErrors, CopyDirectoryResponses, CreateDirectoryData, CreateDirectoryErrors, CreateDirectoryResponses, CreateGitHubConnectorData, CreateGitHubConnectorErrors, CreateGitHubConnectorResponses, CreateHealthCheckData, CreateHealthCheckErrors, CreateHealthCheckResponses, CreateProjectData, CreateProjectErrors, CreateProjectResponses, CreateSmtpConfigData, CreateSmtpConfigErrors, CreateSmtpConfigResponses, CreateWebhookConfigData, CreateWebhookConfigErrors, CreateWebhookConfigResponses, DeleteApplicationData, DeleteApplicationErrors, DeleteApplicationResponses, DeleteDeploymentArtifactData, DeleteDeploymentArtifactErrors, DeleteDeploymentArtifactResponses, DeleteDirectoryData, DeleteDirectoryErrors, DeleteDirectoryResponses, DeleteGitHubConnectorData, DeleteGitHubConnectorErrors, DeleteGitHubConnectorResponses, DeleteHealthCheckData, DeleteHealthCheckErrors, DeleteHealthCheckResponses, DeleteMcpServerData, DeleteMcpServerErrors, DeleteMcpServerResponses, DeleteSmtpConfigData, DeleteSmtpConfigErrors, DeleteSmtpConfigResponses, DeleteWebhookConfigData, DeleteWebhookConfigErrors, DeleteWebhookConfigResponses, DeployApplicationData, DeployApplicationErrors, DeployApplicationFromTemplateData, DeployApplicationFromTemplateErrors, DeployApplicationFromTemplateResponses, DeployApplicationResponses, DeployProjectData, DeployProjectErrors, DeployProjectResponses, DuplicateProjectData, DuplicateProjectErrors, DuplicateProjectResponses, ExecuteACommandOnTheHostMachineData, ExecuteACommandOnTheHostMachineErrors, ExecuteACommandOnTheHostMachineResponses, GenerateRandomSubdomainData, GenerateRandomSubdomainErrors, GenerateRandomSubdomainResponses, GetApplicationData, GetApplicationErrors, GetApplicationLogsData, GetApplicationLogsErrors, GetApplicationLogsResponses, GetApplicationResponses, GetApplicationServersData, GetApplicationServersErrors, GetApplicationServersResponses, GetArtifactDownloadUrlData, GetArtifactDownloadUrlErrors, GetArtifactDownloadUrlResponses, GetBackupScheduleData, GetBackupScheduleErrors, GetBackupScheduleResponses, GetBootstrapSessionDataData, GetBootstrapSessionDataErrors, GetBootstrapSessionDataResponses, GetContainerData, GetContainerErrors, GetContainerLogsData, GetContainerLogsErrors, GetContainerLogsResponses, GetContainerResponses, GetCurrentUserProfileData, GetCurrentUserProfileErrors, GetCurrentUserProfileResponses, GetDeploymentData, GetDeploymentErrors, GetDeploymentLogsData, GetDeploymentLogsErrors, GetDeploymentLogsResponses, GetDeploymentResponses, GetExtensionByExtensionIdData, GetExtensionByExtensionIdErrors, GetExtensionByExtensionIdResponses, GetExtensionByIdData, GetExtensionByIdErrors, GetExtensionByIdResponses, GetHealthChecksData, GetHealthChecksErrors, GetHealthChecksResponses, GetHealthCheckStatsData, GetHealthCheckStatsErrors, GetHealthCheckStatsResponses, GetMachineBillingStatusData, GetMachineBillingStatusErrors, GetMachineBillingStatusResponses, GetMachineEventsData, GetMachineEventsErrors, GetMachineEventsResponses, GetMachineLifecycleStatusData, GetMachineLifecycleStatusErrors, GetMachineLifecycleStatusResponses, GetMachineMetricsData, GetMachineMetricsErrors, GetMachineMetricsResponses, GetMachineMetricsSummaryData, GetMachineMetricsSummaryErrors, GetMachineMetricsSummaryResponses, GetMachineSystemStatsData, GetMachineSystemStatsErrors, GetMachineSystemStatsResponses, GetNotificationPreferencesData, GetNotificationPreferencesErrors, GetNotificationPreferencesResponses, GetProviderIconData, GetProviderIconErrors, GetProviderIconResponses, GetSmtpConfigData, GetSmtpConfigErrors, GetSmtpConfigResponses, GetSshConnectionStatusData, GetSshConnectionStatusErrors, GetSshConnectionStatusResponses, GetTrailSessionStatusData, GetTrailSessionStatusErrors, GetTrailSessionStatusResponses, GetUserPreferencesData, GetUserPreferencesErrors, GetUserPreferencesResponses, GetUserSettingsData, GetUserSettingsErrors, GetUserSettingsResponses, GetWebhookConfigData, GetWebhookConfigErrors, GetWebhookConfigResponses, HandleGitHubWebhookData, HandleGitHubWebhookErrors, HandleGitHubWebhookResponses, HealthCheckData, HealthCheckErrors, HealthCheckResponses, ListApplicationDeploymentsData, ListApplicationDeploymentsErrors, ListApplicationDeploymentsResponses, ListApplicationsData, ListApplicationsErrors, ListApplicationsResponses, ListAuditLogsData, ListAuditLogsErrors, ListAuditLogsResponses, ListAvailableMachinePlansData, ListAvailableMachinePlansErrors, ListAvailableMachinePlansResponses, ListComposeServicesData, ListComposeServicesErrors, ListComposeServicesResponses, ListContainersData, ListContainersErrors, ListContainersResponses, ListDeploymentArtifactsForAnApplicationData, ListDeploymentArtifactsForAnApplicationErrors, ListDeploymentArtifactsForAnApplicationResponses, ListDomainsData, ListDomainsErrors, ListDomainsResponses, ListExtensionCategoriesData, ListExtensionCategoriesErrors, ListExtensionCategoriesResponses, ListExtensionsData, ListExtensionsErrors, ListExtensionsResponses, ListFamilyEnvironmentsData, ListFamilyEnvironmentsErrors, ListFamilyEnvironmentsResponses, ListFeatureFlagsData, ListFeatureFlagsErrors, ListFeatureFlagsResponses, ListFilesData, ListFilesErrors, ListFilesResponses, ListGitHubConnectorsData, ListGitHubConnectorsErrors, ListGitHubConnectorsResponses, ListGitHubRepositoriesData, ListGitHubRepositoriesErrors, ListGitHubRepositoriesResponses, ListHealthCheckResultsData, ListHealthCheckResultsErrors, ListHealthCheckResultsResponses, ListImagesData, ListImagesErrors, ListImagesResponses, ListMachineBackupsData, ListMachineBackupsErrors, ListMachineBackupsResponses, ListMachinesData, ListMachinesErrors, ListMachinesResponses, ListMcpProviderCatalogData, ListMcpProviderCatalogErrors, ListMcpProviderCatalogResponses, ListOrgMcpServersData, ListOrgMcpServersErrors, ListOrgMcpServersResponses, ListProjectsInFamilyData, ListProjectsInFamilyErrors, ListProjectsInFamilyResponses, ListRepositoryBranchesData, ListRepositoryBranchesErrors, ListRepositoryBranchesResponses, MarkOnboardingCompleteData, MarkOnboardingCompleteErrors, MarkOnboardingCompleteResponses, MoveDirectoryData, MoveDirectoryErrors, MoveDirectoryResponses, PauseMachineData, PauseMachineErrors, PauseMachineResponses, PerformUpdateData, PerformUpdateErrors, PerformUpdateResponses, PreviewComposeServicesData, PreviewComposeServicesErrors, PreviewComposeServicesResponses, ProvisionTrailResourcesData, ProvisionTrailResourcesErrors, ProvisionTrailResourcesResponses, PruneBuildCacheData, PruneBuildCacheErrors, PruneBuildCacheResponses, PruneImagesData, PruneImagesErrors, PruneImagesResponses, RecoverApplicationData, RecoverApplicationErrors, RecoverApplicationResponses, RedeployApplicationData, RedeployApplicationErrors, RedeployApplicationResponses, RegisterAbyosMachineData, RegisterAbyosMachineErrors, RegisterAbyosMachineResponses, RemoveAMachineData, RemoveAMachineErrors, RemoveAMachineResponses, RemoveApplicationDomainData, RemoveApplicationDomainErrors, RemoveApplicationDomainResponses, RemoveContainerData, RemoveContainerErrors, RemoveContainerResponses, RemoveCustomDomainData, RemoveCustomDomainErrors, RemoveCustomDomainResponses, RenameAMachineData, RenameAMachineErrors, RenameAMachineResponses, RestartContainerData, RestartContainerErrors, RestartContainerResponses, RestartDeploymentData, RestartDeploymentErrors, RestartDeploymentResponses, RestartMachineData, RestartMachineErrors, RestartMachineResponses, ResumeMachineData, ResumeMachineErrors, ResumeMachineResponses, RollbackDeploymentData, RollbackDeploymentErrors, RollbackDeploymentResponses, SelectAMachinePlanData, SelectAMachinePlanErrors, SelectAMachinePlanResponses, SendNotificationData, SendNotificationErrors, SendNotificationResponses, SetApplicationServersData, SetApplicationServersErrors, SetApplicationServersResponses, SetMachineAsOrgDefaultData, SetMachineAsOrgDefaultErrors, SetMachineAsOrgDefaultResponses, SShConnectionStatusData, SShConnectionStatusErrors, SShConnectionStatusResponses, StartContainerData, StartContainerErrors, StartContainerResponses, StopContainerData, StopContainerErrors, StopContainerResponses, TestMcpServerConnectionData, TestMcpServerConnectionErrors, TestMcpServerConnectionResponses, ToggleHealthCheckData, ToggleHealthCheckErrors, ToggleHealthCheckResponses, TrackCliInstallationEventData, TrackCliInstallationEventErrors, TrackCliInstallationEventResponses, TriggerMachineBackupData, TriggerMachineBackupErrors, TriggerMachineBackupResponses, UpdateApplicationData, UpdateApplicationErrors, UpdateApplicationLabelsData, UpdateApplicationLabelsErrors, UpdateApplicationLabelsResponses, UpdateApplicationResponses, UpdateAutoUpdateSettingsData, UpdateAutoUpdateSettingsErrors, UpdateAutoUpdateSettingsResponses, UpdateBackupScheduleData, UpdateBackupScheduleErrors, UpdateBackupScheduleResponses, UpdateContainerResourcesData, UpdateContainerResourcesErrors, UpdateContainerResourcesResponses, UpdateFeatureFlagData, UpdateFeatureFlagErrors, UpdateFeatureFlagResponses, UpdateFontSettingsData, UpdateFontSettingsErrors, UpdateFontSettingsResponses, UpdateGitHubConnectorData, UpdateGitHubConnectorErrors, UpdateGitHubConnectorResponses, UpdateHealthCheckData, UpdateHealthCheckErrors, UpdateHealthCheckResponses, UpdateLanguageSettingsData, UpdateLanguageSettingsErrors, UpdateLanguageSettingsResponses, UpdateMcpServerData, UpdateMcpServerErrors, UpdateMcpServerResponses, UpdateNotificationPreferencesData, UpdateNotificationPreferencesErrors, UpdateNotificationPreferencesResponses, UpdateSmtpConfigData, UpdateSmtpConfigErrors, UpdateSmtpConfigResponses, UpdateThemeSettingsData, UpdateThemeSettingsErrors, UpdateThemeSettingsResponses, UpdateUserAvatarData, UpdateUserAvatarErrors, UpdateUserAvatarResponses, UpdateUserNameData, UpdateUserNameErrors, UpdateUserNameResponses, UpdateUserPreferencesData, UpdateUserPreferencesErrors, UpdateUserPreferencesResponses, UpdateWebhookConfigData, UpdateWebhookConfigErrors, UpdateWebhookConfigResponses, UploadFileData, UploadFileErrors, UploadFileResponses, VerifyCustomDomainData, VerifyCustomDomainErrors, VerifyCustomDomainResponses, VerifySshConnectionData, VerifySshConnectionErrors, VerifySshConnectionResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -631,6 +631,24 @@ export const setApplicationServers = <ThrowOnError extends boolean = false>(opti
 });
 
 /**
+ * Deploy application from template
+ *
+ * Deploy application from template.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const deployApplicationFromTemplate = <ThrowOnError extends boolean = false>(options: Options<DeployApplicationFromTemplateData, ThrowOnError>) => (options.client ?? client).post<DeployApplicationFromTemplateResponses, DeployApplicationFromTemplateErrors, ThrowOnError>({
+    url: '/api/v1/deploy/application/template',
+    ...options,
+    headers: {
+        'Content-Type': '*/*',
+        ...options.headers
+    }
+});
+
+/**
  * List applications
  *
  * List applications.
@@ -640,6 +658,39 @@ export const setApplicationServers = <ThrowOnError extends boolean = false>(opti
  * Side effects: Read-only operation.
  */
 export const listApplications = <ThrowOnError extends boolean = false>(options?: Options<ListApplicationsData, ThrowOnError>) => (options?.client ?? client).get<ListApplicationsResponses, ListApplicationsErrors, ThrowOnError>({ url: '/api/v1/deploy/applications', ...options });
+
+/**
+ * List deployment artifacts for an application
+ *
+ * List deployment artifacts for an application.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const listDeploymentArtifactsForAnApplication = <ThrowOnError extends boolean = false>(options: Options<ListDeploymentArtifactsForAnApplicationData, ThrowOnError>) => (options.client ?? client).get<ListDeploymentArtifactsForAnApplicationResponses, ListDeploymentArtifactsForAnApplicationErrors, ThrowOnError>({ url: '/api/v1/deploy/artifacts', ...options });
+
+/**
+ * Delete deployment artifact
+ *
+ * Delete deployment artifact.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const deleteDeploymentArtifact = <ThrowOnError extends boolean = false>(options: Options<DeleteDeploymentArtifactData, ThrowOnError>) => (options.client ?? client).delete<DeleteDeploymentArtifactResponses, DeleteDeploymentArtifactErrors, ThrowOnError>({ url: '/api/v1/deploy/artifacts/{deployment_id}', ...options });
+
+/**
+ * Get artifact download URL
+ *
+ * Get artifact download URL.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getArtifactDownloadUrl = <ThrowOnError extends boolean = false>(options: Options<GetArtifactDownloadUrlData, ThrowOnError>) => (options.client ?? client).get<GetArtifactDownloadUrlResponses, GetArtifactDownloadUrlErrors, ThrowOnError>({ url: '/api/v1/deploy/artifacts/{deployment_id}/download', ...options });
 
 /**
  * List domains
@@ -751,17 +802,6 @@ export const listExtensions = <ThrowOnError extends boolean = false>(options?: O
 export const getExtensionByExtensionId = <ThrowOnError extends boolean = false>(options: Options<GetExtensionByExtensionIdData, ThrowOnError>) => (options.client ?? client).get<GetExtensionByExtensionIdResponses, GetExtensionByExtensionIdErrors, ThrowOnError>({ url: '/api/v1/extensions/by-extension-id/{extension_id}', ...options });
 
 /**
- * List extension executions
- *
- * List extension executions.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const listExtensionExecutions = <ThrowOnError extends boolean = false>(options: Options<ListExtensionExecutionsData, ThrowOnError>) => (options.client ?? client).get<ListExtensionExecutionsResponses, ListExtensionExecutionsErrors, ThrowOnError>({ url: '/api/v1/extensions/by-extension-id/{extension_id}/executions', ...options });
-
-/**
  * List extension categories
  *
  * List extension categories.
@@ -771,86 +811,6 @@ export const listExtensionExecutions = <ThrowOnError extends boolean = false>(op
  * Side effects: Read-only operation.
  */
 export const listExtensionCategories = <ThrowOnError extends boolean = false>(options?: Options<ListExtensionCategoriesData, ThrowOnError>) => (options?.client ?? client).get<ListExtensionCategoriesResponses, ListExtensionCategoriesErrors, ThrowOnError>({ url: '/api/v1/extensions/categories', ...options });
-
-/**
- * Get execution
- *
- * Get execution.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const getExecution = <ThrowOnError extends boolean = false>(options: Options<GetExecutionData, ThrowOnError>) => (options.client ?? client).get<GetExecutionResponses, GetExecutionErrors, ThrowOnError>({ url: '/api/v1/extensions/execution/{execution_id}', ...options });
-
-/**
- * Cancel execution
- *
- * Cancel execution.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
- */
-export const cancelExecution = <ThrowOnError extends boolean = false>(options: Options<CancelExecutionData, ThrowOnError>) => (options.client ?? client).post<CancelExecutionResponses, CancelExecutionErrors, ThrowOnError>({ url: '/api/v1/extensions/execution/{execution_id}/cancel', ...options });
-
-/**
- * List execution logs
- *
- * List execution logs.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const listExecutionLogs = <ThrowOnError extends boolean = false>(options: Options<ListExecutionLogsData, ThrowOnError>) => (options.client ?? client).get<ListExecutionLogsResponses, ListExecutionLogsErrors, ThrowOnError>({ url: '/api/v1/extensions/execution/{execution_id}/logs', ...options });
-
-/**
- * Fork extension
- *
- * Fork extension.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
- */
-export const forkExtension = <ThrowOnError extends boolean = false>(options: Options<ForkExtensionData, ThrowOnError>) => (options.client ?? client).post<ForkExtensionResponses, ForkExtensionErrors, ThrowOnError>({
-    url: '/api/v1/extensions/{extension_id}/fork',
-    ...options,
-    headers: {
-        'Content-Type': '*/*',
-        ...options.headers
-    }
-});
-
-/**
- * Run extension
- *
- * Run extension.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
- */
-export const runExtension = <ThrowOnError extends boolean = false>(options: Options<RunExtensionData, ThrowOnError>) => (options.client ?? client).post<RunExtensionResponses, RunExtensionErrors, ThrowOnError>({
-    url: '/api/v1/extensions/{extension_id}/run',
-    ...options,
-    headers: {
-        'Content-Type': '*/*',
-        ...options.headers
-    }
-});
-
-/**
- * Delete forked extension
- *
- * Delete forked extension.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
- */
-export const deleteForkedExtension = <ThrowOnError extends boolean = false>(options: Options<DeleteForkedExtensionData, ThrowOnError>) => (options.client ?? client).delete<DeleteForkedExtensionResponses, DeleteForkedExtensionErrors, ThrowOnError>({ url: '/api/v1/extensions/{id}', ...options });
 
 /**
  * Get extension by ID
@@ -1201,6 +1161,35 @@ export const toggleHealthCheck = <ThrowOnError extends boolean = false>(options:
 });
 
 /**
+ * List machines
+ *
+ * List machines.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const listMachines = <ThrowOnError extends boolean = false>(options?: Options<ListMachinesData, ThrowOnError>) => (options?.client ?? client).get<ListMachinesResponses, ListMachinesErrors, ThrowOnError>({ url: '/api/v1/machines', ...options });
+
+/**
+ * Register a BYOS machine
+ *
+ * Register a BYOS machine.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const registerAbyosMachine = <ThrowOnError extends boolean = false>(options: Options<RegisterAbyosMachineData, ThrowOnError>) => (options.client ?? client).post<RegisterAbyosMachineResponses, RegisterAbyosMachineErrors, ThrowOnError>({
+    url: '/api/v1/machines',
+    ...options,
+    headers: {
+        'Content-Type': '*/*',
+        ...options.headers
+    }
+});
+
+/**
  * Trigger machine backup
  *
  * Trigger machine backup.
@@ -1209,7 +1198,7 @@ export const toggleHealthCheck = <ThrowOnError extends boolean = false>(options:
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const triggerMachineBackup = <ThrowOnError extends boolean = false>(options?: Options<TriggerMachineBackupData, ThrowOnError>) => (options?.client ?? client).post<TriggerMachineBackupResponses, TriggerMachineBackupErrors, ThrowOnError>({ url: '/api/v1/machine/backup', ...options });
+export const triggerMachineBackup = <ThrowOnError extends boolean = false>(options?: Options<TriggerMachineBackupData, ThrowOnError>) => (options?.client ?? client).post<TriggerMachineBackupResponses, TriggerMachineBackupErrors, ThrowOnError>({ url: '/api/v1/machines/backup', ...options });
 
 /**
  * Get backup schedule
@@ -1220,7 +1209,7 @@ export const triggerMachineBackup = <ThrowOnError extends boolean = false>(optio
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getBackupSchedule = <ThrowOnError extends boolean = false>(options?: Options<GetBackupScheduleData, ThrowOnError>) => (options?.client ?? client).get<GetBackupScheduleResponses, GetBackupScheduleErrors, ThrowOnError>({ url: '/api/v1/machine/backup/schedule', ...options });
+export const getBackupSchedule = <ThrowOnError extends boolean = false>(options?: Options<GetBackupScheduleData, ThrowOnError>) => (options?.client ?? client).get<GetBackupScheduleResponses, GetBackupScheduleErrors, ThrowOnError>({ url: '/api/v1/machines/backup/schedule', ...options });
 
 /**
  * Update backup schedule
@@ -1232,7 +1221,7 @@ export const getBackupSchedule = <ThrowOnError extends boolean = false>(options?
  * Side effects: May mutate server state.
  */
 export const updateBackupSchedule = <ThrowOnError extends boolean = false>(options: Options<UpdateBackupScheduleData, ThrowOnError>) => (options.client ?? client).put<UpdateBackupScheduleResponses, UpdateBackupScheduleErrors, ThrowOnError>({
-    url: '/api/v1/machine/backup/schedule',
+    url: '/api/v1/machines/backup/schedule',
     ...options,
     headers: {
         'Content-Type': '*/*',
@@ -1249,7 +1238,7 @@ export const updateBackupSchedule = <ThrowOnError extends boolean = false>(optio
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listMachineBackups = <ThrowOnError extends boolean = false>(options?: Options<ListMachineBackupsData, ThrowOnError>) => (options?.client ?? client).get<ListMachineBackupsResponses, ListMachineBackupsErrors, ThrowOnError>({ url: '/api/v1/machine/backups', ...options });
+export const listMachineBackups = <ThrowOnError extends boolean = false>(options?: Options<ListMachineBackupsData, ThrowOnError>) => (options?.client ?? client).get<ListMachineBackupsResponses, ListMachineBackupsErrors, ThrowOnError>({ url: '/api/v1/machines/backups', ...options });
 
 /**
  * Get machine billing status
@@ -1260,7 +1249,7 @@ export const listMachineBackups = <ThrowOnError extends boolean = false>(options
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getMachineBillingStatus = <ThrowOnError extends boolean = false>(options?: Options<GetMachineBillingStatusData, ThrowOnError>) => (options?.client ?? client).get<GetMachineBillingStatusResponses, GetMachineBillingStatusErrors, ThrowOnError>({ url: '/api/v1/machine/billing', ...options });
+export const getMachineBillingStatus = <ThrowOnError extends boolean = false>(options?: Options<GetMachineBillingStatusData, ThrowOnError>) => (options?.client ?? client).get<GetMachineBillingStatusResponses, GetMachineBillingStatusErrors, ThrowOnError>({ url: '/api/v1/machines/billing', ...options });
 
 /**
  * Get machine events
@@ -1271,7 +1260,7 @@ export const getMachineBillingStatus = <ThrowOnError extends boolean = false>(op
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getMachineEvents = <ThrowOnError extends boolean = false>(options?: Options<GetMachineEventsData, ThrowOnError>) => (options?.client ?? client).get<GetMachineEventsResponses, GetMachineEventsErrors, ThrowOnError>({ url: '/api/v1/machine/events', ...options });
+export const getMachineEvents = <ThrowOnError extends boolean = false>(options?: Options<GetMachineEventsData, ThrowOnError>) => (options?.client ?? client).get<GetMachineEventsResponses, GetMachineEventsErrors, ThrowOnError>({ url: '/api/v1/machines/events', ...options });
 
 /**
  * Execute a command on the host machine
@@ -1283,7 +1272,7 @@ export const getMachineEvents = <ThrowOnError extends boolean = false>(options?:
  * Side effects: May mutate server state.
  */
 export const executeACommandOnTheHostMachine = <ThrowOnError extends boolean = false>(options: Options<ExecuteACommandOnTheHostMachineData, ThrowOnError>) => (options.client ?? client).post<ExecuteACommandOnTheHostMachineResponses, ExecuteACommandOnTheHostMachineErrors, ThrowOnError>({
-    url: '/api/v1/machine/exec',
+    url: '/api/v1/machines/exec',
     ...options,
     headers: {
         'Content-Type': '*/*',
@@ -1300,7 +1289,7 @@ export const executeACommandOnTheHostMachine = <ThrowOnError extends boolean = f
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getMachineMetrics = <ThrowOnError extends boolean = false>(options?: Options<GetMachineMetricsData, ThrowOnError>) => (options?.client ?? client).get<GetMachineMetricsResponses, GetMachineMetricsErrors, ThrowOnError>({ url: '/api/v1/machine/metrics', ...options });
+export const getMachineMetrics = <ThrowOnError extends boolean = false>(options?: Options<GetMachineMetricsData, ThrowOnError>) => (options?.client ?? client).get<GetMachineMetricsResponses, GetMachineMetricsErrors, ThrowOnError>({ url: '/api/v1/machines/metrics', ...options });
 
 /**
  * Get machine metrics summary
@@ -1311,7 +1300,7 @@ export const getMachineMetrics = <ThrowOnError extends boolean = false>(options?
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getMachineMetricsSummary = <ThrowOnError extends boolean = false>(options?: Options<GetMachineMetricsSummaryData, ThrowOnError>) => (options?.client ?? client).get<GetMachineMetricsSummaryResponses, GetMachineMetricsSummaryErrors, ThrowOnError>({ url: '/api/v1/machine/metrics/summary', ...options });
+export const getMachineMetricsSummary = <ThrowOnError extends boolean = false>(options?: Options<GetMachineMetricsSummaryData, ThrowOnError>) => (options?.client ?? client).get<GetMachineMetricsSummaryResponses, GetMachineMetricsSummaryErrors, ThrowOnError>({ url: '/api/v1/machines/metrics/summary', ...options });
 
 /**
  * Pause machine
@@ -1322,7 +1311,7 @@ export const getMachineMetricsSummary = <ThrowOnError extends boolean = false>(o
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const pauseMachine = <ThrowOnError extends boolean = false>(options?: Options<PauseMachineData, ThrowOnError>) => (options?.client ?? client).post<PauseMachineResponses, PauseMachineErrors, ThrowOnError>({ url: '/api/v1/machine/pause', ...options });
+export const pauseMachine = <ThrowOnError extends boolean = false>(options?: Options<PauseMachineData, ThrowOnError>) => (options?.client ?? client).post<PauseMachineResponses, PauseMachineErrors, ThrowOnError>({ url: '/api/v1/machines/pause', ...options });
 
 /**
  * Select a machine plan
@@ -1334,7 +1323,7 @@ export const pauseMachine = <ThrowOnError extends boolean = false>(options?: Opt
  * Side effects: May mutate server state.
  */
 export const selectAMachinePlan = <ThrowOnError extends boolean = false>(options: Options<SelectAMachinePlanData, ThrowOnError>) => (options.client ?? client).post<SelectAMachinePlanResponses, SelectAMachinePlanErrors, ThrowOnError>({
-    url: '/api/v1/machine/plan/select',
+    url: '/api/v1/machines/plan/select',
     ...options,
     headers: {
         'Content-Type': '*/*',
@@ -1351,7 +1340,7 @@ export const selectAMachinePlan = <ThrowOnError extends boolean = false>(options
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const listAvailableMachinePlans = <ThrowOnError extends boolean = false>(options?: Options<ListAvailableMachinePlansData, ThrowOnError>) => (options?.client ?? client).get<ListAvailableMachinePlansResponses, ListAvailableMachinePlansErrors, ThrowOnError>({ url: '/api/v1/machine/plans', ...options });
+export const listAvailableMachinePlans = <ThrowOnError extends boolean = false>(options?: Options<ListAvailableMachinePlansData, ThrowOnError>) => (options?.client ?? client).get<ListAvailableMachinePlansResponses, ListAvailableMachinePlansErrors, ThrowOnError>({ url: '/api/v1/machines/plans', ...options });
 
 /**
  * Restart machine
@@ -1362,7 +1351,7 @@ export const listAvailableMachinePlans = <ThrowOnError extends boolean = false>(
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const restartMachine = <ThrowOnError extends boolean = false>(options?: Options<RestartMachineData, ThrowOnError>) => (options?.client ?? client).post<RestartMachineResponses, RestartMachineErrors, ThrowOnError>({ url: '/api/v1/machine/restart', ...options });
+export const restartMachine = <ThrowOnError extends boolean = false>(options?: Options<RestartMachineData, ThrowOnError>) => (options?.client ?? client).post<RestartMachineResponses, RestartMachineErrors, ThrowOnError>({ url: '/api/v1/machines/restart', ...options });
 
 /**
  * Resume machine
@@ -1373,7 +1362,18 @@ export const restartMachine = <ThrowOnError extends boolean = false>(options?: O
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const resumeMachine = <ThrowOnError extends boolean = false>(options?: Options<ResumeMachineData, ThrowOnError>) => (options?.client ?? client).post<ResumeMachineResponses, ResumeMachineErrors, ThrowOnError>({ url: '/api/v1/machine/resume', ...options });
+export const resumeMachine = <ThrowOnError extends boolean = false>(options?: Options<ResumeMachineData, ThrowOnError>) => (options?.client ?? client).post<ResumeMachineResponses, ResumeMachineErrors, ThrowOnError>({ url: '/api/v1/machines/resume', ...options });
+
+/**
+ * Get SSH connection status
+ *
+ * Get SSH connection status.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getSshConnectionStatus = <ThrowOnError extends boolean = false>(options?: Options<GetSshConnectionStatusData, ThrowOnError>) => (options?.client ?? client).get<GetSshConnectionStatusResponses, GetSshConnectionStatusErrors, ThrowOnError>({ url: '/api/v1/machines/ssh/status', ...options });
 
 /**
  * Get machine system stats
@@ -1384,7 +1384,7 @@ export const resumeMachine = <ThrowOnError extends boolean = false>(options?: Op
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getMachineSystemStats = <ThrowOnError extends boolean = false>(options?: Options<GetMachineSystemStatsData, ThrowOnError>) => (options?.client ?? client).get<GetMachineSystemStatsResponses, GetMachineSystemStatsErrors, ThrowOnError>({ url: '/api/v1/machine/stats', ...options });
+export const getMachineSystemStats = <ThrowOnError extends boolean = false>(options?: Options<GetMachineSystemStatsData, ThrowOnError>) => (options?.client ?? client).get<GetMachineSystemStatsResponses, GetMachineSystemStatsErrors, ThrowOnError>({ url: '/api/v1/machines/stats', ...options });
 
 /**
  * Get machine lifecycle status
@@ -1395,7 +1395,98 @@ export const getMachineSystemStats = <ThrowOnError extends boolean = false>(opti
  * Scope: Organization-scoped in authenticated context.
  * Side effects: Read-only operation.
  */
-export const getMachineLifecycleStatus = <ThrowOnError extends boolean = false>(options?: Options<GetMachineLifecycleStatusData, ThrowOnError>) => (options?.client ?? client).get<GetMachineLifecycleStatusResponses, GetMachineLifecycleStatusErrors, ThrowOnError>({ url: '/api/v1/machine/status', ...options });
+export const getMachineLifecycleStatus = <ThrowOnError extends boolean = false>(options?: Options<GetMachineLifecycleStatusData, ThrowOnError>) => (options?.client ?? client).get<GetMachineLifecycleStatusResponses, GetMachineLifecycleStatusErrors, ThrowOnError>({ url: '/api/v1/machines/status', ...options });
+
+/**
+ * Provision trail resources
+ *
+ * Provision trail resources.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const provisionTrailResources = <ThrowOnError extends boolean = false>(options: Options<ProvisionTrailResourcesData, ThrowOnError>) => (options.client ?? client).post<ProvisionTrailResourcesResponses, ProvisionTrailResourcesErrors, ThrowOnError>({
+    url: '/api/v1/machines/trial/provision',
+    ...options,
+    headers: {
+        'Content-Type': '*/*',
+        ...options.headers
+    }
+});
+
+/**
+ * Get trail session status
+ *
+ * Get trail session status.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getTrailSessionStatus = <ThrowOnError extends boolean = false>(options: Options<GetTrailSessionStatusData, ThrowOnError>) => (options.client ?? client).get<GetTrailSessionStatusResponses, GetTrailSessionStatusErrors, ThrowOnError>({ url: '/api/v1/machines/trial/status/{sessionId}', ...options });
+
+/**
+ * Remove a machine
+ *
+ * Remove a machine.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const removeAMachine = <ThrowOnError extends boolean = false>(options: Options<RemoveAMachineData, ThrowOnError>) => (options.client ?? client).delete<RemoveAMachineResponses, RemoveAMachineErrors, ThrowOnError>({ url: '/api/v1/machines/{id}', ...options });
+
+/**
+ * Rename a machine
+ *
+ * Rename a machine.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const renameAMachine = <ThrowOnError extends boolean = false>(options: Options<RenameAMachineData, ThrowOnError>) => (options.client ?? client).patch<RenameAMachineResponses, RenameAMachineErrors, ThrowOnError>({
+    url: '/api/v1/machines/{id}/rename',
+    ...options,
+    headers: {
+        'Content-Type': '*/*',
+        ...options.headers
+    }
+});
+
+/**
+ * Set machine as org default
+ *
+ * Set machine as org default.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const setMachineAsOrgDefault = <ThrowOnError extends boolean = false>(options: Options<SetMachineAsOrgDefaultData, ThrowOnError>) => (options.client ?? client).put<SetMachineAsOrgDefaultResponses, SetMachineAsOrgDefaultErrors, ThrowOnError>({ url: '/api/v1/machines/{id}/set-default', ...options });
+
+/**
+ * SSH connection status
+ *
+ * SSH connection status.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const sShConnectionStatus = <ThrowOnError extends boolean = false>(options: Options<SShConnectionStatusData, ThrowOnError>) => (options.client ?? client).get<SShConnectionStatusResponses, SShConnectionStatusErrors, ThrowOnError>({ url: '/api/v1/machines/{id}/ssh/status', ...options });
+
+/**
+ * Verify SSH connection
+ *
+ * Verify SSH connection.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const verifySshConnection = <ThrowOnError extends boolean = false>(options: Options<VerifySshConnectionData, ThrowOnError>) => (options.client ?? client).post<VerifySshConnectionResponses, VerifySshConnectionErrors, ThrowOnError>({ url: '/api/v1/machines/{id}/verify', ...options });
 
 /**
  * List MCP provider catalog
@@ -1718,79 +1809,6 @@ export const updateWebhookConfig = <ThrowOnError extends boolean = false>(option
  * Side effects: Read-only operation.
  */
 export const getWebhookConfig = <ThrowOnError extends boolean = false>(options: Options<GetWebhookConfigData, ThrowOnError>) => (options.client ?? client).get<GetWebhookConfigResponses, GetWebhookConfigErrors, ThrowOnError>({ url: '/api/v1/notification/webhook/{type}', ...options });
-
-/**
- * List servers
- *
- * List servers.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const listServers = <ThrowOnError extends boolean = false>(options?: Options<ListServersData, ThrowOnError>) => (options?.client ?? client).get<ListServersResponses, ListServersErrors, ThrowOnError>({ url: '/api/v1/servers', ...options });
-
-/**
- * Get SSH connection status
- *
- * Get SSH connection status.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const getSshConnectionStatus = <ThrowOnError extends boolean = false>(options?: Options<GetSshConnectionStatusData, ThrowOnError>) => (options?.client ?? client).get<GetSshConnectionStatusResponses, GetSshConnectionStatusErrors, ThrowOnError>({ url: '/api/v1/servers/ssh/status', ...options });
-
-/**
- * Set server as org default
- *
- * Set server as org default.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
- */
-export const setServerAsOrgDefault = <ThrowOnError extends boolean = false>(options: Options<SetServerAsOrgDefaultData, ThrowOnError>) => (options.client ?? client).put<SetServerAsOrgDefaultResponses, SetServerAsOrgDefaultErrors, ThrowOnError>({ url: '/api/v1/servers/{id}/set-default', ...options });
-
-/**
- * Get SSH connection status for a specific server
- *
- * Get SSH connection status for a specific server.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const getSshConnectionStatusForASpecificServer = <ThrowOnError extends boolean = false>(options: Options<GetSshConnectionStatusForASpecificServerData, ThrowOnError>) => (options.client ?? client).get<GetSshConnectionStatusForASpecificServerResponses, GetSshConnectionStatusForASpecificServerErrors, ThrowOnError>({ url: '/api/v1/servers/{id}/ssh/status', ...options });
-
-/**
- * Provision trail resources
- *
- * Provision trail resources.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
- */
-export const provisionTrailResources = <ThrowOnError extends boolean = false>(options: Options<ProvisionTrailResourcesData, ThrowOnError>) => (options.client ?? client).post<ProvisionTrailResourcesResponses, ProvisionTrailResourcesErrors, ThrowOnError>({
-    url: '/api/v1/trail/provision',
-    ...options,
-    headers: {
-        'Content-Type': '*/*',
-        ...options.headers
-    }
-});
-
-/**
- * Get trail session status
- *
- * Get trail session status.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const getTrailSessionStatus = <ThrowOnError extends boolean = false>(options: Options<GetTrailSessionStatusData, ThrowOnError>) => (options.client ?? client).get<GetTrailSessionStatusResponses, GetTrailSessionStatusErrors, ThrowOnError>({ url: '/api/v1/trail/status/{sessionId}', ...options });
 
 /**
  * Perform update

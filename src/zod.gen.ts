@@ -86,6 +86,42 @@ export const zApplicationServersResponse = z.object({
 });
 
 /**
+ * ArtifactDeleteResponse schema
+ */
+export const zArtifactDeleteResponse = z.object({
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
+ * ArtifactDownloadResponse schema
+ */
+export const zArtifactDownloadResponse = z.object({
+    data: z.object({
+        expires_in_seconds: z.int().optional(),
+        url: z.string().optional()
+    }).optional(),
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
+ * ArtifactListResponse schema
+ */
+export const zArtifactListResponse = z.object({
+    data: z.array(z.object({
+        app_name: z.string().optional(),
+        application_id: z.uuid().optional(),
+        created_at: z.string().optional(),
+        deployment_id: z.uuid().optional(),
+        s3_key: z.string().optional(),
+        size: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional()
+    })).optional(),
+    message: z.string().optional(),
+    status: z.string().optional()
+});
+
+/**
  * BackupListResponse schema
  */
 export const zBackupListResponse = z.object({
@@ -119,6 +155,7 @@ export const zBackupListResponse = z.object({
  * BackupScheduleData schema
  */
 export const zBackupScheduleData = z.object({
+    backup_paths: z.array(z.string()).optional(),
     day_of_week: z.int().optional(),
     enabled: z.boolean().optional(),
     frequency: z.string().optional(),
@@ -131,6 +168,7 @@ export const zBackupScheduleData = z.object({
  */
 export const zBackupScheduleResponse = z.object({
     data: z.object({
+        backup_paths: z.array(z.string()).optional(),
         day_of_week: z.int().optional(),
         enabled: z.boolean().optional(),
         frequency: z.string().optional(),
@@ -317,6 +355,7 @@ export const zApplicationDeployment = z.object({
             status: z.string().optional(),
             updated_at: z.iso.datetime().optional()
         }).optional(),
+        template_id: z.uuid().optional(),
         updated_at: z.iso.datetime().optional(),
         user_id: z.uuid().optional()
     }).optional(),
@@ -451,6 +490,7 @@ export const zApplication = z.object({
         status: z.string().optional(),
         updated_at: z.iso.datetime().optional()
     }).optional(),
+    template_id: z.uuid().optional(),
     updated_at: z.iso.datetime().optional(),
     user_id: z.uuid().optional()
 });
@@ -590,6 +630,7 @@ export const zApplicationResponse = z.object({
             status: z.string().optional(),
             updated_at: z.iso.datetime().optional()
         }).optional(),
+        template_id: z.uuid().optional(),
         updated_at: z.iso.datetime().optional(),
         user_id: z.uuid().optional()
     }).optional(),
@@ -730,6 +771,28 @@ export const zCreateHealthCheckRequest = z.object({
 });
 
 /**
+ * CreateMachineRequest schema
+ */
+export const zCreateMachineRequest = z.object({
+    host: z.string(),
+    name: z.string(),
+    port: z.int().optional(),
+    user: z.string().optional()
+});
+
+/**
+ * CreateMachineResponse schema
+ */
+export const zCreateMachineResponse = z.object({
+    host: z.string().optional(),
+    id: z.uuid().optional(),
+    name: z.string().optional(),
+    port: z.int().optional(),
+    public_key: z.string().optional(),
+    user: z.string().optional()
+});
+
+/**
  * CreateProjectRequest schema
  */
 export const zCreateProjectRequest = z.object({
@@ -783,6 +846,19 @@ export const zCreateServerRequest = z.object({
     enabled: z.boolean().optional(),
     name: z.string().optional(),
     provider_id: z.uuid().optional()
+});
+
+/**
+ * CreateTemplateDeploymentRequest schema
+ */
+export const zCreateTemplateDeploymentRequest = z.object({
+    environment: z.string().optional(),
+    name: z.string().optional(),
+    primary_server_id: z.uuid().optional(),
+    routing_strategy: z.string().optional(),
+    server_ids: z.array(z.uuid()).optional(),
+    template_id: z.uuid().optional(),
+    variables: z.record(z.string(), z.string()).optional()
 });
 
 /**
@@ -873,6 +949,13 @@ export const zDeleteDirectoryRequest = z.object({
  */
 export const zDeleteGithubConnectorRequest = z.object({
     id: z.uuid()
+});
+
+/**
+ * DeleteMachineResponse schema
+ */
+export const zDeleteMachineResponse = z.object({
+    status: z.string().optional()
 });
 
 /**
@@ -1008,6 +1091,7 @@ export const zDeploymentResponse = z.object({
                 status: z.string().optional(),
                 updated_at: z.iso.datetime().optional()
             }).optional(),
+            template_id: z.uuid().optional(),
             updated_at: z.iso.datetime().optional(),
             user_id: z.uuid().optional()
         }).optional(),
@@ -1076,41 +1160,6 @@ export const zErrorEnvelope = z.object({
 });
 
 /**
- * ExecutionResponse schema
- */
-export const zExecutionResponse = z.object({
-    data: z.object({
-        completed_at: z.iso.datetime().optional(),
-        created_at: z.iso.datetime().optional(),
-        error_message: z.string().optional(),
-        execution_log: z.string().optional(),
-        exit_code: z.int().optional(),
-        extension_id: z.uuid().optional(),
-        id: z.uuid().optional(),
-        log_seq: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-        server_hostname: z.string().optional(),
-        started_at: z.iso.datetime().optional(),
-        status: z.string().optional(),
-        steps: z.array(z.object({
-            completed_at: z.iso.datetime().optional(),
-            created_at: z.iso.datetime().optional(),
-            execution_id: z.uuid().optional(),
-            exit_code: z.int().optional(),
-            id: z.uuid().optional(),
-            output: z.string().optional(),
-            phase: z.string().optional(),
-            started_at: z.iso.datetime().optional(),
-            status: z.string().optional(),
-            step_name: z.string().optional(),
-            step_order: z.int().optional()
-        })).optional(),
-        variable_values: z.string().optional()
-    }).optional(),
-    message: z.string().optional(),
-    status: z.string().optional()
-});
-
-/**
  * ExtensionResponse schema
  */
 export const zExtensionResponse = z.object({
@@ -1149,13 +1198,6 @@ export const zExtensionResponse = z.object({
     }).optional(),
     message: z.string().optional(),
     status: z.string().optional()
-});
-
-/**
- * ForkExtensionRequest schema
- */
-export const zForkExtensionRequest = z.object({
-    yaml_content: z.string().optional()
 });
 
 /**
@@ -1498,6 +1540,7 @@ export const zListApplicationsResponse = z.object({
                 status: z.string().optional(),
                 updated_at: z.iso.datetime().optional()
             }).optional(),
+            template_id: z.uuid().optional(),
             updated_at: z.iso.datetime().optional(),
             user_id: z.uuid().optional()
         })).optional(),
@@ -1779,6 +1822,7 @@ export const zListDeploymentsResponse = z.object({
                     status: z.string().optional(),
                     updated_at: z.iso.datetime().optional()
                 }).optional(),
+                template_id: z.uuid().optional(),
                 updated_at: z.iso.datetime().optional(),
                 user_id: z.uuid().optional()
             }).optional(),
@@ -1837,41 +1881,6 @@ export const zListDomainsResponse = z.object({
         updated_at: z.iso.datetime().optional(),
         user_id: z.uuid().optional(),
         verification_token: z.string().optional()
-    })).optional(),
-    message: z.string().optional(),
-    status: z.string().optional()
-});
-
-/**
- * ListExecutionsResponse schema
- */
-export const zListExecutionsResponse = z.object({
-    data: z.array(z.object({
-        completed_at: z.iso.datetime().optional(),
-        created_at: z.iso.datetime().optional(),
-        error_message: z.string().optional(),
-        execution_log: z.string().optional(),
-        exit_code: z.int().optional(),
-        extension_id: z.uuid().optional(),
-        id: z.uuid().optional(),
-        log_seq: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-        server_hostname: z.string().optional(),
-        started_at: z.iso.datetime().optional(),
-        status: z.string().optional(),
-        steps: z.array(z.object({
-            completed_at: z.iso.datetime().optional(),
-            created_at: z.iso.datetime().optional(),
-            execution_id: z.uuid().optional(),
-            exit_code: z.int().optional(),
-            id: z.uuid().optional(),
-            output: z.string().optional(),
-            phase: z.string().optional(),
-            started_at: z.iso.datetime().optional(),
-            status: z.string().optional(),
-            step_name: z.string().optional(),
-            step_order: z.int().optional()
-        })).optional(),
-        variable_values: z.string().optional()
     })).optional(),
     message: z.string().optional(),
     status: z.string().optional()
@@ -1990,22 +1999,61 @@ export const zListImagesResponse = z.object({
 });
 
 /**
- * ListLogsResponse schema
+ * ListMachinesResponse schema
  */
-export const zListLogsResponse = z.object({
+export const zListMachinesResponse = z.object({
     data: z.object({
-        execution_status: z.string().optional(),
-        logs: z.array(z.object({
+        is_active: z.boolean().optional(),
+        page: z.int().gte(1).optional().default(1),
+        page_size: z.int().gte(1).lte(100).optional().default(20),
+        search: z.string().optional(),
+        servers: z.array(z.object({
+            auth_method: z.string().optional(),
             created_at: z.iso.datetime().optional(),
-            data: z.string().optional(),
-            execution_id: z.uuid().optional(),
+            deleted_at: z.iso.datetime().optional(),
+            description: z.string().optional(),
+            fingerprint: z.string().optional(),
+            host: z.string().optional(),
             id: z.uuid().optional(),
-            level: z.string().optional(),
-            message: z.string().optional(),
-            sequence: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional(),
-            step_id: z.uuid().optional()
+            is_active: z.boolean().optional(),
+            is_default: z.boolean().optional(),
+            key_size: z.int().optional(),
+            key_type: z.string().optional(),
+            last_used_at: z.iso.datetime().optional(),
+            name: z.string().optional(),
+            organization_id: z.uuid().optional(),
+            port: z.int().optional(),
+            provision: z.object({
+                created_at: z.iso.datetime().optional(),
+                disk_size_gb: z.int().optional(),
+                domain: z.string().optional(),
+                error: z.string().optional(),
+                guest_ip: z.string().optional(),
+                id: z.uuid().optional(),
+                lxd_container_name: z.string().optional(),
+                memory_mb: z.int().optional(),
+                organization_id: z.uuid().optional(),
+                server_id: z.uuid().optional(),
+                ssh_key_id: z.uuid().optional(),
+                step: z.string().optional(),
+                subdomain: z.string().optional(),
+                type: z.string().optional(),
+                updated_at: z.iso.datetime().optional(),
+                user_id: z.uuid().optional(),
+                vcpu_count: z.int().optional()
+            }).optional(),
+            proxy_host: z.string().optional(),
+            public_key: z.string().optional(),
+            total_disk_gb: z.int().optional(),
+            total_ram_mb: z.int().optional(),
+            total_vcpu: z.int().optional(),
+            updated_at: z.iso.datetime().optional(),
+            user: z.string().optional()
         })).optional(),
-        next_after: z.coerce.bigint().min(BigInt('-9223372036854775808'), { error: 'Invalid value: Expected int64 to be >= -9223372036854775808' }).max(BigInt('9223372036854775807'), { error: 'Invalid value: Expected int64 to be <= 9223372036854775807' }).optional()
+        sort_by: z.string().optional(),
+        sort_order: z.enum(['asc', 'desc']).optional(),
+        status: z.string().optional(),
+        total_count: z.int().optional()
     }).optional(),
     message: z.string().optional(),
     status: z.string().optional()
@@ -2155,66 +2203,6 @@ export const zListRepositoriesResponse = z.object({
 });
 
 /**
- * ListServersResponse schema
- */
-export const zListServersResponse = z.object({
-    data: z.object({
-        is_active: z.boolean().optional(),
-        page: z.int().gte(1).optional().default(1),
-        page_size: z.int().gte(1).lte(100).optional().default(20),
-        search: z.string().optional(),
-        servers: z.array(z.object({
-            auth_method: z.string().optional(),
-            created_at: z.iso.datetime().optional(),
-            deleted_at: z.iso.datetime().optional(),
-            description: z.string().optional(),
-            fingerprint: z.string().optional(),
-            host: z.string().optional(),
-            id: z.uuid().optional(),
-            is_active: z.boolean().optional(),
-            is_default: z.boolean().optional(),
-            key_size: z.int().optional(),
-            key_type: z.string().optional(),
-            last_used_at: z.iso.datetime().optional(),
-            name: z.string().optional(),
-            organization_id: z.uuid().optional(),
-            port: z.int().optional(),
-            provision: z.object({
-                created_at: z.iso.datetime().optional(),
-                disk_size_gb: z.int().optional(),
-                domain: z.string().optional(),
-                error: z.string().optional(),
-                guest_ip: z.string().optional(),
-                id: z.uuid().optional(),
-                lxd_container_name: z.string().optional(),
-                memory_mb: z.int().optional(),
-                organization_id: z.uuid().optional(),
-                server_id: z.uuid().optional(),
-                ssh_key_id: z.uuid().optional(),
-                step: z.string().optional(),
-                subdomain: z.string().optional(),
-                updated_at: z.iso.datetime().optional(),
-                user_id: z.uuid().optional(),
-                vcpu_count: z.int().optional()
-            }).optional(),
-            proxy_host: z.string().optional(),
-            public_key: z.string().optional(),
-            total_disk_gb: z.int().optional(),
-            total_ram_mb: z.int().optional(),
-            total_vcpu: z.int().optional(),
-            updated_at: z.iso.datetime().optional(),
-            user: z.string().optional()
-        })).optional(),
-        sort_by: z.string().optional(),
-        sort_order: z.enum(['asc', 'desc']).optional(),
-        status: z.string().optional(),
-        total_count: z.int().optional()
-    }).optional(),
-    message: z.string().optional(),
-    status: z.string().optional()
-});
-
-/**
  * LogsResponse schema
  */
 export const zLogsResponse = z.object({
@@ -2252,6 +2240,7 @@ export const zMachineBillingResponse = z.object({
         days_remaining: z.int().optional(),
         grace_deadline: z.string().optional(),
         has_machine: z.boolean().optional(),
+        has_unpaid_trial: z.boolean().optional(),
         message: z.string().optional(),
         monthly_cost_cents: z.int().optional(),
         monthly_cost_usd: z.string().optional(),
@@ -2553,6 +2542,7 @@ export const zProjectFamilyResponse = z.object({
                 status: z.string().optional(),
                 updated_at: z.iso.datetime().optional()
             }).optional(),
+            template_id: z.uuid().optional(),
             updated_at: z.iso.datetime().optional(),
             user_id: z.uuid().optional()
         })).optional()
@@ -2683,6 +2673,21 @@ export const zRemoveCustomDomainRequest = z.object({
 });
 
 /**
+ * RenameMachineRequest schema
+ */
+export const zRenameMachineRequest = z.object({
+    name: z.string()
+});
+
+/**
+ * RenameMachineResponse schema
+ */
+export const zRenameMachineResponse = z.object({
+    id: z.uuid().optional(),
+    name: z.string().optional()
+});
+
+/**
  * Response schema
  */
 export const zResponse = z.object({
@@ -2704,13 +2709,6 @@ export const zRestartDeploymentRequest = z.object({
 export const zRollbackDeploymentRequest = z.object({
     id: z.uuid().optional(),
     target_server_ids: z.array(z.uuid()).optional()
-});
-
-/**
- * RunExtensionRequest schema
- */
-export const zRunExtensionRequest = z.object({
-    variables: z.record(z.string(), z.string()).optional()
 });
 
 /**
@@ -2743,6 +2741,14 @@ export const zSshConnectionStatusResponse = z.object({
     is_configured: z.boolean().optional(),
     message: z.string().optional(),
     status: z.string().optional()
+});
+
+/**
+ * SSHStatusResponse schema
+ */
+export const zSshStatusResponse = z.object({
+    is_active: z.boolean().optional(),
+    last_used_at: z.string().optional()
 });
 
 /**
@@ -2809,9 +2815,9 @@ export const zSetApplicationServersRequest = z.object({
 });
 
 /**
- * SetDefaultServerResponse schema
+ * SetDefaultMachineResponse schema
  */
-export const zSetDefaultServerResponse = z.object({
+export const zSetDefaultMachineResponse = z.object({
     data: z.object({
         auth_method: z.string().optional(),
         created_at: z.iso.datetime().optional(),
@@ -3342,10 +3348,19 @@ export const zVerifyCustomDomainRequest = z.object({
 });
 
 /**
+ * VerifyMachineResponse schema
+ */
+export const zVerifyMachineResponse = z.object({
+    is_active: z.boolean().optional(),
+    status: z.string().optional()
+});
+
+/**
  * WebhookConfigResponse schema
  */
 export const zWebhookConfigResponse = z.object({
     data: z.object({
+        channel_id: z.uuid().optional(),
         created_at: z.iso.datetime().optional(),
         id: z.uuid().optional(),
         is_active: z.boolean().optional(),
@@ -3997,6 +4012,20 @@ export const zSetApplicationServersData = z.object({
  */
 export const zSetApplicationServersResponse = zApplicationServersResponse;
 
+export const zDeployApplicationFromTemplateData = z.object({
+    body: zCreateTemplateDeploymentRequest,
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zDeployApplicationFromTemplateResponse = zApplicationResponse;
+
 export const zListApplicationsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
@@ -4015,6 +4044,54 @@ export const zListApplicationsData = z.object({
  * OK
  */
 export const zListApplicationsResponse2 = zListApplicationsResponse;
+
+export const zListDeploymentArtifactsForAnApplicationData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.object({
+        application_id: z.uuid()
+    }),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zListDeploymentArtifactsForAnApplicationResponse = zArtifactListResponse;
+
+export const zDeleteDeploymentArtifactData = z.object({
+    body: z.never().optional(),
+    path: z.object({
+        deployment_id: z.string()
+    }),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zDeleteDeploymentArtifactResponse = zArtifactDeleteResponse;
+
+export const zGetArtifactDownloadUrlData = z.object({
+    body: z.never().optional(),
+    path: z.object({
+        deployment_id: z.string()
+    }),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetArtifactDownloadUrlResponse = zArtifactDownloadResponse;
 
 export const zListDomainsData = z.object({
     body: z.never().optional(),
@@ -4142,22 +4219,6 @@ export const zGetExtensionByExtensionIdData = z.object({
  */
 export const zGetExtensionByExtensionIdResponse = zExtensionResponse;
 
-export const zListExtensionExecutionsData = z.object({
-    body: z.never().optional(),
-    path: z.object({
-        extension_id: z.string()
-    }),
-    query: z.never().optional(),
-    headers: z.object({
-        Accept: z.string().optional()
-    }).optional()
-});
-
-/**
- * OK
- */
-export const zListExtensionExecutionsResponse = zListExecutionsResponse;
-
 export const zListExtensionCategoriesData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
@@ -4171,105 +4232,6 @@ export const zListExtensionCategoriesData = z.object({
  * OK
  */
 export const zListExtensionCategoriesResponse = zCategoriesResponse;
-
-export const zGetExecutionData = z.object({
-    body: z.never().optional(),
-    path: z.object({
-        execution_id: z.string()
-    }),
-    query: z.never().optional(),
-    headers: z.object({
-        Accept: z.string().optional()
-    }).optional()
-});
-
-/**
- * OK
- */
-export const zGetExecutionResponse = zExecutionResponse;
-
-export const zCancelExecutionData = z.object({
-    body: z.never().optional(),
-    path: z.object({
-        execution_id: z.string()
-    }),
-    query: z.never().optional(),
-    headers: z.object({
-        Accept: z.string().optional()
-    }).optional()
-});
-
-/**
- * OK
- */
-export const zCancelExecutionResponse = zMessageResponse;
-
-export const zListExecutionLogsData = z.object({
-    body: z.never().optional(),
-    path: z.object({
-        execution_id: z.string()
-    }),
-    query: z.object({
-        afterSeq: z.int().optional(),
-        limit: z.int().gte(1).lte(100).optional().default(20)
-    }).optional(),
-    headers: z.object({
-        Accept: z.string().optional()
-    }).optional()
-});
-
-/**
- * OK
- */
-export const zListExecutionLogsResponse = zListLogsResponse;
-
-export const zForkExtensionData = z.object({
-    body: zForkExtensionRequest,
-    path: z.object({
-        extension_id: z.string()
-    }),
-    query: z.never().optional(),
-    headers: z.object({
-        Accept: z.string().optional()
-    }).optional()
-});
-
-/**
- * OK
- */
-export const zForkExtensionResponse = zExtensionResponse;
-
-export const zRunExtensionData = z.object({
-    body: zRunExtensionRequest,
-    path: z.object({
-        extension_id: z.string()
-    }),
-    query: z.never().optional(),
-    headers: z.object({
-        Accept: z.string().optional()
-    }).optional()
-});
-
-/**
- * OK
- */
-export const zRunExtensionResponse = zExecutionResponse;
-
-export const zDeleteForkedExtensionData = z.object({
-    body: z.never().optional(),
-    path: z.object({
-        id: z.string()
-    }),
-    query: z.never().optional(),
-    headers: z.object({
-        Accept: z.string().optional()
-    }).optional()
-});
-
-/**
- * OK
- */
-export const zDeleteForkedExtensionResponse = zMessageResponse;
 
 export const zGetExtensionByIdData = z.object({
     body: z.never().optional(),
@@ -4630,6 +4592,42 @@ export const zToggleHealthCheckData = z.object({
  */
 export const zToggleHealthCheckResponse = zHealthCheckResponse;
 
+export const zListMachinesData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.object({
+        page: z.int().gte(1).optional().default(1),
+        page_size: z.int().gte(1).lte(100).optional().default(20),
+        search: z.string().optional(),
+        sort_by: z.string().optional(),
+        sort_order: z.enum(['asc', 'desc']).optional(),
+        status: z.string().optional(),
+        is_active: z.boolean().optional()
+    }).optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zListMachinesResponse2 = zListMachinesResponse;
+
+export const zRegisterAbyosMachineData = z.object({
+    body: zCreateMachineRequest,
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zRegisterAbyosMachineResponse = zCreateMachineResponse;
+
 export const zTriggerMachineBackupData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
@@ -4844,6 +4842,20 @@ export const zResumeMachineData = z.object({
  */
 export const zResumeMachineResponse = zMachineActionResponse;
 
+export const zGetSshConnectionStatusData = z.object({
+    body: z.never().optional(),
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetSshConnectionStatusResponse = zSshConnectionStatusResponse;
+
 export const zGetMachineSystemStatsData = z.object({
     body: z.never().optional(),
     path: z.never().optional(),
@@ -4871,6 +4883,116 @@ export const zGetMachineLifecycleStatusData = z.object({
  * OK
  */
 export const zGetMachineLifecycleStatusResponse = zMachineStateResponse;
+
+export const zProvisionTrailResourcesData = z.object({
+    body: zProvisionRequest,
+    path: z.never().optional(),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zProvisionTrailResourcesResponse = zProvisionTrailResponse;
+
+export const zGetTrailSessionStatusData = z.object({
+    body: z.never().optional(),
+    path: z.object({
+        sessionId: z.string()
+    }),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zGetTrailSessionStatusResponse = zTrailStatusEnvelopeResponse;
+
+export const zRemoveAMachineData = z.object({
+    body: z.never().optional(),
+    path: z.object({
+        id: z.string()
+    }),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zRemoveAMachineResponse = zDeleteMachineResponse;
+
+export const zRenameAMachineData = z.object({
+    body: zRenameMachineRequest,
+    path: z.object({
+        id: z.string()
+    }),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zRenameAMachineResponse = zRenameMachineResponse;
+
+export const zSetMachineAsOrgDefaultData = z.object({
+    body: z.never().optional(),
+    path: z.object({
+        id: z.string()
+    }),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zSetMachineAsOrgDefaultResponse = zSetDefaultMachineResponse;
+
+export const zSShConnectionStatusData = z.object({
+    body: z.never().optional(),
+    path: z.object({
+        id: z.string()
+    }),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zSShConnectionStatusResponse = zSshStatusResponse;
+
+export const zVerifySshConnectionData = z.object({
+    body: z.never().optional(),
+    path: z.object({
+        id: z.string()
+    }),
+    query: z.never().optional(),
+    headers: z.object({
+        Accept: z.string().optional()
+    }).optional()
+});
+
+/**
+ * OK
+ */
+export const zVerifySshConnectionResponse = zVerifyMachineResponse;
 
 export const zListMcpProviderCatalogData = z.object({
     body: z.never().optional(),
@@ -5173,104 +5295,6 @@ export const zGetWebhookConfigData = z.object({
  * OK
  */
 export const zGetWebhookConfigResponse = zWebhookConfigResponse;
-
-export const zListServersData = z.object({
-    body: z.never().optional(),
-    path: z.never().optional(),
-    query: z.object({
-        page: z.int().gte(1).optional().default(1),
-        page_size: z.int().gte(1).lte(100).optional().default(20),
-        search: z.string().optional(),
-        sort_by: z.string().optional(),
-        sort_order: z.enum(['asc', 'desc']).optional(),
-        status: z.string().optional(),
-        is_active: z.boolean().optional()
-    }).optional(),
-    headers: z.object({
-        Accept: z.string().optional()
-    }).optional()
-});
-
-/**
- * OK
- */
-export const zListServersResponse2 = zListServersResponse;
-
-export const zGetSshConnectionStatusData = z.object({
-    body: z.never().optional(),
-    path: z.never().optional(),
-    query: z.never().optional(),
-    headers: z.object({
-        Accept: z.string().optional()
-    }).optional()
-});
-
-/**
- * OK
- */
-export const zGetSshConnectionStatusResponse = zSshConnectionStatusResponse;
-
-export const zSetServerAsOrgDefaultData = z.object({
-    body: z.never().optional(),
-    path: z.object({
-        id: z.string()
-    }),
-    query: z.never().optional(),
-    headers: z.object({
-        Accept: z.string().optional()
-    }).optional()
-});
-
-/**
- * OK
- */
-export const zSetServerAsOrgDefaultResponse = zSetDefaultServerResponse;
-
-export const zGetSshConnectionStatusForASpecificServerData = z.object({
-    body: z.never().optional(),
-    path: z.object({
-        id: z.string()
-    }),
-    query: z.never().optional(),
-    headers: z.object({
-        Accept: z.string().optional()
-    }).optional()
-});
-
-/**
- * OK
- */
-export const zGetSshConnectionStatusForASpecificServerResponse = zSshConnectionStatusResponse;
-
-export const zProvisionTrailResourcesData = z.object({
-    body: zProvisionRequest,
-    path: z.never().optional(),
-    query: z.never().optional(),
-    headers: z.object({
-        Accept: z.string().optional()
-    }).optional()
-});
-
-/**
- * OK
- */
-export const zProvisionTrailResourcesResponse = zProvisionTrailResponse;
-
-export const zGetTrailSessionStatusData = z.object({
-    body: z.never().optional(),
-    path: z.object({
-        sessionId: z.string()
-    }),
-    query: z.never().optional(),
-    headers: z.object({
-        Accept: z.string().optional()
-    }).optional()
-});
-
-/**
- * OK
- */
-export const zGetTrailSessionStatusResponse = zTrailStatusEnvelopeResponse;
 
 export const zPerformUpdateData = z.object({
     body: zUpdateRequest,

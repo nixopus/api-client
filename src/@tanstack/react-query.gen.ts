@@ -3,8 +3,8 @@
 import { type InfiniteData, infiniteQueryOptions, queryOptions, type UseMutationOptions } from '@tanstack/react-query';
 
 import { client } from '../client.gen';
-import { addApplicationDomain, addCustomDomain, addMcpServer, addProjectToFamily, agentDiscoverToolsFromAllEnabledMcpServers, agentInvokeAToolOnAnMcpServer, agentListEnabledServersWithCredentials, cancelDeployment, cancelExecution, checkAdminRegistration, checkCustomDomainDns, checkForUpdates, checkIfFeatureIsEnabled, checkOnboardingStatus, copyDirectory, createDirectory, createGitHubConnector, createHealthCheck, createProject, createSmtpConfig, createWebhookConfig, deleteApplication, deleteDirectory, deleteForkedExtension, deleteGitHubConnector, deleteHealthCheck, deleteMcpServer, deleteSmtpConfig, deleteWebhookConfig, deployApplication, deployProject, duplicateProject, executeACommandOnTheHostMachine, forkExtension, generateRandomSubdomain, getApplication, getApplicationLogs, getApplicationServers, getBackupSchedule, getBootstrapSessionData, getContainer, getContainerLogs, getCurrentUserProfile, getDeployment, getDeploymentLogs, getExecution, getExtensionByExtensionId, getExtensionById, getHealthChecks, getHealthCheckStats, getMachineBillingStatus, getMachineEvents, getMachineLifecycleStatus, getMachineMetrics, getMachineMetricsSummary, getMachineSystemStats, getNotificationPreferences, getProviderIcon, getSmtpConfig, getSshConnectionStatus, getSshConnectionStatusForASpecificServer, getTrailSessionStatus, getUserPreferences, getUserSettings, getWebhookConfig, handleGitHubWebhook, healthCheck, listApplicationDeployments, listApplications, listAuditLogs, listAvailableMachinePlans, listComposeServices, listContainers, listDomains, listExecutionLogs, listExtensionCategories, listExtensionExecutions, listExtensions, listFamilyEnvironments, listFeatureFlags, listFiles, listGitHubConnectors, listGitHubRepositories, listHealthCheckResults, listImages, listMachineBackups, listMcpProviderCatalog, listOrgMcpServers, listProjectsInFamily, listRepositoryBranches, listServers, markOnboardingComplete, moveDirectory, type Options, pauseMachine, performUpdate, previewComposeServices, provisionTrailResources, pruneBuildCache, pruneImages, recoverApplication, redeployApplication, removeApplicationDomain, removeContainer, removeCustomDomain, restartContainer, restartDeployment, restartMachine, resumeMachine, rollbackDeployment, runExtension, selectAMachinePlan, sendNotification, setApplicationServers, setServerAsOrgDefault, startContainer, stopContainer, testMcpServerConnection, toggleHealthCheck, trackCliInstallationEvent, triggerMachineBackup, updateApplication, updateApplicationLabels, updateAutoUpdateSettings, updateBackupSchedule, updateContainerResources, updateFeatureFlag, updateFontSettings, updateGitHubConnector, updateHealthCheck, updateLanguageSettings, updateMcpServer, updateNotificationPreferences, updateSmtpConfig, updateThemeSettings, updateUserAvatar, updateUserName, updateUserPreferences, updateWebhookConfig, uploadFile, verifyCustomDomain } from '../sdk.gen';
-import type { AddApplicationDomainData, AddApplicationDomainError, AddApplicationDomainResponse, AddCustomDomainData, AddCustomDomainError, AddCustomDomainResponse, AddMcpServerData, AddMcpServerError, AddMcpServerResponse, AddProjectToFamilyData, AddProjectToFamilyError, AddProjectToFamilyResponse, AgentDiscoverToolsFromAllEnabledMcpServersData, AgentDiscoverToolsFromAllEnabledMcpServersError, AgentDiscoverToolsFromAllEnabledMcpServersResponse, AgentInvokeAToolOnAnMcpServerData, AgentInvokeAToolOnAnMcpServerError, AgentInvokeAToolOnAnMcpServerResponse, AgentListEnabledServersWithCredentialsData, AgentListEnabledServersWithCredentialsError, AgentListEnabledServersWithCredentialsResponse, CancelDeploymentData, CancelDeploymentError, CancelDeploymentResponse, CancelExecutionData, CancelExecutionError, CancelExecutionResponse, CheckAdminRegistrationData, CheckAdminRegistrationError, CheckAdminRegistrationResponse, CheckCustomDomainDnsData, CheckCustomDomainDnsError, CheckCustomDomainDnsResponse, CheckForUpdatesData, CheckForUpdatesError, CheckForUpdatesResponse, CheckIfFeatureIsEnabledData, CheckIfFeatureIsEnabledError, CheckIfFeatureIsEnabledResponse, CheckOnboardingStatusData, CheckOnboardingStatusError, CheckOnboardingStatusResponse, CopyDirectoryData, CopyDirectoryError, CopyDirectoryResponse, CreateDirectoryData, CreateDirectoryError, CreateDirectoryResponse, CreateGitHubConnectorData, CreateGitHubConnectorError, CreateGitHubConnectorResponse, CreateHealthCheckData, CreateHealthCheckError, CreateHealthCheckResponse, CreateProjectData, CreateProjectError, CreateProjectResponse, CreateSmtpConfigData, CreateSmtpConfigError, CreateSmtpConfigResponse, CreateWebhookConfigData, CreateWebhookConfigError, CreateWebhookConfigResponse, DeleteApplicationData, DeleteApplicationError, DeleteApplicationResponse, DeleteDirectoryData, DeleteDirectoryError, DeleteDirectoryResponse, DeleteForkedExtensionData, DeleteForkedExtensionError, DeleteForkedExtensionResponse, DeleteGitHubConnectorData, DeleteGitHubConnectorError, DeleteGitHubConnectorResponse, DeleteHealthCheckData, DeleteHealthCheckError, DeleteHealthCheckResponse, DeleteMcpServerData, DeleteMcpServerError, DeleteMcpServerResponse, DeleteSmtpConfigData, DeleteSmtpConfigError, DeleteSmtpConfigResponse, DeleteWebhookConfigData, DeleteWebhookConfigError, DeleteWebhookConfigResponse, DeployApplicationData, DeployApplicationError, DeployApplicationResponse, DeployProjectData, DeployProjectError, DeployProjectResponse, DuplicateProjectData, DuplicateProjectError, DuplicateProjectResponse, ExecuteACommandOnTheHostMachineData, ExecuteACommandOnTheHostMachineError, ExecuteACommandOnTheHostMachineResponse, ForkExtensionData, ForkExtensionError, ForkExtensionResponse, GenerateRandomSubdomainData, GenerateRandomSubdomainError, GenerateRandomSubdomainResponse, GetApplicationData, GetApplicationError, GetApplicationLogsData, GetApplicationLogsError, GetApplicationLogsResponse, GetApplicationResponse, GetApplicationServersData, GetApplicationServersError, GetApplicationServersResponse, GetBackupScheduleData, GetBackupScheduleError, GetBackupScheduleResponse, GetBootstrapSessionDataData, GetBootstrapSessionDataError, GetBootstrapSessionDataResponse, GetContainerData, GetContainerError, GetContainerLogsData, GetContainerLogsError, GetContainerLogsResponse, GetContainerResponse2, GetCurrentUserProfileData, GetCurrentUserProfileError, GetCurrentUserProfileResponse, GetDeploymentData, GetDeploymentError, GetDeploymentLogsData, GetDeploymentLogsError, GetDeploymentLogsResponse, GetDeploymentResponse, GetExecutionData, GetExecutionError, GetExecutionResponse, GetExtensionByExtensionIdData, GetExtensionByExtensionIdError, GetExtensionByExtensionIdResponse, GetExtensionByIdData, GetExtensionByIdError, GetExtensionByIdResponse, GetHealthChecksData, GetHealthChecksError, GetHealthChecksResponse, GetHealthCheckStatsData, GetHealthCheckStatsError, GetHealthCheckStatsResponse, GetMachineBillingStatusData, GetMachineBillingStatusError, GetMachineBillingStatusResponse, GetMachineEventsData, GetMachineEventsError, GetMachineEventsResponse, GetMachineLifecycleStatusData, GetMachineLifecycleStatusError, GetMachineLifecycleStatusResponse, GetMachineMetricsData, GetMachineMetricsError, GetMachineMetricsResponse, GetMachineMetricsSummaryData, GetMachineMetricsSummaryError, GetMachineMetricsSummaryResponse, GetMachineSystemStatsData, GetMachineSystemStatsError, GetMachineSystemStatsResponse, GetNotificationPreferencesData, GetNotificationPreferencesError, GetNotificationPreferencesResponse, GetProviderIconData, GetProviderIconError, GetProviderIconResponse, GetSmtpConfigData, GetSmtpConfigError, GetSmtpConfigResponse, GetSshConnectionStatusData, GetSshConnectionStatusError, GetSshConnectionStatusForASpecificServerData, GetSshConnectionStatusForASpecificServerError, GetSshConnectionStatusForASpecificServerResponse, GetSshConnectionStatusResponse, GetTrailSessionStatusData, GetTrailSessionStatusError, GetTrailSessionStatusResponse, GetUserPreferencesData, GetUserPreferencesError, GetUserPreferencesResponse, GetUserSettingsData, GetUserSettingsError, GetUserSettingsResponse, GetWebhookConfigData, GetWebhookConfigError, GetWebhookConfigResponse, HandleGitHubWebhookData, HandleGitHubWebhookError, HandleGitHubWebhookResponse, HealthCheckData, HealthCheckError, HealthCheckResponse2, ListApplicationDeploymentsData, ListApplicationDeploymentsError, ListApplicationDeploymentsResponse, ListApplicationsData, ListApplicationsError, ListApplicationsResponse2, ListAuditLogsData, ListAuditLogsError, ListAuditLogsResponse, ListAvailableMachinePlansData, ListAvailableMachinePlansError, ListAvailableMachinePlansResponse, ListComposeServicesData, ListComposeServicesError, ListComposeServicesResponse, ListContainersData, ListContainersError, ListContainersResponse2, ListDomainsData, ListDomainsError, ListDomainsResponse2, ListExecutionLogsData, ListExecutionLogsError, ListExecutionLogsResponse, ListExtensionCategoriesData, ListExtensionCategoriesError, ListExtensionCategoriesResponse, ListExtensionExecutionsData, ListExtensionExecutionsError, ListExtensionExecutionsResponse, ListExtensionsData, ListExtensionsError, ListExtensionsResponse2, ListFamilyEnvironmentsData, ListFamilyEnvironmentsError, ListFamilyEnvironmentsResponse, ListFeatureFlagsData, ListFeatureFlagsError, ListFeatureFlagsResponse2, ListFilesData, ListFilesError, ListFilesResponse2, ListGitHubConnectorsData, ListGitHubConnectorsError, ListGitHubConnectorsResponse, ListGitHubRepositoriesData, ListGitHubRepositoriesError, ListGitHubRepositoriesResponse, ListHealthCheckResultsData, ListHealthCheckResultsError, ListHealthCheckResultsResponse, ListImagesData, ListImagesError, ListImagesResponse2, ListMachineBackupsData, ListMachineBackupsError, ListMachineBackupsResponse, ListMcpProviderCatalogData, ListMcpProviderCatalogError, ListMcpProviderCatalogResponse, ListOrgMcpServersData, ListOrgMcpServersError, ListOrgMcpServersResponse, ListProjectsInFamilyData, ListProjectsInFamilyError, ListProjectsInFamilyResponse, ListRepositoryBranchesData, ListRepositoryBranchesError, ListRepositoryBranchesResponse, ListServersData, ListServersError, ListServersResponse2, MarkOnboardingCompleteData, MarkOnboardingCompleteError, MarkOnboardingCompleteResponse2, MoveDirectoryData, MoveDirectoryError, MoveDirectoryResponse, PauseMachineData, PauseMachineError, PauseMachineResponse, PerformUpdateData, PerformUpdateError, PerformUpdateResponse, PreviewComposeServicesData, PreviewComposeServicesError, PreviewComposeServicesResponse, ProvisionTrailResourcesData, ProvisionTrailResourcesError, ProvisionTrailResourcesResponse, PruneBuildCacheData, PruneBuildCacheError, PruneBuildCacheResponse, PruneImagesData, PruneImagesError, PruneImagesResponse2, RecoverApplicationData, RecoverApplicationError, RecoverApplicationResponse, RedeployApplicationData, RedeployApplicationError, RedeployApplicationResponse, RemoveApplicationDomainData, RemoveApplicationDomainError, RemoveApplicationDomainResponse, RemoveContainerData, RemoveContainerError, RemoveContainerResponse, RemoveCustomDomainData, RemoveCustomDomainError, RemoveCustomDomainResponse, RestartContainerData, RestartContainerError, RestartContainerResponse, RestartDeploymentData, RestartDeploymentError, RestartDeploymentResponse, RestartMachineData, RestartMachineError, RestartMachineResponse, ResumeMachineData, ResumeMachineError, ResumeMachineResponse, RollbackDeploymentData, RollbackDeploymentError, RollbackDeploymentResponse, RunExtensionData, RunExtensionError, RunExtensionResponse, SelectAMachinePlanData, SelectAMachinePlanError, SelectAMachinePlanResponse, SendNotificationData, SendNotificationError, SendNotificationResponse2, SetApplicationServersData, SetApplicationServersError, SetApplicationServersResponse, SetServerAsOrgDefaultData, SetServerAsOrgDefaultError, SetServerAsOrgDefaultResponse, StartContainerData, StartContainerError, StartContainerResponse, StopContainerData, StopContainerError, StopContainerResponse, TestMcpServerConnectionData, TestMcpServerConnectionError, TestMcpServerConnectionResponse, ToggleHealthCheckData, ToggleHealthCheckError, ToggleHealthCheckResponse, TrackCliInstallationEventData, TrackCliInstallationEventError, TrackCliInstallationEventResponse, TriggerMachineBackupData, TriggerMachineBackupError, TriggerMachineBackupResponse, UpdateApplicationData, UpdateApplicationError, UpdateApplicationLabelsData, UpdateApplicationLabelsError, UpdateApplicationLabelsResponse, UpdateApplicationResponse, UpdateAutoUpdateSettingsData, UpdateAutoUpdateSettingsError, UpdateAutoUpdateSettingsResponse, UpdateBackupScheduleData, UpdateBackupScheduleError, UpdateBackupScheduleResponse, UpdateContainerResourcesData, UpdateContainerResourcesError, UpdateContainerResourcesResponse2, UpdateFeatureFlagData, UpdateFeatureFlagError, UpdateFeatureFlagResponse, UpdateFontSettingsData, UpdateFontSettingsError, UpdateFontSettingsResponse, UpdateGitHubConnectorData, UpdateGitHubConnectorError, UpdateGitHubConnectorResponse, UpdateHealthCheckData, UpdateHealthCheckError, UpdateHealthCheckResponse, UpdateLanguageSettingsData, UpdateLanguageSettingsError, UpdateLanguageSettingsResponse, UpdateMcpServerData, UpdateMcpServerError, UpdateMcpServerResponse, UpdateNotificationPreferencesData, UpdateNotificationPreferencesError, UpdateNotificationPreferencesResponse, UpdateSmtpConfigData, UpdateSmtpConfigError, UpdateSmtpConfigResponse, UpdateThemeSettingsData, UpdateThemeSettingsError, UpdateThemeSettingsResponse, UpdateUserAvatarData, UpdateUserAvatarError, UpdateUserAvatarResponse, UpdateUserNameData, UpdateUserNameError, UpdateUserNameResponse, UpdateUserPreferencesData, UpdateUserPreferencesError, UpdateUserPreferencesResponse, UpdateWebhookConfigData, UpdateWebhookConfigError, UpdateWebhookConfigResponse, UploadFileData, UploadFileError, UploadFileResponse, VerifyCustomDomainData, VerifyCustomDomainError, VerifyCustomDomainResponse } from '../types.gen';
+import { addApplicationDomain, addCustomDomain, addMcpServer, addProjectToFamily, agentDiscoverToolsFromAllEnabledMcpServers, agentInvokeAToolOnAnMcpServer, agentListEnabledServersWithCredentials, cancelDeployment, checkAdminRegistration, checkCustomDomainDns, checkForUpdates, checkIfFeatureIsEnabled, checkOnboardingStatus, copyDirectory, createDirectory, createGitHubConnector, createHealthCheck, createProject, createSmtpConfig, createWebhookConfig, deleteApplication, deleteDeploymentArtifact, deleteDirectory, deleteGitHubConnector, deleteHealthCheck, deleteMcpServer, deleteSmtpConfig, deleteWebhookConfig, deployApplication, deployApplicationFromTemplate, deployProject, duplicateProject, executeACommandOnTheHostMachine, generateRandomSubdomain, getApplication, getApplicationLogs, getApplicationServers, getArtifactDownloadUrl, getBackupSchedule, getBootstrapSessionData, getContainer, getContainerLogs, getCurrentUserProfile, getDeployment, getDeploymentLogs, getExtensionByExtensionId, getExtensionById, getHealthChecks, getHealthCheckStats, getMachineBillingStatus, getMachineEvents, getMachineLifecycleStatus, getMachineMetrics, getMachineMetricsSummary, getMachineSystemStats, getNotificationPreferences, getProviderIcon, getSmtpConfig, getSshConnectionStatus, getTrailSessionStatus, getUserPreferences, getUserSettings, getWebhookConfig, handleGitHubWebhook, healthCheck, listApplicationDeployments, listApplications, listAuditLogs, listAvailableMachinePlans, listComposeServices, listContainers, listDeploymentArtifactsForAnApplication, listDomains, listExtensionCategories, listExtensions, listFamilyEnvironments, listFeatureFlags, listFiles, listGitHubConnectors, listGitHubRepositories, listHealthCheckResults, listImages, listMachineBackups, listMachines, listMcpProviderCatalog, listOrgMcpServers, listProjectsInFamily, listRepositoryBranches, markOnboardingComplete, moveDirectory, type Options, pauseMachine, performUpdate, previewComposeServices, provisionTrailResources, pruneBuildCache, pruneImages, recoverApplication, redeployApplication, registerAbyosMachine, removeAMachine, removeApplicationDomain, removeContainer, removeCustomDomain, renameAMachine, restartContainer, restartDeployment, restartMachine, resumeMachine, rollbackDeployment, selectAMachinePlan, sendNotification, setApplicationServers, setMachineAsOrgDefault, sShConnectionStatus, startContainer, stopContainer, testMcpServerConnection, toggleHealthCheck, trackCliInstallationEvent, triggerMachineBackup, updateApplication, updateApplicationLabels, updateAutoUpdateSettings, updateBackupSchedule, updateContainerResources, updateFeatureFlag, updateFontSettings, updateGitHubConnector, updateHealthCheck, updateLanguageSettings, updateMcpServer, updateNotificationPreferences, updateSmtpConfig, updateThemeSettings, updateUserAvatar, updateUserName, updateUserPreferences, updateWebhookConfig, uploadFile, verifyCustomDomain, verifySshConnection } from '../sdk.gen';
+import type { AddApplicationDomainData, AddApplicationDomainError, AddApplicationDomainResponse, AddCustomDomainData, AddCustomDomainError, AddCustomDomainResponse, AddMcpServerData, AddMcpServerError, AddMcpServerResponse, AddProjectToFamilyData, AddProjectToFamilyError, AddProjectToFamilyResponse, AgentDiscoverToolsFromAllEnabledMcpServersData, AgentDiscoverToolsFromAllEnabledMcpServersError, AgentDiscoverToolsFromAllEnabledMcpServersResponse, AgentInvokeAToolOnAnMcpServerData, AgentInvokeAToolOnAnMcpServerError, AgentInvokeAToolOnAnMcpServerResponse, AgentListEnabledServersWithCredentialsData, AgentListEnabledServersWithCredentialsError, AgentListEnabledServersWithCredentialsResponse, CancelDeploymentData, CancelDeploymentError, CancelDeploymentResponse, CheckAdminRegistrationData, CheckAdminRegistrationError, CheckAdminRegistrationResponse, CheckCustomDomainDnsData, CheckCustomDomainDnsError, CheckCustomDomainDnsResponse, CheckForUpdatesData, CheckForUpdatesError, CheckForUpdatesResponse, CheckIfFeatureIsEnabledData, CheckIfFeatureIsEnabledError, CheckIfFeatureIsEnabledResponse, CheckOnboardingStatusData, CheckOnboardingStatusError, CheckOnboardingStatusResponse, CopyDirectoryData, CopyDirectoryError, CopyDirectoryResponse, CreateDirectoryData, CreateDirectoryError, CreateDirectoryResponse, CreateGitHubConnectorData, CreateGitHubConnectorError, CreateGitHubConnectorResponse, CreateHealthCheckData, CreateHealthCheckError, CreateHealthCheckResponse, CreateProjectData, CreateProjectError, CreateProjectResponse, CreateSmtpConfigData, CreateSmtpConfigError, CreateSmtpConfigResponse, CreateWebhookConfigData, CreateWebhookConfigError, CreateWebhookConfigResponse, DeleteApplicationData, DeleteApplicationError, DeleteApplicationResponse, DeleteDeploymentArtifactData, DeleteDeploymentArtifactError, DeleteDeploymentArtifactResponse, DeleteDirectoryData, DeleteDirectoryError, DeleteDirectoryResponse, DeleteGitHubConnectorData, DeleteGitHubConnectorError, DeleteGitHubConnectorResponse, DeleteHealthCheckData, DeleteHealthCheckError, DeleteHealthCheckResponse, DeleteMcpServerData, DeleteMcpServerError, DeleteMcpServerResponse, DeleteSmtpConfigData, DeleteSmtpConfigError, DeleteSmtpConfigResponse, DeleteWebhookConfigData, DeleteWebhookConfigError, DeleteWebhookConfigResponse, DeployApplicationData, DeployApplicationError, DeployApplicationFromTemplateData, DeployApplicationFromTemplateError, DeployApplicationFromTemplateResponse, DeployApplicationResponse, DeployProjectData, DeployProjectError, DeployProjectResponse, DuplicateProjectData, DuplicateProjectError, DuplicateProjectResponse, ExecuteACommandOnTheHostMachineData, ExecuteACommandOnTheHostMachineError, ExecuteACommandOnTheHostMachineResponse, GenerateRandomSubdomainData, GenerateRandomSubdomainError, GenerateRandomSubdomainResponse, GetApplicationData, GetApplicationError, GetApplicationLogsData, GetApplicationLogsError, GetApplicationLogsResponse, GetApplicationResponse, GetApplicationServersData, GetApplicationServersError, GetApplicationServersResponse, GetArtifactDownloadUrlData, GetArtifactDownloadUrlError, GetArtifactDownloadUrlResponse, GetBackupScheduleData, GetBackupScheduleError, GetBackupScheduleResponse, GetBootstrapSessionDataData, GetBootstrapSessionDataError, GetBootstrapSessionDataResponse, GetContainerData, GetContainerError, GetContainerLogsData, GetContainerLogsError, GetContainerLogsResponse, GetContainerResponse2, GetCurrentUserProfileData, GetCurrentUserProfileError, GetCurrentUserProfileResponse, GetDeploymentData, GetDeploymentError, GetDeploymentLogsData, GetDeploymentLogsError, GetDeploymentLogsResponse, GetDeploymentResponse, GetExtensionByExtensionIdData, GetExtensionByExtensionIdError, GetExtensionByExtensionIdResponse, GetExtensionByIdData, GetExtensionByIdError, GetExtensionByIdResponse, GetHealthChecksData, GetHealthChecksError, GetHealthChecksResponse, GetHealthCheckStatsData, GetHealthCheckStatsError, GetHealthCheckStatsResponse, GetMachineBillingStatusData, GetMachineBillingStatusError, GetMachineBillingStatusResponse, GetMachineEventsData, GetMachineEventsError, GetMachineEventsResponse, GetMachineLifecycleStatusData, GetMachineLifecycleStatusError, GetMachineLifecycleStatusResponse, GetMachineMetricsData, GetMachineMetricsError, GetMachineMetricsResponse, GetMachineMetricsSummaryData, GetMachineMetricsSummaryError, GetMachineMetricsSummaryResponse, GetMachineSystemStatsData, GetMachineSystemStatsError, GetMachineSystemStatsResponse, GetNotificationPreferencesData, GetNotificationPreferencesError, GetNotificationPreferencesResponse, GetProviderIconData, GetProviderIconError, GetProviderIconResponse, GetSmtpConfigData, GetSmtpConfigError, GetSmtpConfigResponse, GetSshConnectionStatusData, GetSshConnectionStatusError, GetSshConnectionStatusResponse, GetTrailSessionStatusData, GetTrailSessionStatusError, GetTrailSessionStatusResponse, GetUserPreferencesData, GetUserPreferencesError, GetUserPreferencesResponse, GetUserSettingsData, GetUserSettingsError, GetUserSettingsResponse, GetWebhookConfigData, GetWebhookConfigError, GetWebhookConfigResponse, HandleGitHubWebhookData, HandleGitHubWebhookError, HandleGitHubWebhookResponse, HealthCheckData, HealthCheckError, HealthCheckResponse2, ListApplicationDeploymentsData, ListApplicationDeploymentsError, ListApplicationDeploymentsResponse, ListApplicationsData, ListApplicationsError, ListApplicationsResponse2, ListAuditLogsData, ListAuditLogsError, ListAuditLogsResponse, ListAvailableMachinePlansData, ListAvailableMachinePlansError, ListAvailableMachinePlansResponse, ListComposeServicesData, ListComposeServicesError, ListComposeServicesResponse, ListContainersData, ListContainersError, ListContainersResponse2, ListDeploymentArtifactsForAnApplicationData, ListDeploymentArtifactsForAnApplicationError, ListDeploymentArtifactsForAnApplicationResponse, ListDomainsData, ListDomainsError, ListDomainsResponse2, ListExtensionCategoriesData, ListExtensionCategoriesError, ListExtensionCategoriesResponse, ListExtensionsData, ListExtensionsError, ListExtensionsResponse2, ListFamilyEnvironmentsData, ListFamilyEnvironmentsError, ListFamilyEnvironmentsResponse, ListFeatureFlagsData, ListFeatureFlagsError, ListFeatureFlagsResponse2, ListFilesData, ListFilesError, ListFilesResponse2, ListGitHubConnectorsData, ListGitHubConnectorsError, ListGitHubConnectorsResponse, ListGitHubRepositoriesData, ListGitHubRepositoriesError, ListGitHubRepositoriesResponse, ListHealthCheckResultsData, ListHealthCheckResultsError, ListHealthCheckResultsResponse, ListImagesData, ListImagesError, ListImagesResponse2, ListMachineBackupsData, ListMachineBackupsError, ListMachineBackupsResponse, ListMachinesData, ListMachinesError, ListMachinesResponse2, ListMcpProviderCatalogData, ListMcpProviderCatalogError, ListMcpProviderCatalogResponse, ListOrgMcpServersData, ListOrgMcpServersError, ListOrgMcpServersResponse, ListProjectsInFamilyData, ListProjectsInFamilyError, ListProjectsInFamilyResponse, ListRepositoryBranchesData, ListRepositoryBranchesError, ListRepositoryBranchesResponse, MarkOnboardingCompleteData, MarkOnboardingCompleteError, MarkOnboardingCompleteResponse2, MoveDirectoryData, MoveDirectoryError, MoveDirectoryResponse, PauseMachineData, PauseMachineError, PauseMachineResponse, PerformUpdateData, PerformUpdateError, PerformUpdateResponse, PreviewComposeServicesData, PreviewComposeServicesError, PreviewComposeServicesResponse, ProvisionTrailResourcesData, ProvisionTrailResourcesError, ProvisionTrailResourcesResponse, PruneBuildCacheData, PruneBuildCacheError, PruneBuildCacheResponse, PruneImagesData, PruneImagesError, PruneImagesResponse2, RecoverApplicationData, RecoverApplicationError, RecoverApplicationResponse, RedeployApplicationData, RedeployApplicationError, RedeployApplicationResponse, RegisterAbyosMachineData, RegisterAbyosMachineError, RegisterAbyosMachineResponse, RemoveAMachineData, RemoveAMachineError, RemoveAMachineResponse, RemoveApplicationDomainData, RemoveApplicationDomainError, RemoveApplicationDomainResponse, RemoveContainerData, RemoveContainerError, RemoveContainerResponse, RemoveCustomDomainData, RemoveCustomDomainError, RemoveCustomDomainResponse, RenameAMachineData, RenameAMachineError, RenameAMachineResponse, RestartContainerData, RestartContainerError, RestartContainerResponse, RestartDeploymentData, RestartDeploymentError, RestartDeploymentResponse, RestartMachineData, RestartMachineError, RestartMachineResponse, ResumeMachineData, ResumeMachineError, ResumeMachineResponse, RollbackDeploymentData, RollbackDeploymentError, RollbackDeploymentResponse, SelectAMachinePlanData, SelectAMachinePlanError, SelectAMachinePlanResponse, SendNotificationData, SendNotificationError, SendNotificationResponse2, SetApplicationServersData, SetApplicationServersError, SetApplicationServersResponse, SetMachineAsOrgDefaultData, SetMachineAsOrgDefaultError, SetMachineAsOrgDefaultResponse, SShConnectionStatusData, SShConnectionStatusError, SShConnectionStatusResponse, StartContainerData, StartContainerError, StartContainerResponse, StopContainerData, StopContainerError, StopContainerResponse, TestMcpServerConnectionData, TestMcpServerConnectionError, TestMcpServerConnectionResponse, ToggleHealthCheckData, ToggleHealthCheckError, ToggleHealthCheckResponse, TrackCliInstallationEventData, TrackCliInstallationEventError, TrackCliInstallationEventResponse, TriggerMachineBackupData, TriggerMachineBackupError, TriggerMachineBackupResponse, UpdateApplicationData, UpdateApplicationError, UpdateApplicationLabelsData, UpdateApplicationLabelsError, UpdateApplicationLabelsResponse, UpdateApplicationResponse, UpdateAutoUpdateSettingsData, UpdateAutoUpdateSettingsError, UpdateAutoUpdateSettingsResponse, UpdateBackupScheduleData, UpdateBackupScheduleError, UpdateBackupScheduleResponse, UpdateContainerResourcesData, UpdateContainerResourcesError, UpdateContainerResourcesResponse2, UpdateFeatureFlagData, UpdateFeatureFlagError, UpdateFeatureFlagResponse, UpdateFontSettingsData, UpdateFontSettingsError, UpdateFontSettingsResponse, UpdateGitHubConnectorData, UpdateGitHubConnectorError, UpdateGitHubConnectorResponse, UpdateHealthCheckData, UpdateHealthCheckError, UpdateHealthCheckResponse, UpdateLanguageSettingsData, UpdateLanguageSettingsError, UpdateLanguageSettingsResponse, UpdateMcpServerData, UpdateMcpServerError, UpdateMcpServerResponse, UpdateNotificationPreferencesData, UpdateNotificationPreferencesError, UpdateNotificationPreferencesResponse, UpdateSmtpConfigData, UpdateSmtpConfigError, UpdateSmtpConfigResponse, UpdateThemeSettingsData, UpdateThemeSettingsError, UpdateThemeSettingsResponse, UpdateUserAvatarData, UpdateUserAvatarError, UpdateUserAvatarResponse, UpdateUserNameData, UpdateUserNameError, UpdateUserNameResponse, UpdateUserPreferencesData, UpdateUserPreferencesError, UpdateUserPreferencesResponse, UpdateWebhookConfigData, UpdateWebhookConfigError, UpdateWebhookConfigResponse, UploadFileData, UploadFileError, UploadFileResponse, VerifyCustomDomainData, VerifyCustomDomainError, VerifyCustomDomainResponse, VerifySshConnectionData, VerifySshConnectionError, VerifySshConnectionResponse } from '../types.gen';
 
 export type QueryKey<TOptions extends Options> = [
     Pick<TOptions, 'baseUrl' | 'body' | 'headers' | 'path' | 'query'> & {
@@ -1157,6 +1157,29 @@ export const setApplicationServersMutation = (options?: Partial<Options<SetAppli
     return mutationOptions;
 };
 
+/**
+ * Deploy application from template
+ *
+ * Deploy application from template.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const deployApplicationFromTemplateMutation = (options?: Partial<Options<DeployApplicationFromTemplateData>>): UseMutationOptions<DeployApplicationFromTemplateResponse, DeployApplicationFromTemplateError, Options<DeployApplicationFromTemplateData>> => {
+    const mutationOptions: UseMutationOptions<DeployApplicationFromTemplateResponse, DeployApplicationFromTemplateError, Options<DeployApplicationFromTemplateData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deployApplicationFromTemplate({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
 export const listApplicationsQueryKey = (options?: Options<ListApplicationsData>) => createQueryKey('listApplications', options);
 
 /**
@@ -1212,6 +1235,77 @@ export const listApplicationsInfiniteOptions = (options?: Options<ListApplicatio
         return data;
     },
     queryKey: listApplicationsInfiniteQueryKey(options)
+});
+
+export const listDeploymentArtifactsForAnApplicationQueryKey = (options: Options<ListDeploymentArtifactsForAnApplicationData>) => createQueryKey('listDeploymentArtifactsForAnApplication', options);
+
+/**
+ * List deployment artifacts for an application
+ *
+ * List deployment artifacts for an application.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const listDeploymentArtifactsForAnApplicationOptions = (options: Options<ListDeploymentArtifactsForAnApplicationData>) => queryOptions<ListDeploymentArtifactsForAnApplicationResponse, ListDeploymentArtifactsForAnApplicationError, ListDeploymentArtifactsForAnApplicationResponse, ReturnType<typeof listDeploymentArtifactsForAnApplicationQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await listDeploymentArtifactsForAnApplication({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: listDeploymentArtifactsForAnApplicationQueryKey(options)
+});
+
+/**
+ * Delete deployment artifact
+ *
+ * Delete deployment artifact.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const deleteDeploymentArtifactMutation = (options?: Partial<Options<DeleteDeploymentArtifactData>>): UseMutationOptions<DeleteDeploymentArtifactResponse, DeleteDeploymentArtifactError, Options<DeleteDeploymentArtifactData>> => {
+    const mutationOptions: UseMutationOptions<DeleteDeploymentArtifactResponse, DeleteDeploymentArtifactError, Options<DeleteDeploymentArtifactData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deleteDeploymentArtifact({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getArtifactDownloadUrlQueryKey = (options: Options<GetArtifactDownloadUrlData>) => createQueryKey('getArtifactDownloadUrl', options);
+
+/**
+ * Get artifact download URL
+ *
+ * Get artifact download URL.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getArtifactDownloadUrlOptions = (options: Options<GetArtifactDownloadUrlData>) => queryOptions<GetArtifactDownloadUrlResponse, GetArtifactDownloadUrlError, GetArtifactDownloadUrlResponse, ReturnType<typeof getArtifactDownloadUrlQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getArtifactDownloadUrl({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getArtifactDownloadUrlQueryKey(options)
 });
 
 export const listDomainsQueryKey = (options?: Options<ListDomainsData>) => createQueryKey('listDomains', options);
@@ -1436,30 +1530,6 @@ export const getExtensionByExtensionIdOptions = (options: Options<GetExtensionBy
     queryKey: getExtensionByExtensionIdQueryKey(options)
 });
 
-export const listExtensionExecutionsQueryKey = (options: Options<ListExtensionExecutionsData>) => createQueryKey('listExtensionExecutions', options);
-
-/**
- * List extension executions
- *
- * List extension executions.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const listExtensionExecutionsOptions = (options: Options<ListExtensionExecutionsData>) => queryOptions<ListExtensionExecutionsResponse, ListExtensionExecutionsError, ListExtensionExecutionsResponse, ReturnType<typeof listExtensionExecutionsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listExtensionExecutions({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: listExtensionExecutionsQueryKey(options)
-});
-
 export const listExtensionCategoriesQueryKey = (options?: Options<ListExtensionCategoriesData>) => createQueryKey('listExtensionCategories', options);
 
 /**
@@ -1483,146 +1553,6 @@ export const listExtensionCategoriesOptions = (options?: Options<ListExtensionCa
     },
     queryKey: listExtensionCategoriesQueryKey(options)
 });
-
-export const getExecutionQueryKey = (options: Options<GetExecutionData>) => createQueryKey('getExecution', options);
-
-/**
- * Get execution
- *
- * Get execution.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const getExecutionOptions = (options: Options<GetExecutionData>) => queryOptions<GetExecutionResponse, GetExecutionError, GetExecutionResponse, ReturnType<typeof getExecutionQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getExecution({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getExecutionQueryKey(options)
-});
-
-/**
- * Cancel execution
- *
- * Cancel execution.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
- */
-export const cancelExecutionMutation = (options?: Partial<Options<CancelExecutionData>>): UseMutationOptions<CancelExecutionResponse, CancelExecutionError, Options<CancelExecutionData>> => {
-    const mutationOptions: UseMutationOptions<CancelExecutionResponse, CancelExecutionError, Options<CancelExecutionData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await cancelExecution({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const listExecutionLogsQueryKey = (options: Options<ListExecutionLogsData>) => createQueryKey('listExecutionLogs', options);
-
-/**
- * List execution logs
- *
- * List execution logs.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const listExecutionLogsOptions = (options: Options<ListExecutionLogsData>) => queryOptions<ListExecutionLogsResponse, ListExecutionLogsError, ListExecutionLogsResponse, ReturnType<typeof listExecutionLogsQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listExecutionLogs({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: listExecutionLogsQueryKey(options)
-});
-
-/**
- * Fork extension
- *
- * Fork extension.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
- */
-export const forkExtensionMutation = (options?: Partial<Options<ForkExtensionData>>): UseMutationOptions<ForkExtensionResponse, ForkExtensionError, Options<ForkExtensionData>> => {
-    const mutationOptions: UseMutationOptions<ForkExtensionResponse, ForkExtensionError, Options<ForkExtensionData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await forkExtension({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * Run extension
- *
- * Run extension.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
- */
-export const runExtensionMutation = (options?: Partial<Options<RunExtensionData>>): UseMutationOptions<RunExtensionResponse, RunExtensionError, Options<RunExtensionData>> => {
-    const mutationOptions: UseMutationOptions<RunExtensionResponse, RunExtensionError, Options<RunExtensionData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await runExtension({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-/**
- * Delete forked extension
- *
- * Delete forked extension.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
- */
-export const deleteForkedExtensionMutation = (options?: Partial<Options<DeleteForkedExtensionData>>): UseMutationOptions<DeleteForkedExtensionResponse, DeleteForkedExtensionError, Options<DeleteForkedExtensionData>> => {
-    const mutationOptions: UseMutationOptions<DeleteForkedExtensionResponse, DeleteForkedExtensionError, Options<DeleteForkedExtensionData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await deleteForkedExtension({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
 
 export const getExtensionByIdQueryKey = (options: Options<GetExtensionByIdData>) => createQueryKey('getExtensionById', options);
 
@@ -2186,6 +2116,86 @@ export const toggleHealthCheckMutation = (options?: Partial<Options<ToggleHealth
     return mutationOptions;
 };
 
+export const listMachinesQueryKey = (options?: Options<ListMachinesData>) => createQueryKey('listMachines', options);
+
+/**
+ * List machines
+ *
+ * List machines.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const listMachinesOptions = (options?: Options<ListMachinesData>) => queryOptions<ListMachinesResponse2, ListMachinesError, ListMachinesResponse2, ReturnType<typeof listMachinesQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await listMachines({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: listMachinesQueryKey(options)
+});
+
+export const listMachinesInfiniteQueryKey = (options?: Options<ListMachinesData>): QueryKey<Options<ListMachinesData>> => createQueryKey('listMachines', options, true);
+
+/**
+ * List machines
+ *
+ * List machines.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const listMachinesInfiniteOptions = (options?: Options<ListMachinesData>) => infiniteQueryOptions<ListMachinesResponse2, ListMachinesError, InfiniteData<ListMachinesResponse2>, QueryKey<Options<ListMachinesData>>, number | Pick<QueryKey<Options<ListMachinesData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+// @ts-ignore
+{
+    queryFn: async ({ pageParam, queryKey, signal }) => {
+        // @ts-ignore
+        const page: Pick<QueryKey<Options<ListMachinesData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+            query: {
+                page: pageParam
+            }
+        };
+        const params = createInfiniteParams(queryKey, page);
+        const { data } = await listMachines({
+            ...options,
+            ...params,
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: listMachinesInfiniteQueryKey(options)
+});
+
+/**
+ * Register a BYOS machine
+ *
+ * Register a BYOS machine.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const registerAbyosMachineMutation = (options?: Partial<Options<RegisterAbyosMachineData>>): UseMutationOptions<RegisterAbyosMachineResponse, RegisterAbyosMachineError, Options<RegisterAbyosMachineData>> => {
+    const mutationOptions: UseMutationOptions<RegisterAbyosMachineResponse, RegisterAbyosMachineError, Options<RegisterAbyosMachineData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await registerAbyosMachine({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
 /**
  * Trigger machine backup
  *
@@ -2548,6 +2558,30 @@ export const resumeMachineMutation = (options?: Partial<Options<ResumeMachineDat
     return mutationOptions;
 };
 
+export const getSshConnectionStatusQueryKey = (options?: Options<GetSshConnectionStatusData>) => createQueryKey('getSshConnectionStatus', options);
+
+/**
+ * Get SSH connection status
+ *
+ * Get SSH connection status.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getSshConnectionStatusOptions = (options?: Options<GetSshConnectionStatusData>) => queryOptions<GetSshConnectionStatusResponse, GetSshConnectionStatusError, GetSshConnectionStatusResponse, ReturnType<typeof getSshConnectionStatusQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getSshConnectionStatus({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getSshConnectionStatusQueryKey(options)
+});
+
 export const getMachineSystemStatsQueryKey = (options?: Options<GetMachineSystemStatsData>) => createQueryKey('getMachineSystemStats', options);
 
 /**
@@ -2595,6 +2629,169 @@ export const getMachineLifecycleStatusOptions = (options?: Options<GetMachineLif
     },
     queryKey: getMachineLifecycleStatusQueryKey(options)
 });
+
+/**
+ * Provision trail resources
+ *
+ * Provision trail resources.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const provisionTrailResourcesMutation = (options?: Partial<Options<ProvisionTrailResourcesData>>): UseMutationOptions<ProvisionTrailResourcesResponse, ProvisionTrailResourcesError, Options<ProvisionTrailResourcesData>> => {
+    const mutationOptions: UseMutationOptions<ProvisionTrailResourcesResponse, ProvisionTrailResourcesError, Options<ProvisionTrailResourcesData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await provisionTrailResources({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const getTrailSessionStatusQueryKey = (options: Options<GetTrailSessionStatusData>) => createQueryKey('getTrailSessionStatus', options);
+
+/**
+ * Get trail session status
+ *
+ * Get trail session status.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const getTrailSessionStatusOptions = (options: Options<GetTrailSessionStatusData>) => queryOptions<GetTrailSessionStatusResponse, GetTrailSessionStatusError, GetTrailSessionStatusResponse, ReturnType<typeof getTrailSessionStatusQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getTrailSessionStatus({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getTrailSessionStatusQueryKey(options)
+});
+
+/**
+ * Remove a machine
+ *
+ * Remove a machine.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const removeAMachineMutation = (options?: Partial<Options<RemoveAMachineData>>): UseMutationOptions<RemoveAMachineResponse, RemoveAMachineError, Options<RemoveAMachineData>> => {
+    const mutationOptions: UseMutationOptions<RemoveAMachineResponse, RemoveAMachineError, Options<RemoveAMachineData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await removeAMachine({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Rename a machine
+ *
+ * Rename a machine.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const renameAMachineMutation = (options?: Partial<Options<RenameAMachineData>>): UseMutationOptions<RenameAMachineResponse, RenameAMachineError, Options<RenameAMachineData>> => {
+    const mutationOptions: UseMutationOptions<RenameAMachineResponse, RenameAMachineError, Options<RenameAMachineData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await renameAMachine({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Set machine as org default
+ *
+ * Set machine as org default.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const setMachineAsOrgDefaultMutation = (options?: Partial<Options<SetMachineAsOrgDefaultData>>): UseMutationOptions<SetMachineAsOrgDefaultResponse, SetMachineAsOrgDefaultError, Options<SetMachineAsOrgDefaultData>> => {
+    const mutationOptions: UseMutationOptions<SetMachineAsOrgDefaultResponse, SetMachineAsOrgDefaultError, Options<SetMachineAsOrgDefaultData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await setMachineAsOrgDefault({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const sShConnectionStatusQueryKey = (options: Options<SShConnectionStatusData>) => createQueryKey('sShConnectionStatus', options);
+
+/**
+ * SSH connection status
+ *
+ * SSH connection status.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: Read-only operation.
+ */
+export const sShConnectionStatusOptions = (options: Options<SShConnectionStatusData>) => queryOptions<SShConnectionStatusResponse, SShConnectionStatusError, SShConnectionStatusResponse, ReturnType<typeof sShConnectionStatusQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await sShConnectionStatus({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: sShConnectionStatusQueryKey(options)
+});
+
+/**
+ * Verify SSH connection
+ *
+ * Verify SSH connection.
+ *
+ * Auth: Required (bearer token).
+ * Scope: Organization-scoped in authenticated context.
+ * Side effects: May mutate server state.
+ */
+export const verifySshConnectionMutation = (options?: Partial<Options<VerifySshConnectionData>>): UseMutationOptions<VerifySshConnectionResponse, VerifySshConnectionError, Options<VerifySshConnectionData>> => {
+    const mutationOptions: UseMutationOptions<VerifySshConnectionResponse, VerifySshConnectionError, Options<VerifySshConnectionData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await verifySshConnection({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
 
 export const listMcpProviderCatalogQueryKey = (options?: Options<ListMcpProviderCatalogData>) => createQueryKey('listMcpProviderCatalog', options);
 
@@ -3085,181 +3282,6 @@ export const getWebhookConfigOptions = (options: Options<GetWebhookConfigData>) 
         return data;
     },
     queryKey: getWebhookConfigQueryKey(options)
-});
-
-export const listServersQueryKey = (options?: Options<ListServersData>) => createQueryKey('listServers', options);
-
-/**
- * List servers
- *
- * List servers.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const listServersOptions = (options?: Options<ListServersData>) => queryOptions<ListServersResponse2, ListServersError, ListServersResponse2, ReturnType<typeof listServersQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await listServers({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: listServersQueryKey(options)
-});
-
-export const listServersInfiniteQueryKey = (options?: Options<ListServersData>): QueryKey<Options<ListServersData>> => createQueryKey('listServers', options, true);
-
-/**
- * List servers
- *
- * List servers.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const listServersInfiniteOptions = (options?: Options<ListServersData>) => infiniteQueryOptions<ListServersResponse2, ListServersError, InfiniteData<ListServersResponse2>, QueryKey<Options<ListServersData>>, number | Pick<QueryKey<Options<ListServersData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
-// @ts-ignore
-{
-    queryFn: async ({ pageParam, queryKey, signal }) => {
-        // @ts-ignore
-        const page: Pick<QueryKey<Options<ListServersData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
-            query: {
-                page: pageParam
-            }
-        };
-        const params = createInfiniteParams(queryKey, page);
-        const { data } = await listServers({
-            ...options,
-            ...params,
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: listServersInfiniteQueryKey(options)
-});
-
-export const getSshConnectionStatusQueryKey = (options?: Options<GetSshConnectionStatusData>) => createQueryKey('getSshConnectionStatus', options);
-
-/**
- * Get SSH connection status
- *
- * Get SSH connection status.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const getSshConnectionStatusOptions = (options?: Options<GetSshConnectionStatusData>) => queryOptions<GetSshConnectionStatusResponse, GetSshConnectionStatusError, GetSshConnectionStatusResponse, ReturnType<typeof getSshConnectionStatusQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getSshConnectionStatus({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getSshConnectionStatusQueryKey(options)
-});
-
-/**
- * Set server as org default
- *
- * Set server as org default.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
- */
-export const setServerAsOrgDefaultMutation = (options?: Partial<Options<SetServerAsOrgDefaultData>>): UseMutationOptions<SetServerAsOrgDefaultResponse, SetServerAsOrgDefaultError, Options<SetServerAsOrgDefaultData>> => {
-    const mutationOptions: UseMutationOptions<SetServerAsOrgDefaultResponse, SetServerAsOrgDefaultError, Options<SetServerAsOrgDefaultData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await setServerAsOrgDefault({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getSshConnectionStatusForASpecificServerQueryKey = (options: Options<GetSshConnectionStatusForASpecificServerData>) => createQueryKey('getSshConnectionStatusForASpecificServer', options);
-
-/**
- * Get SSH connection status for a specific server
- *
- * Get SSH connection status for a specific server.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const getSshConnectionStatusForASpecificServerOptions = (options: Options<GetSshConnectionStatusForASpecificServerData>) => queryOptions<GetSshConnectionStatusForASpecificServerResponse, GetSshConnectionStatusForASpecificServerError, GetSshConnectionStatusForASpecificServerResponse, ReturnType<typeof getSshConnectionStatusForASpecificServerQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getSshConnectionStatusForASpecificServer({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getSshConnectionStatusForASpecificServerQueryKey(options)
-});
-
-/**
- * Provision trail resources
- *
- * Provision trail resources.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: May mutate server state.
- */
-export const provisionTrailResourcesMutation = (options?: Partial<Options<ProvisionTrailResourcesData>>): UseMutationOptions<ProvisionTrailResourcesResponse, ProvisionTrailResourcesError, Options<ProvisionTrailResourcesData>> => {
-    const mutationOptions: UseMutationOptions<ProvisionTrailResourcesResponse, ProvisionTrailResourcesError, Options<ProvisionTrailResourcesData>> = {
-        mutationFn: async (fnOptions) => {
-            const { data } = await provisionTrailResources({
-                ...options,
-                ...fnOptions,
-                throwOnError: true
-            });
-            return data;
-        }
-    };
-    return mutationOptions;
-};
-
-export const getTrailSessionStatusQueryKey = (options: Options<GetTrailSessionStatusData>) => createQueryKey('getTrailSessionStatus', options);
-
-/**
- * Get trail session status
- *
- * Get trail session status.
- *
- * Auth: Required (bearer token).
- * Scope: Organization-scoped in authenticated context.
- * Side effects: Read-only operation.
- */
-export const getTrailSessionStatusOptions = (options: Options<GetTrailSessionStatusData>) => queryOptions<GetTrailSessionStatusResponse, GetTrailSessionStatusError, GetTrailSessionStatusResponse, ReturnType<typeof getTrailSessionStatusQueryKey>>({
-    queryFn: async ({ queryKey, signal }) => {
-        const { data } = await getTrailSessionStatus({
-            ...options,
-            ...queryKey[0],
-            signal,
-            throwOnError: true
-        });
-        return data;
-    },
-    queryKey: getTrailSessionStatusQueryKey(options)
 });
 
 /**
