@@ -1653,7 +1653,7 @@ export const getNotificationPreferences = <ThrowOnError extends boolean = false>
  * Scope: Organization-scoped in authenticated context.
  * Side effects: May mutate server state.
  */
-export const updateNotificationPreferences = <ThrowOnError extends boolean = false>(options: Options<UpdateNotificationPreferencesData, ThrowOnError>) => (options.client ?? client).post<UpdateNotificationPreferencesResponses, UpdateNotificationPreferencesErrors, ThrowOnError>({
+export const updateNotificationPreferences = <ThrowOnError extends boolean = false>(options: Options<UpdateNotificationPreferencesData, ThrowOnError>) => (options.client ?? client).patch<UpdateNotificationPreferencesResponses, UpdateNotificationPreferencesErrors, ThrowOnError>({
     url: '/api/v1/notification/preferences',
     ...options,
     headers: {

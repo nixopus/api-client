@@ -17,31 +17,76 @@ export type AddApplicationDomainRequest = {
  * AddApplicationToFamilyRequest schema
  */
 export type AddApplicationToFamilyRequest = {
+    /**
+     * Git branch. Defaults to main if not specified
+     */
     branch?: string;
+    /**
+     * Build strategy. Defaults to dockerfile if not specified
+     */
     build_pack?: string;
+    /**
+     * Key-value pairs passed as build arguments to Docker
+     */
     build_variables?: {
         [key: string]: string;
     };
+    /**
+     * Path to the Dockerfile. Defaults to Dockerfile if not specified
+     */
     dockerfile_path?: string;
+    /**
+     * Custom domains for the application
+     */
     domains?: Array<string>;
+    /**
+     * Deployment environment. Defaults to development if not specified
+     */
     environment?: string;
+    /**
+     * Key-value pairs set as runtime environment variables
+     */
     environment_variables?: {
         [key: string]: string;
     };
+    /**
+     * Family ID to add the application to. Creates new family if not provided
+     */
     family_id?: string;
-    name?: string;
+    /**
+     * Application name
+     */
+    name: string;
+    /**
+     * Base path for the application. Defaults to /
+     */
     path?: string;
+    /**
+     * Port the application listens on. Defaults to 8080 if not specified
+     */
     port?: number;
+    /**
+     * Command to run after the application starts
+     */
     post_run_command?: string;
+    /**
+     * Command to run before the application starts
+     */
     pre_run_command?: string;
-    repository?: string;
+    /**
+     * Git repository URL or identifier
+     */
+    repository: string;
 };
 
 /**
  * AddCustomDomainRequest schema
  */
 export type AddCustomDomainRequest = {
-    name?: string;
+    /**
+     * Fully qualified domain name to add
+     */
+    name: string;
 };
 
 /**
@@ -605,18 +650,30 @@ export type BootstrapResponse = {
  * CallToolRequest schema
  */
 export type CallToolRequest = {
+    /**
+     * Tool-specific arguments as key-value pairs
+     */
     arguments?: {
         [key: string]: string;
     };
-    server_id?: string;
-    tool_name?: string;
+    /**
+     * ID of the MCP server to call the tool on
+     */
+    server_id: string;
+    /**
+     * Name of the MCP tool to invoke
+     */
+    tool_name: string;
 };
 
 /**
  * CancelDeploymentRequest schema
  */
 export type CancelDeploymentRequest = {
-    deployment_id?: string;
+    /**
+     * Deployment ID to cancel
+     */
+    deployment_id: string;
 };
 
 /**
@@ -716,32 +773,98 @@ export type CopyDirectory = {
  * CreateDeploymentRequest schema
  */
 export type CreateDeploymentRequest = {
+    /**
+     * Base path for the application. Defaults to /
+     */
     base_path?: string;
-    branch?: string;
-    build_pack?: string;
+    /**
+     * Git branch to deploy
+     */
+    branch: string;
+    /**
+     * Build strategy for the application
+     */
+    build_pack: string;
+    /**
+     * Key-value pairs passed as build arguments to Docker
+     */
     build_variables?: {
         [key: string]: string;
     };
+    /**
+     * Domain-to-service mappings for compose deployments
+     */
     compose_domains?: Array<{
-        domain?: string;
+        /**
+         * Domain name for the compose service
+         */
+        domain: string;
+        /**
+         * Port override for the compose service
+         */
         port?: number;
+        /**
+         * Name of the compose service to route to
+         */
         service_name?: string;
     }>;
+    /**
+     * Path to the Dockerfile relative to the repository root
+     */
     dockerfile_path?: string;
+    /**
+     * Custom domains for the application
+     */
     domains?: Array<string>;
-    environment?: string;
+    /**
+     * Deployment environment
+     */
+    environment: string;
+    /**
+     * Key-value pairs set as runtime environment variables
+     */
     environment_variables?: {
         [key: string]: string;
     };
-    name?: string;
-    port?: number;
+    /**
+     * Application name
+     */
+    name: string;
+    /**
+     * Port the application listens on
+     */
+    port: number;
+    /**
+     * Command to run after the application starts
+     */
     post_run_command?: string;
+    /**
+     * Command to run before the application starts
+     */
     pre_run_command?: string;
+    /**
+     * Primary server ID for routing
+     */
     primary_server_id?: string;
-    repository?: string;
+    /**
+     * Git repository URL or identifier
+     */
+    repository: string;
+    /**
+     * Routing strategy for multi-server deployments
+     */
     routing_strategy?: string;
+    /**
+     * Server IDs to deploy the application to
+     */
     server_ids?: Array<string>;
+    /**
+     * Source type of the repository
+     */
     source?: string;
+    /**
+     * Specific server IDs to target for this deployment
+     */
     target_server_ids?: Array<string>;
 };
 
@@ -756,12 +879,33 @@ export type CreateDirectoryRequest = {
  * CreateGithubConnectorRequest schema
  */
 export type CreateGithubConnectorRequest = {
+    /**
+     * GitHub App ID. Required if providing custom app credentials
+     */
     app_id?: string;
+    /**
+     * GitHub App OAuth client ID
+     */
     client_id?: string;
+    /**
+     * GitHub App OAuth client secret
+     */
     client_secret?: string;
+    /**
+     * GitHub App installation ID
+     */
     installation_id?: string;
+    /**
+     * GitHub App private key in PEM format
+     */
     pem?: string;
+    /**
+     * GitHub App slug
+     */
     slug?: string;
+    /**
+     * GitHub App webhook secret
+     */
     webhook_secret?: string;
 };
 
@@ -769,18 +913,51 @@ export type CreateGithubConnectorRequest = {
  * CreateHealthCheckRequest schema
  */
 export type CreateHealthCheckRequest = {
+    /**
+     * ID of the application to monitor
+     */
     application_id: string;
+    /**
+     * Request body to send with health check requests
+     */
     body?: string;
+    /**
+     * Health check endpoint path or URL. Defaults to /
+     */
     endpoint?: string;
+    /**
+     * Expected HTTP status codes. Defaults to [200]
+     */
     expected_status_codes?: Array<number>;
+    /**
+     * Consecutive failures before marking unhealthy (1-10). Defaults to 3
+     */
     failure_threshold?: number;
+    /**
+     * Custom HTTP headers to include in health check requests
+     */
     headers?: {
         [key: string]: string;
     };
+    /**
+     * Check interval in seconds (30-3600). Defaults to 60
+     */
     interval_seconds?: number;
+    /**
+     * HTTP method to use. Must be GET, POST, or HEAD. Defaults to GET
+     */
     method?: string;
+    /**
+     * Number of days to retain health check results (1-365). Defaults to 30
+     */
     retention_days?: number;
+    /**
+     * Consecutive successes before marking healthy (1-10). Defaults to 1
+     */
     success_threshold?: number;
+    /**
+     * Request timeout in seconds (5-120). Defaults to 30
+     */
     timeout_seconds?: number;
 };
 
@@ -810,35 +987,107 @@ export type CreateMachineResponse = {
  * CreateProjectRequest schema
  */
 export type CreateProjectRequest = {
+    /**
+     * Base path for the application. Defaults to / if not specified
+     */
     base_path?: string;
+    /**
+     * Git branch to deploy. Defaults to main if not specified
+     */
     branch?: string;
+    /**
+     * Build strategy. Defaults to dockerfile if not specified
+     */
     build_pack?: string;
+    /**
+     * Key-value pairs passed as build arguments to Docker
+     */
     build_variables?: {
         [key: string]: string;
     };
+    /**
+     * Domain-to-service mappings for compose deployments
+     */
     compose_domains?: Array<{
-        domain?: string;
+        /**
+         * Domain name for the compose service
+         */
+        domain: string;
+        /**
+         * Port override for the compose service
+         */
         port?: number;
+        /**
+         * Name of the compose service to route to
+         */
         service_name?: string;
     }>;
+    /**
+     * Compose services configuration
+     */
     compose_services?: Array<{
-        port?: number;
-        service_name?: string;
+        /**
+         * Port the service listens on
+         */
+        port: number;
+        /**
+         * Name of the compose service
+         */
+        service_name: string;
     }>;
+    /**
+     * Path to the Dockerfile. Defaults to Dockerfile if not specified
+     */
     dockerfile_path?: string;
+    /**
+     * Custom domains for the project
+     */
     domains?: Array<string>;
+    /**
+     * Deployment environment. Defaults to production if not specified
+     */
     environment?: string;
+    /**
+     * Key-value pairs set as runtime environment variables
+     */
     environment_variables?: {
         [key: string]: string;
     };
-    name?: string;
+    /**
+     * Project name
+     */
+    name: string;
+    /**
+     * Port the application listens on. Defaults to 3000 if not specified
+     */
     port?: number;
+    /**
+     * Command to run after the application starts
+     */
     post_run_command?: string;
+    /**
+     * Command to run before the application starts
+     */
     pre_run_command?: string;
+    /**
+     * Primary server ID for routing
+     */
     primary_server_id?: string;
-    repository?: string;
+    /**
+     * Git repository URL or identifier
+     */
+    repository: string;
+    /**
+     * Routing strategy for multi-server deployments
+     */
     routing_strategy?: string;
+    /**
+     * Server IDs to deploy the application to
+     */
     server_ids?: Array<string>;
+    /**
+     * Source type of the repository
+     */
     source?: string;
 };
 
@@ -846,38 +1095,95 @@ export type CreateProjectRequest = {
  * CreateSMTPConfigRequest schema
  */
 export type CreateSmtpConfigRequest = {
+    /**
+     * Sender email address for outgoing emails
+     */
     from_email?: string;
+    /**
+     * Display name for outgoing emails
+     */
     from_name?: string;
-    host?: string;
-    organization_id?: string;
-    password?: string;
-    port?: number;
-    username?: string;
+    /**
+     * SMTP server hostname
+     */
+    host: string;
+    /**
+     * Organization this SMTP config belongs to
+     */
+    organization_id: string;
+    /**
+     * SMTP authentication password
+     */
+    password: string;
+    /**
+     * SMTP server port
+     */
+    port: number;
+    /**
+     * SMTP authentication username
+     */
+    username: string;
 };
 
 /**
  * CreateServerRequest schema
  */
 export type CreateServerRequest = {
+    /**
+     * Provider-specific credential key-value pairs
+     */
     credentials?: {
         [key: string]: string;
     };
+    /**
+     * Custom server URL. Required when provider_id is 'custom'. Must use HTTPS
+     */
     custom_url?: string;
+    /**
+     * Whether the server is active
+     */
     enabled?: boolean;
-    name?: string;
-    provider_id?: string;
+    /**
+     * Display name for this MCP server
+     */
+    name: string;
+    /**
+     * MCP provider identifier (e.g. 'openai', 'anthropic', 'custom')
+     */
+    provider_id: string;
 };
 
 /**
  * CreateTemplateDeploymentRequest schema
  */
 export type CreateTemplateDeploymentRequest = {
+    /**
+     * Deployment environment
+     */
     environment?: string;
-    name?: string;
+    /**
+     * Name for the deployed application
+     */
+    name: string;
+    /**
+     * Primary server ID for routing
+     */
     primary_server_id?: string;
+    /**
+     * Routing strategy for multi-server deployments
+     */
     routing_strategy?: string;
+    /**
+     * Server IDs to deploy to
+     */
     server_ids?: Array<string>;
-    template_id?: string;
+    /**
+     * Template ID to deploy from
+     */
+    template_id: string;
+    /**
+     * Template-specific configuration variables
+     */
     variables?: {
         [key: string]: string;
     };
@@ -887,8 +1193,14 @@ export type CreateTemplateDeploymentRequest = {
  * CreateWebhookConfigRequest schema
  */
 export type CreateWebhookConfigRequest = {
+    /**
+     * Webhook integration type
+     */
     type: string;
-    webhook_url?: string;
+    /**
+     * Webhook URL for the integration
+     */
+    webhook_url: string;
 };
 
 /**
@@ -956,7 +1268,10 @@ export type DnsSetupResponse = {
  * DeleteDeploymentRequest schema
  */
 export type DeleteDeploymentRequest = {
-    id?: string;
+    /**
+     * Application ID to delete
+     */
+    id: string;
 };
 
 /**
@@ -970,6 +1285,9 @@ export type DeleteDirectoryRequest = {
  * DeleteGithubConnectorRequest schema
  */
 export type DeleteGithubConnectorRequest = {
+    /**
+     * GitHub connector ID to delete
+     */
     id: string;
 };
 
@@ -984,7 +1302,10 @@ export type DeleteMachineResponse = {
  * DeleteSMTPConfigRequest schema
  */
 export type DeleteSmtpConfigRequest = {
-    id?: string;
+    /**
+     * SMTP configuration ID to delete
+     */
+    id: string;
 };
 
 /**
@@ -998,6 +1319,9 @@ export type DeleteServerRequest = {
  * DeleteWebhookConfigRequest schema
  */
 export type DeleteWebhookConfigRequest = {
+    /**
+     * Webhook integration type to delete
+     */
     type: string;
 };
 
@@ -1005,7 +1329,10 @@ export type DeleteWebhookConfigRequest = {
  * DeployProjectRequest schema
  */
 export type DeployProjectRequest = {
-    id?: string;
+    /**
+     * Project ID to deploy
+     */
+    id: string;
 };
 
 /**
@@ -1155,13 +1482,34 @@ export type DeploymentResponse = {
  * DuplicateProjectRequest schema
  */
 export type DuplicateProjectRequest = {
+    /**
+     * Git branch override for the duplicate
+     */
     branch?: string;
+    /**
+     * Custom domains for the duplicated project
+     */
     domains?: Array<string>;
-    environment?: string;
+    /**
+     * Environment for the duplicated project
+     */
+    environment: string;
+    /**
+     * Primary server ID for routing
+     */
     primary_server_id?: string;
+    /**
+     * Routing strategy for multi-server deployments
+     */
     routing_strategy?: string;
+    /**
+     * Server IDs to deploy the duplicate to
+     */
     server_ids?: Array<string>;
-    source_project_id?: string;
+    /**
+     * ID of the project to duplicate
+     */
+    source_project_id: string;
 };
 
 /**
@@ -2433,21 +2781,57 @@ export type MoveDirectory = {
 export type PreferencesResponse = {
     data?: {
         activity?: Array<{
+            /**
+             * Description of the preference type
+             */
             description: string;
+            /**
+             * Whether this preference is enabled
+             */
             enabled?: boolean;
+            /**
+             * Preference type identifier
+             */
             id: string;
+            /**
+             * Display label for the preference
+             */
             label: string;
         }>;
         security?: Array<{
+            /**
+             * Description of the preference type
+             */
             description: string;
+            /**
+             * Whether this preference is enabled
+             */
             enabled?: boolean;
+            /**
+             * Preference type identifier
+             */
             id: string;
+            /**
+             * Display label for the preference
+             */
             label: string;
         }>;
         update?: Array<{
+            /**
+             * Description of the preference type
+             */
             description: string;
+            /**
+             * Whether this preference is enabled
+             */
             enabled?: boolean;
+            /**
+             * Preference type identifier
+             */
             id: string;
+            /**
+             * Display label for the preference
+             */
             label: string;
         }>;
     };
@@ -2459,10 +2843,22 @@ export type PreferencesResponse = {
  * PreviewComposeRequest schema
  */
 export type PreviewComposeRequest = {
+    /**
+     * Base path within the repository
+     */
     base_path?: string;
-    branch?: string;
+    /**
+     * Git branch to preview
+     */
+    branch: string;
+    /**
+     * Path to the Dockerfile
+     */
     dockerfile_path?: string;
-    repository?: string;
+    /**
+     * Git repository URL or identifier
+     */
+    repository: string;
 };
 
 /**
@@ -2470,8 +2866,14 @@ export type PreviewComposeRequest = {
  */
 export type PreviewComposeResponse = {
     services?: Array<{
-        port?: number;
-        service_name?: string;
+        /**
+         * Port the service listens on
+         */
+        port: number;
+        /**
+         * Name of the compose service
+         */
+        service_name: string;
     }>;
 };
 
@@ -2689,9 +3091,21 @@ export type RandomSubdomainResponseWrapper = {
  * ReDeployApplicationRequest schema
  */
 export type ReDeployApplicationRequest = {
+    /**
+     * Force redeployment even if already deploying
+     */
     force?: boolean;
+    /**
+     * Force redeployment without using Docker build cache
+     */
     force_without_cache?: boolean;
-    id?: string;
+    /**
+     * Application ID to redeploy
+     */
+    id: string;
+    /**
+     * Specific server IDs to target for this redeployment
+     */
     target_server_ids?: Array<string>;
 };
 
@@ -2699,6 +3113,9 @@ export type ReDeployApplicationRequest = {
  * RecoverRequest schema
  */
 export type RecoverRequest = {
+    /**
+     * Application ID to recover. If not provided, recovers all applications
+     */
     application_id?: string;
 };
 
@@ -2738,7 +3155,10 @@ export type RemoveApplicationDomainRequest = {
  * RemoveCustomDomainRequest schema
  */
 export type RemoveCustomDomainRequest = {
-    id?: string;
+    /**
+     * Custom domain ID to remove
+     */
+    id: string;
 };
 
 /**
@@ -2769,14 +3189,23 @@ export type Response = {
  * RestartDeploymentRequest schema
  */
 export type RestartDeploymentRequest = {
-    id?: string;
+    /**
+     * Application ID to restart
+     */
+    id: string;
 };
 
 /**
  * RollbackDeploymentRequest schema
  */
 export type RollbackDeploymentRequest = {
-    id?: string;
+    /**
+     * Application ID to roll back
+     */
+    id: string;
+    /**
+     * Specific server IDs to target for the rollback
+     */
     target_server_ids?: Array<string>;
 };
 
@@ -2853,12 +3282,27 @@ export type SelectPlanResponse = {
  * SendNotificationRequest schema
  */
 export type SendNotificationRequest = {
+    /**
+     * Notification delivery channel
+     */
     channel: string;
+    /**
+     * Notification message body
+     */
     message: string;
+    /**
+     * Additional key-value metadata for the notification
+     */
     metadata?: {
         [key: string]: string;
     };
+    /**
+     * Email subject line (only for email channel)
+     */
     subject?: string;
+    /**
+     * Recipient email address (only for email channel)
+     */
     to?: string;
 };
 
@@ -2879,10 +3323,22 @@ export type SendNotificationResponse = {
  * SetApplicationServersRequest schema
  */
 export type SetApplicationServersRequest = {
-    application_id?: string;
+    /**
+     * Application ID to assign servers to
+     */
+    application_id: string;
+    /**
+     * Primary server ID for routing
+     */
     primary_server_id?: string;
+    /**
+     * Routing strategy for multi-server deployments
+     */
     routing_strategy?: string;
-    server_ids?: Array<string>;
+    /**
+     * Server IDs to assign to the application
+     */
+    server_ids: Array<string>;
 };
 
 /**
@@ -2988,18 +3444,33 @@ export type SystemStatsResponse = {
  * TestServerRequest schema
  */
 export type TestServerRequest = {
+    /**
+     * Credentials to use for the test
+     */
     credentials?: {
         [key: string]: string;
     };
+    /**
+     * Custom URL to test. Required when provider_id is 'custom'
+     */
     custom_url?: string;
-    provider_id?: string;
+    /**
+     * MCP provider to test connection for
+     */
+    provider_id: string;
 };
 
 /**
  * ToggleHealthCheckRequest schema
  */
 export type ToggleHealthCheckRequest = {
+    /**
+     * ID of the application to toggle health check for
+     */
     application_id: string;
+    /**
+     * Whether the health check should be enabled
+     */
     enabled?: boolean;
 };
 
@@ -3007,12 +3478,30 @@ export type ToggleHealthCheckRequest = {
  * TrackInstallRequest schema
  */
 export type TrackInstallRequest = {
-    arch?: string;
+    /**
+     * CPU architecture. Valid values: amd64, arm64, unknown
+     */
+    arch: string;
+    /**
+     * Installation duration in seconds
+     */
     duration?: number;
+    /**
+     * Error message if installation failed
+     */
     error?: string;
-    event_type?: string;
-    os?: string;
-    version?: string;
+    /**
+     * Type of installation event
+     */
+    event_type: string;
+    /**
+     * Operating system identifier. Valid values: ubuntu, debian, centos, fedora, rhel, alpine, arch, opensuse, sles, amzn, ol, rocky, almalinux, raspbian, pop, mint, manjaro, kali, nixos, gentoo, void, slackware, clear-linux-os, unknown
+     */
+    os: string;
+    /**
+     * Semantic version string (e.g. 1.2.3 or 1.2.3-beta.1)
+     */
+    version: string;
 };
 
 /**
@@ -3054,6 +3543,9 @@ export type TriggerBackupResponse = {
  * UpdateAutoUpdateRequest schema
  */
 export type UpdateAutoUpdateRequest = {
+    /**
+     * Whether to automatically apply updates
+     */
     auto_update?: boolean;
 };
 
@@ -3061,7 +3553,10 @@ export type UpdateAutoUpdateRequest = {
  * UpdateAvatarRequest schema
  */
 export type UpdateAvatarRequest = {
-    avatarData?: string;
+    /**
+     * Base64-encoded image data URI. Must start with data:image/{jpeg,jpg,png,gif};base64,
+     */
+    avatarData: string;
 };
 
 /**
@@ -3103,28 +3598,82 @@ export type UpdateContainerResourcesResponse = {
  * UpdateDeploymentRequest schema
  */
 export type UpdateDeploymentRequest = {
+    /**
+     * Base path for the application
+     */
     base_path?: string;
+    /**
+     * Build strategy. Must be valid if provided
+     */
     build_pack?: string;
+    /**
+     * Key-value pairs passed as build arguments to Docker
+     */
     build_variables?: {
         [key: string]: string;
     };
+    /**
+     * Domain-to-service mappings for compose deployments
+     */
     compose_domains?: Array<{
-        domain?: string;
+        /**
+         * Domain name for the compose service
+         */
+        domain: string;
+        /**
+         * Port override for the compose service
+         */
         port?: number;
+        /**
+         * Name of the compose service to route to
+         */
         service_name?: string;
     }>;
+    /**
+     * Path to the Dockerfile relative to the repository root
+     */
     dockerfile_path?: string;
+    /**
+     * Custom domains for the application. Maximum 5 allowed
+     */
     domains?: Array<string>;
+    /**
+     * Deployment environment. Must be valid if provided
+     */
     environment?: string;
+    /**
+     * Key-value pairs set as runtime environment variables
+     */
     environment_variables?: {
         [key: string]: string;
     };
+    /**
+     * Force the update even if a deployment is in progress
+     */
     force?: boolean;
+    /**
+     * Application ID to update
+     */
     id?: string;
+    /**
+     * Application name. Minimum 3 characters if provided
+     */
     name?: string;
+    /**
+     * Port the application listens on
+     */
     port?: number;
+    /**
+     * Command to run after the application starts
+     */
     post_run_command?: string;
+    /**
+     * Command to run before the application starts
+     */
     pre_run_command?: string;
+    /**
+     * Routing strategy for multi-server deployments
+     */
     routing_strategy?: string;
 };
 
@@ -3140,34 +3689,79 @@ export type UpdateFeatureFlagRequest = {
  * UpdateFontRequest schema
  */
 export type UpdateFontRequest = {
-    font_family?: string;
-    font_size?: number;
+    /**
+     * Font family name for the editor
+     */
+    font_family: string;
+    /**
+     * Font size in pixels
+     */
+    font_size: number;
 };
 
 /**
  * UpdateGithubConnectorRequest schema
  */
 export type UpdateGithubConnectorRequest = {
+    /**
+     * Connector ID to update. If provided, updates this specific connector
+     */
     connector_id?: string;
-    installation_id?: string;
+    /**
+     * GitHub App installation ID
+     */
+    installation_id: string;
 };
 
 /**
  * UpdateHealthCheckRequest schema
  */
 export type UpdateHealthCheckRequest = {
+    /**
+     * ID of the application to update health check for
+     */
     application_id: string;
+    /**
+     * Request body to send with health check requests
+     */
     body?: string;
+    /**
+     * Health check endpoint path or URL. Must start with /, http://, or https://
+     */
     endpoint?: string;
+    /**
+     * Expected HTTP status codes
+     */
     expected_status_codes?: Array<number>;
+    /**
+     * Consecutive failures before marking unhealthy (1-10)
+     */
     failure_threshold?: number;
+    /**
+     * Custom HTTP headers to include in health check requests
+     */
     headers?: {
         [key: string]: string;
     };
+    /**
+     * Check interval in seconds (30-3600)
+     */
     interval_seconds?: number;
+    /**
+     * HTTP method to use. Must be GET, POST, or HEAD
+     */
     method?: string;
+    /**
+     * Number of days to retain health check results (1-365)
+     */
     retention_days?: number;
+    /**
+     * Consecutive successes before marking healthy (1-10)
+     */
     success_threshold?: number;
+    /**
+     * Request timeout in seconds (5-120)
+     */
     timeout_seconds?: number;
 };
 
@@ -3182,15 +3776,27 @@ export type UpdateLabelsRequest = {
  * UpdateLanguageRequest schema
  */
 export type UpdateLanguageRequest = {
-    language?: string;
+    /**
+     * Preferred language code
+     */
+    language: string;
 };
 
 /**
  * UpdatePreferenceRequest schema
  */
 export type UpdatePreferenceRequest = {
+    /**
+     * Notification category
+     */
     category: string;
+    /**
+     * Whether this notification preference is enabled
+     */
     enabled?: boolean;
+    /**
+     * Preference type identifier
+     */
     type: string;
 };
 
@@ -3213,13 +3819,37 @@ export type UpdateResponse = {
  * UpdateSMTPConfigRequest schema
  */
 export type UpdateSmtpConfigRequest = {
+    /**
+     * Sender email address for outgoing emails
+     */
     from_email?: string;
+    /**
+     * Display name for outgoing emails
+     */
     from_name?: string;
+    /**
+     * SMTP server hostname
+     */
     host?: string;
-    id?: string;
-    organization_id?: string;
+    /**
+     * SMTP configuration ID to update
+     */
+    id: string;
+    /**
+     * Organization this SMTP config belongs to
+     */
+    organization_id: string;
+    /**
+     * SMTP authentication password
+     */
     password?: string;
+    /**
+     * SMTP server port
+     */
     port?: number;
+    /**
+     * SMTP authentication username
+     */
     username?: string;
 };
 
@@ -3227,27 +3857,48 @@ export type UpdateSmtpConfigRequest = {
  * UpdateServerRequest schema
  */
 export type UpdateServerRequest = {
+    /**
+     * Updated provider credentials
+     */
     credentials?: {
         [key: string]: string;
     };
+    /**
+     * Updated custom server URL. Must use HTTPS if provided
+     */
     custom_url?: string;
+    /**
+     * Whether the server is active
+     */
     enabled?: boolean;
-    id?: string;
-    name?: string;
+    /**
+     * MCP server ID to update
+     */
+    id: string;
+    /**
+     * Updated display name
+     */
+    name: string;
 };
 
 /**
  * UpdateThemeRequest schema
  */
 export type UpdateThemeRequest = {
-    theme?: string;
+    /**
+     * UI theme name
+     */
+    theme: string;
 };
 
 /**
  * UpdateUserNameRequest schema
  */
 export type UpdateUserNameRequest = {
-    name?: string;
+    /**
+     * New username. Must be 3-50 characters with no spaces
+     */
+    name: string;
 };
 
 /**
@@ -3265,8 +3916,17 @@ export type UpdateUsernameResponse = {
  * UpdateWebhookConfigRequest schema
  */
 export type UpdateWebhookConfigRequest = {
+    /**
+     * Whether the webhook integration is active
+     */
     is_active?: boolean;
+    /**
+     * Webhook integration type
+     */
     type: string;
+    /**
+     * Updated webhook URL
+     */
     webhook_url?: string;
 };
 
@@ -3425,7 +4085,10 @@ export type UserSettingsResponse = {
  * VerifyCustomDomainRequest schema
  */
 export type VerifyCustomDomainRequest = {
-    id?: string;
+    /**
+     * Custom domain ID to verify DNS records for
+     */
+    id: string;
 };
 
 /**
@@ -3605,9 +4268,9 @@ export type TrackCliInstallationEventError = TrackCliInstallationEventErrors[key
 
 export type TrackCliInstallationEventResponses = {
     /**
-     * OK
+     * Created
      */
-    200: TrackInstallResponse;
+    201: TrackInstallResponse;
 };
 
 export type TrackCliInstallationEventResponse = TrackCliInstallationEventResponses[keyof TrackCliInstallationEventResponses];
@@ -4107,9 +4770,9 @@ export type DeployApplicationError = DeployApplicationErrors[keyof DeployApplica
 
 export type DeployApplicationResponses = {
     /**
-     * OK
+     * Created
      */
-    200: ApplicationResponse;
+    201: ApplicationResponse;
 };
 
 export type DeployApplicationResponse = DeployApplicationResponses[keyof DeployApplicationResponses];
@@ -4242,7 +4905,7 @@ export type ListApplicationDeploymentsData = {
         /**
          * Page size
          */
-        limit?: number;
+        page_size?: number;
     };
     url: '/api/v1/deploy/application/deployments';
 };
@@ -4440,9 +5103,9 @@ export type AddApplicationDomainError = AddApplicationDomainErrors[keyof AddAppl
 
 export type AddApplicationDomainResponses = {
     /**
-     * OK
+     * Created
      */
-    200: ApplicationResponse;
+    201: ApplicationResponse;
 };
 
 export type AddApplicationDomainResponse = AddApplicationDomainResponses[keyof AddApplicationDomainResponses];
@@ -4613,9 +5276,9 @@ export type CreateProjectError = CreateProjectErrors[keyof CreateProjectErrors];
 
 export type CreateProjectResponses = {
     /**
-     * OK
+     * Created
      */
-    200: ApplicationResponse;
+    201: ApplicationResponse;
 };
 
 export type CreateProjectResponse = CreateProjectResponses[keyof CreateProjectResponses];
@@ -4649,9 +5312,9 @@ export type AddProjectToFamilyError = AddProjectToFamilyErrors[keyof AddProjectT
 
 export type AddProjectToFamilyResponses = {
     /**
-     * OK
+     * Created
      */
-    200: ApplicationResponse;
+    201: ApplicationResponse;
 };
 
 export type AddProjectToFamilyResponse = AddProjectToFamilyResponses[keyof AddProjectToFamilyResponses];
@@ -4721,9 +5384,9 @@ export type DuplicateProjectError = DuplicateProjectErrors[keyof DuplicateProjec
 
 export type DuplicateProjectResponses = {
     /**
-     * OK
+     * Created
      */
-    200: ApplicationResponse;
+    201: ApplicationResponse;
 };
 
 export type DuplicateProjectResponse = DuplicateProjectResponses[keyof DuplicateProjectResponses];
@@ -5051,9 +5714,9 @@ export type DeployApplicationFromTemplateError = DeployApplicationFromTemplateEr
 
 export type DeployApplicationFromTemplateResponses = {
     /**
-     * OK
+     * Created
      */
-    200: ApplicationResponse;
+    201: ApplicationResponse;
 };
 
 export type DeployApplicationFromTemplateResponse = DeployApplicationFromTemplateResponses[keyof DeployApplicationFromTemplateResponses];
@@ -5319,9 +5982,9 @@ export type AddCustomDomainError = AddCustomDomainErrors[keyof AddCustomDomainEr
 
 export type AddCustomDomainResponses = {
     /**
-     * OK
+     * Created
      */
-    200: DnsSetupResponse;
+    201: DnsSetupResponse;
 };
 
 export type AddCustomDomainResponse = AddCustomDomainResponses[keyof AddCustomDomainResponses];
@@ -5985,9 +6648,9 @@ export type CreateGitHubConnectorError = CreateGitHubConnectorErrors[keyof Creat
 
 export type CreateGitHubConnectorResponses = {
     /**
-     * OK
+     * Created
      */
-    200: MessageResponse;
+    201: MessageResponse;
 };
 
 export type CreateGitHubConnectorResponse = CreateGitHubConnectorResponses[keyof CreateGitHubConnectorResponses];
@@ -6268,9 +6931,9 @@ export type CreateHealthCheckError = CreateHealthCheckErrors[keyof CreateHealthC
 
 export type CreateHealthCheckResponses = {
     /**
-     * OK
+     * Created
      */
-    200: HealthCheckResponse;
+    201: HealthCheckResponse;
 };
 
 export type CreateHealthCheckResponse = CreateHealthCheckResponses[keyof CreateHealthCheckResponses];
@@ -6530,9 +7193,9 @@ export type RegisterAbyosMachineError = RegisterAbyosMachineErrors[keyof Registe
 
 export type RegisterAbyosMachineResponses = {
     /**
-     * OK
+     * Created
      */
-    200: CreateMachineResponse;
+    201: CreateMachineResponse;
 };
 
 export type RegisterAbyosMachineResponse = RegisterAbyosMachineResponses[keyof RegisterAbyosMachineResponses];
@@ -7684,9 +8347,9 @@ export type AddMcpServerError = AddMcpServerErrors[keyof AddMcpServerErrors];
 
 export type AddMcpServerResponses = {
     /**
-     * OK
+     * Created
      */
-    200: Response;
+    201: Response;
 };
 
 export type AddMcpServerResponse = AddMcpServerResponses[keyof AddMcpServerResponses];
@@ -7973,9 +8636,9 @@ export type CreateSmtpConfigError = CreateSmtpConfigErrors[keyof CreateSmtpConfi
 
 export type CreateSmtpConfigResponses = {
     /**
-     * OK
+     * Created
      */
-    200: MessageResponse;
+    201: MessageResponse;
 };
 
 export type CreateSmtpConfigResponse = CreateSmtpConfigResponses[keyof CreateSmtpConfigResponses];
@@ -8081,9 +8744,9 @@ export type CreateWebhookConfigError = CreateWebhookConfigErrors[keyof CreateWeb
 
 export type CreateWebhookConfigResponses = {
     /**
-     * OK
+     * Created
      */
-    200: WebhookConfigResponse;
+    201: WebhookConfigResponse;
 };
 
 export type CreateWebhookConfigResponse = CreateWebhookConfigResponses[keyof CreateWebhookConfigResponses];

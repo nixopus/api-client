@@ -23,19 +23,19 @@ export const zAddApplicationToFamilyRequest = z.object({
     environment: z.string().optional(),
     environment_variables: z.record(z.string(), z.string()).optional(),
     family_id: z.uuid().optional(),
-    name: z.string().optional(),
+    name: z.string(),
     path: z.string().optional(),
     port: z.int().optional(),
     post_run_command: z.string().optional(),
     pre_run_command: z.string().optional(),
-    repository: z.string().optional()
+    repository: z.string()
 });
 
 /**
  * AddCustomDomainRequest schema
  */
 export const zAddCustomDomainRequest = z.object({
-    name: z.string().optional()
+    name: z.string().min(3).max(255)
 });
 
 /**
@@ -206,15 +206,15 @@ export const zBootstrapResponse = z.object({
  */
 export const zCallToolRequest = z.object({
     arguments: z.record(z.string(), z.string()).optional(),
-    server_id: z.uuid().optional(),
-    tool_name: z.string().optional()
+    server_id: z.uuid(),
+    tool_name: z.string()
 });
 
 /**
  * CancelDeploymentRequest schema
  */
 export const zCancelDeploymentRequest = z.object({
-    deployment_id: z.uuid().optional()
+    deployment_id: z.uuid()
 });
 
 /**
@@ -709,24 +709,24 @@ export const zCopyDirectory = z.object({
  */
 export const zCreateDeploymentRequest = z.object({
     base_path: z.string().optional(),
-    branch: z.string().optional(),
-    build_pack: z.string().optional(),
+    branch: z.string(),
+    build_pack: z.string(),
     build_variables: z.record(z.string(), z.string()).optional(),
     compose_domains: z.array(z.object({
-        domain: z.string().optional(),
+        domain: z.string(),
         port: z.int().optional(),
         service_name: z.string().optional()
     })).optional(),
     dockerfile_path: z.string().optional(),
-    domains: z.array(z.string()).optional(),
-    environment: z.string().optional(),
+    domains: z.array(z.string().max(5)).optional(),
+    environment: z.string(),
     environment_variables: z.record(z.string(), z.string()).optional(),
-    name: z.string().optional(),
-    port: z.int().optional(),
+    name: z.string(),
+    port: z.int().gte(1).lte(65535),
     post_run_command: z.string().optional(),
     pre_run_command: z.string().optional(),
     primary_server_id: z.uuid().optional(),
-    repository: z.string().optional(),
+    repository: z.string(),
     routing_strategy: z.string().optional(),
     server_ids: z.array(z.uuid()).optional(),
     source: z.string().optional(),
@@ -761,13 +761,13 @@ export const zCreateHealthCheckRequest = z.object({
     body: z.string().optional(),
     endpoint: z.string().optional(),
     expected_status_codes: z.array(z.int()).optional(),
-    failure_threshold: z.int().optional(),
+    failure_threshold: z.int().gte(1).lte(10).optional(),
     headers: z.record(z.string(), z.string()).optional(),
-    interval_seconds: z.int().optional(),
+    interval_seconds: z.int().gte(30).lte(3600).optional(),
     method: z.string().optional(),
-    retention_days: z.int().optional(),
-    success_threshold: z.int().optional(),
-    timeout_seconds: z.int().optional()
+    retention_days: z.int().gte(1).lte(365).optional(),
+    success_threshold: z.int().gte(1).lte(10).optional(),
+    timeout_seconds: z.int().gte(5).lte(120).optional()
 });
 
 /**
@@ -801,24 +801,24 @@ export const zCreateProjectRequest = z.object({
     build_pack: z.string().optional(),
     build_variables: z.record(z.string(), z.string()).optional(),
     compose_domains: z.array(z.object({
-        domain: z.string().optional(),
+        domain: z.string(),
         port: z.int().optional(),
         service_name: z.string().optional()
     })).optional(),
     compose_services: z.array(z.object({
-        port: z.int().optional(),
-        service_name: z.string().optional()
+        port: z.int(),
+        service_name: z.string()
     })).optional(),
     dockerfile_path: z.string().optional(),
     domains: z.array(z.string()).optional(),
     environment: z.string().optional(),
     environment_variables: z.record(z.string(), z.string()).optional(),
-    name: z.string().optional(),
+    name: z.string(),
     port: z.int().optional(),
     post_run_command: z.string().optional(),
     pre_run_command: z.string().optional(),
     primary_server_id: z.uuid().optional(),
-    repository: z.string().optional(),
+    repository: z.string(),
     routing_strategy: z.string().optional(),
     server_ids: z.array(z.uuid()).optional(),
     source: z.string().optional()
@@ -830,11 +830,11 @@ export const zCreateProjectRequest = z.object({
 export const zCreateSmtpConfigRequest = z.object({
     from_email: z.string().optional(),
     from_name: z.string().optional(),
-    host: z.string().optional(),
-    organization_id: z.uuid().optional(),
-    password: z.string().optional(),
-    port: z.int().optional(),
-    username: z.string().optional()
+    host: z.string(),
+    organization_id: z.uuid(),
+    password: z.string(),
+    port: z.int(),
+    username: z.string()
 });
 
 /**
@@ -844,8 +844,8 @@ export const zCreateServerRequest = z.object({
     credentials: z.record(z.string(), z.string()).optional(),
     custom_url: z.string().optional(),
     enabled: z.boolean().optional(),
-    name: z.string().optional(),
-    provider_id: z.uuid().optional()
+    name: z.string(),
+    provider_id: z.uuid()
 });
 
 /**
@@ -853,11 +853,11 @@ export const zCreateServerRequest = z.object({
  */
 export const zCreateTemplateDeploymentRequest = z.object({
     environment: z.string().optional(),
-    name: z.string().optional(),
+    name: z.string(),
     primary_server_id: z.uuid().optional(),
     routing_strategy: z.string().optional(),
     server_ids: z.array(z.uuid()).optional(),
-    template_id: z.uuid().optional(),
+    template_id: z.uuid(),
     variables: z.record(z.string(), z.string()).optional()
 });
 
@@ -866,7 +866,7 @@ export const zCreateTemplateDeploymentRequest = z.object({
  */
 export const zCreateWebhookConfigRequest = z.object({
     type: z.string(),
-    webhook_url: z.string().optional()
+    webhook_url: z.string()
 });
 
 /**
@@ -934,7 +934,7 @@ export const zDnsSetupResponse = z.object({
  * DeleteDeploymentRequest schema
  */
 export const zDeleteDeploymentRequest = z.object({
-    id: z.uuid().optional()
+    id: z.uuid()
 });
 
 /**
@@ -962,7 +962,7 @@ export const zDeleteMachineResponse = z.object({
  * DeleteSMTPConfigRequest schema
  */
 export const zDeleteSmtpConfigRequest = z.object({
-    id: z.uuid().optional()
+    id: z.uuid()
 });
 
 /**
@@ -983,7 +983,7 @@ export const zDeleteWebhookConfigRequest = z.object({
  * DeployProjectRequest schema
  */
 export const zDeployProjectRequest = z.object({
-    id: z.uuid().optional()
+    id: z.uuid()
 });
 
 /**
@@ -1135,11 +1135,11 @@ export const zDeploymentResponse = z.object({
 export const zDuplicateProjectRequest = z.object({
     branch: z.string().optional(),
     domains: z.array(z.string()).optional(),
-    environment: z.string().optional(),
+    environment: z.string(),
     primary_server_id: z.uuid().optional(),
     routing_strategy: z.string().optional(),
     server_ids: z.array(z.uuid()).optional(),
-    source_project_id: z.uuid().optional()
+    source_project_id: z.uuid()
 });
 
 /**
@@ -2391,9 +2391,9 @@ export const zPreferencesResponse = z.object({
  */
 export const zPreviewComposeRequest = z.object({
     base_path: z.string().optional(),
-    branch: z.string().optional(),
+    branch: z.string(),
     dockerfile_path: z.string().optional(),
-    repository: z.string().optional()
+    repository: z.string()
 });
 
 /**
@@ -2401,8 +2401,8 @@ export const zPreviewComposeRequest = z.object({
  */
 export const zPreviewComposeResponse = z.object({
     services: z.array(z.object({
-        port: z.int().optional(),
-        service_name: z.string().optional()
+        port: z.int(),
+        service_name: z.string()
     })).optional()
 });
 
@@ -2622,7 +2622,7 @@ export const zRandomSubdomainResponseWrapper = z.object({
 export const zReDeployApplicationRequest = z.object({
     force: z.boolean().optional(),
     force_without_cache: z.boolean().optional(),
-    id: z.uuid().optional(),
+    id: z.uuid(),
     target_server_ids: z.array(z.uuid()).optional()
 });
 
@@ -2669,7 +2669,7 @@ export const zRemoveApplicationDomainRequest = z.object({
  * RemoveCustomDomainRequest schema
  */
 export const zRemoveCustomDomainRequest = z.object({
-    id: z.uuid().optional()
+    id: z.uuid()
 });
 
 /**
@@ -2700,14 +2700,14 @@ export const zResponse = z.object({
  * RestartDeploymentRequest schema
  */
 export const zRestartDeploymentRequest = z.object({
-    id: z.uuid().optional()
+    id: z.uuid()
 });
 
 /**
  * RollbackDeploymentRequest schema
  */
 export const zRollbackDeploymentRequest = z.object({
-    id: z.uuid().optional(),
+    id: z.uuid(),
     target_server_ids: z.array(z.uuid()).optional()
 });
 
@@ -2808,10 +2808,10 @@ export const zSendNotificationResponse = z.object({
  * SetApplicationServersRequest schema
  */
 export const zSetApplicationServersRequest = z.object({
-    application_id: z.uuid().optional(),
+    application_id: z.uuid(),
     primary_server_id: z.uuid().optional(),
     routing_strategy: z.string().optional(),
-    server_ids: z.array(z.uuid()).optional()
+    server_ids: z.array(z.uuid())
 });
 
 /**
@@ -2919,7 +2919,7 @@ export const zSystemStatsResponse = z.object({
 export const zTestServerRequest = z.object({
     credentials: z.record(z.string(), z.string()).optional(),
     custom_url: z.string().optional(),
-    provider_id: z.uuid().optional()
+    provider_id: z.uuid()
 });
 
 /**
@@ -2934,12 +2934,12 @@ export const zToggleHealthCheckRequest = z.object({
  * TrackInstallRequest schema
  */
 export const zTrackInstallRequest = z.object({
-    arch: z.string().optional(),
-    duration: z.int().optional(),
-    error: z.string().optional(),
-    event_type: z.string().optional(),
-    os: z.string().optional(),
-    version: z.string().optional()
+    arch: z.string(),
+    duration: z.int().gte(0).lte(7200).optional(),
+    error: z.string().max(200).optional(),
+    event_type: z.string(),
+    os: z.string(),
+    version: z.string()
 });
 
 /**
@@ -2988,7 +2988,7 @@ export const zUpdateAutoUpdateRequest = z.object({
  * UpdateAvatarRequest schema
  */
 export const zUpdateAvatarRequest = z.object({
-    avatarData: z.string().optional()
+    avatarData: z.string()
 });
 
 /**
@@ -3034,18 +3034,18 @@ export const zUpdateDeploymentRequest = z.object({
     build_pack: z.string().optional(),
     build_variables: z.record(z.string(), z.string()).optional(),
     compose_domains: z.array(z.object({
-        domain: z.string().optional(),
+        domain: z.string(),
         port: z.int().optional(),
         service_name: z.string().optional()
     })).optional(),
     dockerfile_path: z.string().optional(),
-    domains: z.array(z.string()).optional(),
+    domains: z.array(z.string().max(5)).optional(),
     environment: z.string().optional(),
     environment_variables: z.record(z.string(), z.string()).optional(),
     force: z.boolean().optional(),
     id: z.uuid().optional(),
-    name: z.string().optional(),
-    port: z.int().optional(),
+    name: z.string().min(3).optional(),
+    port: z.int().gte(1).lte(65535).optional(),
     post_run_command: z.string().optional(),
     pre_run_command: z.string().optional(),
     routing_strategy: z.string().optional()
@@ -3063,8 +3063,8 @@ export const zUpdateFeatureFlagRequest = z.object({
  * UpdateFontRequest schema
  */
 export const zUpdateFontRequest = z.object({
-    font_family: z.string().optional(),
-    font_size: z.int().optional()
+    font_family: z.string(),
+    font_size: z.int().gte(8).lte(32)
 });
 
 /**
@@ -3072,7 +3072,7 @@ export const zUpdateFontRequest = z.object({
  */
 export const zUpdateGithubConnectorRequest = z.object({
     connector_id: z.uuid().optional(),
-    installation_id: z.uuid().optional()
+    installation_id: z.uuid()
 });
 
 /**
@@ -3083,13 +3083,13 @@ export const zUpdateHealthCheckRequest = z.object({
     body: z.string().optional(),
     endpoint: z.string().optional(),
     expected_status_codes: z.array(z.int()).optional(),
-    failure_threshold: z.int().optional(),
+    failure_threshold: z.int().gte(1).lte(10).optional(),
     headers: z.record(z.string(), z.string()).optional(),
-    interval_seconds: z.int().optional(),
+    interval_seconds: z.int().gte(30).lte(3600).optional(),
     method: z.string().optional(),
-    retention_days: z.int().optional(),
-    success_threshold: z.int().optional(),
-    timeout_seconds: z.int().optional()
+    retention_days: z.int().gte(1).lte(365).optional(),
+    success_threshold: z.int().gte(1).lte(10).optional(),
+    timeout_seconds: z.int().gte(5).lte(120).optional()
 });
 
 /**
@@ -3103,7 +3103,7 @@ export const zUpdateLabelsRequest = z.object({
  * UpdateLanguageRequest schema
  */
 export const zUpdateLanguageRequest = z.object({
-    language: z.string().optional()
+    language: z.string()
 });
 
 /**
@@ -3137,8 +3137,8 @@ export const zUpdateSmtpConfigRequest = z.object({
     from_email: z.string().optional(),
     from_name: z.string().optional(),
     host: z.string().optional(),
-    id: z.uuid().optional(),
-    organization_id: z.uuid().optional(),
+    id: z.uuid(),
+    organization_id: z.uuid(),
     password: z.string().optional(),
     port: z.int().optional(),
     username: z.string().optional()
@@ -3151,22 +3151,22 @@ export const zUpdateServerRequest = z.object({
     credentials: z.record(z.string(), z.string()).optional(),
     custom_url: z.string().optional(),
     enabled: z.boolean().optional(),
-    id: z.uuid().optional(),
-    name: z.string().optional()
+    id: z.uuid(),
+    name: z.string()
 });
 
 /**
  * UpdateThemeRequest schema
  */
 export const zUpdateThemeRequest = z.object({
-    theme: z.string().optional()
+    theme: z.string()
 });
 
 /**
  * UpdateUserNameRequest schema
  */
 export const zUpdateUserNameRequest = z.object({
-    name: z.string().optional()
+    name: z.string().min(3).max(50)
 });
 
 /**
@@ -3344,7 +3344,7 @@ export const zUserSettingsResponse = z.object({
  * VerifyCustomDomainRequest schema
  */
 export const zVerifyCustomDomainRequest = z.object({
-    id: z.uuid().optional()
+    id: z.uuid()
 });
 
 /**
@@ -3436,7 +3436,7 @@ export const zTrackCliInstallationEventData = z.object({
 });
 
 /**
- * OK
+ * Created
  */
 export const zTrackCliInstallationEventResponse = zTrackInstallResponse;
 
@@ -3648,7 +3648,7 @@ export const zDeployApplicationData = z.object({
 });
 
 /**
- * OK
+ * Created
  */
 export const zDeployApplicationResponse = zApplicationResponse;
 
@@ -3702,7 +3702,7 @@ export const zListApplicationDeploymentsData = z.object({
     query: z.object({
         id: z.uuid(),
         page: z.int().gte(1).optional().default(1),
-        limit: z.int().gte(1).lte(100).optional().default(20)
+        page_size: z.int().gte(1).lte(100).optional().default(20)
     }),
     headers: z.object({
         Accept: z.string().optional()
@@ -3781,7 +3781,7 @@ export const zAddApplicationDomainData = z.object({
 });
 
 /**
- * OK
+ * Created
  */
 export const zAddApplicationDomainResponse = zApplicationResponse;
 
@@ -3848,7 +3848,7 @@ export const zCreateProjectData = z.object({
 });
 
 /**
- * OK
+ * Created
  */
 export const zCreateProjectResponse = zApplicationResponse;
 
@@ -3862,7 +3862,7 @@ export const zAddProjectToFamilyData = z.object({
 });
 
 /**
- * OK
+ * Created
  */
 export const zAddProjectToFamilyResponse = zApplicationResponse;
 
@@ -3890,7 +3890,7 @@ export const zDuplicateProjectData = z.object({
 });
 
 /**
- * OK
+ * Created
  */
 export const zDuplicateProjectResponse = zApplicationResponse;
 
@@ -4022,7 +4022,7 @@ export const zDeployApplicationFromTemplateData = z.object({
 });
 
 /**
- * OK
+ * Created
  */
 export const zDeployApplicationFromTemplateResponse = zApplicationResponse;
 
@@ -4133,7 +4133,7 @@ export const zAddCustomDomainData = z.object({
 });
 
 /**
- * OK
+ * Created
  */
 export const zAddCustomDomainResponse = zDnsSetupResponse;
 
@@ -4403,7 +4403,7 @@ export const zCreateGitHubConnectorData = z.object({
 });
 
 /**
- * OK
+ * Created
  */
 export const zCreateGitHubConnectorResponse = zMessageResponse;
 
@@ -4519,7 +4519,7 @@ export const zCreateHealthCheckData = z.object({
 });
 
 /**
- * OK
+ * Created
  */
 export const zCreateHealthCheckResponse = zHealthCheckResponse;
 
@@ -4624,7 +4624,7 @@ export const zRegisterAbyosMachineData = z.object({
 });
 
 /**
- * OK
+ * Created
  */
 export const zRegisterAbyosMachineResponse = zCreateMachineResponse;
 
@@ -5104,7 +5104,7 @@ export const zAddMcpServerData = z.object({
 });
 
 /**
- * OK
+ * Created
  */
 export const zAddMcpServerResponse = zResponse;
 
@@ -5220,7 +5220,7 @@ export const zCreateSmtpConfigData = z.object({
 });
 
 /**
- * OK
+ * Created
  */
 export const zCreateSmtpConfigResponse = zMessageResponse;
 
@@ -5262,7 +5262,7 @@ export const zCreateWebhookConfigData = z.object({
 });
 
 /**
- * OK
+ * Created
  */
 export const zCreateWebhookConfigResponse = zWebhookConfigResponse;
 
